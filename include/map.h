@@ -21,7 +21,8 @@ class Tile {
 		int posX, posY;
 		bool blocked;
 		bool block_sight;
-	
+		bool is_wall;
+
 	public:
 		Tile(bool blked);
 		void init_Tile(bool);

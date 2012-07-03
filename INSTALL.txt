@@ -1,0 +1,13 @@
+You must have libtcod 1.5.1 installed for this program to compile and work properly.
+
+You can grab it from: http://doryen.eptalys.net/libtcod/
+
+
+If you want to install it as a shared library in /usr/lib/ , that will make things easier as there are no plans to distribute the libtcod.so library with this project at this time. Otherwise you can stick the libtcod.so and libtcodxx.so files in this directory to build this project properly.
+
+Building is as simple as running "make" - however there is no installation step included at this time.
+
+Once you have a built binary, you can run it with "./main"
+
+-Yamamushi (Jon Rumion)
+yamamushi@gmail.com
