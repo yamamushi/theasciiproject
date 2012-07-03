@@ -5,34 +5,13 @@
 #define LIMIT_FPS 20
 #include <math.h>
 
-int playerX, playerY;
-
-
 bool HandleKeys()
 {
-	TCOD_key_t Key = TCODConsole::checkForKeypress(true);
+	TCOD_key_t Key = TCODConsole::waitForKeypress(true);
+
 	bool quit = false;
-	
 	switch(Key.vk)
 	{
-		case TCODK_UP:
-			playerY--;
-			break;
-
-
-		case TCODK_DOWN:
-			playerY++;
-			break;
-
-		case TCODK_LEFT:
-			playerX--;
-			break;
-
-		case TCODK_RIGHT:
-			playerX++;
-			break;
-
-		
 		case TCODK_ESCAPE:
 			quit = true;
 			break;
@@ -47,8 +26,7 @@ int main(
 
 	// boring variables
 	bool quit = false;
-	playerX = MAIN_WIDTH/2;
-	playerY = MAIN_HEIGHT/2;
+	int playerX, playerY;
 
 	
 	// Let's get things setup
@@ -56,23 +34,23 @@ int main(
 	TCODConsole::initRoot(MAIN_WIDTH,MAIN_HEIGHT,"The ASCII Project",false);
 	// TCODConsole::setCustomFont("arial10x10.png",TCOD_FONT_LAYOUT_TCOD | TCOD_FONT_TYPE_GREYSCALE);
 	TCODSystem::setFps(LIMIT_FPS);
-
-
+	
 	// We'll set the foreground color once now and modify it as necessary when in our game loop
 	TCODConsole::root->setDefaultForeground(TCODColor::white);	
 
 
 	while(!TCODConsole::isWindowClosed()) {
 		
-		TCODConsole::root->printEx(playerX, playerY, TCOD_BKGND_NONE, TCOD_LEFT, "@");
+		TCODConsole::root->printEx(global playerX,global playerY,TCOD_BKGND_NONE,TCOD_LEFT,"@");
 
 		TCODConsole::root->flush();
 
-		TCODConsole::root->print(playerX, playerY, " ");
 		quit = HandleKeys();
 		if(quit) break;		
 
 	}	
 
+
+	TCODConsole::waitForKeypress(true);
 	return 0;
 }
