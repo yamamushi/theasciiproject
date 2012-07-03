@@ -1,0 +1,10 @@
+07/03/2012 TODO List:
+
+Consolidate coloring tiles into a function called 
+"void initColors()"
+
+
+While we're at it, we can also create 
+"void setColor(entity *target, TCODColor foreinit)"
+
+

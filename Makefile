@@ -13,10 +13,10 @@ CPP=g++
 
 CPP_OBJS=main.o keyboard.o entities.o map.o
 
-all : main
+all : client
 
-main : $(CPP_OBJS)
+client : $(CPP_OBJS)
 	$(CPP) $(addprefix $(BUILDDIR), $(CPP_OBJS)) -o $@ -ltcod -ltcodxx -Wl,-rpath,.
 
 clean :
-	\rm -f $(addprefix $(BUILDDIR), $(CPP_OBJS)) main
+	\rm -f $(addprefix $(BUILDDIR), $(CPP_OBJS)) client
