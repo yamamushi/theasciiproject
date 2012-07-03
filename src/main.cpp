@@ -12,7 +12,10 @@ bool HandleKeys()
 {
 	TCOD_key_t Key = TCODConsole::checkForKeypress(true);
 	bool quit = false;
-	
+
+	if(Key.vk == TCODK_ENTER && Key.lalt)
+		TCODConsole::setFullscreen(!TCODConsole::isFullscreen());			
+
 	switch(Key.vk)
 	{
 		case TCODK_UP:
@@ -32,7 +35,7 @@ bool HandleKeys()
 			playerX++;
 			break;
 
-		
+
 		case TCODK_ESCAPE:
 			quit = true;
 			break;
@@ -54,21 +57,26 @@ int main(
 	// Let's get things setup
 	
 	TCODConsole::initRoot(MAIN_WIDTH,MAIN_HEIGHT,"The ASCII Project",false);
-	// TCODConsole::setCustomFont("arial10x10.png",TCOD_FONT_LAYOUT_TCOD | TCOD_FONT_TYPE_GREYSCALE);
+	// TCODConsole::credits();
+	
+	TCODConsole *con = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
+
+	
 	TCODSystem::setFps(LIMIT_FPS);
 
 
 	// We'll set the foreground color once now and modify it as necessary when in our game loop
 	TCODConsole::root->setDefaultForeground(TCODColor::white);	
 
-
 	while(!TCODConsole::isWindowClosed()) {
 		
-		TCODConsole::root->printEx(playerX, playerY, TCOD_BKGND_NONE, TCOD_LEFT, "@");
+		con->printEx(playerX, playerY, TCOD_BKGND_NONE, TCOD_LEFT, "@");
+		TCODConsole::flush();
+		
+		TCODConsole::blit(con, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
 
-		TCODConsole::root->flush();
-
-		TCODConsole::root->print(playerX, playerY, " ");
+		con->print(playerX, playerY, " ");
+		
 		quit = HandleKeys();
 		if(quit) break;		
 
