@@ -2,3 +2,18 @@ The ASCII Project
 =================
 
 Please bear with us as we get our feet on the ground. This repo will likely be out of date for the time being.
+
+Visitors should refer to http://www.theasciiproject.com for more information, though at the time of writing this document that website is (very much) out of date. 
+
+
+The goal of "The ASCII Project" is to develop a Unicode-based MMORPG, based on a persistent world driven by a player-run economy.
+
+The interface will resemble existing rogue-like projects, such as Dwarf Fortress and Nethack, with the heavy use of a text based interface - thus allowing for more development time to focus on engine features without the constant overhead of interfacing with a heavy (3D) graphics front end.
+
+It's difficult to assign the project to a specific genre, as the "Tech" research portion of the engine allows for the game world to move forward from a fantasy based game into a sci-fi based game as (much) time progresses. However for the purposes of describing the initial state of the game world, "Fantasy-Based" will suffice.
+
+Players will be able to form relationships with each other as well as NPCs to establish tribes, villages, cities and perhaps even entire nations. All of this will be driven by a server-side "Relationship Engine", allowing for evolving NPC relationships without requiring player interaction.
+
+The relationship "level" between characters and NPCs will be used to determine procedural generation parameters for the evolving state of the game world. For instance, an NPC who is enemies with a given alliance may be more willing to assist players with an attack or may even pursue an attack on their own without player interaction being necessary.
+
+The server-side code is to remain closed source until further notice, however an API will be published allowing for the development of open source clients. This will allow for clients to be written in several languages, facilitating a portable interface without the need for developers to worry about the internals of the server-side engine. 
