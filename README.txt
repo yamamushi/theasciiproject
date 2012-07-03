@@ -1,5 +1,9 @@
 The ASCII Project
 =================
+Copyright (c) 2012 Jonathan Rumion
+Source code is available from:
+* https://github.com/yamamushi/theasciiproject
+
 
 Please bear with us as we get our feet on the ground. This repo will likely be out of date for the time being.
 
