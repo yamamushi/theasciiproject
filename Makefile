@@ -10,11 +10,11 @@ CPP=g++
 %.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-CPP_OBJS=hm.o
+CPP_OBJS=main.o
 
-all : hm
+all : main
 
-hm : $(CPP_OBJS)
+main : $(CPP_OBJS)
 	$(CPP) $(CPP_OBJS) -o $@ -ltcod -ltcodxx -Wl,-rpath,.
 
 clean :
