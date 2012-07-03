@@ -46,7 +46,7 @@ int main(
 	
 	// Let's get things setup
 	
-	TCODConsole::initRoot(MAIN_WIDTH,MAIN_HEIGHT,"The ASCII Project",false);
+	TCODConsole::initRoot(MAIN_WIDTH,MAIN_HEIGHT,"The ASCII Project",false,TCOD_RENDERER_SDL);
 	// TCODConsole::credits();
 	
 	TCODConsole *con = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
@@ -59,12 +59,29 @@ int main(
 	TCODConsole::root->setDefaultForeground(TCODColor::white);	
 
 	entity *player = new entity(playerX, playerY, "@", TCODColor::white);
+	
+	// Create an npc, for testing purposes only, this will be moved!
+	entity *npc = new entity(playerX, playerY, "@", TCODColor::red);
+
+	entity **tArray[10];
+	tArray[0] = &player;
+	tArray[1] = &npc;
+	
+	entity * scan;
+	int ray = 0;
 
 	while(!TCODConsole::isWindowClosed()) {
 		
 		//con->printEx(playerX, playerY, TCOD_BKGND_NONE, TCOD_LEFT, "@");
 		player->move(playerX, playerY);
-		player->draw(con);
+		//player->draw(con);
+	
+		for ( ray = 0; ray < 2; ray++){
+			scan = *tArray[ray];
+			scan->draw(con);
+		}	
+
+		
 		TCODConsole::flush();
 		
 		TCODConsole::blit(con, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
