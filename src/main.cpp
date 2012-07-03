@@ -19,6 +19,7 @@
 // First our custom headers
 #include "libtcod.hpp"
 #include "keyboard.h"
+#include "entities.h"
 
 // Followed by standard headers
 #include <math.h>
@@ -57,9 +58,13 @@ int main(
 	// We'll set the foreground color once now and modify it as necessary when in our game loop
 	TCODConsole::root->setDefaultForeground(TCODColor::white);	
 
+	entity *player = new entity(playerX, playerY, "@", TCODColor::white);
+
 	while(!TCODConsole::isWindowClosed()) {
 		
-		con->printEx(playerX, playerY, TCOD_BKGND_NONE, TCOD_LEFT, "@");
+		//con->printEx(playerX, playerY, TCOD_BKGND_NONE, TCOD_LEFT, "@");
+		player->move(playerX, playerY);
+		player->draw(con);
 		TCODConsole::flush();
 		
 		TCODConsole::blit(con, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
