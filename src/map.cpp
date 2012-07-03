@@ -16,4 +16,16 @@
  * =====================================================================================
  */
 #include "libtcod.hpp"
+#include "map.h"
+
+
+Tile::Tile(bool blked){
+	init_Tile(blked);
+}
+
+void Tile::init_Tile(bool blked){
+	blocked = blked;
+	if(blked)
+		block_sight = true;
+}
 

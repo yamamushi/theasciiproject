@@ -16,5 +16,15 @@
  * =====================================================================================
  */
 
-#include "libtcod.hpp"
+class Tile {
+	private:
+		int posX, posY;
+		bool blocked;
+		bool block_sight;
+	
+	public:
+		Tile(bool blked);
+		void init_Tile(bool);
+
+};
 
