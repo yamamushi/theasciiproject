@@ -16,4 +16,4 @@ Players will be able to form relationships with each other as well as NPCs to es
 
 The relationship "level" between characters and NPCs will be used to determine procedural generation parameters for the evolving state of the game world. For instance, an NPC who is enemies with a given alliance may be more willing to assist players with an attack or may even pursue an attack on their own without player interaction being necessary.
 
-The server-side code is to remain closed source until further notice, however an API will be published allowing for the development of open source clients. This will allow for clients to be written in several languages, facilitating a portable interface without the need for developers to worry about the internals of the server-side engine. 
+Originally the server-side code was planned to be closed source, however I feel that is a poor direction for this project and everything will remain open source and covered under the GPLv3.
