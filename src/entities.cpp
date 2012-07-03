@@ -34,6 +34,11 @@ void entity::move(int dx, int dy){
 	posY = dy;
 }
 
+void entity::clean(TCODConsole *dest){
+	TCODConsole *screen = dest;
+	screen->print(posX, posY, " ");
+}
+
 void entity::draw(TCODConsole *dest){
 	TCODConsole *screen = dest;
 	screen->setDefaultForeground(fore);

@@ -29,7 +29,9 @@ class entity {
 		entity(int posX, int posY, char* symbol, TCODColor fore);	
 		void init_entity(int, int, char*, TCODColor);
 		void move(int, int);
+		void clean(TCODConsole *dest);
 		void draw(TCODConsole *dest);
+
 };
 
 
