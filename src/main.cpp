@@ -1,4 +1,5 @@
 #include "libtcod.hpp"
+#include "keyboard.h"
 // size of the heightmap
 #define MAIN_WIDTH 100
 #define MAIN_HEIGHT 80
@@ -6,42 +7,6 @@
 #include <math.h>
 
 int playerX, playerY;
-
-
-bool HandleKeys()
-{
-	TCOD_key_t Key = TCODConsole::checkForKeypress(true);
-	bool quit = false;
-
-	if(Key.vk == TCODK_ENTER && Key.lalt)
-		TCODConsole::setFullscreen(!TCODConsole::isFullscreen());			
-
-	switch(Key.vk)
-	{
-		case TCODK_UP:
-			playerY--;
-			break;
-
-
-		case TCODK_DOWN:
-			playerY++;
-			break;
-
-		case TCODK_LEFT:
-			playerX--;
-			break;
-
-		case TCODK_RIGHT:
-			playerX++;
-			break;
-
-
-		case TCODK_ESCAPE:
-			quit = true;
-			break;
-	}
-	return quit;
-}
 
 
 int main(
@@ -77,7 +42,7 @@ int main(
 
 		con->print(playerX, playerY, " ");
 		
-		quit = HandleKeys();
+		quit = handleKeys();
 		if(quit) break;		
 
 	}	
