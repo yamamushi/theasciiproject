@@ -1,0 +1,3 @@
+0.0.0
+
+Basic game engine, VERY basic game engine. Slowly making fixes and modifications with long term development in mind.

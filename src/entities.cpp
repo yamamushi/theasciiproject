@@ -36,10 +36,7 @@
  * =====================================================================================
  */
 
-#include "libtcod.hpp"
-#include "map.h"
-#include "entities.h"
-#include "colors.h"
+#include "headers.h"
 
 entity::entity(int x, int y, char* p, TCODColor foreinit){
 	init_entity( x, y, p, foreinit);

@@ -39,20 +39,67 @@
 
 class Tile {
 	private:
+
+	public:
+
 		int posX, posY;
 		bool blocked;
 		bool block_sight;
 		bool is_wall;
 
-	public:
 		Tile(bool blked);
 		void init_Tile(bool);
 		bool is_sight_blocked();
 		bool is_blocked();
+};
 
 
+class Rect {
+	public:
+		int x1, x2, y1, y2;
+		Rect(int, int, int, int);
+		void initRect(int, int, int, int);
+};
+
+
+class Room {
+	private:
+
+	public:
+		Rect *dim;
+		Room(int, int, int, int);
+		void initRoom(int, int, int, int);
+};	
+
+
+class Hall {
+	private:
+
+	public:
+		Hall(int, int, int);
+		void initHall(int, int, int);
+};
+
+
+
+
+
+class Map {
+	private:
+		int x, y, z, i;
+		TCODConsole *tgt;
+
+	public:
+		Map(int, int);
+		void initMap(int, int);
+		void drawMap(TCODConsole *dest);
+		void checkBounds(entity *target, Keyboard *buffer);
+		void createRoom(int, int, int, int);
+		void createHall(int, int, int);
 
 };
+
+
 
 
 

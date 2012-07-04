@@ -1,21 +1,21 @@
 /*
  * =====================================================================================
  *
- *       Filename:  colors.cpp
+ *       Filename:  headers.h
  *
- *    Description:  Our coloring functions
+ *    Description:  An attempt to consolidate and order our header files
  *
  *        Version:  1.0
- *        Created:  07/03/201
+ *        Created:  07/04/2012
  *       Revision:  none
  *       Compiler:  gcc
  *
  *         Author:  Yamamushi (Jon Rumion)
  *   Organization:  The ASCII Project
  *
- *        License:  GPLv3
+ *	  License:  GPLv3
  *
- *        Copyright 2012 Jonathan Rumion
+ *	  Copyright 2012 Jonathan Rumion
  *
  *   This file is part of The ASCII Project.
  *
@@ -36,24 +36,48 @@
  * =====================================================================================
  */
 
-#include "headers.h"
 
-colorTable::colorTable(bool init){
-	initColors(init);
-}
+#include "constants.h"
 
-void colorTable::initColors(bool init){
-	if(init){
-		TCODColor dark_wall_init(0, 0, 100);
-		dark_wall = dark_wall_init;
-	 	TCODColor dark_ground_init(50, 50, 150);
-		dark_ground = dark_ground_init;
-	}
-}
+#include "libtcod.hpp"
 
-void colorTable::setColor(entity *target, TCODColor foreinit){
-	entity *tgt = target;
-	tgt->fore = foreinit;
-}
+#include "entities.h"
+#include "keyboard.h"
+#include "map.h"
+#include "colors.h"
+
+
+// Followed by standard headers
+#include <math.h>
+#include <algorithm>
+
+using namespace std;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

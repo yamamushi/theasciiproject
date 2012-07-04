@@ -37,10 +37,7 @@
  */
 
 
-#include "libtcod.hpp"
-#include "entities.h"
-#include "keyboard.h"
-
+#include "headers.h"
 
 
 
