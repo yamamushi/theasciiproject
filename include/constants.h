@@ -45,5 +45,8 @@
 
 #define LIMIT_FPS 20
 
+#define ROOM_MAX_SIZE 10
+#define ROOM_MIN_SIZE 6
+#define MAX_ROOMS 30
 
 

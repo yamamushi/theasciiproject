@@ -90,6 +90,7 @@ class Map {
 		TCODConsole *tgt;
 
 	public:
+		Room * rooms[MAX_ROOMS];
 		Map(int, int);
 		void initMap(int, int);
 		void drawMap(TCODConsole *dest);
