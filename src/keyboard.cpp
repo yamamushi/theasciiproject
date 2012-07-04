@@ -37,13 +37,14 @@
  */
 
 #include "libtcod.hpp"
+#include "keyboard.h"
 #include "entities.h"
 
 bool handleKeys(){
 
 	TCOD_key_t Key = TCODConsole::checkForKeypress(true);
 	bool quit = false;
-	extern int playerX, playerY;
+	extern int CenterX, CenterY;
 
 
 	if(Key.vk == TCODK_ENTER && Key.lalt)
@@ -52,17 +53,22 @@ bool handleKeys(){
 	switch(Key.vk)
 	{
 	       	case TCODK_UP:
-			playerY--;
-			break;	
-		case TCODK_DOWN:																              playerY++;
-		  	break;
-																			              case TCODK_LEFT:
-			playerX--;				                        
-			break;	
-																				      case TCODK_RIGHT:
-			playerX++;
+			CenterY--;
 			break;
-																				      case TCODK_ESCAPE:
+
+		case TCODK_DOWN:
+			CenterY++;
+		  	break;
+			
+		case TCODK_LEFT:
+			CenterX--;				                        
+			break;	
+			
+		case TCODK_RIGHT:
+			CenterX++;
+			break;
+
+		case TCODK_ESCAPE:
 			quit = true;
 			break;
 

@@ -39,13 +39,13 @@
 
 class entity {
 	private:
-		int posX, posY;
 		char* symbol;
 		TCODColor fore;
 		
 		entity() { }
 
 	public:
+		int posX, posY;
 		entity(int posX, int posY, char* symbol, TCODColor fore);	
 		void init_entity(int, int, char*, TCODColor);
 		void move(int, int);

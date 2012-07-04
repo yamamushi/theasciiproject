@@ -56,6 +56,9 @@ bool Tile::is_sight_blocked(){
 	return block_sight;
 }
 
+bool Tile::is_blocked(){
+	return blocked;
+}
 
 
 

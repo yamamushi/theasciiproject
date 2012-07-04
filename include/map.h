@@ -48,6 +48,7 @@ class Tile {
 		Tile(bool blked);
 		void init_Tile(bool);
 		bool is_sight_blocked();
+		bool is_blocked();
 
 
 

@@ -56,7 +56,7 @@
 #define LIMIT_FPS 20
 
 // We'll probably move these global variables somewhere else later
-int playerX, playerY;
+int CenterX, CenterY;
 
 
 int main(
@@ -65,8 +65,8 @@ int main(
 
 	// boring variables
 	bool quit = false;
-	playerX = MAIN_WIDTH/2;
-	playerY = MAIN_HEIGHT/2;
+	CenterX = MAIN_WIDTH/2;
+	CenterY = MAIN_HEIGHT/2;
 
 	
 	// Let's get things setup
@@ -83,10 +83,10 @@ int main(
 	// We'll set the foreground color once now and modify it as necessary when in our game loop
 	TCODConsole::root->setDefaultForeground(TCODColor::white);	
 
-	entity *player = new entity(playerX, playerY, "@", TCODColor::white);
+	entity *player = new entity(CenterX, CenterY, "@", TCODColor::white);
 	
 	// Create an npc, for testing purposes only, this will be moved!
-	entity *npc = new entity(playerX+1, playerY+1, "@", TCODColor::red);
+	entity *npc = new entity(CenterX+1, CenterY+1, "@", TCODColor::red);
 
 	entity **tArray[2];
 	tArray[0] = &player;
@@ -117,8 +117,13 @@ int main(
 	// Main Game Loop
 
 	while(!TCODConsole::isWindowClosed()) {
-		
-		player->move(playerX, playerY);
+	
+		if (!mapArray[CenterX][CenterY]->is_blocked())	
+			player->move(CenterX, CenterY);
+		else{
+			CenterX = player->posX;
+			CenterY = player->posY;
+		}
 
 		// Draw our map to the screen
 		for(x=0;x<MAP_WIDTH;x++){
