@@ -144,7 +144,7 @@ int main(
 
 		
 		TCODConsole::flush();
-		TCODConsole::blit(con, 1, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
+		TCODConsole::blit(con, 1, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 1, 0);
 
 		// Clean up our screen before reading in keys
 		for ( ray=0; ray < si; ray++){

@@ -37,8 +37,8 @@
  */
 
 #include "libtcod.hpp"
-#include "colors.h"
 #include "entities.h"
+#include "colors.h"
 
 
 colorTable::colorTable(bool init){
@@ -54,10 +54,9 @@ void colorTable::initColors(bool init){
 	}
 }
 
-void colorTable::setColor(TCODColor target, TCODColor foreinit){
-	return;
+void colorTable::setColor(entity *target, TCODColor foreinit){
+	entity *tgt = target;
+	tgt->fore = foreinit;
 }
-
-
 
 

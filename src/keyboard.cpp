@@ -56,7 +56,7 @@ bool Keyboard::handleKeys(entity *target){
 	oldY = tgt->posY;
 
 
-	if(Key.vk == TCODK_ENTER && Key.lalt)
+	if(Key.vk == TCODK_ENTER && TCODK_ALT)
 		TCODConsole::setFullscreen(!TCODConsole::isFullscreen());
 	
 	switch(Key.vk)
@@ -67,8 +67,8 @@ bool Keyboard::handleKeys(entity *target){
 
 		case TCODK_DOWN:
 			tgt->move(0,1);
-		  	break;
-			
+			break;
+		
 		case TCODK_LEFT:
 			tgt->move(-1,0);				                        
 			break;	
