@@ -37,14 +37,19 @@
  */
 
 #include "libtcod.hpp"
-#include "keyboard.h"
 #include "entities.h"
+#include "keyboard.h"
 
-bool handleKeys(){
+
+
+
+bool Keyboard::handleKeys(entity *target){
 
 	TCOD_key_t Key = TCODConsole::checkForKeypress(true);
 	bool quit = false;
 	extern int CenterX, CenterY;
+
+	entity *player = target;
 
 
 	if(Key.vk == TCODK_ENTER && Key.lalt)

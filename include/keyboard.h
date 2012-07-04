@@ -36,5 +36,8 @@
  * =====================================================================================
  */
 
-
-bool handleKeys();
+class Keyboard {
+	
+	public:
+		bool handleKeys(entity);
+};

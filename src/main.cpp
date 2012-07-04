@@ -79,6 +79,7 @@ int main(
 	
 	TCODSystem::setFps(LIMIT_FPS);
 
+	Keyboard *kboard = new Keyboard();
 
 	// We'll set the foreground color once now and modify it as necessary when in our game loop
 	TCODConsole::root->setDefaultForeground(TCODColor::white);	
@@ -152,7 +153,7 @@ int main(
 			scan->clean(con);
 		}	
 
-		quit = handleKeys();
+		quit = kboard->handleKeys(&player);
 		if(quit) break;		
 
 	}	
