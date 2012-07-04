@@ -47,6 +47,20 @@ class Tile {
 	public:
 		Tile(bool blked);
 		void init_Tile(bool);
+		bool is_sight_blocked();
+
+
 
 };
+
+
+
+
+
+
+
+
+
+
+
 

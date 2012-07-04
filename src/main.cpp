@@ -96,8 +96,7 @@ int main(
 	int ray;
 	int si = sizeof tArray/sizeof(entity **);
 	
-	colorTable *cTable = new colorTable();
-	cTable->initColors();
+	colorTable *cTable = new colorTable(true);
 
 	// lets build our map o_o;;
 	
@@ -109,6 +108,9 @@ int main(
 			mapArray[x][y] = new Tile(false);
 		}
 	}
+	
+	mapArray[30][22]->init_Tile(true);
+	mapArray[50][22]->init_Tile(true);
 
 
 
@@ -119,6 +121,15 @@ int main(
 		player->move(playerX, playerY);
 
 		// Draw our map to the screen
+		for(x=0;x<MAP_WIDTH;x++){
+			for(y=0;y<MAP_HEIGHT;y++){
+				if (mapArray[x][y]->is_sight_blocked())
+					con->setCharBackground(x, y, cTable->dark_wall, TCOD_BKGND_SET);
+				else
+					con->setCharBackground(x, y, cTable->dark_ground, TCOD_BKGND_SET);
+			}
+		}
+
 
 		// Draw our entities to the screen	
 		for ( ray = 0; ray < si; ray++){

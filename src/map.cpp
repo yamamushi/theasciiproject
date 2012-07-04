@@ -48,5 +48,14 @@ void Tile::init_Tile(bool blked){
 	blocked = blked;
 	if(blked)
 		block_sight = true;
+	else
+		block_sight = false;
 }
+
+bool Tile::is_sight_blocked(){
+	return block_sight;
+}
+
+
+
 

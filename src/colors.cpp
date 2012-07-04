@@ -41,17 +41,22 @@
 #include "entities.h"
 
 
-void colorTable::initColors(){
-	TCODColor dark_wall(0, 0, 100);
-	TCODColor dark_ground(50, 50, 150);
+colorTable::colorTable(bool init){
+	initColors(init);
+}
+
+void colorTable::initColors(bool init){
+	if(init){
+		TCODColor dark_wall_init(0, 0, 100);
+		dark_wall = dark_wall_init;
+	 	TCODColor dark_ground_init(50, 50, 150);
+		dark_ground = dark_ground_init;
+	}
 }
 
 void colorTable::setColor(TCODColor target, TCODColor foreinit){
-return;
+	return;
 }
-
-
-
 
 
 

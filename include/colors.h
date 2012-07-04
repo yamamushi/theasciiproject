@@ -37,11 +37,18 @@
  */
 
 class colorTable {
-	private:
-		TCODColor dark_wall;
-
-
 	public:
-		void initColors();
+		TCODColor dark_wall;
+		TCODColor dark_ground;
+
+
+	// Lets put our functions at the bottom of the colors list shall we?
+		colorTable(bool);
+		void initColors(bool);
 		void setColor(TCODColor, TCODColor);
-}; 
+};
+
+
+
+
+ 
