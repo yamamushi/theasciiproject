@@ -42,7 +42,7 @@ class entity {
 		char* symbol;
 		TCODColor fore;
 		
-		entity() { }
+//		entity() { }
 
 	public:
 		int posX, posY;

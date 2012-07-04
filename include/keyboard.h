@@ -37,7 +37,8 @@
  */
 
 class Keyboard {
-	
+
 	public:
-		bool handleKeys(entity);
+		int oldX, oldY;
+		bool handleKeys(entity *target);
 };

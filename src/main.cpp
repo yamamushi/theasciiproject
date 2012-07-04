@@ -38,9 +38,9 @@
 
 // First our custom headers
 #include "libtcod.hpp"
-#include "keyboard.h"
-#include "entities.h"
 #include "map.h"
+#include "entities.h"
+#include "keyboard.h"
 #include "colors.h"
 
 // Followed by standard headers
@@ -118,14 +118,13 @@ int main(
 	// Main Game Loop
 
 	while(!TCODConsole::isWindowClosed()) {
-	
-		if (!mapArray[CenterX][CenterY]->is_blocked())	
-			player->move(CenterX, CenterY);
-		else{
-			CenterX = player->posX;
-			CenterY = player->posY;
-		}
 
+		// some crude but effective boundaries checking
+		if (mapArray[player->posX][player->posY]->is_blocked() || player->posX <= 0 || player->posX >= MAP_WIDTH || player->posY < 0 || player->posY >= MAP_HEIGHT){
+			player->posX = kboard->oldX;
+			player->posY = kboard->oldY;
+		}
+			
 		// Draw our map to the screen
 		for(x=0;x<MAP_WIDTH;x++){
 			for(y=0;y<MAP_HEIGHT;y++){
@@ -145,7 +144,7 @@ int main(
 
 		
 		TCODConsole::flush();
-		TCODConsole::blit(con, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
+		TCODConsole::blit(con, 1, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
 
 		// Clean up our screen before reading in keys
 		for ( ray=0; ray < si; ray++){
@@ -153,7 +152,7 @@ int main(
 			scan->clean(con);
 		}	
 
-		quit = kboard->handleKeys(&player);
+		quit = kboard->handleKeys(player);
 		if(quit) break;		
 
 	}	

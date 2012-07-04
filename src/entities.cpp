@@ -37,6 +37,7 @@
  */
 
 #include "libtcod.hpp"
+#include "map.h"
 #include "entities.h"
 #include "colors.h"
 
@@ -52,8 +53,8 @@ void entity::init_entity(int x, int y, char* p, TCODColor foreinit){
 }
 
 void entity::move(int dx, int dy){
-	posX = dx;
-	posY = dy;
+		posX += dx;
+		posY += dy;
 }
 
 void entity::clean(TCODConsole *dest){
