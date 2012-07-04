@@ -1,21 +1,21 @@
 /*
  * =====================================================================================
  *
- *       Filename:  entities.cpp
+ *       Filename:  colors.h
  *
- *    Description:  Our entity objects - Subject to change
+ *    Description:  Header for coloring info
  *
  *        Version:  1.0
- *        Created:  07/03/2012 03:41:29 AM
+ *        Created:  07/03/2012
  *       Revision:  none
  *       Compiler:  gcc
  *
  *         Author:  Yamamushi (Jon Rumion)
  *   Organization:  The ASCII Project
  *
- *	  License:  GPLv3
+ *        License:  GPLv3
  *
- *	  Copyright 2012 Jonathan Rumion
+ *        Copyright 2012 Jonathan Rumion
  *
  *   This file is part of The ASCII Project.
  *
@@ -36,35 +36,12 @@
  * =====================================================================================
  */
 
-#include "libtcod.hpp"
-#include "entities.h"
-#include "colors.h"
+class colorTable {
+	private:
+		TCODColor dark_wall;
 
-entity::entity(int x, int y, char* p, TCODColor foreinit){
-	init_entity( x, y, p, foreinit);
-}
 
-void entity::init_entity(int x, int y, char* p, TCODColor foreinit){
-	posX = x;
-	posY = y;
-	symbol = p;
-	fore = foreinit;
-}
-
-void entity::move(int dx, int dy){
-	posX = dx;
-	posY = dy;
-}
-
-void entity::clean(TCODConsole *dest){
-	TCODConsole *screen = dest;
-	screen->print(posX, posY, " ");
-}
-
-void entity::draw(TCODConsole *dest){
-	TCODConsole *screen = dest;
-	screen->setDefaultForeground(fore);
-	screen->print(posX, posY, symbol);
-
-}
-
+	public:
+		void initColors();
+		void setColor(TCODColor, TCODColor);
+}; 

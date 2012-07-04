@@ -41,6 +41,7 @@
 #include "keyboard.h"
 #include "entities.h"
 #include "map.h"
+#include "colors.h"
 
 // Followed by standard headers
 #include <math.h>
@@ -48,6 +49,9 @@
 // size of the heightmap
 #define MAIN_WIDTH 100
 #define MAIN_HEIGHT 80
+
+#define MAP_WIDTH 80
+#define MAP_HEIGHT 60
 
 #define LIMIT_FPS 20
 
@@ -89,12 +93,32 @@ int main(
 	tArray[1] = &npc;
 	
 	entity * scan;
-	int ray = 0;
+	int ray;
 	int si = sizeof tArray/sizeof(entity **);
+	
+	colorTable *cTable = new colorTable();
+	cTable->initColors();
+
+	// lets build our map o_o;;
+	
+	int i, x, y, z;
+	Tile * mapArray[MAP_WIDTH][MAP_HEIGHT];
+
+	for ( x = 0; x < MAP_WIDTH; x++){
+		for ( y = 0; y < MAP_HEIGHT; y++){
+			mapArray[x][y] = new Tile(false);
+		}
+	}
+
+
+
+	// Main Game Loop
 
 	while(!TCODConsole::isWindowClosed()) {
 		
 		player->move(playerX, playerY);
+
+		// Draw our map to the screen
 
 		// Draw our entities to the screen	
 		for ( ray = 0; ray < si; ray++){
