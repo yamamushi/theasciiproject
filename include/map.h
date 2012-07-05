@@ -86,7 +86,7 @@ class Map {
 	private:
 		int x, y, z, i;
 		TCODConsole *tgt;
-		
+		int wid, hig;
 
 	public:
 
@@ -109,10 +109,9 @@ class Map {
 		void createHall(int, int, int);
 
 		void importRoom(Room *source);
+		void importAllRooms(Map *source);
 		void copyRoom(Room *source);
 		void clearRooms();
-
-
 
 		void copyVirtMap(Map *source);
 		void importMap(Map *source);

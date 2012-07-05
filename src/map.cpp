@@ -130,13 +130,15 @@ Map::Map(int i, int z){
 
 void Map::initMap(int i, int z){
 	numRooms = 0;
+	wid = i;
+	hig = z;
+
 
 	for ( x = 0; x < i; x++){
 		for ( y = 0; y < z; y++){
 			virtMap[x][y] = new Tile(true);
 	       	}	
 	}
-
 
 }
 
@@ -148,6 +150,20 @@ void Map::clearMap(){
 		for ( y = 0; y < MAP_HEIGHT; y++){
 			delete virtMap[x][y];
 			virtMap[x][y] = new Tile(true);
+		}
+	}
+
+}
+
+
+
+
+void Map::refreshMap(){
+
+	for (x=0; x < wid; x++){
+		for ( y = 0; y < hig; y++){
+			virtMap[x][y]->blocked = true;
+			virtMap[x][y]->block_sight = true;
 		}
 	}
 
@@ -236,6 +252,17 @@ void Map::importRoom(Room *source){
 }
 
 
+void Map::importAllRooms(Map *source){
+	Map *tmp = source;
+
+	if (tmp->numRooms != 0){
+		for( x = 0; x < tmp->numRooms; x++){
+			importRoom(tmp->rooms[x]);
+		}
+	}
+}
+
+
 void Map::clearRooms(){
 	for(x = 0; x < numRooms; x++){
 		delete rooms[x];
@@ -256,16 +283,18 @@ void Map::copyVirtMap(Map *source){
 	}
 }
 
+
+
 void Map::importMap(Map *source){
 
 	Map *tmp = source;
 
-	if (tmp->numRooms != 0){
-		for( x = 0; x < tmp->numRooms; x++){
-			importRoom(tmp->rooms[x]);
-		}
-	}
-
+	refreshMap();
+	clearRooms();
+	
+	importAllRooms(source);	
+	
+	drawAllRooms();
 
 }
 

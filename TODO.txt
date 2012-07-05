@@ -1,3 +1,22 @@
+
+07/05/2012 TODO List:
+
+finish our drawing functions for hallways between rooms :)
+
+More Cleanup
+
+Add some more useful functions that come to mind to our Map and Entity classes.
+
+Create a coreutils set of functions.
+
+After I feel confident with these things, I'll be moving on up.
+
+
+
+
+
+
+
 07/03/2012 TODO List:
 
 Consolidate coloring tiles into a function called 

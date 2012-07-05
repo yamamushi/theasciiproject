@@ -1,3 +1,13 @@
+
+
+0.0.0a
+
+Basic room generator written. It will create a group of rooms that don't intersect, and put the player in one of them.
+Bounds checking in place, but will be moved elsewhere as it does not belong in a Map object.
+
+
+
+
 0.0.0
 
 Basic game engine, VERY basic game engine. Slowly making fixes and modifications with long term development in mind.
