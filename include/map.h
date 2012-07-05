@@ -66,12 +66,16 @@ class Rect {
 class Room {
 	private:
 		int cX, cY;
-		int x1, x2, y1, y2;
 	
 	public:
+		int x1, x2, y1, y2;
 		Room(int, int, int, int);
 		void initRoom(int, int, int, int);
+		bool doesIntersect(Room *other);
+		bool doesBorder(Room *other);
+		
 		friend class Map;
+
 };	
 
 
@@ -81,14 +85,14 @@ class Room {
 class Map {
 	private:
 		int x, y, z, i;
-		int numRooms;
 		TCODConsole *tgt;
-		Room * rooms[MAX_ROOMS];
 		
 
 	public:
 
 		Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];	
+		Room *rooms[MAX_ROOMS];
+		int numRooms;
 
 
 
@@ -101,9 +105,16 @@ class Map {
 		void createRoom(int, int, int, int);
 		void drawRoom(int i);
 		void drawAllRooms();
+
 		void createHall(int, int, int);
 
 		void importRoom(Room *source);
+		void copyRoom(Room *source);
+		void clearRooms();
+
+
+
+		void copyVirtMap(Map *source);
 		void importMap(Map *source);
 
 };

@@ -37,6 +37,13 @@
  */
 
 
+// Standard headers first
+#include <math.h>
+#include <algorithm>
+#include <iostream>
+
+// Followed by custom headers
+
 #include "constants.h"
 
 #include "libtcod.hpp"
@@ -49,10 +56,7 @@
 #include "dungeon.h"
 
 
-
-// Followed by standard headers
-#include <math.h>
-#include <algorithm>
+// finally our namespaces
 
 using namespace std;
 

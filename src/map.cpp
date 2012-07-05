@@ -109,6 +109,19 @@ void Room::initRoom(int x, int y, int w, int h){
 }
 
 
+bool Room::doesIntersect(Room *other){
+
+	Room *othr = other;
+
+	if ((x1 <= othr->x2) && (x2 >= othr->x1) && (y1 <= othr->y2) && (y2 >= othr->y1))
+		return true;
+	else
+		return false;
+}
+
+
+
+
 
 
 Map::Map(int i, int z){
@@ -128,21 +141,23 @@ void Map::initMap(int i, int z){
 
 
 void Map::clearMap(){
+
 	for (x = 0; x < MAP_WIDTH; x++){
 		for ( y = 0; y < MAP_HEIGHT; y++){
 			delete virtMap[x][y];
-			virtMap[x][y] = new Tile(false);
+			virtMap[x][y] = new Tile(true);
 		}
 	}
+
 }
 
-void Map::refreshMap(){
-	drawAllRooms();
-}
 
 
 void Map::drawMap(TCODConsole *dest){
 	extern colorTable *cTable;
+
+
+	drawAllRooms();
 
 	for(x=0;x<MAP_WIDTH;x++){
 		for(y=0;y<MAP_HEIGHT;y++){
@@ -169,11 +184,11 @@ void Map::checkBounds(entity *target, Keyboard *buffer){
 
 
 void Map::createRoom(int x, int y, int z, int i){
+
 	rooms[numRooms] = new Room(x, y, z, i);
 	numRooms++;
+
 }	
-
-
 
 
 
@@ -191,18 +206,14 @@ void Map::drawRoom(int i){
 
 
 void Map::drawAllRooms(){
-	
-	for(i=0; i < numRooms; i++){
-		for(x = rooms[i]->x2; x > rooms[i]->x1+1; x--){
-			for(y = rooms[i]->y2; y > rooms[i]->y1+1; y--){
-				virtMap[x][y]->blocked = false;
-				virtMap[x][y]->block_sight = false;
-			}
-		}
+
+	for(z=0; z < numRooms; z++){
+		drawRoom(z);
 	}
 
-
 }
+
+
 
 
 void Map::createHall(int x, int y, int z){
@@ -218,14 +229,21 @@ void Map::createHall(int x, int y, int z){
 
 
 void Map::importRoom(Room *source){
-
 	rooms[numRooms] = source;
-	delete source;
 	numRooms++;
 }
 
 
-void Map::importMap(Map *source){
+void Map::clearRooms(){
+	for(x = 0; x < numRooms; x++){
+		delete rooms[x];
+	}
+}
+
+
+
+
+void Map::copyVirtMap(Map *source){
 
 	Map *tmp = source;
 
@@ -235,6 +253,25 @@ void Map::importMap(Map *source){
 		}
 	}
 }
+
+void Map::importMap(Map *source){
+
+	Map *tmp = source;
+
+	if (tmp->numRooms != 0){
+		for( x = 0; x < tmp->numRooms; x++){
+			importRoom(tmp->rooms[x]);
+		}
+	}
+
+
+}
+
+
+
+
+
+
 
 
 

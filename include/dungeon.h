@@ -40,14 +40,15 @@ class Dungeon {
 	
 	private:
 		Map *destMap;	
-		Map tmpMap(int, int);
+		Map *dungeonMap;
+
+		Room *tempRoom[MAX_ROOMS];
+		int x, w, h, y, i;
 
 	public:
-		Dungeon(Map *destination);
-		void initDungeon(Map *destination);
+		Dungeon(Map *destination, int width, int height, bool create);
+		void initDungeon(Map *destination,int width,int height, bool create);
+		bool createRooms(int numberOfRooms, int minSize, int maxSize, Map *outputMap);
 		
-
-
-
 
 };

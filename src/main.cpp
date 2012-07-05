@@ -90,12 +90,9 @@ int main(
 	int i, x, y, z;
 
 	Map *map = new Map(MAP_WIDTH, MAP_HEIGHT);
-	map->createRoom(20, 15, 10, 15);
-	map->createRoom(50, 15, 10, 15);
-	map->createHall(25, 55, 23);
 
+	Dungeon *dgn = new Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
 
-	Dungeon *dungeon = new Dungeon(map);
 
 	// Main Game Loop
 	while(!TCODConsole::isWindowClosed()) {
@@ -112,7 +109,7 @@ int main(
 
 		TCODConsole::blit(con, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
 		TCODConsole::flush();
-		
+	
 		
 		
 		// Clean up our screen before reading in keys

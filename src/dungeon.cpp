@@ -39,27 +39,106 @@
 #include "headers.h"
 
 
-Dungeon::Dungeon(Map *destination){
-
-	initDungeon(destination);
+Dungeon::Dungeon(Map *destination, int width, int height, bool create = false){
+		
+	
+	initDungeon(destination, width, height, create);
 
 }
 
 
-void	Dungeon::initDungeon(Map *destination){
+void	Dungeon::initDungeon(Map *destination, int width, int height, bool create = false){
+
+	if (width > MAP_WIDTH || height > MAP_HEIGHT)
+		return;
 
 	destMap = destination;
+	Map *dungeonMap = new Map(width, height);
 
-	destMap->drawRoom(1);
-	
-	Room *newRoom = new Room(5, 5, 5, 5);
-	
-	Map *tmpMap = new Map(MAP_WIDTH, MAP_HEIGHT);
-
-
-
-	tmpMap->importRoom(newRoom);
-	destMap->importMap(tmpMap);	
-
-	destMap->refreshMap();
+	if (create){
+		createRooms( MAX_ROOMS, ROOM_MIN_SIZE, ROOM_MAX_SIZE, dungeonMap);
+		destMap->importMap(dungeonMap);
+	}
 }
+
+
+
+
+
+
+
+bool	Dungeon::createRooms(int numberOfRooms, int minSize, int maxSize, Map *outputMap){
+
+
+	if (numberOfRooms > MAX_ROOMS)
+		return false;
+	else if (minSize < ROOM_MIN_SIZE || maxSize > ROOM_MAX_SIZE)
+		return false;
+
+	TCODRandom *rng = new TCODRandom();	
+	dungeonMap = outputMap;
+
+	i = 0;
+	bool test;
+	
+	
+
+	while(i < numberOfRooms){
+		w = rng->getInt(minSize, maxSize);
+		h = rng->getInt(minSize, maxSize);
+		// checks for map boundaries
+		x = rng->getInt( 0, MAP_WIDTH - w - 1);
+		y = rng->getInt( 0, MAP_HEIGHT - h - 1);
+			
+		tempRoom[i] = new Room(x, y, w, h);
+
+		test = false;
+		// if it's our first room, we import it to our test map and move along
+		if ((dungeonMap->numRooms = 0 )){
+			dungeonMap->importRoom(tempRoom[i]);
+			i++;
+		}
+	
+		// now we go through the list of rooms that exist
+		// in our temporary map
+	
+		for( x = 0; x < dungeonMap->numRooms; x++){
+			if(tempRoom[i]->doesIntersect(dungeonMap->rooms[x]))
+				test = true;
+			}
+
+		if(!test){
+			dungeonMap->importRoom(tempRoom[i]);
+			i++;
+		}
+
+	}
+
+	
+	delete rng;
+	return true;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
