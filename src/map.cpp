@@ -189,16 +189,14 @@ void Map::drawMap(TCODConsole *dest){
 
 
 
-void Map::checkBounds(entity *target, Keyboard *buffer){
-	Keyboard kboard = *buffer;
-	entity *tgt = target;
 
-	if (virtMap[tgt->posX][tgt->posY]->is_blocked() || tgt->posX <= 0 || tgt->posX >= MAP_WIDTH || tgt->posY < 0 || tgt->posY >= MAP_HEIGHT){
-			tgt->posX = kboard.oldX;
-			tgt->posY = kboard.oldY;
-		}
+bool Map::checkBounds(int posX, int posY){
+
+	if (virtMap[posX][posY]->is_blocked() || posX <= 0 || posX >= MAP_WIDTH || posY < 0 || posY >= MAP_HEIGHT)
+		return false;
+	else
+		return true;
 }
-
 
 
 void Map::createRoom(int x, int y, int z, int i){
@@ -270,6 +268,11 @@ void Map::clearRooms(){
 }
 
 
+void Map::clearRoom(int x){
+	delete rooms[x];
+}
+
+
 
 
 void Map::copyVirtMap(Map *source){
@@ -292,7 +295,7 @@ void Map::importMap(Map *source){
 	refreshMap();
 	clearRooms();
 	
-	importAllRooms(source);	
+	importAllRooms(tmp);	
 	
 	drawAllRooms();
 

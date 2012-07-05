@@ -45,7 +45,7 @@ class colorTable {
 	// Lets put our functions at the bottom of the colors list shall we?
 		colorTable(bool);
 		void initColors(bool);
-		void setColor(entity *target, TCODColor);
+		void setColor(Entity *target, TCODColor);
 };
 
 

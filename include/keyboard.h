@@ -38,7 +38,26 @@
 
 class Keyboard {
 
+	int oldX, oldY;
+
+
 	public:
-		int oldX, oldY;
-		bool handleKeys(entity *target);
+		int curX, curY;
+		int safX, safY;
+	
+
+		Keyboard(int x=MAIN_WIDTH/2, int y=MAIN_HEIGHT/2);
+		void initKeyboard(int, int);
+
+		bool handleKeys();
+		
+		void safeMoveCursor(int, int);
+		void passSafeCursor();
+		
+		void moveCursor(int, int);
+
+		void placeCursor(int, int);
+
+		
+
 };

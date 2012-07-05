@@ -37,9 +37,8 @@
  */
 
 
-class entity {
+class Entity {
 	private:
-		entity() { }
 
 	public:
 		int posX, posY;
@@ -47,8 +46,8 @@ class entity {
 		char* symbol;
 
 
-		entity(int posX, int posY, char* symbol, TCODColor fore);	
-		void init_entity(int, int, char*, TCODColor);
+		Entity(char* symbol, TCODColor fore, int x=0, int y=0);	
+		void init_entity( char*, TCODColor fore, int x=0, int y=0);
 		void move(int, int);
 		void clean(TCODConsole *dest);
 		void draw(TCODConsole *dest);

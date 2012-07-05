@@ -38,28 +38,31 @@
 
 #include "headers.h"
 
-entity::entity(int x, int y, char* p, TCODColor foreinit){
-	init_entity( x, y, p, foreinit);
+Entity::Entity(char* p, TCODColor foreinit, int startX, int startY){
+	init_entity( p, foreinit, startX, startY);
 }
 
-void entity::init_entity(int x, int y, char* p, TCODColor foreinit){
-	posX = x;
-	posY = y;
+void Entity::init_entity(char* p, TCODColor foreinit, int startX, int startY){
+	posX = startX;
+	posY = startY;
 	symbol = p;
 	fore = foreinit;
 }
 
-void entity::move(int dx, int dy){
-		posX += dx;
-		posY += dy;
+
+void Entity::move(int dx, int dy){
+	
+	posX = dx;
+	posY = dy;
+
 }
 
-void entity::clean(TCODConsole *dest){
+void Entity::clean(TCODConsole *dest){
 	TCODConsole *screen = dest;
 	screen->print(posX, posY, " ");
 }
 
-void entity::draw(TCODConsole *dest){
+void Entity::draw(TCODConsole *dest){
 	TCODConsole *screen = dest;
 	screen->setDefaultForeground(fore);
 	screen->print(posX, posY, symbol);

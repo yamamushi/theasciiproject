@@ -78,27 +78,32 @@ int main(
 
 	Dungeon *dgn = new Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
 
-	int pX = map->rooms[1]->cX;
-	int pY = map->rooms[1]->cY;	
 
-	entity *player = new entity( 0, 0, "@", TCODColor::white);
+	Entity *player = new Entity( "@", TCODColor::white);
 	
 	// Create an npc, for testing purposes only, this will be moved!
-	entity *npc = new entity(CenterX+1, CenterY+1, "@", TCODColor::red);
+	Entity *npc = new Entity( "@", TCODColor::red);
 
-	entity **tArray[2];
+	Entity **tArray[2];
 	tArray[0] = &player;
 	tArray[1] = &npc;
 	
-	entity * scan;
+	Entity * scan;
 	int ray;
-	int si = sizeof tArray/sizeof(entity **);
+	int si = sizeof tArray/sizeof(Entity **);
 	
 
 	// lets build our map o_o;;
-	player->move(pX, pY);
+	int pX = map->rooms[1]->cX;
+	int pY = map->rooms[1]->cY;	
 	
+	player->move(pX, pY);
+	kboard->initKeyboard(pX, pY);
+	
+	int nX = map->rooms[10]->cX;
+	int nY = map->rooms[10]->cY;	
 
+	npc->move(nX, nY);
 
 
 	// Main Game Loop
@@ -106,8 +111,12 @@ int main(
 
 		// Draw our map to the screen
 		map->drawMap(con);
+		if(map->checkBounds(kboard->safX, kboard->safY)){
+				kboard->passSafeCursor();
+				player->move(kboard->curX, kboard->curY);
+				}
+
 		// Do some quick boundary checks
-		map->checkBounds(player, kboard);
 		// Draw our entities to the screen	
 		for ( ray = 0; ray < si; ray++){
 			scan = *tArray[ray];
@@ -125,7 +134,7 @@ int main(
 			scan->clean(con);
 		}	
 
-		quit = kboard->handleKeys(player);
+		quit = kboard->handleKeys();
 		if(quit) break;		
 
 	}	

@@ -49,8 +49,8 @@
 #include "libtcod.hpp"
 
 #include "entities.h"
-#include "keyboard.h"
 #include "map.h"
+#include "keyboard.h"
 #include "colors.h"
 
 #include "dungeon.h"

@@ -101,7 +101,7 @@ class Map {
 		void drawMap(TCODConsole *dest);
 		void clearMap();
 		void refreshMap();
-		void checkBounds(entity *target, Keyboard *buffer);
+		bool checkBounds(int, int);
 		void createRoom(int, int, int, int);
 		void drawRoom(int i);
 		void drawAllRooms();
@@ -112,6 +112,7 @@ class Map {
 		void importAllRooms(Map *source);
 		void copyRoom(Room *source);
 		void clearRooms();
+		void clearRoom(int x);
 
 		void copyVirtMap(Map *source);
 		void importMap(Map *source);

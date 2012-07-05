@@ -51,8 +51,8 @@ void colorTable::initColors(bool init){
 	}
 }
 
-void colorTable::setColor(entity *target, TCODColor foreinit){
-	entity *tgt = target;
+void colorTable::setColor(Entity *target, TCODColor foreinit){
+	Entity *tgt = target;
 	tgt->fore = foreinit;
 }
 

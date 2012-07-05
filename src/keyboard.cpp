@@ -41,16 +41,27 @@
 
 
 
-bool Keyboard::handleKeys(entity *target){
+Keyboard::Keyboard(int x, int y){
+	initKeyboard(x, y);
+}
+
+void Keyboard::initKeyboard(int x, int y){
+	
+	curX = x;
+	curY = y;
+	safX = x;
+	safY = y;
+
+}
+
+
+bool Keyboard::handleKeys(){
 
 	TCOD_key_t Key = TCODConsole::checkForKeypress(true);
 	bool quit = false;
-	extern int CenterX, CenterY;
-	
-	entity *tgt = target;
 
-	oldX = tgt->posX;
-	oldY = tgt->posY;
+	oldX = curX;
+	oldY = curY;
 
 
 	if(Key.vk == TCODK_ENTER && TCODK_ALT)
@@ -59,19 +70,20 @@ bool Keyboard::handleKeys(entity *target){
 	switch(Key.vk)
 	{
 	       	case TCODK_UP:
-			tgt->move(0,-1);
+			safeMoveCursor(0,-1);
 			break;
 
 		case TCODK_DOWN:
-			tgt->move(0,1);
+			safeMoveCursor(0,1);
 			break;
 		
 		case TCODK_LEFT:
-			tgt->move(-1,0);				                        
+			safeMoveCursor(-1,0);				                        
 			break;	
 			
 		case TCODK_RIGHT:
-			tgt->move(1,0);
+			safeMoveCursor(1,0);
+
 			break;
 
 		case TCODK_ESCAPE:
@@ -82,4 +94,47 @@ bool Keyboard::handleKeys(entity *target){
 	return quit;
 
 }
+
+
+
+void Keyboard::safeMoveCursor(int sx, int sy){
+
+	safX = curX;
+	safY = curY;
+
+	safX += sx;
+	safY += sy;
+
+}
+
+void Keyboard::passSafeCursor(){
+
+	curX = safX;
+	curY = safY;
+
+}
+
+
+
+
+void Keyboard::moveCursor(int mx, int my){
+
+	curX += mx;
+	curY += my;
+
+}	
+
+
+void Keyboard::placeCursor( int x, int y){
+	
+	curX = x;
+       	curY = y;
+
+}
+
+
+
+
+
+
 
