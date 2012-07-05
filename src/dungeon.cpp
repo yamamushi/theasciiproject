@@ -90,29 +90,27 @@ bool	Dungeon::createRooms(int numberOfRooms, int minSize, int maxSize, Map *outp
 		x = rng->getInt( 0, MAP_WIDTH - w - 1);
 		y = rng->getInt( 0, MAP_HEIGHT - h - 1);
 			
-		tempRoom[i] = new Room(x, y, w, h);
+		tempRoom = new Room(x, y, w, h);
 
 		test = false;
 		// if it's our first room, we import it to our test map and move along
-		if ((dungeonMap->numRooms = 0 )){
-			dungeonMap->importRoom(tempRoom[i]);
-			i++;
-		}
 	
 		// now we go through the list of rooms that exist
 		// in our temporary map
 	
-		for( x = 0; x < dungeonMap->numRooms; x++){
-			if(tempRoom[i]->doesIntersect(dungeonMap->rooms[x]))
+		if (i > 0)
+		for(x=0; x < i; x++){
+			
+			if(tempRoom->doesIntersect(dungeonMap->rooms[x]))
 				test = true;
 			}
 
 		if(!test){
-			dungeonMap->importRoom(tempRoom[i]);
+			dungeonMap->importRoom(tempRoom);
 			i++;
 		}
 
-	}
+	}	
 
 	
 	delete rng;

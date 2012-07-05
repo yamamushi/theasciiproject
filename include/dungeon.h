@@ -42,7 +42,7 @@ class Dungeon {
 		Map *destMap;	
 		Map *dungeonMap;
 
-		Room *tempRoom[MAX_ROOMS];
+		Room *tempRoom;
 		int x, w, h, y, i;
 
 	public:

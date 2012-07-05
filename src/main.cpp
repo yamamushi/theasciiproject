@@ -55,6 +55,7 @@ int main(
 	CenterX = MAIN_WIDTH/2;
 	CenterY = MAIN_HEIGHT/2;
 
+	int i, x, y, z;
 	
 	// Let's get things setup
 	
@@ -71,7 +72,16 @@ int main(
 	// We'll set the foreground color once now and modify it as necessary when in our game loop
 	TCODConsole::root->setDefaultForeground(TCODColor::white);	
 
-	entity *player = new entity( 25, 23, "@", TCODColor::white);
+	//entity *player = new entity( 25, 23, "@", TCODColor::white);
+	
+	Map *map = new Map(MAP_WIDTH, MAP_HEIGHT);
+
+	Dungeon *dgn = new Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
+
+	int pX = map->rooms[1]->cX;
+	int pY = map->rooms[1]->cY;	
+
+	entity *player = new entity( 0, 0, "@", TCODColor::white);
 	
 	// Create an npc, for testing purposes only, this will be moved!
 	entity *npc = new entity(CenterX+1, CenterY+1, "@", TCODColor::red);
@@ -86,21 +96,18 @@ int main(
 	
 
 	// lets build our map o_o;;
+	player->move(pX, pY);
 	
-	int i, x, y, z;
 
-	Map *map = new Map(MAP_WIDTH, MAP_HEIGHT);
-
-	Dungeon *dgn = new Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
 
 
 	// Main Game Loop
 	while(!TCODConsole::isWindowClosed()) {
 
-		// Do some quick boundary checks
-		map->checkBounds(player, kboard);
 		// Draw our map to the screen
 		map->drawMap(con);
+		// Do some quick boundary checks
+		map->checkBounds(player, kboard);
 		// Draw our entities to the screen	
 		for ( ray = 0; ray < si; ray++){
 			scan = *tArray[ray];

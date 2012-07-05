@@ -65,9 +65,9 @@ class Rect {
 
 class Room {
 	private:
-		int cX, cY;
 	
 	public:
+		int cX, cY;
 		int x1, x2, y1, y2;
 		Room(int, int, int, int);
 		void initRoom(int, int, int, int);
