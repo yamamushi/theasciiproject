@@ -57,6 +57,8 @@ void	Dungeon::initDungeon(Map *destination, int width, int height, bool create =
 
 	if (create){
 		createRooms( MAX_ROOMS, ROOM_MIN_SIZE, ROOM_MAX_SIZE, dungeonMap);
+		connectRooms(dungeonMap);
+	
 		destMap->importMap(dungeonMap);
 	}
 }
@@ -117,6 +119,40 @@ bool	Dungeon::createRooms(int numberOfRooms, int minSize, int maxSize, Map *outp
 	return true;
 
 }
+
+
+
+
+
+
+
+
+void Dungeon::connectRooms(Map *outputMap){
+
+	Map *dungeonMap = outputMap;
+
+	i = dungeonMap->numRooms;
+	
+	//TCODRandom *rng = new TCODRandom();         
+
+	//x = rng->getInt(5, 30);
+	//y = rng->getInt(5, 30);
+	//w = 5;
+
+	Hall *newHall = new Hall(5, 10, 5);
+
+	dungeonMap->importHall(newHall);
+
+	//for( x=0; x < i; x++){
+				
+
+}
+
+
+
+
+
+
 
 
 

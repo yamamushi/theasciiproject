@@ -48,5 +48,5 @@
 #define ROOM_MAX_SIZE 10
 #define ROOM_MIN_SIZE 6
 #define MAX_ROOMS 30
-
+#define MAX_HALLS 100
 

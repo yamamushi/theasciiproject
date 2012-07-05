@@ -50,5 +50,8 @@ class Dungeon {
 		void initDungeon(Map *destination,int width,int height, bool create);
 		bool createRooms(int numberOfRooms, int minSize, int maxSize, Map *outputMap);
 		
+		void connectRooms(Map *outputMap);
+
+
 
 };

@@ -109,6 +109,15 @@ void Room::initRoom(int x, int y, int w, int h){
 }
 
 
+
+bool Room::doesContainPoint(int x, int y){
+
+	if ( x > x1 && x < x2 && y > y1 && y < y2)
+		return true;
+	else
+		return false;
+}
+
 bool Room::doesIntersect(Room *other){
 
 	Room *othr = other;
@@ -124,12 +133,54 @@ bool Room::doesIntersect(Room *other){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+Hall::Hall(int x, int z, int i){
+	initHall( x, z, i);
+}
+
+
+void Hall::initHall(int x, int z, int i){
+	
+	x1 = min(x, z);
+	x2 = max(x, z);
+	y = i;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Map::Map(int i, int z){
 	initMap(i, z);
 }
 
 void Map::initMap(int i, int z){
 	numRooms = 0;
+	numHalls = 0;
 	wid = i;
 	hig = z;
 
@@ -176,6 +227,7 @@ void Map::drawMap(TCODConsole *dest){
 
 
 	drawAllRooms();
+	drawAllHalls();
 
 	for(x=0;x<MAP_WIDTH;x++){
 		for(y=0;y<MAP_HEIGHT;y++){
@@ -232,16 +284,37 @@ void Map::drawAllRooms(){
 
 
 
-void Map::createHall(int x, int y, int z){
-	int x1, x2;
-	x1 = min(x, y);
-	x2 = max(x, y);
 
-	for( x1 = x1; x1 < x2; x1++){
-		virtMap[x1][z]->blocked = false;
-		virtMap[x1][z]->block_sight = false;
+
+
+void Map::createHall(int x, int y, int z){
+
+	halls[numHalls] = new Hall(x, y, z);
+	numHalls++;
+
+}
+
+
+void Map::drawHall(int i){
+	
+	for( x = halls[i]->x1; x < halls[i]->x2; x++){
+		virtMap[x][halls[i]->y]->blocked = false;
+		virtMap[x][halls[i]->y]->block_sight = false;
+	}
+
+}
+
+void Map::drawAllHalls(){
+
+	for(z=0; z < numHalls; z++){
+		drawHall(z);
 	}
 }
+
+
+
+
+
 
 
 void Map::importRoom(Room *source){
@@ -263,14 +336,52 @@ void Map::importAllRooms(Map *source){
 
 void Map::clearRooms(){
 	for(x = 0; x < numRooms; x++){
-		delete rooms[x];
+		clearRoom(x);
 	}
 }
 
 
 void Map::clearRoom(int x){
 	delete rooms[x];
+	numRooms--;
 }
+
+
+
+
+
+
+
+void Map::importHall(Hall *source){
+	halls[numHalls] = source;
+	numHalls++;
+}
+
+
+
+void Map::importAllHalls(Map *source){
+	Map *tmp = source;
+
+	if (tmp->numHalls != 0){
+		for(  x = 0; x < tmp->numHalls; x++){
+			importHall(tmp->halls[x]);
+		}
+	}
+}
+
+
+void Map::clearHall(int x){
+	delete halls[x];
+	numHalls--;
+}
+
+
+void Map::clearHalls(){
+	for ( x=0; x < numHalls; x++)
+		clearHall(x);
+}
+
+
 
 
 
@@ -294,10 +405,13 @@ void Map::importMap(Map *source){
 
 	refreshMap();
 	clearRooms();
-	
+	clearHalls();
+
 	importAllRooms(tmp);	
-	
+	importAllHalls(tmp);
+
 	drawAllRooms();
+	drawAllHalls();
 
 }
 

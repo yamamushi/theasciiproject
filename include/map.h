@@ -56,6 +56,8 @@ class Tile {
 
 
 class Rect {
+	private:
+
 	public:
 		int x1, y1, x2, y2, cX, cY;
 		Rect(int, int, int, int);
@@ -65,18 +67,30 @@ class Rect {
 
 class Room {
 	private:
-	
+
 	public:
 		int cX, cY;
 		int x1, x2, y1, y2;
 		Room(int, int, int, int);
 		void initRoom(int, int, int, int);
-		bool doesIntersect(Room *other);
 		bool doesBorder(Room *other);
-		
+		bool doesContainPoint(int, int);
+		bool doesIntersect(Room *other);
+
 		friend class Map;
 
 };	
+
+
+class Hall {
+	private:
+
+	public:
+		int x1, x2, y;
+		Hall(int, int, int);
+		void initHall(int, int, int);
+
+};
 
 
 
@@ -93,7 +107,8 @@ class Map {
 		Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];	
 		Room *rooms[MAX_ROOMS];
 		int numRooms;
-
+		Hall *halls[MAX_HALLS];
+		int numHalls;
 
 
 		Map(int, int);
@@ -102,17 +117,24 @@ class Map {
 		void clearMap();
 		void refreshMap();
 		bool checkBounds(int, int);
+		
 		void createRoom(int, int, int, int);
 		void drawRoom(int i);
 		void drawAllRooms();
 
 		void createHall(int, int, int);
+		void drawHall(int i);
+		void drawAllHalls();
 
 		void importRoom(Room *source);
 		void importAllRooms(Map *source);
-		void copyRoom(Room *source);
 		void clearRooms();
 		void clearRoom(int x);
+
+		void importHall(Hall *source);
+		void importAllHalls(Map *source);
+		void clearHalls();
+		void clearHall(int x);
 
 		void copyVirtMap(Map *source);
 		void importMap(Map *source);
