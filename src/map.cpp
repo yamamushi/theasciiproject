@@ -136,6 +136,8 @@ void Map::initMap(int i, int z){
 			virtMap[x][y] = new Tile(true);
 	       	}	
 	}
+
+
 }
 
 
