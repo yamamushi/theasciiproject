@@ -121,6 +121,7 @@ Map::Map(int i, int z){
 
 void Map::initMap(int i, int z){
 	extern Tile * mapArray[MAP_WIDTH][MAP_HEIGHT];
+	numRooms = 0;
 
 
 	for ( x = 0; x < i; x++){
@@ -165,6 +166,7 @@ void Map::checkBounds(entity *target, Keyboard *buffer){
 
 void Map::createRoom(int x, int y, int z, int i){
 	Room *room = new Room(x, y, z, i);
+	
 	delete room;
 }
 

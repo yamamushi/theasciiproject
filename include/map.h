@@ -41,7 +41,6 @@ class Tile {
 	private:
 
 	public:
-
 		int posX, posY;
 		bool blocked;
 		bool block_sight;
@@ -55,10 +54,12 @@ class Tile {
 
 
 class Rect {
-	public:
+	private:
 		int x1, x2, y1, y2;
+	public:
 		Rect(int, int, int, int);
 		void initRect(int, int, int, int);
+		friend class Room;
 };
 
 
@@ -69,6 +70,7 @@ class Room {
 		Rect *dim;
 		Room(int, int, int, int);
 		void initRoom(int, int, int, int);
+		friend class Map;
 };	
 
 
@@ -87,17 +89,18 @@ class Hall {
 class Map {
 	private:
 		int x, y, z, i;
+		int numRooms;
 		TCODConsole *tgt;
+		Room **rooms[MAX_ROOMS];
+		
 
 	public:
-		Room * rooms[MAX_ROOMS];
 		Map(int, int);
 		void initMap(int, int);
 		void drawMap(TCODConsole *dest);
 		void checkBounds(entity *target, Keyboard *buffer);
 		void createRoom(int, int, int, int);
 		void createHall(int, int, int);
-
 };
 
 
