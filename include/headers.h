@@ -46,6 +46,9 @@
 #include "map.h"
 #include "colors.h"
 
+#include "dungeon.h"
+
+
 
 // Followed by standard headers
 #include <math.h>

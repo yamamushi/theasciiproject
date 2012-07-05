@@ -43,10 +43,7 @@
 
 // We'll probably move these global variables somewhere else later
 int CenterX, CenterY;
-Tile * mapArray[MAP_WIDTH][MAP_HEIGHT];
 colorTable *cTable = new colorTable(true);
-
-
 
 
 int main(

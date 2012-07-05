@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  keyboard.cpp
+ *       Filename:  dungeon.h
  *
- *    Description:  Our keyboard input functions
+ *    Description:  Our dungeon generator
  *
  *        Version:  1.0
- *        Created:  07/03/2012 02:35:13 AM
+ *        Created:  07/05/2012
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -36,50 +36,4 @@
  * =====================================================================================
  */
 
-
-#include "headers.h"
-
-
-
-bool Keyboard::handleKeys(entity *target){
-
-	TCOD_key_t Key = TCODConsole::checkForKeypress(true);
-	bool quit = false;
-	extern int CenterX, CenterY;
-	
-	entity *tgt = target;
-
-	oldX = tgt->posX;
-	oldY = tgt->posY;
-
-
-	if(Key.vk == TCODK_ENTER && TCODK_ALT)
-		TCODConsole::setFullscreen(!TCODConsole::isFullscreen());
-	
-	switch(Key.vk)
-	{
-	       	case TCODK_UP:
-			tgt->move(0,-1);
-			break;
-
-		case TCODK_DOWN:
-			tgt->move(0,1);
-			break;
-		
-		case TCODK_LEFT:
-			tgt->move(-1,0);				                        
-			break;	
-			
-		case TCODK_RIGHT:
-			tgt->move(1,0);
-			break;
-
-		case TCODK_ESCAPE:
-			quit = true;
-			break;
-
-	}
-	return quit;
-
-}
 
