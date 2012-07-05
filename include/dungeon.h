@@ -36,4 +36,18 @@
  * =====================================================================================
  */
 
+class Dungeon {
+	
+	private:
+		Map *destMap;	
+		Map tmpMap(int, int);
 
+	public:
+		Dungeon(Map *destination);
+		void initDungeon(Map *destination);
+		
+
+
+
+
+};

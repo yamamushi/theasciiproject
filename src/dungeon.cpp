@@ -39,4 +39,27 @@
 #include "headers.h"
 
 
+Dungeon::Dungeon(Map *destination){
 
+	initDungeon(destination);
+
+}
+
+
+void	Dungeon::initDungeon(Map *destination){
+
+	destMap = destination;
+
+	destMap->drawRoom(1);
+	
+	Room *newRoom = new Room(5, 5, 5, 5);
+	
+	Map *tmpMap = new Map(MAP_WIDTH, MAP_HEIGHT);
+
+
+
+	tmpMap->importRoom(newRoom);
+	destMap->importMap(tmpMap);	
+
+	destMap->refreshMap();
+}

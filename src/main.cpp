@@ -95,6 +95,8 @@ int main(
 	map->createHall(25, 55, 23);
 
 
+	Dungeon *dungeon = new Dungeon(map);
+
 	// Main Game Loop
 	while(!TCODConsole::isWindowClosed()) {
 

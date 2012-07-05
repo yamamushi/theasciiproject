@@ -105,7 +105,7 @@ void Room::initRoom(int x, int y, int w, int h){
 
 	cX = dim->cX;
 	cY = dim->cY;
-
+	delete (dim);
 }
 
 
@@ -125,6 +125,20 @@ void Map::initMap(int i, int z){
 	}
 }
 
+
+
+void Map::clearMap(){
+	for (x = 0; x < MAP_WIDTH; x++){
+		for ( y = 0; y < MAP_HEIGHT; y++){
+			delete virtMap[x][y];
+			virtMap[x][y] = new Tile(false);
+		}
+	}
+}
+
+void Map::refreshMap(){
+	drawAllRooms();
+}
 
 
 void Map::drawMap(TCODConsole *dest){
@@ -201,5 +215,48 @@ void Map::createHall(int x, int y, int z){
 		virtMap[x1][z]->block_sight = false;
 	}
 }
+
+
+void Map::importRoom(Room *source){
+
+	rooms[numRooms] = source;
+	delete source;
+	numRooms++;
+}
+
+
+void Map::importMap(Map *source){
+
+	Map *tmp = source;
+
+	for( x = 0; x < MAP_WIDTH; x++){
+		for( y = 0; y < MAP_HEIGHT; y++){
+			virtMap[x][y] = tmp->virtMap[x][y];
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -83,19 +83,29 @@ class Map {
 		int x, y, z, i;
 		int numRooms;
 		TCODConsole *tgt;
-		Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];	
 		Room * rooms[MAX_ROOMS];
 		
 
 	public:
+
+		Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];	
+
+
+
 		Map(int, int);
 		void initMap(int, int);
 		void drawMap(TCODConsole *dest);
+		void clearMap();
+		void refreshMap();
 		void checkBounds(entity *target, Keyboard *buffer);
 		void createRoom(int, int, int, int);
 		void drawRoom(int i);
 		void drawAllRooms();
 		void createHall(int, int, int);
+
+		void importRoom(Room *source);
+		void importMap(Map *source);
+
 };
 
 
