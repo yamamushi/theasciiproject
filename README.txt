@@ -10,6 +10,15 @@ Please bear with us as we get our feet on the ground. This repo will likely be o
 Visitors should refer to http://www.theasciiproject.com for more information, though at the time of writing this document that website is (very much) out of date. 
 
 
+Various documents of interest are located in docs/, and licenses where necessary have been included in licenses/.
+
+
+
+
+
+
+
+
 The goal of "The ASCII Project" is to develop a Unicode-based MMORPG, based on a persistent world driven by a player-run economy.
 
 The interface will resemble existing rogue-like projects, such as Dwarf Fortress and Nethack, with the heavy use of a text based interface - thus allowing for more development time to focus on engine features without the constant overhead of interfacing with a heavy (3D) graphics front end.
