@@ -144,17 +144,18 @@ bool Room::doesIntersect(Room *other){
 
 
 
-Hall::Hall(int x, int z, int i){
-	initHall( x, z, i);
+Hall::Hall(int x, int z, int i, int dir){
+	initHall( x, z, i, dir);
 }
 
 
-void Hall::initHall(int x, int z, int i){
+void Hall::initHall(int x, int z, int i, int d){
 	
 	x1 = min(x, z);
 	x2 = max(x, z);
 	y = i;
 
+	dir = d;
 
 }
 
@@ -287,9 +288,9 @@ void Map::drawAllRooms(){
 
 
 
-void Map::createHall(int x, int y, int z){
+void Map::createHall(int x, int y, int z, int dir){
 
-	halls[numHalls] = new Hall(x, y, z);
+	halls[numHalls] = new Hall(x, y, z, dir);
 	numHalls++;
 
 }
@@ -297,9 +298,17 @@ void Map::createHall(int x, int y, int z){
 
 void Map::drawHall(int i){
 	
-	for( x = halls[i]->x1; x < halls[i]->x2; x++){
-		virtMap[x][halls[i]->y]->blocked = false;
-		virtMap[x][halls[i]->y]->block_sight = false;
+	if ( ((halls[i]->dir) == 0)){
+		for( x = halls[i]->x1; x < halls[i]->x2; x++){
+			virtMap[x][halls[i]->y]->blocked = false;
+			virtMap[x][halls[i]->y]->block_sight = false;
+		}
+	}
+	else {
+		for( x = halls[i]->x1; x < halls[i]->x2 + 1; x++){
+			virtMap[halls[i]->y][x]->blocked = false;
+			virtMap[halls[i]->y][x]->block_sight = false;
+		}
 	}
 
 }

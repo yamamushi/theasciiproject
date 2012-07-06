@@ -86,9 +86,9 @@ class Hall {
 	private:
 
 	public:
-		int x1, x2, y;
-		Hall(int, int, int);
-		void initHall(int, int, int);
+		int x1, x2, y, dir;
+		Hall(int, int, int, int);
+		void initHall(int, int, int, int);
 
 };
 
@@ -122,7 +122,7 @@ class Map {
 		void drawRoom(int i);
 		void drawAllRooms();
 
-		void createHall(int, int, int);
+		void createHall(int, int, int, int);
 		void drawHall(int i);
 		void drawAllHalls();
 

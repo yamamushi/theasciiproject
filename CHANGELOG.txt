@@ -1,4 +1,10 @@
 
+0.0.0b
+More improvements on the room generator - halls now auto generate.
+Bounds checking has been broken up into pieces -
+	Map object still has a function to see if a point is in a valid spot however.
+
+
 
 0.0.0a
 

@@ -133,18 +133,36 @@ void Dungeon::connectRooms(Map *outputMap){
 
 	i = dungeonMap->numRooms;
 	
-	//TCODRandom *rng = new TCODRandom();         
+	TCODRandom *rng = new TCODRandom();         
 
 	//x = rng->getInt(5, 30);
 	//y = rng->getInt(5, 30);
-	//w = 5;
+	//w = 5
 
-	Hall *newHall = new Hall(5, 10, 5);
+	int prev_x, prev_y, new_x, new_y;
 
-	dungeonMap->importHall(newHall);
 
-	//for( x=0; x < i; x++){
-				
+	for ( x = 0; x < i; x++){
+	
+
+		if (x != 0){
+			prev_x = dungeonMap->rooms[x-1]->cX; 			
+			prev_y = dungeonMap->rooms[x-1]->cY;
+			new_x = dungeonMap->rooms[x]->cX;
+			new_y = dungeonMap->rooms[x]->cY;
+	
+			if ((rng->getInt(0, 1)) == 1){
+				dungeonMap->createHall(prev_x, new_x, prev_y, 0);
+				dungeonMap->createHall(prev_y, new_y, new_x, 1);	
+			}
+			else {
+				dungeonMap->createHall(prev_y, new_y, prev_x, 1);
+				dungeonMap->createHall(prev_x, new_x, new_y, 0);
+			}
+		}
+	}
+
+	delete rng;
 
 }
 
