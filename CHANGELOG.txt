@@ -1,3 +1,12 @@
+0.0.0c
+FOV is working! At least in basic terms, it's not clean but it certainly works for now!
+I got caught up for several hours on computing it properly all because I couldn't bother to read some
+	documention properly.
+Next up, likely more cleanup and organization before we continue, but we're slowly getting there!
+
+
+
+
 
 0.0.0b
 More improvements on the room generator - halls now auto generate.

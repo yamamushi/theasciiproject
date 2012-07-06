@@ -50,3 +50,6 @@
 #define MAX_ROOMS 30
 #define MAX_HALLS 100
 
+#define FOV_ALGO 0  
+#define FOV_LIGHT_WALLS true
+#define TORCH_RADIUS 10

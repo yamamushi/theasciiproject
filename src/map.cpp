@@ -50,10 +50,14 @@ Tile::Tile(bool blked){
 
 void Tile::init_Tile(bool blked){
 	blocked = blked;
-	if(blked)
+	visible = false;
+	if(blked){
 		block_sight = true;
-	else
+	}
+	else{
 		block_sight = false;
+		visible = true;
+	}
 }
 
 bool Tile::is_sight_blocked(){
@@ -64,6 +68,9 @@ bool Tile::is_blocked(){
 	return blocked;
 }
 
+bool Tile::is_visible(){
+	return visible;
+}
 
 
 
@@ -224,7 +231,12 @@ void Map::refreshMap(){
 
 
 void Map::drawMap(TCODConsole *dest){
-	extern colorTable *cTable;
+	
+
+	TCODColor dark_wall(0, 0, 100); 
+	TCODColor dark_ground(50, 50, 150);
+	TCODColor light_wall(130, 110, 50);
+	TCODColor light_ground(200, 180, 50);
 
 
 	drawAllRooms();
@@ -232,10 +244,18 @@ void Map::drawMap(TCODConsole *dest){
 
 	for(x=0;x<MAP_WIDTH;x++){
 		for(y=0;y<MAP_HEIGHT;y++){
-			if (virtMap[x][y]->is_sight_blocked())
-				dest->setCharBackground(x, y, cTable->dark_wall, TCOD_BKGND_SET);
-			else
-				dest->setCharBackground(x, y, cTable->dark_ground, TCOD_BKGND_SET);      
+			if (virtMap[x][y]->is_sight_blocked()){
+				dest->setCharBackground(x, y, dark_wall, TCOD_BKGND_SET);
+				if (virtMap[x][y]->visible){
+					dest->setCharBackground(x, y, light_wall, TCOD_BKGND_SET);
+				}
+			}
+			else{
+				dest->setCharBackground(x, y, dark_ground, TCOD_BKGND_SET);     
+				if (virtMap[x][y]->visible){
+					dest->setCharBackground(x, y, light_ground, TCOD_BKGND_SET);
+				}
+			}
 		}
 	}
 }

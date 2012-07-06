@@ -44,16 +44,9 @@ colorTable::colorTable(bool init){
 
 void colorTable::initColors(bool init){
 	if(init){
-		TCODColor dark_wall_init(0, 0, 100);
-		dark_wall = dark_wall_init;
-	 	TCODColor dark_ground_init(50, 50, 150);
-		dark_ground = dark_ground_init;
+		
 	}
 }
 
-void colorTable::setColor(Entity *target, TCODColor foreinit){
-	Entity *tgt = target;
-	tgt->fore = foreinit;
-}
 
 

@@ -43,7 +43,7 @@
 
 // We'll probably move these global variables somewhere else later
 int CenterX, CenterY;
-colorTable *cTable = new colorTable(true);
+//colorTable *cTable = new colorTable(true);
 
 
 int main(
@@ -105,7 +105,17 @@ int main(
 
 	npc->move(nX, nY);
 
+	TCODMap *tcodMap = new TCODMap(MAP_WIDTH, MAP_HEIGHT);
 
+	map->drawMap(con);
+
+	for(x = 0; x < MAP_WIDTH; x++){
+		for(y = 0; y < MAP_HEIGHT; y++){
+			tcodMap->setProperties(x, y, !(map->virtMap[x][y]->block_sight), !(map->virtMap[x][y]->blocked));
+		}
+	}
+	
+	
 	// Main Game Loop
 	while(!TCODConsole::isWindowClosed()) {
 
@@ -114,7 +124,18 @@ int main(
 		if(map->checkBounds(kboard->safX, kboard->safY)){
 				kboard->passSafeCursor();
 				player->move(kboard->curX, kboard->curY);
+				tcodMap->computeFov( player->posX, player->posY, TORCH_RADIUS, FOV_LIGHT_WALLS);
+				for(x=0; x < MAP_WIDTH; x++){
+					for(y=0; y < MAP_HEIGHT; y++){
+						if((tcodMap->isInFov(x,y))){
+							map->virtMap[x][y]->visible = true;
+						}
+						else {
+							map->virtMap[x][y]->visible = false;
+						}
+					}
 				}
+		}
 
 		// Do some quick boundary checks
 		// Draw our entities to the screen	
