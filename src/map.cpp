@@ -232,6 +232,7 @@ void Map::refreshMap(){
 
 void Map::drawMap(TCODConsole *dest){
 	
+	colorTable *ctable = new colorTable(true);
 
 	TCODColor dark_wall(0, 0, 100); 
 	TCODColor dark_ground(50, 50, 150);
@@ -245,15 +246,15 @@ void Map::drawMap(TCODConsole *dest){
 	for(x=0;x<MAP_WIDTH;x++){
 		for(y=0;y<MAP_HEIGHT;y++){
 			if (virtMap[x][y]->is_sight_blocked()){
-				dest->setCharBackground(x, y, dark_wall, TCOD_BKGND_SET);
+				dest->setCharBackground(x, y, ctable->colors[0], TCOD_BKGND_SET);
 				if (virtMap[x][y]->visible){
-					dest->setCharBackground(x, y, light_wall, TCOD_BKGND_SET);
+					dest->setCharBackground(x, y, ctable->colors[2], TCOD_BKGND_SET);
 				}
 			}
 			else{
-				dest->setCharBackground(x, y, dark_ground, TCOD_BKGND_SET);     
+				dest->setCharBackground(x, y, ctable->colors[1]);     
 				if (virtMap[x][y]->visible){
-					dest->setCharBackground(x, y, light_ground, TCOD_BKGND_SET);
+					dest->setCharBackground(x, y, ctable->colors[3]);
 				}
 			}
 		}
