@@ -129,6 +129,7 @@ int main(
 					for(y=0; y < MAP_HEIGHT; y++){
 						if((tcodMap->isInFov(x,y))){
 							map->virtMap[x][y]->visible = true;
+							map->virtMap[x][y]->explored = true;
 						}
 						else {
 							map->virtMap[x][y]->visible = false;

@@ -51,8 +51,10 @@ Tile::Tile(bool blked){
 void Tile::init_Tile(bool blked){
 	blocked = blked;
 	visible = false;
+	explored = false;
 	if(blked){
 		block_sight = true;
+		explored = false;
 	}
 	else{
 		block_sight = false;
@@ -70,6 +72,10 @@ bool Tile::is_blocked(){
 
 bool Tile::is_visible(){
 	return visible;
+}
+
+bool Tile::is_explored(){
+	return explored;
 }
 
 
@@ -240,22 +246,23 @@ void Map::drawMap(TCODConsole *dest){
 
 	for(x=0;x<MAP_WIDTH;x++){
 		for(y=0;y<MAP_HEIGHT;y++){
-			if (virtMap[x][y]->is_sight_blocked()){
-				dest->setCharBackground(x, y, ctable->colors[0]);
-				if (virtMap[x][y]->visible){
-					dest->setCharBackground(x, y, ctable->colors[2]);
+			if (virtMap[x][y]->is_explored()){
+				if (virtMap[x][y]->is_sight_blocked()){
+					dest->setCharBackground(x, y, ctable->colors[0]);
+					if (virtMap[x][y]->visible){
+						dest->setCharBackground(x, y, ctable->colors[2]);
+					}
 				}
-			}
-			else{
-				dest->setCharBackground(x, y, ctable->colors[1]);     
-				if (virtMap[x][y]->visible){
-					dest->setCharBackground(x, y, ctable->colors[3]);
+				else{
+					dest->setCharBackground(x, y, ctable->colors[1]);
+					if (virtMap[x][y]->visible){
+						dest->setCharBackground(x, y, ctable->colors[3]);
+					}
 				}
 			}
 		}
 	}
 }
-
 
 
 
@@ -443,7 +450,14 @@ void Map::importMap(Map *source){
 
 
 
+void DrawMap(Map *source, TCODConsole *){
 
+
+
+
+
+
+}
 
 
 

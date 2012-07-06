@@ -47,12 +47,18 @@ class Tile {
 		bool block_sight;
 		bool is_wall;
 		bool visible;
+		bool explored;
+
+
+
+
 
 		Tile(bool blked);
 		void init_Tile(bool);
 		bool is_sight_blocked();
 		bool is_blocked();
 		bool is_visible();
+		bool is_explored();
 		friend class Map;
 };
 
