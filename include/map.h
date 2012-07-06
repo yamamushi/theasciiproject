@@ -146,7 +146,7 @@ class Map {
 
 
 
-
+void DrawMap(Map *, TCODConsole *);
 
 
 
