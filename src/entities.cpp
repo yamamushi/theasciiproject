@@ -38,34 +38,67 @@
 
 #include "headers.h"
 
-Entity::Entity(char* p, TCODColor foreinit, int startX, int startY){
-	init_entity( p, foreinit, startX, startY);
+Entity::Entity(char* p, int set_color){
+	init_entity( p, set_color);
 }
 
-void Entity::init_entity(char* p, TCODColor foreinit, int startX, int startY){
-	posX = startX;
-	posY = startY;
+void Entity::init_entity(char* p, int set_color){
 	symbol = p;
-	fore = foreinit;
-}
-
-
-void Entity::move(int dx, int dy){
+	color = set_color;
+	X = 0;
+	Y = 0;
 	
-	posX = dx;
-	posY = dy;
+	initialized = false;
+
 
 }
 
-void Entity::clean(TCODConsole *dest){
-	TCODConsole *screen = dest;
-	screen->print(posX, posY, " ");
+
+
+bool Entity::move(Map *destination, int dx, int dy){
+
+	Map *map = destination;
+	if ( (map->virtMap[(dx + X)][(dy + Y)]->blocked))
+	       return false;
+	else{
+			X += dx;
+			Y += dy;
+			return true;
+	}
+
 }
 
-void Entity::draw(TCODConsole *dest){
-	TCODConsole *screen = dest;
-	screen->setDefaultForeground(fore);
-	screen->print(posX, posY, symbol);
+int Entity::posX(){
+	return X;
+};
 
-}
+int Entity::posY(){
+	return Y;
+};
+
+
+
+void Entity::init_in_world(Map *destination){
+
+	Map *world = destination;
+	initialized = true;
+
+};
+
+
+
+void Entity::move_self(int dx, int dy){
+
+	move(world, dx, dy);
+
+
+};
+
+
+
+
+
+
+
+
 

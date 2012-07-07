@@ -55,13 +55,14 @@ void Keyboard::initKeyboard(int x, int y){
 }
 
 
-bool Keyboard::handleKeys(){
+bool Keyboard::handleKeys(Entity *target, Map *destination){
 
 	TCOD_key_t Key = TCODConsole::checkForKeypress(true);
 	bool quit = false;
+	Map *map = destination;
 
-	oldX = curX;
-	oldY = curY;
+
+	Entity *tgt = target;
 
 
 	if(Key.vk == TCODK_ENTER && TCODK_ALT)
@@ -70,19 +71,19 @@ bool Keyboard::handleKeys(){
 	switch(Key.vk)
 	{
 	       	case TCODK_UP:
-			safeMoveCursor(0,-1);
+			tgt->move(map, 0,-1);
 			break;
 
 		case TCODK_DOWN:
-			safeMoveCursor(0,1);
+			tgt->move(map, 0,1);
 			break;
 		
 		case TCODK_LEFT:
-			safeMoveCursor(-1,0);				                        
+			tgt->move(map, -1,0);				                        
 			break;	
 			
 		case TCODK_RIGHT:
-			safeMoveCursor(1,0);
+			tgt->move(map, 1,0);
 
 			break;
 

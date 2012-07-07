@@ -40,17 +40,34 @@
 class Entity {
 	private:
 
-	public:
-		int posX, posY;
-		TCODColor fore;
+		int color;
+		int X, Y;
 		char* symbol;
+		Map *world;
+
+		bool initialized;
+
+	public:
 
 
-		Entity(char* symbol, TCODColor fore, int x=0, int y=0);	
-		void init_entity( char*, TCODColor fore, int x=0, int y=0);
-		void move(int, int);
-		void clean(TCODConsole *dest);
-		void draw(TCODConsole *dest);
+		Entity(char* symbol, int set_color);	
+		void init_entity( char* symbol, int set_color);
+		bool move(Map *destination, int dx, int dy);
+		int posX();
+		int posY();
+
+
+		void init_in_world(Map *destination);
+
+
+
+		void move_self(int dx, int dy);
+
+
+
+
+
+
 
 };
 

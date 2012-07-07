@@ -43,8 +43,15 @@
 
 // We'll probably move these global variables somewhere else later
 int CenterX, CenterY;
-//colorTable *cTable = new colorTable(true);
 
+
+
+
+
+
+
+
+// Lets's Rock n' Roll
 
 int main(
 	int argc, char *argv[]) {
@@ -71,10 +78,10 @@ int main(
 	Dungeon *dgn = new Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
 
 
-	Entity *player = new Entity( "@", TCODColor::white);
+	Entity *player = new Entity( "@", WHITE);
 	
 	// Create an npc, for testing purposes only, this will be moved!
-	Entity *npc = new Entity( "@", TCODColor::red);
+	Entity *npc = new Entity( "@", RED);
 
 	Entity **tArray[2];
 	tArray[0] = &player;
@@ -89,13 +96,13 @@ int main(
 	int pX = map->rooms[1]->cX;
 	int pY = map->rooms[1]->cY;	
 	
-	player->move(pX, pY);
+	player->move(map, pX, pY);
 	kboard->initKeyboard(pX, pY);
 	
 	int nX = map->rooms[10]->cX;
 	int nY = map->rooms[10]->cY;	
 
-	npc->move(nX, nY);
+	npc->move(map, nX, nY);
 
 	TCODMap *tcodMap = new TCODMap(MAP_WIDTH, MAP_HEIGHT);
 
@@ -112,10 +119,7 @@ int main(
 	while(!TCODConsole::isWindowClosed()) {
 
 		// Draw our map to the screen
-		if(map->checkBounds(kboard->safX, kboard->safY)){
-				kboard->passSafeCursor();
-				player->move(kboard->curX, kboard->curY);
-				tcodMap->computeFov( player->posX, player->posY, TORCH_RADIUS, FOV_LIGHT_WALLS);
+		tcodMap->computeFov( player->posX(), player->posY(), TORCH_RADIUS, FOV_LIGHT_WALLS);
 				for(x=0; x < MAP_WIDTH; x++){
 					for(y=0; y < MAP_HEIGHT; y++){
 						if((tcodMap->isInFov(x,y))){
@@ -127,24 +131,24 @@ int main(
 						}
 					}
 				}
-		}
+		
 
 		// Do some quick boundary checks
-		// Draw our entities to the screen	
+		/*// Draw our entities to the screen	
 		for ( ray = 0; ray < si; ray++){
 			scan = *tArray[ray];
 			scan->draw(output->output);
-		}	
+		} */	
 
 		
 		output->render();
 		// Clean up our screen before reading in keys
-		for ( ray=0; ray < si; ray++){
+		/*for ( ray=0; ray < si; ray++){
 			scan = *tArray[ray];
 			scan->clean(output->output);
 		}	
-
-		quit = kboard->handleKeys();
+		*/
+		quit = kboard->handleKeys(player, map);
 		if(quit) break;		
 
 	}	

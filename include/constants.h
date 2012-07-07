@@ -68,6 +68,8 @@ enum colors {
         LIGHT_BLUE,                                                                                       
         YELLOW,                                                                                           
         GOLD,                                                                                             
+	RED,
+
 }; 
 
 
