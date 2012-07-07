@@ -68,23 +68,23 @@ void GraphicsTCOD::init(Map *sourceMap){
 
 
 void GraphicsTCOD::render(){
-                
-        colorTable *ctable = new colorTable(true);                                                        
-	
+        
+	c = new colorTableTCOD();
+
 	int x, y;	
         for(x=0;x<MAP_WIDTH;x++){                                                                         
                 for(y=0;y<MAP_HEIGHT;y++){                                                                
                         if (input->virtMap[x][y]->is_explored()){                                       
 				if (input->virtMap[x][y]->is_sight_blocked()){        
-				     	output->setCharBackground(x, y, ctable->colors[0]);
+				     	output->setCharBackground(x, y, c->color(DARK_WALL));
 					     	if (input->virtMap[x][y]->visible){    
-						     	output->setCharBackground(x, y, ctable->colors[2]); 
+						     	output->setCharBackground(x, y, c->color(LIGHT_WALL)); 
 						}                                                     
 				}
 				else{
-					output->setCharBackground(x, y, ctable->colors[1]); 
+					output->setCharBackground(x, y, c->color(DARK_GROUND)); 
 					if (input->virtMap[x][y]->visible){          
-						output->setCharBackground(x, y, ctable->colors[3]);  
+						output->setCharBackground(x, y, c->color(LIGHT_GROUND));  
 				     	}                                  
 				}                                                        
 			}                                                  

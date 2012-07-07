@@ -38,23 +38,36 @@
 
 #include "headers.h"
 
-colorTable::colorTable(bool init){
-	initColors(init);
+
+
+
+colorTableTCOD::colorTableTCOD() {
+	initColorTable();
 }
 
-void colorTable::initColors(bool init){
-	if(init){
 
-		TCODColor dark_wall(0, 0, 100);            	
-		colors[0] = dark_wall;
-		TCODColor dark_ground(50, 50, 150);
-		colors[1] = dark_ground;
-		TCODColor light_wall(130, 110, 50);
-	     	colors[2] = light_wall;	
-		TCODColor light_ground(200, 180, 50);
-		colors[3] = light_ground;
-	}
+void colorTableTCOD::initColorTable(){
+
+	TCODColor dark_wall(0, 0, 100);
+	colorTable[DARK_WALL] = &dark_wall;
+	TCODColor dark_ground(50, 50, 150);
+	colorTable[DARK_GROUND] = &dark_ground;
+	TCODColor light_wall(130, 110, 50);
+	colorTable[LIGHT_WALL] = &light_wall; 
+	TCODColor light_ground(200, 180, 50);
+	colorTable[LIGHT_GROUND] = &light_ground;
+
 }
+
+
+
+TCODColor colorTableTCOD::color(int i){
+
+	return *colorTable[i];
+}
+
+
+
 
 
 

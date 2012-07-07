@@ -37,17 +37,19 @@
  */
 
 
-class colorTable {
+
+class colorTableTCOD {
+
+
 	public:
-	// Lets put our functions at the bottom of the colors list shall we?
-	
-		TCODColor colors[256];
+		TCODColor *colorTable[255];
+		TCODColor newColor;
 
-
-		colorTable(bool=true);
-		void initColors(bool=true);
+		colorTableTCOD();
+		void initColorTable();
+		TCODColor color(int x);	
+		void colorSet(int color, int x, int y, int z);
 };
-
 
 
 

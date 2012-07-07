@@ -44,6 +44,7 @@
 class GraphicsTCOD {
 
 	
+		colorTableTCOD *c;
 		Map *input;
 
 	public:

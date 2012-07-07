@@ -53,3 +53,45 @@
 #define FOV_ALGO 0  
 #define FOV_LIGHT_WALLS true
 #define TORCH_RADIUS 10
+
+
+
+enum colors {                                                                                             
+        NONE,
+        WHITE,
+        DARK_WALL,
+        DARK_GROUND,                                                                                      
+        LIGHT_WALL,
+        LIGHT_GROUND,                                                                                     
+        BLACK,                                                                                            
+        BLUE,
+        LIGHT_BLUE,                                                                                       
+        YELLOW,                                                                                           
+        GOLD,                                                                                             
+}; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
