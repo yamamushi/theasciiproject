@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  graphics_libtcod.cpp
+ *       Filename:  graphics.cpp
  *
  *    Description:  Our graphics handling library that relies on libtcod.
  *    		The intention is for this library to handle all reliance on

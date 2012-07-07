@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  graphics_libtcod.h
+ *       Filename:  graphics.h
  *
  *    Description:  Our graphics handling library that relies on libtcod.
  *    		The intention is for this library to handle all reliance on
