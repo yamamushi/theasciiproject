@@ -90,5 +90,11 @@ void GraphicsTCOD::render(){
 			}                                                  
 		}                  
 	} 
+
+
+	TCODConsole::blit(output, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
+	TCODConsole::flush();
+
+
 }    
 

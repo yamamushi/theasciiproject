@@ -46,10 +46,10 @@
 
 #include "constants.h"
 
+#include "map.h"
 #include "libtcod.hpp"
 
 #include "entities.h"
-#include "map.h"
 #include "keyboard.h"
 #include "colors.h"
 

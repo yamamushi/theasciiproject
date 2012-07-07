@@ -112,7 +112,6 @@ int main(
 	while(!TCODConsole::isWindowClosed()) {
 
 		// Draw our map to the screen
-		output->render();
 		if(map->checkBounds(kboard->safX, kboard->safY)){
 				kboard->passSafeCursor();
 				player->move(kboard->curX, kboard->curY);
@@ -137,11 +136,8 @@ int main(
 			scan->draw(output->output);
 		}	
 
-		TCODConsole::blit(output->output, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
-		TCODConsole::flush();
-	
 		
-		
+		output->render();
 		// Clean up our screen before reading in keys
 		for ( ray=0; ray < si; ray++){
 			scan = *tArray[ray];

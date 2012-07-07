@@ -80,6 +80,22 @@ bool Tile::is_explored(){
 
 
 
+
+
+Floor::Floor(bool blked){
+
+	block_sight = blked;
+	blocked = blked;
+
+}
+
+
+
+
+
+
+
+
 Rect::Rect(int x, int y, int w, int h){
 	initRect(x, y, w, h);
 }
@@ -260,8 +276,8 @@ void Map::drawRoom(int i){
 
 	for(x = rooms[i]->x2; x > rooms[i]->x1+1; x--){
 		for(y = rooms[i]->y2; y > rooms[i]->y1+1; y--){
-			virtMap[x][y]->blocked = false;
-			virtMap[x][y]->block_sight = false;
+			delete virtMap[x][y];
+			virtMap[x][y] = new Floor;
 		}
 	}
 }
@@ -294,14 +310,14 @@ void Map::drawHall(int i){
 	
 	if ( ((halls[i]->dir) == 0)){
 		for( x = halls[i]->x1; x < halls[i]->x2; x++){
-			virtMap[x][halls[i]->y]->blocked = false;
-			virtMap[x][halls[i]->y]->block_sight = false;
+			delete virtMap[x][halls[i]->y];
+			virtMap[x][halls[i]->y] = new Floor;
 		}
 	}
 	else {
 		for( x = halls[i]->x1; x < halls[i]->x2 + 1; x++){
-			virtMap[halls[i]->y][x]->blocked = false;
-			virtMap[halls[i]->y][x]->block_sight = false;
+			delete virtMap[halls[i]->y][x];
+			virtMap[halls[i]->y][x] = new Floor;
 		}
 	}
 

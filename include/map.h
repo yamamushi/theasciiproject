@@ -45,15 +45,10 @@ class Tile {
 		int posX, posY;
 		bool blocked;
 		bool block_sight;
-		bool is_wall;
 		bool visible;
 		bool explored;
 
-
-
-
-
-		Tile(bool blked);
+		Tile(bool blked=true);
 		void init_Tile(bool);
 		bool is_sight_blocked();
 		bool is_blocked();
@@ -61,6 +56,29 @@ class Tile {
 		bool is_explored();
 		friend class Map;
 };
+
+
+class Wall : public Tile {
+
+	private:
+
+
+	public:
+
+
+};
+
+
+class Floor : public Tile {
+	private:
+
+	public:
+		Floor(bool blked=false);
+
+
+};
+
+
 
 
 class Rect {
