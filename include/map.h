@@ -107,21 +107,22 @@ class Hall {
 class Map {
 	private:
 		int x, y, z, i;
-		TCODConsole *tgt;
 		int wid, hig;
 
 	public:
 
-		Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];	
 		Room *rooms[MAX_ROOMS];
 		int numRooms;
 		Hall *halls[MAX_HALLS];
 		int numHalls;
 
+		Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];	
+
 
 		Map(int, int);
 		void initMap(int, int);
-		void drawMap(TCODConsole *dest);
+		
+		
 		void clearMap();
 		void refreshMap();
 		bool checkBounds(int, int);
@@ -147,18 +148,8 @@ class Map {
 		void copyVirtMap(Map *source);
 		void importMap(Map *source);
 
+
+
 };
-
-
-
-
-void DrawMap(Map *, TCODConsole *);
-
-
-
-
-
-
-
 
 

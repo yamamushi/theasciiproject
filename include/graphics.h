@@ -1,12 +1,15 @@
 /*
  * =====================================================================================
  *
- *       Filename:  headers.h
+ *       Filename:  graphics_libtcod.h
  *
- *    Description:  An attempt to consolidate and order our header files
+ *    Description:  Our graphics handling library that relies on libtcod.
+ *    		The intention is for this library to handle all reliance on
+ *    		the libtcod graphics functions - thereby slowly modularilizing
+ *    		the client to be rendered differently.
  *
  *        Version:  1.0
- *        Created:  07/04/2012
+ *        Created:  07/05/2012
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -37,36 +40,22 @@
  */
 
 
-// Standard headers first
-#include <math.h>
-#include <algorithm>
-#include <iostream>
 
-// Followed by custom headers
+class GraphicsTCOD {
 
-#include "constants.h"
+	
+		Map *input;
 
-#include "libtcod.hpp"
+	public:
 
-#include "entities.h"
-#include "map.h"
-#include "keyboard.h"
-#include "colors.h"
-
-#include "dungeon.h"
+		
+		TCODConsole *output;
+		GraphicsTCOD(Map *sourceMap);
+		void init(Map *sourceMap);
+		void render();
 
 
-// Nothing should depend on our graphics library, ever.
-#include "graphics.h"
-
-// finally our namespaces
-
-using namespace std;
-
-
-
-
-
+};
 
 
 

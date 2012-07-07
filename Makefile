@@ -11,7 +11,7 @@ CPP=g++
 %.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-CPP_OBJS=main.o entities.o keyboard.o map.o colors.o dungeon.o
+CPP_OBJS=main.o entities.o keyboard.o map.o colors.o dungeon.o graphics.o
 
 all : client
 

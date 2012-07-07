@@ -236,35 +236,6 @@ void Map::refreshMap(){
 
 
 
-void Map::drawMap(TCODConsole *dest){
-	
-	colorTable *ctable = new colorTable(true);
-
-
-	drawAllRooms();
-	drawAllHalls();
-
-	for(x=0;x<MAP_WIDTH;x++){
-		for(y=0;y<MAP_HEIGHT;y++){
-			if (virtMap[x][y]->is_explored()){
-				if (virtMap[x][y]->is_sight_blocked()){
-					dest->setCharBackground(x, y, ctable->colors[0]);
-					if (virtMap[x][y]->visible){
-						dest->setCharBackground(x, y, ctable->colors[2]);
-					}
-				}
-				else{
-					dest->setCharBackground(x, y, ctable->colors[1]);
-					if (virtMap[x][y]->visible){
-						dest->setCharBackground(x, y, ctable->colors[3]);
-					}
-				}
-			}
-		}
-	}
-}
-
-
 
 bool Map::checkBounds(int posX, int posY){
 
@@ -450,14 +421,8 @@ void Map::importMap(Map *source){
 
 
 
-void DrawMap(Map *source, TCODConsole *){
 
 
-
-
-
-
-}
 
 
 

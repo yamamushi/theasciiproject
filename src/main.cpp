@@ -59,22 +59,14 @@ int main(
 	
 	// Let's get things setup
 	
-	TCODConsole::initRoot(MAIN_WIDTH,MAIN_HEIGHT,"The ASCII Project",false,TCOD_RENDERER_SDL);
 	// TCODConsole::credits();
 	
-	TCODConsole *con = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
-
-	
-	TCODSystem::setFps(LIMIT_FPS);
-
 	Keyboard *kboard = new Keyboard();
 
 	// We'll set the foreground color once now and modify it as necessary when in our game loop
-	TCODConsole::root->setDefaultForeground(TCODColor::white);	
-
-	//entity *player = new entity( 25, 23, "@", TCODColor::white);
 	
 	Map *map = new Map(MAP_WIDTH, MAP_HEIGHT);
+	GraphicsTCOD *output = new GraphicsTCOD(map);
 
 	Dungeon *dgn = new Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
 
@@ -107,7 +99,7 @@ int main(
 
 	TCODMap *tcodMap = new TCODMap(MAP_WIDTH, MAP_HEIGHT);
 
-	map->drawMap(con);
+	//output->render();
 
 	for(x = 0; x < MAP_WIDTH; x++){
 		for(y = 0; y < MAP_HEIGHT; y++){
@@ -120,7 +112,7 @@ int main(
 	while(!TCODConsole::isWindowClosed()) {
 
 		// Draw our map to the screen
-		map->drawMap(con);
+		output->render();
 		if(map->checkBounds(kboard->safX, kboard->safY)){
 				kboard->passSafeCursor();
 				player->move(kboard->curX, kboard->curY);
@@ -142,10 +134,10 @@ int main(
 		// Draw our entities to the screen	
 		for ( ray = 0; ray < si; ray++){
 			scan = *tArray[ray];
-			scan->draw(con);
+			scan->draw(output->output);
 		}	
 
-		TCODConsole::blit(con, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
+		TCODConsole::blit(output->output, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
 		TCODConsole::flush();
 	
 		
@@ -153,7 +145,7 @@ int main(
 		// Clean up our screen before reading in keys
 		for ( ray=0; ray < si; ray++){
 			scan = *tArray[ray];
-			scan->clean(con);
+			scan->clean(output->output);
 		}	
 
 		quit = kboard->handleKeys();

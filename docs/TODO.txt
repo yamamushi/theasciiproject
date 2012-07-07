@@ -1,4 +1,26 @@
 
+07/06/2012 TODO List:
+
+Cleanup code, organize things a little better.
+
+Add a graphics library and move related functions into it.
+
+    - Begin the long task of removing reliance on foreign
+	libraries for graphics handling. IE, nothing should
+	absolutely rely on graphics output for runtime.
+
+    - This will also solve the question on how I was going to
+	store the colormap away from everything for the time being. 
+
+
+
+
+
+
+
+
+
+
 07/05/2012 TODO List:
 
 finish our drawing functions for hallways between rooms :)
