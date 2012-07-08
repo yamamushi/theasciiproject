@@ -43,6 +43,11 @@ class Tile {
 
 	public:
 		int posX, posY;
+		float H, S, V, HD, SD, VD;
+		int R, G, B, RD, GD, BD;
+
+
+
 		bool blocked;
 		bool block_sight;
 		bool visible;
@@ -65,6 +70,7 @@ class Wall : public Tile {
 
 
 	public:
+		Wall(bool blked=true);
 
 
 };

@@ -89,7 +89,7 @@ class EntityMap {
 		int width, height;
 		vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
 		
-		int colorMap[MAP_WIDTH][MAP_HEIGHT];
+		int colorTable[MAP_WIDTH][MAP_HEIGHT];
 		char *symbolTable[MAP_WIDTH][MAP_HEIGHT];
 
 		Entity *current;
@@ -112,6 +112,10 @@ class EntityMap {
 
 		bool checkOccupied(int x, int y);
 		Entity * outputEntity(int x, int y);
+
+		int checkColor(int x, int y);
+
+		void updateColorMap();
 
 
 

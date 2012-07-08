@@ -54,6 +54,19 @@ void Tile::init_Tile(bool blked){
 	explored = false;
 	occupied = false;
 
+	H = 0.0;
+	S = 0.0;
+	V = 0.0;
+	HD = 0.0;
+	SD = 0.0;
+	VD = 0.0;
+	R = 0;
+	G = 0;
+	B = 0;
+	RD = 0;
+	GD = 0;
+	BD = 0;
+
 
 
 
@@ -86,11 +99,41 @@ bool Tile::is_explored(){
 
 
 
+Wall::Wall(bool blked){
+
+	block_sight = blked;
+	blocked = blked;
+
+	H = 30.0;
+	S = 0.0;
+	V = 0.3;
+
+	HD = 30.0;
+	SD = 0.0;
+	VD = 0.1;
+
+
+}
+
+
+
+
 
 Floor::Floor(bool blked){
 
 	block_sight = blked;
 	blocked = blked;
+
+
+	H = 30.4;
+	S = 1.0;
+	V = 0.3;
+
+	HD = 30.4;
+	SD = 1.0;
+	VD = 0.1;
+
+
 
 }
 
@@ -222,7 +265,7 @@ void Map::initMap(int i, int z){
 
 	for ( x = 0; x < i; x++){
 		for ( y = 0; y < z; y++){
-			virtMap[x][y] = new Tile(true);
+			virtMap[x][y] = new Wall();
 	       	}	
 	}
 
@@ -235,7 +278,7 @@ void Map::clearMap(){
 	for (x = 0; x < MAP_WIDTH; x++){
 		for ( y = 0; y < MAP_HEIGHT; y++){
 			delete virtMap[x][y];
-			virtMap[x][y] = new Tile(true);
+			virtMap[x][y] = new Wall(true);
 		}
 	}
 
@@ -248,8 +291,7 @@ void Map::refreshMap(){
 
 	for (x=0; x < wid; x++){
 		for ( y = 0; y < hig; y++){
-			virtMap[x][y]->blocked = true;
-			virtMap[x][y]->block_sight = true;
+			virtMap[x][y] = new Wall();
 		}
 	}
 

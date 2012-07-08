@@ -5,7 +5,11 @@ Source code is available from:
 * https://github.com/yamamushi/theasciiproject
 
 
-Please bear with us as we get our feet on the ground. This repo will likely be out of date for the time being.
+Please refer to docs/TODO.txt for information about what is currently being worked on.
+I plan on moving this information over to a single website, but for the time being I'll be publishing devlog information here.
+
+
+
 
 Visitors should refer to http://www.theasciiproject.com for more information, though at the time of writing this document that website is (very much) out of date. 
 

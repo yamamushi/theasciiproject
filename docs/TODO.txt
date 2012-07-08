@@ -1,3 +1,23 @@
+07/08/2012 TODO List:
+
+More Code cleanup - I really should have thought about some
+	of these things before I started piecing things
+	together.
+
+Change how colors are rendered and stored within entities and,
+	tiles. The goal is for each entity and tile to store
+	this information in a way that will allow them to be
+	more independent of external libraries.
+
+I need to cleanup the entities map, and possibly re-think (ugh)
+	how that information is stored and passed between
+	entities. Doing this now will make it easier to
+	conceptualize a 3d environment, and for entities
+	to be aware of what exists around them in 3d dimensions.
+
+
+
+
 
 07/06/2012 TODO List:
 

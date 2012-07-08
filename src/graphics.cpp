@@ -92,40 +92,50 @@ void GraphicsTCOD::renderTiles(){
 	c = new colorTableTCOD();
 	
 	int x, y;	
-        for(x=0;x<MAP_WIDTH;x++){                                                                         
-                for(y=0;y<MAP_HEIGHT;y++){                                                                
+	int color;
+	char *ent;
+       
+        float H, S, V;	
+	float HD, SD, VD;
+	
+	
+	
+	for(x=0;x<MAP_WIDTH;x++){                                                                         
+                for(y=0;y<MAP_HEIGHT;y++){
+			//	current = entMap->outputEntity(x, y);
+			//	int color = current->getColor();
+			//if (!(entMap->checkOccupied(x, y))){
+				//color = entMap->checkColor(x, y);
+				//output->setCharForeground(x, y, c->color(color));
+			//	output->setCharForeground(x, y, c->color(WHITE));
+			//	output->print(x, y, current->getSymbol());
+			//	}
+
                         if (input->virtMap[x][y]->is_explored()){                                       
+					
+					H = input->virtMap[x][y]->H;
+					HD = input->virtMap[x][y]->HD;
+					S = input->virtMap[x][y]->S;
+					SD = input->virtMap[x][y]->SD;
+					V = input->virtMap[x][y]->V;
+					VD = input->virtMap[x][y]->VD;
+
 				if (input->virtMap[x][y]->is_sight_blocked()){        
-				     	output->setCharBackground(x, y, c->color(DARK_WALL));
+				     	output->setCharBackground(x, y, TCODColor(HD, SD, VD));//TCOD_color_RGB(0, 0, 100));// c->color(DARK_WALL));
 					     	if (input->virtMap[x][y]->visible){    
-						     	output->setCharBackground(x, y, c->color(LIGHT_WALL)); 
+						     		output->setCharBackground(x, y, TCODColor(H, S, V));// c->color(LIGHT_WALL)); 
 						}                                                     
 				}
 				else{
-					output->setCharBackground(x, y, c->color(DARK_GROUND)); 
+					output->setCharBackground(x, y, TCODColor(HD, SD, VD)); 
 					if (input->virtMap[x][y]->visible){          
-						output->setCharBackground(x, y, c->color(LIGHT_GROUND));  
+						output->setCharBackground(x, y, TCODColor(H, S, V));  
 				     	}                                  
 				}                                                        
-			}                                                  
+			}			
 		}                  
 	}
 
-
-	int color;
-	char *ent;
-
-
-	for (x = 0; x < MAP_WIDTH; x++){
-		for (y = 0; y < MAP_HEIGHT; y++){
-			if(entMap->checkOccupied(x, y)){
-				current = entMap->outputEntity(x, y);
-				int color = current->getColor();
-				output->setDefaultForeground(c->color(DARK_GROUND));
-				output->print(x, y, current->getSymbol());
-			}
-		}
-	}
 }
 
 

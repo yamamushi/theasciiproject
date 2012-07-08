@@ -258,11 +258,16 @@ void EntityMap::refreshEntityMap(){
 
 						pos[newX][newY].push_back(cur);
 						pos[x][y].clear();
+						colorTable[x][y] = cur->getColor();
+					}
+					else{
+						colorTable[x][y] = LIGHT_GROUND;
 					}
 				}
 			}
 		}
 	}
+
 }
 
 
@@ -291,7 +296,7 @@ Entity * EntityMap::outputEntity(int x, int y){
 
 
 /*
-char *EntityMap::outputSymbolsMap(int x, int y){
+void EntityMap::updateColorMap(){
 
 	int x, y;
 
@@ -300,7 +305,7 @@ char *EntityMap::outputSymbolsMap(int x, int y){
 			if ( !(pos[x][y].empty()) ){
 	
 				Entity *current = pos[x][y].back();
-				symbolTable[x][y] = current->getSymbol();
+				colorTable[x][y] = current->getColor();
 
 			}
 			else {
@@ -310,8 +315,14 @@ char *EntityMap::outputSymbolsMap(int x, int y){
 	}
 
 }
-
 */
+
+int EntityMap::checkColor(int x, int y){
+
+	return colorTable[x][y];
+
+}
+
 
 
 
