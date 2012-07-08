@@ -74,7 +74,14 @@ enum colors {
 
 
 
+enum entity_types {
 
+	RESERVED,
+	DEFAULT,
+	PLAYER,
+	MONSTER,
+
+};
 
 
 

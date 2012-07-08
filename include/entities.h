@@ -37,6 +37,9 @@
  */
 
 
+class EntityMap;
+
+
 class Entity {
 	private:
 
@@ -47,25 +50,31 @@ class Entity {
 
 		bool initialized;
 
+		EntityMap *entMap;
+
 	public:
 
 
-		Entity(char* symbol, int set_color);	
 		void init_entity( char* symbol, int set_color);
 		bool move(Map *destination, int dx, int dy);
 		int posX();
 		int posY();
+		int type;
 
 
 		void init_in_world(Map *destination);
 
 
+		int getColor();
+		char* getSymbol();
+
+		bool isInitialized();
+
+
 
 		void move_self(int dx, int dy);
 
-
-
-
+		void setEntityMap(EntityMap *map);
 
 
 
@@ -73,8 +82,51 @@ class Entity {
 
 
 
+class EntityMap {
+	
+	private:
+
+		int width, height;
+		vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
+
+
+
+	public:
+
+		EntityMap(int x, int y);
+		void initEntityMap(int x, int y);
+		void addToMap(Entity *entity);
+		void createEntity(int type);
+
+
+		void initAllEnts(Map *destination);
+
+
+};
+
+
+
+
+
+
+
+class Monster : public Entity {
+
+	public:
+
+		Monster();
+		void initMonster( int x=0, int y=0);
+
+};
+
+
+
+
+
+
 class Player : public Entity {
 
-
+	public:
+		Player();
 
 };

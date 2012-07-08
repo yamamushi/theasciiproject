@@ -38,9 +38,6 @@
 
 #include "headers.h"
 
-Entity::Entity(char* p, int set_color){
-	init_entity( p, set_color);
-}
 
 void Entity::init_entity(char* p, int set_color){
 	symbol = p;
@@ -58,12 +55,17 @@ void Entity::init_entity(char* p, int set_color){
 bool Entity::move(Map *destination, int dx, int dy){
 
 	Map *map = destination;
-	if ( (map->virtMap[(dx + X)][(dy + Y)]->blocked))
-	       return false;
-	else{
+	if (initialized){
+		if ( (map->virtMap[(dx + X)][(dy + Y)]->blocked))
+		       return false;
+		else{
 			X += dx;
 			Y += dy;
 			return true;
+		}
+	}
+	else {
+		return false;
 	}
 
 }
@@ -87,12 +89,214 @@ void Entity::init_in_world(Map *destination){
 
 
 
+int Entity::getColor(){
+
+	return color;
+
+};
+
+
+
+
+char* Entity::getSymbol(){
+
+	return symbol;
+
+};
+
+
+bool Entity::isInitialized(){
+
+	return initialized;
+
+}
+
+
+
+
+
+
+
+
 void Entity::move_self(int dx, int dy){
 
 	move(world, dx, dy);
 
 
 };
+
+
+
+void Entity::setEntityMap(EntityMap *map){
+
+	EntityMap *entMap = map;
+
+};
+
+
+
+
+
+
+
+
+
+/*
+ *
+ * 		Here begins our EntityMap object.
+ * 	
+ * 	The purpose of this object is to store a
+ * 	static-sized 2-dimensional array of vectors.
+ *
+ * 	Each vector is a list of Entities, thus
+ * 	A seemingly "infinite" amount of entities can
+ * 	exist in one space of a map at one time.
+ *
+ * 	This Object will thus return the color map
+ * 	(which essentially allows the graphics rendering
+ * 	engine to render entities without doing
+ * 	much thought on it's own).
+ *
+ *	This Object will also allow each individual entity
+ *	to gather information about other entities in
+ *	its own context.
+ *
+ *
+ */ 
+
+
+
+EntityMap::EntityMap(int x, int y){
+
+	initEntityMap(x, y);
+
+}
+
+
+
+
+void EntityMap::initEntityMap(int x, int y){
+
+	width = x;
+	height = y;
+	
+
+}
+
+
+void EntityMap::addToMap(Entity *entity){
+
+	Entity *src = entity;
+	int x, y;
+	x = src->posX();
+	y = src->posY();
+	pos[x][y].push_back(src);
+
+
+}
+
+
+
+void EntityMap::createEntity(int type){
+
+	Entity *newEntity;
+
+	switch (type) {
+		
+		case MONSTER:
+			newEntity = new Monster();
+		case PLAYER:
+			newEntity = new Player();
+
+	}
+	
+	addToMap(newEntity);
+
+}
+
+
+void EntityMap::initAllEnts(Map *destination){
+
+
+	Map *contextMap = destination;
+
+	int x, y, z;
+	
+	for ( x = 0; x < width; x++){
+		for ( y = 0; y < height; y++){
+			if (!(pos[x][y].empty())){
+				for ( z = 0; z < pos[x][y].size(); z++){
+					pos[x][y].at(z)->init_in_world(contextMap);
+				}
+			}
+		}
+	}
+}
+
+
+
+/*
+ *
+ *
+ *		Entities
+ *
+ *	Now we start listing some entity types
+ *
+ *	Though how this works will likely change in the
+ *	future.
+ *
+ *
+ *
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Monster::Monster(){
+
+	init_entity( "@", RED );
+
+}
+
+
+
+void Monster::initMonster(int x, int y){
+
+	int z, i;
+	i = x;
+	z = y;
+
+}
+
+
+
+
+Player::Player(){
+
+	init_entity( "@", WHITE);
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

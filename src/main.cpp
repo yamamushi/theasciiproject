@@ -78,10 +78,10 @@ int main(
 	Dungeon *dgn = new Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
 
 
-	Entity *player = new Entity( "@", WHITE);
+	Entity *player = new Entity();
 	
 	// Create an npc, for testing purposes only, this will be moved!
-	Entity *npc = new Entity( "@", RED);
+	Entity *npc = new Entity();
 
 	Entity **tArray[2];
 	tArray[0] = &player;
@@ -96,7 +96,9 @@ int main(
 	int pX = map->rooms[1]->cX;
 	int pY = map->rooms[1]->cY;	
 	
+	player->init_in_world(map);
 	player->move(map, pX, pY);
+	
 	kboard->initKeyboard(pX, pY);
 	
 	int nX = map->rooms[10]->cX;

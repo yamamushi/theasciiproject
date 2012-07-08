@@ -41,6 +41,12 @@
 #include <math.h>
 #include <algorithm>
 #include <iostream>
+#include <vector>
+
+
+// Our namespaces
+using namespace std;
+
 
 // Followed by custom headers
 
@@ -59,9 +65,7 @@
 // Nothing should depend on our graphics library, ever.
 #include "graphics.h"
 
-// finally our namespaces
 
-using namespace std;
 
 
 

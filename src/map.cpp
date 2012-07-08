@@ -52,6 +52,11 @@ void Tile::init_Tile(bool blked){
 	blocked = blked;
 	visible = false;
 	explored = false;
+	occupied = false;
+
+
+
+
 	if(blked){
 		block_sight = true;
 		explored = false;

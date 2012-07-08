@@ -47,6 +47,7 @@ class Tile {
 		bool block_sight;
 		bool visible;
 		bool explored;
+		bool occupied;
 
 		Tile(bool blked=true);
 		void init_Tile(bool);
