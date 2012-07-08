@@ -44,14 +44,19 @@
 
 
 
-GraphicsTCOD::GraphicsTCOD(Map *sourceMap){
-	init(sourceMap);
+GraphicsTCOD::GraphicsTCOD(Map *sourceMap, EntityMap *EntMap){
+	init(sourceMap, EntMap);
 }
 
 
-void GraphicsTCOD::init(Map *sourceMap){
+void GraphicsTCOD::init(Map *sourceMap, EntityMap *EntMap){
 
 	input = sourceMap;
+	entMap = EntMap;
+	
+	
+	
+	
 	
 	TCODConsole::initRoot(MAIN_WIDTH,MAIN_HEIGHT,"The ASCII Project",false,TCOD_RENDERER_SDL);
         TCODConsole *tmp = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
@@ -68,9 +73,24 @@ void GraphicsTCOD::init(Map *sourceMap){
 
 
 void GraphicsTCOD::render(){
-        
-	c = new colorTableTCOD();
 
+	entMap->refreshEntityMap();
+	renderTiles();
+	
+
+
+	TCODConsole::blit(output, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
+	TCODConsole::flush();
+
+
+}    
+
+	
+
+void GraphicsTCOD::renderTiles(){
+	
+	c = new colorTableTCOD();
+	
 	int x, y;	
         for(x=0;x<MAP_WIDTH;x++){                                                                         
                 for(y=0;y<MAP_HEIGHT;y++){                                                                
@@ -89,12 +109,41 @@ void GraphicsTCOD::render(){
 				}                                                        
 			}                                                  
 		}                  
-	} 
+	}
 
 
-	TCODConsole::blit(output, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
-	TCODConsole::flush();
+	int color;
+	char *ent;
 
 
-}    
+	for (x = 0; x < MAP_WIDTH; x++){
+		for (y = 0; y < MAP_HEIGHT; y++){
+			if(entMap->checkOccupied(x, y)){
+				current = entMap->outputEntity(x, y);
+				int color = current->getColor();
+				output->setDefaultForeground(c->color(DARK_GROUND));
+				output->print(x, y, current->getSymbol());
+			}
+		}
+	}
+}
+
+
+void GraphicsTCOD::clearScreen(){
+
+	output->clear();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 

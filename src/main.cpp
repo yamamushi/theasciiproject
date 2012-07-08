@@ -73,39 +73,31 @@ int main(
 	// We'll set the foreground color once now and modify it as necessary when in our game loop
 	
 	Map *map = new Map(MAP_WIDTH, MAP_HEIGHT);
-	GraphicsTCOD *output = new GraphicsTCOD(map);
-
 	Dungeon *dgn = new Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
-
-
-	Entity *player = new Entity();
 	
-	// Create an npc, for testing purposes only, this will be moved!
-	Entity *npc = new Entity();
+	EntityMap *entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT);
+	Entity *player = new Player();
 
-	Entity **tArray[2];
-	tArray[0] = &player;
-	tArray[1] = &npc;
+
+	GraphicsTCOD *output = new GraphicsTCOD(map, entMap);
+
+	entMap->addToMap(player);
+
+	entMap->initAllEnts(map);
+
 	
-	Entity * scan;
-	int ray;
-	int si = sizeof tArray/sizeof(Entity **);
+
+	//int si = sizeof tArray/sizeof(Entity **);
 	
 
 	// lets build our map o_o;;
 	int pX = map->rooms[1]->cX;
 	int pY = map->rooms[1]->cY;	
 	
-	player->init_in_world(map);
 	player->move(map, pX, pY);
 	
 	kboard->initKeyboard(pX, pY);
 	
-	int nX = map->rooms[10]->cX;
-	int nY = map->rooms[10]->cY;	
-
-	npc->move(map, nX, nY);
-
 	TCODMap *tcodMap = new TCODMap(MAP_WIDTH, MAP_HEIGHT);
 
 	//output->render();
@@ -150,6 +142,8 @@ int main(
 			scan->clean(output->output);
 		}	
 		*/
+
+		output->clearScreen();
 		quit = kboard->handleKeys(player, map);
 		if(quit) break;		
 

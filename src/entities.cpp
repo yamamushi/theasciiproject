@@ -40,8 +40,9 @@
 
 
 void Entity::init_entity(char* p, int set_color){
+	
 	symbol = p;
-	color = set_color;
+	myColor = set_color;
 	X = 0;
 	Y = 0;
 	
@@ -72,11 +73,11 @@ bool Entity::move(Map *destination, int dx, int dy){
 
 int Entity::posX(){
 	return X;
-};
+}
 
 int Entity::posY(){
 	return Y;
-};
+}
 
 
 
@@ -85,24 +86,24 @@ void Entity::init_in_world(Map *destination){
 	Map *world = destination;
 	initialized = true;
 
-};
+}
 
 
 
 int Entity::getColor(){
 
-	return color;
+	return myColor;
 
-};
-
-
+}
 
 
-char* Entity::getSymbol(){
+
+
+char *Entity::getSymbol(){
 
 	return symbol;
 
-};
+}
 
 
 bool Entity::isInitialized(){
@@ -179,7 +180,7 @@ void EntityMap::initEntityMap(int x, int y){
 
 	width = x;
 	height = y;
-	
+
 
 }
 
@@ -191,8 +192,7 @@ void EntityMap::addToMap(Entity *entity){
 	x = src->posX();
 	y = src->posY();
 	pos[x][y].push_back(src);
-
-
+	
 }
 
 
@@ -232,6 +232,90 @@ void EntityMap::initAllEnts(Map *destination){
 		}
 	}
 }
+
+
+
+void EntityMap::refreshEntityMap(){
+
+	int x, y, z;
+
+	for ( x = 0; x < width; x++){
+		for ( y = 0; y < height; y++){
+			if( !(pos[x][y].empty()) ){
+				for ( z = 0; z < pos[x][y].size(); z++){
+					// check each entity in this vector
+					// move entity to new vector
+					// coordinates at x and y
+					
+					// First we check to see if this entities
+					// coordinates differ from our own:
+					Entity *cur = pos[x][y].at(z);
+
+					if ( (x != (cur->posX())) || (y != (cur->posY())) ){
+						// now we do some magic
+						int newX = cur->posX();
+						int newY = cur->posY();
+
+						pos[newX][newY].push_back(cur);
+						pos[x][y].clear();
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+bool EntityMap::checkOccupied(int x, int y){
+
+	if ( !(pos[x][y].empty()) ){
+		return true;
+	}
+	else
+		return false;
+}
+
+
+Entity * EntityMap::outputEntity(int x, int y){
+
+	if ( !(pos[x][y].empty()) ){
+		Entity *current = pos[x][y].back();
+		return current;
+	}
+}
+
+
+/*
+char *EntityMap::outputSymbolsMap(int x, int y){
+
+	int x, y;
+
+	for (x = 0; x < width; x++){
+		for ( y = 0; y < width; y++){
+			if ( !(pos[x][y].empty()) ){
+	
+				Entity *current = pos[x][y].back();
+				symbolTable[x][y] = current->getSymbol();
+
+			}
+			else {
+				//colorTable[x][y] = NONE;
+			}
+		}
+	}
+
+}
+
+*/
+
+
+
+
 
 
 

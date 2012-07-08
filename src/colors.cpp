@@ -56,6 +56,8 @@ void colorTableTCOD::initColorTable(){
 	colorTable[LIGHT_WALL] = &light_wall; 
 	TCODColor light_ground(200, 180, 50);
 	colorTable[LIGHT_GROUND] = &light_ground;
+	TCODColor white(0, 0, 0);
+	colorTable[WHITE] = &white;
 
 }
 

@@ -43,10 +43,10 @@ class EntityMap;
 class Entity {
 	private:
 
-		int color;
 		int X, Y;
-		char* symbol;
+		char *symbol;
 		Map *world;
+		int myColor;
 
 		bool initialized;
 
@@ -66,7 +66,7 @@ class Entity {
 
 
 		int getColor();
-		char* getSymbol();
+		char *getSymbol();
 
 		bool isInitialized();
 
@@ -88,18 +88,31 @@ class EntityMap {
 
 		int width, height;
 		vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
+		
+		int colorMap[MAP_WIDTH][MAP_HEIGHT];
+		char *symbolTable[MAP_WIDTH][MAP_HEIGHT];
 
-
+		Entity *current;
 
 	public:
 
+		Entity *player;
+
+
 		EntityMap(int x, int y);
 		void initEntityMap(int x, int y);
+		void refreshGraphicsMap();
+
 		void addToMap(Entity *entity);
 		void createEntity(int type);
 
 
 		void initAllEnts(Map *destination);
+		void refreshEntityMap();
+
+		bool checkOccupied(int x, int y);
+		Entity * outputEntity(int x, int y);
+
 
 
 };

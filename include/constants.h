@@ -57,8 +57,9 @@
 
 
 enum colors {                                                                                             
+
+        RANDOM,
         NONE,
-        WHITE,
         DARK_WALL,
         DARK_GROUND,                                                                                      
         LIGHT_WALL,
@@ -69,6 +70,7 @@ enum colors {
         YELLOW,                                                                                           
         GOLD,                                                                                             
 	RED,
+	WHITE,
 
 }; 
 

@@ -46,14 +46,18 @@ class GraphicsTCOD {
 	
 		colorTableTCOD *c;
 		Map *input;
+		EntityMap *entMap;
+		Entity *current;
 
 	public:
 
 		
 		TCODConsole *output;
-		GraphicsTCOD(Map *sourceMap);
-		void init(Map *sourceMap);
+		GraphicsTCOD(Map *sourceMap, EntityMap *entMap);
+		void init(Map *sourceMap, EntityMap *entMap);
 		void render();
+		void renderTiles();
+		void clearScreen();
 
 
 };

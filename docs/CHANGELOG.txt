@@ -1,3 +1,13 @@
+0.0.0d
+Cleaning more things up, finally settled on a base framework for entity placement and
+	management.
+There is an issue with entity colors not being passed properly, or with the rendering engine,
+	I haven't figured out which is responsible but it is a glaring bug that
+	will need to be addressed before I continue.
+
+
+
+
 0.0.0c
 FOV is working! At least in basic terms, it's not clean but it certainly works for now!
 I got caught up for several hours on computing it properly all because I couldn't bother to read some
