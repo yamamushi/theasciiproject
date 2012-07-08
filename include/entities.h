@@ -46,7 +46,6 @@ class Entity {
 		int X, Y;
 		char *symbol;
 		Map *world;
-		int myColor;
 
 		bool initialized;
 
@@ -55,17 +54,18 @@ class Entity {
 	public:
 
 
-		void init_entity( char* symbol, int set_color);
+		void init_entity( char* symbol );
 		bool move(Map *destination, int dx, int dy);
 		int posX();
 		int posY();
 		int type;
-
+		bool fov[MAP_WIDTH][MAP_HEIGHT];
+		float H, S, V;
+		int R, G, B;
 
 		void init_in_world(Map *destination);
 
 
-		int getColor();
 		char *getSymbol();
 
 		bool isInitialized();
@@ -98,7 +98,6 @@ class EntityMap {
 
 		Entity *player;
 
-
 		EntityMap(int x, int y);
 		void initEntityMap(int x, int y);
 		void refreshGraphicsMap();
@@ -111,7 +110,7 @@ class EntityMap {
 		void refreshEntityMap();
 
 		bool checkOccupied(int x, int y);
-		Entity * outputEntity(int x, int y);
+		Entity * outputLastEntity(int x, int y);
 
 		int checkColor(int x, int y);
 
@@ -132,12 +131,8 @@ class Monster : public Entity {
 	public:
 
 		Monster();
-		void initMonster( int x=0, int y=0);
 
 };
-
-
-
 
 
 
@@ -145,5 +140,14 @@ class Player : public Entity {
 
 	public:
 		Player();
+
+};
+
+
+
+class Goblin : public Entity {
+
+	public:
+		Goblin();
 
 };

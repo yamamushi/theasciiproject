@@ -77,27 +77,32 @@ int main(
 	
 	EntityMap *entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT);
 	Entity *player = new Player();
+	Goblin *goblin = new Goblin();
 
+	GraphicsTCOD *output = new GraphicsTCOD(map, entMap, player);
 
-	GraphicsTCOD *output = new GraphicsTCOD(map, entMap);
-
+	
+	entMap->addToMap(goblin);
 	entMap->addToMap(player);
-
+	
 	entMap->initAllEnts(map);
 
-	
-
 	//int si = sizeof tArray/sizeof(Entity **);
-	
 
 	// lets build our map o_o;;
 	int pX = map->rooms[1]->cX;
 	int pY = map->rooms[1]->cY;	
 	
 	player->move(map, pX, pY);
-	
+
+	goblin->move(map, pX-1, pY-1);
+
+
+
+	entMap->initAllEnts(map);
 	kboard->initKeyboard(pX, pY);
-	
+
+
 	TCODMap *tcodMap = new TCODMap(MAP_WIDTH, MAP_HEIGHT);
 
 	//output->render();
@@ -119,9 +124,11 @@ int main(
 						if((tcodMap->isInFov(x,y))){
 							map->virtMap[x][y]->visible = true;
 							map->virtMap[x][y]->explored = true;
+							player->fov[x][y] = true;
 						}
 						else {
 							map->virtMap[x][y]->visible = false;
+							player->fov[x][y] = false;
 						}
 					}
 				}

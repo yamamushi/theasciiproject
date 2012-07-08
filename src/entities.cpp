@@ -39,16 +39,31 @@
 #include "headers.h"
 
 
-void Entity::init_entity(char* p, int set_color){
+void Entity::init_entity(char* p){
 	
 	symbol = p;
-	myColor = set_color;
 	X = 0;
 	Y = 0;
 	
+	H = 0;
+	S = 0;
+	V = 0;
+
+	R = 0;
+	G = 0;
+	B = 0;
+
+
+
+	
 	initialized = false;
 
-
+	int x, y;
+	for ( x=0; x < MAP_WIDTH; x++){
+		for ( y=0; y < MAP_HEIGHT; y++){
+			fov[x][y] = false;
+		}
+	}
 }
 
 
@@ -85,16 +100,10 @@ void Entity::init_in_world(Map *destination){
 
 	Map *world = destination;
 	initialized = true;
+	
 
 }
 
-
-
-int Entity::getColor(){
-
-	return myColor;
-
-}
 
 
 
@@ -258,7 +267,6 @@ void EntityMap::refreshEntityMap(){
 
 						pos[newX][newY].push_back(cur);
 						pos[x][y].clear();
-						colorTable[x][y] = cur->getColor();
 					}
 					else{
 						colorTable[x][y] = LIGHT_GROUND;
@@ -286,7 +294,7 @@ bool EntityMap::checkOccupied(int x, int y){
 }
 
 
-Entity * EntityMap::outputEntity(int x, int y){
+Entity * EntityMap::outputLastEntity(int x, int y){
 
 	if ( !(pos[x][y].empty()) ){
 		Entity *current = pos[x][y].back();
@@ -360,17 +368,7 @@ int EntityMap::checkColor(int x, int y){
 
 Monster::Monster(){
 
-	init_entity( "@", RED );
-
-}
-
-
-
-void Monster::initMonster(int x, int y){
-
-	int z, i;
-	i = x;
-	z = y;
+	init_entity( "M" );
 
 }
 
@@ -379,25 +377,22 @@ void Monster::initMonster(int x, int y){
 
 Player::Player(){
 
-	init_entity( "@", WHITE);
+	init_entity("@");
+	H = 0.0;
+	S = 0.0;
+	V = 1.0;
 
 }
 
 
 
 
+Goblin::Goblin(){
 
+	init_entity("g");
+	H = 107.0;
+	S = 1.0;
+	V = 0.40;
 
-
-
-
-
-
-
-
-
-
-
-
-
+}
 

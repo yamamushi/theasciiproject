@@ -44,24 +44,22 @@
 
 
 
-GraphicsTCOD::GraphicsTCOD(Map *sourceMap, EntityMap *EntMap){
-	init(sourceMap, EntMap);
+GraphicsTCOD::GraphicsTCOD(Map *sourceMap, EntityMap *EntMap, Entity *player){
+	init(sourceMap, EntMap, player);
 }
 
 
-void GraphicsTCOD::init(Map *sourceMap, EntityMap *EntMap){
+void GraphicsTCOD::init(Map *sourceMap, EntityMap *EntMap, Entity *player){
 
 	input = sourceMap;
 	entMap = EntMap;
-	
-	
-	
+	localPlayer = player;
 	
 	
 	TCODConsole::initRoot(MAIN_WIDTH,MAIN_HEIGHT,"The ASCII Project",false,TCOD_RENDERER_SDL);
         TCODConsole *tmp = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
         output = tmp;
-	TCODConsole::root->setDefaultForeground(TCODColor::white);
+	//TCODConsole::root->setDefaultForeground(TCODColor::white);
 
 
 
@@ -73,9 +71,11 @@ void GraphicsTCOD::init(Map *sourceMap, EntityMap *EntMap){
 
 
 void GraphicsTCOD::render(){
-
+	
 	entMap->refreshEntityMap();
+
 	renderTiles();
+	renderEntities();
 	
 
 
@@ -89,28 +89,16 @@ void GraphicsTCOD::render(){
 
 void GraphicsTCOD::renderTiles(){
 	
-	c = new colorTableTCOD();
-	
 	int x, y;	
-	int color;
-	char *ent;
-       
-        float H, S, V;	
+        
+	// These are for our HSV mappings 
+	float H, S, V;	
 	float HD, SD, VD;
 	
 	
 	
 	for(x=0;x<MAP_WIDTH;x++){                                                                         
                 for(y=0;y<MAP_HEIGHT;y++){
-			//	current = entMap->outputEntity(x, y);
-			//	int color = current->getColor();
-			//if (!(entMap->checkOccupied(x, y))){
-				//color = entMap->checkColor(x, y);
-				//output->setCharForeground(x, y, c->color(color));
-			//	output->setCharForeground(x, y, c->color(WHITE));
-			//	output->print(x, y, current->getSymbol());
-			//	}
-
                         if (input->virtMap[x][y]->is_explored()){                                       
 					
 					H = input->virtMap[x][y]->H;
@@ -121,9 +109,9 @@ void GraphicsTCOD::renderTiles(){
 					VD = input->virtMap[x][y]->VD;
 
 				if (input->virtMap[x][y]->is_sight_blocked()){        
-				     	output->setCharBackground(x, y, TCODColor(HD, SD, VD));//TCOD_color_RGB(0, 0, 100));// c->color(DARK_WALL));
+				     	output->setCharBackground(x, y, TCODColor(HD, SD, VD));
 					     	if (input->virtMap[x][y]->visible){    
-						     		output->setCharBackground(x, y, TCODColor(H, S, V));// c->color(LIGHT_WALL)); 
+						     		output->setCharBackground(x, y, TCODColor(H, S, V));
 						}                                                     
 				}
 				else{
@@ -137,6 +125,64 @@ void GraphicsTCOD::renderTiles(){
 	}
 
 }
+
+
+
+void GraphicsTCOD::renderEntities(){
+
+	int x, y, z;
+	float H, HD, S, SD, V, VD;
+	char *symbol;
+
+	x = localPlayer->posX();
+	y = localPlayer->posY();
+
+	H = localPlayer->H;
+	S = localPlayer->S;
+	V = localPlayer->V;
+
+	output->setDefaultForeground(TCODColor(H, S, V));
+
+	symbol = localPlayer->getSymbol();
+
+	output->print(x, y, symbol);
+	
+	
+	for (x=0;x<MAP_WIDTH;x++){
+		for(y=0;y<MAP_HEIGHT;y++){
+			if (localPlayer->isInitialized()){
+				if ( !(x == localPlayer->posX()) || !(y == localPlayer->posY()) ){
+			       		if (localPlayer->fov[x][y]){
+						if ( (entMap->checkOccupied(x, y)) ){
+							scan = entMap->outputLastEntity(x, y);
+							H = scan->H;
+							S = scan->S;
+							V = scan->V;
+							output->setDefaultForeground(TCODColor(H, S, V));
+							symbol = scan->getSymbol();
+							output->print(x, y, symbol);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 void GraphicsTCOD::clearScreen(){
