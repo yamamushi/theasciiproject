@@ -1,36 +1,41 @@
+
 The ASCII Project
 =================
+http://www.theasciiproject.com
+IRC = freenode.net ##asciimmo
+Yamamushi - yamamushi@gmail.com
+
+
+
+
+The goal of "The ASCII Project" is to develop a Unicode graphics based "Roguelike" MMORPG engine which operates a persistent world driven by a player-run economy.
+
+GOALS
+=====
+
+	* Players can "destroy" and place blocks and items to create persistent structures, in much the same way that Minecraft allows players to work together to build constructions.
+
+	* The game world will run and operate independent of player-input. NPC's will continue to develop and operate when nobody is logged into the server.
+
+	* The game world will operate in a 3-Dimensional space, allowing for an "advanced" physics engine and opening the door to new possibilities.
+
+	* NPC's will operate independent of eachother, in that each has the ability to make their own decisions based on their relationships with players and other NPC's.
+
+	* The above mentioned relationships will continue to develop amongst NPC's without any player input.
+
+	* TBA - I would rather be coding that writing up this readme file, please refer to the homepage at http://www.theasciiproject.com and the wiki at http://www.theasciiproject.com/wk/ for more information.
+
+
+
+NOTES
+===== 
+
+* Various documents of interest are located in docs/, and licenses where necessary have been included in licenses/. If you are new to this project and are just trying to figure out what this is all about, please refer to docs/ABOUT.txt
+
+* The largest online repository of information about this project can be found on our wiki at http://www.theasciiproject.com/wk/ , some of it may be dated as of the time of writing this document, however it does house the most consolidated collections of ideas and goals for this project.
+
+
+=============================================
 Copyright (c) 2012 Jonathan Rumion
 Source code is available from:
 * https://github.com/yamamushi/theasciiproject
-
-
-Please refer to docs/TODO.txt for information about what is currently being worked on.
-I plan on moving this information over to a single website, but for the time being I'll be publishing devlog information here.
-
-
-
-
-Visitors should refer to http://www.theasciiproject.com for more information, though at the time of writing this document that website is (very much) out of date. 
-
-
-Various documents of interest are located in docs/, and licenses where necessary have been included in licenses/.
-
-
-
-
-
-
-
-
-The goal of "The ASCII Project" is to develop a Unicode-based MMORPG, based on a persistent world driven by a player-run economy.
-
-The interface will resemble existing rogue-like projects, such as Dwarf Fortress and Nethack, with the heavy use of a text based interface - thus allowing for more development time to focus on engine features without the constant overhead of interfacing with a heavy (3D) graphics front end.
-
-It's difficult to assign the project to a specific genre, as the "Tech" research portion of the engine allows for the game world to move forward from a fantasy based game into a sci-fi based game as (much) time progresses. However for the purposes of describing the initial state of the game world, "Fantasy-Based" will suffice.
-
-Players will be able to form relationships with each other as well as NPCs to establish tribes, villages, cities and perhaps even entire nations. All of this will be driven by a server-side "Relationship Engine", allowing for evolving NPC relationships without requiring player interaction.
-
-The relationship "level" between characters and NPCs will be used to determine procedural generation parameters for the evolving state of the game world. For instance, an NPC who is enemies with a given alliance may be more willing to assist players with an attack or may even pursue an attack on their own without player interaction being necessary.
-
-Originally the server-side code was planned to be closed source, however I feel that is a poor direction for this project and everything will remain open source and covered under the GPLv3.
