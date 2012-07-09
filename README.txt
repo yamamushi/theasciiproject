@@ -6,9 +6,9 @@ IRC = freenode.net ##asciimmo
 Yamamushi - yamamushi@gmail.com
 
 
+The overall aim of "The ASCII Project" is to develop a Unicode graphics based "Roguelike" MMORPG engine which operates a persistent world driven by a player-run economy.
 
 
-The goal of "The ASCII Project" is to develop a Unicode graphics based "Roguelike" MMORPG engine which operates a persistent world driven by a player-run economy.
 
 GOALS
 =====
