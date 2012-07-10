@@ -5,30 +5,56 @@ Copyright (c) 2012 Jonathan Rumion
 
 
 
-0.0.0e
-Cleaned up quite a lot with this push, finally settled on a coloring system thatwas wasy to manage and was fairly portable. 
+0.0.0d
+Actually there aren't many large changes in this push.
 
-From here I'll add a few more features to entities and the entity map that allows for entities that exist on different map layers to populate  a single entity map. 
+I have started using NetBeans as an IDE because of it's portability and minimal 
+interference. Because of this, you will notice that there is now a directory
+labeled "nbproject" in the project files.
+
+I believe, however don't quote me on this, that this will allow people to import
+this project into netbeans with minimal effort.
+
+Until next changelog update,
+-Yamamushi
+
+
+
+
+
+0.0.0e
+Cleaned up quite a lot with this push, finally settled on a coloring system that
+was wasy to manage and was fairly portable. 
+
+From here I'll add a few more features to entities and the entity map that 
+allows for entities that exist on different map layers to populate a single 
+entity map. 
 
 
 
 
 
 0.0.0d
-Cleaning more things up, finally settled on a base framework for entity placement and management.
+Cleaning more things up, finally settled on a base framework for entity 
+placement and management.
 
-There is an issue with entity colors not being passed properly, or with the rendering engine, I haven't figured out which is responsible but it is a glaring bug that will need to be addressed before I continue.
+There is an issue with entity colors not being passed properly, or with the 
+rendering engine, I haven't figured out which is responsible but it is a glaring 
+bug that will need to be addressed before I continue.
 
 
 
 
 
 0.0.0c
-FOV is working! At least in basic terms, it's not clean but it certainly works for now!
+FOV is working! At least in basic terms, it's not clean but it certainly works 
+for now!
 
-I got caught up for several hours on computing it properly all because I couldn't bother to read some documention properly.
+I got caught up for several hours on computing it properly all because I 
+couldn't bother to read some documention properly.
 
-Next up, likely more cleanup and organization before we continue, but we're slowly getting there!
+Next up, likely more cleanup and organization before we continue, but we're 
+slowly getting there!
 
 
 
@@ -37,20 +63,24 @@ Next up, likely more cleanup and organization before we continue, but we're slow
 0.0.0b
 More improvements on the room generator - halls now auto generate.
 
-Bounds checking has been broken up into pieces - Map object still has a function to see if a point is in a valid spot however.
+Bounds checking has been broken up into pieces - Map object still has a function 
+to see if a point is in a valid spot however.
 
 
 
 
 0.0.0a
 
-Basic room generator written. It will create a group of rooms that don't intersect, and put the player in one of them.
+Basic room generator written. It will create a group of rooms that don't 
+intersect, and put the player in one of them.
 
-Bounds checking in place, but will be moved elsewhere as it does not belong in a Map object.
+Bounds checking in place, but will be moved elsewhere as it does not belong in a 
+Map object.
 
 
 
 
 0.0.0
 
-Basic game engine, VERY basic game engine. Slowly making fixes and modifications with long term development in mind.
+Basic game engine, VERY basic game engine. Slowly making fixes and modifications 
+with long term development in mind.
