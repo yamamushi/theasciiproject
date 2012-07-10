@@ -4,16 +4,45 @@ to compile and work properly.
 You can grab it from: http://doryen.eptalys.net/libtcod/
 
 
-If you want to install it as a shared library in /usr/lib/ , that will 
+** Linux Users **
+
+If you want to install libtcod as a shared library in /usr/lib/ , that will 
 make things easier as there are no plans to distribute the libtcod.so 
-library with this project at this time. Otherwise you can stick the 
-libtcod.so and libtcodxx.so files in this directory to build this 
-project properly.
+and libtcodcxx.so linux libraries with this project at this time. 
+Otherwise you can stick the libtcod.so and libtcodxx.so files in 
+this directory to build this project properly.
 
-Building is as simple as running "make" - however there is no 
-installation step included at this time.
 
-Once you have a built binary, you can run it with "./main"
+
+** OSX Users *
+
+Compiling libtcod was rather painful on my OSX machine,
+so I've included the required *.dylib files under
+the "osx/" directory.
+
+You can copy these over to /usr/lib/ and you should be
+good to go, assuming that you have the other dependencies
+for libtcod installed already.
+
+You'll have to visit the libtcod website referenced above
+for more information on what those dependencies are. Mainly
+you're going to want to get libSDL installed.
+
+The SDL library can be found over at 
+http://www.libsdl.org/download-1.2.php .
+
+
+
+** IMPORTANT **
+
+Because I know someone out there isn't going to read this,
+there are different makefiles for different OS's included in
+the "makefiles/" directory.
+
+Copy one of those files that corresponds to your OS into the
+main directory as "Makefile" and run "make".
+
+Once you have a built binary, you can run it with "./client"
 
 -Yamamushi (Jon Rumion)
 yamamushi@gmail.com
