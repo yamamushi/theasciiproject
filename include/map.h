@@ -45,6 +45,7 @@ class Tile {
 		int posX, posY;
 		float H, S, V, HD, SD, VD;
 		int R, G, B, RD, GD, BD;
+                int TypeID, subTypeID;
 
 
 
@@ -112,7 +113,7 @@ class Room {
 
 		friend class Map;
 
-};	
+};
 
 
 class Hall {
@@ -141,17 +142,17 @@ class Map {
 		Hall *halls[MAX_HALLS];
 		int numHalls;
 
-		Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];	
+		Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];
 
 
 		Map(int, int);
 		void initMap(int, int);
-		
-		
+
+
 		void clearMap();
 		void refreshMap();
 		bool checkBounds(int, int);
-		
+
 		void createRoom(int, int, int, int);
 		void drawRoom(int i);
 		void drawAllRooms();

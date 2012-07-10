@@ -58,7 +58,7 @@ class Entity {
 		bool move(Map *destination, int dx, int dy);
 		int posX();
 		int posY();
-		int type;
+		int TypeID, subTypeID;
 		bool fov[MAP_WIDTH][MAP_HEIGHT];
 		float H, S, V;
 		int R, G, B;
@@ -83,12 +83,12 @@ class Entity {
 
 
 class EntityMap {
-	
+
 	private:
 
 		int width, height;
-		vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
-		
+                vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
+
 		int colorTable[MAP_WIDTH][MAP_HEIGHT];
 		char *symbolTable[MAP_WIDTH][MAP_HEIGHT];
 
@@ -124,6 +124,8 @@ class EntityMap {
 
 
 
+// These entities are for testing purposes only
+// and will be moved in the coming days.
 
 
 class Monster : public Entity {
@@ -135,14 +137,12 @@ class Monster : public Entity {
 };
 
 
-
 class Player : public Entity {
 
 	public:
 		Player();
 
 };
-
 
 
 class Goblin : public Entity {

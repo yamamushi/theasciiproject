@@ -115,10 +115,6 @@ Wall::Wall(bool blked){
 
 }
 
-
-
-
-
 Floor::Floor(bool blked){
 
 	block_sight = blked;
@@ -141,16 +137,13 @@ Floor::Floor(bool blked){
 
 
 
-
-
-
 Rect::Rect(int x, int y, int w, int h){
 	initRect(x, y, w, h);
 }
 
 void Rect::initRect(int x, int y, int w, int h){
-	
-	
+
+
 	x1 = x;
 	y1 = y;
 	x2 = x + w;
@@ -164,17 +157,14 @@ void Rect::initRect(int x, int y, int w, int h){
 
 
 
-
-
 Room::Room(int x, int y, int w, int h){
 	initRoom(x, y, w, h);
 }
 
-
 void Room::initRoom(int x, int y, int w, int h){
-	
+
 	Rect *dim = new Rect(x, y, w, h);
-	
+
 	x1 = dim->x1;
 	x2 = dim->x2;
 	y1 = dim->y1;
@@ -184,8 +174,6 @@ void Room::initRoom(int x, int y, int w, int h){
 	cY = dim->cY;
 	delete (dim);
 }
-
-
 
 bool Room::doesContainPoint(int x, int y){
 
@@ -209,25 +197,12 @@ bool Room::doesIntersect(Room *other){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 Hall::Hall(int x, int z, int i, int dir){
 	initHall( x, z, i, dir);
 }
 
-
 void Hall::initHall(int x, int z, int i, int d){
-	
+
 	x1 = min(x, z);
 	x2 = max(x, z);
 	y = i;
@@ -235,18 +210,6 @@ void Hall::initHall(int x, int z, int i, int d){
 	dir = d;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -266,12 +229,10 @@ void Map::initMap(int i, int z){
 	for ( x = 0; x < i; x++){
 		for ( y = 0; y < z; y++){
 			virtMap[x][y] = new Wall();
-	       	}	
+	       	}
 	}
 
 }
-
-
 
 void Map::clearMap(){
 
@@ -284,9 +245,6 @@ void Map::clearMap(){
 
 }
 
-
-
-
 void Map::refreshMap(){
 
 	for (x=0; x < wid; x++){
@@ -297,9 +255,6 @@ void Map::refreshMap(){
 
 }
 
-
-
-
 bool Map::checkBounds(int posX, int posY){
 
 	if (virtMap[posX][posY]->is_blocked() || posX <= 0 || posX >= MAP_WIDTH || posY < 0 || posY >= MAP_HEIGHT)
@@ -308,16 +263,12 @@ bool Map::checkBounds(int posX, int posY){
 		return true;
 }
 
-
 void Map::createRoom(int x, int y, int z, int i){
 
 	rooms[numRooms] = new Room(x, y, z, i);
 	numRooms++;
 
-}	
-
-
-
+}
 
 void Map::drawRoom(int i){
 
@@ -329,8 +280,6 @@ void Map::drawRoom(int i){
 	}
 }
 
-
-
 void Map::drawAllRooms(){
 
 	for(z=0; z < numRooms; z++){
@@ -339,12 +288,6 @@ void Map::drawAllRooms(){
 
 }
 
-
-
-
-
-
-
 void Map::createHall(int x, int y, int z, int dir){
 
 	halls[numHalls] = new Hall(x, y, z, dir);
@@ -352,9 +295,8 @@ void Map::createHall(int x, int y, int z, int dir){
 
 }
 
-
 void Map::drawHall(int i){
-	
+
 	if ( ((halls[i]->dir) == 0)){
 		for( x = halls[i]->x1; x < halls[i]->x2; x++){
 			delete virtMap[x][halls[i]->y];
@@ -377,17 +319,10 @@ void Map::drawAllHalls(){
 	}
 }
 
-
-
-
-
-
-
 void Map::importRoom(Room *source){
 	rooms[numRooms] = source;
 	numRooms++;
 }
-
 
 void Map::importAllRooms(Map *source){
 	Map *tmp = source;
@@ -399,31 +334,21 @@ void Map::importAllRooms(Map *source){
 	}
 }
 
-
 void Map::clearRooms(){
 	for(x = 0; x < numRooms; x++){
 		clearRoom(x);
 	}
 }
 
-
 void Map::clearRoom(int x){
 	delete rooms[x];
 	numRooms--;
 }
 
-
-
-
-
-
-
 void Map::importHall(Hall *source){
 	halls[numHalls] = source;
 	numHalls++;
 }
-
-
 
 void Map::importAllHalls(Map *source){
 	Map *tmp = source;
@@ -435,22 +360,15 @@ void Map::importAllHalls(Map *source){
 	}
 }
 
-
 void Map::clearHall(int x){
 	delete halls[x];
 	numHalls--;
 }
 
-
 void Map::clearHalls(){
 	for ( x=0; x < numHalls; x++)
 		clearHall(x);
 }
-
-
-
-
-
 
 void Map::copyVirtMap(Map *source){
 
@@ -463,8 +381,6 @@ void Map::copyVirtMap(Map *source){
 	}
 }
 
-
-
 void Map::importMap(Map *source){
 
 	Map *tmp = source;
@@ -473,42 +389,10 @@ void Map::importMap(Map *source){
 	clearRooms();
 	clearHalls();
 
-	importAllRooms(tmp);	
+	importAllRooms(tmp);
 	importAllHalls(tmp);
 
 	drawAllRooms();
 	drawAllHalls();
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

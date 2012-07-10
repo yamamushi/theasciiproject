@@ -48,16 +48,22 @@
 using namespace std;
 
 
-// Followed by custom headers
 
+// Our global constants
 #include "constants.h"
 
-#include "map.h"
+
+// 3rd party headers (currently only one in use)
 #include "libtcod.hpp"
 
+
+// Followed by custom headers
+
+#include "map.h"
 #include "entities.h"
+
 #include "keyboard.h"
-#include "colors.h"
+
 
 #include "dungeon.h"
 
