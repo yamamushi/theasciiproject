@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="80">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df name="theasciiproject" root=".">
+      <df name="build">
+      </df>
+      <df name="docs">
+      </df>
+      <df name="include">
+        <df name="gui">
+          <in>button.hpp</in>
+          <in>container.hpp</in>
+          <in>flatlist.hpp</in>
+          <in>gui.hpp</in>
+          <in>hbox.hpp</in>
+          <in>image.hpp</in>
+          <in>label.hpp</in>
+          <in>radiobutton.hpp</in>
+          <in>slider.hpp</in>
+          <in>statusbar.hpp</in>
+          <in>textbox.hpp</in>
+          <in>togglebutton.hpp</in>
+          <in>toolbar.hpp</in>
+          <in>vbox.hpp</in>
+          <in>widget.hpp</in>
+        </df>
+        <in>bresenham.h</in>
+        <in>bresenham.hpp</in>
+        <in>bsp.h</in>
+        <in>bsp.hpp</in>
+        <in>color.h</in>
+        <in>color.hpp</in>
+        <in>colors.h</in>
+        <in>console.h</in>
+        <in>console.hpp</in>
+        <in>console_types.h</in>
+        <in>constants.h</in>
+        <in>dungeon.h</in>
+        <in>entities.h</in>
+        <in>fov.h</in>
+        <in>fov.hpp</in>
+        <in>fov_types.h</in>
+        <in>graphics.h</in>
+        <in>headers.h</in>
+        <in>heightmap.h</in>
+        <in>heightmap.hpp</in>
+        <in>image.h</in>
+        <in>image.hpp</in>
+        <in>keyboard.h</in>
+        <in>lex.h</in>
+        <in>lex.hpp</in>
+        <in>libtcod.h</in>
+        <in>libtcod.hpp</in>
+        <in>libtcod_int.h</in>
+        <in>list.h</in>
+        <in>list.hpp</in>
+        <in>map.h</in>
+        <in>mersenne.h</in>
+        <in>mersenne.hpp</in>
+        <in>mersenne_types.h</in>
+        <in>mouse.h</in>
+        <in>mouse.hpp</in>
+        <in>mouse_types.h</in>
+        <in>namegen.h</in>
+        <in>namegen.hpp</in>
+        <in>noise.h</in>
+        <in>noise.hpp</in>
+        <in>noise_defaults.h</in>
+        <in>parser.h</in>
+        <in>parser.hpp</in>
+        <in>path.h</in>
+        <in>path.hpp</in>
+        <in>sys.h</in>
+        <in>sys.hpp</in>
+        <in>tree.h</in>
+        <in>tree.hpp</in>
+        <in>txtfield.h</in>
+        <in>txtfield.hpp</in>
+        <in>wrappers.h</in>
+        <in>zip.h</in>
+        <in>zip.hpp</in>
+      </df>
+      <df name="licenses">
+      </df>
+      <df name="makefiles">
+      </df>
+      <df name="osx">
+      </df>
+      <df name="src">
+        <in>colors.cpp</in>
+        <in>dungeon.cpp</in>
+        <in>entities.cpp</in>
+        <in>graphics.cpp</in>
+        <in>keyboard.cpp</in>
+        <in>main.cpp</in>
+        <in>map.cpp</in>
+      </df>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath></executablePath>
+          <ccTool>
+            <incDir>
+              <pElem>src</pElem>
+              <pElem>.</pElem>
+              <pElem>include</pElem>
+            </incDir>
+          </ccTool>
+        </makeTool>
+      </makefileType>
+      <item path="include/gui/button.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/gui/container.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/gui/flatlist.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/gui/gui.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/gui/hbox.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/gui/image.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/gui/label.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/gui/radiobutton.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/gui/slider.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/gui/statusbar.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/gui/textbox.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/gui/togglebutton.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/gui/toolbar.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/gui/vbox.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/gui/widget.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod_int.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/wrappers.h" ex="true" tool="3" flavor="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
