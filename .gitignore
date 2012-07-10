@@ -15,4 +15,11 @@
 *.swp
 *.swo
 *.local
+
+
+# Not really a point in distributing
+# Prebuilt binaries at this point
+client
+
+# Netbeans stuff 
 /nbproject/private/
