@@ -2,8 +2,8 @@ The ASCII Project
 ==================================================================
 
 build		-	This is a temp directory used during compilation time
-			It should be empty when you first check out this project.
-	
+			It should be empty when you first check out this project
+
 include		-	Contains headers for this project
 
 src		-	Contains source files for this project
