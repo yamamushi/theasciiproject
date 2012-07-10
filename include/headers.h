@@ -61,11 +61,13 @@ using namespace std;
 
 #include "map.h"
 #include "entities.h"
+#include "dungeon.h"
+#include "dungeon.h"
 
+// This will be rewritten "soon"
 #include "keyboard.h"
 
 
-#include "dungeon.h"
 
 
 // Nothing should depend on our graphics library, ever.
