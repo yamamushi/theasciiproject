@@ -58,10 +58,8 @@ using namespace std;
 
 
 // Followed by custom headers
-
 #include "map.h"
 #include "entities.h"
-#include "dungeon.h"
 #include "dungeon.h"
 
 // This will be rewritten "soon"

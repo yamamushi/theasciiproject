@@ -37,6 +37,7 @@
  */
 
 
+
 class EntityMap;
 
 
@@ -87,7 +88,7 @@ class EntityMap {
 	private:
 
 		int width, height;
-                vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
+                std::vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
 
 		int colorTable[MAP_WIDTH][MAP_HEIGHT];
 		char *symbolTable[MAP_WIDTH][MAP_HEIGHT];
