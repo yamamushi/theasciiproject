@@ -1,7 +1,8 @@
 SRCDIR=./src
 INCDIR=./include
+LIBTCOD=./include/libtcod
 BUILDDIR=./build/
-CFLAGS=$(FLAGS) -I$(INCDIR) -I$(SRCDIR) -Wall
+CFLAGS=$(FLAGS) -I$(LIBTCOD) -I$(INCDIR) -I$(SRCDIR) -Wall
 CC=gcc
 CPP=g++
 .SUFFIXES: .o .h .c .hpp .cpp
