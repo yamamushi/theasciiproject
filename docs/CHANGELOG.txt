@@ -3,11 +3,28 @@ Copyright (c) 2012 Jonathan Rumion
 07/08/2012
 ==================================
 
+0.0.0e
+Okay so this was enough of a change that I felt like moving the version number
+up to 0e :)
+
+I have created a 100% complete bitmap font.png for this project, and I guess
+for the "World" to use. The ones I dug up online, and even from the libtcod
+forums weren't 100% complete and it took me a heck of a time to find out there
+was a "ttf2png" tool on the interwebs.
+
+I've tested and implemented the font pack into the project, and it can be seen
+if you compile and run the client ("make all" for those of you too lazy to
+read the install file in this directory).
+
+I'm excited about this change, as it opens the door to finally tackle Tile
+issues and moving on to bringing "life" into the client :)
+
+
+
+
+
 0.0.0d(rev1)
 A minor update to change where classes are organized.
-
-
-
 
 
 

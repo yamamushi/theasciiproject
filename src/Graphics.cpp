@@ -57,12 +57,10 @@ void GraphicsTCOD::init(TileMap *sourceMap, EntityMap *EntMap, Entity *player){
 	localPlayer = player;
 
         setlocale(LC_ALL, "en_US.UTF-8");
-
-
         TCODConsole::setCustomFont("data/font.png", TCOD_FONT_LAYOUT_ASCII_INROW, 32, 2048);
-	TCODConsole::mapAsciiCodesToFont(0, 11904, 1, 1);
-        //TCODConsole::root->setCustomFont("consolas_unicode_12x12.png", TCOD_FONT_LAYOUT_ASCII_INROW);
+
 	TCODConsole::initRoot(MAIN_WIDTH,MAIN_HEIGHT,"The ASCII Project",false,TCOD_RENDERER_SDL);
+
         TCODConsole *tmp = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
         output = tmp;
 

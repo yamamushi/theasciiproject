@@ -1,6 +1,6 @@
 
-The ASCII Project
-=================
+The ASCII Project - 0.0.0e
+===============================
 http://www.theasciiproject.com
 IRC = freenode.net ##asciimmo
 Yamamushi - yamamushi@gmail.com
@@ -28,7 +28,7 @@ GOALS
 
 
 NOTES
-===== 
+=====
 
 * Various documents of interest are located in docs/, and licenses where necessary have been included in licenses/. If you are new to this project and are just trying to figure out what this is all about, please refer to docs/ABOUT.txt
 
