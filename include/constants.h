@@ -12,7 +12,7 @@
  *
  *         Author:  Yamamushi (Jon Rumion)
  *   Organization:  The ASCII Project
- * 
+ *
  *	  License:  GPLv3
  *
  *	  Copyright 2012 Jonathan Rumion
@@ -38,41 +38,41 @@
 
 
 #define MAIN_WIDTH 80
-#define MAIN_HEIGHT 60
+#define MAIN_HEIGHT 40
 
 #define MAP_WIDTH 80
-#define MAP_HEIGHT 60
+#define MAP_HEIGHT 40
 
 #define LIMIT_FPS 20
 
 #define ROOM_MAX_SIZE 10
 #define ROOM_MIN_SIZE 6
-#define MAX_ROOMS 30
+#define MAX_ROOMS 20
 #define MAX_HALLS 100
 
-#define FOV_ALGO 0  
+#define FOV_ALGO 0
 #define FOV_LIGHT_WALLS true
 #define TORCH_RADIUS 10
 
 
 
-enum colors {                                                                                             
+enum colors {
 
         RANDOM,
         NONE,
         DARK_WALL,
-        DARK_GROUND,                                                                                      
+        DARK_GROUND,
         LIGHT_WALL,
-        LIGHT_GROUND,                                                                                     
-        BLACK,                                                                                            
+        LIGHT_GROUND,
+        BLACK,
         BLUE,
-        LIGHT_BLUE,                                                                                       
-        YELLOW,                                                                                           
-        GOLD,                                                                                             
+        LIGHT_BLUE,
+        YELLOW,
+        GOLD,
 	RED,
 	WHITE,
 
-}; 
+};
 
 
 

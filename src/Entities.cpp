@@ -148,14 +148,14 @@ void Entity::setEntityMap(EntityMap *map){
 
 Monster::Monster(){
 
-	init_entity( L"2639" );
+	init_entity( L"\u2639" );
 
 }
 
 Player::Player(){
 
-	init_entity( L"\u2639" );
-	H = 0.0;
+	init_entity( L"\u263A" );
+        H = 0.0;
 	S = 0.0;
 	V = 1.0;
 
@@ -163,7 +163,7 @@ Player::Player(){
 
 Goblin::Goblin(){
 
-	init_entity( L"D" );
+	init_entity( L"\u263B" );
 	H = 107.0;
 	S = 1.0;
 	V = 0.40;
