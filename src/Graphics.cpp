@@ -44,6 +44,7 @@
 
 
 
+
 GraphicsTCOD::GraphicsTCOD(TileMap *sourceMap, EntityMap *EntMap, Entity *player){
 	init(sourceMap, EntMap, player);
 }
@@ -55,10 +56,17 @@ void GraphicsTCOD::init(TileMap *sourceMap, EntityMap *EntMap, Entity *player){
 	entMap = EntMap;
 	localPlayer = player;
 
+        setlocale(LC_ALL, "");
 
 	TCODConsole::initRoot(MAIN_WIDTH,MAIN_HEIGHT,"The ASCII Project",false,TCOD_RENDERER_SDL);
         TCODConsole *tmp = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
         output = tmp;
+        TCODConsole::root->setCustomFont("consolas_unicode_12x12", TCOD_FONT_LAYOUT_ASCII_INROW);
+        //TCODConsole::root->setCustomFont("font.png", TCOD_FONT_LAYOUT_ASCII_INROW, 32, 372);
+       // TCOD_console_print_ex_utf(NULL, 3, 3, TCOD_BKGND_SET, TCOD_LEFT, L"☺");
+
+        output->mapAsciiCodesToFont(0, 11904, 1, 1);
+
 	//TCODConsole::root->setDefaultForeground(TCODColor::white);
 
 
@@ -132,7 +140,7 @@ void GraphicsTCOD::renderEntities(){
 
 	int x, y;
 	float H, S, V;
-	char *symbol;
+	wchar_t *symbol;
 
 	x = localPlayer->posX();
 	y = localPlayer->posY();
@@ -145,7 +153,12 @@ void GraphicsTCOD::renderEntities(){
 
 	symbol = localPlayer->getSymbol();
 
-	output->print(x, y, symbol);
+
+	//output->putChar(x, y, 34);
+        //wchar_t *tst = L"\u263A";
+        //output->printEx(NULL, x, y, TCOD_BKGND_SET, TCOD_LEFT, "2639");
+        output->print(x, y, symbol);
+
 
 
 	for (x=0;x<MAP_WIDTH;x++){

@@ -40,7 +40,7 @@
 #include "headers.h"
 
 
-void Entity::init_entity(char* p){
+void Entity::init_entity(wchar_t *p){
 
 	symbol = p;
 	X = 0;
@@ -101,7 +101,7 @@ void Entity::init_in_world(TileMap *destination){
 
 }
 
-char *Entity::getSymbol(){
+wchar_t *Entity::getSymbol(){
 
 	return symbol;
 
@@ -148,13 +148,13 @@ void Entity::setEntityMap(EntityMap *map){
 
 Monster::Monster(){
 
-	init_entity( "M" );
+	init_entity( L"2639" );
 
 }
 
 Player::Player(){
 
-	init_entity("@");
+	init_entity( L"\u2639" );
 	H = 0.0;
 	S = 0.0;
 	V = 1.0;
@@ -163,7 +163,7 @@ Player::Player(){
 
 Goblin::Goblin(){
 
-	init_entity("g");
+	init_entity( L"D" );
 	H = 107.0;
 	S = 1.0;
 	V = 0.40;

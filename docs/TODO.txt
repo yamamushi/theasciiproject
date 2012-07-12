@@ -1,3 +1,20 @@
+07/11/2012 TODO List:
+
+Tile Symbols - The first part of this involves changing our text
+        output mode to Unicode. Afterwards I'm going to implement
+        a way for Tiles to change their symbols depending on the
+        orientation of tiles around them.
+
+        This is going to take a few days to fully implement, so there
+        won't be a TODO update until that has been smoothed out.
+
+
+
+
+
+
+
+
 07/08/2012 TODO List:
 
 More Code cleanup - I really should have thought about some
@@ -30,7 +47,7 @@ Add a graphics library and move related functions into it.
 	absolutely rely on graphics output for runtime.
 
     - This will also solve the question on how I was going to
-	store the colormap away from everything for the time being. 
+	store the colormap away from everything for the time being.
 
 
 
@@ -61,11 +78,11 @@ After I feel confident with these things, I'll be moving on up.
 
 07/03/2012 TODO List:
 
-Consolidate coloring tiles into a function called 
+Consolidate coloring tiles into a function called
 "void initColors()"
 
 
-While we're at it, we can also create 
+While we're at it, we can also create
 "void setColor(entity *target, TCODColor foreinit)"
 
 

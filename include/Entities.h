@@ -46,7 +46,7 @@ class Entity {
 	private:
 
 		int X, Y;
-		char *symbol;
+		wchar_t *symbol;
 		TileMap *world;
 
 		bool initialized;
@@ -56,7 +56,7 @@ class Entity {
 	public:
 
 
-		void init_entity( char* symbol );
+		void init_entity( wchar_t *symbol );
 		bool move(TileMap *destination, int dx, int dy);
 		int posX();
 		int posY();
@@ -68,7 +68,7 @@ class Entity {
 		void init_in_world(TileMap *destination);
 
 
-		char *getSymbol();
+		wchar_t *getSymbol();
 
 		bool isInitialized();
 
