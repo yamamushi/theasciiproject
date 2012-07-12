@@ -4,6 +4,7 @@ Copyright (c) 2012 Jonathan Rumion
 ==================================
 
 0.0.0f
+
 Okay so this was enough of a change that I felt like moving the version number
 up to 0e :)
 
@@ -24,6 +25,7 @@ issues and moving on to bringing "life" into the client :)
 
 
 0.0.0e(rev2)
+
 A minor update to change where classes are organized.
 
 
@@ -31,6 +33,7 @@ A minor update to change where classes are organized.
 
 
 0.0.0e(rev1)
+
 Actually there aren't many large changes in this push.
 
 I have started using NetBeans as an IDE because of it's portability and minimal
@@ -48,6 +51,7 @@ Until next changelog update,
 
 
 0.0.0e
+
 Cleaned up quite a lot with this push, finally settled on a coloring system that
 was wasy to manage and was fairly portable.
 
@@ -60,6 +64,7 @@ entity map.
 
 
 0.0.0d
+
 Cleaning more things up, finally settled on a base framework for entity
 placement and management.
 
@@ -72,6 +77,7 @@ bug that will need to be addressed before I continue.
 
 
 0.0.0c
+
 FOV is working! At least in basic terms, it's not clean but it certainly works
 for now!
 
@@ -86,6 +92,7 @@ slowly getting there!
 
 
 0.0.0b
+
 More improvements on the room generator - halls now auto generate.
 
 Bounds checking has been broken up into pieces - Map object still has a function
