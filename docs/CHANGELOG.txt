@@ -3,7 +3,7 @@ Copyright (c) 2012 Jonathan Rumion
 07/08/2012
 ==================================
 
-0.0.0e
+0.0.0f
 Okay so this was enough of a change that I felt like moving the version number
 up to 0e :)
 
@@ -23,14 +23,14 @@ issues and moving on to bringing "life" into the client :)
 
 
 
-0.0.0d(rev1)
+0.0.0e(rev2)
 A minor update to change where classes are organized.
 
 
 
 
 
-0.0.0d
+0.0.0e(rev1)
 Actually there aren't many large changes in this push.
 
 I have started using NetBeans as an IDE because of it's portability and minimal
