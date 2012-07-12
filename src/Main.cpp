@@ -82,6 +82,8 @@ int main(
 	GraphicsTCOD *output = new GraphicsTCOD(map, entMap, player);
 
 
+
+
 	entMap->addToMap(goblin);
 	entMap->addToMap(player);
 

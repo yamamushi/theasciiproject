@@ -12,13 +12,13 @@ CPP=g++
 %.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-CPP_OBJS=Main.o Tiles.o TileMap.o Entities.o EntityMap.o \
-     Dungeon.o Keyboard.o Graphics.o
+CPP_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
+     Dungeon.o Keyboard.o Graphics.o Main.o
 
 all : client
 
 client : $(CPP_OBJS)
-	$(CPP) $(addprefix $(BUILDDIR), $(CPP_OBJS)) -o $@ -ltcod -Wl,-rpath,.
+	$(CPP) $(addprefix $(BUILDDIR), $(CPP_OBJS)) -o $@ -ltcod -ltcodxx -Wl,-rpath,.
 
 clean :
 	\rm -f $(addprefix $(BUILDDIR), $(CPP_OBJS)) client
