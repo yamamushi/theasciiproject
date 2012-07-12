@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  dungeon.cpp
+ *       Filename:  Dungeon.cpp
  *
  *    Description:  Our dungeon generator
  *
@@ -36,29 +36,31 @@
  * =====================================================================================
  */
 
+
+
 #include "headers.h"
 
 
-Dungeon::Dungeon(Map *destination, int width, int height, bool create = false){
-		
-	
+Dungeon::Dungeon(TileMap *destination, int width, int height, bool create = false){
+
+
 	initDungeon(destination, width, height, create);
 
 }
 
 
-void	Dungeon::initDungeon(Map *destination, int width, int height, bool create = false){
+void	Dungeon::initDungeon(TileMap *destination, int width, int height, bool create = false){
 
 	if (width > MAP_WIDTH || height > MAP_HEIGHT)
 		return;
 
 	destMap = destination;
-	Map *dungeonMap = new Map(width, height);
+	TileMap *dungeonMap = new TileMap(width, height);
 
 	if (create){
 		createRooms( MAX_ROOMS, ROOM_MIN_SIZE, ROOM_MAX_SIZE, dungeonMap);
 		connectRooms(dungeonMap);
-	
+
 		destMap->importMap(dungeonMap);
 	}
 }
@@ -69,7 +71,7 @@ void	Dungeon::initDungeon(Map *destination, int width, int height, bool create =
 
 
 
-bool	Dungeon::createRooms(int numberOfRooms, int minSize, int maxSize, Map *outputMap){
+bool	Dungeon::createRooms(int numberOfRooms, int minSize, int maxSize, TileMap *outputMap){
 
 
 	if (numberOfRooms > MAX_ROOMS)
@@ -77,13 +79,13 @@ bool	Dungeon::createRooms(int numberOfRooms, int minSize, int maxSize, Map *outp
 	else if (minSize < ROOM_MIN_SIZE || maxSize > ROOM_MAX_SIZE)
 		return false;
 
-	TCODRandom *rng = new TCODRandom();	
+	TCODRandom *rng = new TCODRandom();
 	dungeonMap = outputMap;
 
 	i = 0;
 	bool test;
-	
-	
+
+
 
 	while(i < numberOfRooms){
 		w = rng->getInt(minSize, maxSize);
@@ -91,18 +93,18 @@ bool	Dungeon::createRooms(int numberOfRooms, int minSize, int maxSize, Map *outp
 		// checks for map boundaries
 		x = rng->getInt( 0, MAP_WIDTH - w - 1);
 		y = rng->getInt( 0, MAP_HEIGHT - h - 1);
-			
+
 		tempRoom = new Room(x, y, w, h);
 
 		test = false;
 		// if it's our first room, we import it to our test map and move along
-	
+
 		// now we go through the list of rooms that exist
 		// in our temporary map
-	
+
 		if (i > 0)
 		for(x=0; x < i; x++){
-			
+
 			if(tempRoom->doesIntersect(dungeonMap->rooms[x]))
 				test = true;
 			}
@@ -112,9 +114,9 @@ bool	Dungeon::createRooms(int numberOfRooms, int minSize, int maxSize, Map *outp
 			i++;
 		}
 
-	}	
+	}
 
-	
+
 	delete rng;
 	return true;
 
@@ -127,13 +129,13 @@ bool	Dungeon::createRooms(int numberOfRooms, int minSize, int maxSize, Map *outp
 
 
 
-void Dungeon::connectRooms(Map *outputMap){
+void Dungeon::connectRooms(TileMap *outputMap){
 
-	Map *dungeonMap = outputMap;
+	TileMap *dungeonMap = outputMap;
 
 	i = dungeonMap->numRooms;
-	
-	TCODRandom *rng = new TCODRandom();         
+
+	TCODRandom *rng = new TCODRandom();
 
 	//x = rng->getInt(5, 30);
 	//y = rng->getInt(5, 30);
@@ -143,17 +145,17 @@ void Dungeon::connectRooms(Map *outputMap){
 
 
 	for ( x = 0; x < i; x++){
-	
+
 
 		if (x != 0){
-			prev_x = dungeonMap->rooms[x-1]->cX; 			
+			prev_x = dungeonMap->rooms[x-1]->cX;
 			prev_y = dungeonMap->rooms[x-1]->cY;
 			new_x = dungeonMap->rooms[x]->cX;
 			new_y = dungeonMap->rooms[x]->cY;
-	
+
 			if ((rng->getInt(0, 1)) == 1){
 				dungeonMap->createHall(prev_x, new_x, prev_y, 0);
-				dungeonMap->createHall(prev_y, new_y, new_x, 1);	
+				dungeonMap->createHall(prev_y, new_y, new_x, 1);
 			}
 			else {
 				dungeonMap->createHall(prev_y, new_y, prev_x, 1);

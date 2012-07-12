@@ -1,12 +1,13 @@
 /*
  * =====================================================================================
  *
- *       Filename:  entities.cpp
+ *       Filename:  EntityMap.cpp
  *
- *    Description:  Our entity objects - Subject to change
+ *    Description:  EntityMap is an object which stores the location of all
+ *                  Entities on the "Map".
  *
  *        Version:  1.0
- *        Created:  07/03/2012 03:41:29 AM
+ *        Created:  07/11/2012
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -36,116 +37,9 @@
  * =====================================================================================
  */
 
+
+
 #include "headers.h"
-
-
-void Entity::init_entity(char* p){
-	
-	symbol = p;
-	X = 0;
-	Y = 0;
-	
-	H = 0;
-	S = 0;
-	V = 0;
-
-	R = 0;
-	G = 0;
-	B = 0;
-
-
-
-	
-	initialized = false;
-
-	int x, y;
-	for ( x=0; x < MAP_WIDTH; x++){
-		for ( y=0; y < MAP_HEIGHT; y++){
-			fov[x][y] = false;
-		}
-	}
-}
-
-
-
-bool Entity::move(Map *destination, int dx, int dy){
-
-	Map *map = destination;
-	if (initialized){
-		if ( (map->virtMap[(dx + X)][(dy + Y)]->blocked))
-		       return false;
-		else{
-			X += dx;
-			Y += dy;
-			return true;
-		}
-	}
-	else {
-		return false;
-	}
-
-}
-
-int Entity::posX(){
-	return X;
-}
-
-int Entity::posY(){
-	return Y;
-}
-
-
-
-void Entity::init_in_world(Map *destination){
-
-	Map *world = destination;
-	initialized = true;
-	
-
-}
-
-
-
-
-
-char *Entity::getSymbol(){
-
-	return symbol;
-
-}
-
-
-bool Entity::isInitialized(){
-
-	return initialized;
-
-}
-
-
-
-
-
-
-
-
-void Entity::move_self(int dx, int dy){
-
-	move(world, dx, dy);
-
-
-};
-
-
-
-void Entity::setEntityMap(EntityMap *map){
-
-	EntityMap *entMap = map;
-
-};
-
-
-
-
 
 
 
@@ -154,7 +48,7 @@ void Entity::setEntityMap(EntityMap *map){
 /*
  *
  * 		Here begins our EntityMap object.
- * 	
+ *
  * 	The purpose of this object is to store a
  * 	static-sized 2-dimensional array of vectors.
  *
@@ -172,7 +66,7 @@ void Entity::setEntityMap(EntityMap *map){
  *	its own context.
  *
  *
- */ 
+ */
 
 
 
@@ -182,9 +76,6 @@ EntityMap::EntityMap(int x, int y){
 
 }
 
-
-
-
 void EntityMap::initEntityMap(int x, int y){
 
 	width = x;
@@ -193,7 +84,6 @@ void EntityMap::initEntityMap(int x, int y){
 
 }
 
-
 void EntityMap::addToMap(Entity *entity){
 
 	Entity *src = entity;
@@ -201,36 +91,33 @@ void EntityMap::addToMap(Entity *entity){
 	x = src->posX();
 	y = src->posY();
 	pos[x][y].push_back(src);
-	
+
 }
-
-
 
 void EntityMap::createEntity(int type){
 
 	Entity *newEntity;
 
 	switch (type) {
-		
+
 		case MONSTER:
 			newEntity = new Monster();
 		case PLAYER:
 			newEntity = new Player();
 
 	}
-	
+
 	addToMap(newEntity);
 
 }
 
+void EntityMap::initAllEnts(TileMap *destination){
 
-void EntityMap::initAllEnts(Map *destination){
 
-
-	Map *contextMap = destination;
+	TileMap *contextMap = destination;
 
 	int x, y, z;
-	
+
 	for ( x = 0; x < width; x++){
 		for ( y = 0; y < height; y++){
 			if (!(pos[x][y].empty())){
@@ -241,8 +128,6 @@ void EntityMap::initAllEnts(Map *destination){
 		}
 	}
 }
-
-
 
 void EntityMap::refreshEntityMap(){
 
@@ -255,7 +140,7 @@ void EntityMap::refreshEntityMap(){
 					// check each entity in this vector
 					// move entity to new vector
 					// coordinates at x and y
-					
+
 					// First we check to see if this entities
 					// coordinates differ from our own:
 					Entity *cur = pos[x][y].at(z);
@@ -278,12 +163,6 @@ void EntityMap::refreshEntityMap(){
 
 }
 
-
-
-
-
-
-
 bool EntityMap::checkOccupied(int x, int y){
 
 	if ( !(pos[x][y].empty()) ){
@@ -292,7 +171,6 @@ bool EntityMap::checkOccupied(int x, int y){
 	else
 		return false;
 }
-
 
 Entity * EntityMap::outputLastEntity(int x, int y){
 
@@ -311,7 +189,7 @@ void EntityMap::updateColorMap(){
 	for (x = 0; x < width; x++){
 		for ( y = 0; y < width; y++){
 			if ( !(pos[x][y].empty()) ){
-	
+
 				Entity *current = pos[x][y].back();
 				colorTable[x][y] = current->getColor();
 
@@ -330,69 +208,3 @@ int EntityMap::checkColor(int x, int y){
 	return colorTable[x][y];
 
 }
-
-
-
-
-
-
-
-
-/*
- *
- *
- *		Entities
- *
- *	Now we start listing some entity types
- *
- *	Though how this works will likely change in the
- *	future.
- *
- *
- *
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Monster::Monster(){
-
-	init_entity( "M" );
-
-}
-
-
-
-
-Player::Player(){
-
-	init_entity("@");
-	H = 0.0;
-	S = 0.0;
-	V = 1.0;
-
-}
-
-
-
-
-Goblin::Goblin(){
-
-	init_entity("g");
-	H = 107.0;
-	S = 1.0;
-	V = 0.40;
-
-}
-

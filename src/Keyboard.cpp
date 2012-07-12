@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  keyboard.cpp
+ *       Filename:  Keyboard.cpp
  *
  *    Description:  Our keyboard input functions
  *
@@ -46,7 +46,7 @@ Keyboard::Keyboard(int x, int y){
 }
 
 void Keyboard::initKeyboard(int x, int y){
-	
+
 	curX = x;
 	curY = y;
 	safX = x;
@@ -55,11 +55,11 @@ void Keyboard::initKeyboard(int x, int y){
 }
 
 
-bool Keyboard::handleKeys(Entity *target, Map *destination){
+bool Keyboard::handleKeys(Entity *target, TileMap *destination){
 
 	TCOD_key_t Key = TCODConsole::checkForKeypress(true);
 	bool quit = false;
-	Map *map = destination;
+	TileMap *map = destination;
 
 
 	Entity *tgt = target;
@@ -67,7 +67,7 @@ bool Keyboard::handleKeys(Entity *target, Map *destination){
 
 	if(Key.vk == TCODK_ENTER && TCODK_ALT)
 		TCODConsole::setFullscreen(!TCODConsole::isFullscreen());
-	
+
 	switch(Key.vk)
 	{
 	       	case TCODK_UP:
@@ -77,11 +77,11 @@ bool Keyboard::handleKeys(Entity *target, Map *destination){
 		case TCODK_DOWN:
 			tgt->move(map, 0,1);
 			break;
-		
+
 		case TCODK_LEFT:
-			tgt->move(map, -1,0);				                        
-			break;	
-			
+			tgt->move(map, -1,0);
+			break;
+
 		case TCODK_RIGHT:
 			tgt->move(map, 1,0);
 
@@ -123,11 +123,11 @@ void Keyboard::moveCursor(int mx, int my){
 	curX += mx;
 	curY += my;
 
-}	
+}
 
 
 void Keyboard::placeCursor( int x, int y){
-	
+
 	curX = x;
        	curY = y;
 

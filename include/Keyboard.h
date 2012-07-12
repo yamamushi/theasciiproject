@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  headers.h
+ *       Filename:  Keyboard.h
  *
- *    Description:  An attempt to consolidate and order our header files
+ *    Description:  Our keyboard input function definitions
  *
  *        Version:  1.0
- *        Created:  07/04/2012
+ *        Created:  07/03/2012 02:33:21 AM
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -36,71 +36,28 @@
  * =====================================================================================
  */
 
+class Keyboard {
 
-// Standard headers first
-#include <math.h>
-#include <algorithm>
-#include <iostream>
-#include <vector>
+	int oldX, oldY;
 
 
-// Our namespaces
-using namespace std;
+	public:
+		int curX, curY;
+		int safX, safY;
 
 
-// Our global constants
-#include "constants.h"
+		Keyboard(int x=MAIN_WIDTH/2, int y=MAIN_HEIGHT/2);
+		void initKeyboard(int, int);
 
+		bool handleKeys(Entity *target, TileMap *destination);
 
-// 3rd party headers (currently only one in use)
-#include "libtcod/libtcod.hpp"
+		void safeMoveCursor(int, int);
+		void passSafeCursor();
 
+		void moveCursor(int, int);
 
-// Our most important objects
-#include "Tiles.h"
-#include "TileMap.h"
-#include "Entities.h"
-#include "EntityMap.h"
-
-
-// Temporary Dungeon Generator
-#include "Dungeon.h"
-
-
-// This will be rewritten "soon"
-#include "Keyboard.h"
-
-
-// Nothing should depend on our graphics library, ever.
-#include "Graphics.h"
+		void placeCursor(int, int);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};

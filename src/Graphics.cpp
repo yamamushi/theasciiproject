@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  graphics.cpp
+ *       Filename:  Graphics.cpp
  *
  *    Description:  Our graphics handling library that relies on libtcod.
  *    		The intention is for this library to handle all reliance on
@@ -44,12 +44,12 @@
 
 
 
-GraphicsTCOD::GraphicsTCOD(Map *sourceMap, EntityMap *EntMap, Entity *player){
+GraphicsTCOD::GraphicsTCOD(TileMap *sourceMap, EntityMap *EntMap, Entity *player){
 	init(sourceMap, EntMap, player);
 }
 
 
-void GraphicsTCOD::init(Map *sourceMap, EntityMap *EntMap, Entity *player){
+void GraphicsTCOD::init(TileMap *sourceMap, EntityMap *EntMap, Entity *player){
 
 	input = sourceMap;
 	entMap = EntMap;

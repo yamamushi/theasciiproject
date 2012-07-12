@@ -1,12 +1,9 @@
 /*
  * =====================================================================================
  *
- *       Filename:  graphics.h
+ *       Filename:  Dungeon.h
  *
- *    Description:  Our graphics handling library that relies on libtcod.
- *    		The intention is for this library to handle all reliance on
- *    		the libtcod graphics functions - thereby slowly modularilizing
- *    		the client to be rendered differently.
+ *    Description:  Our dungeon generator
  *
  *        Version:  1.0
  *        Created:  07/05/2012
@@ -40,52 +37,22 @@
  */
 
 
+class Dungeon {
 
-class GraphicsTCOD {
+	private:
+		TileMap *destMap;
+		TileMap *dungeonMap;
 
-	
-		Map *input;
-		EntityMap *entMap;
-		Entity *localPlayer;
-		Entity *scan;
+		Room *tempRoom;
+		int x, w, h, y, i;
 
 	public:
+		Dungeon(TileMap *destination, int width, int height, bool create);
+		void initDungeon(TileMap *destination,int width,int height, bool create);
+		bool createRooms(int numberOfRooms, int minSize, int maxSize, TileMap *outputMap);
 
-		
-		TCODConsole *output;
+		void connectRooms(TileMap *outputMap);
 
-		GraphicsTCOD(Map *sourceMap, EntityMap *entMap, Entity *player);
-		void init(Map *sourceMap, EntityMap *entMap, Entity *player);
-		
-		void render();
-		void renderTiles();
-		void renderEntities();
-
-		void clearScreen();
 
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

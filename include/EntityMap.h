@@ -1,12 +1,13 @@
 /*
  * =====================================================================================
  *
- *       Filename:  entities.h
+ *       Filename:  EntityMap.h
  *
- *    Description:  Our entities header file
+ *    Description:  EntityMap is an object which stores the position of all
+ *                  Entities on the "Map"
  *
  *        Version:  1.0
- *        Created:  07/03/2012 03:42:54 AM
+ *        Created:  07/11/2012
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -38,51 +39,6 @@
 
 
 
-class EntityMap;
-
-
-class Entity {
-	private:
-
-		int X, Y;
-		char *symbol;
-		Map *world;
-
-		bool initialized;
-
-		EntityMap *entMap;
-
-	public:
-
-
-		void init_entity( char* symbol );
-		bool move(Map *destination, int dx, int dy);
-		int posX();
-		int posY();
-		int TypeID, subTypeID;
-		bool fov[MAP_WIDTH][MAP_HEIGHT];
-		float H, S, V;
-		int R, G, B;
-
-		void init_in_world(Map *destination);
-
-
-		char *getSymbol();
-
-		bool isInitialized();
-
-
-
-		void move_self(int dx, int dy);
-
-		void setEntityMap(EntityMap *map);
-
-
-
-};
-
-
-
 class EntityMap {
 
 	private:
@@ -107,7 +63,7 @@ class EntityMap {
 		void createEntity(int type);
 
 
-		void initAllEnts(Map *destination);
+		void initAllEnts(TileMap *destination);
 		void refreshEntityMap();
 
 		bool checkOccupied(int x, int y);
@@ -118,37 +74,5 @@ class EntityMap {
 		void updateColorMap();
 
 
-
-};
-
-
-
-
-
-// These entities are for testing purposes only
-// and will be moved in the coming days.
-
-
-class Monster : public Entity {
-
-	public:
-
-		Monster();
-
-};
-
-
-class Player : public Entity {
-
-	public:
-		Player();
-
-};
-
-
-class Goblin : public Entity {
-
-	public:
-		Goblin();
 
 };

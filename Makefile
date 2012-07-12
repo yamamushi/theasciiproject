@@ -12,7 +12,7 @@ CPP=g++
 %.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-CPP_OBJS=main.o entities.o keyboard.o map.o dungeon.o graphics.o
+CPP_OBJS=Main.o Tiles.o TileMap.o Entities.o EntityMap.o Dungeon.o Keyboard.o Graphics.o
 
 all : client
 

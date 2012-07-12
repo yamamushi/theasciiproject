@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  main.cpp
+ *       Filename:  Main.cpp
  *
  *    Description:  The ASCII Project main loop
  *
@@ -63,36 +63,36 @@ int main(
 	CenterY = MAIN_HEIGHT/2;
 
 	int i, x, y, z;
-	
+
 	// Let's get things setup
-	
+
 	// TCODConsole::credits();
-	
+
 	Keyboard *kboard = new Keyboard();
 
 	// We'll set the foreground color once now and modify it as necessary when in our game loop
-	
-	Map *map = new Map(MAP_WIDTH, MAP_HEIGHT);
+
+	TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);
 	Dungeon *dgn = new Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
-	
+
 	EntityMap *entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT);
 	Entity *player = new Player();
 	Goblin *goblin = new Goblin();
 
 	GraphicsTCOD *output = new GraphicsTCOD(map, entMap, player);
 
-	
+
 	entMap->addToMap(goblin);
 	entMap->addToMap(player);
-	
+
 	entMap->initAllEnts(map);
 
 	//int si = sizeof tArray/sizeof(Entity **);
 
 	// lets build our map o_o;;
 	int pX = map->rooms[1]->cX;
-	int pY = map->rooms[1]->cY;	
-	
+	int pY = map->rooms[1]->cY;
+
 	player->move(map, pX, pY);
 
 	goblin->move(map, pX-1, pY-1);
@@ -112,8 +112,8 @@ int main(
 			tcodMap->setProperties(x, y, !(map->virtMap[x][y]->block_sight), !(map->virtMap[x][y]->blocked));
 		}
 	}
-	
-	
+
+
 	// Main Game Loop
 	while(!TCODConsole::isWindowClosed()) {
 
@@ -132,29 +132,29 @@ int main(
 						}
 					}
 				}
-		
+
 
 		// Do some quick boundary checks
-		/*// Draw our entities to the screen	
+		/*// Draw our entities to the screen
 		for ( ray = 0; ray < si; ray++){
 			scan = *tArray[ray];
 			scan->draw(output->output);
-		} */	
+		} */
 
-		
+
 		output->render();
 		// Clean up our screen before reading in keys
 		/*for ( ray=0; ray < si; ray++){
 			scan = *tArray[ray];
 			scan->clean(output->output);
-		}	
+		}
 		*/
 
 		output->clearScreen();
 		quit = kboard->handleKeys(player, map);
-		if(quit) break;		
+		if(quit) break;
 
-	}	
+	}
 
 	return 0;
 }

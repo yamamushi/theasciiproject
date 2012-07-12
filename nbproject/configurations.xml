@@ -73,14 +73,15 @@
           <in>zip.h</in>
           <in>zip.hpp</in>
         </df>
-        <in>colors.h</in>
+        <in>Dungeon.h</in>
+        <in>Entities.h</in>
+        <in>EntityMap.h</in>
+        <in>Graphics.h</in>
+        <in>Keyboard.h</in>
+        <in>TileMap.h</in>
+        <in>Tiles.h</in>
         <in>constants.h</in>
-        <in>dungeon.h</in>
-        <in>entities.h</in>
-        <in>graphics.h</in>
         <in>headers.h</in>
-        <in>keyboard.h</in>
-        <in>map.h</in>
       </df>
       <df name="licenses">
       </df>
@@ -89,13 +90,14 @@
       <df name="osx">
       </df>
       <df name="src">
-        <in>colors.cpp</in>
-        <in>dungeon.cpp</in>
-        <in>entities.cpp</in>
-        <in>graphics.cpp</in>
-        <in>keyboard.cpp</in>
-        <in>main.cpp</in>
-        <in>map.cpp</in>
+        <in>Dungeon.cpp</in>
+        <in>Entities.cpp</in>
+        <in>EntityMap.cpp</in>
+        <in>Graphics.cpp</in>
+        <in>Keyboard.cpp</in>
+        <in>Main.cpp</in>
+        <in>TileMap.cpp</in>
+        <in>Tiles.cpp</in>
       </df>
     </df>
     <logicalFolder name="ExternalFiles"
@@ -131,6 +133,15 @@
           </ccTool>
         </makeTool>
       </makefileType>
+      <folder path="theasciiproject/include">
+        <ccTool>
+          <incDir>
+            <pElem>include</pElem>
+            <pElem>include/libtcod</pElem>
+            <pElem>include/libtcod/gui</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
       <item path="include/libtcod/libtcod_int.h" ex="true" tool="3" flavor="0">
       </item>
       <item path="include/libtcod/wrappers.h" ex="true" tool="3" flavor="0">

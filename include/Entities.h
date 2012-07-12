@@ -1,12 +1,13 @@
 /*
  * =====================================================================================
  *
- *       Filename:  dungeon.h
+ *       Filename:  Entities.h
  *
- *    Description:  Our dungeon generator
+ *    Description:  This object defines the behavior of our "Entities", ie
+ *                  The necessary functions for an entity to exist on the "Map"
  *
  *        Version:  1.0
- *        Created:  07/05/2012
+ *        Created:  07/03/2012 03:42:54 AM
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -36,22 +37,78 @@
  * =====================================================================================
  */
 
-class Dungeon {
-	
-	private:
-		Map *destMap;	
-		Map *dungeonMap;
 
-		Room *tempRoom;
-		int x, w, h, y, i;
+
+class EntityMap;
+
+
+class Entity {
+	private:
+
+		int X, Y;
+		char *symbol;
+		TileMap *world;
+
+		bool initialized;
+
+		EntityMap *entMap;
 
 	public:
-		Dungeon(Map *destination, int width, int height, bool create);
-		void initDungeon(Map *destination,int width,int height, bool create);
-		bool createRooms(int numberOfRooms, int minSize, int maxSize, Map *outputMap);
-		
-		void connectRooms(Map *outputMap);
 
 
+		void init_entity( char* symbol );
+		bool move(TileMap *destination, int dx, int dy);
+		int posX();
+		int posY();
+		int TypeID, subTypeID;
+		bool fov[MAP_WIDTH][MAP_HEIGHT];
+		float H, S, V;
+		int R, G, B;
+
+		void init_in_world(TileMap *destination);
+
+
+		char *getSymbol();
+
+		bool isInitialized();
+
+
+
+		void move_self(int dx, int dy);
+
+		void setEntityMap(EntityMap *map);
+
+
+
+};
+
+
+
+
+// These entities are for testing purposes only
+// and will be moved in the coming days.
+
+
+class Monster : public Entity {
+
+	public:
+
+		Monster();
+
+};
+
+
+class Player : public Entity {
+
+	public:
+		Player();
+
+};
+
+
+class Goblin : public Entity {
+
+	public:
+		Goblin();
 
 };

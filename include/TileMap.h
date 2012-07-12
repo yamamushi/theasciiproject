@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  headers.h
+ *       Filename:  TileMap.h
  *
- *    Description:  An attempt to consolidate and order our header files
+ *    Description:  This object stores the position of Tiles on the Map.
  *
  *        Version:  1.0
- *        Created:  07/04/2012
+ *        Created:  07/05/2012
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -37,70 +37,54 @@
  */
 
 
-// Standard headers first
-#include <math.h>
-#include <algorithm>
-#include <iostream>
-#include <vector>
-
-
-// Our namespaces
-using namespace std;
-
-
-// Our global constants
-#include "constants.h"
-
-
-// 3rd party headers (currently only one in use)
-#include "libtcod/libtcod.hpp"
-
-
-// Our most important objects
-#include "Tiles.h"
-#include "TileMap.h"
-#include "Entities.h"
-#include "EntityMap.h"
-
-
-// Temporary Dungeon Generator
-#include "Dungeon.h"
-
-
-// This will be rewritten "soon"
-#include "Keyboard.h"
-
-
-// Nothing should depend on our graphics library, ever.
-#include "Graphics.h"
 
 
 
+class TileMap {
+	private:
+		int x, y, z, i;
+		int wid, hig;
+
+	public:
+
+		Room *rooms[MAX_ROOMS];
+		int numRooms;
+		Hall *halls[MAX_HALLS];
+		int numHalls;
+
+		Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];
+
+
+		TileMap(int, int);
+		void initMap(int, int);
+
+
+		void clearMap();
+		void refreshMap();
+		bool checkBounds(int, int);
+
+		void createRoom(int, int, int, int);
+		void drawRoom(int i);
+		void drawAllRooms();
+
+		void createHall(int, int, int, int);
+		void drawHall(int i);
+		void drawAllHalls();
+
+		void importRoom(Room *source);
+		void importAllRooms(TileMap *source);
+		void clearRooms();
+		void clearRoom(int x);
+
+		void importHall(Hall *source);
+		void importAllHalls(TileMap *source);
+		void clearHalls();
+		void clearHall(int x);
+
+		void copyVirtMap(TileMap *source);
+		void importMap(TileMap *source);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
 

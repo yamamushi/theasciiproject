@@ -1,9 +1,10 @@
 /*
  * =====================================================================================
  *
- *       Filename:  map.h
+ *       Filename:  Tiles.h
  *
- *    Description:  Our map drawing functions header (will be replaced)
+ *    Description:  This object defines the behavior of all Tiles, ie
+ *                  Necessary functions in order for our world to operate.
  *
  *        Version:  1.0
  *        Created:  07/03/2012 07:50:52 AM
@@ -61,7 +62,7 @@ class Tile {
 		bool is_blocked();
 		bool is_visible();
 		bool is_explored();
-		friend class Map;
+		friend class TileMap;
 };
 
 
@@ -111,7 +112,7 @@ class Room {
 		bool doesContainPoint(int, int);
 		bool doesIntersect(Room *other);
 
-		friend class Map;
+		friend class TileMap;
 
 };
 
@@ -130,52 +131,5 @@ class Hall {
 
 
 
-class Map {
-	private:
-		int x, y, z, i;
-		int wid, hig;
-
-	public:
-
-		Room *rooms[MAX_ROOMS];
-		int numRooms;
-		Hall *halls[MAX_HALLS];
-		int numHalls;
-
-		Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];
-
-
-		Map(int, int);
-		void initMap(int, int);
-
-
-		void clearMap();
-		void refreshMap();
-		bool checkBounds(int, int);
-
-		void createRoom(int, int, int, int);
-		void drawRoom(int i);
-		void drawAllRooms();
-
-		void createHall(int, int, int, int);
-		void drawHall(int i);
-		void drawAllHalls();
-
-		void importRoom(Room *source);
-		void importAllRooms(Map *source);
-		void clearRooms();
-		void clearRoom(int x);
-
-		void importHall(Hall *source);
-		void importAllHalls(Map *source);
-		void clearHalls();
-		void clearHall(int x);
-
-		void copyVirtMap(Map *source);
-		void importMap(Map *source);
-
-
-
-};
 
 
