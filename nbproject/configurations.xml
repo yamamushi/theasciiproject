@@ -4,6 +4,8 @@
     <df name="theasciiproject" root=".">
       <df name="build">
       </df>
+      <df name="data">
+      </df>
       <df name="docs">
       </df>
       <df name="include">

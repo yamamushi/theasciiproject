@@ -48,6 +48,8 @@ class GraphicsTCOD {
 		EntityMap *entMap;
 		Entity *localPlayer;
 		Entity *scan;
+                float H, S, V, HD, SD, VD;
+                float TH, TS, TV, THD, TSD, TVD;
 
 	public:
 

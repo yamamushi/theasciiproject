@@ -38,10 +38,10 @@
 
 
 #define MAIN_WIDTH 80
-#define MAIN_HEIGHT 40
+#define MAIN_HEIGHT 45
 
 #define MAP_WIDTH 80
-#define MAP_HEIGHT 40
+#define MAP_HEIGHT 45
 
 #define LIMIT_FPS 20
 

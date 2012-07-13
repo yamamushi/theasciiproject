@@ -50,10 +50,16 @@ Tile::Tile(bool blked){
 }
 
 void Tile::init_Tile(bool blked){
-	blocked = blked;
+
+        blocked = blked;
 	visible = false;
 	explored = false;
 	occupied = false;
+
+        symbol = L"\uFFF0";
+
+        TypeID = 0;
+        SubTypeID = 0;
 
 	H = 0.0;
 	S = 0.0;
@@ -81,22 +87,47 @@ void Tile::init_Tile(bool blked){
 	}
 }
 
-bool Tile::is_sight_blocked(){
+bool Tile::isSightBlocked(){
 	return block_sight;
 }
 
-bool Tile::is_blocked(){
+bool Tile::isBlocked(){
 	return blocked;
 }
 
-bool Tile::is_visible(){
+bool Tile::isVisible(){
 	return visible;
 }
 
-bool Tile::is_explored(){
+bool Tile::isExplored(){
 	return explored;
 }
 
+void Tile::setSymbol(wchar_t *ch){
+    symbol = ch;
+}
+
+wchar_t *Tile::getSymbol(){
+
+	return symbol;
+
+}
+
+void Tile::setTypeID(int i){
+    TypeID = i;
+}
+
+void Tile::setSubTypeID(int i){
+    SubTypeID = i;
+}
+
+unsigned int Tile::getTypeID(){
+    return TypeID;
+}
+
+unsigned int Tile::getSubTypeID(){
+    return SubTypeID;
+}
 
 
 
@@ -105,13 +136,24 @@ Wall::Wall(bool blked){
 	block_sight = blked;
 	blocked = blked;
 
-	H = 30.0;
+	H = 208.0;
 	S = 0.0;
-	V = 0.3;
+	V = 0.4;
 
 	HD = 30.0;
 	SD = 0.0;
 	VD = 0.1;
+
+        setTypeID(1);
+
+        orient[0] = L"\u2550";
+        orient[1] = L"\u2551";
+        orient[2] = L"\u2554";
+        orient[3] = L"\u2557";
+        orient[4] = L"\u255A";
+        orient[5] = L"\u255D";
+
+        setSymbol(orient[5]);
 
 
 }
@@ -129,6 +171,8 @@ Floor::Floor(bool blked){
 	HD = 30.4;
 	SD = 1.0;
 	VD = 0.1;
+
+        setSymbol(L"\u2059");
 
 
 

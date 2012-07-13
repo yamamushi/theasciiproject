@@ -71,6 +71,8 @@ class TileMap {
 		void drawHall(int i);
 		void drawAllHalls();
 
+                void orientWalls();
+
 		void importRoom(Room *source);
 		void importAllRooms(TileMap *source);
 		void clearRooms();

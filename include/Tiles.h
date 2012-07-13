@@ -42,13 +42,13 @@
 class Tile {
 	private:
 
+                unsigned int TypeID, SubTypeID;
+
 	public:
 		int posX, posY;
 		float H, S, V, HD, SD, VD;
 		int R, G, B, RD, GD, BD;
-                int TypeID, subTypeID;
-
-
+                wchar_t *symbol;
 
 		bool blocked;
 		bool block_sight;
@@ -58,10 +58,20 @@ class Tile {
 
 		Tile(bool blked=true);
 		void init_Tile(bool);
-		bool is_sight_blocked();
-		bool is_blocked();
-		bool is_visible();
-		bool is_explored();
+
+                bool isSightBlocked();
+		bool isBlocked();
+		bool isVisible();
+		bool isExplored();
+
+                void setSymbol(wchar_t *ch);
+                wchar_t *getSymbol();
+
+                void setTypeID(int i);
+                void setSubTypeID(int i);
+                unsigned int getTypeID();
+                unsigned int getSubTypeID();
+
 		friend class TileMap;
 };
 
@@ -69,6 +79,7 @@ class Tile {
 class Wall : public Tile {
 
 	private:
+            wchar_t *orient[6];
 
 
 	public:

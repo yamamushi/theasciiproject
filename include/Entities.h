@@ -48,6 +48,7 @@ class Entity {
 		int X, Y;
 		wchar_t *symbol;
 		TileMap *world;
+                unsigned int TypeID, SubTypeID;
 
 		bool initialized;
 
@@ -60,7 +61,6 @@ class Entity {
 		bool move(TileMap *destination, int dx, int dy);
 		int posX();
 		int posY();
-		int TypeID, subTypeID;
 		bool fov[MAP_WIDTH][MAP_HEIGHT];
 		float H, S, V;
 		int R, G, B;
@@ -69,6 +69,12 @@ class Entity {
 
 
 		wchar_t *getSymbol();
+                void setSymbol(wchar_t *ch);
+
+                void setTypeID(int i);
+                void setSubTypeID(int i);
+
+
 
 		bool isInitialized();
 

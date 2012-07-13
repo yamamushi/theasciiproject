@@ -54,7 +54,8 @@ void Entity::init_entity(wchar_t *p){
 	G = 0;
 	B = 0;
 
-
+        TypeID = 0;
+        SubTypeID = 0;
 
 
 	initialized = false;
@@ -106,6 +107,19 @@ wchar_t *Entity::getSymbol(){
 	return symbol;
 
 }
+
+void Entity::setSymbol(wchar_t *ch){
+    symbol = ch;
+}
+
+void Entity::setTypeID(int i){
+    TypeID = i;
+}
+
+void Entity::setSubTypeID(int i){
+    SubTypeID = i;
+}
+
 
 bool Entity::isInitialized(){
 
@@ -163,9 +177,9 @@ Player::Player(){
 
 Goblin::Goblin(){
 
-	init_entity( L"\uFB7F" );
-	H = 107.0;
-	S = 1.0;
+	init_entity( L"\uFFF7" );
+	H = 30.0;
+	S = 0.58;
 	V = 0.40;
 
 }

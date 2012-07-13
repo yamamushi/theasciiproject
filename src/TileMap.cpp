@@ -83,7 +83,7 @@ void TileMap::refreshMap(){
 
 bool TileMap::checkBounds(int posX, int posY){
 
-	if (virtMap[posX][posY]->is_blocked() || posX <= 0 || posX >= MAP_WIDTH || posY < 0 || posY >= MAP_HEIGHT)
+	if (virtMap[posX][posY]->isBlocked() || posX <= 0 || posX >= MAP_WIDTH || posY < 0 || posY >= MAP_HEIGHT)
 		return false;
 	else
 		return true;
@@ -143,6 +143,11 @@ void TileMap::drawAllHalls(){
 	for(z=0; z < numHalls; z++){
 		drawHall(z);
 	}
+}
+
+void TileMap::orientWalls(){
+    
+
 }
 
 void TileMap::importRoom(Room *source){

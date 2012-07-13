@@ -49,7 +49,6 @@ GraphicsTCOD::GraphicsTCOD(TileMap *sourceMap, EntityMap *EntMap, Entity *player
 	init(sourceMap, EntMap, player);
 }
 
-
 void GraphicsTCOD::init(TileMap *sourceMap, EntityMap *EntMap, Entity *player){
 
 	input = sourceMap;
@@ -68,11 +67,6 @@ void GraphicsTCOD::init(TileMap *sourceMap, EntityMap *EntMap, Entity *player){
 
 }
 
-
-
-
-
-
 void GraphicsTCOD::render(){
 
 	entMap->refreshEntityMap();
@@ -88,8 +82,6 @@ void GraphicsTCOD::render(){
 
 }
 
-
-
 void GraphicsTCOD::renderTiles(){
 
 	int x, y;
@@ -102,7 +94,7 @@ void GraphicsTCOD::renderTiles(){
 
 	for(x=0;x<MAP_WIDTH;x++){
                 for(y=0;y<MAP_HEIGHT;y++){
-                        if (input->virtMap[x][y]->is_explored()){
+                        if (input->virtMap[x][y]->isExplored()){
 
 					H = input->virtMap[x][y]->H;
 					HD = input->virtMap[x][y]->HD;
@@ -111,16 +103,23 @@ void GraphicsTCOD::renderTiles(){
 					V = input->virtMap[x][y]->V;
 					VD = input->virtMap[x][y]->VD;
 
-				if (input->virtMap[x][y]->is_sight_blocked()){
+				if (input->virtMap[x][y]->isSightBlocked()){
 				     	output->setCharBackground(x, y, TCODColor(HD, SD, VD));
 					     	if (input->virtMap[x][y]->visible){
-						     		output->setCharBackground(x, y, TCODColor(H, S, V));
+						    output->setCharBackground(x, y, TCODColor(0,0,0));
+                                                    output->setDefaultForeground(TCODColor(H, S, V));
+                                                    wchar_t *symbol = input->virtMap[x][y]->getSymbol();
+                                                    output->print(x, y, symbol);
 						}
 				}
 				else{
 					output->setCharBackground(x, y, TCODColor(HD, SD, VD));
 					if (input->virtMap[x][y]->visible){
-						output->setCharBackground(x, y, TCODColor(H, S, V));
+						output->setCharBackground(x, y, TCODColor(0, 0, 0));
+                                                output->setDefaultForeground(TCODColor(H, S, V));
+                                                wchar_t *symbol = input->virtMap[x][y]->getSymbol();
+                                                output->print(x, y, symbol);
+
 				     	}
 				}
 			}
@@ -129,12 +128,10 @@ void GraphicsTCOD::renderTiles(){
 
 }
 
-
-
 void GraphicsTCOD::renderEntities(){
 
 	int x, y;
-	float H, S, V;
+
 	wchar_t *symbol;
 
 	x = localPlayer->posX();
@@ -143,13 +140,19 @@ void GraphicsTCOD::renderEntities(){
 	H = localPlayer->H;
 	S = localPlayer->S;
 	V = localPlayer->V;
-
 	output->setDefaultForeground(TCODColor(H, S, V));
 
+        TH = input->virtMap[x][y]->H;
+        TS = input->virtMap[x][y]->S;
+        TV = input->virtMap[x][y]->V;
+
 	symbol = localPlayer->getSymbol();
+        //output->setCharBackground(x, y, TCODColor(TH, TS, TV));
 
 
         output->print(x, y, symbol);
+
+
 
 
 
@@ -163,7 +166,14 @@ void GraphicsTCOD::renderEntities(){
 							H = scan->H;
 							S = scan->S;
 							V = scan->V;
-							output->setDefaultForeground(TCODColor(H, S, V));
+                                                        output->setDefaultForeground(TCODColor(H, S, V));
+
+                                                        //TH = input->virtMap[x][y]->H;
+                                                        //TS = input->virtMap[x][y]->S;
+                                                        //TV = input->virtMap[x][y]->V;
+                                                        //output->setCharBackground(x, y, TCODColor(TH, TS, TV));
+
+
 							symbol = scan->getSymbol();
 							output->print(x, y, symbol);
 						}
@@ -173,22 +183,6 @@ void GraphicsTCOD::renderEntities(){
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 void GraphicsTCOD::clearScreen(){
 
