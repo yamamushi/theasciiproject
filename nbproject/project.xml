@@ -17,6 +17,10 @@
                     <name>Default</name>
                     <type>0</type>
                 </confElem>
+                <confElem>
+                    <name>NewConfiguration</name>
+                    <type>0</type>
+                </confElem>
             </confList>
         </data>
     </configuration>

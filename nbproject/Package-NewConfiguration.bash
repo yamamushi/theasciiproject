@@ -7,13 +7,13 @@
 # Macros
 TOP=`pwd`
 CND_PLATFORM=GNU-Linux-x86
-CND_CONF=Default
+CND_CONF=NewConfiguration
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=client
-OUTPUT_BASENAME=client
+OUTPUT_PATH=MissingOutputInProject
+OUTPUT_BASENAME=MissingOutputInProject
 PACKAGE_TOP_DIR=theasciiproject/
 
 # Functions
@@ -59,7 +59,7 @@ mkdir -p ${NBTMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory "${NBTMPDIR}/theasciiproject/bin"
+makeDirectory "${NBTMPDIR}/theasciiproject"
 copyFileToTmpDir "${OUTPUT_PATH}" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 

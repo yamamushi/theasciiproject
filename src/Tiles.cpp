@@ -129,12 +129,19 @@ unsigned int Tile::getSubTypeID(){
     return SubTypeID;
 }
 
+//Tile *Tile::getPtr(){
+//   return this;
+//}
+
+
+
 
 
 Wall::Wall(bool blked){
 
 	block_sight = blked;
 	blocked = blked;
+        needsOrientation = true;
 
 	H = 208.0;
 	S = 0.0;
@@ -145,6 +152,9 @@ Wall::Wall(bool blked){
 	VD = 0.1;
 
         setTypeID(1);
+        
+        // This is godawful, but it's only a short term solution
+        // For testing things out.
 
         orient[0] = L"\u2550";
         orient[1] = L"\u2551";
@@ -152,16 +162,43 @@ Wall::Wall(bool blked){
         orient[3] = L"\u2557";
         orient[4] = L"\u255A";
         orient[5] = L"\u255D";
+        orient[6] = L"\u2560";
+        orient[7] = L"\u2563";
+        orient[8] = L"\u2566";
+        orient[9] = L"\u2569";
+        orient[10] = L"\u256C";
+        orient[11] = L"\u255E";
+        orient[12] = L"\u2561";
+        orient[13] = L"\u2565";
+        orient[14] = L"\u2568";
+        
+        
 
-        setSymbol(orient[5]);
+       // setSymbol(orient[9]);
 
 
 }
+
+void Wall::setOrientation(int i){
+    
+    setSymbol(orient[i]);
+    
+}
+
+
+
+
+
+
+
+
+
 
 Floor::Floor(bool blked){
 
 	block_sight = blked;
 	blocked = blked;
+        setTypeID(2);
 
 
 	H = 30.4;
@@ -176,6 +213,10 @@ Floor::Floor(bool blked){
 
 
 
+}
+
+void Floor::setOrientation(int i){
+    ;
 }
 
 

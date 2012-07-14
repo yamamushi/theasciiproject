@@ -126,9 +126,18 @@
           <buildCommand>${MAKE} -f Makefile</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
           <executablePath>client</executablePath>
+          <cTool>
+            <incDir>
+              <pElem>src</pElem>
+              <pElem>include</pElem>
+              <pElem>include/libtcod</pElem>
+              <pElem>include/libtcod/gui</pElem>
+            </incDir>
+          </cTool>
           <ccTool>
             <incDir>
               <pElem>src</pElem>
+              <pElem>include/libtcod</pElem>
               <pElem>.</pElem>
               <pElem>include</pElem>
             </incDir>
@@ -138,16 +147,58 @@
       <folder path="theasciiproject/include">
         <ccTool>
           <incDir>
-            <pElem>include</pElem>
-            <pElem>include/libtcod</pElem>
             <pElem>include/libtcod/gui</pElem>
           </incDir>
         </ccTool>
       </folder>
+      <item path="include/libtcod/gui/button.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod/gui/container.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod/gui/flatlist.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod/gui/gui.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod/gui/hbox.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod/gui/image.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod/gui/label.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod/gui/radiobutton.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod/gui/slider.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod/gui/statusbar.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod/gui/textbox.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod/gui/togglebutton.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod/gui/toolbar.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod/gui/vbox.hpp" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="include/libtcod/gui/widget.hpp" ex="true" tool="3" flavor="0">
+      </item>
       <item path="include/libtcod/libtcod_int.h" ex="true" tool="3" flavor="0">
       </item>
       <item path="include/libtcod/wrappers.h" ex="true" tool="3" flavor="0">
       </item>
+    </conf>
+    <conf name="NewConfiguration" type="0">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE}</buildCommand>
+          <cleanCommand>${MAKE} clean</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+      </makefileType>
     </conf>
   </confs>
 </configurationDescriptor>

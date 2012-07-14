@@ -55,6 +55,7 @@ class Tile {
 		bool visible;
 		bool explored;
 		bool occupied;
+                bool needsOrientation;
 
 		Tile(bool blked=true);
 		void init_Tile(bool);
@@ -71,7 +72,12 @@ class Tile {
                 void setSubTypeID(int i);
                 unsigned int getTypeID();
                 unsigned int getSubTypeID();
+                
+                // Some nasty stuff I don't like doing...
+                virtual void setOrientation(int i)=0;
+                
 
+                
 		friend class TileMap;
 };
 
@@ -79,11 +85,13 @@ class Tile {
 class Wall : public Tile {
 
 	private:
-            wchar_t *orient[6];
+               wchar_t *orient[15];
 
 
 	public:
-		Wall(bool blked=true);
+               Wall(bool blked=true);
+               virtual void setOrientation(int i);
+
 
 
 };
@@ -94,6 +102,7 @@ class Floor : public Tile {
 
 	public:
 		Floor(bool blked=false);
+                virtual void setOrientation(int i);
 
 
 };

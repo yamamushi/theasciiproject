@@ -42,6 +42,7 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <typeinfo>
 
 
 // Our namespaces

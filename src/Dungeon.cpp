@@ -91,8 +91,8 @@ bool	Dungeon::createRooms(int numberOfRooms, int minSize, int maxSize, TileMap *
 		w = rng->getInt(minSize, maxSize);
 		h = rng->getInt(minSize, maxSize);
 		// checks for map boundaries
-		x = rng->getInt( 0, MAP_WIDTH - w - 2);
-		y = rng->getInt( 0, MAP_HEIGHT - h - 2);
+		x = rng->getInt( 0, MAP_WIDTH - w - 3);
+		y = rng->getInt( 0, MAP_HEIGHT - h - 3);
 
 		tempRoom = new Room(x, y, w, h);
 
