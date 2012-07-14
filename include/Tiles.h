@@ -72,12 +72,12 @@ class Tile {
                 void setSubTypeID(int i);
                 unsigned int getTypeID();
                 unsigned int getSubTypeID();
-                
+
                 // Some nasty stuff I don't like doing...
                 virtual void setOrientation(int i)=0;
-                
 
-                
+
+
 		friend class TileMap;
 };
 
@@ -85,7 +85,7 @@ class Tile {
 class Wall : public Tile {
 
 	private:
-               wchar_t *orient[15];
+               wchar_t *orient[16];
 
 
 	public:

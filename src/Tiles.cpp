@@ -152,7 +152,7 @@ Wall::Wall(bool blked){
 	VD = 0.1;
 
         setTypeID(1);
-        
+
         // This is godawful, but it's only a short term solution
         // For testing things out.
 
@@ -171,18 +171,19 @@ Wall::Wall(bool blked){
         orient[12] = L"\u2561";
         orient[13] = L"\u2565";
         orient[14] = L"\u2568";
-        
-        
+        orient[15] = L"\u2B1C";
 
-       // setSymbol(orient[9]);
+
+
+       setSymbol(orient[15]);
 
 
 }
 
 void Wall::setOrientation(int i){
-    
+
     setSymbol(orient[i]);
-    
+
 }
 
 
