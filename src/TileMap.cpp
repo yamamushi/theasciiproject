@@ -146,31 +146,31 @@ void TileMap::drawAllHalls(){
 }
 
 void TileMap::orientWalls(){
-    
+
     int x, y;
     unsigned int TypeID;
-    
+
     for(x=1; x < (MAP_WIDTH - 1) ; x++){
         for(y=1; y < (MAP_HEIGHT - 1); y++){
             TypeID = virtMap[x][y]->getTypeID();
             Tile *center = virtMap[x][y];
-            
+
             // Now for some really crappy calculations that should
             // And will be rewritten in a less craptastic manner.
              if (TypeID = 1){
                 if(TypeID == (virtMap[x-1][y]->getTypeID()) ) {
-                    
-                    
+
+
 
                     // ═
-                    
+
                     if(TypeID == (virtMap[x+1][y]->getTypeID())){
                         center->setOrientation(0);
                     }
-                     
-                      
+
+
                     // ╗
-                    
+
                     if(TypeID == (virtMap[x][y+1]->getTypeID()) &&
                             TypeID != (virtMap[x][y-1]->getTypeID()) &&
                             TypeID != (virtMap[x+1][y]->getTypeID()) &&
@@ -190,19 +190,19 @@ void TileMap::orientWalls(){
                             TypeID != (virtMap[x][y-1]->getTypeID())) {
                         center->setOrientation(3);
                     }
-                                              
-                    
-                    
+
+
+
                     // ╝
-                    
-                    if(TypeID == (virtMap[x][y-1]->getTypeID()) && 
-                            TypeID != (virtMap[x][y+1]->getTypeID()) && 
+
+                    if(TypeID == (virtMap[x][y-1]->getTypeID()) &&
+                            TypeID != (virtMap[x][y+1]->getTypeID()) &&
                             TypeID != (virtMap[x+1][y]->getTypeID()) &&
                             TypeID != (virtMap[x-1][y-1]->getTypeID()) ){
                         center->setOrientation(5);
                     }
-                    if(TypeID == (virtMap[x][y-1]->getTypeID()) && 
-                            TypeID == (virtMap[x+1][y]->getTypeID()) && 
+                    if(TypeID == (virtMap[x][y-1]->getTypeID()) &&
+                            TypeID == (virtMap[x+1][y]->getTypeID()) &&
                             TypeID == (virtMap[x][y+1]->getTypeID()) &&
                             TypeID != (virtMap[x-1][y-1]->getTypeID()) ){
                         center->setOrientation(5);
@@ -213,13 +213,13 @@ void TileMap::orientWalls(){
                             TypeID == (virtMap[x-1][y-1]->getTypeID())){
                         center->setOrientation(5);
                     }
-                    
 
-   
-                    
-                    
+
+
+
+
                     // ╩
-                    
+
                     if(TypeID == (virtMap[x+1][y]->getTypeID()) &&
                             TypeID == (virtMap[x][y-1]->getTypeID()) &&
                             TypeID != (virtMap[x][y+1]->getTypeID()) &&
@@ -227,12 +227,33 @@ void TileMap::orientWalls(){
                             TypeID != (virtMap[x-1][y-1]->getTypeID()) ){
                         center->setOrientation(9);
                     }
-                    
-                    
-                    
-                    
+                    if(TypeID == (virtMap[x+1][y]->getTypeID()) &&
+                            TypeID == (virtMap[x][y-1]->getTypeID()) &&
+                            TypeID != (virtMap[x][y+1]->getTypeID()) &&
+                            TypeID == (virtMap[x+1][y-1]->getTypeID()) &&
+                            TypeID != (virtMap[x-1][y-1]->getTypeID()) ){
+                        center->setOrientation(9);
+                    }
+                    if(TypeID == (virtMap[x+1][y]->getTypeID()) &&
+                            TypeID == (virtMap[x][y-1]->getTypeID()) &&
+                            TypeID == (virtMap[x][y+1]->getTypeID()) &&
+                            TypeID != (virtMap[x+1][y-1]->getTypeID()) &&
+                            TypeID != (virtMap[x-1][y-1]->getTypeID()) ){
+                        center->setOrientation(9);
+                    }
+                    if(TypeID == (virtMap[x+1][y]->getTypeID()) &&
+                            TypeID == (virtMap[x][y-1]->getTypeID()) &&
+                            TypeID != (virtMap[x][y+1]->getTypeID()) &&
+                            TypeID != (virtMap[x+1][y-1]->getTypeID()) &&
+                            TypeID == (virtMap[x-1][y-1]->getTypeID()) ){
+                        center->setOrientation(9);
+                    }
+
+
+
+
                     // ╣
-                    
+
                     else if(TypeID == (virtMap[x][y-1]->getTypeID()) &&
                             TypeID == (virtMap[x][y+1]->getTypeID()) &&
                             TypeID != (virtMap[x+1][y]->getTypeID()) &&
@@ -240,12 +261,12 @@ void TileMap::orientWalls(){
                             TypeID != (virtMap[x-1][y+1]->getTypeID()) ){
                         center->setOrientation(7);
                     }
-                    
-                    
-                    
-                    
+
+
+
+
                     // ╦
-                    
+
                     if(TypeID == (virtMap[x+1][y]->getTypeID()) &&
                             TypeID == (virtMap[x][y+1]->getTypeID()) &&
                             TypeID != (virtMap[x][y-1]->getTypeID()) &&
@@ -253,11 +274,32 @@ void TileMap::orientWalls(){
                             TypeID != (virtMap[x-1][y+1]->getTypeID()) ){
                         center->setOrientation(8);
                     }
-                    
-                    
-                    
+                    if(TypeID == (virtMap[x+1][y]->getTypeID()) &&
+                            TypeID == (virtMap[x][y+1]->getTypeID()) &&
+                            TypeID == (virtMap[x][y-1]->getTypeID()) &&
+                            TypeID != (virtMap[x+1][y+1]->getTypeID()) &&
+                            TypeID != (virtMap[x-1][y+1]->getTypeID()) ){
+                        center->setOrientation(8);
+                    }
+                    if(TypeID == (virtMap[x+1][y]->getTypeID()) &&
+                            TypeID == (virtMap[x][y+1]->getTypeID()) &&
+                            TypeID == (virtMap[x][y+1]->getTypeID()) &&
+                            TypeID != (virtMap[x+1][y+1]->getTypeID()) &&
+                            TypeID == (virtMap[x-1][y+1]->getTypeID()) ){
+                        center->setOrientation(8);
+                    }
+                    if(TypeID == (virtMap[x+1][y]->getTypeID()) &&
+                            TypeID == (virtMap[x][y+1]->getTypeID()) &&
+                            TypeID != (virtMap[x][y-1]->getTypeID()) &&
+                            TypeID == (virtMap[x+1][y+1]->getTypeID()) &&
+                            TypeID != (virtMap[x-1][y+1]->getTypeID()) ){
+                        center->setOrientation(8);
+                    }
+
+
+
                     // ╬
-                    
+
                     if(TypeID == (virtMap[x+1][y]->getTypeID()) &&
                             TypeID == (virtMap[x][y-1]->getTypeID()) &&
                             TypeID == (virtMap[x][y+1]->getTypeID()) &&
@@ -266,64 +308,165 @@ void TileMap::orientWalls(){
                             TypeID != (virtMap[x-1][y-1]->getTypeID()) &&
                             TypeID != (virtMap[x-1][y+1]->getTypeID()) ){
                         center->setOrientation(10);
-                    }   
-                    
-                    
-                    
+                    }
 
-                    
-                    
+
+
+
+
+
                     // ║ for left side walls
-                    
+
                     if(TypeID == (virtMap[x][y-1]->getTypeID()) &&
                             TypeID == (virtMap[x][y+1]->getTypeID()) &&
                             TypeID != (virtMap[x+1][y]->getTypeID()) ){
                         center->setOrientation(1);
                     }
-                    
+
                     // ╡
                     if(TypeID != (virtMap[x][y-1])->getTypeID() &&
                             TypeID != (virtMap[x][y+1]->getTypeID()) &&
                             TypeID != (virtMap[x+1][y]->getTypeID()) ){
                         center->setOrientation(12);
                     }
-                    
-                    
-                    
+
+
+
                 }
 
-                else if(TypeID == (virtMap[x+1][y]->getTypeID()) ){
+                if(TypeID == (virtMap[x+1][y]->getTypeID()) ){
+
+                    // ╚
                     if(TypeID == (virtMap[x][y-1])->getTypeID() &&
-                            TypeID != (virtMap[x-1][y]->getTypeID()) &&
-                            TypeID != (virtMap[x][y+1]->getTypeID()) ){
-                        center->setOrientation(4);
+                            TypeID == (virtMap[x+1][y]->getTypeID()) ){
+
+                        if(TypeID == (virtMap[x][y+1]->getTypeID()) &&
+                                TypeID == (virtMap[x-1][y]->getTypeID()) &&
+                                TypeID != (virtMap[x+1][y-1]->getTypeID())
+                                ){
+                            center->setOrientation(4);
+                        }
+                        if(TypeID != (virtMap[x][y+1]->getTypeID()) &&
+                                TypeID != (virtMap[x-1][y]->getTypeID()) &&
+                                TypeID != (virtMap[x+1][y-1]->getTypeID()) ){
+                            center->setOrientation(4);
+                        }
+                        if(TypeID != (virtMap[x][y+1]->getTypeID()) &&
+                                TypeID != (virtMap[x-1][y]->getTypeID()) &&
+                                TypeID == (virtMap[x+1][y-1]->getTypeID()) ){
+                            center->setOrientation(4);
+                        }
+
+
                     }
-                    if(TypeID == (virtMap[x][y+1]->getTypeID()) &&
-                            TypeID != (virtMap[x][y-1]->getTypeID()) &&
+
+
+                    // ║ for right side walls
+
+                    if(TypeID == (virtMap[x][y-1]->getTypeID()) &&
+                            TypeID == (virtMap[x][y+1]->getTypeID()) &&
                             TypeID != (virtMap[x-1][y]->getTypeID()) ){
-                        center->setOrientation(2);
+                        center->setOrientation(1);
                     }
+
+
+                    // ╔
+
+                    if(TypeID == (virtMap[x][y+1]->getTypeID()) &&
+                            TypeID == (virtMap[x+1][y]->getTypeID()) ){
+
+                        if(TypeID == (virtMap[x][y-1]->getTypeID()) &&
+                                TypeID == (virtMap[x-1][y]->getTypeID()) &&
+                                TypeID != (virtMap[x+1][y+1]->getTypeID()) ){
+                            center->setOrientation(2);
+
+                        }
+                        if(TypeID != (virtMap[x][y-1]->getTypeID()) &&
+                                TypeID != (virtMap[x-1][y]->getTypeID()) &&
+                                TypeID == (virtMap[x+1][y+1]->getTypeID()) ){
+                            center->setOrientation(2);
+
+                        }
+
+                    }
+
+                    // ╞
+
+                    if(TypeID != (virtMap[x][y+1]->getTypeID()) &&
+                            TypeID != (virtMap[x][y-1]->getTypeID()) &&
+                            TypeID != (virtMap[x-1][y]->getTypeID())  ){
+                        center->setOrientation(11);
+                    }
+
+
+                    // ╠
+
+                    if(TypeID == (virtMap[x][y-1]->getTypeID()) &&
+                            TypeID == (virtMap[x][y+1]->getTypeID()) &&
+                            TypeID == (virtMap[x+1][y]->getTypeID()) ){
+                        if(TypeID != (virtMap[x+1][y-1]->getTypeID()) &&
+                                TypeID != (virtMap[x+1][y+1]->getTypeID()) &&
+                                TypeID == (virtMap[x-1][y]->getTypeID()) ){
+                            center->setOrientation(6);
+                        }
+                        if(TypeID == (virtMap[x+1][y-1]->getTypeID()) &&
+                                TypeID != (virtMap[x+1][y+1]->getTypeID()) &&
+                                TypeID != (virtMap[x-1][y]->getTypeID()) ){
+                            center->setOrientation(6);
+                        }
+                        if(TypeID != (virtMap[x+1][y-1]->getTypeID()) &&
+                                TypeID == (virtMap[x+1][y+1]->getTypeID()) &&
+                                TypeID != (virtMap[x-1][y]->getTypeID()) ){
+                            center->setOrientation(6);
+                        }
+
+
+
+
+
+                    }
+
+
                 }
-                
-                else if(TypeID == (virtMap[x][y-1]->getTypeID())){
-                        if(TypeID == (virtMap[x][y+1]->getTypeID())){   
+
+               else if(TypeID == (virtMap[x][y-1]->getTypeID())){
+
+
+                   // ║ for walls with nothing to the left or right of them.
+
+                   if(TypeID == (virtMap[x][y+1]->getTypeID()) &&
+                           TypeID != (virtMap[x-1][y]->getTypeID()) &&
+                           TypeID != (virtMap[x+1][y]->getTypeID()) ){
                             center->setOrientation(1);
                         }
-                    }
-                
 
-                            
-                
-                }
+                   // ╨
+
+                   if(TypeID != (virtMap[x][y+1]->getTypeID()) &&
+                           TypeID != (virtMap[x+1][y]->getTypeID()) &&
+                           TypeID != (virtMap[x-1][y]->getTypeID()) ){
+                       center->setOrientation(14);
+                   }
+               }
+
+                // ╥ - Finally our last character
+               else if(TypeID == (virtMap[x][y+1]->getTypeID())){
+                    if(TypeID != (virtMap[x][y-1]->getTypeID()) &&
+                           TypeID != (virtMap[x+1][y]->getTypeID()) &&
+                           TypeID != (virtMap[x-1][y]->getTypeID()) ){
+                       center->setOrientation(13);
+                   }
+               }
              }
         }
     }
+}
 
 
 
 void TileMap::orientWalls(int x1, int y1, int x2, int y2){
-    
-   
+
+
 }
 
 void TileMap::importRoom(Room *source){

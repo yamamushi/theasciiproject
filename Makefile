@@ -18,7 +18,7 @@ CPP_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
 all : client
 
 client : $(CPP_OBJS)
-	$(CPP) $(addprefix $(BUILDDIR), $(CPP_OBJS)) -o $@ -ltcod -ltcodxx -Wl,-rpath,.
+	$(CPP) $(addprefix $(BUILDDIR), $(CPP_OBJS)) -o $@ -ltcod -Wl,-rpath,.
 
 clean :
 	\rm -f $(addprefix $(BUILDDIR), $(CPP_OBJS)) client

@@ -3,6 +3,14 @@ Copyright (c) 2012 Jonathan Rumion
 07/08/2012
 ==================================
 
+0.0.0g
+
+I've completed the integration of Unicode characters into the project, and I
+have also implemented a (probably temporary) solution to rendering Tiles
+depending on their orientation to other tiles (ie, wall graphics).
+
+
+
 0.0.0f
 
 Okay so this was enough of a change that I felt like moving the version number
