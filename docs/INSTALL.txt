@@ -18,7 +18,7 @@ If you want to install libtcod as a shared library in /usr/lib/ , that will
 make things easier as there are no plans to distribute the libtcod.so
 and libtcodcxx.so linux libraries with this project at this time.
 Otherwise you can stick the libtcod.so and libtcodxx.so files in
-this directory to build this project properly.
+this directory to build this project the properly.
 
 
 
