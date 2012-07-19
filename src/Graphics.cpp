@@ -45,15 +45,13 @@
 
 
 
-GraphicsTCOD::GraphicsTCOD(TileMap *sourceMap, EntityMap *EntMap, Entity *player){
-	init(sourceMap, EntMap, player);
+GraphicsTCOD::GraphicsTCOD(RenderMap *rendermap){
+	init(rendermap);
 }
 
-void GraphicsTCOD::init(TileMap *sourceMap, EntityMap *EntMap, Entity *player){
+void GraphicsTCOD::init(RenderMap *rendermap){
 
-	input = sourceMap;
-	entMap = EntMap;
-	localPlayer = player;
+        rMap = rendermap;
 
         setlocale(LC_ALL, "en_US.UTF-8");
         TCODConsole::setCustomFont("data/font.png", TCOD_FONT_LAYOUT_ASCII_INROW, 32, 2048);
@@ -69,12 +67,7 @@ void GraphicsTCOD::init(TileMap *sourceMap, EntityMap *EntMap, Entity *player){
 
 void GraphicsTCOD::render(){
 
-	entMap->refreshEntityMap();
-
-	renderTiles();
-	renderEntities();
-
-
+        prepare();
 
 	TCODConsole::blit(output, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
 	TCODConsole::flush();
@@ -82,6 +75,58 @@ void GraphicsTCOD::render(){
 
 }
 
+void GraphicsTCOD::prepare(){
+
+    int x, y;
+
+    wchar_t *sym;
+
+
+    for(x=0;x<MAP_WIDTH;x++){
+        for(y=0;y<MAP_HEIGHT;y++){
+
+            if (rMap->returnExplored(x, y)){
+
+                H = rMap->returnH(x, y);
+                S = rMap->returnS(x, y);
+                V = rMap->returnV(x, y);
+                sym = rMap->getSymbol(x, y);
+
+                if (rMap->returnOccupied(x, y)){
+
+                        output->setDefaultForeground(TCODColor(H, S, V));
+                        output->print(x, y, sym);
+                }
+                else{
+                    HD = rMap->returnHD(x, y);
+                    SD = rMap->returnSD(x, y);
+                    VD = rMap->returnVD(x, y);
+
+                    if (rMap->returnVisible(x, y)){
+                        output->setCharBackground(x, y, TCODColor(0,0,0));
+                        output->setDefaultForeground(TCODColor(H, S, V));
+                        output->print(x, y, sym);
+                    }
+
+                    else{
+                        output->setCharBackground(x, y, TCODColor(0,0,0));
+                        output->setDefaultForeground(TCODColor(HD, SD, VD));
+                        output->print(x, y, sym);
+                    }
+                }
+            }
+
+        }
+    }
+
+
+}
+
+
+
+
+
+/*
 void GraphicsTCOD::renderTiles(){
 
 	int x, y;
@@ -179,6 +224,7 @@ void GraphicsTCOD::renderEntities(){
 		}
 	}
 }
+*/
 
 void GraphicsTCOD::clearScreen(){
 

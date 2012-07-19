@@ -49,6 +49,8 @@ typedef struct render_t {
     float SD;
     float VD;
     bool explored;
+    bool occupied;
+    bool visible;
 };
 
 
@@ -79,6 +81,8 @@ public:
     float returnV(int x, int y);
     float returnVD(int x, int y);
     bool returnExplored(int x, int y);
+    bool returnOccupied(int x, int y);
+    bool returnVisible(int x, int y);
 
 
 };

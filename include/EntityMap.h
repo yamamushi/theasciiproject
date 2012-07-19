@@ -69,10 +69,6 @@ class EntityMap {
 		bool checkOccupied(int x, int y);
 		Entity * outputLastEntity(int x, int y);
 
-		int checkColor(int x, int y);
-
-		void updateColorMap();
-
 
 
 };

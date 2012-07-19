@@ -78,28 +78,29 @@ int main(
 	EntityMap *entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT);
 	Entity *player = new Player();
 	Goblin *goblin = new Goblin();
+        Goblin *goblinA = new Goblin();
 
 
 	entMap->addToMap(goblin);
+        entMap->addToMap(goblinA);
 	entMap->addToMap(player);
 
-	entMap->initAllEnts(map);
 
+	entMap->initAllEnts(map);
 
 	int pX = map->rooms[1]->cX;
 	int pY = map->rooms[1]->cY;
 
 	player->move(map, pX, pY);
-
 	goblin->move(map, pX-1, pY-1);
+        goblinA->move(map, pX+1, pY+1);
 
 
-
-	entMap->initAllEnts(map);
+	//entMap->refreshEntityMap();
 	kboard->initKeyboard(pX, pY);
 
         RenderMap *rMap = new RenderMap(map, entMap);
-	GraphicsTCOD *output = new GraphicsTCOD(map, entMap, player);
+	GraphicsTCOD *output = new GraphicsTCOD(rMap);
 
 
 	TCODMap *tcodMap = new TCODMap(MAP_WIDTH, MAP_HEIGHT);
@@ -114,7 +115,7 @@ int main(
 	// Main Game Loop
 	while(!TCODConsole::isWindowClosed()) {
 
-		// Draw our map to the screen
+		// Compute FOV
 		tcodMap->computeFov( player->posX(), player->posY(), TORCH_RADIUS, FOV_LIGHT_WALLS);
 				for(x=0; x < MAP_WIDTH; x++){
 					for(y=0; y < MAP_HEIGHT; y++){
@@ -131,7 +132,7 @@ int main(
 				}
 
 
-
+                entMap->refreshEntityMap();
                 rMap->refreshMap();
 		output->render();
 

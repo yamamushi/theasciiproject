@@ -80,6 +80,8 @@ void RenderMap::refreshMap(){
             rMap[x][y].V = tMap->virtMap[x][y]->V;
             rMap[x][y].VD = tMap->virtMap[x][y]->VD;
             rMap[x][y].explored = tMap->virtMap[x][y]->isExplored();
+            rMap[x][y].occupied = false;
+            rMap[x][y].visible = tMap->virtMap[x][y]->isVisible();
 
 
            }
@@ -93,6 +95,8 @@ void RenderMap::refreshMap(){
                 rMap[x][y].S = scan->S;
                 rMap[x][y].V = scan->V;
                 rMap[x][y].explored = tMap->virtMap[x][y]->isExplored();
+                rMap[x][y].occupied = true;
+                rMap[x][y].visible = tMap->virtMap[x][y]->isVisible();
 
             }
         }
@@ -144,5 +148,17 @@ float RenderMap::returnVD(int x, int y){
 bool RenderMap::returnExplored(int x, int y){
 
     return rMap[x][y].explored;
+
+}
+
+bool RenderMap::returnOccupied(int x, int y){
+
+    return rMap[x][y].occupied;
+
+}
+
+bool RenderMap::returnVisible(int x, int y){
+
+    return rMap[x][y].visible;
 
 }

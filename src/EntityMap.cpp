@@ -151,16 +151,12 @@ void EntityMap::refreshEntityMap(){
 						int newY = cur->posY();
 
 						pos[newX][newY].push_back(cur);
-						pos[x][y].clear();
-					}
-					else{
-						colorTable[x][y] = LIGHT_GROUND;
+						pos[x][y].erase(pos[x][y].begin()+z);
 					}
 				}
 			}
 		}
 	}
-
 }
 
 bool EntityMap::checkOccupied(int x, int y){
@@ -181,30 +177,3 @@ Entity * EntityMap::outputLastEntity(int x, int y){
 }
 
 
-/*
-void EntityMap::updateColorMap(){
-
-	int x, y;
-
-	for (x = 0; x < width; x++){
-		for ( y = 0; y < width; y++){
-			if ( !(pos[x][y].empty()) ){
-
-				Entity *current = pos[x][y].back();
-				colorTable[x][y] = current->getColor();
-
-			}
-			else {
-				//colorTable[x][y] = NONE;
-			}
-		}
-	}
-
-}
-*/
-
-int EntityMap::checkColor(int x, int y){
-
-	return colorTable[x][y];
-
-}

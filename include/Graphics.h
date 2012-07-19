@@ -45,9 +45,7 @@ class GraphicsTCOD {
 
 
 		TileMap *input;
-		EntityMap *entMap;
-		Entity *localPlayer;
-		Entity *scan;
+                RenderMap *rMap;
                 float H, S, V, HD, SD, VD;
                 float TH, TS, TV, THD, TSD, TVD;
 
@@ -56,12 +54,13 @@ class GraphicsTCOD {
 
 		TCODConsole *output;
 
-		GraphicsTCOD(TileMap *sourceMap, EntityMap *entMap, Entity *player);
-		void init(TileMap *sourceMap, EntityMap *entMap, Entity *player);
+		GraphicsTCOD(RenderMap *rendermap);
+		void init(RenderMap *rendermap);
 
 		void render();
-		void renderTiles();
-		void renderEntities();
+                void prepare();
+		//void renderTiles();
+		//void renderEntities();
 
 		void clearScreen();
 
