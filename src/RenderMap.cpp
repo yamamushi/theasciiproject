@@ -1,12 +1,13 @@
 /*
  * =====================================================================================
  *
- *       Filename:  headers.h
+ *       Filename:  RenderMap.cpp
  *
- *    Description:  An attempt to consolidate and order our header files
+ *    Description:  This object stores the Symbol and Color information
+ *              for use in our Graphics Rendering library.
  *
  *        Version:  1.0
- *        Created:  07/04/2012
+ *        Created:  07/19/2012
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -37,72 +38,45 @@
  */
 
 
-// Standard headers first
-#include <math.h>
-#include <algorithm>
-#include <iostream>
-#include <vector>
-#include <typeinfo>
+#include "headers.h"
 
 
-// Our namespaces
-using namespace std;
+RenderMap::RenderMap(TileMap *tiles, EntityMap *entities){
 
+    initRenderMap(tiles, entities);
 
-// Our global constants
-#include "constants.h"
+}
 
+void RenderMap::initRenderMap(TileMap* tiles, EntityMap* entities){
 
-// 3rd party headers (currently only one in use)
-#include "libtcod/libtcod.hpp"
+    int x, y;
 
+    for (x = 0; x < MAP_WIDTH; x++){
+        for (y = 0; y < MAP_HEIGHT; y++){
+            if (entities->checkOccupied(x, y)){
 
-// Our most important objects
-#include "Tiles.h"
-#include "TileMap.h"
-#include "Entities.h"
-#include "EntityMap.h"
+                scan = entities->outputLastEntity(x, y);
+                Rmap[x][y]->symbol = scan->getSymbol();
+                Rmap[x][y]->H = scan->H;
+                Rmap[x][y]->S = scan->S;
+                Rmap[x][y]->V = scan->V;
 
+            }
+            else {
 
-// Temporary Dungeon Generator
-#include "Dungeon.h"
+            Rmap[x][y]->symbol = tiles->virtMap[x][y]->getSymbol();
+            Rmap[x][y]->H = tiles->virtMap[x][y]->H;
+            Rmap[x][y]->S = tiles->virtMap[x][y]->S;
+            Rmap[x][y]->V = tiles->virtMap[x][y]->V;
+            
+            }
+        }
+    }
+}
 
+wchar_t *RenderMap::getSymbol(int x, int y){
 
-// This will be rewritten "soon"
-#include "Keyboard.h"
+    return Rmap[x][y]->symbol;
 
-
-// Nothing should depend on our graphics library, ever.
-#include "RenderMap.h"
-#include "Graphics.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 

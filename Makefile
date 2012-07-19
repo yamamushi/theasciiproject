@@ -13,12 +13,12 @@ CPP=g++
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 CPP_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
-     Dungeon.o Keyboard.o Graphics.o Main.o
+     Dungeon.o Keyboard.o RenderMap.o Graphics.o Main.o
 
 all : client
 
 client : $(CPP_OBJS)
-	$(CPP) $(addprefix $(BUILDDIR), $(CPP_OBJS)) -o ./bin/$@ -ltcod -ltcodxx -Wl,-rpath,.
+	$(CPP) $(addprefix $(BUILDDIR), $(CPP_OBJS)) -o ./bin/$@ -ltcod -Wl,-rpath,.
 
 clean :
 	\rm -f $(addprefix $(BUILDDIR), $(CPP_OBJS)) ./bin/*

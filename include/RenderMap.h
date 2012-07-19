@@ -1,12 +1,13 @@
 /*
  * =====================================================================================
  *
- *       Filename:  headers.h
+ *       Filename:  RenderMap.h
  *
- *    Description:  An attempt to consolidate and order our header files
+ *    Description:  This object stores the Symbol and Color information
+ *              for use in our Graphics Rendering library.
  *
  *        Version:  1.0
- *        Created:  07/04/2012
+ *        Created:  07/19/2012
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -36,73 +37,32 @@
  * =====================================================================================
  */
 
+// I apologize ahead of time for the code indentation here, Netbeans
+// is not playing nice right now.
 
-// Standard headers first
-#include <math.h>
-#include <algorithm>
-#include <iostream>
-#include <vector>
-#include <typeinfo>
-
-
-// Our namespaces
-using namespace std;
+struct render_t {
+    wchar_t *symbol;
+    float H;
+    float S;
+    float V;
+};
 
 
-// Our global constants
-#include "constants.h"
+class RenderMap {
+
+private:
+
+    render_t * Rmap[MAP_WIDTH][MAP_HEIGHT];
+    Entity *scan;
 
 
-// 3rd party headers (currently only one in use)
-#include "libtcod/libtcod.hpp"
+public:
 
+    RenderMap(TileMap *tiles, EntityMap *entities);
+    void initRenderMap(TileMap *tiles, EntityMap *entities);
 
-// Our most important objects
-#include "Tiles.h"
-#include "TileMap.h"
-#include "Entities.h"
-#include "EntityMap.h"
-
-
-// Temporary Dungeon Generator
-#include "Dungeon.h"
-
-
-// This will be rewritten "soon"
-#include "Keyboard.h"
-
-
-// Nothing should depend on our graphics library, ever.
-#include "RenderMap.h"
-#include "Graphics.h"
+    wchar_t *getSymbol(int x, int y);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};

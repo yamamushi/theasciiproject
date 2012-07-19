@@ -142,10 +142,6 @@ void GraphicsTCOD::renderEntities(){
 	V = localPlayer->V;
 	output->setDefaultForeground(TCODColor(H, S, V));
 
-        TH = input->virtMap[x][y]->H;
-        TS = input->virtMap[x][y]->S;
-        TV = input->virtMap[x][y]->V;
-
 	symbol = localPlayer->getSymbol();
         //output->setCharBackground(x, y, TCODColor(TH, TS, TV));
 
