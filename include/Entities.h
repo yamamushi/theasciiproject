@@ -49,6 +49,7 @@ class Entity {
 		wchar_t *symbol;
 		TileMap *world;
                 unsigned int TypeID, SubTypeID;
+                unsigned int UID;
 
 		bool initialized;
 

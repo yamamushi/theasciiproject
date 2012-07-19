@@ -41,16 +41,6 @@
 #include "headers.h"
 
 
-// We'll probably move these global variables somewhere else later
-int CenterX, CenterY;
-
-
-
-
-
-
-
-
 // Lets's Rock n' Roll
 
 int main(
@@ -59,14 +49,12 @@ int main(
 
 	// boring variables
 	bool quit = false;
-	CenterX = MAIN_WIDTH/2;
-	CenterY = MAIN_HEIGHT/2;
+	int CenterX = MAIN_WIDTH/2;
+	int CenterY = MAIN_HEIGHT/2;
 
 	int i, x, y, z;
 
 	// Let's get things setup
-
-	// TCODConsole::credits();
 
 	Keyboard *kboard = new Keyboard();
 
@@ -96,7 +84,7 @@ int main(
         goblinA->move(map, pX+1, pY+1);
 
 
-	//entMap->refreshEntityMap();
+	entMap->refreshEntityMap();
 	kboard->initKeyboard(pX, pY);
 
         RenderMap *rMap = new RenderMap(map, entMap);

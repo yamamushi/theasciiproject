@@ -71,6 +71,7 @@ public:
 
     RenderMap(TileMap *tiles, EntityMap *entities);
     void initRenderMap(TileMap *tiles, EntityMap *entities);
+    
     void refreshMap();
 
     wchar_t *getSymbol(int x, int y);

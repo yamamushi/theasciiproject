@@ -61,12 +61,6 @@ void RenderMap::refreshMap(){
 
     int x, y;
 
-    wchar_t *sym;
-
-    float h, hd, s, sd, v, vd;
-
-    bool explored;
-
     for (x = 0; x < MAP_WIDTH; x++){
         for (y = 0; y < MAP_HEIGHT; y++){
            if (!(eMap->checkOccupied(x, y))){
