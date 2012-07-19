@@ -47,28 +47,53 @@ RenderMap::RenderMap(TileMap *tiles, EntityMap *entities){
 
 }
 
-void RenderMap::initRenderMap(TileMap* tiles, EntityMap* entities){
+void RenderMap::initRenderMap(TileMap *tiles, EntityMap *entities){
+
+
+
+    tMap = tiles;
+    eMap = entities;
+    refreshMap();
+
+}
+
+void RenderMap::refreshMap(){
 
     int x, y;
 
+    wchar_t *sym;
+
+    float h, hd, s, sd, v, vd;
+
+    bool explored;
+
     for (x = 0; x < MAP_WIDTH; x++){
         for (y = 0; y < MAP_HEIGHT; y++){
-            if (entities->checkOccupied(x, y)){
+           if (!(eMap->checkOccupied(x, y))){
 
-                scan = entities->outputLastEntity(x, y);
-                Rmap[x][y]->symbol = scan->getSymbol();
-                Rmap[x][y]->H = scan->H;
-                Rmap[x][y]->S = scan->S;
-                Rmap[x][y]->V = scan->V;
 
-            }
-            else {
+            rMap[x][y].symbol = tMap->virtMap[x][y]->getSymbol();
+            rMap[x][y].H = tMap->virtMap[x][y]->H;
+            rMap[x][y].HD = tMap->virtMap[x][y]->HD;
+            rMap[x][y].S = tMap->virtMap[x][y]->S;
+            rMap[x][y].SD = tMap->virtMap[x][y]->SD;
+            rMap[x][y].V = tMap->virtMap[x][y]->V;
+            rMap[x][y].VD = tMap->virtMap[x][y]->VD;
+            rMap[x][y].explored = tMap->virtMap[x][y]->isExplored();
 
-            Rmap[x][y]->symbol = tiles->virtMap[x][y]->getSymbol();
-            Rmap[x][y]->H = tiles->virtMap[x][y]->H;
-            Rmap[x][y]->S = tiles->virtMap[x][y]->S;
-            Rmap[x][y]->V = tiles->virtMap[x][y]->V;
-            
+
+           }
+
+           else {
+
+                scan = eMap->outputLastEntity(x, y);
+
+                rMap[x][y].symbol = scan->getSymbol();
+                rMap[x][y].H = scan->H;
+                rMap[x][y].S = scan->S;
+                rMap[x][y].V = scan->V;
+                rMap[x][y].explored = tMap->virtMap[x][y]->isExplored();
+
             }
         }
     }
@@ -76,7 +101,48 @@ void RenderMap::initRenderMap(TileMap* tiles, EntityMap* entities){
 
 wchar_t *RenderMap::getSymbol(int x, int y){
 
-    return Rmap[x][y]->symbol;
+    return rMap[x][y].symbol;
 
 }
 
+float RenderMap::returnH(int x, int y){
+
+    return rMap[x][y].H;
+
+}
+
+float RenderMap::returnHD(int x, int y){
+
+    return rMap[x][y].HD;
+
+}
+
+float RenderMap::returnS(int x, int y){
+
+    return rMap[x][y].S;
+
+}
+
+float RenderMap::returnSD(int x, int y){
+
+    return rMap[x][y].SD;
+
+}
+
+float RenderMap::returnV(int x, int y){
+
+    return rMap[x][y].V;
+
+}
+
+float RenderMap::returnVD(int x, int y){
+
+    return rMap[x][y].VD;
+
+}
+
+bool RenderMap::returnExplored(int x, int y){
+
+    return rMap[x][y].explored;
+
+}

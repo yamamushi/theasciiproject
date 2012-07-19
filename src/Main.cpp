@@ -79,19 +79,13 @@ int main(
 	Entity *player = new Player();
 	Goblin *goblin = new Goblin();
 
-	GraphicsTCOD *output = new GraphicsTCOD(map, entMap, player);
-
-
-
 
 	entMap->addToMap(goblin);
 	entMap->addToMap(player);
 
 	entMap->initAllEnts(map);
 
-	//int si = sizeof tArray/sizeof(Entity **);
 
-	// lets build our map o_o;;
 	int pX = map->rooms[1]->cX;
 	int pY = map->rooms[1]->cY;
 
@@ -104,10 +98,11 @@ int main(
 	entMap->initAllEnts(map);
 	kboard->initKeyboard(pX, pY);
 
+        RenderMap *rMap = new RenderMap(map, entMap);
+	GraphicsTCOD *output = new GraphicsTCOD(map, entMap, player);
+
 
 	TCODMap *tcodMap = new TCODMap(MAP_WIDTH, MAP_HEIGHT);
-
-	//output->render();
 
 	for(x = 0; x < MAP_WIDTH; x++){
 		for(y = 0; y < MAP_HEIGHT; y++){
@@ -136,21 +131,9 @@ int main(
 				}
 
 
-		// Do some quick boundary checks
-		/*// Draw our entities to the screen
-		for ( ray = 0; ray < si; ray++){
-			scan = *tArray[ray];
-			scan->draw(output->output);
-		} */
 
-
+                rMap->refreshMap();
 		output->render();
-		// Clean up our screen before reading in keys
-		/*for ( ray=0; ray < si; ray++){
-			scan = *tArray[ray];
-			scan->clean(output->output);
-		}
-		*/
 
 		output->clearScreen();
 		quit = kboard->handleKeys(player, map);

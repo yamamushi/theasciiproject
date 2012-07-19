@@ -12,7 +12,7 @@ CND_DISTDIR=dist
 CND_BUILDDIR=build
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=client
+OUTPUT_PATH=./bin/client
 OUTPUT_BASENAME=client
 PACKAGE_TOP_DIR=theasciiproject/
 

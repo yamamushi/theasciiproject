@@ -40,11 +40,15 @@
 // I apologize ahead of time for the code indentation here, Netbeans
 // is not playing nice right now.
 
-struct render_t {
+typedef struct render_t {
     wchar_t *symbol;
     float H;
     float S;
     float V;
+    float HD;
+    float SD;
+    float VD;
+    bool explored;
 };
 
 
@@ -52,17 +56,29 @@ class RenderMap {
 
 private:
 
-    render_t * Rmap[MAP_WIDTH][MAP_HEIGHT];
+    render_t rMap[MAP_WIDTH][MAP_HEIGHT];
+
+    TileMap *tMap;
+
     Entity *scan;
+    EntityMap *eMap;
+
 
 
 public:
 
     RenderMap(TileMap *tiles, EntityMap *entities);
     void initRenderMap(TileMap *tiles, EntityMap *entities);
+    void refreshMap();
 
     wchar_t *getSymbol(int x, int y);
-
+    float returnH(int x, int y);
+    float returnHD(int x, int y);
+    float returnS(int x, int y);
+    float returnSD(int x, int y);
+    float returnV(int x, int y);
+    float returnVD(int x, int y);
+    bool returnExplored(int x, int y);
 
 
 };

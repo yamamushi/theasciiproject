@@ -2,7 +2,17 @@
 <configurationDescriptor version="80">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df name="theasciiproject" root=".">
+      <df name="bin">
+      </df>
       <df name="build">
+      </df>
+      <df name="client.dSYM">
+        <df name="Contents">
+          <df name="Resources">
+            <df name="DWARF">
+            </df>
+          </df>
+        </df>
       </df>
       <df name="data">
       </df>
@@ -87,6 +97,8 @@
       </df>
       <df name="licenses">
       </df>
+      <df name="linux">
+      </df>
       <df name="makefiles">
       </df>
       <df name="osx">
@@ -100,6 +112,8 @@
         <in>Main.cpp</in>
         <in>TileMap.cpp</in>
         <in>Tiles.cpp</in>
+      </df>
+      <df name="windows">
       </df>
     </df>
     <logicalFolder name="ExternalFiles"
@@ -125,7 +139,7 @@
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
           <buildCommand>${MAKE} -f Makefile</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
-          <executablePath>client</executablePath>
+          <executablePath>./bin/client</executablePath>
           <cTool>
             <incDir>
               <pElem>src</pElem>
