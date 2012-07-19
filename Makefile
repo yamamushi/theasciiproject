@@ -2,15 +2,15 @@ SRCDIR=./src
 INCDIR=./include
 LIBTCOD=./include/libtcod
 BUILDDIR=./build/
-CXXFLAGS=$(FLAGS) -I$(LIBTCOD) -I$(INCDIR) -I$(SRCDIR) -Wall -g3 -gdwarf-2
+CFLAGS=$(FLAGS) -I$(LIBTCOD) -I$(INCDIR) -I$(SRCDIR) -Wall
 CC=gcc
 CPP=g++
 .SUFFIXES: .o .h .c .hpp .cpp
 
 %.o : $(SRCDIR)/%.cpp
-	$(CPP) $(CXXFLAGS) -o $(BUILDDIR)$@ -c $<
+	$(CPP) $(CFLAGS) -o $(BUILDDIR)$@ -c $<
 %.o : $(SRCDIR)/%.c
-	$(CC) $(CXXFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 CPP_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
      Dungeon.o Keyboard.o Graphics.o Main.o
@@ -18,7 +18,7 @@ CPP_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
 all : client
 
 client : $(CPP_OBJS)
-	$(CPP) $(addprefix $(BUILDDIR), $(CPP_OBJS)) -o $@ -ltcod -Wl,-rpath,.
+	$(CPP) $(addprefix $(BUILDDIR), $(CPP_OBJS)) -o ./bin/$@ -ltcod -ltcodxx -Wl,-rpath,.
 
 clean :
-	\rm -f $(addprefix $(BUILDDIR), $(CPP_OBJS)) client
+	\rm -f $(addprefix $(BUILDDIR), $(CPP_OBJS)) ./bin/*
