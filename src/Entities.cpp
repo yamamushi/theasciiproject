@@ -39,8 +39,14 @@
 
 #include "headers.h"
 
+// Temporary location for these variables, they will be moved elsewhere
+// When DB library code is integrated (soon-ish).
+
+unsigned int UIDList = 0;
+
 
 void Entity::init_entity(wchar_t *p){
+
 
 	symbol = p;
 	X = 0;
@@ -56,6 +62,8 @@ void Entity::init_entity(wchar_t *p){
 
         TypeID = 0;
         SubTypeID = 0;
+        UID = UIDList + 1;
+        UIDList++;
 
 
 	initialized = false;

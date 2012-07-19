@@ -6,14 +6,6 @@
       </df>
       <df name="build">
       </df>
-      <df name="client.dSYM">
-        <df name="Contents">
-          <df name="Resources">
-            <df name="DWARF">
-            </df>
-          </df>
-        </df>
-      </df>
       <df name="data">
       </df>
       <df name="docs">

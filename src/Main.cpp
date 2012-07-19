@@ -54,6 +54,9 @@ int main(
 
 	int i, x, y, z;
 
+        // Temporary variable (see Entities.cpp)
+        extern unsigned int UIDList;
+
 	// Let's get things setup
 
 	Keyboard *kboard = new Keyboard();
@@ -76,21 +79,19 @@ int main(
 
 	entMap->initAllEnts(map);
 
-	int pX = map->rooms[1]->cX;
-	int pY = map->rooms[1]->cY;
-
-	player->move(map, pX, pY);
-	goblin->move(map, pX-1, pY-1);
-        goblinA->move(map, pX+1, pY+1);
+	player->move(map, map->rooms[1]->cX, map->rooms[1]->cY);
+	goblin->move(map, map->rooms[5]->cX, map->rooms[5]->cY);
+        goblinA->move(map, map->rooms[7]->cX, map->rooms[7]->cY);
 
 
 	entMap->refreshEntityMap();
-	kboard->initKeyboard(pX, pY);
+	kboard->initKeyboard(0, 0);
+
 
         RenderMap *rMap = new RenderMap(map, entMap);
 	GraphicsTCOD *output = new GraphicsTCOD(rMap);
 
-
+        // This is here for our FOV library, we'll move this later today.
 	TCODMap *tcodMap = new TCODMap(MAP_WIDTH, MAP_HEIGHT);
 
 	for(x = 0; x < MAP_WIDTH; x++){
