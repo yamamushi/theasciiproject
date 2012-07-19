@@ -1,16 +1,24 @@
-You must have libtcod 1.5.1 installed for this program 
+!!!NOTE!!!
+
+You MUST have libtcod 1.5.1 Bitbucket version installed for this program
 to compile and work properly.
 
-You can grab it from: http://doryen.eptalys.net/libtcod/
+You can find it at:
+https://bitbucket.org/jice/libtcod
+
+Older versions will not work due to bugs with the unicode output encoding,
+so if you're using a pre-compiled libtcod from a zip/tar file on the
+libtcod homepage, you will not get the proper output from the client here.
+
 
 
 ** Linux Users **
 
-If you want to install libtcod as a shared library in /usr/lib/ , that will 
-make things easier as there are no plans to distribute the libtcod.so 
-and libtcodcxx.so linux libraries with this project at this time. 
-Otherwise you can stick the libtcod.so and libtcodxx.so files in 
-this directory to build this project properly.
+If you want to install libtcod as a shared library in /usr/lib/ , that will
+make things easier as there are no plans to distribute the libtcod.so
+and libtcodcxx.so linux libraries with this project at this time.
+Otherwise you can stick the libtcod.so and libtcodxx.so files in
+this directory to build this project the properly.
 
 
 
@@ -28,7 +36,7 @@ You'll have to visit the libtcod website referenced above
 for more information on what those dependencies are. Mainly
 you're going to want to get libSDL installed.
 
-The SDL library can be found over at 
+The SDL library can be found over at
 http://www.libsdl.org/download-1.2.php .
 
 
