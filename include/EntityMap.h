@@ -60,15 +60,14 @@ class EntityMap {
 
 		Entity *player;
 
-		EntityMap(int x, int y, TileMap *map);
-		void initEntityMap(int x, int y, TileMap *map);
+		EntityMap(int x, int y, TileMap *map, FovLib *FOVLib);
+		void initEntityMap(int x, int y, TileMap *map, FovLib *FOVLib);
 		void refreshGraphicsMap();
 
 		void addToMap(Entity *entity);
 		void createEntity(int type);
 
-
-		void initAllEnts(FovLib *fovLib);
+                void initAllEnts();
 		void refreshEntityMap();
 
 		bool checkOccupied(int x, int y);

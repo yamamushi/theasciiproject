@@ -45,7 +45,6 @@
 
 int main(int argc, char *argv[]){
 
-
     // boring variables
     bool quit = false;
     int CenterX = MAIN_WIDTH / 2;
@@ -57,13 +56,9 @@ int main(int argc, char *argv[]){
     extern unsigned int UIDList;
 
     // Let's get things setup
-
     Keyboard *kboard = new Keyboard();
 
-    // We'll set the foreground color once now and modify it as necessary when in our game loop
-
     TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);
-
 
     // Temporary Dungeon Generator
     Dungeon *dgn = new Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
@@ -71,26 +66,21 @@ int main(int argc, char *argv[]){
     // init Fov Lib ASAP after TileMap and Dungeon have been initialized.
     FovLib *fovLib = new FovLib(map);
 
-    EntityMap *entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT, map);
+    // Obviously our entity map would depend on FOV being loaded.
+    EntityMap *entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT, map, fovLib);
+
     Entity *player = new Player();
     Goblin *goblin = new Goblin();
-    Goblin *goblinA = new Goblin();
 
-
-    entMap->addToMap(goblin);
-    entMap->addToMap(goblinA);
     entMap->addToMap(player);
+    entMap->initAllEnts();
 
-    entMap->initAllEnts(fovLib);
+    // Entities don't have to be initialized at the same time, they can
+    // also be initialized individually.
+    entMap->addToMap(goblin);
 
     goblin->move(map->rooms[5]->cX, map->rooms[5]->cY);
-    goblinA->move(map->rooms[7]->cX, map->rooms[7]->cY);
     player->move(map->rooms[1]->cX, map->rooms[1]->cY);
-
-
-    entMap->refreshEntityMap();
-    kboard->initKeyboard(0, 0);
-
 
     RenderMap *rMap = new RenderMap(map, entMap);
     player->associateClient(rMap);
