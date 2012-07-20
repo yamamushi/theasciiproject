@@ -141,6 +141,13 @@ bool Entity::isInitialized(){
 
 }
 
+void Entity::associateClient(RenderMap *RMap){
+
+    cMap = new ClientMap;
+    rMap = RMap;
+
+}
+
 void Entity::move_self(int dx, int dy){
 
 	move(dx, dy);

@@ -3,7 +3,8 @@
  *
  *       Filename:  ClientMap.h
  *
- *    Description:  The graphics map for the Client.
+ *    Description:  This object stores the Symbol and Color information
+ *              for use in our Client-Side Graphics Rendering library.
  *
  *        Version:  1.0
  *        Created:  07/19/2012
@@ -37,29 +38,37 @@
  */
 
 
-typedef struct clientRender_t {
-    wchar_t *symbol;
-    float H;
-    float S;
-    float V;
-    float HD;
-    float SD;
-    float VD;
-    bool explored;
-    bool occupied;
-    bool visible;
-};
 
 
-class ClientMap{
+class ClientMap {
 
 private:
 
-
+    render_t cMap[MAP_WIDTH][MAP_HEIGHT];
 
 public:
 
+    ClientMap();
+    void initClientMap();
 
+    void clearMap();
+
+    void importSquare(int x, int y, render_t square);
+    render_t exportSquare(int x, int y);
+
+
+
+
+
+    wchar_t *getSymbol(int x, int y);
+    float returnH(int x, int y);
+    float returnHD(int x, int y);
+    float returnS(int x, int y);
+    float returnSD(int x, int y);
+    float returnV(int x, int y);
+    float returnVD(int x, int y);
+    bool returnExplored(int x, int y);
+    bool returnOccupied(int x, int y);
+    bool returnVisible(int x, int y);
 
 };
-

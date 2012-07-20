@@ -1,9 +1,10 @@
 /*
  * =====================================================================================
  *
- *       Filename:  ClientMap.h
+ *       Filename:  Client.cpp
  *
- *    Description:  The graphics map for the Client.
+ *    Description:  This object stores the Symbol and Color information
+ *              for use in our Client-Side Graphics Rendering library.
  *
  *        Version:  1.0
  *        Created:  07/19/2012
@@ -40,3 +41,115 @@
 #include "headers.h"
 
 
+ClientMap::ClientMap(){
+
+    initClientMap();
+
+}
+
+void ClientMap::initClientMap(){
+
+    clearMap();
+
+}
+
+void ClientMap::clearMap(){
+
+    int x, y;
+
+    for (x = 0; x < MAP_WIDTH; x++){
+        for (y = 0; y < MAP_HEIGHT; y++){
+
+            cMap[x][y].symbol = L"\uFFFF";
+            cMap[x][y].H = 0.0;
+            cMap[x][y].HD = 0.0;
+            cMap[x][y].S = 0.0;
+            cMap[x][y].SD = 0.0;
+            cMap[x][y].V = 0.0;
+            cMap[x][y].VD = 0.0;
+            cMap[x][y].explored = false;
+            cMap[x][y].occupied = false;
+            cMap[x][y].visible = false;
+
+           }
+    }
+}
+
+void ClientMap::importSquare(int x, int y, render_t square){
+
+    cMap[x][y] = square;
+
+}
+
+render_t ClientMap::exportSquare(int x, int y){
+
+    return cMap[x][y];
+
+}
+
+
+
+
+
+
+
+
+wchar_t *ClientMap::getSymbol(int x, int y){
+
+    return cMap[x][y].symbol;
+
+}
+
+float ClientMap::returnH(int x, int y){
+
+    return cMap[x][y].H;
+
+}
+
+float ClientMap::returnHD(int x, int y){
+
+    return cMap[x][y].HD;
+
+}
+
+float ClientMap::returnS(int x, int y){
+
+    return cMap[x][y].S;
+
+}
+
+float ClientMap::returnSD(int x, int y){
+
+    return cMap[x][y].SD;
+
+}
+
+float ClientMap::returnV(int x, int y){
+
+    return cMap[x][y].V;
+
+}
+
+float ClientMap::returnVD(int x, int y){
+
+    return cMap[x][y].VD;
+
+}
+
+bool ClientMap::returnExplored(int x, int y){
+
+    return cMap[x][y].explored;
+
+}
+
+bool ClientMap::returnOccupied(int x, int y){
+
+    return cMap[x][y].occupied;
+
+}
+
+bool ClientMap::returnVisible(int x, int y){
+
+    return cMap[x][y].visible;
+
+}

@@ -41,6 +41,8 @@
 
 class EntityMap;
 class FovLib;
+class ClientMap;
+class RenderMap;
 
 
 class Entity {
@@ -56,6 +58,9 @@ class Entity {
 		bool initialized;
 
 		EntityMap *entMap;
+
+                ClientMap *cMap;
+                RenderMap *rMap;
 
 	public:
 
@@ -81,6 +86,7 @@ class Entity {
 
 
 		bool isInitialized();
+                void associateClient(RenderMap *RMap);
 
 
 

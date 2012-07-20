@@ -40,19 +40,6 @@
 // I apologize ahead of time for the code indentation here, Netbeans
 // is not playing nice right now.
 
-typedef struct render_t {
-    wchar_t *symbol;
-    float H;
-    float S;
-    float V;
-    float HD;
-    float SD;
-    float VD;
-    bool explored;
-    bool occupied;
-    bool visible;
-};
-
 
 class RenderMap {
 
@@ -66,12 +53,11 @@ private:
     EntityMap *eMap;
 
 
-
 public:
 
     RenderMap(TileMap *tiles, EntityMap *entities);
     void initRenderMap(TileMap *tiles, EntityMap *entities);
-    
+
     void refreshMap();
 
     wchar_t *getSymbol(int x, int y);

@@ -99,9 +99,6 @@ int main(int argc, char *argv[]){
     // Main Game Loop
     while (!TCODConsole::isWindowClosed()) {
 
-        // Fov Refresh
-        // fovLib->refreshFov(player);
-
         entMap->refreshEntityMap();
         rMap->refreshMap();
         output->render();
