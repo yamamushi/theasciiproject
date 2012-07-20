@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  headers.h
+ *       Filename:  FovLib.h
  *
- *    Description:  An attempt to consolidate and order our header files
+ *    Description:  This library handles FOV calculations for entities.
  *
  *        Version:  1.0
- *        Created:  07/04/2012
+ *        Created:  07/19/2012 07:42:29 PM
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -35,82 +35,3 @@
  *
  * =====================================================================================
  */
-
-
-// Standard headers first
-#include <math.h>
-#include <algorithm>
-#include <iostream>
-#include <vector>
-#include <typeinfo>
-#include <map>
-
-
-// Our namespaces
-using namespace std;
-
-
-// Our global constants
-#include "constants.h"
-
-
-// 3rd party headers (currently only one in use)
-#include "libtcod/libtcod.hpp"
-
-
-// Our most important objects
-#include "Tiles.h"
-#include "TileMap.h"
-#include "Entities.h"
-#include "EntityMap.h"
-
-
-// Our standalone engine libraries
-#include "FovLib.h"
-
-
-// Temporary Dungeon Generator
-#include "Dungeon.h"
-
-
-// This will be rewritten "soon"
-#include "Keyboard.h"
-
-
-// Nothing should depend on our graphics library, ever.
-#include "RenderMap.h"
-
-#include "ClientMap.h"
-
-#include "Graphics.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

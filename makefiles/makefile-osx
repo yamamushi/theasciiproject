@@ -13,7 +13,8 @@ CPP=g++
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 CPP_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
-     Dungeon.o Keyboard.o RenderMap.o Graphics.o Main.o
+    FovLib.o Dungeon.o Keyboard.o RenderMap.o \
+    ClientMap.o Graphics.o Main.o
 
 all : client
 
