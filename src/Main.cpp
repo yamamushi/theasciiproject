@@ -44,92 +44,74 @@
 // Lets's Rock n' Roll
 
 int main(
-	int argc, char *argv[]) {
+        int argc, char *argv[])
+{
 
 
-	// boring variables
-	bool quit = false;
-	int CenterX = MAIN_WIDTH/2;
-	int CenterY = MAIN_HEIGHT/2;
+    // boring variables
+    bool quit = false;
+    int CenterX = MAIN_WIDTH / 2;
+    int CenterY = MAIN_HEIGHT / 2;
 
-	int i, x, y, z;
+    int i, x, y, z;
 
-        // Temporary variable (see Entities.cpp)
-        extern unsigned int UIDList;
+    // Temporary variable (see Entities.cpp)
+    extern unsigned int UIDList;
 
-	// Let's get things setup
+    // Let's get things setup
 
-	Keyboard *kboard = new Keyboard();
+    Keyboard *kboard = new Keyboard();
 
-	// We'll set the foreground color once now and modify it as necessary when in our game loop
+    // We'll set the foreground color once now and modify it as necessary when in our game loop
 
-	TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);
-	Dungeon *dgn = new Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
+    TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);
+    Dungeon *dgn = new Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
 
-	EntityMap *entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT);
-	Entity *player = new Player();
-	Goblin *goblin = new Goblin();
-        Goblin *goblinA = new Goblin();
-
-
-	entMap->addToMap(goblin);
-        entMap->addToMap(goblinA);
-	entMap->addToMap(player);
+    EntityMap *entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT);
+    Entity *player = new Player();
+    Goblin *goblin = new Goblin();
+    Goblin *goblinA = new Goblin();
 
 
-	entMap->initAllEnts(map);
-
-	player->move(map, map->rooms[1]->cX, map->rooms[1]->cY);
-	goblin->move(map, map->rooms[5]->cX, map->rooms[5]->cY);
-        goblinA->move(map, map->rooms[7]->cX, map->rooms[7]->cY);
+    entMap->addToMap(goblin);
+    entMap->addToMap(goblinA);
+    entMap->addToMap(player);
 
 
-	entMap->refreshEntityMap();
-	kboard->initKeyboard(0, 0);
+    entMap->initAllEnts(map);
+
+    // init Fov Lib
+    FovLib *fovLib = new FovLib(map);
+
+    player->move(map, map->rooms[1]->cX, map->rooms[1]->cY);
+    goblin->move(map, map->rooms[5]->cX, map->rooms[5]->cY);
+    goblinA->move(map, map->rooms[7]->cX, map->rooms[7]->cY);
 
 
-        RenderMap *rMap = new RenderMap(map, entMap);
-	GraphicsTCOD *output = new GraphicsTCOD(rMap);
-
-        // This is here for our FOV library, we'll move this later today.
-	TCODMap *tcodMap = new TCODMap(MAP_WIDTH, MAP_HEIGHT);
-
-	for(x = 0; x < MAP_WIDTH; x++){
-		for(y = 0; y < MAP_HEIGHT; y++){
-			tcodMap->setProperties(x, y, !(map->virtMap[x][y]->block_sight), !(map->virtMap[x][y]->blocked));
-		}
-	}
+    entMap->refreshEntityMap();
+    kboard->initKeyboard(0, 0);
 
 
-	// Main Game Loop
-	while(!TCODConsole::isWindowClosed()) {
-
-		// Compute FOV
-		tcodMap->computeFov( player->posX(), player->posY(), TORCH_RADIUS, FOV_LIGHT_WALLS);
-				for(x=0; x < MAP_WIDTH; x++){
-					for(y=0; y < MAP_HEIGHT; y++){
-						if((tcodMap->isInFov(x,y))){
-							map->virtMap[x][y]->visible = true;
-							map->virtMap[x][y]->explored = true;
-							player->fov[x][y] = true;
-						}
-						else {
-							map->virtMap[x][y]->visible = false;
-							player->fov[x][y] = false;
-						}
-					}
-				}
+    RenderMap *rMap = new RenderMap(map, entMap);
+    GraphicsTCOD *output = new GraphicsTCOD(rMap);
 
 
-                entMap->refreshEntityMap();
-                rMap->refreshMap();
-		output->render();
 
-		output->clearScreen();
-		quit = kboard->handleKeys(player, map);
-		if(quit) break;
+    // Main Game Loop
+    while (!TCODConsole::isWindowClosed()) {
 
-	}
+        // Fov Refresh
+        fovLib->refreshFov(player);
 
-	return 0;
+        entMap->refreshEntityMap();
+        rMap->refreshMap();
+        output->render();
+
+        output->clearScreen();
+        quit = kboard->handleKeys(player, map);
+        if (quit) break;
+
+    }
+
+    return 0;
 }

@@ -35,3 +35,21 @@
  *
  * =====================================================================================
  */
+
+class FovLib {
+
+private:
+    TCODMap *tcodMap;
+    TileMap *tileMap;
+
+
+public:
+
+    FovLib(TileMap *map);
+    void initFovLib(TileMap *map);
+
+    void refreshFov(Entity *tgt);
+
+
+
+};
