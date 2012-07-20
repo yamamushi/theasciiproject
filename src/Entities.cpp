@@ -76,21 +76,27 @@ void Entity::init_entity(wchar_t *p){
 	}
 }
 
-bool Entity::move(TileMap *destination, int dx, int dy){
+bool Entity::move(int dx, int dy){
 
-	TileMap *map = destination;
 	if (initialized){
-		if ( (map->virtMap[(dx + X)][(dy + Y)]->blocked))
+		if ( (world->virtMap[(dx + X)][(dy + Y)]->blocked))
 		       return false;
 		else{
 			X += dx;
 			Y += dy;
+                        refreshFov();
 			return true;
 		}
 	}
 	else {
 		return false;
 	}
+
+}
+
+void Entity::refreshFov(){
+
+    FOV->refreshFov(this);
 
 }
 
@@ -102,11 +108,11 @@ int Entity::posY(){
 	return Y;
 }
 
-void Entity::init_in_world(TileMap *destination){
+void Entity::init_in_world(FovLib *fovLib){
 
-	TileMap *world = destination;
+	FOV = fovLib;
 	initialized = true;
-
+        world = fovLib->getTileMap();
 
 }
 
@@ -137,14 +143,14 @@ bool Entity::isInitialized(){
 
 void Entity::move_self(int dx, int dy){
 
-	move(world, dx, dy);
+	move(dx, dy);
 
 
 };
 
 void Entity::setEntityMap(EntityMap *map){
 
-	EntityMap *entMap = map;
+	entMap = map;
 
 };
 

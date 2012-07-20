@@ -50,6 +50,7 @@ public:
 
     void refreshFov(Entity *tgt);
 
+    TileMap * getTileMap();
 
 
 };

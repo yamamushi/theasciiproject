@@ -85,3 +85,10 @@ void FovLib::refreshFov(Entity *tgt){
     }
 
 }
+
+
+TileMap *FovLib::getTileMap(){
+
+    return tileMap;
+    
+}

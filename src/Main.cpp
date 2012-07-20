@@ -43,9 +43,7 @@
 
 // Lets's Rock n' Roll
 
-int main(
-        int argc, char *argv[])
-{
+int main(int argc, char *argv[]){
 
 
     // boring variables
@@ -65,9 +63,15 @@ int main(
     // We'll set the foreground color once now and modify it as necessary when in our game loop
 
     TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);
+
+
+    // Temporary Dungeon Generator
     Dungeon *dgn = new Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
 
-    EntityMap *entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT);
+    // init Fov Lib ASAP after TileMap and Dungeon have been initialized.
+    FovLib *fovLib = new FovLib(map);
+
+    EntityMap *entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT, map);
     Entity *player = new Player();
     Goblin *goblin = new Goblin();
     Goblin *goblinA = new Goblin();
@@ -77,15 +81,11 @@ int main(
     entMap->addToMap(goblinA);
     entMap->addToMap(player);
 
+    entMap->initAllEnts(fovLib);
 
-    entMap->initAllEnts(map);
-
-    // init Fov Lib
-    FovLib *fovLib = new FovLib(map);
-
-    player->move(map, map->rooms[1]->cX, map->rooms[1]->cY);
-    goblin->move(map, map->rooms[5]->cX, map->rooms[5]->cY);
-    goblinA->move(map, map->rooms[7]->cX, map->rooms[7]->cY);
+    goblin->move(map->rooms[5]->cX, map->rooms[5]->cY);
+    goblinA->move(map->rooms[7]->cX, map->rooms[7]->cY);
+    player->move(map->rooms[1]->cX, map->rooms[1]->cY);
 
 
     entMap->refreshEntityMap();
@@ -96,19 +96,18 @@ int main(
     GraphicsTCOD *output = new GraphicsTCOD(rMap);
 
 
-
     // Main Game Loop
     while (!TCODConsole::isWindowClosed()) {
 
         // Fov Refresh
-        fovLib->refreshFov(player);
+        // fovLib->refreshFov(player);
 
         entMap->refreshEntityMap();
         rMap->refreshMap();
         output->render();
 
         output->clearScreen();
-        quit = kboard->handleKeys(player, map);
+        quit = kboard->handleKeys(player);
         if (quit) break;
 
     }

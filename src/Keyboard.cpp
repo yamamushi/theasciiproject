@@ -55,11 +55,10 @@ void Keyboard::initKeyboard(int x, int y){
 }
 
 
-bool Keyboard::handleKeys(Entity *target, TileMap *destination){
+bool Keyboard::handleKeys(Entity *target){
 
 	TCOD_key_t Key = TCODConsole::checkForKeypress(true);
 	bool quit = false;
-	TileMap *map = destination;
 
 
 	Entity *tgt = target;
@@ -71,19 +70,19 @@ bool Keyboard::handleKeys(Entity *target, TileMap *destination){
 	switch(Key.vk)
 	{
 	       	case TCODK_UP:
-			tgt->move(map, 0,-1);
+			tgt->move(0,-1);
 			break;
 
 		case TCODK_DOWN:
-			tgt->move(map, 0,1);
+			tgt->move(0,1);
 			break;
 
 		case TCODK_LEFT:
-			tgt->move(map, -1,0);
+			tgt->move(-1,0);
 			break;
 
 		case TCODK_RIGHT:
-			tgt->move(map, 1,0);
+			tgt->move(1,0);
 
 			break;
 

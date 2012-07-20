@@ -70,16 +70,18 @@
 
 
 
-EntityMap::EntityMap(int x, int y){
+EntityMap::EntityMap(int x, int y, TileMap *map){
 
-	initEntityMap(x, y);
+	initEntityMap(x, y, map);
 
 }
 
-void EntityMap::initEntityMap(int x, int y){
+void EntityMap::initEntityMap(int x, int y, TileMap *map){
 
 	width = x;
 	height = y;
+
+        contextMap = map;
 
 
 }
@@ -111,10 +113,8 @@ void EntityMap::createEntity(int type){
 
 }
 
-void EntityMap::initAllEnts(TileMap *destination){
+void EntityMap::initAllEnts(FovLib *fovLib){
 
-
-	TileMap *contextMap = destination;
 
 	int x, y, z;
 
@@ -122,7 +122,8 @@ void EntityMap::initAllEnts(TileMap *destination){
 		for ( y = 0; y < height; y++){
 			if (!(pos[x][y].empty())){
 				for ( z = 0; z < pos[x][y].size(); z++){
-					pos[x][y].at(z)->init_in_world(contextMap);
+					pos[x][y].at(z)->init_in_world(fovLib);
+                                        pos[x][y].at(z)->setEntityMap(this);
 				}
 			}
 		}
@@ -176,4 +177,9 @@ Entity * EntityMap::outputLastEntity(int x, int y){
 	}
 }
 
+void EntityMap::refreshFovFor(Entity *tgt){
+
+    fovLib->refreshFov(tgt);
+
+}
 

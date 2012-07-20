@@ -40,6 +40,7 @@
 
 
 class EntityMap;
+class FovLib;
 
 
 class Entity {
@@ -48,6 +49,7 @@ class Entity {
 		int X, Y;
 		wchar_t *symbol;
 		TileMap *world;
+                FovLib *FOV;
                 unsigned int TypeID, SubTypeID;
                 unsigned int UID;
 
@@ -59,14 +61,15 @@ class Entity {
 
 
 		void init_entity( wchar_t *symbol );
-		bool move(TileMap *destination, int dx, int dy);
+		bool move(int dx, int dy);
+                void refreshFov();
 		int posX();
 		int posY();
 		bool fov[MAP_WIDTH][MAP_HEIGHT];
 		float H, S, V;
 		int R, G, B;
 
-		void init_in_world(TileMap *destination);
+		void init_in_world(FovLib *FOV);
 
 
 		wchar_t *getSymbol();

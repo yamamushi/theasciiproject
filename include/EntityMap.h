@@ -38,6 +38,9 @@
  */
 
 
+class FovLib;
+
+
 
 class EntityMap {
 
@@ -50,24 +53,28 @@ class EntityMap {
 		char *symbolTable[MAP_WIDTH][MAP_HEIGHT];
 
 		Entity *current;
+                TileMap *contextMap;
+                FovLib *fovLib;
 
 	public:
 
 		Entity *player;
 
-		EntityMap(int x, int y);
-		void initEntityMap(int x, int y);
+		EntityMap(int x, int y, TileMap *map);
+		void initEntityMap(int x, int y, TileMap *map);
 		void refreshGraphicsMap();
 
 		void addToMap(Entity *entity);
 		void createEntity(int type);
 
 
-		void initAllEnts(TileMap *destination);
+		void initAllEnts(FovLib *fovLib);
 		void refreshEntityMap();
 
 		bool checkOccupied(int x, int y);
 		Entity * outputLastEntity(int x, int y);
+
+                void refreshFovFor(Entity *tgt);
 
 
 
