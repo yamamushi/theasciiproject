@@ -49,8 +49,6 @@ RenderMap::RenderMap(TileMap *tiles, EntityMap *entities){
 
 void RenderMap::initRenderMap(TileMap *tiles, EntityMap *entities){
 
-
-
     tMap = tiles;
     eMap = entities;
     refreshMap();
@@ -96,6 +94,14 @@ void RenderMap::refreshMap(){
         }
     }
 }
+
+render_t RenderMap::exportSquare(int x, int y){
+
+    return rMap[x][y];
+
+}
+
+
 
 wchar_t *RenderMap::getSymbol(int x, int y){
 

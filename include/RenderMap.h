@@ -46,6 +46,7 @@ class RenderMap {
 private:
 
     render_t rMap[MAP_WIDTH][MAP_HEIGHT];
+    render_t *rCheck;
 
     TileMap *tMap;
 
@@ -59,6 +60,8 @@ public:
     void initRenderMap(TileMap *tiles, EntityMap *entities);
 
     void refreshMap();
+
+    render_t exportSquare(int x, int y);
 
     wchar_t *getSymbol(int x, int y);
     float returnH(int x, int y);

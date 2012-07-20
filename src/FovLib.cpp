@@ -74,11 +74,19 @@ void FovLib::refreshFov(Entity *tgt){
     for (x = 0; x < MAP_WIDTH; x++) {
         for (y = 0; y < MAP_HEIGHT; y++) {
             if ((tcodMap->isInFov(x, y))) {
-                tileMap->virtMap[x][y]->visible = true;
-                tileMap->virtMap[x][y]->explored = true;
+                if (tgt->getAssociated()) {
+                    ClientMap *clientMap = tgt->returnCMap();
+                    clientMap->cMap[x][y].visible = true;
+                    clientMap->cMap[x][y].explored = true;
+
+                }
                 tgt->fov[x][y] = true;
             } else {
-                tileMap->virtMap[x][y]->visible = false;
+                if (tgt->getAssociated()) {
+                    ClientMap *clientMap = tgt->returnCMap();
+                    clientMap->cMap[x][y].visible = false;
+                    clientMap->cMap[x][y].occupied = false;
+                }
                 tgt->fov[x][y] = false;
             }
         }
@@ -90,5 +98,5 @@ void FovLib::refreshFov(Entity *tgt){
 TileMap *FovLib::getTileMap(){
 
     return tileMap;
-    
+
 }

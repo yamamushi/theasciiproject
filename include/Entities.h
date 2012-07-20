@@ -55,7 +55,7 @@ class Entity {
                 unsigned int TypeID, SubTypeID;
                 unsigned int UID;
 
-		bool initialized;
+		bool initialized, clientActive;
 
 		EntityMap *entMap;
 
@@ -88,6 +88,9 @@ class Entity {
 		bool isInitialized();
                 void associateClient(RenderMap *RMap);
 
+                bool getAssociated();
+                ClientMap * returnCMap();
+                void clientFovSync();
 
 
 		void move_self(int dx, int dy);

@@ -45,13 +45,13 @@
 
 
 
-GraphicsTCOD::GraphicsTCOD(RenderMap *rendermap){
-	init(rendermap);
+GraphicsTCOD::GraphicsTCOD(ClientMap *clientMap){
+	init(clientMap);
 }
 
-void GraphicsTCOD::init(RenderMap *rendermap){
+void GraphicsTCOD::init(ClientMap *clientMap){
 
-        rMap = rendermap;
+        cMap = clientMap;
 
         setlocale(LC_ALL, "en_US.UTF-8");
         TCODConsole::setCustomFont("data/font.png", TCOD_FONT_LAYOUT_ASCII_INROW, 32, 2048);
@@ -86,24 +86,24 @@ void GraphicsTCOD::prepare(){
     for(x=0;x<MAP_WIDTH;x++){
         for(y=0;y<MAP_HEIGHT;y++){
 
-            if (rMap->returnExplored(x, y)){
+            if (cMap->returnExplored(x, y)){
 
-                H = rMap->returnH(x, y);
-                S = rMap->returnS(x, y);
-                V = rMap->returnV(x, y);
-                sym = rMap->getSymbol(x, y);
+                H = cMap->returnH(x, y);
+                S = cMap->returnS(x, y);
+                V = cMap->returnV(x, y);
+                sym = cMap->getSymbol(x, y);
 
-                if (rMap->returnOccupied(x, y)){
+                if (cMap->returnOccupied(x, y)){
 
                         output->setDefaultForeground(TCODColor(H, S, V));
                         output->print(x, y, sym);
                 }
                 else{
-                    HD = rMap->returnHD(x, y);
-                    SD = rMap->returnSD(x, y);
-                    VD = rMap->returnVD(x, y);
+                    HD = cMap->returnHD(x, y);
+                    SD = cMap->returnSD(x, y);
+                    VD = cMap->returnVD(x, y);
 
-                    if (rMap->returnVisible(x, y)){
+                    if (cMap->returnVisible(x, y)){
                         output->setCharBackground(x, y, TCODColor(0,0,0));
                         output->setDefaultForeground(TCODColor(H, S, V));
                         output->print(x, y, sym);

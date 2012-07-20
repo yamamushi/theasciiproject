@@ -44,9 +44,12 @@ class ClientMap {
 
 private:
 
-    render_t cMap[MAP_WIDTH][MAP_HEIGHT];
+    render_t *cTemp;
 
 public:
+
+
+    render_t cMap[MAP_WIDTH][MAP_HEIGHT];
 
     ClientMap();
     void initClientMap();

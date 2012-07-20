@@ -45,7 +45,7 @@ class GraphicsTCOD {
 
 
 		TileMap *input;
-                RenderMap *rMap;
+                ClientMap *cMap;
                 float H, S, V, HD, SD, VD;
                 float TH, TS, TV, THD, TSD, TVD;
 
@@ -54,8 +54,8 @@ class GraphicsTCOD {
 
 		TCODConsole *output;
 
-		GraphicsTCOD(RenderMap *rendermap);
-		void init(RenderMap *rendermap);
+		GraphicsTCOD(ClientMap *clientMap);
+		void init(ClientMap *clientMap);
 
 		void render();
                 void prepare();

@@ -44,126 +44,200 @@
 
 unsigned int UIDList = 0;
 
-
-void Entity::init_entity(wchar_t *p){
-
-
-	symbol = p;
-	X = 0;
-	Y = 0;
-
-	H = 0;
-	S = 0;
-	V = 0;
-
-	R = 0;
-	G = 0;
-	B = 0;
-
-        TypeID = 0;
-        SubTypeID = 0;
-        UID = UIDList + 1;
-        UIDList++;
+void Entity::init_entity(wchar_t *p)
+{
 
 
-	initialized = false;
+    symbol = p;
+    X = 0;
+    Y = 0;
 
-	int x, y;
-	for ( x=0; x < MAP_WIDTH; x++){
-		for ( y=0; y < MAP_HEIGHT; y++){
-			fov[x][y] = false;
-		}
-	}
+    H = 0;
+    S = 0;
+    V = 0;
+
+    R = 0;
+    G = 0;
+    B = 0;
+
+    TypeID = 0;
+    SubTypeID = 0;
+    UID = UIDList + 1;
+    UIDList++;
+
+
+    initialized = false;
+    clientActive = false;
+
+    int x, y;
+    for (x = 0; x < MAP_WIDTH; x++) {
+        for (y = 0; y < MAP_HEIGHT; y++) {
+            fov[x][y] = false;
+        }
+    }
 }
 
-bool Entity::move(int dx, int dy){
+bool Entity::move(int dx, int dy)
+{
 
-	if (initialized){
-		if ( (world->virtMap[(dx + X)][(dy + Y)]->blocked))
-		       return false;
-		else{
-			X += dx;
-			Y += dy;
-                        refreshFov();
-			return true;
-		}
-	}
-	else {
-		return false;
-	}
+    if (initialized) {
+        if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
+            entMap->refreshEntityMap();
+
+            if (clientActive) {
+
+                rMap->refreshMap();
+                clientFovSync();
+            }
+            refreshFov();
+            return false;
+        }
+        else {
+            X += dx;
+            Y += dy;
+
+            entMap->refreshEntityMap();
+
+            if (clientActive) {
+
+                rMap->refreshMap();
+                clientFovSync();
+            }
+
+            refreshFov();
+            return true;
+        }
+    } else {
+        return false;
+    }
 
 }
 
-void Entity::refreshFov(){
+void Entity::clientFovSync(){
+
+    int x, y;
+
+    for (x = 0; x < MAP_WIDTH; x++) {
+        for (y = 0; y < MAP_HEIGHT; y++) {
+            if (fov[x][y] == true) {
+
+                cMap->cMap[x][y].symbol = rMap->getSymbol(x, y);
+                cMap->cMap[x][y].H = rMap->returnH(x, y);
+                cMap->cMap[x][y].HD = rMap->returnHD(x, y);
+                cMap->cMap[x][y].S = rMap->returnS(x, y);
+                cMap->cMap[x][y].SD = rMap->returnSD(x, y);
+                cMap->cMap[x][y].V = rMap->returnV(x, y);
+                cMap->cMap[x][y].VD = rMap->returnVD(x, y);
+                cMap->cMap[x][y].explored = true;
+                cMap->cMap[x][y].occupied = rMap->returnOccupied(x, y);
+                cMap->cMap[x][y].visible = rMap->returnVisible(x, y);
+
+            }
+        }
+    }
+
+
+}
+
+void Entity::refreshFov()
+{
 
     FOV->refreshFov(this);
 
 }
 
-int Entity::posX(){
-	return X;
+int Entity::posX()
+{
+    return X;
 }
 
-int Entity::posY(){
-	return Y;
+int Entity::posY()
+{
+    return Y;
 }
 
-void Entity::init_in_world(FovLib *fovLib){
+void Entity::init_in_world(FovLib *fovLib)
+{
 
-	FOV = fovLib;
-	initialized = true;
-        world = fovLib->getTileMap();
-
-}
-
-wchar_t *Entity::getSymbol(){
-
-	return symbol;
+    FOV = fovLib;
+    initialized = true;
+    world = fovLib->getTileMap();
 
 }
 
-void Entity::setSymbol(wchar_t *ch){
+wchar_t *Entity::getSymbol()
+{
+
+    return symbol;
+
+}
+
+void Entity::setSymbol(wchar_t *ch)
+{
     symbol = ch;
 }
 
-void Entity::setTypeID(int i){
+void Entity::setTypeID(int i)
+{
     TypeID = i;
 }
 
-void Entity::setSubTypeID(int i){
+void Entity::setSubTypeID(int i)
+{
     SubTypeID = i;
 }
 
+bool Entity::isInitialized()
+{
 
-bool Entity::isInitialized(){
-
-	return initialized;
+    return initialized;
 
 }
 
-void Entity::associateClient(RenderMap *RMap){
+void Entity::associateClient(RenderMap *RMap)
+{
 
-    cMap = new ClientMap;
+    cMap = new ClientMap();
     rMap = RMap;
+    clientActive = true;
+
+
+    clientFovSync();
+    refreshFov();
+    entMap->refreshEntityMap();
+    rMap->refreshMap();
 
 }
 
-void Entity::move_self(int dx, int dy){
+bool Entity::getAssociated()
+{
 
-	move(dx, dy);
+    return clientActive;
+
+}
+
+ClientMap *Entity::returnCMap()
+{
+
+    return cMap;
+
+}
+
+void Entity::move_self(int dx, int dy)
+{
+
+    move(dx, dy);
 
 
 };
 
-void Entity::setEntityMap(EntityMap *map){
+void Entity::setEntityMap(EntityMap *map)
+{
 
-	entMap = map;
+    entMap = map;
+    entMap->refreshEntityMap();
 
 };
-
-
-
-
 
 /*
  *
@@ -181,27 +255,30 @@ void Entity::setEntityMap(EntityMap *map){
 
 
 
-Monster::Monster(){
+Monster::Monster()
+{
 
-	init_entity( L"\u263A" );
-
-}
-
-Player::Player(){
-
-	init_entity( L"\u263A" );
-        H = 0.0;
-	S = 0.0;
-	V = 1.0;
+    init_entity(L"\u263A");
 
 }
 
-Goblin::Goblin(){
+Player::Player()
+{
 
-	init_entity( L"\uFFF7" );
-	H = 30.0;
-	S = 0.58;
-	V = 0.40;
+    init_entity(L"\u263A");
+    H = 0.0;
+    S = 0.0;
+    V = 1.0;
+
+}
+
+Goblin::Goblin()
+{
+
+    init_entity(L"\uFFF7");
+    H = 30.0;
+    S = 0.58;
+    V = 0.40;
 
 }
 

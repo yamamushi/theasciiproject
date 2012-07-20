@@ -158,6 +158,7 @@ void EntityMap::refreshEntityMap(){
 			}
 		}
 	}
+
 }
 
 bool EntityMap::checkOccupied(int x, int y){

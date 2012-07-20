@@ -93,16 +93,14 @@ int main(int argc, char *argv[]){
 
 
     RenderMap *rMap = new RenderMap(map, entMap);
-    GraphicsTCOD *output = new GraphicsTCOD(rMap);
+    player->associateClient(rMap);
+    GraphicsTCOD *output = new GraphicsTCOD(player->returnCMap());
 
 
     // Main Game Loop
     while (!TCODConsole::isWindowClosed()) {
 
-        entMap->refreshEntityMap();
-        rMap->refreshMap();
         output->render();
-
         output->clearScreen();
         quit = kboard->handleKeys(player);
         if (quit) break;
