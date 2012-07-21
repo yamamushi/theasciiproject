@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Main.cpp
+ *       Filename:  ClientSocket.h
  *
- *    Description:  The ASCII Project main loop
+ *    Description:  Experimental Sockets Implementation
  *
  *        Version:  1.0
- *        Created:  07/03/2012 03:04:46 AM
+ *        Created:  07/20/2012 10:28 PM
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -36,50 +36,11 @@
  * =====================================================================================
  */
 
-// First our custom headers
-//
-#include "headers.h"
 
-
-// Lets's Rock n' Roll
-
-int main(int argc, char *argv[])
+class ClientSocket : public TcpSocket
 {
+public:
+	ClientSocket(ISocketHandler& h);
 
-    // boring variables
-    bool quit = false;
-    int CenterX = MAIN_WIDTH / 2;
-    int CenterY = MAIN_HEIGHT / 2;
-
-    int i, x, y, z;
-
-    ClientMap *cMap = new ClientMap();
-
-    GraphicsTCOD *output = new GraphicsTCOD(cMap);
-    Keyboard *kboard = new Keyboard(0, 0);
-
-
-    // Main Game Loop
-    while (!TCODConsole::isWindowClosed()) {
-
-	SocketHandler h;
-	ClientSocket *p = new ClientSocket(h);
-
-	p -> SetDeleteByHandler();
-	p -> Open("localhost", 1066);
-	h.Add(p);
-	h.Select(1,0);
-	while (h.GetCount())
-	{
-		h.Select(1,0);
-	}
-/*
-        output->render();
-        output->clearScreen();
-      //quit = kboard->handleKeys(player);
-        if (quit) break;
-*/
-    }
-
-    return 0;
-}
+	void OnRead();
+};

@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  DisplaySocket.cpp
+ *       Filename:  ServerSocket.cpp
  *
  *    Description:  Experimental Sockets Implementation
  *

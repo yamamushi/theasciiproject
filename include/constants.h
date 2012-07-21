@@ -36,6 +36,11 @@
  * =====================================================================================
  */
 
+// the constant TCP_BUFSIZE_READ is the maximum size of the standard input
+// buffer of TcpSocket
+#define RSIZE TCP_BUFSIZE_READ
+
+#define MaxDataSize 16
 
 #define MAIN_WIDTH 80
 #define MAIN_HEIGHT 45
@@ -98,6 +103,13 @@ typedef struct render_t {
     bool occupied;
     bool visible;
 };
+
+
+struct SerializedPacket {
+    int senderId;
+    int sequenceNumber;
+    char data[MaxDataSize];
+} __attribute__((packed));
 
 
 

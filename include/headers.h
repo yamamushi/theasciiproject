@@ -38,6 +38,8 @@
 
 
 // Standard headers first
+#include <arpa/inet.h>   /* ntohl htonl */
+#include <string.h>      /* memcpy */
 #include <math.h>
 #include <algorithm>
 #include <iostream>
@@ -86,7 +88,9 @@ using namespace std;
 #include "Keyboard.h"
 
 // Experimental
-#include "DisplaySocket.h"
+#include "NetworkLib.h"
+#include "ServerSocket.h"
+#include "ClientSocket.h"
 
 
 

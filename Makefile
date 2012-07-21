@@ -13,17 +13,23 @@ CPP=g++
 %.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-CPP_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
+CLIENT_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
     FovLib.o Dungeon.o Keyboard.o RenderMap.o \
-    DisplaySocket.o ClientMap.o Graphics.o
+    NetworkLib.o ClientSocket.o ClientMap.o Graphics.o \
+    Main_Client.o
+
+SERVER_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
+    FovLib.o Dungeon.o Keyboard.o RenderMap.o \
+    NetworkLib.o ServerSocket.o ClientMap.o Graphics.o \
+    Main_Server.o
 
 all : client server
 
-client : $(CPP_OBJS)
-	$(CPP) $(addprefix $(BUILDDIR), $(CPP_OBJS) Main_Client.o) -o ./bin/$@ -lSockets -lssl -lcrypto -ltcod -Wl,-rpath,. -lpthread
+client : $(CLIENT_OBJS)
+	$(CPP) $(addprefix $(BUILDDIR), $(CLIENT_OBJS)) -o ./bin/$@ -lSockets -lssl -lcrypto -ltcod -Wl,-rpath,. -lpthread
 
-server : $(CPP_OBJS)
-	$(CPP) $(addprefix $(BUILDDIR), $(CPP_OBJS) Main_Server.o) -o ./bin/$@ -lSockets -lssl -lcrypto -ltcod -Wl,-rpath,. -lpthread
+server : $(SERVER_OBJS)
+	$(CPP) $(addprefix $(BUILDDIR), $(SERVER_OBJS)) -o ./bin/$@ -lSockets -lssl -lcrypto -ltcod -Wl,-rpath,. -lpthread
 
 clean :
-	\rm -f $(addprefix $(BUILDDIR), $(CPP_OBJS)) ./bin/*
+	\rm -f $(addprefix $(BUILDDIR), $(CLIENT_OBJS) $(SERVER_OBJS)) ./bin/*

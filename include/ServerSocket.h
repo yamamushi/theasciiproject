@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  DisplaySocket.h
+ *       Filename:  ServerSocket.h
  *
  *    Description:  Experimental Sockets Implementation
  *
@@ -37,11 +37,11 @@
  */
 
 
-class LocalSocketHandler : public SocketHandler
+class ServerSocket : public SocketHandler
 {
 public:
-	LocalSocketHandler(StdLog *p) : SocketHandler(p),m_quit(false) {}
-	~LocalSocketHandler() {}
+	ServerSocket(StdLog *p) : SocketHandler(p),m_quit(false) {}
+	~ServerSocket() {}
 
 	void List(TcpSocket *p) {
 		for (socket_m::iterator it = m_sockets.begin(); it != m_sockets.end(); it++)
@@ -87,7 +87,7 @@ public:
 		std::string arg = pa.getrest();
                 if (cmd == "list")
 		{
-			static_cast<LocalSocketHandler&>(Handler()).List( this );
+			static_cast<ServerSocket&>(Handler()).List( this );
 		}
 		else
 		if (cmd == "quit")
@@ -98,7 +98,7 @@ public:
 		else
 		if (cmd == "stop")
 		{
-			static_cast<LocalSocketHandler&>(Handler()).SetQuit();
+			static_cast<ServerSocket&>(Handler()).SetQuit();
 		}
 		else
 		{

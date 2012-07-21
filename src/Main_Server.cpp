@@ -83,12 +83,12 @@ int main(int argc, char *argv[]){
     player->move(map->rooms[1]->cX, map->rooms[1]->cY);
 
     RenderMap *rMap = new RenderMap(map, entMap);
-//    player->associateClient(rMap);
+//  player->associateClient(rMap);
 
     // Main Game Loop
 
     StdoutLog log;
-    LocalSocketHandler h(&log);
+    ServerSocket h(&log);
 
     // line server
     ListenSocket<DisplaySocketMenu> lSock(h);
