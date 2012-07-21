@@ -54,8 +54,10 @@ using namespace std;
 #include "constants.h"
 
 
-// 3rd party headers (currently only one in use)
+// 3rd party headers
 #include "libtcod/libtcod.hpp"
+#include <Sockets/TcpSocket.h>
+#include <Sockets/ISocketHandler.h>
 
 
 // Our most important objects

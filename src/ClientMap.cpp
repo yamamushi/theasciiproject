@@ -85,15 +85,7 @@ render_t ClientMap::exportSquare(int x, int y){
 
     return cMap[x][y];
 
-
 }
-
-
-
-
-
-
-
 
 wchar_t *ClientMap::getSymbol(int x, int y){
 
