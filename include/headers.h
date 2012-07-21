@@ -58,6 +58,13 @@ using namespace std;
 #include "libtcod/libtcod.hpp"
 #include <Sockets/TcpSocket.h>
 #include <Sockets/ISocketHandler.h>
+#include <Sockets/StdoutLog.h>
+#include <Sockets/SocketHandler.h>
+#include <Sockets/TcpSocket.h>
+#include <Sockets/ListenSocket.h>
+#include <Sockets/Utility.h>
+#include <Sockets/Parse.h>
+
 
 
 // Our most important objects
@@ -77,6 +84,11 @@ using namespace std;
 
 // This will be rewritten "soon"
 #include "Keyboard.h"
+
+// Experimental
+#include "DisplaySocket.h"
+
+
 
 
 // Nothing should depend on our graphics library, ever.

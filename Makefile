@@ -15,12 +15,15 @@ CPP=g++
 
 CPP_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
     FovLib.o Dungeon.o Keyboard.o RenderMap.o \
-    ClientMap.o Graphics.o Main.o
+    DisplaySocket.o ClientMap.o Graphics.o
 
-all : client
+all : client server
 
 client : $(CPP_OBJS)
-	$(CPP) $(addprefix $(BUILDDIR), $(CPP_OBJS)) -o ./bin/$@ -lSockets -ltcod -Wl,-rpath,. -lpthread
+	$(CPP) $(addprefix $(BUILDDIR), $(CPP_OBJS) Main_Client.o) -o ./bin/$@ -lSockets -lssl -lcrypto -ltcod -Wl,-rpath,. -lpthread
+
+server : $(CPP_OBJS)
+	$(CPP) $(addprefix $(BUILDDIR), $(CPP_OBJS) Main_Server.o) -o ./bin/$@ -lSockets -lssl -lcrypto -ltcod -Wl,-rpath,. -lpthread
 
 clean :
 	\rm -f $(addprefix $(BUILDDIR), $(CPP_OBJS)) ./bin/*

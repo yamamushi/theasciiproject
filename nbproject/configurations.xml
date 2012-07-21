@@ -78,6 +78,7 @@
           <in>zip.hpp</in>
         </df>
         <in>ClientMap.h</in>
+        <in>DisplaySocket.h</in>
         <in>Dungeon.h</in>
         <in>Entities.h</in>
         <in>EntityMap.h</in>
@@ -100,13 +101,16 @@
       </df>
       <df name="src">
         <in>ClientMap.cpp</in>
+        <in>DisplaySocket.cpp</in>
         <in>Dungeon.cpp</in>
         <in>Entities.cpp</in>
         <in>EntityMap.cpp</in>
         <in>FovLib.cpp</in>
         <in>Graphics.cpp</in>
         <in>Keyboard.cpp</in>
-        <in>Main.cpp</in>
+        <in>Main_Client.cpp</in>
+        <in>Main_Original.cpp</in>
+        <in>Main_Server.cpp</in>
         <in>RenderMap.cpp</in>
         <in>TileMap.cpp</in>
         <in>Tiles.cpp</in>
