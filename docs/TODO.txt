@@ -1,3 +1,15 @@
+07/21/2012 TODO List:
+
+Networking - Put the TPL library to use, implement the serialization
+        of ClientMap data so that it can be sent over the net.
+
+        Also going to write a wrapper for C sockets instead of using
+        C++ Sockets.
+
+
+
+
+
 07/11/2012 TODO List:
 
 Tile Symbols - The first part of this involves changing our text
@@ -7,8 +19,6 @@ Tile Symbols - The first part of this involves changing our text
 
         This is going to take a few days to fully implement, so there
         won't be a TODO update until that has been smoothed out.
-
-
 
 
 

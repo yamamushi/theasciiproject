@@ -3,6 +3,28 @@ Copyright (c) 2012 Jonathan Rumion
 07/08/2012
 ==================================
 
+0.0.0h
+
+Moving towards network library integration, the client rendering now relies on
+a new class called "ClientMap", which stores and manages a struct of type
+render_t.
+
+The struct "render_t" stores color information for each coordinate on the map,
+which is then used by "GraphicsTCOD" (or any graphics rendering system someone
+chooses to write), to draw the corresponding information to the screen. This is
+done by passing a pointer to a ClientMap Object as the initialization parameter
+to GraphicsTCOD.
+
+Right now GraphicsTCOD still does a lot of "thinking" internally, but once
+networking has been set in motion, I'll go back and rework things so that more
+calculations are done on the server rather than allowing clients to see so much
+information.
+
+I'm currently working on getting "ClientMap" populated via calls to the server
+for a particular entity. Once I have the client and server talking at a basic
+level, I'll work in a proper login system and we'll go from there.
+
+
 0.0.0g
 
 I've completed the integration of Unicode characters into the project, and I
