@@ -11,17 +11,17 @@ CPP=g++
 %.o : $(SRCDIR)/%.cpp
 	$(CPP) $(CFLAGS) -o $(BUILDDIR)$@ -c $<
 %.o : $(SRCDIR)/%.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $(BUILDDIR)$@ -c $<
 
 CLIENT_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
-    FovLib.o Dungeon.o Keyboard.o RenderMap.o \
+    FovLib.o Dungeon.o Keyboard.o RenderMap.o tpl.o \
     NetworkLib.o ClientSocket.o ClientMap.o Graphics.o \
-    Main_Client.o
+    Serialization.o Main_Client.o
 
 SERVER_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
-    FovLib.o Dungeon.o Keyboard.o RenderMap.o \
+    FovLib.o Dungeon.o Keyboard.o RenderMap.o tpl.o \
     NetworkLib.o ServerSocket.o ClientMap.o Graphics.o \
-    Main_Server.o
+    Serialization.o Main_Server.o
 
 all : client server
 

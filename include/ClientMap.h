@@ -59,10 +59,6 @@ public:
     void importSquare(int x, int y, render_t square);
     render_t exportSquare(int x, int y);
 
-
-
-
-
     wchar_t *getSymbol(int x, int y);
     float returnH(int x, int y);
     float returnHD(int x, int y);

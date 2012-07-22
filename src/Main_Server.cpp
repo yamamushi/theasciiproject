@@ -83,10 +83,55 @@ int main(int argc, char *argv[]){
     player->move(map->rooms[1]->cX, map->rooms[1]->cY);
 
     RenderMap *rMap = new RenderMap(map, entMap);
-//  player->associateClient(rMap);
+    player->associateClient(rMap);
+
+
+    // networking packing stuff
+
+    ClientMapPacker *packer = new ClientMapPacker();
 
     // Main Game Loop
 
+
+    ClientMap *testMap = new ClientMap();
+
+    GraphicsTCOD *output = new GraphicsTCOD(testMap);
+
+    TCODSystem::setFps(25);
+
+
+    // Main Game Loop
+    while (!TCODConsole::isWindowClosed()) {
+
+        for (x = 0; x < MAP_WIDTH; x++) {
+            for (y = 0; y < MAP_HEIGHT; y++) {
+                if ((player->fov[x][y])) {
+
+                    unsigned char *buffer = new unsigned char[1024];
+                    render_t tmp = player->returnCMap()->cMap[x][y];
+                    packer->packToNet(tmp, buffer);
+                    packer->unpackFromNet(testMap, buffer);
+
+                }
+                else {
+                    testMap->cMap[x][y].visible = false;
+                }
+            }
+        }
+
+        printf("testMap loop complete %d, %d \n", player->posX(), player->posY());
+
+        output->render();
+        output->clearScreen();
+
+        quit = kboard->handleKeys(player);
+        if (quit) break;
+
+    }
+
+
+
+    /*
     StdoutLog log;
     ServerSocket h(&log);
 
@@ -101,7 +146,7 @@ int main(int argc, char *argv[]){
 
         h.Select(1, 0);
 
-    }
+    } */
 
 
     return 0;

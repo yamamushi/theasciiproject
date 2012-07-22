@@ -78,18 +78,21 @@
           <in>zip.hpp</in>
         </df>
         <in>ClientMap.h</in>
+        <in>ClientSocket.h</in>
         <in>Dungeon.h</in>
         <in>Entities.h</in>
         <in>EntityMap.h</in>
         <in>FovLib.h</in>
         <in>Graphics.h</in>
         <in>Keyboard.h</in>
+        <in>NetworkLib.h</in>
         <in>RenderMap.h</in>
         <in>ServerSocket.h</in>
         <in>TileMap.h</in>
         <in>Tiles.h</in>
         <in>constants.h</in>
         <in>headers.h</in>
+        <in>tpl.h</in>
       </df>
       <df name="licenses">
       </df>
@@ -97,10 +100,14 @@
       </df>
       <df name="makefiles">
       </df>
+      <df name="misc">
+        <in>Main_Original.cpp</in>
+      </df>
       <df name="osx">
       </df>
       <df name="src">
         <in>ClientMap.cpp</in>
+        <in>ClientSocket.cpp</in>
         <in>Dungeon.cpp</in>
         <in>Entities.cpp</in>
         <in>EntityMap.cpp</in>
@@ -108,8 +115,8 @@
         <in>Graphics.cpp</in>
         <in>Keyboard.cpp</in>
         <in>Main_Client.cpp</in>
-        <in>Main_Original.cpp</in>
         <in>Main_Server.cpp</in>
+        <in>NetworkLib.cpp</in>
         <in>RenderMap.cpp</in>
         <in>ServerSocket.cpp</in>
         <in>TileMap.cpp</in>

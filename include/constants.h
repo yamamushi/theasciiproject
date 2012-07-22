@@ -93,6 +93,8 @@ enum entity_types {
 
 typedef struct render_t {
     wchar_t *symbol;
+    int x;
+    int y;
     float H;
     float S;
     float V;
@@ -102,6 +104,21 @@ typedef struct render_t {
     bool explored;
     bool occupied;
     bool visible;
+};
+
+typedef struct s_render_t {
+    char *ASCII;
+    int x;
+    int y;
+    double H;
+    double S;
+    double V;
+    double HD;
+    double SD;
+    double VD;
+    int explored;
+    int occupied;
+    int visible;
 };
 
 

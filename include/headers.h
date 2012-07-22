@@ -95,12 +95,13 @@ using namespace std;
 #include "ServerSocket.h"
 #include "ClientSocket.h"
 
+#include "Serialization.h"
+
 
 
 
 // Nothing should depend on our graphics library, ever.
 #include "RenderMap.h"
-
 #include "ClientMap.h"
 
 #include "Graphics.h"

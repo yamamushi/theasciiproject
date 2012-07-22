@@ -61,6 +61,8 @@ void ClientMap::clearMap(){
         for (y = 0; y < MAP_HEIGHT; y++){
 
             cMap[x][y].symbol = L"\uFFFF";
+            cMap[x][y].x = x;
+            cMap[x][y].y = y;
             cMap[x][y].H = 0.0;
             cMap[x][y].HD = 0.0;
             cMap[x][y].S = 0.0;

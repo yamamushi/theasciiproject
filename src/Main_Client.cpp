@@ -51,12 +51,19 @@ int main(int argc, char *argv[])
     int CenterX = MAIN_WIDTH / 2;
     int CenterY = MAIN_HEIGHT / 2;
 
+    unsigned char buf[1024];
+
     int i, x, y, z;
 
     ClientMap *cMap = new ClientMap();
 
     GraphicsTCOD *output = new GraphicsTCOD(cMap);
     Keyboard *kboard = new Keyboard(0, 0);
+
+    // networking packing stuff
+
+    tpl_node *tn;
+    ClientMapPacker *packer = new ClientMapPacker();
 
 
     // Main Game Loop
