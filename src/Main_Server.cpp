@@ -97,7 +97,7 @@ int main(int argc, char *argv[]){
 
     GraphicsTCOD *output = new GraphicsTCOD(testMap);
 
-    TCODSystem::setFps(25);
+    TCODSystem::setFps(30);
 
 
     // Main Game Loop
@@ -107,7 +107,7 @@ int main(int argc, char *argv[]){
             for (y = 0; y < MAP_HEIGHT; y++) {
                 if ((player->fov[x][y])) {
 
-                    unsigned char *buffer = new unsigned char[1024];
+                    unsigned char *buffer = new unsigned char[128];
                     render_t tmp = player->returnCMap()->cMap[x][y];
                     packer->packToNet(tmp, buffer);
                     packer->unpackFromNet(testMap, buffer);
