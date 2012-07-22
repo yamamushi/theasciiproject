@@ -47,11 +47,6 @@ public:
 		for (socket_m::iterator it = m_sockets.begin(); it != m_sockets.end(); it++)
 		{
 			Socket *p0 = (*it).second;
-			if (dynamic_cast<PoolSocket *>(p0))
-			{
-				p -> Send("PoolSocket\n");
-                        }
-			else
 			if (dynamic_cast<TcpSocket *>(p0))
 			{
 				p -> Send("TcpSocket\n");

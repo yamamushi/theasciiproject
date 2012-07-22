@@ -115,6 +115,7 @@ int main(int argc, char *argv[]){
                 }
                 else {
                     testMap->cMap[x][y].visible = false;
+                    testMap->cMap[x][y].occupied = false;
                 }
             }
         }
