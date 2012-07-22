@@ -1,7 +1,7 @@
 !!!NOTE!!!
 
 You MUST have libtcod 1.5.1 Bitbucket version installed for this program
-to compile and work properly. You can try to use one of the precompiled 
+to compile and work properly. You can try to use one of the precompiled
 library binaries in the folder that suits your architecture, or you can
 try building a fresh libtcod library from source -
 
@@ -19,7 +19,7 @@ libtcod homepage, you will not get the proper output from the client here.
 The shared libraries for libtcod have been included in the "linux" directory.
 These were compiled against x86_64, so there's no guarantee that they will
 work on your Linux installation. In addition, there are libtcod depdencies
-you may be missing, however you should refer to the libtcod documentation 
+you may be missing, however you should refer to the libtcod documentation
 for further information on them.
 
 I believe, however don't quote me on this, they are:
@@ -67,6 +67,7 @@ Copy one of those files that corresponds to your OS into the
 main directory as "Makefile" and run "make".
 
 Once you have a built binary, you can run it with "./client"
+
 
 -Yamamushi (Jon Rumion)
 yamamushi@gmail.com
