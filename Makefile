@@ -32,4 +32,4 @@ server : $(SERVER_OBJS)
 	$(CPP) $(addprefix $(BUILDDIR), $(SERVER_OBJS)) -o ./bin/$@ -lSockets -lssl -lcrypto -ltcod -Wl,-rpath,. -lpthread
 
 clean :
-	\rm -f $(addprefix $(BUILDDIR), $(CLIENT_OBJS) $(SERVER_OBJS)) ./bin/*
+	\rm -f $(addprefix $(BUILDDIR), $(CLIENT_OBJS) $(SERVER_OBJS)) ./bin/client ./bin/server
