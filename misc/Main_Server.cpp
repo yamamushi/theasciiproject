@@ -108,9 +108,9 @@ int main(int argc, char *argv[]){
   //      for (y = 0; y < MAP_HEIGHT; y++) {
   //          if ((player->fov[x][y])) {
 
-            //  unsigned char *buffer = new unsigned char[128];
-            //    render_t tmp = player->returnCMap()->cMap[player->posX()][player->posY()];
-            //   packer->packToNet(tmp, buffer);
+              unsigned char *buffer = new unsigned char[128];
+                render_t tmp = *player->returnCMap()->cMap[player->posX()][player->posY()];
+               packer->packToNet(tmp, buffer);
              //   packer->unpackFromNet(testMap, buffer);
 
           //      testMap->cMap[x][y].visible = false;

@@ -104,7 +104,9 @@
       <df name="makefiles">
       </df>
       <df name="misc">
+        <in>Main.cpp</in>
         <in>Main_Original.cpp</in>
+        <in>Main_Server.cpp</in>
       </df>
       <df name="osx">
       </df>

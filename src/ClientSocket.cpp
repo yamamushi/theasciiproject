@@ -119,7 +119,7 @@ void MapSocket::OnRead()
       ClientMapPacker *packer = new ClientMapPacker();
       printf("packer running\n");
       packer->unpackFromNet(dest, (unsigned char*)buf);
-      out->render();
+      //out->render();
       free(buf);
       printf("Size of buffer is now %d\n", ibuf.GetLength());
       delete packer;
@@ -128,8 +128,8 @@ void MapSocket::OnRead()
 
  //   char *buf = new char[128];
   //  ibuf.Read( buf, 128);
- //   out->render();
- //   out->clearScreen();
+    out->render();
+    out->clearScreen();
 
 }
 

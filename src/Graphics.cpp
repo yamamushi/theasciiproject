@@ -94,7 +94,7 @@ void GraphicsTCOD::prepare(){
                 wchar_t *sym;
                 sym = cMap->cMap[x][y]->symbol;
 
-                //printf("Symbol is %S", cMap->cMap[x][y]->symbol);
+                printf("Symbol is %S", cMap->cMap[x][y]->symbol);
                 if (cMap->returnOccupied(x, y)){
 
                         output->setDefaultForeground(TCODColor(H, S, V));
