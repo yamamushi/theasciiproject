@@ -3,7 +3,7 @@ Copyright (c) 2012 Jonathan Rumion
 07/08/2012
 ==================================
 
-0.0.0g
+0.0.0i
 
 Well it sure has been a journey, however after staying up for days on end
 straight programming to get here, I'm happy to say that the "Heart" of our
