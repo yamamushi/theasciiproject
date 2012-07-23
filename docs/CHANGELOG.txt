@@ -3,6 +3,35 @@ Copyright (c) 2012 Jonathan Rumion
 07/08/2012
 ==================================
 
+0.0.0g
+
+Well it sure has been a journey, however after staying up for days on end
+straight programming to get here, I'm happy to say that the "Heart" of our
+project has now been set in motion.
+
+That is to say, networking is now working at a fundamental level. While there
+is still a lot of work to be done in the way of getting user logins to work
+and synchronizing commands between the client and the server, it's still pretty
+amazing to see the client being rendered from data being sent from the server
+over a thousand miles away.
+
+There's not much in the way of latency hiccups now, but I'm sure that will
+change when we actually get to the point to where we can really test the server
+with some heavy traffic.
+
+It's been a long road, if you count the time from when the project was first
+conceived. It's going to be a very long road ahead of us from here, but now
+I'm positive that we're we'll on our way to taking over the world.
+
+One Character At A Time.
+
+-Yamamushi
+
+
+
+
+
+
 0.0.0h
 
 Moving towards network library integration, the client rendering now relies on
