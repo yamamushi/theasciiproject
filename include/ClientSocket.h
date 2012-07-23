@@ -37,6 +37,7 @@
  */
 
 class GraphicsTCOD;
+class ClientMapPacker;
 
 class ClientSocket : public TcpSocket {
 
@@ -51,11 +52,13 @@ class MapSocket : public TcpSocket {
 
     ClientMap *dest;
     GraphicsTCOD *out;
+  //  ClientMapPacker *packer;
 
 public:
 
     MapSocket(ISocketHandler& h);
 
+    //void OnRawData(const char *buf,size_t len);
     void OnRead();
     void loadClientMap(ClientMap *client);
     void assignLocalOut(GraphicsTCOD *screen);

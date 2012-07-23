@@ -36,7 +36,7 @@
  * =====================================================================================
  */
 
-
+class ClientMapPacker;
 
 
 class ServerSocket : public SocketHandler {
@@ -81,15 +81,20 @@ class SendRawMap : public SocketHandler {
 
 private:
 
-    unsigned char *buf;
     bool m_quit;
+    Entity *src;
+    ClientMapPacker *packer;
 
 public:
+
+
+    unsigned char *buffer;
 
     SendRawMap(StdLog *p);
     ~SendRawMap();
 
-    void init(unsigned char *buffer);
+    //void init(unsigned char *buffer);
+    void init(Entity *player);
     void TransmitRaw(TcpSocket *out);
 
     void List(TcpSocket *p);

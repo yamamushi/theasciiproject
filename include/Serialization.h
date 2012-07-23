@@ -6,11 +6,13 @@ class ClientMapPacker {
 private:
 
     //s_render_t *sMap;
-    //render_t *rMap;
+    render_t *rMap;
 
     //s_render_t *csMap;
 
+    ClientMap *clientMap;
     tpl_node *tn;
+    wchar_t * return_string;
 
 
 public:
@@ -22,6 +24,7 @@ public:
 
     void packToNet(render_t source, unsigned char *buf);
     void unpackFromNet(ClientMap *dest, unsigned char *buf);
+    //void initClientMap(ClientMap *dest);
 
 
 

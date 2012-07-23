@@ -49,15 +49,15 @@ private:
 public:
 
 
-    render_t cMap[MAP_WIDTH][MAP_HEIGHT];
+    render_t *cMap[MAP_WIDTH][MAP_HEIGHT];
 
     ClientMap();
     void initClientMap();
 
     void clearMap();
 
-    void importSquare(int x, int y, render_t square);
-    render_t exportSquare(int x, int y);
+    void importSquare(int x, int y, render_t *square);
+    render_t *exportSquare(int x, int y);
 
     wchar_t *getSymbol(int x, int y);
     float returnH(int x, int y);

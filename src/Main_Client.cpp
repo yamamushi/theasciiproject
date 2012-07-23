@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
     // networking packing stuff
 
    // tpl_node *tn;
-   // ClientMapPacker *packer = new ClientMapPacker();
+   ClientMapPacker *packer = new ClientMapPacker();
 
 
     // Main Game Loop
@@ -82,6 +82,8 @@ int main(int argc, char *argv[])
 	while (h.GetCount())
 	{
 		h.Select(1,0);
+                //output->render();
+
 	}
     //}
 

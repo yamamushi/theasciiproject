@@ -92,7 +92,7 @@ enum entity_types {
 
 
 typedef struct render_t {
-    wchar_t *symbol;
+    wchar_t * symbol;
     int x;
     int y;
     float H;
@@ -107,7 +107,8 @@ typedef struct render_t {
 };
 
 typedef struct s_render_t {
-    char *ASCII;
+    int size;
+    char ASCII[8];
     int x;
     int y;
     double H;

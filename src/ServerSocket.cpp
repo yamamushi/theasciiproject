@@ -115,7 +115,6 @@ void DisplaySocketMenu::OnLine(const std::string& line)
 
 SendRawMap::SendRawMap(StdLog *p) : SocketHandler(p),m_quit(false)
 {
-
 }
 
 SendRawMap::~SendRawMap()
@@ -123,18 +122,38 @@ SendRawMap::~SendRawMap()
 
 }
 
-void SendRawMap::init(unsigned char *buffer)
+/*void SendRawMap::init(unsigned char *buf)
 {
 
-    buf = buffer;
+    buffer = buf;
+
+} */
+
+void SendRawMap::init(Entity *target){
+
+    src = target;
 
 }
 
 void SendRawMap::TransmitRaw(TcpSocket *out)
 {
-    printf("Size of Buffer being Sent %d\n", (unsigned)sizeof(buf));
-    //printf("Length of Buffer being Sent %d\n", (unsigned)(buf));
-    out->SendBuf(reinterpret_cast<const char*>(buf), 128);
+    int x, y;
+    for (x = 0; x < MAP_WIDTH; x++) {
+        for (y = 0; y < MAP_HEIGHT; y++) {
+            if ((src->fov[x][y])) {
+
+                 ClientMapPacker *packer = new ClientMapPacker();
+                 unsigned char *buffer = new unsigned char[128];
+                 render_t tmp = *src->returnCMap()->cMap[x][y];
+                 //render_t tmp = src->returnCMap()->cMap[src->posX()][src->posY()];
+                 packer->packToNet(tmp, buffer);
+                 printf("Size of Buffer being Sent %d\n", (unsigned)sizeof(buffer));
+                 out->SendBuf(reinterpret_cast<const char*>(buffer), 128);
+                 //delete packer;
+                 //free(buffer);
+            }
+        }
+    }
 }
 
 void SendRawMap::List(TcpSocket *p)
