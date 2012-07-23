@@ -62,3 +62,39 @@ void ClientSocket::OnRead()
 		printf("\n");
 	}
 }
+
+
+MapSocket::MapSocket(ISocketHandler& h) : TcpSocket(h)
+{
+
+}
+
+void MapSocket::OnRead()
+{
+
+    TcpSocket::OnRead();
+    printf("Received Raw Data\n");
+    printf("Size of Raw Data is %d\n", ibuf.GetLength());
+    char *buf = new char[ibuf.GetLength()];
+    ibuf.Read( buf, ibuf.GetLength());
+
+    ClientMapPacker *packer = new ClientMapPacker();
+    printf("Packer Initialized\n");
+    packer->unpackFromNet(dest, (unsigned char*)buf);
+    out->render();
+    out->clearScreen();
+
+}
+
+void MapSocket::loadClientMap(ClientMap *client){
+
+    dest = client;
+
+}
+
+void MapSocket::assignLocalOut(GraphicsTCOD* screen)
+{
+
+    out = screen;
+
+}
