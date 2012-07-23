@@ -93,61 +93,57 @@ int main(int argc, char *argv[]){
     // Main Game Loop
 
 
-    ClientMap *testMap = new ClientMap();
+   // ClientMap *testMap = new ClientMap();
 
-    GraphicsTCOD *output = new GraphicsTCOD(testMap);
+   // GraphicsTCOD *output = new GraphicsTCOD(testMap);
 
-    TCODSystem::setFps(30);
+    //TCODSystem::setFps(30);
 
 
     // Main Game Loop
-    while (!TCODConsole::isWindowClosed()) {
-
-        for (x = 0; x < MAP_WIDTH; x++) {
-            for (y = 0; y < MAP_HEIGHT; y++) {
-                if ((player->fov[x][y])) {
-
-                    unsigned char *buffer = new unsigned char[128];
-                    render_t tmp = player->returnCMap()->cMap[x][y];
-                    packer->packToNet(tmp, buffer);
-                    packer->unpackFromNet(testMap, buffer);
-
-                }
-                else {
-                    testMap->cMap[x][y].visible = false;
-                    testMap->cMap[x][y].occupied = false;
-                }
-            }
-        }
-
-        printf("testMap loop complete %d, %d \n", player->posX(), player->posY());
-
-        output->render();
-        output->clearScreen();
-
-        quit = kboard->handleKeys(player);
-        if (quit) break;
-
-    }
 
 
+  //  for (x = 0; x < MAP_WIDTH; x++) {
+  //      for (y = 0; y < MAP_HEIGHT; y++) {
+  //          if ((player->fov[x][y])) {
 
-    /*
+                unsigned char *buffer = new unsigned char[128];
+                render_t tmp = player->returnCMap()->cMap[player->posX()][player->posY()];
+                packer->packToNet(tmp, buffer);
+             //   packer->unpackFromNet(testMap, buffer);
+
+          //      testMap->cMap[x][y].visible = false;
+          //      testMap->cMap[x][y].occupied = false;
+
+
+    printf("testMap loop complete %d, %d \n", player->posX(), player->posY());
+
     StdoutLog log;
     ServerSocket h(&log);
 
+    SendRawMap r(&log);
+    r.init(buffer);
+
+    printf("Server Sockets have been setup. \n");
+
     // line server
-    ListenSocket<DisplaySocketMenu> lSock(h);
-    lSock.Bind(1066);
-    h.Add(&lSock);
+    ListenSocket<DisplaySocketMenu> lSock(r);
+    //ListenSocket<SendRawMap> lSock(r);
 
-    h.Select(1, 0);
 
+    lSock.Bind(5250);
+    printf("Server Socket has been bound. \n\n\n" );
+    r.Add(&lSock);
+
+
+    r.Select(1, 0);
+
+    printf("Entering Main Socket Loop. \n\n\n");
     while(!h.Quit()){
 
-        h.Select(1, 0);
+        r.Select(1, 0);
 
-    } */
+    }
 
 
     return 0;
