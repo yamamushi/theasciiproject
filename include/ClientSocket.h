@@ -36,11 +36,28 @@
  * =====================================================================================
  */
 
+class GraphicsTCOD;
 
-class ClientSocket : public TcpSocket
-{
+class ClientSocket : public TcpSocket {
+
 public:
-	ClientSocket(ISocketHandler& h);
+    ClientSocket(ISocketHandler& h);
 
-	void OnRead();
+    void OnRead();
+
+};
+
+class MapSocket : public TcpSocket {
+
+    ClientMap *dest;
+    GraphicsTCOD *out;
+
+public:
+
+    MapSocket(ISocketHandler& h);
+
+    void OnRead();
+    void loadClientMap(ClientMap *client);
+    void assignLocalOut(GraphicsTCOD *screen);
+
 };
