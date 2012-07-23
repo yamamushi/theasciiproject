@@ -58,35 +58,32 @@ int main(int argc, char *argv[])
     ClientMap *cMap = new ClientMap();
 
     GraphicsTCOD *output = new GraphicsTCOD(cMap);
-    Keyboard *kboard = new Keyboard(0, 0);
+   // Keyboard *kboard = new Keyboard(0, 0);
 
     // networking packing stuff
 
-    tpl_node *tn;
-    ClientMapPacker *packer = new ClientMapPacker();
+   // tpl_node *tn;
+   // ClientMapPacker *packer = new ClientMapPacker();
 
 
     // Main Game Loop
-    while (!TCODConsole::isWindowClosed()) {
+    //while (!TCODConsole::isWindowClosed()) {
 
 	SocketHandler h;
-	ClientSocket *p = new ClientSocket(h);
+	MapSocket *p = new MapSocket(h);
+        p->loadClientMap(cMap);
+        p->assignLocalOut(output);
 
-	p -> SetDeleteByHandler();
-	p -> Open("localhost", 1066);
+	p->SetDeleteByHandler();
+        printf("Trying to connect to server...\n");
+	p->Open("localhost", 5250);
 	h.Add(p);
 	h.Select(1,0);
 	while (h.GetCount())
 	{
 		h.Select(1,0);
 	}
-/*
-        output->render();
-        output->clearScreen();
-      //quit = kboard->handleKeys(player);
-        if (quit) break;
-*/
-    }
+    //}
 
     return 0;
 }

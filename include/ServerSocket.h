@@ -37,69 +37,69 @@
  */
 
 
-class ServerSocket : public SocketHandler
-{
-public:
-	ServerSocket(StdLog *p) : SocketHandler(p),m_quit(false) {}
-	~ServerSocket() {}
 
-	void List(TcpSocket *p) {
-		for (socket_m::iterator it = m_sockets.begin(); it != m_sockets.end(); it++)
-		{
-			Socket *p0 = (*it).second;
-			if (dynamic_cast<TcpSocket *>(p0))
-			{
-				p -> Send("TcpSocket\n");
-			}
-			else
-			{
-				p -> Send("Some kind of Socket\n");
-			}
-		}
-	}
-	void SetQuit() { m_quit = true; }
-	bool Quit() { return m_quit; }
+
+class ServerSocket : public SocketHandler {
 
 private:
-	bool m_quit;
+
+    bool m_quit;
+
+public:
+	ServerSocket(StdLog *p);
+	~ServerSocket();
+
+	void List(TcpSocket *p);
+	void SetQuit();
+	bool Quit();
+
 };
+
 
 
 
 class DisplaySocketMenu : public TcpSocket {
 
+private:
+
 
 public:
-	DisplaySocketMenu(ISocketHandler& h) : TcpSocket(h) {
-		SetLineProtocol();
-	}
-	void OnAccept() {
-		Send("Cmd (list, quit ,stop)>");
-	}
-	void OnLine(const std::string& line) {
-		Parse pa(line);
-		std::string cmd = pa.getword();
-		std::string arg = pa.getrest();
-                if (cmd == "list")
-		{
-			static_cast<ServerSocket&>(Handler()).List( this );
-		}
-		else
-		if (cmd == "quit")
-		{
-			Send("Goodbye!\n");
-			SetCloseAndDelete();
-		}
-		else
-		if (cmd == "stop")
-		{
-			static_cast<ServerSocket&>(Handler()).SetQuit();
-		}
-		else
-		{
-			Send("Huh?\n");
-		}
-		Send("Cmd>");
-	}
+
+	DisplaySocketMenu(ISocketHandler& h);
+	void OnAccept();
+	void OnLine(const std::string& line);
+
+};
+
+
+
+
+
+
+
+class SendRawMap : public SocketHandler {
+
+private:
+
+    unsigned char *buf;
+    bool m_quit;
+
+public:
+
+    SendRawMap(StdLog *p);
+    ~SendRawMap();
+
+    void init(unsigned char *buffer);
+    void TransmitRaw(TcpSocket *out);
+
+    void List(TcpSocket *p);
+
+    void SetQuit() {
+        m_quit = true;
+    }
+
+    bool Quit() {
+        return m_quit;
+    }
 
 };

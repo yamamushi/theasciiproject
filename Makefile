@@ -13,9 +13,7 @@ CPP=g++
 %.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -o $(BUILDDIR)$@ -c $<
 
-CLIENT_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
-    FovLib.o Dungeon.o Keyboard.o RenderMap.o tpl.o \
-    NetworkLib.o ClientSocket.o ClientMap.o Graphics.o \
+CLIENT_OBJS= tpl.o ClientSocket.o ClientMap.o Graphics.o \
     Serialization.o Main_Client.o
 
 SERVER_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \

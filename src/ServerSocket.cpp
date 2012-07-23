@@ -37,5 +37,114 @@
  */
 
 #include "headers.h"
-//
 
+
+
+ServerSocket::ServerSocket(StdLog *p) : SocketHandler(p),m_quit(false)
+{
+
+}
+
+ServerSocket::~ServerSocket()
+{
+
+}
+
+void ServerSocket::List(TcpSocket *p)
+{
+    for (socket_m::iterator it = m_sockets.begin(); it != m_sockets.end(); it++) {
+        Socket *p0 = (*it).second;
+        if (dynamic_cast<TcpSocket *> (p0)) {
+            p->Send("TcpSocket\n");
+        } else {
+            p->Send("Some kind of Socket\n");
+        }
+    }
+}
+
+void ServerSocket::SetQuit()
+{
+    m_quit = true;
+}
+
+bool ServerSocket::Quit()
+{
+    return m_quit;
+}
+
+
+
+
+
+
+DisplaySocketMenu::DisplaySocketMenu(ISocketHandler& h) : TcpSocket(h)
+{
+    // SetLineProtocol();
+}
+
+void DisplaySocketMenu::OnAccept()
+{
+   // Send("Cmd (list, quit , dump, stop)>");
+    static_cast<SendRawMap&> (Handler()).TransmitRaw(this);
+}
+
+void DisplaySocketMenu::OnLine(const std::string& line)
+{
+    Parse pa(line);
+    std::string cmd = pa.getword();
+    std::string arg = pa.getrest();
+    if (cmd == "list") {
+        static_cast<SendRawMap&> (Handler()).List(this);
+    } else
+        if (cmd == "quit") {
+        Send("Goodbye!\n");
+        SetCloseAndDelete();
+    } else
+        if (cmd == "stop") {
+        static_cast<SendRawMap&> (Handler()).SetQuit();
+    } else {
+        Send("Huh?\n");
+    }
+    Send("Cmd>");
+}
+
+
+
+
+
+
+SendRawMap::SendRawMap(StdLog *p) : SocketHandler(p),m_quit(false)
+{
+
+}
+
+SendRawMap::~SendRawMap()
+{
+
+}
+
+void SendRawMap::init(unsigned char *buffer)
+{
+
+    buf = buffer;
+
+}
+
+void SendRawMap::TransmitRaw(TcpSocket *out)
+{
+    printf("Size of Buffer being Sent %d\n", (unsigned)sizeof(buf));
+    //printf("Length of Buffer being Sent %d\n", (unsigned)(buf));
+    out->SendBuf(reinterpret_cast<const char*>(buf), 128);
+}
+
+void SendRawMap::List(TcpSocket *p)
+{
+    for (socket_m::iterator it = m_sockets.begin(); it != m_sockets.end(); it++) {
+        Socket *p0 = (*it).second;
+        if (dynamic_cast<TcpSocket *> (p0)) {
+            p->Send("TcpSocket\n");
+        } else {
+            p->Send("Some kind of Socket\n");
+        }
+    }
+}

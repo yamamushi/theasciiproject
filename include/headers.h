@@ -46,7 +46,15 @@
 #include <vector>
 #include <typeinfo>
 #include <map>
+#include <string>
+#include <wchar.h>
 
+#include <clocale>
+#include <cstdlib>
+
+#include <stddef.h>
+#include <inttypes.h>
+#include <sstream>
 
 // Our namespaces
 using namespace std;

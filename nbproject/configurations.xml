@@ -11,6 +11,8 @@
       <df name="docs">
       </df>
       <df name="include">
+        <df name="gui">
+        </df>
         <df name="libtcod">
           <df name="gui">
             <in>button.hpp</in>
@@ -87,6 +89,7 @@
         <in>Keyboard.h</in>
         <in>NetworkLib.h</in>
         <in>RenderMap.h</in>
+        <in>Serialization.h</in>
         <in>ServerSocket.h</in>
         <in>TileMap.h</in>
         <in>Tiles.h</in>
@@ -118,9 +121,11 @@
         <in>Main_Server.cpp</in>
         <in>NetworkLib.cpp</in>
         <in>RenderMap.cpp</in>
+        <in>Serialization.cpp</in>
         <in>ServerSocket.cpp</in>
         <in>TileMap.cpp</in>
         <in>Tiles.cpp</in>
+        <in>tpl.c</in>
       </df>
       <df name="windows">
       </df>

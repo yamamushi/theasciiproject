@@ -1,5 +1,12 @@
 #include "headers.h"
 
+
+ClientMapPacker::ClientMapPacker(){
+
+        tpl_node *tn;
+
+}
+
 s_render_t ClientMapPacker::clientToSerial(render_t source){
 
 
@@ -7,24 +14,45 @@ s_render_t ClientMapPacker::clientToSerial(render_t source){
     s_render_t lMap;
 
     // We do our intitial conversion and setup of our converted render_t struct
-    int x = cMap.x;
-    int y = cMap.y;
+    //int x = cMap.x;
+   // int y = cMap.y;
+
+    setlocale(LC_ALL, "en_US.UTF-8");
 
     wchar_t *wstr = cMap.symbol;
-    char *ascii = new char[wcslen(wstr) + 1];
-    wcstombs(ascii, wstr, sizeof(wchar_t));
+    char *ascii = new char[wcslen(cMap.symbol) + 1];
+    wcstombs(ascii, cMap.symbol, sizeof (wchar_t));
 
-    printf("ascii before compression = %c \n", ascii);
-    printf("wstr before compression is = %S \n", wstr);
-    printf ("ascii is %u big.\n",(unsigned)sizeof(ascii));
-    printf ("ascii is %u long.\n",(unsigned)mblen(ascii, sizeof(wchar_t)));
-    printf ("wstr is %u long.\n",(unsigned)wcslen(wstr));
-    printf ("wstr is %u big.\n",(unsigned)sizeof(wstr));
+    printf("\n String check - %S \n", (wchar_t *)ascii);
+
+
+
+
+
+    printf("symbol char before compression = %c \n", cMap.symbol);
+    printf("symbol string before compression is = %S \n", cMap.symbol);
+    printf ("symbol is %u big.\n",(unsigned)sizeof(cMap.symbol));
+    printf ("symbol is %u long.\n",(unsigned)wcslen(cMap.symbol));
+    printf ("symbol is %u big.\n",(unsigned)sizeof(cMap.symbol));
+    printf("wchar_t is %u big.\n\n", (unsigned)sizeof(wchar_t));
+
+
+
+
+
+
+    lMap.ASCII = ascii;
+
+    printf("symbol char after conversion = %c \n", lMap.ASCII);
+    printf("symbol string after conversion is = %S \n", lMap.ASCII);
+    printf ("symbol is %u big.\n",(unsigned)sizeof(lMap.ASCII));
+    ///printf ("symbol is %u long.\n",(unsigned)mblen(lMap.ASCII, sizeof(wchar_t)));
+    printf ("symbol is %u big.\n",(unsigned)sizeof(lMap.ASCII));
+    //printf("int value of char* after conversion is %d\n", ()lMap.ASCII);
+
 
 
     // we would use c# to pack a char[];
-
-    lMap.ASCII = ascii;
 
     lMap.x = cMap.x;
     lMap.y = cMap.y;
@@ -56,29 +84,35 @@ s_render_t ClientMapPacker::clientToSerial(render_t source){
     return lMap;
 }
 
-render_t ClientMapPacker::serialToClient(s_render_t source){
+render_t ClientMapPacker::serialToClient(s_render_t lMap){
 
-    s_render_t lMap = source;
+
+    setlocale(LC_ALL, "en_US.UTF-8");
+
+    //s_render_t lMap = source;
     render_t cMap;
 
-    char *ascii = source.ASCII;
-    wchar_t *wstr;
-    mbstowcs(wstr, ascii, sizeof(wchar_t));
 
-    printf("ascii after decompression is = %c \n", source.ASCII);
-    printf("wstr after decompression is = %S \n", wstr);
-    printf ("ascii is %u big.\n",(unsigned)sizeof(ascii));
-    printf ("ascii is %u long.\n",(unsigned)mblen(ascii, sizeof(wchar_t)));
-    printf ("wstr is %u long.\n",(unsigned)wcslen(wstr));
-    printf ("wstr is %u big.\n",(unsigned)sizeof(wstr));
+   // char *ascii = lMap.ASCII;
+    //wchar_t *wstr;
+   // mbstowcs(wstr, ascii, sizeof(wchar_t));
 
+    printf("ASCII char* after transfer = %c \n", lMap.ASCII);
+    //printf("symbol string after compression is = %s \n", lMap.ASCII);
+    //printf ("symbol is %u big.\n",(unsigned)sizeof(lMap.ASCII));
+    //printf ("symbol is %u long.\n",(unsigned)mblen(lMap.ASCII, sizeof(wchar_t)));
+    //printf ("symbol is %u long.\n",(unsigned)wcslen(lMap.ASCII));
+    //printf ("symbol is %u big.\n",(unsigned)sizeof(lMap.ASCII));
+    //printf("wchar_t is %u big.\n", (unsigned)sizeof(wchar_t));
 
+    //mbstowcs(wstr, ascii, sizeof(wchar_t));
+    //printf("strlen of char* after transfer is %d", strlen(lMap.ASCII));
 
-    // we would use c# to pack a char[];
-
-    cMap.symbol = wstr;
-    cMap.x = (float)lMap.x;
-    cMap.y = (float)lMap.y;
+    cMap.symbol = L"\uFFF8";//source.ASCII;
+    cMap.x = lMap.x;
+    printf("lMap.x is now %d\n", lMap.x);
+    cMap.y = lMap.y;
+    printf("lMap.y is now %d\n", lMap.y);
     cMap.H = (float)lMap.H;
     cMap.S = (float)lMap.S;
     cMap.V = (float)lMap.V;
@@ -106,7 +140,6 @@ render_t ClientMapPacker::serialToClient(s_render_t source){
         cMap.visible = false;
     }
 
-    printf("lMap visibility is %d", lMap.visible);
     return cMap;
 
 }
@@ -119,34 +152,45 @@ void ClientMapPacker::packToNet(render_t source, unsigned char *buf){
     s_render_t sMap = clientToSerial(source);
 
     /* fixed-length array of s_render_t structures */
-    tn = tpl_map("S(c#iiffffffiii)", &sMap, 8);
+    tn = tpl_map("S(c#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
     tpl_pack(tn, 0);
-    tpl_dump(tn, TPL_MEM|TPL_PREALLOCD, buf, 1024);
+    tpl_dump(tn, TPL_MEM|TPL_PREALLOCD, buf, 128);
 
 }
 
 void ClientMapPacker::unpackFromNet(ClientMap *dest, unsigned char *buf)
 {
 
-    s_render_t csMap;
+    s_render_t sMap;
 
-    tn = tpl_map("S(c#iiffffffiii)", &csMap, 8);
-    tpl_load(tn, TPL_MEM|TPL_EXCESS_OK, buf, 1024);
+    tn = tpl_map("S(c#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
+    printf("Buffer has been mapped\n");
+    tpl_load(tn, TPL_MEM|TPL_EXCESS_OK, buf, 128);
+    printf("Buffer Loaded\n");
     tpl_unpack( tn, 0);
+    printf("Buffer Unpack Attempted\n");
 
-    render_t cMap = serialToClient(csMap);
+    printf("\n\n ... Attempting to convert Struct \n\n");
 
-    dest->cMap[csMap.x][csMap.y].symbol = cMap.symbol;
-    dest->cMap[csMap.x][csMap.y].x = cMap.x;
-    dest->cMap[csMap.x][csMap.y].y = cMap.y;
-    dest->cMap[csMap.x][csMap.y].H = cMap.H;
-    dest->cMap[csMap.x][csMap.y].S = cMap.S;
-    dest->cMap[csMap.x][csMap.y].V = cMap.V;
-    dest->cMap[csMap.x][csMap.y].HD = cMap.HD;
-    dest->cMap[csMap.x][csMap.y].SD = cMap.SD;
-    dest->cMap[csMap.x][csMap.y].VD = cMap.VD;
-    dest->cMap[csMap.x][csMap.y].explored = cMap.explored;
-    dest->cMap[csMap.x][csMap.y].occupied = cMap.occupied;
-    dest->cMap[csMap.x][csMap.y].visible = cMap.visible;
+    render_t cMap = serialToClient(sMap);
+
+    printf("Struct Converted\n\n");
+
+
+    dest->cMap[sMap.x][sMap.y].symbol = cMap.symbol;
+    dest->cMap[sMap.x][sMap.y].x = cMap.x;
+    dest->cMap[sMap.x][sMap.y].y = cMap.y;
+    dest->cMap[sMap.x][sMap.y].H = cMap.H;
+    dest->cMap[sMap.x][sMap.y].S = cMap.S;
+    dest->cMap[sMap.x][sMap.y].V = cMap.V;
+    dest->cMap[sMap.x][sMap.y].HD = cMap.HD;
+    dest->cMap[sMap.x][sMap.y].SD = cMap.SD;
+    dest->cMap[sMap.x][sMap.y].VD = cMap.VD;
+    dest->cMap[sMap.x][sMap.y].explored = cMap.explored;
+    dest->cMap[sMap.x][sMap.y].occupied = cMap.occupied;
+    dest->cMap[sMap.x][sMap.y].visible = cMap.visible;
+//    tpl_free(tn);
 
 }
+
+
