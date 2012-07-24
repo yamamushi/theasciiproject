@@ -1,0 +1,1 @@
+This is just a placeholder folder for "stable" file backups, it can be safely ignored.
