@@ -1,0 +1,184 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		74E9637115BEF4AB0063B13C /* bin */ = {isa = PBXFileReference; lastKnownFileType = folder; name = bin; path = ../bin; sourceTree = "<group>"; };
+		74E9637215BEF4AB0063B13C /* build */ = {isa = PBXFileReference; lastKnownFileType = folder; name = build; path = ../build; sourceTree = "<group>"; };
+		74E9637315BEF4AB0063B13C /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../data; sourceTree = "<group>"; };
+		74E9637415BEF4AB0063B13C /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = docs; path = ../docs; sourceTree = "<group>"; };
+		74E9637515BEF4AB0063B13C /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = ../include; sourceTree = "<group>"; };
+		74E9637615BEF4AB0063B13C /* licenses */ = {isa = PBXFileReference; lastKnownFileType = folder; name = licenses; path = ../licenses; sourceTree = "<group>"; };
+		74E9637715BEF4AB0063B13C /* linux */ = {isa = PBXFileReference; lastKnownFileType = folder; name = linux; path = ../linux; sourceTree = "<group>"; };
+		74E9637815BEF4AB0063B13C /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = ../Makefile; sourceTree = "<group>"; };
+		74E9637915BEF4AB0063B13C /* makefiles */ = {isa = PBXFileReference; lastKnownFileType = folder; name = makefiles; path = ../makefiles; sourceTree = "<group>"; };
+		74E9637A15BEF4AB0063B13C /* misc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = misc; path = ../misc; sourceTree = "<group>"; };
+		74E9637B15BEF4AB0063B13C /* nbproject */ = {isa = PBXFileReference; lastKnownFileType = folder; name = nbproject; path = ../nbproject; sourceTree = "<group>"; };
+		74E9637C15BEF4AB0063B13C /* osx */ = {isa = PBXFileReference; lastKnownFileType = folder; name = osx; path = ../osx; sourceTree = "<group>"; };
+		74E9637D15BEF4AB0063B13C /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = ../README.txt; sourceTree = "<group>"; };
+		74E9637E15BEF4AB0063B13C /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../src; sourceTree = "<group>"; };
+		74E9637F15BEF4AB0063B13C /* xcode */ = {isa = PBXFileReference; lastKnownFileType = folder; name = xcode; path = /Users/yamamushi/NetBeansProjects/theasciiproject/xcode; sourceTree = "<absolute>"; };
+		74E9638015BEF4AB0063B13C /* windows */ = {isa = PBXFileReference; lastKnownFileType = folder; name = windows; path = ../windows; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		74E9636215BEF4200063B13C = {
+			isa = PBXGroup;
+			children = (
+				74E9637115BEF4AB0063B13C /* bin */,
+				74E9637215BEF4AB0063B13C /* build */,
+				74E9637315BEF4AB0063B13C /* data */,
+				74E9637415BEF4AB0063B13C /* docs */,
+				74E9637515BEF4AB0063B13C /* include */,
+				74E9637615BEF4AB0063B13C /* licenses */,
+				74E9637715BEF4AB0063B13C /* linux */,
+				74E9637815BEF4AB0063B13C /* Makefile */,
+				74E9637915BEF4AB0063B13C /* makefiles */,
+				74E9637A15BEF4AB0063B13C /* misc */,
+				74E9637B15BEF4AB0063B13C /* nbproject */,
+				74E9637C15BEF4AB0063B13C /* osx */,
+				74E9637D15BEF4AB0063B13C /* README.txt */,
+				74E9637E15BEF4AB0063B13C /* src */,
+				74E9637F15BEF4AB0063B13C /* xcode */,
+				74E9638015BEF4AB0063B13C /* windows */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		74E9636915BEF4200063B13C /* The ASCII Project */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 74E9636C15BEF4200063B13C /* Build configuration list for PBXLegacyTarget "The ASCII Project" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = /Users/yamamushi/NetBeansProjects/theasciiproject;
+			dependencies = (
+			);
+			name = "The ASCII Project";
+			passBuildSettingsInEnvironment = 1;
+			productName = "The ASCII Project";
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		74E9636415BEF4200063B13C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Aetheral Research";
+			};
+			buildConfigurationList = 74E9636715BEF4200063B13C /* Build configuration list for PBXProject "The ASCII Project" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 74E9636215BEF4200063B13C;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				74E9636915BEF4200063B13C /* The ASCII Project */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		74E9636A15BEF4200063B13C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		74E9636B15BEF4200063B13C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		74E9636D15BEF4200063B13C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		74E9636E15BEF4200063B13C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		74E9636715BEF4200063B13C /* Build configuration list for PBXProject "The ASCII Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74E9636A15BEF4200063B13C /* Debug */,
+				74E9636B15BEF4200063B13C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		74E9636C15BEF4200063B13C /* Build configuration list for PBXLegacyTarget "The ASCII Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74E9636D15BEF4200063B13C /* Debug */,
+				74E9636E15BEF4200063B13C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 74E9636415BEF4200063B13C /* Project object */;
+}
