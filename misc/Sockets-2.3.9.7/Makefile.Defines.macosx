@@ -1,0 +1,20 @@
+CXX =		clang++
+
+CFLAGS +=	-Wall -g $(INCLUDE) -MD -D_VERSION='"$(VERSION)"' -arch x86_64 -std=c++11 -stdlib=libc++
+
+# turn off optimization if compiling with gcc 2.9.x:
+#CFLAGS +=	-O0
+CFLAGS +=	-O2
+LDFLAGS = -stdlib=libc++
+
+
+# uncomment depending on your operating system
+CFLAGS +=	-DMACOSX 
+
+
+LIBS +=		\
+		-lssl -lcrypto \
+		-lpthread
+
+OBJS +=		Semaphore.o
+

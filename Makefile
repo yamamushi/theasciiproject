@@ -4,8 +4,8 @@ LIBTCOD=./include/libtcod
 BUILDDIR=./build/
 CFLAGS=$(FLAGS) -I$(LIBTCOD) -I$(INCDIR) -I$(SRCDIR) -Wall
 CFLAGS += -D_VERSION='"2.3.9.7"' -DMACOSX
-CC=gcc
-CPP=g++
+CC=clang
+CPP=clang++
 .SUFFIXES: .o .h .c .hpp .cpp
 
 %.o : $(SRCDIR)/%.cpp

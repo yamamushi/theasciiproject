@@ -9,7 +9,6 @@
 # Compiled Static libraries
 *.lai
 *.la
-*.a
 
 # Other local junk
 *.swp
