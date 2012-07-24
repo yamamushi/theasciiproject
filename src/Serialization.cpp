@@ -112,26 +112,20 @@ render_t ClientMapPacker::serialToClient(s_render_t lMap)
 
     if (lMap.explored == 1) {
         cMap.explored = true;
-        printf("explored = true\n");
     } else {
         cMap.explored = false;
-        printf("explored = false\n");
     }
 
     if (lMap.occupied == 1) {
         cMap.occupied = true;
-        printf("occupied = true\n");
     } else {
         cMap.occupied = false;
-        printf("occupied = false\n");
     }
 
     if (lMap.visible == 1) {
         cMap.visible = true;
-        printf("visible = true\n");
     } else {
         cMap.visible = false;
-        printf("visible = false\n");
     }
 
     return cMap;
@@ -159,19 +153,13 @@ void ClientMapPacker::unpackFromNet(ClientMap *dest, unsigned char *buf)
     clientMap = dest;
 
     tn = tpl_map("S(ic#iiffffffiii)", &sMap, sizeof (sMap.ASCII));
-    printf("Buffer has been mapped\n");
+    //printf("Buffer has been mapped\n");
     tpl_load(tn, TPL_MEM | TPL_EXCESS_OK, buf, 128);
-    printf("Buffer Loaded\n");
+    //printf("Buffer Loaded\n");
     tpl_unpack(tn, 0);
-    printf("Buffer Unpack Attempted\n");
-
-    printf("\n\n ... Attempting to convert Struct \n\n");
-
     rMap = dest->cMap[sMap.x][sMap.y];
 
     render_t cMap = serialToClient(sMap);
-    printf("Struct Converted\n\n");
-    printf("symbol for %d,%d is: %S\n", sMap.x, sMap.y, rMap->symbol);
 
     dest->cMap[cMap.x][cMap.y]->x = cMap.x;
     dest->cMap[cMap.x][cMap.y]->y = cMap.y;

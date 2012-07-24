@@ -58,34 +58,47 @@ int main(int argc, char *argv[])
     ClientMap *cMap = new ClientMap();
 
     GraphicsTCOD *output = new GraphicsTCOD(cMap);
-   // Keyboard *kboard = new Keyboard(0, 0);
+    Keyboard *kboard = new Keyboard(0, 0);
 
     // networking packing stuff
 
-   // tpl_node *tn;
-   ClientMapPacker *packer = new ClientMapPacker();
+    // tpl_node *tn;
+    ClientMapPacker *packer = new ClientMapPacker();
 
+
+
+
+    SocketHandler h;
+    MapSocket *p = new MapSocket(h);
+    p->loadClientMap(cMap);
+    p->assignLocalOut(output);
+
+    p->SetDeleteByHandler();
+
+    printf("Trying to connect to server...\n");
+    p->Open("theasciiproject.com", 5250);
+    h.Add(p);
+    h.Select(1, 0);
 
     // Main Game Loop
-    //while (!TCODConsole::isWindowClosed()) {
+    while (!TCODConsole::isWindowClosed()) {
 
-	SocketHandler h;
-	MapSocket *p = new MapSocket(h);
-        p->loadClientMap(cMap);
-        p->assignLocalOut(output);
+        //while (h.GetCount()) {
 
-	p->SetDeleteByHandler();
-        printf("Trying to connect to server...\n");
-	p->Open("localhost", 5250);
-	h.Add(p);
-	h.Select(1,0);
-	while (h.GetCount())
-	{
-		h.Select(1,0);
-                //output->render();
+            h.Select(1, 0);
 
-	}
-    //}
+        //}
+
+        output->render();
+        output->clearScreen();
+
+        quit = kboard->handleKeys();
+        
+        if (quit) {
+            h.SetClose();
+            break;
+        }
+    }
 
     return 0;
 }

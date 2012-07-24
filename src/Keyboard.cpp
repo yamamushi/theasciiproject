@@ -55,13 +55,13 @@ void Keyboard::initKeyboard(int x, int y){
 }
 
 
-bool Keyboard::handleKeys(Entity *target){
+bool Keyboard::handleKeys(){
 
 	TCOD_key_t Key = TCODConsole::checkForKeypress(true);
 	bool quit = false;
 
 
-	Entity *tgt = target;
+	//Entity *tgt = target;
 
 
 	if(Key.vk == TCODK_ENTER && TCODK_ALT)
@@ -69,22 +69,22 @@ bool Keyboard::handleKeys(Entity *target){
 
 	switch(Key.vk)
 	{
-	       	case TCODK_UP:
-			tgt->move(0,-1);
+	    /*   	case TCODK_UP:
+			//tgt->move(0,-1);
 			break;
 
 		case TCODK_DOWN:
-			tgt->move(0,1);
+			//tgt->move(0,1);
 			break;
 
 		case TCODK_LEFT:
-			tgt->move(-1,0);
+			//tgt->move(-1,0);
 			break;
 
 		case TCODK_RIGHT:
-			tgt->move(1,0);
+			//tgt->move(1,0);
 
-			break;
+			break; */
 
 		case TCODK_ESCAPE:
 			quit = true;

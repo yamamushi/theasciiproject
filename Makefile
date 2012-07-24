@@ -4,6 +4,7 @@ LIBTCOD=./include/libtcod
 BUILDDIR=./build/
 CFLAGS=$(FLAGS) -I$(LIBTCOD) -I$(INCDIR) -I$(SRCDIR) -Wall
 CFLAGS += -D_VERSION='"2.3.9.7"' -DMACOSX
+CFLAGS += "-std=c++11"
 CC=gcc
 CPP=g++
 .SUFFIXES: .o .h .c .hpp .cpp
@@ -14,7 +15,7 @@ CPP=g++
 	$(CC) $(CFLAGS) -o $(BUILDDIR)$@ -c $<
 
 CLIENT_OBJS= tpl.o ClientSocket.o ClientMap.o Graphics.o \
-    Serialization.o Main_Client.o
+    Keyboard.o Serialization.o Main_Client.o
 
 SERVER_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
     FovLib.o Dungeon.o Keyboard.o RenderMap.o tpl.o \

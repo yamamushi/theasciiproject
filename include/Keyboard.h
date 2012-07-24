@@ -49,7 +49,7 @@ class Keyboard {
 		Keyboard(int x=MAIN_WIDTH/2, int y=MAIN_HEIGHT/2);
 		void initKeyboard(int, int);
 
-		bool handleKeys(Entity *target);
+		bool handleKeys();
 
 		void safeMoveCursor(int, int);
 		void passSafeCursor();

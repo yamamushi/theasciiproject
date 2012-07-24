@@ -38,102 +38,61 @@
 
 #include "headers.h"
 
-
 ClientSocket::ClientSocket(ISocketHandler& h) : TcpSocket(h)
 {
 }
 
 void ClientSocket::OnRead()
 {
-	// OnRead of TcpSocket actually reads the data from the socket
-	// and moves it to the input buffer (ibuf)
-	TcpSocket::OnRead();
-	// get number of bytes in input buffer
-	size_t n = ibuf.GetLength();
-	if (n > 0)
-	{
-		char tmp[RSIZE]; // <--- tmp's here
-		ibuf.Read(tmp,n);
-		printf("Read %d bytes:\n",n);
-		for (size_t i = 0; i < n; i++)
-		{
-			printf("%c",isprint(tmp[i]) ? tmp[i] : '.');
-		}
-		printf("\n");
-	}
+    // OnRead of TcpSocket actually reads the data from the socket
+    // and moves it to the input buffer (ibuf)
+    TcpSocket::OnRead();
+    // get number of bytes in input buffer
+    size_t n = ibuf.GetLength();
+    if (n > 0) {
+        char tmp[RSIZE]; // <--- tmp's here
+        ibuf.Read(tmp, n);
+        printf("Read %d bytes:\n", n);
+        for (size_t i = 0; i < n; i++) {
+            printf("%c", isprint(tmp[i]) ? tmp[i] : '.');
+        }
+        printf("\n");
+    }
 }
-
 
 MapSocket::MapSocket(ISocketHandler& h) : TcpSocket(h)
 {
 }
 
-/*
-void MapSocket::OnRawData(const char *buf,size_t len)
-{
-
-    //TcpSocket::OnRead();
-    printf("Received Raw Data\n");
-    printf("Size of Raw Data is %d\n", ibuf.GetLength());
-    //char *buf = new char[ibuf.GetLength()];
-    //char *buffer = new char[256];
-    //ibuf.Read( buffer, ibuf.GetLength());
-    char *buffer = new char[256];
-    	for (size_t i = 0; i < len; i++)
-	{
-		printf("%c",isprint(buf[i]) ? buf[i] : '.');
-              //char *buffer = new char[256];
-              //  ibuf.Read( buffer, 256);
-              //  packer->unpackFromNet(dest, (unsigned char*)buffer);
-	}
-	printf("\n");
-
-        printf("strlen of buf is now %d\n", strlen(buf));
-        printf("strlen of buffer is now %d\n", strlen(buffer));
-
-
-    //packer->unpackFromNet(dest, (unsigned char*)buf);
-    //out->render();
-    //out->clearScreen();
-}
-*/
 void MapSocket::OnRead()
 {
     TcpSocket::OnRead();
-    printf("Received Raw Data\n");
-    printf("Size of Raw Data is %d\n", ibuf.GetLength());
-    int num = ibuf.GetLength()/128;
-    printf("%d tiles transferred\n", num);
+    //printf("Received Raw Data\n");
+    printf("\n\nSize of Raw Data: %i bytes\n", ibuf.GetLength());
+    int num = ibuf.GetLength() / 128;
+    printf("Tiles Transferred: %i\n", num);
 
 
 
-    //char *buf = new char[128];//ibuf.GetLength()];
-    //ibuf.Read( buf, 128);//ibuf.GetLength());
-    //packer->unpackFromNet(dest, (unsigned char*)buf);
-
-
-    while(num > 0){
-   char *buf = new char[128];
-      printf("iteration %d\n", num);
-      ibuf.Read( buf, 128);
-      ClientMapPacker *packer = new ClientMapPacker();
-      printf("packer running\n");
-      packer->unpackFromNet(dest, (unsigned char*)buf);
-      //out->render();
-      free(buf);
-      printf("Size of buffer is now %d\n", ibuf.GetLength());
-      delete packer;
-      num--;
+    while (num > 0) {
+        char *buf = new char[128];
+        //printf("iteration %d\n", num);
+        ibuf.Read(buf, 128);
+        ClientMapPacker *packer = new ClientMapPacker();
+        //printf("packer running\n");
+        packer->unpackFromNet(dest, (unsigned char*) buf);
+        //out->render();
+        free(buf);
+        //printf("Size of buffer is now %d\n", ibuf.GetLength());
+        delete packer;
+        num--;
     }
 
- //   char *buf = new char[128];
-  //  ibuf.Read( buf, 128);
     out->render();
-    out->clearScreen();
-
 }
 
-void MapSocket::loadClientMap(ClientMap *client){
+void MapSocket::loadClientMap(ClientMap *client)
+{
 
     dest = client;
 

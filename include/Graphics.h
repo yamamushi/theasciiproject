@@ -59,9 +59,6 @@ class GraphicsTCOD {
 
 		void render();
                 void prepare();
-		//void renderTiles();
-		//void renderEntities();
-
 		void clearScreen();
 
 
