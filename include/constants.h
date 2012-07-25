@@ -90,8 +90,7 @@ enum entity_types {
 
 };
 
-
-typedef struct render_t {
+struct render_t {
     wchar_t *symbol;
     int x;
     int y;
@@ -106,7 +105,7 @@ typedef struct render_t {
     bool visible;
 };
 
-typedef struct s_render_t {
+struct s_render_t {
     int size;
     char ASCII[8];
     int x;

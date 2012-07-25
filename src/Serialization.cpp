@@ -2,9 +2,6 @@
 
 ClientMapPacker::ClientMapPacker()
 {
-
-    tpl_node *tn;
-
 }
 
 s_render_t ClientMapPacker::clientToSerial(render_t source)
@@ -24,8 +21,8 @@ s_render_t ClientMapPacker::clientToSerial(render_t source)
     char* ascii = new char[wcslen(cMap.symbol) + 1];
     size_t size = wcstombs(ascii, wstr, sizeof (wchar_t));
     printf("\n String check - %S \n", wstr);
-    printf("size check %d\n", wcslen(cMap.symbol) + 1);
-    printf("value of ""size"" %d\n", size);
+    printf("size check %d\n", (unsigned)wcslen(cMap.symbol) + 1);
+    printf("value of ""size"" %d\n", (unsigned)size);
     //lMap.ASCII = ascii;
     lMap.size = size;
     int i;
@@ -34,16 +31,11 @@ s_render_t ClientMapPacker::clientToSerial(render_t source)
     }
 
 
-
-
-    printf("symbol char before compression = %c \n", cMap.symbol);
     printf("symbol string before compression is = %S \n", cMap.symbol);
     printf("symbol is %u big.\n", (unsigned) sizeof (cMap.symbol));
     printf("symbol is %u long.\n", (unsigned) wcslen(cMap.symbol));
     printf("symbol is %u big.\n", (unsigned) sizeof (cMap.symbol));
     printf("wchar_t is %u big.\n\n", (unsigned) sizeof (wchar_t));
-    printf("symbol char after conversion = %c \n", lMap.ASCII);
-    printf("symbol string after conversion is = %S \n", lMap.ASCII);
     printf("symbol is %u big.\n", (unsigned) sizeof (lMap.ASCII));
     printf("symbol is %u big.\n", (unsigned) sizeof (lMap.ASCII));
 
@@ -139,7 +131,7 @@ void ClientMapPacker::packToNet(render_t source, unsigned char *buf)
     s_render_t sMap = clientToSerial(source);
 
     /* fixed-length array of s_render_t structures */
-    tn = tpl_map("S(ic#iiffffffiii)", &sMap, sizeof (sMap.ASCII));
+    tn = tpl_map("S(ic#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
     tpl_pack(tn, 0);
     tpl_dump(tn, TPL_MEM | TPL_PREALLOCD, buf, 128);
     tpl_free(tn);
@@ -152,7 +144,7 @@ void ClientMapPacker::unpackFromNet(ClientMap *dest, unsigned char *buf)
 
     clientMap = dest;
 
-    tn = tpl_map("S(ic#iiffffffiii)", &sMap, sizeof (sMap.ASCII));
+    tn = tpl_map("S(ic#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
     //printf("Buffer has been mapped\n");
     tpl_load(tn, TPL_MEM | TPL_EXCESS_OK, buf, 128);
     //printf("Buffer Loaded\n");

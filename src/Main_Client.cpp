@@ -39,6 +39,9 @@
 // First our custom headers
 //
 #include "headers.h"
+#include "Platform.h"
+
+
 
 
 // Lets's Rock n' Roll
@@ -48,24 +51,17 @@ int main(int argc, char *argv[])
 
     // boring variables
     bool quit = false;
-    int CenterX = MAIN_WIDTH / 2;
-    int CenterY = MAIN_HEIGHT / 2;
 
-    unsigned char buf[1024];
-
-    int i, x, y, z;
+    // This is our custom Apple app building stuff
+    
+#ifdef __APPLE__
+    macApp_setRelativePath();
+#endif
 
     ClientMap *cMap = new ClientMap();
 
     GraphicsTCOD *output = new GraphicsTCOD(cMap);
     Keyboard *kboard = new Keyboard(0, 0);
-
-    // networking packing stuff
-
-    // tpl_node *tn;
-    ClientMapPacker *packer = new ClientMapPacker();
-
-
 
 
     SocketHandler h;

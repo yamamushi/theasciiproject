@@ -52,7 +52,7 @@ void ClientSocket::OnRead()
     if (n > 0) {
         char tmp[RSIZE]; // <--- tmp's here
         ibuf.Read(tmp, n);
-        printf("Read %d bytes:\n", n);
+        printf("Read %d bytes:\n", (unsigned)n);
         for (size_t i = 0; i < n; i++) {
             printf("%c", isprint(tmp[i]) ? tmp[i] : '.');
         }
@@ -68,7 +68,7 @@ void MapSocket::OnRead()
 {
     TcpSocket::OnRead();
     //printf("Received Raw Data\n");
-    printf("\n\nSize of Raw Data: %i bytes\n", ibuf.GetLength());
+    printf("\n\nSize of Raw Data: %d bytes\n", (unsigned)ibuf.GetLength());
     int num = ibuf.GetLength() / 128;
     printf("Tiles Transferred: %i\n", num);
 

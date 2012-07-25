@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		743612DD15BFA75800CC2BCA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743612AC15BFA55A00CC2BCA /* Cocoa.framework */; };
+		743612E315BFA75800CC2BCA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 743612E115BFA75800CC2BCA /* InfoPlist.strings */; };
+		743612E915BFA75800CC2BCA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 743612E715BFA75800CC2BCA /* Credits.rtf */; };
+		743612F315BFA7DC00CC2BCA /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
+		743612F415BFA7E500CC2BCA /* libSockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488D515BF297E006595CE /* libSockets.a */; };
+		743612F515BFA7E900CC2BCA /* libtcod-gui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887B15BF04EF006595CE /* libtcod-gui.dylib */; };
+		743612F615BFA7EC00CC2BCA /* libtcod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887C15BF04EF006595CE /* libtcod.dylib */; };
+		743612F715BFA82D00CC2BCA /* ClientMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888015BF04EF006595CE /* ClientMap.cpp */; };
+		743612F815BFA82D00CC2BCA /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
+		743612F915BFA82D00CC2BCA /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888615BF04EF006595CE /* Graphics.cpp */; };
+		743612FA15BFA82D00CC2BCA /* Keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888715BF04EF006595CE /* Keyboard.cpp */; };
+		743612FB15BFA82D00CC2BCA /* Serialization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888C15BF04EF006595CE /* Serialization.cpp */; };
+		743612FC15BFA82D00CC2BCA /* tpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 7444889015BF04EF006595CE /* tpl.c */; };
+		743612FD15BFA82D00CC2BCA /* Main_Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888815BF04EF006595CE /* Main_Client.cpp */; };
+		743612FF15BFA84400CC2BCA /* libSockets.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488D515BF297E006595CE /* libSockets.a */; };
+		7436130015BFA84900CC2BCA /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
+		7436130315BFA8D000CC2BCA /* font.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487FC15BF04EF006595CE /* font.png */; };
+		7436130615BFAC0D00CC2BCA /* Platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7436130515BFAC0D00CC2BCA /* Platform.cpp */; };
 		744487DA15BF047E006595CE /* server.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487D915BF047E006595CE /* server.1 */; };
 		744488B315BF04EF006595CE /* libtcod-gui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887B15BF04EF006595CE /* libtcod-gui.dylib */; };
 		744488B415BF04EF006595CE /* libtcod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887C15BF04EF006595CE /* libtcod.dylib */; };
@@ -30,6 +48,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		743612FE15BFA83D00CC2BCA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				743612FF15BFA84400CC2BCA /* libSockets.a in CopyFiles */,
+				7436130015BFA84900CC2BCA /* SDL.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7436130215BFA8BF00CC2BCA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = data;
+			dstSubfolderSpec = 7;
+			files = (
+				7436130315BFA8D000CC2BCA /* font.png in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		744487D115BF047E006595CE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -54,41 +93,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		743612AC15BFA55A00CC2BCA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		743612AF15BFA55A00CC2BCA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		743612B015BFA55A00CC2BCA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		743612B115BFA55A00CC2BCA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		743612DB15BFA75800CC2BCA /* client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = client.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		743612E015BFA75800CC2BCA /* client-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "client-Info.plist"; sourceTree = "<group>"; };
+		743612E215BFA75800CC2BCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		743612E815BFA75800CC2BCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		7436130415BFAAB100CC2BCA /* client-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "client-Prefix.pch"; sourceTree = "<group>"; };
+		7436130515BFAC0D00CC2BCA /* Platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Platform.cpp; sourceTree = "<group>"; };
+		7436130715BFAC2400CC2BCA /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
 		744487D315BF047E006595CE /* server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = server; sourceTree = BUILT_PRODUCTS_DIR; };
 		744487D915BF047E006595CE /* server.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = server.1; sourceTree = "<group>"; };
 		744487E115BF04EF006595CE /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		744487E315BF04EF006595CE /* client */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = client; sourceTree = "<group>"; };
 		744487E415BF04EF006595CE /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		744487E515BF04EF006595CE /* server */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = server; sourceTree = "<group>"; };
-		744487E715BF04EF006595CE /* ClientMap.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ClientMap.o; sourceTree = "<group>"; };
-		744487E815BF04EF006595CE /* ClientSocket.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ClientSocket.o; sourceTree = "<group>"; };
-		744487E915BF04EF006595CE /* Dungeon.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Dungeon.o; sourceTree = "<group>"; };
-		744487EA15BF04EF006595CE /* Entities.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Entities.o; sourceTree = "<group>"; };
-		744487EB15BF04EF006595CE /* EntityMap.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = EntityMap.o; sourceTree = "<group>"; };
-		744487EC15BF04EF006595CE /* FovLib.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = FovLib.o; sourceTree = "<group>"; };
-		744487ED15BF04EF006595CE /* Graphics.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Graphics.o; sourceTree = "<group>"; };
 		744487EE15BF04EF006595CE /* INFO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = INFO.txt; sourceTree = "<group>"; };
-		744487EF15BF04EF006595CE /* Keyboard.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Keyboard.o; sourceTree = "<group>"; };
-		744487F015BF04EF006595CE /* Main.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Main.o; sourceTree = "<group>"; };
-		744487F115BF04EF006595CE /* Main_Client.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Main_Client.o; sourceTree = "<group>"; };
-		744487F215BF04EF006595CE /* Main_Server.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Main_Server.o; sourceTree = "<group>"; };
-		744487F315BF04EF006595CE /* map.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = map.o; sourceTree = "<group>"; };
-		744487F415BF04EF006595CE /* NetworkLib.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = NetworkLib.o; sourceTree = "<group>"; };
-		744487F515BF04EF006595CE /* RenderMap.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = RenderMap.o; sourceTree = "<group>"; };
-		744487F615BF04EF006595CE /* Serialization.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Serialization.o; sourceTree = "<group>"; };
-		744487F715BF04EF006595CE /* ServerSocket.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ServerSocket.o; sourceTree = "<group>"; };
-		744487F815BF04EF006595CE /* TileMap.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = TileMap.o; sourceTree = "<group>"; };
-		744487F915BF04EF006595CE /* Tiles.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Tiles.o; sourceTree = "<group>"; };
-		744487FA15BF04EF006595CE /* tpl.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = tpl.o; sourceTree = "<group>"; };
 		744487FC15BF04EF006595CE /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font.png; sourceTree = "<group>"; };
 		744487FD15BF04EF006595CE /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		744487FE15BF04EF006595CE /* sample_full_unicode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_full_unicode.png; sourceTree = "<group>"; };
-		7444880015BF04EF006595CE /* ABOUT.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ABOUT.txt; sourceTree = "<group>"; };
-		7444880115BF04EF006595CE /* CHANGELOG.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.txt; sourceTree = "<group>"; };
-		7444880215BF04EF006595CE /* DIRECTORIES.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DIRECTORIES.txt; sourceTree = "<group>"; };
-		7444880315BF04EF006595CE /* INSTALL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = INSTALL.txt; sourceTree = "<group>"; };
-		7444880415BF04EF006595CE /* ROADMAP.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ROADMAP.txt; sourceTree = "<group>"; };
-		7444880515BF04EF006595CE /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		7444880715BF04EF006595CE /* ClientMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientMap.h; sourceTree = "<group>"; };
 		7444880815BF04EF006595CE /* ClientSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientSocket.h; sourceTree = "<group>"; };
 		7444880915BF04EF006595CE /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
@@ -204,7 +227,7 @@
 		7444888515BF04EF006595CE /* FovLib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FovLib.cpp; sourceTree = "<group>"; };
 		7444888615BF04EF006595CE /* Graphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Graphics.cpp; sourceTree = "<group>"; };
 		7444888715BF04EF006595CE /* Keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Keyboard.cpp; sourceTree = "<group>"; };
-		7444888815BF04EF006595CE /* Main_Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main_Client.cpp; sourceTree = "<group>"; };
+		7444888815BF04EF006595CE /* Main_Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Main_Client.cpp; path = ../../src/Main_Client.cpp; sourceTree = "<group>"; };
 		7444888915BF04EF006595CE /* Main_Server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Main_Server.cpp; path = ../../src/Main_Server.cpp; sourceTree = "<group>"; };
 		7444888A15BF04EF006595CE /* NetworkLib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkLib.cpp; sourceTree = "<group>"; };
 		7444888B15BF04EF006595CE /* RenderMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderMap.cpp; sourceTree = "<group>"; };
@@ -399,9 +422,27 @@
 		74448A2E15BF2CE6006595CE /* XmlException.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XmlException.h; sourceTree = "<group>"; };
 		74448A2F15BF2CE6006595CE /* XmlNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = XmlNode.cpp; sourceTree = "<group>"; };
 		74448A3015BF2CE6006595CE /* XmlNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XmlNode.h; sourceTree = "<group>"; };
+		747D227915BFB07700CE1AC9 /* ABOUT.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = ABOUT.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/ABOUT.txt"; sourceTree = "<absolute>"; };
+		747D227A15BFB07700CE1AC9 /* CHANGELOG.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHANGELOG.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/CHANGELOG.txt"; sourceTree = "<absolute>"; };
+		747D227B15BFB07700CE1AC9 /* DIRECTORIES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = DIRECTORIES.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/DIRECTORIES.txt"; sourceTree = "<absolute>"; };
+		747D227C15BFB07700CE1AC9 /* INSTALL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = INSTALL.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/INSTALL.txt"; sourceTree = "<absolute>"; };
+		747D227D15BFB07700CE1AC9 /* ROADMAP.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = ROADMAP.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/ROADMAP.txt"; sourceTree = "<absolute>"; };
+		747D227E15BFB07700CE1AC9 /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = TODO.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/TODO.txt"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		743612D815BFA75800CC2BCA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				743612DD15BFA75800CC2BCA /* Cocoa.framework in Frameworks */,
+				743612F315BFA7DC00CC2BCA /* SDL.framework in Frameworks */,
+				743612F415BFA7E500CC2BCA /* libSockets.a in Frameworks */,
+				743612F515BFA7E900CC2BCA /* libtcod-gui.dylib in Frameworks */,
+				743612F615BFA7EC00CC2BCA /* libtcod.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		744487D015BF047E006595CE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -416,12 +457,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		743612AE15BFA55A00CC2BCA /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				743612AF15BFA55A00CC2BCA /* AppKit.framework */,
+				743612B015BFA55A00CC2BCA /* CoreData.framework */,
+				743612B115BFA55A00CC2BCA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		743612DE15BFA75800CC2BCA /* client */ = {
+			isa = PBXGroup;
+			children = (
+				7444888815BF04EF006595CE /* Main_Client.cpp */,
+				743612DF15BFA75800CC2BCA /* Supporting Files */,
+			);
+			path = client;
+			sourceTree = "<group>";
+		};
+		743612DF15BFA75800CC2BCA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				743612E015BFA75800CC2BCA /* client-Info.plist */,
+				743612E115BFA75800CC2BCA /* InfoPlist.strings */,
+				743612E715BFA75800CC2BCA /* Credits.rtf */,
+				7436130415BFAAB100CC2BCA /* client-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		744487C615BF0464006595CE = {
 			isa = PBXGroup;
 			children = (
-				744488CB15BF0B84006595CE /* SDL.framework */,
+				7444887F15BF04EF006595CE /* src */,
+				7444880615BF04EF006595CE /* include */,
+				7457E69F15BFA2BB00FA7D26 /* Frameworks */,
 				744487E015BF04EF006595CE /* The ASCII Project */,
 				744487D415BF047E006595CE /* Products */,
+				7444889515BF04EF006595CE /* xcode */,
 			);
 			sourceTree = "<group>";
 		};
@@ -429,6 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				744487D315BF047E006595CE /* server */,
+				743612DB15BFA75800CC2BCA /* client.app */,
 			);
 			name = Products;
 			path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/xcode";
@@ -452,7 +527,6 @@
 				744487E615BF04EF006595CE /* build */,
 				744487FB15BF04EF006595CE /* data */,
 				744487FF15BF04EF006595CE /* docs */,
-				7444880615BF04EF006595CE /* include */,
 				7444885915BF04EF006595CE /* licenses */,
 				7444885F15BF04EF006595CE /* linux */,
 				7444886715BF04EF006595CE /* Makefile */,
@@ -461,9 +535,7 @@
 				7444887015BF04EF006595CE /* nbproject */,
 				7444887A15BF04EF006595CE /* osx */,
 				7444887E15BF04EF006595CE /* README.txt */,
-				7444887F15BF04EF006595CE /* src */,
 				7444889115BF04EF006595CE /* windows */,
-				7444889515BF04EF006595CE /* xcode */,
 			);
 			name = "The ASCII Project";
 			path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/xcode/..";
@@ -472,9 +544,7 @@
 		744487E215BF04EF006595CE /* bin */ = {
 			isa = PBXGroup;
 			children = (
-				744487E315BF04EF006595CE /* client */,
 				744487E415BF04EF006595CE /* README.txt */,
-				744487E515BF04EF006595CE /* server */,
 			);
 			path = bin;
 			sourceTree = "<group>";
@@ -482,28 +552,10 @@
 		744487E615BF04EF006595CE /* build */ = {
 			isa = PBXGroup;
 			children = (
-				744487E715BF04EF006595CE /* ClientMap.o */,
-				744487E815BF04EF006595CE /* ClientSocket.o */,
-				744487E915BF04EF006595CE /* Dungeon.o */,
-				744487EA15BF04EF006595CE /* Entities.o */,
-				744487EB15BF04EF006595CE /* EntityMap.o */,
-				744487EC15BF04EF006595CE /* FovLib.o */,
-				744487ED15BF04EF006595CE /* Graphics.o */,
 				744487EE15BF04EF006595CE /* INFO.txt */,
-				744487EF15BF04EF006595CE /* Keyboard.o */,
-				744487F015BF04EF006595CE /* Main.o */,
-				744487F115BF04EF006595CE /* Main_Client.o */,
-				744487F215BF04EF006595CE /* Main_Server.o */,
-				744487F315BF04EF006595CE /* map.o */,
-				744487F415BF04EF006595CE /* NetworkLib.o */,
-				744487F515BF04EF006595CE /* RenderMap.o */,
-				744487F615BF04EF006595CE /* Serialization.o */,
-				744487F715BF04EF006595CE /* ServerSocket.o */,
-				744487F815BF04EF006595CE /* TileMap.o */,
-				744487F915BF04EF006595CE /* Tiles.o */,
-				744487FA15BF04EF006595CE /* tpl.o */,
 			);
-			path = build;
+			name = build;
+			path = ../../build;
 			sourceTree = "<group>";
 		};
 		744487FB15BF04EF006595CE /* data */ = {
@@ -519,15 +571,16 @@
 		744487FF15BF04EF006595CE /* docs */ = {
 			isa = PBXGroup;
 			children = (
-				7444880015BF04EF006595CE /* ABOUT.txt */,
-				7444880115BF04EF006595CE /* CHANGELOG.txt */,
-				7444880215BF04EF006595CE /* DIRECTORIES.txt */,
-				7444880315BF04EF006595CE /* INSTALL.txt */,
-				7444880415BF04EF006595CE /* ROADMAP.txt */,
-				7444880515BF04EF006595CE /* TODO.txt */,
+				747D227915BFB07700CE1AC9 /* ABOUT.txt */,
+				747D227A15BFB07700CE1AC9 /* CHANGELOG.txt */,
+				747D227B15BFB07700CE1AC9 /* DIRECTORIES.txt */,
+				747D227C15BFB07700CE1AC9 /* INSTALL.txt */,
+				747D227D15BFB07700CE1AC9 /* ROADMAP.txt */,
+				747D227E15BFB07700CE1AC9 /* TODO.txt */,
 			);
-			path = docs;
-			sourceTree = "<group>";
+			name = docs;
+			path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/xcode/../../../docs";
+			sourceTree = "<absolute>";
 		};
 		7444880615BF04EF006595CE /* include */ = {
 			isa = PBXGroup;
@@ -540,7 +593,6 @@
 				7444880C15BF04EF006595CE /* EntityMap.h */,
 				7444880D15BF04EF006595CE /* FovLib.h */,
 				7444880E15BF04EF006595CE /* Graphics.h */,
-				7444880F15BF04EF006595CE /* gui */,
 				7444881015BF04EF006595CE /* headers.h */,
 				7444881115BF04EF006595CE /* Keyboard.h */,
 				7444881215BF04EF006595CE /* libtcod */,
@@ -551,15 +603,10 @@
 				7444885615BF04EF006595CE /* TileMap.h */,
 				7444885715BF04EF006595CE /* Tiles.h */,
 				7444885815BF04EF006595CE /* tpl.h */,
+				7436130715BFAC2400CC2BCA /* Platform.h */,
 			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		7444880F15BF04EF006595CE /* gui */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = gui;
+			name = include;
+			path = ../include;
 			sourceTree = "<group>";
 		};
 		7444881215BF04EF006595CE /* libtcod */ = {
@@ -728,7 +775,6 @@
 				7444888515BF04EF006595CE /* FovLib.cpp */,
 				7444888615BF04EF006595CE /* Graphics.cpp */,
 				7444888715BF04EF006595CE /* Keyboard.cpp */,
-				7444888815BF04EF006595CE /* Main_Client.cpp */,
 				7444888A15BF04EF006595CE /* NetworkLib.cpp */,
 				7444888B15BF04EF006595CE /* RenderMap.cpp */,
 				7444888C15BF04EF006595CE /* Serialization.cpp */,
@@ -736,8 +782,10 @@
 				7444888E15BF04EF006595CE /* TileMap.cpp */,
 				7444888F15BF04EF006595CE /* Tiles.cpp */,
 				7444889015BF04EF006595CE /* tpl.c */,
+				7436130515BFAC0D00CC2BCA /* Platform.cpp */,
 			);
-			path = src;
+			name = src;
+			path = ../src;
 			sourceTree = "<group>";
 		};
 		7444889115BF04EF006595CE /* windows */ = {
@@ -753,6 +801,7 @@
 		7444889515BF04EF006595CE /* xcode */ = {
 			isa = PBXGroup;
 			children = (
+				743612DE15BFA75800CC2BCA /* client */,
 				744487D615BF047E006595CE /* server */,
 				7444889915BF04EF006595CE /* The ASCII Project.xcodeproj */,
 			);
@@ -1008,9 +1057,38 @@
 			path = tests;
 			sourceTree = "<group>";
 		};
+		7457E69F15BFA2BB00FA7D26 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				744488CB15BF0B84006595CE /* SDL.framework */,
+				743612AC15BFA55A00CC2BCA /* Cocoa.framework */,
+				743612AE15BFA55A00CC2BCA /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		743612DA15BFA75800CC2BCA /* client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 743612F015BFA75800CC2BCA /* Build configuration list for PBXNativeTarget "client" */;
+			buildPhases = (
+				743612D715BFA75800CC2BCA /* Sources */,
+				743612D815BFA75800CC2BCA /* Frameworks */,
+				743612D915BFA75800CC2BCA /* Resources */,
+				743612FE15BFA83D00CC2BCA /* CopyFiles */,
+				7436130215BFA8BF00CC2BCA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = client;
+			productName = client;
+			productReference = 743612DB15BFA75800CC2BCA /* client.app */;
+			productType = "com.apple.product-type.application";
+		};
 		744487D215BF047E006595CE /* server */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 744487DB15BF047E006595CE /* Build configuration list for PBXNativeTarget "server" */;
@@ -1057,11 +1135,39 @@
 			projectRoot = "";
 			targets = (
 				744487D215BF047E006595CE /* server */,
+				743612DA15BFA75800CC2BCA /* client */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		743612D915BFA75800CC2BCA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				743612E315BFA75800CC2BCA /* InfoPlist.strings in Resources */,
+				743612E915BFA75800CC2BCA /* Credits.rtf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		743612D715BFA75800CC2BCA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				743612F715BFA82D00CC2BCA /* ClientMap.cpp in Sources */,
+				743612F815BFA82D00CC2BCA /* ClientSocket.cpp in Sources */,
+				743612F915BFA82D00CC2BCA /* Graphics.cpp in Sources */,
+				743612FA15BFA82D00CC2BCA /* Keyboard.cpp in Sources */,
+				743612FB15BFA82D00CC2BCA /* Serialization.cpp in Sources */,
+				743612FC15BFA82D00CC2BCA /* tpl.c in Sources */,
+				7436130615BFAC0D00CC2BCA /* Platform.cpp in Sources */,
+				743612FD15BFA82D00CC2BCA /* Main_Client.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		744487CF15BF047E006595CE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1084,7 +1190,95 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		743612E115BFA75800CC2BCA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				743612E215BFA75800CC2BCA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		743612E715BFA75800CC2BCA /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				743612E815BFA75800CC2BCA /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		743612F115BFA75800CC2BCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "client/client-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "client/client-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../osx\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		743612F215BFA75800CC2BCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "client/client-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "client/client-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../osx\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		744487CD15BF0465006595CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1227,6 +1421,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		743612F015BFA75800CC2BCA /* Build configuration list for PBXNativeTarget "client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				743612F115BFA75800CC2BCA /* Debug */,
+				743612F215BFA75800CC2BCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		744487CB15BF0464006595CE /* Build configuration list for PBXProject "The ASCII Project" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1243,6 +1446,7 @@
 				744487DD15BF047E006595CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
