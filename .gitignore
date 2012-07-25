@@ -23,3 +23,7 @@ server
 
 # Netbeans stuff 
 /nbproject/private/
+
+
+# Xcode stuff
+*.xcuserdatad
