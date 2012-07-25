@@ -1,6 +1,6 @@
 The ASCII Project Changelog
 Copyright (c) 2012 Jonathan Rumion
-07/08/2012
+07/25/2012
 ==================================
 
 0.0.0i(Rev 3)
