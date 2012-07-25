@@ -26,4 +26,4 @@ server
 
 
 # Xcode stuff
-*.xcuserdatad
+*/xcuserdatad/
