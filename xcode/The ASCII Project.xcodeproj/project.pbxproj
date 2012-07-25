@@ -45,7 +45,6 @@
 		744488CD15BF0C23006595CE /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		744488D615BF297E006595CE /* libSockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488D515BF297E006595CE /* libSockets.a */; };
 		74448A3115BF2D07006595CE /* libSockets.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488D515BF297E006595CE /* libSockets.a */; };
-		747D228315BFB8B900CE1AC9 /* at.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 747D228215BFB8B900CE1AC9 /* at.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -429,7 +428,7 @@
 		747D227C15BFB07700CE1AC9 /* INSTALL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = INSTALL.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/INSTALL.txt"; sourceTree = "<absolute>"; };
 		747D227D15BFB07700CE1AC9 /* ROADMAP.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = ROADMAP.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/ROADMAP.txt"; sourceTree = "<absolute>"; };
 		747D227E15BFB07700CE1AC9 /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = TODO.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/TODO.txt"; sourceTree = "<absolute>"; };
-		747D228215BFB8B900CE1AC9 /* at.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = at.jpg; path = ../xcode/at.jpg; sourceTree = "<group>"; };
+		747D228415C0339E00CE1AC9 /* at.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = at.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -563,8 +562,8 @@
 		744487FB15BF04EF006595CE /* data */ = {
 			isa = PBXGroup;
 			children = (
+				747D228415C0339E00CE1AC9 /* at.jpg */,
 				744487FC15BF04EF006595CE /* font.png */,
-				747D228215BFB8B900CE1AC9 /* at.jpg */,
 				744487FD15BF04EF006595CE /* readme.txt */,
 				744487FE15BF04EF006595CE /* sample_full_unicode.png */,
 			);
@@ -1150,7 +1149,6 @@
 			files = (
 				743612E315BFA75800CC2BCA /* InfoPlist.strings in Resources */,
 				743612E915BFA75800CC2BCA /* Credits.rtf in Resources */,
-				747D228315BFB8B900CE1AC9 /* at.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
