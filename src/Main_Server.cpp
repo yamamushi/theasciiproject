@@ -44,101 +44,101 @@
 // Lets's Rock n' Roll
 
 int main(int argc, char *argv[]){
-
-
+    
+    
     // Temporary variable (see Entities.cpp)
     //extern unsigned int UIDList;
-
+    
     // Let's get things setup
     //Keyboard *kboard = new Keyboard();
-
+    
     TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);
-
+    
     // Temporary Dungeon Generator
     Dungeon::Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
-
+    
     // init Fov Lib ASAP after TileMap and Dungeon have been initialized.
     FovLib *fovLib = new FovLib(map);
-
+    
     // Obviously our entity map would depend on FOV being loaded.
     EntityMap *entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT, map, fovLib);
-
+    
     Entity *player = new Player();
     Goblin *goblin = new Goblin();
-
+    
     entMap->addToMap(player);
     entMap->initAllEnts();
-
+    
     // Entities don't have to be initialized at the same time, they can
     // also be initialized individually.
     entMap->addToMap(goblin);
-
+    
     goblin->move(map->rooms[5]->cX, map->rooms[5]->cY);
     player->move(map->rooms[1]->cX, map->rooms[1]->cY);
-
+    
     RenderMap *rMap = new RenderMap(map, entMap);
     player->associateClient(rMap);
-
+    
     rMap->refreshMap();
-
-
+    
+    
     // Main Game Loop
-
-
-   // ClientMap *testMap = new ClientMap();
-
-   // GraphicsTCOD *output = new GraphicsTCOD(testMap);
-
+    
+    
+    // ClientMap *testMap = new ClientMap();
+    
+    // GraphicsTCOD *output = new GraphicsTCOD(testMap);
+    
     //TCODSystem::setFps(30);
-
-
+    
+    
     // Main Game Loop
-
-
-  //  for (x = 0; x < MAP_WIDTH; x++) {
-  //      for (y = 0; y < MAP_HEIGHT; y++) {
-  //          if ((player->fov[x][y])) {
-
-            //  unsigned char *buffer = new unsigned char[128];
-            //    render_t tmp = player->returnCMap()->cMap[player->posX()][player->posY()];
-            //   packer->packToNet(tmp, buffer);
-             //   packer->unpackFromNet(testMap, buffer);
-
-          //      testMap->cMap[x][y].visible = false;
-          //      testMap->cMap[x][y].occupied = false;
-
-
+    
+    
+    //  for (x = 0; x < MAP_WIDTH; x++) {
+    //      for (y = 0; y < MAP_HEIGHT; y++) {
+    //          if ((player->fov[x][y])) {
+    
+    //  unsigned char *buffer = new unsigned char[128];
+    //    render_t tmp = player->returnCMap()->cMap[player->posX()][player->posY()];
+    //   packer->packToNet(tmp, buffer);
+    //   packer->unpackFromNet(testMap, buffer);
+    
+    //      testMap->cMap[x][y].visible = false;
+    //      testMap->cMap[x][y].occupied = false;
+    
+    
     printf("testMap loop complete %d, %d \n", player->posX(), player->posY());
-
+    
     StdoutLog log;
     ServerSocket h(&log);
-
+    
     SendRawMap r(&log);
     r.init(player);
-  //  r.init(buffer);
-
+    //  r.init(buffer);
+    
     printf("Server Sockets have been setup. \n");
-
+    
     // line server
     ListenSocket<DisplaySocketMenu> lSock(r);
     //ListenSocket<SendRawMap> lSock(r);
-
-
+    
+    
     lSock.Bind(5250);
     printf("Server Socket has been bound. \n\n\n" );
     r.Add(&lSock);
-
-
+    
+    
     r.Select(1, 0);
-
+    
     printf("Entering Main Socket Loop. \n\n\n");
     while(!h.Quit()){
-
+        
         r.Select(1, 0);
         printf("iteration\n");
-
+        
     }
-
-
+    
+    
     return 0;
 }

@@ -42,33 +42,33 @@
 
 
 FovLib::FovLib(TileMap *map){
-
+    
     initFovLib(map);
-
+    
 }
 
 
 void FovLib::initFovLib(TileMap *map){
-
+    
     tcodMap = new TCODMap(MAP_WIDTH, MAP_HEIGHT);
     tileMap = map;
-
+    
     int x, y;
-
+    
     for(x = 0; x < MAP_WIDTH; x++){
         for(y = 0; y < MAP_HEIGHT; y++){
             tcodMap->setProperties(x, y, !(map->virtMap[x][y]->block_sight), !(map->virtMap[x][y]->blocked));
         }
     }
-
-
+    
+    
 }
 
 
 void FovLib::refreshFov(Entity *tgt){
-
+    
     int x, y;
-
+    
     // Compute FOV
     tcodMap->computeFov(tgt->posX(), tgt->posY(), TORCH_RADIUS, FOV_LIGHT_WALLS);
     for (x = 0; x < MAP_WIDTH; x++) {
@@ -78,7 +78,7 @@ void FovLib::refreshFov(Entity *tgt){
                     ClientMap *clientMap = tgt->returnCMap();
                     clientMap->cMap[x][y]->visible = true;
                     clientMap->cMap[x][y]->explored = true;
-
+                    
                 }
                 tgt->fov[x][y] = true;
             } else {
@@ -91,12 +91,12 @@ void FovLib::refreshFov(Entity *tgt){
             }
         }
     }
-
+    
 }
 
 
 TileMap *FovLib::getTileMap(){
-
+    
     return tileMap;
-
+    
 }

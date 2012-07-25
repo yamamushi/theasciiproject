@@ -33,6 +33,16 @@ SDL-devel
 
 ** OSX Users *
 
+You're in luck :-), Since I use Xcode as my primary IDE, there is an Xcode
+project file included in the "xcode" directory. If everything has gone
+according to plan, you should be able to just open this project (using at
+least Xcode 4.3.3) and compile without any extra setup. Otherwise there
+may be issues with the way I've included the precompiled binaries for the
+3rd party libraries.
+
+
+If you don't want to use Xcode, please read on:
+
 Compiling libtcod was rather painful on my OSX machine,
 so I've included the required *.dylib files under
 the "osx/" directory.

@@ -42,12 +42,12 @@
 
 ServerSocket::ServerSocket(StdLog *p) : SocketHandler(p),m_quit(false)
 {
-
+    
 }
 
 ServerSocket::~ServerSocket()
 {
-
+    
 }
 
 void ServerSocket::List(TcpSocket *p)
@@ -84,7 +84,7 @@ DisplaySocketMenu::DisplaySocketMenu(ISocketHandler& h) : TcpSocket(h)
 
 void DisplaySocketMenu::OnAccept()
 {
-   // Send("Cmd (list, quit , dump, stop)>");
+    // Send("Cmd (list, quit , dump, stop)>");
     static_cast<SendRawMap&> (Handler()).TransmitRaw(this);
 }
 
@@ -97,14 +97,14 @@ void DisplaySocketMenu::OnLine(const std::string& line)
         static_cast<SendRawMap&> (Handler()).List(this);
     } else
         if (cmd == "quit") {
-        Send("Goodbye!\n");
-        SetCloseAndDelete();
-    } else
-        if (cmd == "stop") {
-        static_cast<SendRawMap&> (Handler()).SetQuit();
-    } else {
-        Send("Huh?\n");
-    }
+            Send("Goodbye!\n");
+            SetCloseAndDelete();
+        } else
+            if (cmd == "stop") {
+                static_cast<SendRawMap&> (Handler()).SetQuit();
+            } else {
+                Send("Huh?\n");
+            }
     Send("Cmd>");
 }
 
@@ -119,20 +119,20 @@ SendRawMap::SendRawMap(StdLog *p) : SocketHandler(p),m_quit(false)
 
 SendRawMap::~SendRawMap()
 {
-
+    
 }
 
 /*void SendRawMap::init(unsigned char *buf)
-{
-
-    buffer = buf;
-
-} */
+ {
+ 
+ buffer = buf;
+ 
+ } */
 
 void SendRawMap::init(Entity *target){
-
+    
     src = target;
-
+    
 }
 
 void SendRawMap::TransmitRaw(TcpSocket *out)
@@ -141,16 +141,16 @@ void SendRawMap::TransmitRaw(TcpSocket *out)
     for (x = 0; x < MAP_WIDTH; x++) {
         for (y = 0; y < MAP_HEIGHT; y++) {
             if ((src->fov[x][y])) {
-
-                 ClientMapPacker *packer = new ClientMapPacker();
-                 unsigned char *buffer = new unsigned char[128];
-                 render_t tmp = *src->returnCMap()->cMap[x][y];
-                 //render_t tmp = src->returnCMap()->cMap[src->posX()][src->posY()];
-                 packer->packToNet(tmp, buffer);
-                 printf("Size of Buffer being Sent %d\n", (unsigned)sizeof(buffer));
-                 out->SendBuf(reinterpret_cast<const char*>(buffer), 128);
-                 //delete packer;
-                 //free(buffer);
+                
+                ClientMapPacker *packer = new ClientMapPacker();
+                unsigned char *buffer = new unsigned char[128];
+                render_t tmp = *src->returnCMap()->cMap[x][y];
+                //render_t tmp = src->returnCMap()->cMap[src->posX()][src->posY()];
+                packer->packToNet(tmp, buffer);
+                printf("Size of Buffer being Sent %d\n", (unsigned)sizeof(buffer));
+                out->SendBuf(reinterpret_cast<const char*>(buffer), 128);
+                //delete packer;
+                //free(buffer);
             }
         }
     }

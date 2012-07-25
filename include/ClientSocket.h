@@ -40,25 +40,25 @@ class GraphicsTCOD;
 class ClientMapPacker;
 
 class ClientSocket : public TcpSocket {
-
+    
 public:
     ClientSocket(ISocketHandler& h);
-
+    
     void OnRead();
-
+    
 };
 
 class MapSocket : public TcpSocket {
-
+    
     ClientMap *dest;
     GraphicsTCOD *out;
-
+    
 public:
-
+    
     MapSocket(ISocketHandler& h);
-
+    
     void OnRead();
     void loadClientMap(ClientMap *client);
     void assignLocalOut(GraphicsTCOD *screen);
-
+    
 };

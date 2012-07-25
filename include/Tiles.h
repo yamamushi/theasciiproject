@@ -40,112 +40,112 @@
 
 
 class Tile {
-	private:
-
-                unsigned int TypeID, SubTypeID;
-
-	public:
-		int posX, posY;
-		float H, S, V, HD, SD, VD;
-		int R, G, B, RD, GD, BD;
-                wchar_t *symbol;
-
-		bool blocked;
-		bool block_sight;
-		bool visible;
-		bool explored;
-		bool occupied;
-                bool needsOrientation;
-
-		Tile(bool blked=true);
-		void init_Tile(bool);
+private:
+    
+    unsigned int TypeID, SubTypeID;
+    
+public:
+    int posX, posY;
+    float H, S, V, HD, SD, VD;
+    int R, G, B, RD, GD, BD;
+    wchar_t *symbol;
+    
+    bool blocked;
+    bool block_sight;
+    bool visible;
+    bool explored;
+    bool occupied;
+    bool needsOrientation;
+    
+    Tile(bool blked=true);
+    void init_Tile(bool);
     virtual ~Tile() {}
-
-                bool isSightBlocked();
-		bool isBlocked();
-		bool isVisible();
-		bool isExplored();
-
-                void setSymbol(wchar_t *ch);
-                wchar_t *getSymbol();
-
-                void setTypeID(int i);
-                void setSubTypeID(int i);
-                unsigned int getTypeID();
-                unsigned int getSubTypeID();
-
-                // Some nasty stuff I don't like doing...
-                virtual void setOrientation(int i)=0;
-
-
-
-		friend class TileMap;
+    
+    bool isSightBlocked();
+    bool isBlocked();
+    bool isVisible();
+    bool isExplored();
+    
+    void setSymbol(wchar_t *ch);
+    wchar_t *getSymbol();
+    
+    void setTypeID(int i);
+    void setSubTypeID(int i);
+    unsigned int getTypeID();
+    unsigned int getSubTypeID();
+    
+    // Some nasty stuff I don't like doing...
+    virtual void setOrientation(int i)=0;
+    
+    
+    
+    friend class TileMap;
 };
 
 
 class Wall : public Tile {
-
-	private:
-               wchar_t *orient[16];
-
-
-	public:
-               Wall(bool blked=true);
-               virtual void setOrientation(int i);
-
-
-
+    
+private:
+    wchar_t *orient[16];
+    
+    
+public:
+    Wall(bool blked=true);
+    virtual void setOrientation(int i);
+    
+    
+    
 };
 
 
 class Floor : public Tile {
-	private:
-
-	public:
-		Floor(bool blked=false);
-                virtual void setOrientation(int i);
-
-
+private:
+    
+public:
+    Floor(bool blked=false);
+    virtual void setOrientation(int i);
+    
+    
 };
 
 
 
 
 class Rect {
-	private:
-
-	public:
-		int x1, y1, x2, y2, cX, cY;
-		Rect(int, int, int, int);
-		void initRect(int, int, int, int);
+private:
+    
+public:
+    int x1, y1, x2, y2, cX, cY;
+    Rect(int, int, int, int);
+    void initRect(int, int, int, int);
 };
 
 
 class Room {
-	private:
-
-	public:
-		int cX, cY;
-		int x1, x2, y1, y2;
-		Room(int, int, int, int);
-		void initRoom(int, int, int, int);
-		bool doesBorder(Room *other);
-		bool doesContainPoint(int, int);
-		bool doesIntersect(Room *other);
-
-		friend class TileMap;
-
+private:
+    
+public:
+    int cX, cY;
+    int x1, x2, y1, y2;
+    Room(int, int, int, int);
+    void initRoom(int, int, int, int);
+    bool doesBorder(Room *other);
+    bool doesContainPoint(int, int);
+    bool doesIntersect(Room *other);
+    
+    friend class TileMap;
+    
 };
 
 
 class Hall {
-	private:
-
-	public:
-		int x1, x2, y, dir;
-		Hall(int, int, int, int);
-		void initHall(int, int, int, int);
-
+private:
+    
+public:
+    int x1, x2, y, dir;
+    Hall(int, int, int, int);
+    void initHall(int, int, int, int);
+    
 };
 
 

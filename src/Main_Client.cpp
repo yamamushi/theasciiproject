@@ -48,47 +48,47 @@
 
 int main(int argc, char *argv[])
 {
-
+    
     // boring variables
     bool quit = false;
-
+    
     // This is our custom Apple app building stuff
     
 #ifdef __APPLE__
     macApp_setRelativePath();
 #endif
-
+    
     ClientMap *cMap = new ClientMap();
-
+    
     GraphicsTCOD *output = new GraphicsTCOD(cMap);
     Keyboard *kboard = new Keyboard(0, 0);
-
-
+    
+    
     SocketHandler h;
     MapSocket *p = new MapSocket(h);
     p->loadClientMap(cMap);
     p->assignLocalOut(output);
-
+    
     p->SetDeleteByHandler();
-
+    
     printf("Trying to connect to server...\n");
     //p->Open("theasciiproject.com", 5250);
     p->Open("localhost", 5250);
     h.Add(p);
     h.Select(1, 0);
-
+    
     // Main Game Loop
     while (!TCODConsole::isWindowClosed()) {
-
+        
         //while (h.GetCount()) {
-
-            h.Select(1, 0);
-
+        
+        h.Select(1, 0);
+        
         //}
-
+        
         output->render();
         output->clearScreen();
-
+        
         quit = kboard->handleKeys();
         
         if (quit) {
@@ -96,6 +96,6 @@ int main(int argc, char *argv[])
             break;
         }
     }
-
+    
     return 0;
 }

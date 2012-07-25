@@ -46,59 +46,59 @@ class RenderMap;
 
 
 class Entity {
-	private:
-
-		int X, Y;
-		wchar_t *symbol;
-		TileMap *world;
-                FovLib *FOV;
-                unsigned int TypeID, SubTypeID;
-                unsigned int UID;
-
-		bool initialized, clientActive;
-
-		EntityMap *entMap;
-
-                ClientMap *cMap;
-                RenderMap *rMap;
-
-	public:
-
-
-		void init_entity( wchar_t *symbol );
-		bool move(int dx, int dy);
-                void refreshFov();
-		int posX();
-		int posY();
-		bool fov[MAP_WIDTH][MAP_HEIGHT];
-		float H, S, V;
-		int R, G, B;
-
-		void init_in_world(FovLib *FOV);
-
-
-		wchar_t *getSymbol();
-                void setSymbol(wchar_t *ch);
-
-                void setTypeID(int i);
-                void setSubTypeID(int i);
-
-
-
-		bool isInitialized();
-                void associateClient(RenderMap *RMap);
-
-                bool getAssociated();
-                ClientMap * returnCMap();
-                void clientFovSync();
-
-
-		void move_self(int dx, int dy);
-
-		void setEntityMap(EntityMap *map);
-
-
-
+private:
+    
+    int X, Y;
+    wchar_t *symbol;
+    TileMap *world;
+    FovLib *FOV;
+    unsigned int TypeID, SubTypeID;
+    unsigned int UID;
+    
+    bool initialized, clientActive;
+    
+    EntityMap *entMap;
+    
+    ClientMap *cMap;
+    RenderMap *rMap;
+    
+public:
+    
+    
+    void init_entity( wchar_t *symbol );
+    bool move(int dx, int dy);
+    void refreshFov();
+    int posX();
+    int posY();
+    bool fov[MAP_WIDTH][MAP_HEIGHT];
+    float H, S, V;
+    int R, G, B;
+    
+    void init_in_world(FovLib *FOV);
+    
+    
+    wchar_t *getSymbol();
+    void setSymbol(wchar_t *ch);
+    
+    void setTypeID(int i);
+    void setSubTypeID(int i);
+    
+    
+    
+    bool isInitialized();
+    void associateClient(RenderMap *RMap);
+    
+    bool getAssociated();
+    ClientMap * returnCMap();
+    void clientFovSync();
+    
+    
+    void move_self(int dx, int dy);
+    
+    void setEntityMap(EntityMap *map);
+    
+    
+    
 };
 
 
@@ -109,25 +109,25 @@ class Entity {
 
 
 class Monster : public Entity {
-
-	public:
-
-		Monster();
-
+    
+public:
+    
+    Monster();
+    
 };
 
 
 class Player : public Entity {
-
-	public:
-		Player();
-
+    
+public:
+    Player();
+    
 };
 
 
 class Goblin : public Entity {
-
-	public:
-		Goblin();
-
+    
+public:
+    Goblin();
+    
 };

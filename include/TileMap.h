@@ -41,52 +41,52 @@
 
 
 class TileMap {
-	private:
-		int x, y, z, i;
-		int wid, hig;
-
-	public:
-
-		Room *rooms[MAX_ROOMS];
-		int numRooms;
-		Hall *halls[MAX_HALLS];
-		int numHalls;
-
-		Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];
-
-
-		TileMap(int, int);
-		void initMap(int, int);
-
-		void clearMap();
-		void refreshMap();
-		bool checkBounds(int, int);
-
-		void createRoom(int, int, int, int);
-		void drawRoom(int i);
-		void drawAllRooms();
-
-		void createHall(int, int, int, int);
-		void drawHall(int i);
-		void drawAllHalls();
-
-        void orientWalls();
-        void orientWalls(int x1, int y1, int x2, int y2);
-
-		void importRoom(Room *source);
-		void importAllRooms(TileMap *source);
-		void clearRooms();
-		void clearRoom(int x);
-
-		void importHall(Hall *source);
-		void importAllHalls(TileMap *source);
-		void clearHalls();
-		void clearHall(int x);
-
-		void copyVirtMap(TileMap *source);
-		void importMap(TileMap *source);
-
-
-
+private:
+    int x, y, z, i;
+    int wid, hig;
+    
+public:
+    
+    Room *rooms[MAX_ROOMS];
+    int numRooms;
+    Hall *halls[MAX_HALLS];
+    int numHalls;
+    
+    Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];
+    
+    
+    TileMap(int, int);
+    void initMap(int, int);
+    
+    void clearMap();
+    void refreshMap();
+    bool checkBounds(int, int);
+    
+    void createRoom(int, int, int, int);
+    void drawRoom(int i);
+    void drawAllRooms();
+    
+    void createHall(int, int, int, int);
+    void drawHall(int i);
+    void drawAllHalls();
+    
+    void orientWalls();
+    void orientWalls(int x1, int y1, int x2, int y2);
+    
+    void importRoom(Room *source);
+    void importAllRooms(TileMap *source);
+    void clearRooms();
+    void clearRoom(int x);
+    
+    void importHall(Hall *source);
+    void importAllHalls(TileMap *source);
+    void clearHalls();
+    void clearHall(int x);
+    
+    void copyVirtMap(TileMap *source);
+    void importMap(TileMap *source);
+    
+    
+    
 };
 

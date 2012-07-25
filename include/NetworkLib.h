@@ -5,7 +5,7 @@ class Packet {
     int senderId;
     int sequenceNumber;
     char data[MaxDataSize];
-
+    
 public:
     void* Serialize();
     void Deserialize(char *message);

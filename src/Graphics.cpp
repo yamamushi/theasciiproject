@@ -50,66 +50,66 @@ GraphicsTCOD::GraphicsTCOD(ClientMap *clientMap){
 }
 
 void GraphicsTCOD::init(ClientMap *clientMap){
-
-        cMap = clientMap;
-
-        setlocale(LC_ALL, "en_US.UTF-8");
-        TCODConsole::setCustomFont("data/font.png", TCOD_FONT_LAYOUT_ASCII_INROW, 32, 2048);
-
+    
+    cMap = clientMap;
+    
+    setlocale(LC_ALL, "en_US.UTF-8");
+    TCODConsole::setCustomFont("data/font.png", TCOD_FONT_LAYOUT_ASCII_INROW, 32, 2048);
+    
 	TCODConsole::initRoot(MAIN_WIDTH,MAIN_HEIGHT,"The ASCII Project",false,TCOD_RENDERER_SDL);
-        //	TCODConsole::credits();
-
-        TCODConsole *tmp = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
-        output = tmp;
-
-
+    //	TCODConsole::credits();
+    
+    TCODConsole *tmp = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
+    output = tmp;
+    
+    
 }
 
 void GraphicsTCOD::render(){
-
-        prepare();
-
+    
+    prepare();
+    
 	TCODConsole::blit(output, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
 	TCODConsole::flush();
-
-
+    
+    
 }
 
 void GraphicsTCOD::prepare(){
-
+    
     int x, y;
-
-
-
+    
+    
+    
     for(x=0;x<MAP_WIDTH;x++){
         for(y=0;y<MAP_HEIGHT;y++){
-
+            
             if (cMap->returnExplored(x, y)){
-
+                
                 H = cMap->returnH(x, y);
                 S = cMap->returnS(x, y);
                 V = cMap->returnV(x, y);
-
+                
                 wchar_t *sym;
                 sym = cMap->cMap[x][y]->symbol;
-
+                
                 //printf("Symbol is %S", cMap->cMap[x][y]->symbol);
                 if (cMap->returnOccupied(x, y)){
-
-                        output->setDefaultForeground(TCODColor(H, S, V));
-                        output->print(x, y, sym);
+                    
+                    output->setDefaultForeground(TCODColor(H, S, V));
+                    output->print(x, y, sym);
                 }
                 else{
                     HD = cMap->returnHD(x, y);
                     SD = cMap->returnSD(x, y);
                     VD = cMap->returnVD(x, y);
-
+                    
                     if (cMap->returnVisible(x, y)){
                         output->setCharBackground(x, y, TCODColor(0,0,0));
                         output->setDefaultForeground(TCODColor(H, S, V));
                         output->print(x, y, sym);
                     }
-
+                    
                     else{
                         output->setCharBackground(x, y, TCODColor(0,0,0));
                         output->setDefaultForeground(TCODColor(HD, SD, VD));
@@ -117,18 +117,18 @@ void GraphicsTCOD::prepare(){
                     }
                 }
             }
-
+            
         }
     }
-
-
+    
+    
 }
 
 
 void GraphicsTCOD::clearScreen(){
-
+    
 	output->clear();
-
+    
 }
 
 

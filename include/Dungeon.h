@@ -38,21 +38,21 @@
 
 
 class Dungeon {
-
-	private:
-		TileMap *destMap;
-		TileMap *dungeonMap;
-
-		Room *tempRoom;
-		int x, w, h, y, i;
-
-	public:
-		Dungeon(TileMap *destination, int width, int height, bool create);
-		void initDungeon(TileMap *destination,int width,int height, bool create);
-		bool createRooms(int numberOfRooms, int minSize, int maxSize, TileMap *outputMap);
-
-		void connectRooms(TileMap *outputMap);
-
-
-
+    
+private:
+    TileMap *destMap;
+    TileMap *dungeonMap;
+    
+    Room *tempRoom;
+    int x, w, h, y, i;
+    
+public:
+    Dungeon(TileMap *destination, int width, int height, bool create);
+    void initDungeon(TileMap *destination,int width,int height, bool create);
+    bool createRooms(int numberOfRooms, int minSize, int maxSize, TileMap *outputMap);
+    
+    void connectRooms(TileMap *outputMap);
+    
+    
+    
 };

@@ -41,24 +41,24 @@
 
 
 class ClientMap {
-
+    
 private:
-
+    
     render_t *cTemp;
-
+    
 public:
-
-
+    
+    
     render_t *cMap[MAP_WIDTH][MAP_HEIGHT];
-
+    
     ClientMap();
     void initClientMap();
-
+    
     void clearMap();
-
+    
     void importSquare(int x, int y, render_t *square);
     render_t *exportSquare(int x, int y);
-
+    
     wchar_t *getSymbol(int x, int y);
     float returnH(int x, int y);
     float returnHD(int x, int y);
@@ -69,5 +69,5 @@ public:
     bool returnExplored(int x, int y);
     bool returnOccupied(int x, int y);
     bool returnVisible(int x, int y);
-
+    
 };

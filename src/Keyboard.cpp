@@ -46,90 +46,90 @@ Keyboard::Keyboard(int x, int y){
 }
 
 void Keyboard::initKeyboard(int x, int y){
-
+    
 	curX = x;
 	curY = y;
 	safX = x;
 	safY = y;
-
+    
 }
 
 
 bool Keyboard::handleKeys(){
-
+    
 	TCOD_key_t Key = TCODConsole::checkForKeypress(true);
 	bool quit = false;
-
-
+    
+    
 	//Entity *tgt = target;
-
-
+    
+    
 	if(Key.vk == TCODK_ENTER && TCODK_ALT)
 		TCODConsole::setFullscreen(!TCODConsole::isFullscreen());
-
+    
 	switch(Key.vk)
 	{
-	    /*   	case TCODK_UP:
-			//tgt->move(0,-1);
-			break;
-
-		case TCODK_DOWN:
-			//tgt->move(0,1);
-			break;
-
-		case TCODK_LEFT:
-			//tgt->move(-1,0);
-			break;
-
-		case TCODK_RIGHT:
-			//tgt->move(1,0);
-
-			break; */
-
+            /*   	case TCODK_UP:
+             //tgt->move(0,-1);
+             break;
+             
+             case TCODK_DOWN:
+             //tgt->move(0,1);
+             break;
+             
+             case TCODK_LEFT:
+             //tgt->move(-1,0);
+             break;
+             
+             case TCODK_RIGHT:
+             //tgt->move(1,0);
+             
+             break; */
+            
 		case TCODK_ESCAPE:
 			quit = true;
 			break;
-
+            
 	}
 	return quit;
-
+    
 }
 
 
 
 void Keyboard::safeMoveCursor(int sx, int sy){
-
+    
 	safX = curX;
 	safY = curY;
-
+    
 	safX += sx;
 	safY += sy;
-
+    
 }
 
 void Keyboard::passSafeCursor(){
-
+    
 	curX = safX;
 	curY = safY;
-
+    
 }
 
 
 
 
 void Keyboard::moveCursor(int mx, int my){
-
+    
 	curX += mx;
 	curY += my;
-
+    
 }
 
 
 void Keyboard::placeCursor( int x, int y){
-
+    
 	curX = x;
-       	curY = y;
-
+    curY = y;
+    
 }
 
 

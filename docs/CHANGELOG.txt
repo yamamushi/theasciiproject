@@ -3,6 +3,47 @@ Copyright (c) 2012 Jonathan Rumion
 07/08/2012
 ==================================
 
+0.0.0i(Rev 3)
+
+I've gone through and have updated all of the "original" code in the project
+to conform to the C++11 standard, in order to allow for greater portability
+and to take advantage of the exciting new features in C++11.
+
+Unfortunately I've wasted a good amount of time trying to get C++ Sockets up
+to date on the standards requirements. Though I was able to make great
+progress, I have still been unable to get it to compile properly on GCC 4.7
+
+Because of that I've moved my development environment over to OSX and
+Xcode 4.3.3. I've added the necessary files to the project under the "xcode"
+directory for new users and developers to easily launch the same IDE setup
+that I am using. I have also included the necessary shared and static
+libraries for libtcod and C++ Sockets (temporary, see below), as well as the
+SDL framework for a seamless OSX application target.
+
+It's very nice to launch the client on OSX as a single packaged file, with
+all of the library and font resources packed into it. This should have no
+effects on the rest of the project source code however, as I'm making sure that
+the project Makefiles still work on Linux (GCC 4.3/4.4 however).
+
+In relation to the above, I am remove dependency on the C++ Sockets library
+and integrating the usage of the Boost C++ Libraries instead. The first of 
+which will be the Boost.Asio library.
+
+Networking has just been integrated, however the difficult parts of getting
+it to work have already been resolved in the serialization libraries, which
+means that switching to a "better" networking library won't set me back for
+too long.
+
+I also think it's important that we start thinking about multithreading now,
+and a networking library with asynchronous I/O is absolutely necessary in the
+server engine or else handling multiple users and entities in the way that
+we intend to in the long run will be insanely difficult to accomplish.
+
+-Yamamushi 
+
+
+
+
 0.0.0i
 
 Well it sure has been a journey, however after staying up for days on end

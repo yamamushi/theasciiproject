@@ -1,3 +1,14 @@
+07/25/2012 TODO List:
+
+Networking - Going to rip out the C++ Sockets library in favor of
+        Boost.Asio.
+        
+C++11 - A bit more work is necessary to conform to C++11 completely,
+        but we are very (~98%?) close.
+        
+        
+
+
 07/21/2012 TODO List:
 
 Networking - Put the TPL library to use, implement the serialization

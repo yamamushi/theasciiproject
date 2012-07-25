@@ -42,26 +42,26 @@
 
 
 ClientMap::ClientMap(){
-
+    
     initClientMap();
-
+    
 }
 
 void ClientMap::initClientMap(){
-
+    
     clearMap();
-
+    
 }
 
 void ClientMap::clearMap(){
-
+    
     int x, y;
-
+    
     for (x = 0; x < MAP_WIDTH; x++){
         for (y = 0; y < MAP_HEIGHT; y++){
-
+            
             cMap[x][y] = new render_t;
-
+            
             cMap[x][y]->symbol = (wchar_t *)L"\uFFFF";
             cMap[x][y]->x = x;
             cMap[x][y]->y = y;
@@ -74,79 +74,79 @@ void ClientMap::clearMap(){
             cMap[x][y]->explored = false;
             cMap[x][y]->occupied = false;
             cMap[x][y]->visible = false;
-
-           }
+            
+        }
     }
 }
 
 void ClientMap::importSquare(int x, int y, render_t *square){
-
+    
     cMap[x][y] = square;
-
+    
 }
 
 render_t *ClientMap::exportSquare(int x, int y){
-
+    
     return cMap[x][y];
-
+    
 }
 
 wchar_t *ClientMap::getSymbol(int x, int y){
-
+    
     return cMap[x][y]->symbol;
-
+    
 }
 
 float ClientMap::returnH(int x, int y){
-
+    
     return cMap[x][y]->H;
-
+    
 }
 
 float ClientMap::returnHD(int x, int y){
-
+    
     return cMap[x][y]->HD;
-
+    
 }
 
 float ClientMap::returnS(int x, int y){
-
+    
     return cMap[x][y]->S;
-
+    
 }
 
 float ClientMap::returnSD(int x, int y){
-
+    
     return cMap[x][y]->SD;
-
+    
 }
 
 float ClientMap::returnV(int x, int y){
-
+    
     return cMap[x][y]->V;
-
+    
 }
 
 float ClientMap::returnVD(int x, int y){
-
+    
     return cMap[x][y]->VD;
-
+    
 }
 
 bool ClientMap::returnExplored(int x, int y){
-
+    
     return cMap[x][y]->explored;
-
+    
 }
 
 bool ClientMap::returnOccupied(int x, int y){
-
+    
     return cMap[x][y]->occupied;
-
+    
 }
 
 bool ClientMap::returnVisible(int x, int y){
-
+    
     return cMap[x][y]->visible;
-
+    
 }

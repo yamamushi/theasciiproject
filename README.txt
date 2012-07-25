@@ -22,6 +22,10 @@ GOALS
 	* NPC's will operate independent of eachother, in that each has the ability to make their own decisions based on their relationships with players and other NPC's.
 
 	* The above mentioned relationships will continue to develop amongst NPC's without any player input.
+    
+    * All C++ source code will remain 100% C++11 compliant, including 3rd party libraries. If changes are necessary to those libraries
+        to remain standards compliant, they will be made where possible. Otherwise we will defer to another library or write our own
+        if necessary.
 
 	* TBA - I would rather be coding that writing up this readme file, please refer to the homepage at http://www.theasciiproject.com and the wiki at http://www.theasciiproject.com/wk/ for more information.
 

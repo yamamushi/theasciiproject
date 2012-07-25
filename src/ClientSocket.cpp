@@ -71,9 +71,9 @@ void MapSocket::OnRead()
     printf("\n\nSize of Raw Data: %d bytes\n", (unsigned)ibuf.GetLength());
     int num = ibuf.GetLength() / 128;
     printf("Tiles Transferred: %i\n", num);
-
-
-
+    
+    
+    
     while (num > 0) {
         char *buf = new char[128];
         //printf("iteration %d\n", num);
@@ -87,20 +87,20 @@ void MapSocket::OnRead()
         delete packer;
         num--;
     }
-
+    
     out->render();
 }
 
 void MapSocket::loadClientMap(ClientMap *client)
 {
-
+    
     dest = client;
-
+    
 }
 
 void MapSocket::assignLocalOut(GraphicsTCOD* screen)
 {
-
+    
     out = screen;
-
+    
 }

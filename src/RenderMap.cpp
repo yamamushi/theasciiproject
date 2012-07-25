@@ -42,46 +42,46 @@
 
 
 RenderMap::RenderMap(TileMap *tiles, EntityMap *entities){
-
+    
     initRenderMap(tiles, entities);
-
+    
 }
 
 void RenderMap::initRenderMap(TileMap *tiles, EntityMap *entities){
-
+    
     tMap = tiles;
     eMap = entities;
     refreshMap();
-
+    
 }
 
 void RenderMap::refreshMap(){
-
+    
     int x, y;
-
+    
     for (x = 0; x < MAP_WIDTH; x++){
         for (y = 0; y < MAP_HEIGHT; y++){
-           if (!(eMap->checkOccupied(x, y))){
-
-
-            rMap[x][y].symbol = tMap->virtMap[x][y]->getSymbol();
-            rMap[x][y].H = tMap->virtMap[x][y]->H;
-            rMap[x][y].HD = tMap->virtMap[x][y]->HD;
-            rMap[x][y].S = tMap->virtMap[x][y]->S;
-            rMap[x][y].SD = tMap->virtMap[x][y]->SD;
-            rMap[x][y].V = tMap->virtMap[x][y]->V;
-            rMap[x][y].VD = tMap->virtMap[x][y]->VD;
-            rMap[x][y].explored = tMap->virtMap[x][y]->isExplored();
-            rMap[x][y].occupied = false;
-            rMap[x][y].visible = tMap->virtMap[x][y]->isVisible();
-
-
-           }
-
-           else {
-
+            if (!(eMap->checkOccupied(x, y))){
+                
+                
+                rMap[x][y].symbol = tMap->virtMap[x][y]->getSymbol();
+                rMap[x][y].H = tMap->virtMap[x][y]->H;
+                rMap[x][y].HD = tMap->virtMap[x][y]->HD;
+                rMap[x][y].S = tMap->virtMap[x][y]->S;
+                rMap[x][y].SD = tMap->virtMap[x][y]->SD;
+                rMap[x][y].V = tMap->virtMap[x][y]->V;
+                rMap[x][y].VD = tMap->virtMap[x][y]->VD;
+                rMap[x][y].explored = tMap->virtMap[x][y]->isExplored();
+                rMap[x][y].occupied = false;
+                rMap[x][y].visible = tMap->virtMap[x][y]->isVisible();
+                
+                
+            }
+            
+            else {
+                
                 scan = eMap->outputLastEntity(x, y);
-
+                
                 rMap[x][y].symbol = scan->getSymbol();
                 rMap[x][y].H = scan->H;
                 rMap[x][y].S = scan->S;
@@ -89,76 +89,76 @@ void RenderMap::refreshMap(){
                 rMap[x][y].explored = tMap->virtMap[x][y]->isExplored();
                 rMap[x][y].occupied = true;
                 rMap[x][y].visible = tMap->virtMap[x][y]->isVisible();
-
+                
             }
         }
     }
 }
 
 render_t RenderMap::exportSquare(int x, int y){
-
+    
     return rMap[x][y];
-
+    
 }
 
 
 
 wchar_t *RenderMap::getSymbol(int x, int y){
-
+    
     return rMap[x][y].symbol;
-
+    
 }
 
 float RenderMap::returnH(int x, int y){
-
+    
     return rMap[x][y].H;
-
+    
 }
 
 float RenderMap::returnHD(int x, int y){
-
+    
     return rMap[x][y].HD;
-
+    
 }
 
 float RenderMap::returnS(int x, int y){
-
+    
     return rMap[x][y].S;
-
+    
 }
 
 float RenderMap::returnSD(int x, int y){
-
+    
     return rMap[x][y].SD;
-
+    
 }
 
 float RenderMap::returnV(int x, int y){
-
+    
     return rMap[x][y].V;
-
+    
 }
 
 float RenderMap::returnVD(int x, int y){
-
+    
     return rMap[x][y].VD;
-
+    
 }
 
 bool RenderMap::returnExplored(int x, int y){
-
+    
     return rMap[x][y].explored;
-
+    
 }
 
 bool RenderMap::returnOccupied(int x, int y){
-
+    
     return rMap[x][y].occupied;
-
+    
 }
 
 bool RenderMap::returnVisible(int x, int y){
-
+    
     return rMap[x][y].visible;
-
+    
 }

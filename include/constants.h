@@ -62,32 +62,32 @@
 
 
 enum colors {
-
-        RANDOM,
-        NONE,
-        DARK_WALL,
-        DARK_GROUND,
-        LIGHT_WALL,
-        LIGHT_GROUND,
-        BLACK,
-        BLUE,
-        LIGHT_BLUE,
-        YELLOW,
-        GOLD,
+    
+    RANDOM,
+    NONE,
+    DARK_WALL,
+    DARK_GROUND,
+    LIGHT_WALL,
+    LIGHT_GROUND,
+    BLACK,
+    BLUE,
+    LIGHT_BLUE,
+    YELLOW,
+    GOLD,
 	RED,
 	WHITE,
-
+    
 };
 
 
 
 enum entity_types {
-
+    
 	RESERVED,
 	DEFAULT,
 	PLAYER,
 	MONSTER,
-
+    
 };
 
 struct render_t {

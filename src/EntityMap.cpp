@@ -71,41 +71,41 @@
 
 
 EntityMap::EntityMap(int x, int y, TileMap *map, FovLib *FOVLib){
-
+    
 	initEntityMap(x, y, map, FOVLib);
-
+    
 }
 
 void EntityMap::initEntityMap(int x, int y, TileMap *map, FovLib *FOVLib){
-
+    
 	width = x;
 	height = y;
-
-        contextMap = map;
-        fovLib = FOVLib;
-
-
+    
+    contextMap = map;
+    fovLib = FOVLib;
+    
+    
 }
 
 void EntityMap::addToMap(Entity *entity){
-
+    
 	Entity *src = entity;
 	int x, y;
-
+    
 	x = src->posX();
 	y = src->posY();
 	pos[x][y].push_back(src);
-        src->init_in_world(fovLib);
-        src->setEntityMap(this);
-
+    src->init_in_world(fovLib);
+    src->setEntityMap(this);
+    
 }
 
 void EntityMap::createEntity(int type){
-
+    
 	Entity *newEntity;
-
+    
 	switch (type) {
-
+            
 		case MONSTER:
 			newEntity = new Monster();
             addToMap(newEntity);
@@ -113,20 +113,20 @@ void EntityMap::createEntity(int type){
 			newEntity = new Player();
             addToMap(newEntity);
 	}
-
+    
 }
 
 void EntityMap::initAllEnts(){
-
-
+    
+    
 	int x, y, z;
-
+    
 	for ( x = 0; x < width; x++){
 		for ( y = 0; y < height; y++){
 			if (!(pos[x][y].empty())){
 				for ( z = 0; z < pos[x][y].size(); z++){
 					pos[x][y].at(z)->init_in_world(fovLib);
-                                        pos[x][y].at(z)->setEntityMap(this);
+                    pos[x][y].at(z)->setEntityMap(this);
 				}
 			}
 		}
@@ -134,9 +134,9 @@ void EntityMap::initAllEnts(){
 }
 
 void EntityMap::refreshEntityMap(){
-
+    
 	int x, y, z;
-
+    
 	for ( x = 0; x < width; x++){
 		for ( y = 0; y < height; y++){
 			if( !(pos[x][y].empty()) ){
@@ -144,16 +144,16 @@ void EntityMap::refreshEntityMap(){
 					// check each entity in this vector
 					// move entity to new vector
 					// coordinates at x and y
-
+                    
 					// First we check to see if this entities
 					// coordinates differ from our own:
 					Entity *cur = pos[x][y].at(z);
-
+                    
 					if ( (x != (cur->posX())) || (y != (cur->posY())) ){
 						// now we do some magic
 						int newX = cur->posX();
 						int newY = cur->posY();
-
+                        
 						pos[newX][newY].push_back(cur);
 						pos[x][y].erase(pos[x][y].begin()+z);
 					}
@@ -161,11 +161,11 @@ void EntityMap::refreshEntityMap(){
 			}
 		}
 	}
-
+    
 }
 
 bool EntityMap::checkOccupied(int x, int y){
-
+    
 	if ( !(pos[x][y].empty()) ){
 		return true;
 	}
@@ -174,16 +174,16 @@ bool EntityMap::checkOccupied(int x, int y){
 }
 
 Entity * EntityMap::outputLastEntity(int x, int y){
-
+    
 	//if ( !(pos[x][y].empty()) ){
-		Entity *current = pos[x][y].back();
-		return current;
+    Entity *current = pos[x][y].back();
+    return current;
 	//}
 }
 
 void EntityMap::refreshFovFor(Entity *tgt){
-
+    
     fovLib->refreshFov(tgt);
-
+    
 }
 
