@@ -108,12 +108,11 @@ void EntityMap::createEntity(int type){
 
 		case MONSTER:
 			newEntity = new Monster();
+            addToMap(newEntity);
 		case PLAYER:
 			newEntity = new Player();
-
+            addToMap(newEntity);
 	}
-
-	addToMap(newEntity);
 
 }
 
@@ -176,10 +175,10 @@ bool EntityMap::checkOccupied(int x, int y){
 
 Entity * EntityMap::outputLastEntity(int x, int y){
 
-	if ( !(pos[x][y].empty()) ){
+	//if ( !(pos[x][y].empty()) ){
 		Entity *current = pos[x][y].back();
 		return current;
-	}
+	//}
 }
 
 void EntityMap::refreshFovFor(Entity *tgt){

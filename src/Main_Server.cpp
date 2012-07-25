@@ -45,23 +45,17 @@
 
 int main(int argc, char *argv[]){
 
-    // boring variables
-    bool quit = false;
-    int CenterX = MAIN_WIDTH / 2;
-    int CenterY = MAIN_HEIGHT / 2;
-
-    int i, x, y, z;
 
     // Temporary variable (see Entities.cpp)
-    extern unsigned int UIDList;
+    //extern unsigned int UIDList;
 
     // Let's get things setup
-    Keyboard *kboard = new Keyboard();
+    //Keyboard *kboard = new Keyboard();
 
     TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);
 
     // Temporary Dungeon Generator
-    Dungeon *dgn = new Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
+    Dungeon::Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
 
     // init Fov Lib ASAP after TileMap and Dungeon have been initialized.
     FovLib *fovLib = new FovLib(map);
@@ -87,9 +81,6 @@ int main(int argc, char *argv[]){
 
     rMap->refreshMap();
 
-    // networking packing stuff
-
-    ClientMapPacker *packer = new ClientMapPacker();
 
     // Main Game Loop
 

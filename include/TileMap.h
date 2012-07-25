@@ -58,7 +58,6 @@ class TileMap {
 		TileMap(int, int);
 		void initMap(int, int);
 
-
 		void clearMap();
 		void refreshMap();
 		bool checkBounds(int, int);
@@ -71,8 +70,8 @@ class TileMap {
 		void drawHall(int i);
 		void drawAllHalls();
 
-                void orientWalls();
-                void orientWalls(int x1, int y1, int x2, int y2);
+        void orientWalls();
+        void orientWalls(int x1, int y1, int x2, int y2);
 
 		void importRoom(Room *source);
 		void importAllRooms(TileMap *source);

@@ -59,6 +59,7 @@ class Tile {
 
 		Tile(bool blked=true);
 		void init_Tile(bool);
+    virtual ~Tile() {}
 
                 bool isSightBlocked();
 		bool isBlocked();

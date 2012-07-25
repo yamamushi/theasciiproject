@@ -56,7 +56,7 @@ void Tile::init_Tile(bool blked){
 	explored = false;
 	occupied = false;
 
-        symbol = L"\uFFF0";
+        symbol = (wchar_t *)L"\uFFF0";
 
         TypeID = 0;
         SubTypeID = 0;
@@ -156,22 +156,22 @@ Wall::Wall(bool blked){
         // This is godawful, but it's only a short term solution
         // For testing things out.
 
-        orient[0] = L"\u2550";
-        orient[1] = L"\u2551";
-        orient[2] = L"\u2554";
-        orient[3] = L"\u2557";
-        orient[4] = L"\u255A";
-        orient[5] = L"\u255D";
-        orient[6] = L"\u2560";
-        orient[7] = L"\u2563";
-        orient[8] = L"\u2566";
-        orient[9] = L"\u2569";
-        orient[10] = L"\u256C";
-        orient[11] = L"\u255E";
-        orient[12] = L"\u2561";
-        orient[13] = L"\u2565";
-        orient[14] = L"\u2568";
-        orient[15] = L"\u2B1C";
+        orient[0] = (wchar_t *)L"\u2550";
+        orient[1] = (wchar_t *)L"\u2551";
+        orient[2] = (wchar_t *)L"\u2554";
+        orient[3] = (wchar_t *)L"\u2557";
+        orient[4] = (wchar_t *)L"\u255A";
+        orient[5] = (wchar_t *)L"\u255D";
+        orient[6] = (wchar_t *)L"\u2560";
+        orient[7] = (wchar_t *)L"\u2563";
+        orient[8] = (wchar_t *)L"\u2566";
+        orient[9] = (wchar_t *)L"\u2569";
+        orient[10] = (wchar_t *)L"\u256C";
+        orient[11] = (wchar_t *)L"\u255E";
+        orient[12] = (wchar_t *)L"\u2561";
+        orient[13] = (wchar_t *)L"\u2565";
+        orient[14] = (wchar_t *)L"\u2568";
+        orient[15] = (wchar_t *)L"\u2B1C";
 
 
 
@@ -210,7 +210,7 @@ Floor::Floor(bool blked){
 	SD = 1.0;
 	VD = 0.1;
 
-        setSymbol(L"\u2059");
+        setSymbol((wchar_t *)L"\u2059");
 
 
 

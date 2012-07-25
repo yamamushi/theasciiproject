@@ -45,6 +45,7 @@
 		744488CD15BF0C23006595CE /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		744488D615BF297E006595CE /* libSockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488D515BF297E006595CE /* libSockets.a */; };
 		74448A3115BF2D07006595CE /* libSockets.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488D515BF297E006595CE /* libSockets.a */; };
+		747D228315BFB8B900CE1AC9 /* at.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 747D228215BFB8B900CE1AC9 /* at.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -97,7 +98,7 @@
 		743612AF15BFA55A00CC2BCA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		743612B015BFA55A00CC2BCA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		743612B115BFA55A00CC2BCA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		743612DB15BFA75800CC2BCA /* client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = client.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		743612DB15BFA75800CC2BCA /* The ASCII Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The ASCII Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		743612E015BFA75800CC2BCA /* client-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "client-Info.plist"; sourceTree = "<group>"; };
 		743612E215BFA75800CC2BCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		743612E815BFA75800CC2BCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -428,6 +429,7 @@
 		747D227C15BFB07700CE1AC9 /* INSTALL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = INSTALL.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/INSTALL.txt"; sourceTree = "<absolute>"; };
 		747D227D15BFB07700CE1AC9 /* ROADMAP.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = ROADMAP.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/ROADMAP.txt"; sourceTree = "<absolute>"; };
 		747D227E15BFB07700CE1AC9 /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = TODO.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/TODO.txt"; sourceTree = "<absolute>"; };
+		747D228215BFB8B900CE1AC9 /* at.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = at.jpg; path = ../xcode/at.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -490,12 +492,12 @@
 		744487C615BF0464006595CE = {
 			isa = PBXGroup;
 			children = (
+				7444889515BF04EF006595CE /* xcode */,
 				7444887F15BF04EF006595CE /* src */,
 				7444880615BF04EF006595CE /* include */,
 				7457E69F15BFA2BB00FA7D26 /* Frameworks */,
 				744487E015BF04EF006595CE /* The ASCII Project */,
 				744487D415BF047E006595CE /* Products */,
-				7444889515BF04EF006595CE /* xcode */,
 			);
 			sourceTree = "<group>";
 		};
@@ -503,7 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				744487D315BF047E006595CE /* server */,
-				743612DB15BFA75800CC2BCA /* client.app */,
+				743612DB15BFA75800CC2BCA /* The ASCII Project.app */,
 			);
 			name = Products;
 			path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/xcode";
@@ -562,6 +564,7 @@
 			isa = PBXGroup;
 			children = (
 				744487FC15BF04EF006595CE /* font.png */,
+				747D228215BFB8B900CE1AC9 /* at.jpg */,
 				744487FD15BF04EF006595CE /* readme.txt */,
 				744487FE15BF04EF006595CE /* sample_full_unicode.png */,
 			);
@@ -1086,7 +1089,7 @@
 			);
 			name = client;
 			productName = client;
-			productReference = 743612DB15BFA75800CC2BCA /* client.app */;
+			productReference = 743612DB15BFA75800CC2BCA /* The ASCII Project.app */;
 			productType = "com.apple.product-type.application";
 		};
 		744487D215BF047E006595CE /* server */ = {
@@ -1147,6 +1150,7 @@
 			files = (
 				743612E315BFA75800CC2BCA /* InfoPlist.strings in Resources */,
 				743612E915BFA75800CC2BCA /* Credits.rtf in Resources */,
+				747D228315BFB8B900CE1AC9 /* at.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1230,7 +1234,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -1242,7 +1246,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "The ASCII Project";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1263,6 +1267,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "client/client-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -1273,7 +1278,7 @@
 					"\"$(SRCROOT)/../osx\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "The ASCII Project";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1285,6 +1290,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libc++";
 				DYLIB_CURRENT_VERSION = "libc++";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = NO;
 				GENERATE_PROFILING_CODE = YES;
@@ -1316,6 +1323,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libc++";
 				DYLIB_CURRENT_VERSION = "libc++";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = NO;
 				GENERATE_PROFILING_CODE = YES;
@@ -1360,7 +1369,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1397,6 +1406,7 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;

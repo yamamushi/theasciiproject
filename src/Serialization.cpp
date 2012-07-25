@@ -131,7 +131,7 @@ void ClientMapPacker::packToNet(render_t source, unsigned char *buf)
     s_render_t sMap = clientToSerial(source);
 
     /* fixed-length array of s_render_t structures */
-    tn = tpl_map("S(ic#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
+    tn = tpl_map((char *)"S(ic#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
     tpl_pack(tn, 0);
     tpl_dump(tn, TPL_MEM | TPL_PREALLOCD, buf, 128);
     tpl_free(tn);
@@ -144,7 +144,7 @@ void ClientMapPacker::unpackFromNet(ClientMap *dest, unsigned char *buf)
 
     clientMap = dest;
 
-    tn = tpl_map("S(ic#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
+    tn = tpl_map((char *)"S(ic#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
     //printf("Buffer has been mapped\n");
     tpl_load(tn, TPL_MEM | TPL_EXCESS_OK, buf, 128);
     //printf("Buffer Loaded\n");

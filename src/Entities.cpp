@@ -258,14 +258,14 @@ void Entity::setEntityMap(EntityMap *map)
 Monster::Monster()
 {
 
-    init_entity(L"\u263A");
+    init_entity((wchar_t *)L"\u263A");
 
 }
 
 Player::Player()
 {
 
-    init_entity(L"\u263A");
+    init_entity((wchar_t *)L"\u263A");
     H = 0.0;
     S = 0.0;
     V = 1.0;
@@ -275,7 +275,7 @@ Player::Player()
 Goblin::Goblin()
 {
 
-    init_entity(L"\uFFF7");
+    init_entity((wchar_t *)L"\uFFF7");
     H = 30.0;
     S = 0.58;
     V = 0.40;

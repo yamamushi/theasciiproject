@@ -72,7 +72,8 @@ int main(int argc, char *argv[])
     p->SetDeleteByHandler();
 
     printf("Trying to connect to server...\n");
-    p->Open("theasciiproject.com", 5250);
+    //p->Open("theasciiproject.com", 5250);
+    p->Open("localhost", 5250);
     h.Add(p);
     h.Select(1, 0);
 

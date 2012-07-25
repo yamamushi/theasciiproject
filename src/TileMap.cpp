@@ -123,7 +123,7 @@ void TileMap::createHall(int x, int y, int z, int dir){
 
 void TileMap::drawHall(int i){
 
-	if ( ((halls[i]->dir) == 0)){
+	if ( (halls[i]->dir) == 0){
 		for( x = halls[i]->x1; x < halls[i]->x2; x++){
 			delete virtMap[x][halls[i]->y];
 			virtMap[x][halls[i]->y] = new Floor;
@@ -157,7 +157,7 @@ void TileMap::orientWalls(){
 
             // Now for some really crappy calculations that should
             // And will be rewritten in a less craptastic manner.
-             if (TypeID = 1){
+             if (TypeID == 1){
                 if(TypeID == (virtMap[x-1][y]->getTypeID()) ) {
 
 
