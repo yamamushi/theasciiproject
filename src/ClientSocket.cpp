@@ -3,12 +3,12 @@
  *
  *       Filename:  ClientSocket.cpp
  *
- *    Description:  Experimental Sockets Implementation
+ *    Description:  Wrapper for Boost::Asio library as used in the Client.
  *
  *        Version:  1.0
  *        Created:  07/20/2012 10:28 PM
- *       Revision:  none
- *       Compiler:  gcc
+ *       Revision:  Rev 1 - 07/26/2012
+ *       Compiler:  clang++
  *
  *         Author:  Yamamushi (Jon Rumion)
  *   Organization:  The ASCII Project
@@ -38,69 +38,6 @@
 
 #include "headers.h"
 
-ClientSocket::ClientSocket(ISocketHandler& h) : TcpSocket(h)
-{
-}
 
-void ClientSocket::OnRead()
-{
-    // OnRead of TcpSocket actually reads the data from the socket
-    // and moves it to the input buffer (ibuf)
-    TcpSocket::OnRead();
-    // get number of bytes in input buffer
-    size_t n = ibuf.GetLength();
-    if (n > 0) {
-        char tmp[RSIZE]; // <--- tmp's here
-        ibuf.Read(tmp, n);
-        printf("Read %d bytes:\n", (unsigned)n);
-        for (size_t i = 0; i < n; i++) {
-            printf("%c", isprint(tmp[i]) ? tmp[i] : '.');
-        }
-        printf("\n");
-    }
-}
 
-MapSocket::MapSocket(ISocketHandler& h) : TcpSocket(h)
-{
-}
 
-void MapSocket::OnRead()
-{
-    TcpSocket::OnRead();
-    //printf("Received Raw Data\n");
-    printf("\n\nSize of Raw Data: %d bytes\n", (unsigned)ibuf.GetLength());
-    int num = ibuf.GetLength() / 128;
-    printf("Tiles Transferred: %i\n", num);
-    
-    
-    
-    while (num > 0) {
-        char *buf = new char[128];
-        //printf("iteration %d\n", num);
-        ibuf.Read(buf, 128);
-        ClientMapPacker *packer = new ClientMapPacker();
-        //printf("packer running\n");
-        packer->unpackFromNet(dest, (unsigned char*) buf);
-        //out->render();
-        free(buf);
-        //printf("Size of buffer is now %d\n", ibuf.GetLength());
-        delete packer;
-        num--;
-    }
-    
-    out->render();
-}
-
-void MapSocket::loadClientMap(ClientMap *client)
-{
-    
-    dest = client;
-    
-}
-
-void MapSocket::assignLocalOut(GraphicsTCOD* screen)
-{
-    
-    out = screen;
-    
-}

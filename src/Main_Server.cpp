@@ -83,18 +83,7 @@ int main(int argc, char *argv[]){
     
     
     // Main Game Loop
-    
-    
-    // ClientMap *testMap = new ClientMap();
-    
-    // GraphicsTCOD *output = new GraphicsTCOD(testMap);
-    
-    //TCODSystem::setFps(30);
-    
-    
-    // Main Game Loop
-    
-    
+            
     //  for (x = 0; x < MAP_WIDTH; x++) {
     //      for (y = 0; y < MAP_HEIGHT; y++) {
     //          if ((player->fov[x][y])) {
@@ -107,37 +96,7 @@ int main(int argc, char *argv[]){
     //      testMap->cMap[x][y].visible = false;
     //      testMap->cMap[x][y].occupied = false;
     
-    
-    printf("testMap loop complete %d, %d \n", player->posX(), player->posY());
-    
-    StdoutLog log;
-    ServerSocket h(&log);
-    
-    SendRawMap r(&log);
-    r.init(player);
-    //  r.init(buffer);
-    
-    printf("Server Sockets have been setup. \n");
-    
-    // line server
-    ListenSocket<DisplaySocketMenu> lSock(r);
-    //ListenSocket<SendRawMap> lSock(r);
-    
-    
-    lSock.Bind(5250);
-    printf("Server Socket has been bound. \n\n\n" );
-    r.Add(&lSock);
-    
-    
-    r.Select(1, 0);
-    
-    printf("Entering Main Socket Loop. \n\n\n");
-    while(!h.Quit()){
         
-        r.Select(1, 0);
-        printf("iteration\n");
-        
-    }
     
     
     return 0;

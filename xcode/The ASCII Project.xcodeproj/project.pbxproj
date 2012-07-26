@@ -11,17 +11,14 @@
 		743612E315BFA75800CC2BCA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 743612E115BFA75800CC2BCA /* InfoPlist.strings */; };
 		743612E915BFA75800CC2BCA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 743612E715BFA75800CC2BCA /* Credits.rtf */; };
 		743612F315BFA7DC00CC2BCA /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
-		743612F415BFA7E500CC2BCA /* libSockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488D515BF297E006595CE /* libSockets.a */; };
 		743612F515BFA7E900CC2BCA /* libtcod-gui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887B15BF04EF006595CE /* libtcod-gui.dylib */; };
 		743612F615BFA7EC00CC2BCA /* libtcod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887C15BF04EF006595CE /* libtcod.dylib */; };
 		743612F715BFA82D00CC2BCA /* ClientMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888015BF04EF006595CE /* ClientMap.cpp */; };
-		743612F815BFA82D00CC2BCA /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
 		743612F915BFA82D00CC2BCA /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888615BF04EF006595CE /* Graphics.cpp */; };
 		743612FA15BFA82D00CC2BCA /* Keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888715BF04EF006595CE /* Keyboard.cpp */; };
 		743612FB15BFA82D00CC2BCA /* Serialization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888C15BF04EF006595CE /* Serialization.cpp */; };
-		743612FC15BFA82D00CC2BCA /* tpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 7444889015BF04EF006595CE /* tpl.c */; };
+		743612FC15BFA82D00CC2BCA /* tpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 7444889015BF04EF006595CE /* tpl.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
 		743612FD15BFA82D00CC2BCA /* Main_Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888815BF04EF006595CE /* Main_Client.cpp */; };
-		743612FF15BFA84400CC2BCA /* libSockets.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488D515BF297E006595CE /* libSockets.a */; };
 		7436130015BFA84900CC2BCA /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		7436130315BFA8D000CC2BCA /* font.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487FC15BF04EF006595CE /* font.png */; };
 		7436130615BFAC0D00CC2BCA /* Platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7436130515BFAC0D00CC2BCA /* Platform.cpp */; };
@@ -40,11 +37,11 @@
 		744488C215BF04EF006595CE /* ServerSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888D15BF04EF006595CE /* ServerSocket.cpp */; };
 		744488C315BF04EF006595CE /* TileMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888E15BF04EF006595CE /* TileMap.cpp */; };
 		744488C415BF04EF006595CE /* Tiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888F15BF04EF006595CE /* Tiles.cpp */; };
-		744488C515BF04EF006595CE /* tpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 7444889015BF04EF006595CE /* tpl.c */; };
+		744488C515BF04EF006595CE /* tpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 7444889015BF04EF006595CE /* tpl.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
 		744488CC15BF0B84006595CE /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		744488CD15BF0C23006595CE /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
-		744488D615BF297E006595CE /* libSockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488D515BF297E006595CE /* libSockets.a */; };
 		74448A3115BF2D07006595CE /* libSockets.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488D515BF297E006595CE /* libSockets.a */; };
+		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,7 +51,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				743612FF15BFA84400CC2BCA /* libSockets.a in CopyFiles */,
 				7436130015BFA84900CC2BCA /* SDL.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +425,10 @@
 		747D227D15BFB07700CE1AC9 /* ROADMAP.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = ROADMAP.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/ROADMAP.txt"; sourceTree = "<absolute>"; };
 		747D227E15BFB07700CE1AC9 /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = TODO.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/TODO.txt"; sourceTree = "<absolute>"; };
 		747D228415C0339E00CE1AC9 /* at.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = at.jpg; sourceTree = "<group>"; };
+		747D228515C0566300CE1AC9 /* LICENSE_1_0_BOOST.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE_1_0_BOOST.txt; sourceTree = "<group>"; };
+		74C5767C15C1D1F20033691A /* BoostLibs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoostLibs.h; sourceTree = "<group>"; };
+		74C5767E15C1EC6D0033691A /* Collect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collect.cpp; sourceTree = "<group>"; };
+		74C5768015C1EC780033691A /* Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collect.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -438,7 +438,6 @@
 			files = (
 				743612DD15BFA75800CC2BCA /* Cocoa.framework in Frameworks */,
 				743612F315BFA7DC00CC2BCA /* SDL.framework in Frameworks */,
-				743612F415BFA7E500CC2BCA /* libSockets.a in Frameworks */,
 				743612F515BFA7E900CC2BCA /* libtcod-gui.dylib in Frameworks */,
 				743612F615BFA7EC00CC2BCA /* libtcod.dylib in Frameworks */,
 			);
@@ -451,7 +450,6 @@
 				744488CD15BF0C23006595CE /* SDL.framework in Frameworks */,
 				744488B315BF04EF006595CE /* libtcod-gui.dylib in Frameworks */,
 				744488B415BF04EF006595CE /* libtcod.dylib in Frameworks */,
-				744488D615BF297E006595CE /* libSockets.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,8 +585,10 @@
 		7444880615BF04EF006595CE /* include */ = {
 			isa = PBXGroup;
 			children = (
+				74C5767C15C1D1F20033691A /* BoostLibs.h */,
 				7444880715BF04EF006595CE /* ClientMap.h */,
 				7444880815BF04EF006595CE /* ClientSocket.h */,
+				74C5768015C1EC780033691A /* Collect.h */,
 				7444880915BF04EF006595CE /* constants.h */,
 				7444880A15BF04EF006595CE /* Dungeon.h */,
 				7444880B15BF04EF006595CE /* Entities.h */,
@@ -599,13 +599,13 @@
 				7444881115BF04EF006595CE /* Keyboard.h */,
 				7444881215BF04EF006595CE /* libtcod */,
 				7444885215BF04EF006595CE /* NetworkLib.h */,
+				7436130715BFAC2400CC2BCA /* Platform.h */,
 				7444885315BF04EF006595CE /* RenderMap.h */,
 				7444885415BF04EF006595CE /* Serialization.h */,
 				7444885515BF04EF006595CE /* ServerSocket.h */,
 				7444885615BF04EF006595CE /* TileMap.h */,
 				7444885715BF04EF006595CE /* Tiles.h */,
 				7444885815BF04EF006595CE /* tpl.h */,
-				7436130715BFAC2400CC2BCA /* Platform.h */,
 			);
 			name = include;
 			path = ../include;
@@ -696,6 +696,7 @@
 				7444885C15BF04EF006595CE /* LIBTCOD-LICENSE.txt */,
 				7444885D15BF04EF006595CE /* README-SDL.txt */,
 				7444885E15BF04EF006595CE /* TPL-LICENSE.txt */,
+				747D228515C0566300CE1AC9 /* LICENSE_1_0_BOOST.txt */,
 			);
 			path = licenses;
 			sourceTree = "<group>";
@@ -771,6 +772,7 @@
 			children = (
 				7444888015BF04EF006595CE /* ClientMap.cpp */,
 				7444888115BF04EF006595CE /* ClientSocket.cpp */,
+				74C5767E15C1EC6D0033691A /* Collect.cpp */,
 				7444888215BF04EF006595CE /* Dungeon.cpp */,
 				7444888315BF04EF006595CE /* Entities.cpp */,
 				7444888415BF04EF006595CE /* EntityMap.cpp */,
@@ -778,13 +780,13 @@
 				7444888615BF04EF006595CE /* Graphics.cpp */,
 				7444888715BF04EF006595CE /* Keyboard.cpp */,
 				7444888A15BF04EF006595CE /* NetworkLib.cpp */,
+				7436130515BFAC0D00CC2BCA /* Platform.cpp */,
 				7444888B15BF04EF006595CE /* RenderMap.cpp */,
 				7444888C15BF04EF006595CE /* Serialization.cpp */,
 				7444888D15BF04EF006595CE /* ServerSocket.cpp */,
 				7444888E15BF04EF006595CE /* TileMap.cpp */,
 				7444888F15BF04EF006595CE /* Tiles.cpp */,
 				7444889015BF04EF006595CE /* tpl.c */,
-				7436130515BFAC0D00CC2BCA /* Platform.cpp */,
 			);
 			name = src;
 			path = ../src;
@@ -1115,7 +1117,7 @@
 		744487C815BF0464006595CE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "The ASCII Project";
 			};
 			buildConfigurationList = 744487CB15BF0464006595CE /* Build configuration list for PBXProject "The ASCII Project" */;
@@ -1160,7 +1162,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				743612F715BFA82D00CC2BCA /* ClientMap.cpp in Sources */,
-				743612F815BFA82D00CC2BCA /* ClientSocket.cpp in Sources */,
 				743612F915BFA82D00CC2BCA /* Graphics.cpp in Sources */,
 				743612FA15BFA82D00CC2BCA /* Keyboard.cpp in Sources */,
 				743612FB15BFA82D00CC2BCA /* Serialization.cpp in Sources */,
@@ -1187,6 +1188,7 @@
 				744488B515BF04EF006595CE /* ClientMap.cpp in Sources */,
 				744488C115BF04EF006595CE /* Serialization.cpp in Sources */,
 				744488BE15BF04EF006595CE /* Main_Server.cpp in Sources */,
+				74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,6 +1219,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1244,6 +1248,15 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lssl",
+					"-lcrypto",
+					"-ltcod",
+					"-Wl,-rpath,.",
+					"-lpthread",
+					"-lboost_system",
+					"-lboost_thread",
+				);
 				PRODUCT_NAME = "The ASCII Project";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
@@ -1255,6 +1268,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1276,6 +1291,15 @@
 					"\"$(SRCROOT)/../osx\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"-lssl",
+					"-lcrypto",
+					"-ltcod",
+					"-Wl,-rpath,.",
+					"-lpthread",
+					"-lboost_system",
+					"-lboost_thread",
+				);
 				PRODUCT_NAME = "The ASCII Project";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
@@ -1297,7 +1321,7 @@
 					/Library/Frameworks/SDL.framework/Headers,
 					/usr/local/include/,
 				);
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D_VERSION='\"2.3.9.7\"'",
 					"-DMACOSX",
@@ -1309,6 +1333,8 @@
 					"-ltcod",
 					"-Wl,-rpath,.",
 					"-lpthread",
+					"-lboost_system-mt",
+					"-lboost_thread-mt",
 				);
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -1330,7 +1356,7 @@
 					/Library/Frameworks/SDL.framework/Headers,
 					/usr/local/include/,
 				);
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D_VERSION='\"2.3.9.7\"'",
 					"-DMACOSX",
@@ -1342,6 +1368,8 @@
 					"-ltcod",
 					"-Wl,-rpath,.",
 					"-lpthread",
+					"-lboost_system-mt",
+					"-lboost_thread-mt",
 				);
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -1384,6 +1412,8 @@
 					"-lcrypto",
 					"-Wl,-rpath,.",
 					"-lpthread",
+					"-lboost_system-mt",
+					"-lboost_thread-mt",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1420,6 +1450,8 @@
 					"-lcrypto",
 					"-Wl,-rpath,.",
 					"-lpthread",
+					"-lboost_system-mt",
+					"-lboost_thread-mt",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;

@@ -24,7 +24,7 @@ s_render_t ClientMapPacker::clientToSerial(render_t source)
     printf("size check %d\n", (unsigned)wcslen(cMap.symbol) + 1);
     printf("value of ""size"" %d\n", (unsigned)size);
     //lMap.ASCII = ascii;
-    lMap.size = size;
+    lMap.size = (int)size;
     int i;
     for (i = 0; i < size; i++) {
         lMap.ASCII[i] = ascii[i];
@@ -145,9 +145,9 @@ void ClientMapPacker::unpackFromNet(ClientMap *dest, unsigned char *buf)
     clientMap = dest;
     
     tn = tpl_map((char *)"S(ic#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
-    //printf("Buffer has been mapped\n");
+    printf("Buffer has been mapped\n");
     tpl_load(tn, TPL_MEM | TPL_EXCESS_OK, buf, 128);
-    //printf("Buffer Loaded\n");
+    printf("Buffer Loaded\n");
     tpl_unpack(tn, 0);
     rMap = dest->cMap[sMap.x][sMap.y];
     

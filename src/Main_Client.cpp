@@ -41,19 +41,15 @@
 #include "headers.h"
 #include "Platform.h"
 
-
+// Our ASIO tcp object
+using boost::asio::ip::tcp;
 
 
 // Lets's Rock n' Roll
 
 int main(int argc, char *argv[])
 {
-    
-    // boring variables
-    bool quit = false;
-    
     // This is our custom Apple app building stuff
-    
 #ifdef __APPLE__
     macApp_setRelativePath();
 #endif
@@ -61,41 +57,50 @@ int main(int argc, char *argv[])
     ClientMap *cMap = new ClientMap();
     
     GraphicsTCOD *output = new GraphicsTCOD(cMap);
-    Keyboard *kboard = new Keyboard(0, 0);
+    //Keyboard *kboard = new Keyboard(0, 0);
+    ClientMapPacker *packer = new ClientMapPacker();    
+
+    // io_service for Boost::ASIO
+    boost::asio::io_service io_service;
+    // Next we attach our io_service to our resolver
+    tcp::resolver resolver(io_service);
+    tcp::resolver::query query("theasciiproject.com", "5250");
+    tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
+    tcp::socket socket(io_service);
+    boost::asio::connect(socket, endpoint_iterator);
+    // At this point our connection to our server should be open.
+    
+    for (;;)
+    {
+        //char buf[128];
+        boost::array<char, 128> buf;
+        boost::system::error_code error;
+        //size_t bytes_transferred =
+        socket.receive(boost::asio::buffer(buf));
+        //char *buf = new char[128];
+        boost::asio::const_buffer b1 = boost::asio::buffer(buf);
+        const unsigned char* p1 = boost::asio::buffer_cast<const unsigned char*>(b1);
+        packer->unpackFromNet(cMap, (unsigned char*)p1);
+        output->render();
+    }
     
     
-    SocketHandler h;
-    MapSocket *p = new MapSocket(h);
-    p->loadClientMap(cMap);
-    p->assignLocalOut(output);
     
-    p->SetDeleteByHandler();
-    
-    printf("Trying to connect to server...\n");
-    //p->Open("theasciiproject.com", 5250);
-    p->Open("localhost", 5250);
-    h.Add(p);
-    h.Select(1, 0);
     
     // Main Game Loop
-    while (!TCODConsole::isWindowClosed()) {
-        
-        //while (h.GetCount()) {
-        
-        h.Select(1, 0);
-        
-        //}
+ /*   while (!TCODConsole::isWindowClosed()) {
+    
         
         output->render();
         output->clearScreen();
         
-        quit = kboard->handleKeys();
+        bool quit = kboard->handleKeys();
         
-        if (quit) {
-            h.SetClose();
+        if (quit)
             break;
-        }
+        
     }
+    */
     
     return 0;
 }

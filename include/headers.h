@@ -36,8 +36,10 @@
  * =====================================================================================
  */
 
+// Our global constants
+#include "constants.h"
 
-// Standard headers first
+// Standard Library headers
 #include <arpa/inet.h>   /* ntohl htonl */
 #include <string.h>      /* memcpy */
 #include <math.h>
@@ -48,44 +50,33 @@
 #include <map>
 #include <string>
 #include <wchar.h>
-
 #include <clocale>
 #include <cstdlib>
-
 #include <stddef.h>
 #include <inttypes.h>
 #include <sstream>
 
+// Now's a good time to bring in Boost
+// Which we'll store references to here
+#include "BoostLibs.h"
+
+// Implementing the tpl serialization library
+#include "Serialization.h"
+
 // Our namespaces
+// Or rather, just std at this time :-)
 using namespace std;
-
-
-// Our global constants
-#include "constants.h"
 
 
 // 3rd party local headers
 #include "libtcod/libtcod.hpp"
 #include "tpl.h"
 
-// 3rd party system level library headers
-#include <Sockets/TcpSocket.h>
-#include <Sockets/ISocketHandler.h>
-#include <Sockets/StdoutLog.h>
-#include <Sockets/SocketHandler.h>
-#include <Sockets/TcpSocket.h>
-#include <Sockets/ListenSocket.h>
-#include <Sockets/Utility.h>
-#include <Sockets/Parse.h>
-
-
-
 // Our most important objects
 #include "Tiles.h"
 #include "TileMap.h"
 #include "Entities.h"
 #include "EntityMap.h"
-
 
 // Our standalone engine libraries
 #include "FovLib.h"
@@ -98,20 +89,17 @@ using namespace std;
 // This will be rewritten "soon"
 #include "Keyboard.h"
 
-// Experimental
-#include "NetworkLib.h"
-#include "ServerSocket.h"
-#include "ClientSocket.h"
 
-#include "Serialization.h"
 
+// Collect.h holds our data
+// Collection functions
+#include "Collect.h"
 
 
 
 // Nothing should depend on our graphics library, ever.
 #include "RenderMap.h"
 #include "ClientMap.h"
-
 #include "Graphics.h"
 
 
