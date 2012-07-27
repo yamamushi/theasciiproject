@@ -94,7 +94,7 @@
         <in>TileMap.h</in>
         <in>Tiles.h</in>
         <in>constants.h</in>
-        <in>headers.h</in>
+        <in>Headers.h</in>
         <in>tpl.h</in>
       </df>
       <df name="licenses">

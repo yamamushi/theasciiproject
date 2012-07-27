@@ -116,7 +116,7 @@
 		7444880C15BF04EF006595CE /* EntityMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityMap.h; sourceTree = "<group>"; };
 		7444880D15BF04EF006595CE /* FovLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FovLib.h; sourceTree = "<group>"; };
 		7444880E15BF04EF006595CE /* Graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graphics.h; sourceTree = "<group>"; };
-		7444881015BF04EF006595CE /* headers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = headers.h; sourceTree = "<group>"; };
+		7444881015BF04EF006595CE /* Headers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Headers.h; sourceTree = "<group>"; };
 		7444881115BF04EF006595CE /* Keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keyboard.h; sourceTree = "<group>"; };
 		7444881315BF04EF006595CE /* bresenham.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bresenham.h; sourceTree = "<group>"; };
 		7444881415BF04EF006595CE /* bresenham.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bresenham.hpp; sourceTree = "<group>"; };
@@ -595,7 +595,7 @@
 				7444880C15BF04EF006595CE /* EntityMap.h */,
 				7444880D15BF04EF006595CE /* FovLib.h */,
 				7444880E15BF04EF006595CE /* Graphics.h */,
-				7444881015BF04EF006595CE /* headers.h */,
+				7444881015BF04EF006595CE /* Headers.h */,
 				7444881115BF04EF006595CE /* Keyboard.h */,
 				7444881215BF04EF006595CE /* libtcod */,
 				7444885215BF04EF006595CE /* NetworkLib.h */,
@@ -1381,7 +1381,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1425,7 +1425,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (

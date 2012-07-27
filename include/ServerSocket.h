@@ -39,72 +39,46 @@
 class ClientMapPacker;
 
 
-class ServerSocket : public SocketHandler {
-
+class tcp_connection
+: public boost::enable_shared_from_this<tcp_connection>
+{
+    
 private:
-
-    bool m_quit;
-
+    tcp_connection(boost::asio::io_service& io_service) : socket_(io_service) {};
+    
+    void handle_write(size_t bytes);
+    
+    tcp::socket socket_;
+    std::string message_;
+    std::vector<char *> mapBuf;
+    
+    
 public:
-	ServerSocket(StdLog *p);
-	~ServerSocket();
-
-	void List(TcpSocket *p);
-	void SetQuit();
-	bool Quit();
-
+    
+    typedef boost::shared_ptr<tcp_connection> pointer;
+    static pointer create(boost::asio::io_service& io_service);
+    tcp::socket& socket();
+    
+    void start();
+    
+    
 };
 
 
 
 
-class DisplaySocketMenu : public TcpSocket {
-
+class tcp_server
+{
+    
 private:
-
-
+    void start_accept();
+    
+    void handle_accept(tcp_connection::pointer new_connection, const boost::system::error_code& error);
+    
+    tcp::acceptor acceptor_;
+    
 public:
-
-	DisplaySocketMenu(ISocketHandler& h);
-	void OnAccept();
-	void OnLine(const std::string& line);
-
-};
-
-
-
-
-
-
-
-class SendRawMap : public SocketHandler {
-
-private:
-
-    bool m_quit;
-    Entity *src;
-    ClientMapPacker *packer;
-
-public:
-
-
-    unsigned char *buffer;
-
-    SendRawMap(StdLog *p);
-    ~SendRawMap();
-
-    //void init(unsigned char *buffer);
-    void init(Entity *player);
-    void TransmitRaw(TcpSocket *out);
-
-    void List(TcpSocket *p);
-
-    void SetQuit() {
-        m_quit = true;
-    }
-
-    bool Quit() {
-        return m_quit;
-    }
-
+    tcp_server(boost::asio::io_service& io_service);
+    
+    
 };

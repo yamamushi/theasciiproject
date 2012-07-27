@@ -37,64 +37,56 @@
  */
 
 // First our custom headers
-//
-#include "headers.h"
+#include "Headers.h"
+#include "ServerSocket.h"
+
+
+Entity *test;
+
+
 
 
 // Lets's Rock n' Roll
 
 int main(int argc, char *argv[]){
-    
-    
-    // Temporary variable (see Entities.cpp)
-    //extern unsigned int UIDList;
-    
-    // Let's get things setup
-    //Keyboard *kboard = new Keyboard();
-    
-    TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);
-    
+        
+    TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);    
     // Temporary Dungeon Generator
-    Dungeon::Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
-    
+    Dungeon::Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);    
     // init Fov Lib ASAP after TileMap and Dungeon have been initialized.
     FovLib *fovLib = new FovLib(map);
-    
     // Obviously our entity map would depend on FOV being loaded.
     EntityMap *entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT, map, fovLib);
     
     Entity *player = new Player();
     Goblin *goblin = new Goblin();
     
-    entMap->addToMap(player);
-    entMap->initAllEnts();
-    
     // Entities don't have to be initialized at the same time, they can
     // also be initialized individually.
+    entMap->addToMap(player);
+    entMap->initAllEnts();
     entMap->addToMap(goblin);
     
     goblin->move(map->rooms[5]->cX, map->rooms[5]->cY);
     player->move(map->rooms[1]->cX, map->rooms[1]->cY);
     
     RenderMap *rMap = new RenderMap(map, entMap);
-    player->associateClient(rMap);
-    
+    player->associateClient(rMap);    
     rMap->refreshMap();
+        
+    test = player;
+
     
-    
-    // Main Game Loop
-            
-    //  for (x = 0; x < MAP_WIDTH; x++) {
-    //      for (y = 0; y < MAP_HEIGHT; y++) {
-    //          if ((player->fov[x][y])) {
-    
-    //  unsigned char *buffer = new unsigned char[128];
-    //    render_t tmp = player->returnCMap()->cMap[player->posX()][player->posY()];
-    //   packer->packToNet(tmp, buffer);
-    //   packer->unpackFromNet(testMap, buffer);
-    
-    //      testMap->cMap[x][y].visible = false;
-    //      testMap->cMap[x][y].occupied = false;
+    try
+    {
+        boost::asio::io_service io_service;
+        tcp_server server(io_service);
+        io_service.run();
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
     
         
     

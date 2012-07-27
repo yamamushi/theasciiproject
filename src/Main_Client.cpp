@@ -38,7 +38,7 @@
 
 // First our custom headers
 //
-#include "headers.h"
+#include "Headers.h"
 #include "Platform.h"
 
 // Our ASIO tcp object
@@ -57,14 +57,14 @@ int main(int argc, char *argv[])
     ClientMap *cMap = new ClientMap();
     
     GraphicsTCOD *output = new GraphicsTCOD(cMap);
-    //Keyboard *kboard = new Keyboard(0, 0);
-    ClientMapPacker *packer = new ClientMapPacker();    
-
+    Keyboard *kboard = new Keyboard(0, 0);
+    ClientMapPacker *packer = new ClientMapPacker();
+    
     // io_service for Boost::ASIO
     boost::asio::io_service io_service;
     // Next we attach our io_service to our resolver
     tcp::resolver resolver(io_service);
-    tcp::resolver::query query("theasciiproject.com", "5250");
+    tcp::resolver::query query("localhost", "5250");
     tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
     tcp::socket socket(io_service);
     boost::asio::connect(socket, endpoint_iterator);
@@ -72,26 +72,38 @@ int main(int argc, char *argv[])
     
     for (;;)
     {
-        //char buf[128];
-        boost::array<char, 128> buf;
-        boost::system::error_code error;
-        //size_t bytes_transferred =
-        socket.receive(boost::asio::buffer(buf));
-        //char *buf = new char[128];
-        boost::asio::const_buffer b1 = boost::asio::buffer(buf);
-        const unsigned char* p1 = boost::asio::buffer_cast<const unsigned char*>(b1);
-        packer->unpackFromNet(cMap, (unsigned char*)p1);
-        output->render();
+        try {
+            boost::array<char, 128> buf;
+            boost::system::error_code error;
+            socket.receive(boost::asio::buffer(buf));
+            
+            //char *buf = new char[128];
+            boost::asio::const_buffer b1 = boost::asio::buffer(buf);
+            const unsigned char* p1 = boost::asio::buffer_cast<const unsigned char*>(b1);
+            packer->unpackFromNet(cMap, (unsigned char*)p1);
+        }
+        catch (std::exception& e)
+        {
+            std::cerr << e.what() << std::endl;
+            break;
+        }
+        
     }
     
     
     
     
     // Main Game Loop
- /*   while (!TCODConsole::isWindowClosed()) {
-    
+    while (!TCODConsole::isWindowClosed()) {
+        
+        
+        //char buf[128];
+        
+        //size_t bytes_transferred =
         
         output->render();
+        
+        
         output->clearScreen();
         
         bool quit = kboard->handleKeys();
@@ -100,7 +112,7 @@ int main(int argc, char *argv[])
             break;
         
     }
-    */
+    
     
     return 0;
 }
