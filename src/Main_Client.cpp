@@ -41,9 +41,9 @@
 #include "Headers.h"
 #include "Platform.h"
 
+
 // Our ASIO tcp object
 using boost::asio::ip::tcp;
-
 
 // Lets's Rock n' Roll
 
@@ -54,65 +54,60 @@ int main(int argc, char *argv[])
     macApp_setRelativePath();
 #endif
     
-    ClientMap *cMap = new ClientMap();
+    ClientMap *cMap = new ClientMap;
+    ClientMapPacker *packer = new ClientMapPacker;
     
     GraphicsTCOD *output = new GraphicsTCOD(cMap);
     Keyboard *kboard = new Keyboard(0, 0);
-    ClientMapPacker *packer = new ClientMapPacker();
     
-    // io_service for Boost::ASIO
-    boost::asio::io_service io_service;
-    // Next we attach our io_service to our resolver
-    tcp::resolver resolver(io_service);
-    tcp::resolver::query query("localhost", "5250");
-    tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
-    tcp::socket socket(io_service);
-    boost::asio::connect(socket, endpoint_iterator);
-    // At this point our connection to our server should be open.
-    
-    for (;;)
+    try
     {
-        try {
-            boost::array<char, 128> buf;
-            boost::system::error_code error;
-            socket.receive(boost::asio::buffer(buf));
+        boost::asio::io_service io_service;
+        
+        tcp::resolver resolver(io_service);
+        tcp::resolver::query query("localhost", "5250");
+        tcp::resolver::iterator iterator = resolver.resolve(query);
+        
+        
+        ClientSession c(io_service, iterator);
+        boost::thread t(boost::bind(&boost::asio::io_service::run, &io_service));
+        
+        
+        
+        
+        // Main Game Loop
+        while (!TCODConsole::isWindowClosed()) {
             
-            //char *buf = new char[128];
-            boost::asio::const_buffer b1 = boost::asio::buffer(buf);
-            const unsigned char* p1 = boost::asio::buffer_cast<const unsigned char*>(b1);
-            packer->unpackFromNet(cMap, (unsigned char*)p1);
+
+            try
+            {
+                c.read_map(cMap, packer);
+            }
+            catch (std::exception& e)
+            {
+                std:cerr << "Exception: " << e.what() << "\n";
+            }
+            
+            cout << "Iteration\n";
+            output->render();
+            output->clearScreen();
+            
+            
+            bool quit = kboard->handleKeys();
+            
+            if (quit)
+            {
+                c.close();
+                t.join();
+                break;
+            }
+            
         }
-        catch (std::exception& e)
-        {
-            std::cerr << e.what() << std::endl;
-            break;
-        }
-        
     }
-    
-    
-    
-    
-    // Main Game Loop
-    while (!TCODConsole::isWindowClosed()) {
-        
-        
-        //char buf[128];
-        
-        //size_t bytes_transferred =
-        
-        output->render();
-        
-        
-        output->clearScreen();
-        
-        bool quit = kboard->handleKeys();
-        
-        if (quit)
-            break;
-        
+    catch (std::exception& e)
+    {
+        cerr << "Exception: " << e.what() << "\n";
     }
-    
     
     return 0;
 }

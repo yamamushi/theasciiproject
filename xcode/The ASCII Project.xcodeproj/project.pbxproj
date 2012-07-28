@@ -41,6 +41,7 @@
 		744488CC15BF0B84006595CE /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		744488CD15BF0C23006595CE /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		74448A3115BF2D07006595CE /* libSockets.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488D515BF297E006595CE /* libSockets.a */; };
+		745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
 /* End PBXBuildFile section */
 
@@ -1167,6 +1168,7 @@
 				743612FB15BFA82D00CC2BCA /* Serialization.cpp in Sources */,
 				743612FC15BFA82D00CC2BCA /* tpl.c in Sources */,
 				7436130615BFAC0D00CC2BCA /* Platform.cpp in Sources */,
+				745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */,
 				743612FD15BFA82D00CC2BCA /* Main_Client.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

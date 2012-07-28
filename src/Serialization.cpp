@@ -4,6 +4,10 @@ ClientMapPacker::ClientMapPacker()
 {
 }
 
+void ClientMapPacker::associateClientMap(ClientMap *cMap)
+{
+}
+
 s_render_t ClientMapPacker::clientToSerial(render_t source)
 {
     
@@ -85,9 +89,10 @@ render_t ClientMapPacker::serialToClient(s_render_t lMap)
     //strncpy( tmp, lMap.ASCII, size);
     //printf("if our char copied properly we should have %s\n", tmp);
     wchar_t *wstr = new wchar_t[1];
-    
+    cout << "wstr generated\n";
     mbstowcs(wstr, lMap.ASCII, size);
     rMap->symbol = wstr;
+    cout << "symbol attached\n";
     //printf("after assignment %S\n", clientMap->cMap[cMap.x][cMap.y]->symbol);
     
     
@@ -137,33 +142,34 @@ void ClientMapPacker::packToNet(render_t source, unsigned char *buf)
     tpl_free(tn);
 }
 
-void ClientMapPacker::unpackFromNet(ClientMap *dest, unsigned char *buf)
+void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf)
 {
-    
+    clientMap = client;
     s_render_t sMap;
     
-    clientMap = dest;
-    
     tn = tpl_map((char *)"S(ic#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
-    printf("Buffer has been mapped\n");
+    //printf("Buffer has been mapped\n");
     tpl_load(tn, TPL_MEM | TPL_EXCESS_OK, buf, 128);
-    printf("Buffer Loaded\n");
+    //printf("Buffer Loaded\n");
     tpl_unpack(tn, 0);
-    rMap = dest->cMap[sMap.x][sMap.y];
+    //printf("Buffer Unpacked\n");
+    rMap = clientMap->cMap[sMap.x][sMap.y];
+    cout << "rMap Generated\n";
     
     render_t cMap = serialToClient(sMap);
+    //cout << "rMap populated\n";
     
-    dest->cMap[cMap.x][cMap.y]->x = cMap.x;
-    dest->cMap[cMap.x][cMap.y]->y = cMap.y;
-    dest->cMap[cMap.x][cMap.y]->H = cMap.H;
-    dest->cMap[cMap.x][cMap.y]->S = cMap.S;
-    dest->cMap[cMap.x][cMap.y]->V = cMap.V;
-    dest->cMap[cMap.x][cMap.y]->HD = cMap.HD;
-    dest->cMap[cMap.x][cMap.y]->SD = cMap.SD;
-    dest->cMap[cMap.x][cMap.y]->VD = cMap.VD;
-    dest->cMap[cMap.x][cMap.y]->explored = cMap.explored;
-    dest->cMap[cMap.x][cMap.y]->occupied = cMap.occupied;
-    dest->cMap[cMap.x][cMap.y]->visible = cMap.visible;
+    clientMap->cMap[cMap.x][cMap.y]->x = cMap.x;
+    clientMap->cMap[cMap.x][cMap.y]->y = cMap.y;
+    clientMap->cMap[cMap.x][cMap.y]->H = cMap.H;
+    clientMap->cMap[cMap.x][cMap.y]->S = cMap.S;
+    clientMap->cMap[cMap.x][cMap.y]->V = cMap.V;
+    clientMap->cMap[cMap.x][cMap.y]->HD = cMap.HD;
+    clientMap->cMap[cMap.x][cMap.y]->SD = cMap.SD;
+    clientMap->cMap[cMap.x][cMap.y]->VD = cMap.VD;
+    clientMap->cMap[cMap.x][cMap.y]->explored = cMap.explored;
+    clientMap->cMap[cMap.x][cMap.y]->occupied = cMap.occupied;
+    clientMap->cMap[cMap.x][cMap.y]->visible = cMap.visible;
     
 }
 

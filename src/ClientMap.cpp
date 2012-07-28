@@ -79,6 +79,19 @@ void ClientMap::clearMap(){
     }
 }
 
+void ClientMap::cleanMap()
+{
+    int x, y;
+    for (x = 0; x < MAP_WIDTH; x++){
+        for (y = 0; y < MAP_HEIGHT; y++){
+            cMap[x][y]->occupied = false;
+            cMap[x][y]->visible = false;
+        }
+    }
+    
+}
+
+
 void ClientMap::importSquare(int x, int y, render_t *square){
     
     cMap[x][y] = square;

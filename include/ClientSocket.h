@@ -39,26 +39,48 @@
 class GraphicsTCOD;
 class ClientMapPacker;
 
-class ClientSocket : public TcpSocket {
+//typedef std::deque<chat_message> chat_message_queue;
+
+class ClientSession
+{
+private:
+    boost::asio::io_service& io_service_;
+    tcp::socket socket_;
+    
+    
+    void handle_connect(const boost::system::error_code& error);    
+    void do_close();
+    
     
 public:
-    ClientSocket(ISocketHandler& h);
     
-    void OnRead();
     
+    ClientSession(boost::asio::io_service& io_service, tcp::resolver::iterator endpoint_iterator);
+    void read_map(ClientMap *client, ClientMapPacker *pEngine);
+    void write();
+    void close(); 
+    
+
+
 };
 
-class MapSocket : public TcpSocket {
-    
-    ClientMap *dest;
-    GraphicsTCOD *out;
-    
-public:
-    
-    MapSocket(ISocketHandler& h);
-    
-    void OnRead();
-    void loadClientMap(ClientMap *client);
-    void assignLocalOut(GraphicsTCOD *screen);
-    
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

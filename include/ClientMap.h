@@ -55,6 +55,7 @@ public:
     void initClientMap();
     
     void clearMap();
+    void cleanMap();
     
     void importSquare(int x, int y, render_t *square);
     render_t *exportSquare(int x, int y);

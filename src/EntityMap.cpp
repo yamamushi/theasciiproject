@@ -147,7 +147,7 @@ void EntityMap::refreshEntityMap(){
                     
 					// First we check to see if this entities
 					// coordinates differ from our own:
-					Entity *cur = pos[x][y].at(z);
+					Entity *cur = pos[x][y].back();
                     
 					if ( (x != (cur->posX())) || (y != (cur->posY())) ){
 						// now we do some magic
@@ -155,7 +155,8 @@ void EntityMap::refreshEntityMap(){
 						int newY = cur->posY();
                         
 						pos[newX][newY].push_back(cur);
-						pos[x][y].erase(pos[x][y].begin()+z);
+                        pos[x][y].pop_back();
+                        
 					}
 				}
 			}

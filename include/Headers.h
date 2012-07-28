@@ -111,6 +111,7 @@ using boost::asio::ip::tcp;
 // Following the OSI model
 // Our Network Layer should
 // Always go last
+#include "ClientSocket.h"
 
 
 

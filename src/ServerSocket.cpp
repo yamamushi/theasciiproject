@@ -60,26 +60,52 @@ void tcp_connection::start()
     cout << "Entity pointer defined\n";
     
     cout << "Vector assigned\n";
-    
-    vector<char *> *mapBuf = new vector<char *>;
-    renderForPlayer(test, mapBuf);
-    
-    //socket_.send( boost::asio::buffer(*mapBuf), boost::bind(&tcp_connection::handle_write, shared_from_this()));
-    //const char * px = reinterpret_cast<const char*>(&mapBuf);
-    
-    for (int x=0; x < mapBuf->size(); x++)
+    while(socket_.is_open())
     {
-    boost::asio::async_write(socket_, boost::asio::buffer(mapBuf->at(x), 128),
-                             boost::bind(&tcp_connection::handle_write, shared_from_this(), boost::asio::placeholders::bytes_transferred));
+        TCODRandom *rng = new TCODRandom();
+        int x, y;
+        bool moved = false;
+        
+        while(!moved){
+            x = rng->getInt(-1, 1);
+            y = rng->getInt(-1, 1);
+            moved = test->move(x, y);
+        }
+        
+        
+        vector<char *> *mapBuf = new vector<char *>;
+        renderForPlayer(test, mapBuf);
+        
+        //socket_.send( boost::asio::buffer(*mapBuf), boost::bind(&tcp_connection::handle_write, shared_from_this()));
+        //const char * px = reinterpret_cast<const char*>(&mapBuf);
+        //try
+        //{
+        
+        while(!mapBuf->empty())
+        {
+            boost::asio::async_write(socket_, boost::asio::buffer(mapBuf->back(), 128),
+                                     boost::bind(&tcp_connection::handle_write, shared_from_this(), boost::asio::placeholders::bytes_transferred));
+            mapBuf->pop_back();
+        }
+        
+        delete rng;
+        delete mapBuf;
+        
+        //}
+        //catch (std::exception& e)
+        //{
+        //    std::cerr << e.what() << std::endl;
+        //    break;
+        //}
+        
     }
-    
     
 }
 
 
 void tcp_connection::handle_write(size_t bytes)
 {
-    cout << bytes << ": bytes sent\n";
+    
 }
 
 
