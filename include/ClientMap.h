@@ -56,6 +56,12 @@ public:
     
     void clearMap();
     void cleanMap();
+    void deleteMap();
+    void refreshSquare(int x, int y);
+    void removeSquare(int x, int y);
+    void createSquare(int x, int y);
+    
+    
     
     void importSquare(int x, int y, render_t *square);
     render_t *exportSquare(int x, int y);

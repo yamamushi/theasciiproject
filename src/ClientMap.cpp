@@ -79,8 +79,42 @@ void ClientMap::clearMap(){
     }
 }
 
+void ClientMap::deleteMap(){
+    
+    int x, y;
+    
+    for (x = 0; x < MAP_WIDTH; x++){
+        for (y = 0; y < MAP_HEIGHT; y++){
+            
+            delete cMap[x][y];
+        }
+    }
+    
+}
+
+void ClientMap::refreshSquare(int x, int y){
+        
+    removeSquare(x, y);
+    createSquare(x, y);
+    
+}
+
+void ClientMap::removeSquare(int x, int y){
+    
+    delete cMap[x][y];
+    
+}
+
+void ClientMap::createSquare(int x, int y){
+    
+    cMap[x][y] = new render_t;
+    
+}
+
+
 void ClientMap::cleanMap()
 {
+
     int x, y;
     for (x = 0; x < MAP_WIDTH; x++){
         for (y = 0; y < MAP_HEIGHT; y++){

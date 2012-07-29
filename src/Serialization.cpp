@@ -89,11 +89,15 @@ render_t ClientMapPacker::serialToClient(s_render_t lMap)
     //strncpy( tmp, lMap.ASCII, size);
     //printf("if our char copied properly we should have %s\n", tmp);
     wchar_t *wstr = new wchar_t[1];
+    
     cout << "wstr generated\n";
     mbstowcs(wstr, lMap.ASCII, size);
+    
     rMap->symbol = wstr;
+    
     cout << "symbol attached\n";
     //printf("after assignment %S\n", clientMap->cMap[cMap.x][cMap.y]->symbol);
+    //delete wstr;
     
     
     cMap.x = lMap.x;
@@ -153,6 +157,10 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf)
     //printf("Buffer Loaded\n");
     tpl_unpack(tn, 0);
     //printf("Buffer Unpacked\n");
+    
+    //free(clientMap->cMap[sMap.x][sMap.y]->symbol);
+    
+    clientMap->refreshSquare(sMap.x, sMap.y); 
     rMap = clientMap->cMap[sMap.x][sMap.y];
     cout << "rMap Generated\n";
     
@@ -170,6 +178,7 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf)
     clientMap->cMap[cMap.x][cMap.y]->explored = cMap.explored;
     clientMap->cMap[cMap.x][cMap.y]->occupied = cMap.occupied;
     clientMap->cMap[cMap.x][cMap.y]->visible = cMap.visible;
+    tpl_free(tn);
     
 }
 
