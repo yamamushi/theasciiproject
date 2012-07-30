@@ -145,12 +145,14 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf, Graph
     
     if(!tpl_load(tn, TPL_MEM | TPL_EXCESS_OK, buf, 128))
     {
-
+        
         tpl_unpack(tn, 0);
         
         rMap = clientMap->cMap[sMap.x][sMap.y];
         
+        
         render_t cMap = serialToClient(sMap);
+        
         
         clientMap->cMap[cMap.x][cMap.y]->x = cMap.x;
         clientMap->cMap[cMap.x][cMap.y]->y = cMap.y;
@@ -163,8 +165,12 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf, Graph
         clientMap->cMap[cMap.x][cMap.y]->explored = cMap.explored;
         clientMap->cMap[cMap.x][cMap.y]->occupied = cMap.occupied;
         clientMap->cMap[cMap.x][cMap.y]->visible = cMap.visible;
+        
         screen->drawAt(cMap.x, cMap.y);
+        
         clientMap->refreshSquare(sMap.x, sMap.y);
+        
+        
     }
     
     

@@ -50,6 +50,9 @@
 #include <vector>
 #include <typeinfo>
 #include <map>
+#include <list>
+#include <set>
+#include <deque>
 #include <ctime>
 #include <string>
 #include <wchar.h>
@@ -112,6 +115,8 @@ using boost::asio::ip::tcp;
 // Our Network Layer should
 // Always go last
 #include "ClientSocket.h"
+
+
 
 
 
