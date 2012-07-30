@@ -27,3 +27,4 @@ server
 
 # Xcode stuff
 */xcuserdatad/
+*.xcworkspace
