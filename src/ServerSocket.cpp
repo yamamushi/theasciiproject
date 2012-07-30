@@ -39,102 +39,197 @@
 #include "Headers.h"
 #include "ServerSocket.h"
 
-typedef boost::shared_ptr<tcp_connection> pointer;
+typedef boost::shared_ptr<client_connection> pointer;
+typedef boost::shared_ptr<client_participant> client_participant_ptr;
+typedef boost::shared_ptr<client_connection> client_connection_ptr;
 
 
 
-pointer tcp_connection::create(boost::asio::io_service& io_service)
+void client_pool::join(client_participant_ptr client)
 {
-    return pointer(new tcp_connection(io_service));
+    clients_.insert(client);
+    
 }
 
-tcp::socket& tcp_connection::socket()
+
+void client_pool::leave(client_participant_ptr client)
+{
+    clients_.erase(client);
+}
+
+
+void client_pool::deliver()
+{
+    
+    std::for_each(clients_.begin(), clients_.end(), boost::bind(&client_participant::updatePlayerMap, _1));
+    
+}
+
+
+
+
+
+tcp::socket& client_connection::socket()
 {
     return socket_;
 }
 
-void tcp_connection::start()
+
+void client_connection::start()
 {
-    //message_ = make_daytime_string();
-    extern Entity *test;
-    cout << "Entity pointer defined\n";
+    client_pool_.join(shared_from_this());
     
-    cout << "Vector assigned\n";
-    while(socket_.is_open())
-    {
-        TCODRandom *rng = new TCODRandom();
-        int x, y;
-        bool moved = false;
+    mapBuf = new vector<char *>;
+    
+    sync();
+    //boost::asio::async_read(socket_, boost::asio::buffer(&tmp, 1), boost::bind(&client_connection::sync, shared_from_this()));
+    
+}
+
+
+void client_connection::sync()
+{
+    
+    if(mapBuf->empty()){
         
-        while(!moved){
-            x = rng->getInt(-1, 1);
-            y = rng->getInt(-1, 1);
-            moved = test->move(x, y);
-        }
-        
-        
-        vector<char *> *mapBuf = new vector<char *>;
-        renderForPlayer(test, mapBuf);
-        
-        //socket_.send( boost::asio::buffer(*mapBuf), boost::bind(&tcp_connection::handle_write, shared_from_this()));
-        //const char * px = reinterpret_cast<const char*>(&mapBuf);
-        //try
-        //{
-        
-        while(!mapBuf->empty())
-        {
-            boost::asio::async_write(socket_, boost::asio::buffer(mapBuf->back(), 128),
-                                     boost::bind(&tcp_connection::handle_write, shared_from_this(), boost::asio::placeholders::bytes_transferred));
-            mapBuf->pop_back();
-        }
-        
-        delete rng;
-        delete mapBuf;
-        
-        //}
-        //catch (std::exception& e)
-        //{
-        //    std::cerr << e.what() << std::endl;
-        //    break;
-        //}
+        updatePlayerMap();
         
     }
     
-}
-
-
-void tcp_connection::handle_write(size_t bytes)
-{
+    int x = atoi(&tmp);
+    
+    if(x != 0)
+    {
+        
+        handleAPI(x);
+        updatePlayerMap();
+        
+    }
+    
+    
+    boost::asio::async_write(socket_, boost::asio::buffer(mapBuf->back(), 128), boost::bind(&client_connection::handle_write, shared_from_this(), boost::asio::placeholders::bytes_transferred, boost::asio::placeholders::error));
+    
     
 }
 
 
 
-tcp_server::tcp_server(boost::asio::io_service& io_service)
-: acceptor_(io_service, tcp::endpoint(tcp::v4(), 5250))
-{
-    start_accept();
-}
 
 
-void tcp_server::start_accept()
-{
-    tcp_connection::pointer new_connection = tcp_connection::create(acceptor_.get_io_service());
-    
-    acceptor_.async_accept(new_connection->socket(),
-                           boost::bind(&tcp_server::handle_accept, this, new_connection,
-                                       boost::asio::placeholders::error));
-}
-
-void tcp_server::handle_accept(tcp_connection::pointer new_connection, const boost::system::error_code& error)
+void client_connection::handle_write(size_t bytes, const boost::system::error_code& error)
 {
     if (!error)
     {
-        new_connection->start();
+        free(mapBuf->back());
+        mapBuf->pop_back();
+        boost::asio::async_read(socket_, boost::asio::buffer(&tmp, 1), boost::bind(&client_connection::sync, shared_from_this()));
+    }
+    else{
+        delete mapBuf;
+        client_pool_.leave(shared_from_this());
+    }
+    
+}
+
+
+void client_connection::updatePlayerMap()
+{
+    
+    extern Entity *test;
+    
+    renderForPlayer(test, mapBuf);
+    
+}
+
+void client_connection::handleAPI(int api)
+{
+    extern Entity *test;
+    
+    // We start off by mapping our numpad keys
+    // To movement directions
+    
+    if ( api == 1)
+    {
+        test->move(-1, 1);
+    }
+    if ( api == 2)
+    {
+        test->move(0, 1);
+    }
+    if ( api == 3)
+    {
+        test->move(1, 1);
+    }
+    if (api == 4)
+    {
+        test->move(-1, 0);
+    }
+    if (api == 5)
+    {
+        test->move(0, 0);
+    }
+    if (api == 6)
+    {
+        test->move(1, 0);
+    }
+    if (api == 7)
+    {
+        test->move(-1, -1);
+    }
+    if (api == 8)
+    {
+        test->move(0, -1);
+    }
+    if (api == 9)
+    {
+        test->move(1, -1);
+    }
+    
+}
+
+
+
+
+
+
+
+game_server::game_server(boost::asio::io_service& io_service, const tcp::endpoint& endpoint)
+: io_service_(io_service), acceptor_(io_service, endpoint)
+{
+    start_accept();
+}
+
+
+void game_server::start_accept()
+{
+    client_connection_ptr new_session(new client_connection(io_service_, client_pool_));
+    
+    acceptor_.async_accept(new_session->socket(), boost::bind(&game_server::handle_accept, this, new_session, boost::asio::placeholders::error));
+}
+
+void game_server::handle_accept(client_connection_ptr client, const boost::system::error_code& error)
+{
+    if (!error)
+    {
+        client->start();
     }
     
     start_accept();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

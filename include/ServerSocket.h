@@ -39,46 +39,112 @@
 class ClientMapPacker;
 
 
-class tcp_connection
-: public boost::enable_shared_from_this<tcp_connection>
+
+
+class client_participant
+{
+public:
+    virtual ~client_participant() {}
+    virtual void sync() = 0;
+    virtual void updatePlayerMap() = 0;
+};
+
+typedef boost::shared_ptr<client_participant> client_participant_ptr;
+
+
+
+
+class client_pool
+{
+private:
+    std::set<client_participant_ptr> clients_;
+        
+public:
+    void join(client_participant_ptr client);
+    void leave(client_participant_ptr client);
+    void deliver();
+    
+    
+};
+
+
+
+
+
+class client_connection : public client_participant, public boost::enable_shared_from_this<client_connection>
 {
     
 private:
-    tcp_connection(boost::asio::io_service& io_service) : socket_(io_service) {};
-    
-    void handle_write(size_t bytes);
-    
     tcp::socket socket_;
-    std::string message_;
-    std::vector<char *> mapBuf;
-    
+    client_pool& client_pool_;
+    std::vector<char *> *mapBuf;
+    ClientMap *cMap;    
+    char tmp;
+    bool moved;
     
 public:
     
-    typedef boost::shared_ptr<tcp_connection> pointer;
-    static pointer create(boost::asio::io_service& io_service);
+    client_connection(boost::asio::io_service& io_service, client_pool& pool) : socket_(io_service), client_pool_(pool) {};
+    
     tcp::socket& socket();
-    
     void start();
+    void sync();
+    void handle_write(size_t bytes, const boost::system::error_code& error);
     
+    void updatePlayerMap();
+    void handleAPI(int api);
     
 };
 
 
 
 
-class tcp_server
+
+
+typedef boost::shared_ptr<client_connection> client_connection_ptr;
+
+
+class game_server
 {
     
 private:
-    void start_accept();
-    
-    void handle_accept(tcp_connection::pointer new_connection, const boost::system::error_code& error);
-    
+    boost::asio::io_service& io_service_;
     tcp::acceptor acceptor_;
+    client_pool client_pool_;
+    
     
 public:
-    tcp_server(boost::asio::io_service& io_service);
+    game_server(boost::asio::io_service& io_service, const tcp::endpoint& endpoint);
     
+    void start_accept();
+    void handle_accept(client_connection_ptr client, const boost::system::error_code& error);
     
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

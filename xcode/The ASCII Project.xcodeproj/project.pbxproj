@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7404071915C67C9D001F86B1 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888615BF04EF006595CE /* Graphics.cpp */; };
 		743612DD15BFA75800CC2BCA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743612AC15BFA55A00CC2BCA /* Cocoa.framework */; };
 		743612E315BFA75800CC2BCA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 743612E115BFA75800CC2BCA /* InfoPlist.strings */; };
 		743612E915BFA75800CC2BCA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 743612E715BFA75800CC2BCA /* Credits.rtf */; };
@@ -30,7 +31,6 @@
 		744488B815BF04EF006595CE /* Entities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888315BF04EF006595CE /* Entities.cpp */; };
 		744488B915BF04EF006595CE /* EntityMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888415BF04EF006595CE /* EntityMap.cpp */; };
 		744488BA15BF04EF006595CE /* FovLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888515BF04EF006595CE /* FovLib.cpp */; };
-		744488BC15BF04EF006595CE /* Keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888715BF04EF006595CE /* Keyboard.cpp */; };
 		744488BE15BF04EF006595CE /* Main_Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888915BF04EF006595CE /* Main_Server.cpp */; };
 		744488C015BF04EF006595CE /* RenderMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888B15BF04EF006595CE /* RenderMap.cpp */; };
 		744488C115BF04EF006595CE /* Serialization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888C15BF04EF006595CE /* Serialization.cpp */; };
@@ -1183,14 +1183,14 @@
 				744488B915BF04EF006595CE /* EntityMap.cpp in Sources */,
 				744488BA15BF04EF006595CE /* FovLib.cpp in Sources */,
 				744488B715BF04EF006595CE /* Dungeon.cpp in Sources */,
-				744488BC15BF04EF006595CE /* Keyboard.cpp in Sources */,
 				744488C015BF04EF006595CE /* RenderMap.cpp in Sources */,
 				744488C515BF04EF006595CE /* tpl.c in Sources */,
 				744488C215BF04EF006595CE /* ServerSocket.cpp in Sources */,
 				744488B515BF04EF006595CE /* ClientMap.cpp in Sources */,
+				7404071915C67C9D001F86B1 /* Graphics.cpp in Sources */,
 				744488C115BF04EF006595CE /* Serialization.cpp in Sources */,
-				744488BE15BF04EF006595CE /* Main_Server.cpp in Sources */,
 				74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */,
+				744488BE15BF04EF006595CE /* Main_Server.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

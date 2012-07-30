@@ -52,6 +52,7 @@ GraphicsTCOD::GraphicsTCOD(ClientMap *clientMap){
 void GraphicsTCOD::init(ClientMap *clientMap){
     
     cMap = clientMap;
+
     
     setlocale(LC_ALL, "en_US.UTF-8");
     TCODConsole::setCustomFont("data/font.png", TCOD_FONT_LAYOUT_ASCII_INROW, 32, 2048);
@@ -67,61 +68,168 @@ void GraphicsTCOD::init(ClientMap *clientMap){
 
 void GraphicsTCOD::render(){
     
-    prepare();
-    
+
 	TCODConsole::blit(output, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
 	TCODConsole::flush();
     
     
 }
 
-void GraphicsTCOD::prepare(){
-    
-    int x, y;
-    
-    
-    
-    for(x=0;x<MAP_WIDTH;x++){
-        for(y=0;y<MAP_HEIGHT;y++){
+void GraphicsTCOD::drawAt(int x, int y)
+{
+    if(cMap->cMap[x][y] != nullptr)
+    {
+        if (cMap->returnExplored(x, y)){
             
-            if (cMap->returnExplored(x, y)){
-                
+            if (cMap->returnOccupied(x, y)){
                 H = cMap->returnH(x, y);
                 S = cMap->returnS(x, y);
                 V = cMap->returnV(x, y);
+                output->setDefaultForeground(TCODColor(H, S, V));
                 
-                wchar_t *sym;
-                sym = cMap->cMap[x][y]->symbol;
                 
-                //printf("Symbol is %S", cMap->cMap[x][y]->symbol);
-                if (cMap->returnOccupied(x, y)){
+                try
+                {
                     
+                    output->print(x, y, cMap->cMap[x][y]->symbol);
+                    
+                }
+                catch (std::exception& e)
+                {
+                    cerr << "Exception: " << e.what() << "\n";
+                }
+            }
+            
+            
+            else{
+                if (cMap->returnVisible(x, y)){
+                    H = cMap->returnH(x, y);
+                    S = cMap->returnS(x, y);
+                    V = cMap->returnV(x, y);
+                    output->setCharBackground(x, y, TCODColor(0,0,0));
                     output->setDefaultForeground(TCODColor(H, S, V));
-                    output->print(x, y, sym);
+                    
+                    try
+                    {
+                        
+                        output->print(x, y, cMap->cMap[x][y]->symbol);
+                        
+                        
+                    }
+                    catch (std::exception& e)
+                    {
+                        cerr << "Exception: " << e.what() << "\n";
+                    }
+                    
+                
+                    
+                    
                 }
                 else{
                     HD = cMap->returnHD(x, y);
                     SD = cMap->returnSD(x, y);
                     VD = cMap->returnVD(x, y);
+                    output->setCharBackground(x, y, TCODColor(0,0,0));
+                    output->setDefaultForeground(TCODColor(HD, SD, VD));
                     
-                    if (cMap->returnVisible(x, y)){
-                        output->setCharBackground(x, y, TCODColor(0,0,0));
-                        output->setDefaultForeground(TCODColor(H, S, V));
-                        output->print(x, y, sym);
+                    try
+                    {
+                        
+                        output->print(x, y, cMap->cMap[x][y]->symbol);
+                        
+                        
+                    }
+                    catch (std::exception& e)
+                    {
+                        cerr << "Exception: " << e.what() << "\n";
                     }
                     
+                }
+            }
+        }        
+    }
+}
+
+
+void GraphicsTCOD::prepare(){
+    
+    int x, y;
+    
+    for(x=0;x<MAP_WIDTH;x++){
+        for(y=0;y<MAP_HEIGHT;y++){
+            if(cMap->cMap[x][y] != nullptr)
+            {
+                if (cMap->returnExplored(x, y)){
+                    
+                    if (cMap->returnOccupied(x, y)){
+                        H = cMap->returnH(x, y);
+                        S = cMap->returnS(x, y);
+                        V = cMap->returnV(x, y);
+                        output->setDefaultForeground(TCODColor(H, S, V));
+                        
+                        
+                        try
+                        {
+                            
+                            output->print(x, y, cMap->cMap[x][y]->symbol);
+                            
+                        }
+                        catch (std::exception& e)
+                        {
+                            cerr << "Exception: " << e.what() << "\n";
+                        }
+                    }
+                    
+                    
                     else{
-                        output->setCharBackground(x, y, TCODColor(0,0,0));
-                        output->setDefaultForeground(TCODColor(HD, SD, VD));
-                        output->print(x, y, sym);
+                        if (cMap->returnVisible(x, y)){
+                            H = cMap->returnH(x, y);
+                            S = cMap->returnS(x, y);
+                            V = cMap->returnV(x, y);
+                            output->setCharBackground(x, y, TCODColor(0,0,0));
+                            output->setDefaultForeground(TCODColor(H, S, V));
+                            
+                            try
+                            {
+                                
+                                output->print(x, y, cMap->cMap[x][y]->symbol);
+                                
+                                
+                            }
+                            catch (std::exception& e)
+                            {
+                                cerr << "Exception: " << e.what() << "\n";
+                            }
+                            
+                            //cMap->refreshSquare(x, y);
+                            
+                            
+                        }
+                        else{
+                            HD = cMap->returnHD(x, y);
+                            SD = cMap->returnSD(x, y);
+                            VD = cMap->returnVD(x, y);
+                            output->setCharBackground(x, y, TCODColor(0,0,0));
+                            output->setDefaultForeground(TCODColor(HD, SD, VD));
+                            
+                            try
+                            {
+                                
+                                output->print(x, y, cMap->cMap[x][y]->symbol);
+                                
+                                
+                            }
+                            catch (std::exception& e)
+                            {
+                                cerr << "Exception: " << e.what() << "\n";
+                            }
+                            
+                        }
                     }
                 }
             }
-            
         }
     }
-    
-    
 }
 
 

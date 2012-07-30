@@ -7,7 +7,7 @@
  *
  *        Version:  1.0
  *        Created:  07/03/2012 03:04:46 AM
- *       Revision:  none
+ *       Revision:  07/30/2012
  *       Compiler:  gcc
  *
  *         Author:  Yamamushi (Jon Rumion)
@@ -45,7 +45,9 @@
 // Our ASIO tcp object
 using boost::asio::ip::tcp;
 
-// Lets's Rock n' Roll
+
+
+// Lets's Rock n' Roll!!!
 
 int main(int argc, char *argv[])
 {
@@ -55,10 +57,11 @@ int main(int argc, char *argv[])
 #endif
     
     ClientMap *cMap = new ClientMap;
-    ClientMapPacker *packer = new ClientMapPacker;
-    
     GraphicsTCOD *output = new GraphicsTCOD(cMap);
-    Keyboard *kboard = new Keyboard(0, 0);
+    
+    
+    
+    
     
     try
     {
@@ -69,28 +72,20 @@ int main(int argc, char *argv[])
         tcp::resolver::iterator iterator = resolver.resolve(query);
         
         
-        ClientSession c(io_service, iterator);
+        ClientSession c(io_service, iterator, cMap, output);
         boost::thread t(boost::bind(&boost::asio::io_service::run, &io_service));
         
-        
-        
+        Keyboard *kboard = new Keyboard(&c);
         
         // Main Game Loop
         while (!TCODConsole::isWindowClosed()) {
             
-
-            try
-            {
-                c.read_map(cMap, packer);
-            }
-            catch (std::exception& e)
-            {
-                std:cerr << "Exception: " << e.what() << "\n";
-            }
-            
-            cout << "Iteration\n";
+            //c.set_paused(true);
+                        
             output->render();
-            output->clearScreen();
+            //output->clearScreen();
+            
+            //c.set_paused(false);
             
             
             bool quit = kboard->handleKeys();
@@ -102,6 +97,8 @@ int main(int argc, char *argv[])
                 break;
             }
             
+            
+                        
         }
     }
     catch (std::exception& e)

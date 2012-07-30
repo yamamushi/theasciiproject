@@ -1,5 +1,6 @@
 
 class ClientMap;
+class GraphicsTCOD;
 
 class ClientMapPacker {
 
@@ -24,7 +25,7 @@ public:
     render_t serialToClient(s_render_t lMap);
 
     void packToNet(render_t source, unsigned char *buf);
-    void unpackFromNet(ClientMap *client, unsigned char *buf);
+    void unpackFromNet(ClientMap *client, unsigned char *buf, GraphicsTCOD *screen);
     //void initClientMap(ClientMap *dest);
 
 

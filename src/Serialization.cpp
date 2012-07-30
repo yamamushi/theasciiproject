@@ -24,9 +24,7 @@ s_render_t ClientMapPacker::clientToSerial(render_t source)
     wchar_t *wstr = cMap.symbol;
     char* ascii = new char[wcslen(cMap.symbol) + 1];
     size_t size = wcstombs(ascii, wstr, sizeof (wchar_t));
-    printf("\n String check - %S \n", wstr);
-    printf("size check %d\n", (unsigned)wcslen(cMap.symbol) + 1);
-    printf("value of ""size"" %d\n", (unsigned)size);
+    
     //lMap.ASCII = ascii;
     lMap.size = (int)size;
     int i;
@@ -34,14 +32,7 @@ s_render_t ClientMapPacker::clientToSerial(render_t source)
         lMap.ASCII[i] = ascii[i];
     }
     
-    
-    printf("symbol string before compression is = %S \n", cMap.symbol);
-    printf("symbol is %u big.\n", (unsigned) sizeof (cMap.symbol));
-    printf("symbol is %u long.\n", (unsigned) wcslen(cMap.symbol));
-    printf("symbol is %u big.\n", (unsigned) sizeof (cMap.symbol));
-    printf("wchar_t is %u big.\n\n", (unsigned) sizeof (wchar_t));
-    printf("symbol is %u big.\n", (unsigned) sizeof (lMap.ASCII));
-    printf("symbol is %u big.\n", (unsigned) sizeof (lMap.ASCII));
+    free(ascii);
     
     
     lMap.x = cMap.x;
@@ -90,12 +81,11 @@ render_t ClientMapPacker::serialToClient(s_render_t lMap)
     //printf("if our char copied properly we should have %s\n", tmp);
     wchar_t *wstr = new wchar_t[1];
     
-    cout << "wstr generated\n";
+    
     mbstowcs(wstr, lMap.ASCII, size);
     
     rMap->symbol = wstr;
     
-    cout << "symbol attached\n";
     //printf("after assignment %S\n", clientMap->cMap[cMap.x][cMap.y]->symbol);
     //delete wstr;
     
@@ -146,38 +136,38 @@ void ClientMapPacker::packToNet(render_t source, unsigned char *buf)
     tpl_free(tn);
 }
 
-void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf)
+void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf, GraphicsTCOD *screen)
 {
     clientMap = client;
     s_render_t sMap;
     
     tn = tpl_map((char *)"S(ic#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
-    //printf("Buffer has been mapped\n");
-    tpl_load(tn, TPL_MEM | TPL_EXCESS_OK, buf, 128);
-    //printf("Buffer Loaded\n");
-    tpl_unpack(tn, 0);
-    //printf("Buffer Unpacked\n");
     
-    //free(clientMap->cMap[sMap.x][sMap.y]->symbol);
+    if(!tpl_load(tn, TPL_MEM | TPL_EXCESS_OK, buf, 128))
+    {
+
+        tpl_unpack(tn, 0);
+        
+        rMap = clientMap->cMap[sMap.x][sMap.y];
+        
+        render_t cMap = serialToClient(sMap);
+        
+        clientMap->cMap[cMap.x][cMap.y]->x = cMap.x;
+        clientMap->cMap[cMap.x][cMap.y]->y = cMap.y;
+        clientMap->cMap[cMap.x][cMap.y]->H = cMap.H;
+        clientMap->cMap[cMap.x][cMap.y]->S = cMap.S;
+        clientMap->cMap[cMap.x][cMap.y]->V = cMap.V;
+        clientMap->cMap[cMap.x][cMap.y]->HD = cMap.HD;
+        clientMap->cMap[cMap.x][cMap.y]->SD = cMap.SD;
+        clientMap->cMap[cMap.x][cMap.y]->VD = cMap.VD;
+        clientMap->cMap[cMap.x][cMap.y]->explored = cMap.explored;
+        clientMap->cMap[cMap.x][cMap.y]->occupied = cMap.occupied;
+        clientMap->cMap[cMap.x][cMap.y]->visible = cMap.visible;
+        screen->drawAt(cMap.x, cMap.y);
+        clientMap->refreshSquare(sMap.x, sMap.y);
+    }
     
-    clientMap->refreshSquare(sMap.x, sMap.y); 
-    rMap = clientMap->cMap[sMap.x][sMap.y];
-    cout << "rMap Generated\n";
     
-    render_t cMap = serialToClient(sMap);
-    //cout << "rMap populated\n";
-    
-    clientMap->cMap[cMap.x][cMap.y]->x = cMap.x;
-    clientMap->cMap[cMap.x][cMap.y]->y = cMap.y;
-    clientMap->cMap[cMap.x][cMap.y]->H = cMap.H;
-    clientMap->cMap[cMap.x][cMap.y]->S = cMap.S;
-    clientMap->cMap[cMap.x][cMap.y]->V = cMap.V;
-    clientMap->cMap[cMap.x][cMap.y]->HD = cMap.HD;
-    clientMap->cMap[cMap.x][cMap.y]->SD = cMap.SD;
-    clientMap->cMap[cMap.x][cMap.y]->VD = cMap.VD;
-    clientMap->cMap[cMap.x][cMap.y]->explored = cMap.explored;
-    clientMap->cMap[cMap.x][cMap.y]->occupied = cMap.occupied;
-    clientMap->cMap[cMap.x][cMap.y]->visible = cMap.visible;
     tpl_free(tn);
     
 }

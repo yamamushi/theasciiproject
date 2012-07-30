@@ -36,8 +36,13 @@
  * =====================================================================================
  */
 
+class ClientSession;
+
 class Keyboard {
     
+private:
+    
+    ClientSession *client;
 	int oldX, oldY;
     
     
@@ -46,8 +51,8 @@ public:
     int safX, safY;
     
     
-    Keyboard(int x=MAIN_WIDTH/2, int y=MAIN_HEIGHT/2);
-    void initKeyboard(int, int);
+    Keyboard(ClientSession *Client);
+    void initKeyboard(ClientSession *Client);
     
     bool handleKeys();
     

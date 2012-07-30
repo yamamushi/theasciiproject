@@ -93,7 +93,7 @@ void ClientMap::deleteMap(){
 }
 
 void ClientMap::refreshSquare(int x, int y){
-        
+    
     removeSquare(x, y);
     createSquare(x, y);
     
@@ -101,6 +101,7 @@ void ClientMap::refreshSquare(int x, int y){
 
 void ClientMap::removeSquare(int x, int y){
     
+    free(cMap[x][y]->symbol);
     delete cMap[x][y];
     
 }

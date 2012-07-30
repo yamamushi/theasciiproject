@@ -42,41 +42,82 @@
 using boost::asio::ip::tcp;
 
 
-ClientSession::ClientSession(boost::asio::io_service& io_service, tcp::resolver::iterator endpoint_iterator) : io_service_(io_service), socket_(io_service)
+
+ClientSession::ClientSession(boost::asio::io_service& io_service, tcp::resolver::iterator endpoint_iterator, ClientMap *client, GraphicsTCOD *screen) : io_service_(io_service), socket_(io_service)
 {
-    boost::asio::async_connect(socket_, endpoint_iterator, boost::bind(&ClientSession::handle_connect, this, boost::asio::placeholders::error));
+    clientMap = client;
+    output = screen;
+    packer = new ClientMapPacker();
+    
+    tmp = '0';
+    
+    m_pause = false;
+    sent = false;
+    
+    cout << "Connected\n";
+    
+    boost::asio::async_connect(socket_, endpoint_iterator, boost::bind(&ClientSession::read_map, this, boost::asio::placeholders::error));
 }
 
-void ClientSession::handle_connect(const boost::system::error_code& error)
+void ClientSession::read_map(const boost::system::error_code& error)
 {
-    if (!error)
+    
+    if(!error)
     {
-        cout << "Connected\n";
+        //block_while_paused();
+        buf = new boost::array<char, 128>;
+                
+        if (sent)
+        {
+            tmp = '0';
+            sent = false;
+        }
+    
+        boost::asio::async_read(socket_, boost::asio::buffer(buf, 128), boost::bind(&ClientSession::callNewMap, this, boost::asio::placeholders::error));
     }
     else
     {
         close();
     }
+    
+    
 }
 
-void ClientSession::read_map(ClientMap *client, ClientMapPacker *pEngine)
+
+void ClientSession::callNewMap(const boost::system::error_code& error)
 {
-    
-    //client->cleanMap();
-    
-    for (int x = 0; x < 64; x++)
+    if(!error)
     {
-        boost::array<char, 128> buf;
-        //char *buf = new char[128];
-        
-        //boost::asio::async_read(socket_, boost::asio::buffer(buf, 128), boost::bind(&ClientSession::handle_connect, this, boost::asio::placeholders::error));
-        socket_.receive(boost::asio::buffer(buf));
-        boost::asio::const_buffer b1 = boost::asio::buffer(buf);
+        block_while_paused();
+        boost::asio::const_buffer b1 = boost::asio::buffer(*buf);
         const unsigned char* p1 = boost::asio::buffer_cast<const unsigned char*>(b1);
-        pEngine->unpackFromNet(client, (unsigned char*)p1);
+        packer->unpackFromNet(clientMap, (unsigned char*)p1, output);
+        block_while_paused();
+        free(buf);
+        
+        if(!sent){
+            sent = true;
+        }
+        
+        boost::asio::async_write(socket_, boost::asio::buffer(&tmp, 1), boost::bind(&ClientSession::read_map, this, boost::asio::placeholders::error));
     }
+    else
+    {
+        close();
+    }    
     
 }
+
+
+void ClientSession::sendAPICall(int api)
+{
+    sprintf(&tmp,"%d",api);
+    sent = false;
+    
+}
+
+
+
 
 void ClientSession::close()
 {
@@ -88,6 +129,27 @@ void ClientSession::do_close()
     socket_.close();
 }
 
+
+void ClientSession::block_while_paused()
+{
+    boost::unique_lock<boost::mutex> lock(m_pause_mutex);
+    while(m_pause)
+    {
+        m_pause_changed.wait(lock);
+    }
+}
+
+
+void ClientSession::set_paused(bool new_value)
+{
+    {
+        boost::unique_lock<boost::mutex> lock(m_pause_mutex);
+        m_pause = new_value;
+    }
+    
+    m_pause_changed.notify_all();
+    
+}
 
 
 

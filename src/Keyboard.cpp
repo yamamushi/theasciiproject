@@ -41,16 +41,13 @@
 
 
 
-Keyboard::Keyboard(int x, int y){
-	initKeyboard(x, y);
+Keyboard::Keyboard(ClientSession *Client){
+	initKeyboard(Client);
 }
 
-void Keyboard::initKeyboard(int x, int y){
+void Keyboard::initKeyboard(ClientSession *Client){
     
-	curX = x;
-	curY = y;
-	safX = x;
-	safY = y;
+    client = Client;
     
 }
 
@@ -69,22 +66,25 @@ bool Keyboard::handleKeys(){
     
 	switch(Key.vk)
 	{
-            /*   	case TCODK_UP:
-             //tgt->move(0,-1);
-             break;
-             
-             case TCODK_DOWN:
-             //tgt->move(0,1);
-             break;
-             
-             case TCODK_LEFT:
-             //tgt->move(-1,0);
-             break;
-             
-             case TCODK_RIGHT:
-             //tgt->move(1,0);
-             
-             break; */
+        case TCODK_UP:
+            sleep(0.5);
+            client->sendAPICall(8);
+            break;
+            
+        case TCODK_DOWN:
+            sleep(0.5);
+            client->sendAPICall(2);
+            break;
+            
+        case TCODK_LEFT:
+            sleep(0.5);
+            client->sendAPICall(4);
+            break;
+            
+        case TCODK_RIGHT:
+            sleep(0.5);
+            client->sendAPICall(6);
+            break;
             
 		case TCODK_ESCAPE:
 			quit = true;

@@ -46,19 +46,41 @@ class ClientSession
 private:
     boost::asio::io_service& io_service_;
     tcp::socket socket_;
+    char tmp;
+    bool sent;
+    
+    ClientMap *clientMap;
+    ClientMapPacker *packer;
+    GraphicsTCOD *output;
+    
+    boost::array<char, 128> *buf;
+    
+    bool m_pause;
+    boost::mutex m_pause_mutex;
+    boost::condition_variable m_pause_changed;
+
     
     
-    void handle_connect(const boost::system::error_code& error);    
     void do_close();
     
     
 public:
+       
     
     
-    ClientSession(boost::asio::io_service& io_service, tcp::resolver::iterator endpoint_iterator);
-    void read_map(ClientMap *client, ClientMapPacker *pEngine);
+    
+    ClientSession(boost::asio::io_service& io_service, tcp::resolver::iterator endpoint_iterator, ClientMap *client, GraphicsTCOD *screen);
+    
+    void read_map(const boost::system::error_code& error);
+    void callNewMap(const boost::system::error_code& error);
+    void sendAPICall(int api);
+    
     void write();
-    void close(); 
+    void close();
+
+    
+    void block_while_paused();
+    void set_paused(bool new_value);
     
 
 

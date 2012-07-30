@@ -80,7 +80,8 @@ int main(int argc, char *argv[]){
     try
     {
         boost::asio::io_service io_service;
-        tcp_server server(io_service);
+        tcp::endpoint endpoint(tcp::v4(), 5250);
+        game_server server(io_service, endpoint);
         io_service.run();
     }
     catch (std::exception& e)

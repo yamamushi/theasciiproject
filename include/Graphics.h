@@ -40,28 +40,34 @@
  */
 
 
+class ClientSession;
+
+
 
 class GraphicsTCOD {
-
-
-		TileMap *input;
-                ClientMap *cMap;
-                float H, S, V, HD, SD, VD;
-                float TH, TS, TV, THD, TSD, TVD;
-
-	public:
-
-
-		TCODConsole *output;
-
-		GraphicsTCOD(ClientMap *clientMap);
-		void init(ClientMap *clientMap);
-
-		void render();
-                void prepare();
-		void clearScreen();
-
-
+    
+    
+    TileMap *input;
+    ClientMap *cMap;
+    float H, S, V, HD, SD, VD;
+    float TH, TS, TV, THD, TSD, TVD;
+    
+    
+public:
+    
+    
+    TCODConsole *output;
+    
+    GraphicsTCOD(ClientMap *clientMap);
+    void init(ClientMap *clientMap);
+    
+    void drawAt(int x, int y);
+    
+    void render();
+    void prepare();
+    void clearScreen();
+    
+    
 };
 
 
