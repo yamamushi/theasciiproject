@@ -64,8 +64,8 @@ void ClientSession::read_map(const boost::system::error_code& error)
     
     if(!error)
     {
-        //block_while_paused();
-        buf = new boost::array<char, 128>;
+
+        buf = new boost::array<char, 4096>;
                 
         if (sent)
         {
@@ -73,7 +73,7 @@ void ClientSession::read_map(const boost::system::error_code& error)
             sent = false;
         }
     
-        boost::asio::async_read(socket_, boost::asio::buffer(buf, 128), boost::bind(&ClientSession::callNewMap, this, boost::asio::placeholders::error));
+        boost::asio::async_read(socket_, boost::asio::buffer(buf, 4096), boost::bind(&ClientSession::callNewMap, this, boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
     }
     else
     {
@@ -84,15 +84,30 @@ void ClientSession::read_map(const boost::system::error_code& error)
 }
 
 
-void ClientSession::callNewMap(const boost::system::error_code& error)
+void ClientSession::callNewMap(const boost::system::error_code& error, std::size_t bytes_transferred)
 {
     if(!error)
     {
-        block_while_paused();
-        boost::asio::const_buffer b1 = boost::asio::buffer(*buf);
-        const unsigned char* p1 = boost::asio::buffer_cast<const unsigned char*>(b1);
-        packer->unpackFromNet(clientMap, (unsigned char*)p1, output);
-        block_while_paused();
+        //printf("bytes transferred: %d\n", (int)bytes_transferred);
+        
+        boost::asio::const_buffer conBuf = boost::asio::buffer(*buf);
+        const unsigned char* tmpUnpack = boost::asio::buffer_cast<const unsigned char*>(conBuf);
+        
+        for(int x = 0; x < (bytes_transferred/128); x++)
+        {
+            char *unpack = new char[128];
+                        
+            memcpy(unpack, &tmpUnpack[x*128], 128);
+            
+            if((unpack[0] != '0') && (unpack[128] != '0'))
+                packer->unpackFromNet(clientMap, (unsigned char*)unpack, output);
+            
+            free(unpack);
+        }
+        
+        
+        
+
         free(buf);
         
         if(!sent){

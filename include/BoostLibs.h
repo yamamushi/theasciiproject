@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 The ASCII Project. All rights reserved.
 //
 
+#include <boost/archive/text_iarchive.hpp>
 #include <boost/array.hpp>
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>

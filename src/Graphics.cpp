@@ -60,17 +60,25 @@ void GraphicsTCOD::init(ClientMap *clientMap){
 	TCODConsole::initRoot(MAIN_WIDTH,MAIN_HEIGHT,"The ASCII Project",false,TCOD_RENDERER_SDL);
     //	TCODConsole::credits();
     
-    TCODConsole *tmp = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
-    output = tmp;
+    TCODConsole *mainConsole = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
+    output = mainConsole;
+    
+    offScreenConsole = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
     
     
 }
 
 void GraphicsTCOD::render(){
     
+    //TCODConsole::blit(offScreenConsole, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
+    
 	TCODConsole::blit(output, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
 	TCODConsole::flush();
     
+}
+
+void GraphicsTCOD::flushScreen(){
+    TCODConsole::flush();
     
 }
 
@@ -149,28 +157,37 @@ void GraphicsTCOD::drawAt(int x, int y)
     }
 }
 
-
-void GraphicsTCOD::prepare(){
+void GraphicsTCOD::drawAll(){
     
-    int x, y;
-    
-    for(x=0;x<MAP_WIDTH;x++){
-        for(y=0;y<MAP_HEIGHT;y++){
-            if(cMap->cMap[x][y]->symbol != nullptr)
-            {
-                if (!cMap->returnVisible(x, y) && cMap->returnExplored(x, y))
-                {
-                    HD = cMap->returnHD(x, y);
-                    SD = cMap->returnSD(x, y);
-                    VD = cMap->returnVD(x, y);
-                    output->setCharBackground(x, y, TCODColor(0,0,0));
-                    output->setDefaultForeground(TCODColor(HD, SD, VD));
-                    
-                    output->print(x, y, cMap->cMap[x][y]->symbol);  
-                    
-                }
-            }
+    for(int x = 0; x < MAP_WIDTH; x++)
+    {
+        for(int y=0; y < MAP_HEIGHT; y++)
+        {
+            
+            drawAt(x, y);
         }
+    }
+    
+    
+}
+
+
+
+
+
+void GraphicsTCOD::prepare(int x, int y){
+    
+    
+    if (!cMap->returnVisible(x, y) && cMap->returnExplored(x, y))
+    {
+        HD = cMap->returnHD(x, y);
+        SD = cMap->returnSD(x, y);
+        VD = cMap->returnVD(x, y);
+        output->setCharBackground(x, y, TCODColor(0,0,0));
+        output->setDefaultForeground(TCODColor(HD, SD, VD));
+        
+        output->print(x, y, cMap->cMap[x][y]->symbol);
+        
     }
 }
 

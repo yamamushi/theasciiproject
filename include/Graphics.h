@@ -57,14 +57,18 @@ public:
     
     
     TCODConsole *output;
+    TCODConsole *offScreenConsole;
     
     GraphicsTCOD(ClientMap *clientMap);
     void init(ClientMap *clientMap);
     
     void drawAt(int x, int y);
+    void drawAll();
     
     void render();
-    void prepare();
+    void flushScreen();
+    
+    void prepare(int x, int y);
     void clearScreen();
     
     

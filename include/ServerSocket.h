@@ -78,9 +78,14 @@ private:
     tcp::socket socket_;
     client_pool& client_pool_;
     std::vector<char *> *mapBuf;
+    char *stream;
     ClientMap *cMap;    
     char tmp;
     bool moved;
+    size_t len;
+    int sent;
+    
+    
     
 public:
     

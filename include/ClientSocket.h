@@ -53,7 +53,8 @@ private:
     ClientMapPacker *packer;
     GraphicsTCOD *output;
     
-    boost::array<char, 128> *buf;
+    boost::array<char, 4096> *buf;
+    //char *buf;
     
     bool m_pause;
     boost::mutex m_pause_mutex;
@@ -72,7 +73,7 @@ public:
     ClientSession(boost::asio::io_service& io_service, tcp::resolver::iterator endpoint_iterator, ClientMap *client, GraphicsTCOD *screen);
     
     void read_map(const boost::system::error_code& error);
-    void callNewMap(const boost::system::error_code& error);
+    void callNewMap(const boost::system::error_code& error, std::size_t bytes_transferred);
     void sendAPICall(int api);
     
     void write();

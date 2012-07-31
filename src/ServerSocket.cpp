@@ -77,12 +77,12 @@ tcp::socket& client_connection::socket()
 
 void client_connection::start()
 {
+    len = 0;
+    sent = 0;
+    stream = new char[1];
     client_pool_.join(shared_from_this());
-    
     mapBuf = new vector<char *>;
-    
     sync();
-    //boost::asio::async_read(socket_, boost::asio::buffer(&tmp, 1), boost::bind(&client_connection::sync, shared_from_this()));
     
 }
 
@@ -90,24 +90,23 @@ void client_connection::start()
 void client_connection::sync()
 {
     
-    if(mapBuf->empty()){
-        
-        updatePlayerMap();
-        
-    }
     
     int x = atoi(&tmp);
     
     if(x != 0)
     {
-        
         handleAPI(x);
         updatePlayerMap();
         
     }
     
+    if(sent >= len)
+    {
+        updatePlayerMap();
+    }
     
-    boost::asio::async_write(socket_, boost::asio::buffer(mapBuf->back(), 128), boost::bind(&client_connection::handle_write, shared_from_this(), boost::asio::placeholders::bytes_transferred, boost::asio::placeholders::error));
+    
+    boost::asio::async_write(socket_, boost::asio::buffer(stream + sent, 4096), boost::bind(&client_connection::handle_write, shared_from_this(), boost::asio::placeholders::bytes_transferred, boost::asio::placeholders::error));
     
     
 }
@@ -120,12 +119,11 @@ void client_connection::handle_write(size_t bytes, const boost::system::error_co
 {
     if (!error)
     {
-        free(mapBuf->back());
-        mapBuf->pop_back();
+        sent = sent + 4096;
         boost::asio::async_read(socket_, boost::asio::buffer(&tmp, 1), boost::bind(&client_connection::sync, shared_from_this()));
     }
     else{
-        delete mapBuf;
+        free(stream);
         client_pool_.leave(shared_from_this());
     }
     
@@ -134,12 +132,37 @@ void client_connection::handle_write(size_t bytes, const boost::system::error_co
 
 void client_connection::updatePlayerMap()
 {
+    sent = 0;
+    
+   // delete mapBuf;
+   // mapBuf = new vector<char *>;
+    
+    
+    free(stream);
     
     extern Entity *test;
     
     renderForPlayer(test, mapBuf);
     
+    len = mapBuf->size()*128;
+    
+    
+    stream = new char[len];
+    memset(stream, '0', len);
+    
+    for(int x = 0; x < mapBuf->size(); x++)
+    {
+        memcpy(stream + (x*128), mapBuf->back(), 128);
+        stream[(x+1) * (128)] = '\n';
+        free(mapBuf->back());
+        mapBuf->pop_back();
+    }
+
+    
 }
+
+
+
 
 void client_connection::handleAPI(int api)
 {

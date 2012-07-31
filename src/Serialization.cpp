@@ -25,7 +25,6 @@ s_render_t ClientMapPacker::clientToSerial(render_t source)
     char* ascii = new char[wcslen(cMap.symbol) + 1];
     size_t size = wcstombs(ascii, wstr, sizeof (wchar_t));
     
-    //lMap.ASCII = ascii;
     lMap.size = (int)size;
     int i;
     for (i = 0; i < size; i++) {
@@ -74,20 +73,12 @@ render_t ClientMapPacker::serialToClient(s_render_t lMap)
     render_t cMap;
     
     size_t size = lMap.size;
-    //const char * ascii = lMap.ASCII;
-    //char tmp[8];
-    
-    //strncpy( tmp, lMap.ASCII, size);
-    //printf("if our char copied properly we should have %s\n", tmp);
     wchar_t *wstr = new wchar_t[1];
     
     
     mbstowcs(wstr, lMap.ASCII, size);
     
     rMap->symbol = wstr;
-    
-    //printf("after assignment %S\n", clientMap->cMap[cMap.x][cMap.y]->symbol);
-    //delete wstr;
     
     
     cMap.x = lMap.x;
@@ -147,12 +138,9 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf, Graph
     {
         
         tpl_unpack(tn, 0);
-        
+                
         rMap = clientMap->cMap[sMap.x][sMap.y];
-        
-        
         render_t cMap = serialToClient(sMap);
-        
         
         clientMap->cMap[cMap.x][cMap.y]->x = cMap.x;
         clientMap->cMap[cMap.x][cMap.y]->y = cMap.y;
@@ -166,10 +154,10 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf, Graph
         clientMap->cMap[cMap.x][cMap.y]->occupied = cMap.occupied;
         clientMap->cMap[cMap.x][cMap.y]->visible = cMap.visible;
         
-        screen->drawAt(cMap.x, cMap.y);
+        
+        screen->drawAt(sMap.x, sMap.y);
         
         clientMap->refreshSquare(sMap.x, sMap.y);
-        
         
     }
     
