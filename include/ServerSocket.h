@@ -80,10 +80,11 @@ private:
     std::vector<char *> *mapBuf;
     char *stream;
     ClientMap *cMap;    
-    char tmp;
+    char *cmd;
     bool moved;
     size_t len;
     int sent;
+    int maxsent;
     
     
     

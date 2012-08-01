@@ -123,7 +123,7 @@ void ClientMapPacker::packToNet(render_t source, unsigned char *buf)
     /* fixed-length array of s_render_t structures */
     tn = tpl_map((char *)"S(ic#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
     tpl_pack(tn, 0);
-    tpl_dump(tn, TPL_MEM | TPL_PREALLOCD, buf, 128);
+    tpl_dump(tn, TPL_MEM | TPL_PREALLOCD, buf, TILE_PACKET_SIZE);
     tpl_free(tn);
 }
 
@@ -134,10 +134,12 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf, Graph
     
     tn = tpl_map((char *)"S(ic#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
     
-    if(!tpl_load(tn, TPL_MEM | TPL_EXCESS_OK, buf, 128))
+    if(!tpl_load(tn, TPL_MEM | TPL_EXCESS_OK, buf, TILE_PACKET_SIZE))
     {
         
         tpl_unpack(tn, 0);
+        
+        clientMap->refreshSquare(sMap.x, sMap.y);
                 
         rMap = clientMap->cMap[sMap.x][sMap.y];
         render_t cMap = serialToClient(sMap);
@@ -154,10 +156,11 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf, Graph
         clientMap->cMap[cMap.x][cMap.y]->occupied = cMap.occupied;
         clientMap->cMap[cMap.x][cMap.y]->visible = cMap.visible;
         
-        
         screen->drawAt(sMap.x, sMap.y);
         
-        clientMap->refreshSquare(sMap.x, sMap.y);
+        clientMap->addIgnore(cMap.x, cMap.y);
+        
+        //clientMap->refreshSquare(sMap.x, sMap.y);
         
     }
     

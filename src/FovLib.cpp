@@ -70,19 +70,28 @@ void FovLib::refreshFov(Entity *tgt){
     int x, y;
     
     // Compute FOV
-    tcodMap->computeFov(tgt->posX(), tgt->posY(), TORCH_RADIUS, FOV_LIGHT_WALLS);
-    for (x = 0; x < MAP_WIDTH; x++) {
-        for (y = 0; y < MAP_HEIGHT; y++) {
-            if ((tcodMap->isInFov(x, y))) {
-                if (tgt->getAssociated()) {
+    tcodMap->computeFov(tgt->posX(), tgt->posY(), TORCH_RADIUS, FOV_LIGHT_WALLS, FOV_ALGO);
+    
+    for (x = 0; x < MAP_WIDTH; x++)
+    {
+        for (y = 0; y < MAP_HEIGHT; y++)
+        {
+            
+            if ((tcodMap->isInFov(x, y)))
+            {
+                if (tgt->getAssociated())
+                {
                     ClientMap *clientMap = tgt->returnCMap();
                     clientMap->cMap[x][y]->visible = true;
                     clientMap->cMap[x][y]->explored = true;
                     
                 }
                 tgt->fov[x][y] = true;
-            } else {
-                if (tgt->getAssociated()) {
+            }
+            else
+            {
+                if (tgt->getAssociated())
+                {
                     ClientMap *clientMap = tgt->returnCMap();
                     clientMap->cMap[x][y]->visible = false;
                     clientMap->cMap[x][y]->occupied = false;

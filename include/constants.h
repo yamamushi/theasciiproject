@@ -55,9 +55,12 @@
 #define MAX_ROOMS 20
 #define MAX_HALLS 100
 
-#define FOV_ALGO 0
+#define FOV_ALGO FOV_RESTRICTIVE
 #define FOV_LIGHT_WALLS true
-#define TORCH_RADIUS 10
+#define TORCH_RADIUS 9
+
+#define TILE_PACKET_SIZE 128
+#define MAP_PACKET_SIZE 16384
 
 
 

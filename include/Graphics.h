@@ -53,11 +53,14 @@ class GraphicsTCOD {
     float TH, TS, TV, THD, TSD, TVD;
     
     
+    
 public:
     
     
     TCODConsole *output;
     TCODConsole *offScreenConsole;
+    
+    bool rendering;
     
     GraphicsTCOD(ClientMap *clientMap);
     void init(ClientMap *clientMap);

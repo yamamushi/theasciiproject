@@ -80,9 +80,6 @@ int main(int argc, char *argv[])
         // Main Game Loop
         while (!TCODConsole::isWindowClosed()) {
 
-            
-            output->render();
-            
             bool quit = kboard->handleKeys();
             
             if (quit)

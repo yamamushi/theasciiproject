@@ -48,7 +48,6 @@ typedef boost::shared_ptr<client_connection> client_connection_ptr;
 void client_pool::join(client_participant_ptr client)
 {
     clients_.insert(client);
-    
 }
 
 
@@ -60,9 +59,7 @@ void client_pool::leave(client_participant_ptr client)
 
 void client_pool::deliver()
 {
-    
     std::for_each(clients_.begin(), clients_.end(), boost::bind(&client_participant::updatePlayerMap, _1));
-    
 }
 
 
@@ -79,35 +76,45 @@ void client_connection::start()
 {
     len = 0;
     sent = 0;
-    stream = new char[1];
-    client_pool_.join(shared_from_this());
-    mapBuf = new vector<char *>;
-    sync();
+    maxsent = 0;
     
+    client_pool_.join(shared_from_this());
+    
+    stream = new char[131072];
+    memset(stream, '0', 131072);
+    
+    mapBuf = new vector<char *>;
+    
+    cmd = new char[2];
+    cmd[0] = '0';
+
+    sync();
 }
 
 
 void client_connection::sync()
 {
     
+    int x = atoi(&cmd[0]);
     
-    int x = atoi(&tmp);
-    
-    if(x != 0)
+    if(x >= 0)
     {
         handleAPI(x);
         updatePlayerMap();
-        
     }
-    
-    if(sent >= len)
+        
+    if((sent + MAP_PACKET_SIZE) >= len)
     {
         updatePlayerMap();
     }
     
+    if(sent > 0)
+    {
+        memset(stream, '0', sent);
+    }
     
-    boost::asio::async_write(socket_, boost::asio::buffer(stream + sent, 4096), boost::bind(&client_connection::handle_write, shared_from_this(), boost::asio::placeholders::bytes_transferred, boost::asio::placeholders::error));
     
+    boost::asio::async_write(socket_, boost::asio::buffer(stream + sent, MAP_PACKET_SIZE), boost::bind(&client_connection::handle_write, shared_from_this(), boost::asio::placeholders::bytes_transferred, boost::asio::placeholders::error));
     
 }
 
@@ -118,12 +125,29 @@ void client_connection::sync()
 void client_connection::handle_write(size_t bytes, const boost::system::error_code& error)
 {
     if (!error)
-    {
-        sent = sent + 4096;
-        boost::asio::async_read(socket_, boost::asio::buffer(&tmp, 1), boost::bind(&client_connection::sync, shared_from_this()));
+    {        
+        sent = sent + MAP_PACKET_SIZE;
+
+        if(sent > maxsent)
+        {
+            maxsent = sent;
+        }
+        
+        boost::asio::async_read(socket_, boost::asio::buffer(cmd, 2), boost::bind(&client_connection::sync, shared_from_this()));
     }
+    
     else{
+        
         free(stream);
+        while(!mapBuf->empty())
+        {
+            free(mapBuf->back());
+            mapBuf->pop_back();
+        }
+        
+        delete mapBuf;
+        
+        std::cout << error.message() << std::endl;
         client_pool_.leave(shared_from_this());
     }
     
@@ -134,30 +158,36 @@ void client_connection::updatePlayerMap()
 {
     sent = 0;
     
-   // delete mapBuf;
-   // mapBuf = new vector<char *>;
-    
-    
-    free(stream);
-    
     extern Entity *test;
     
     renderForPlayer(test, mapBuf);
     
-    len = mapBuf->size()*128;
+    len = mapBuf->size()*TILE_PACKET_SIZE;
     
+    if(len > 131072)
+    {
+        len = 131072;
+    }
+    
+    
+    if(mapBuf->size() > 1024)
+        mapBuf->resize(1024);
+    
+
+    free(stream);
     
     stream = new char[len];
+    
     memset(stream, '0', len);
+    
     
     for(int x = 0; x < mapBuf->size(); x++)
     {
-        memcpy(stream + (x*128), mapBuf->back(), 128);
-        stream[(x+1) * (128)] = '\n';
+        memcpy(stream + (x*TILE_PACKET_SIZE), mapBuf->back(), TILE_PACKET_SIZE);
+        stream[(x+1) * (TILE_PACKET_SIZE)] = '\n';
         free(mapBuf->back());
         mapBuf->pop_back();
     }
-
     
 }
 
@@ -175,38 +205,45 @@ void client_connection::handleAPI(int api)
     {
         test->move(-1, 1);
     }
-    if ( api == 2)
+    else if ( api == 2)
     {
         test->move(0, 1);
     }
-    if ( api == 3)
+    else if ( api == 3)
     {
         test->move(1, 1);
     }
-    if (api == 4)
+    else if (api == 4)
     {
         test->move(-1, 0);
     }
-    if (api == 5)
+    else if (api == 5)
     {
         test->move(0, 0);
     }
-    if (api == 6)
+    else if (api == 6)
     {
         test->move(1, 0);
     }
-    if (api == 7)
+    else if (api == 7)
     {
         test->move(-1, -1);
     }
-    if (api == 8)
+    else if (api == 8)
     {
         test->move(0, -1);
     }
-    if (api == 9)
+    else if (api == 9)
     {
         test->move(1, -1);
     }
+    else
+    {
+        test->move(0, 0);
+    }
+    
+    free(cmd);
+    cmd = new char[1];
     
 }
 

@@ -45,6 +45,7 @@ class ClientMap {
 private:
     
     render_t *cTemp;
+    std::list< std::pair<int,int> > ignoreList;
     
 public:
     
@@ -60,6 +61,12 @@ public:
     void refreshSquare(int x, int y);
     void removeSquare(int x, int y);
     void createSquare(int x, int y);
+    
+    
+    void addIgnore(int x, int y);
+    bool testIgnore(int x, int y);
+    void clearIgnore();
+    
     
     
     

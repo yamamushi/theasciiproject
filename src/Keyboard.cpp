@@ -56,33 +56,27 @@ bool Keyboard::handleKeys(){
     
 	TCOD_key_t Key = TCODConsole::checkForKeypress(true);
 	bool quit = false;
-    
-    
-	//Entity *tgt = target;
-    
+
     
 	if(Key.vk == TCODK_ENTER && TCODK_ALT)
 		TCODConsole::setFullscreen(!TCODConsole::isFullscreen());
     
 	switch(Key.vk)
 	{
+            
         case TCODK_UP:
-            sleep(0.5);
             client->sendAPICall(8);
             break;
             
         case TCODK_DOWN:
-            sleep(0.5);
             client->sendAPICall(2);
             break;
             
         case TCODK_LEFT:
-            sleep(0.5);
             client->sendAPICall(4);
             break;
             
         case TCODK_RIGHT:
-            sleep(0.5);
             client->sendAPICall(6);
             break;
             
@@ -91,6 +85,7 @@ bool Keyboard::handleKeys(){
 			break;
             
 	}
+    
 	return quit;
     
 }

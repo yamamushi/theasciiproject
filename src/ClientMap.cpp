@@ -94,14 +94,18 @@ void ClientMap::deleteMap(){
 
 void ClientMap::refreshSquare(int x, int y){
     
-    removeSquare(x, y);
-    createSquare(x, y);
+    //removeSquare(x, y);
+    //createSquare(x, y);
+    if(wcscmp(cMap[x][y]->symbol, cMap[0][0]->symbol))
+        free(cMap[x][y]->symbol);
     
 }
 
 void ClientMap::removeSquare(int x, int y){
     
-    free(cMap[x][y]->symbol);
+    if(wcscmp(cMap[x][y]->symbol, cMap[0][0]->symbol))
+        free(cMap[x][y]->symbol);
+    
     delete cMap[x][y];
     
 }
@@ -125,14 +129,61 @@ void ClientMap::createSquare(int x, int y){
 }
 
 
-void ClientMap::cleanMap()
-{
 
+void ClientMap::addIgnore(int x, int y)
+{
+    pair <int,int> ignoring;
+    ignoring = make_pair(x, y);
+    
+    std::list<std::pair<int,int> >::const_iterator iterator;
+    for (iterator = ignoreList.begin(); iterator != ignoreList.end(); ++iterator)
+    {
+        if(ignoring == *iterator)
+            return;
+    }
+    
+    ignoreList.push_front(ignoring);
+    
+}
+
+
+bool ClientMap::testIgnore(int x, int y)
+{
+    pair <int,int> testPair;
+    testPair = make_pair(x, y);
+    
+    std::list<std::pair<int,int> >::const_iterator iterator;
+    for (iterator = ignoreList.begin(); iterator != ignoreList.end(); ++iterator)
+    {
+        if(testPair == *iterator)
+            return true;
+    }
+    
+    return false;
+}
+
+
+void ClientMap::clearIgnore()
+{
+    ignoreList.erase(ignoreList.begin(), ignoreList.end());
+}
+
+
+
+
+
+
+
+void ClientMap::cleanMap()
+{ 
     int x, y;
     for (x = 0; x < MAP_WIDTH; x++){
         for (y = 0; y < MAP_HEIGHT; y++){
-            cMap[x][y]->occupied = false;
-            cMap[x][y]->visible = false;
+            if(!testIgnore(x, y))
+            {
+                cMap[x][y]->occupied = false;
+                cMap[x][y]->visible = false;
+            }
         }
     }
     

@@ -55,6 +55,7 @@
 #include <deque>
 #include <ctime>
 #include <string>
+#include <cstring>
 #include <wchar.h>
 #include <clocale>
 #include <cstdlib>
