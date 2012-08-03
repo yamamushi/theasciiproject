@@ -3,5 +3,6 @@
 
 
 std::string make_daytime_string();
-void renderForPlayer(Entity *target, vector<char *> *outbuf);
+int renderForPlayer(Entity *target, vector<char *> *outbuf);
 bool pointInSquare( int x, int y, int n);
+bool isInteger(const std::string & s);

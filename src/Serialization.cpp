@@ -156,9 +156,9 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf, Graph
         clientMap->cMap[cMap.x][cMap.y]->occupied = cMap.occupied;
         clientMap->cMap[cMap.x][cMap.y]->visible = cMap.visible;
         
-        screen->drawAt(sMap.x, sMap.y);
+        screen->drawAt(cMap.x, cMap.y);
         
-        clientMap->addIgnore(cMap.x, cMap.y);
+        //clientMap->addIgnore(cMap.x, cMap.y);
         
         //clientMap->refreshSquare(sMap.x, sMap.y);
         

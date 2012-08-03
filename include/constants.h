@@ -55,12 +55,36 @@
 #define MAX_ROOMS 20
 #define MAX_HALLS 100
 
-#define FOV_ALGO FOV_RESTRICTIVE
+
+
+
+/* 
+
+FOV_BASIC : classic libtcod fov algorithm (ray casted from the player to all the cells on the submap perimeter)
+FOV_DIAMOND 
+FOV_SHADOW 
+FOV_PERMISSIVE_x
+Permissive has a variable permissiveness parameter. You can either use the constants FOV_PERMISSIVE_x, x between 0 (the less permissive) and 8 (the more permissive), or using the macro FOV_PERMISSIVE(x).
+FOV_RESTRICTIVE : Mingos' Restrictive Precise Angle Shadowcasting (MRPAS). Original implementation here. Comparison of the algorithms :
+*/
+
+
+
+#define FOV_ALGO FOV_BASIC
 #define FOV_LIGHT_WALLS true
 #define TORCH_RADIUS 9
 
 #define TILE_PACKET_SIZE 128
+
+
 #define MAP_PACKET_SIZE 16384
+
+
+// Our Packet Sizes are reduced by 1
+// to account for the newline terminating
+// character at the end of our streams (/r/n)
+#define MAX_PACKET_SIZE 131070
+#define MAX_VECTOR_BUFFER 1023
 
 
 

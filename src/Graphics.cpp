@@ -81,6 +81,7 @@ void GraphicsTCOD::render(){
 	TCODConsole::blit(output, 0, 0, MAP_WIDTH, MAP_HEIGHT, TCODConsole::root, 0, 0);
 
     TCODConsole::flush();
+    clearScreen();
     
     
 }

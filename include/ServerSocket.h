@@ -75,18 +75,32 @@ class client_connection : public client_participant, public boost::enable_shared
 {
     
 private:
-    tcp::socket socket_;
-    client_pool& client_pool_;
-    std::vector<char *> *mapBuf;
-    char *stream;
-    ClientMap *cMap;    
-    char *cmd;
-    bool moved;
-    size_t len;
+    
+    int failedConnects;
     int sent;
     int maxsent;
     
     
+    char *stream;
+    char *cmd;
+    char *mapSize;
+    char headerSize[2];
+    
+    string prompt;
+    
+    bool moved;
+    
+    size_t len;
+    
+    std::vector<char *> *mapBuf;
+    
+    ClientMap *cMap;
+    
+    tcp::socket socket_;
+    client_pool& client_pool_;
+    boost::asio::streambuf line_command_;
+    
+  
     
 public:
     
@@ -94,8 +108,21 @@ public:
     
     tcp::socket& socket();
     void start();
+    
+    void kickStart();
+    
+    
+    void receive_command(const boost::system::error_code& error);
+    
+    void handle_request_line(const boost::system::error_code& error);
+    
     void sync();
     void handle_write(size_t bytes, const boost::system::error_code& error);
+    
+    void clientAcceptMapSize(const boost::system::error_code& error);
+    void sendMap(const boost::system::error_code& error);
+    
+    void disconnect();
     
     void updatePlayerMap();
     void handleAPI(int api);

@@ -62,6 +62,7 @@
 #include <stddef.h>
 #include <inttypes.h>
 #include <sstream>
+#include <time.h>
 
 // Now's a good time to bring in Boost
 // Which we'll store references to here

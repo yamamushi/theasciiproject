@@ -58,10 +58,7 @@ int main(int argc, char *argv[])
     
     ClientMap *cMap = new ClientMap;
     GraphicsTCOD *output = new GraphicsTCOD(cMap);
-    
-    
-    
-    
+
     
     try
     {

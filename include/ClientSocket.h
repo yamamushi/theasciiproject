@@ -46,6 +46,10 @@ class ClientSession
 private:
     boost::asio::io_service& io_service_;
     tcp::socket socket_;
+    
+    int mapSize_;
+    
+    char *mapSize;
     char tmp[2];
     bool sent;
     
@@ -53,13 +57,19 @@ private:
     ClientMapPacker *packer;
     GraphicsTCOD *output;
     
-    boost::array<char, MAP_PACKET_SIZE> *buf;
-    //char *buf;
+    
+    char *buf;
+    
+    string callForMap = "getmap\r\n";
     
     bool m_pause;
     bool rendering;
+    
+    boost::asio::streambuf line_command_;
     boost::mutex m_pause_mutex;
     boost::condition_variable m_pause_changed;
+    boost::asio::streambuf line_feed_;
+    
 
     
     
@@ -72,11 +82,17 @@ public:
     
     
     ClientSession(boost::asio::io_service& io_service, tcp::resolver::iterator endpoint_iterator, ClientMap *client, GraphicsTCOD *screen);
+    void Connect(const boost::system::error_code& error);
     
+    void sizeMap(const boost::system::error_code& error);
+    void confirmSize(const boost::system::error_code& error);
     void read_map(const boost::system::error_code& error);
     void callNewMap(const boost::system::error_code& error, std::size_t bytes_transferred);
     
     void ignoreMap(const boost::system::error_code& error, std::size_t bytes_transferred);
+    
+    
+    void sendMapRequest(const boost::system::error_code& error);
     
     void sendAPICall(int api);
     
