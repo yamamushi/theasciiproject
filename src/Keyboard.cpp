@@ -65,18 +65,22 @@ bool Keyboard::handleKeys(){
 	{
             
         case TCODK_UP:
+            client->set_paused(true);
             client->sendAPICall(8);
             break;
             
         case TCODK_DOWN:
+            client->set_paused(true);
             client->sendAPICall(2);
             break;
             
         case TCODK_LEFT:
+            client->set_paused(true);
             client->sendAPICall(4);
             break;
             
         case TCODK_RIGHT:
+            client->set_paused(true);
             client->sendAPICall(6);
             break;
             

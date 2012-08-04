@@ -50,7 +50,7 @@ private:
     int mapSize_;
     
     char *mapSize;
-    char tmp[2];
+    char *cmd;
     bool sent;
     
     ClientMap *clientMap;
@@ -60,7 +60,9 @@ private:
     
     char *buf;
     
-    string callForMap = "getmap\r\n";
+    string prompt = "ascii> ";
+    string command;
+    string direction;
     
     bool m_pause;
     bool rendering;
@@ -69,6 +71,7 @@ private:
     boost::mutex m_pause_mutex;
     boost::condition_variable m_pause_changed;
     boost::asio::streambuf line_feed_;
+   
     
 
     
@@ -79,10 +82,12 @@ private:
 public:
        
     
-    
+    bool writing;
     
     ClientSession(boost::asio::io_service& io_service, tcp::resolver::iterator endpoint_iterator, ClientMap *client, GraphicsTCOD *screen);
     void Connect(const boost::system::error_code& error);
+    
+    void ignorePrompt(const boost::system::error_code& error);
     
     void sizeMap(const boost::system::error_code& error);
     void confirmSize(const boost::system::error_code& error);

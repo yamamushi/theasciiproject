@@ -72,19 +72,12 @@ FOV_RESTRICTIVE : Mingos' Restrictive Precise Angle Shadowcasting (MRPAS). Origi
 
 #define FOV_ALGO FOV_BASIC
 #define FOV_LIGHT_WALLS true
-#define TORCH_RADIUS 9
+#define TORCH_RADIUS 7
 
 #define TILE_PACKET_SIZE 128
 
-
-#define MAP_PACKET_SIZE 16384
-
-
-// Our Packet Sizes are reduced by 1
-// to account for the newline terminating
-// character at the end of our streams (/r/n)
-#define MAX_PACKET_SIZE 131070
-#define MAX_VECTOR_BUFFER 1023
+#define MAX_PACKET_SIZE 131071
+#define MAX_VECTOR_BUFFER 1024
 
 
 

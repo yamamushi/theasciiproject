@@ -84,15 +84,15 @@ void client_connection::start()
     
     client_pool_.join(shared_from_this());
     
-   // stream = new char[MAX_PACKET_SIZE];
-   // memset(stream, '.', MAX_PACKET_SIZE);
-    
     mapBuf = new vector<char *>;
     mapSize = new char[16];
     
     cmd = new char[2];
     cmd[0] = '\r';
     cmd[1] = '\n';
+    stream = new char[MAX_PACKET_SIZE];
+    memset(stream, '.', MAX_PACKET_SIZE);
+    updatePlayerMap();
 
     kickStart();
 }
@@ -103,7 +103,7 @@ void client_connection::start()
 void client_connection::kickStart()
 {
     
-    boost::asio::async_write(socket_, boost::asio::buffer(&prompt[0], 0), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+    boost::asio::async_write(socket_, boost::asio::buffer(prompt), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
     
 }
 
@@ -129,63 +129,17 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         is >> command;
         
         
-        if( command == "0")
-        {
-            handleAPI(stoi(command));
-            boost::asio::async_write(socket_, boost::asio::buffer(&prompt[0], 0), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-        }
-        else if( command == "1")
-        {
-            handleAPI(stoi(command));
-            boost::asio::async_write(socket_, boost::asio::buffer(&prompt[0], 0), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-        }
-        else if( command == "2")
-        {
-            handleAPI(stoi(command));
-            boost::asio::async_write(socket_, boost::asio::buffer(&prompt[0], 0), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-        }
-        else if( command == "3")
-        {
-            handleAPI(stoi(command));
-            boost::asio::async_write(socket_, boost::asio::buffer(&prompt[0], 0), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-        }
-        else if( command == "4")
-        {
-            handleAPI(stoi(command));
-            boost::asio::async_write(socket_, boost::asio::buffer(&prompt[0], 0), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-        }
-        else if( command == "5")
-        {
-            handleAPI(stoi(command));
-            boost::asio::async_write(socket_, boost::asio::buffer(&prompt[0], 0), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-        }
-        else if( command == "6")
-        {
-            handleAPI(stoi(command));
-            boost::asio::async_write(socket_, boost::asio::buffer(&prompt[0], 0), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-        }
-        else if( command == "7")
-        {
-            handleAPI(stoi(command));
-            boost::asio::async_write(socket_, boost::asio::buffer(&prompt[0], 0), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-        }
-        else if( command == "8")
-        {
-            handleAPI(stoi(command));
-            boost::asio::async_write(socket_, boost::asio::buffer(&prompt[0], 0), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-        }
-        else if( command == "9")
+        if(isInteger(command))
         {
             handleAPI(stoi(command));
             boost::asio::async_write(socket_, boost::asio::buffer(&prompt[0], 0), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         else if( command == "startMapStream")
         {
-            stream = new char[MAX_PACKET_SIZE];
-            memset(stream, '.', MAX_PACKET_SIZE);
             
             updatePlayerMap();	
-            
+            free(mapSize);
+            mapSize = new char[16];
             
             memset(mapSize, '\0', 16);
             
@@ -281,11 +235,7 @@ void client_connection::sync()
         handleAPI(x);
         updatePlayerMap();
     }
-        
-    if((sent + MAP_PACKET_SIZE) >= len)
-    {
-        updatePlayerMap();
-    }
+
     
     if(sent > 0)
     {
@@ -336,7 +286,7 @@ void client_connection::updatePlayerMap()
     renderForPlayer(test, mapBuf);
     
     
-    len = ((mapBuf->size()/2)*TILE_PACKET_SIZE)+TILE_PACKET_SIZE;
+    len = ((mapBuf->size())*TILE_PACKET_SIZE);
     
     if(len > MAX_PACKET_SIZE)
     {
@@ -353,13 +303,14 @@ void client_connection::updatePlayerMap()
     memset(stream, '.', len);
     
     memcpy(stream, mapBuf->back(), TILE_PACKET_SIZE);
-    mapBuf->pop_back();
+    free(mapBuf->at(0));
     
     for(int x = 1; x < mapBuf->size(); x++)
     {
-        memcpy(stream + ((x*(TILE_PACKET_SIZE) - 1)), mapBuf->back(), TILE_PACKET_SIZE);
-        //free(mapBuf->back());
-        mapBuf->pop_back();
+        memcpy(stream + ((x*(TILE_PACKET_SIZE) - 1)), mapBuf->at(x), TILE_PACKET_SIZE);
+        printf("we are at vector position %d\n", x);
+        free(mapBuf->at(x));
+
     }
     
 
@@ -426,9 +377,10 @@ void client_connection::disconnect()
 {
  
     
-   // free(stream);
+   free(stream);
+    free(mapSize);
     
-  //  delete mapBuf;
+   delete mapBuf;
     client_pool_.leave(shared_from_this());    
    // socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_both);
    // socket_.close();

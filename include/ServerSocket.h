@@ -86,7 +86,7 @@ private:
     char *mapSize;
     char headerSize[2];
     
-    string prompt;
+    string prompt = "";
     
     bool moved;
     

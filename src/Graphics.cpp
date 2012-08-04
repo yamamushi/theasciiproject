@@ -61,7 +61,7 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     //	TCODConsole::credits();
     
     TCODConsole *mainConsole = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
-    //TCODSystem::setFps(25);
+    TCODSystem::setFps(25);
     
     
     output = mainConsole;
@@ -75,14 +75,12 @@ void GraphicsTCOD::render(){
     
     //TCODConsole::blit(offScreenConsole, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
     
-    drawAll();
-    
+   
     output->setDirty(0, 0, MAIN_WIDTH, MAIN_HEIGHT);
 	TCODConsole::blit(output, 0, 0, MAP_WIDTH, MAP_HEIGHT, TCODConsole::root, 0, 0);
 
     TCODConsole::flush();
-    clearScreen();
-    
+  
     
 }
 

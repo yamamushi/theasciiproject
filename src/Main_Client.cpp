@@ -77,6 +77,7 @@ int main(int argc, char *argv[])
         // Main Game Loop
         while (!TCODConsole::isWindowClosed()) {
 
+            c.set_paused(false);
             bool quit = kboard->handleKeys();
             
             if (quit)
