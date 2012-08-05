@@ -44,8 +44,12 @@ class ClientMapPacker;
 class ClientSession
 {
 private:
-    boost::asio::io_service& io_service_;
+    
     tcp::socket socket_;
+    
+    std::mutex commandMutex;
+    
+    std::ostringstream oss;
     
     int mapSize_;
     
@@ -65,11 +69,19 @@ private:
     string direction;
     
     bool m_pause;
+    bool m2_pause;
     bool rendering;
     
+    boost::asio::io_service& io_service_;
     boost::asio::streambuf line_command_;
     boost::mutex m_pause_mutex;
     boost::condition_variable m_pause_changed;
+    
+    
+    boost::mutex m2_pause_mutex;
+    boost::condition_variable m2_pause_changed;
+    
+    
     boost::asio::streambuf line_feed_;
    
     
@@ -110,6 +122,8 @@ public:
     void block_while_paused();
     void set_paused(bool new_value);
     
+    void block2_while_paused();
+    void set2_paused(bool new_value);
 
 
 };

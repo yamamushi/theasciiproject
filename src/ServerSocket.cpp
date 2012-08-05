@@ -302,13 +302,12 @@ void client_connection::updatePlayerMap()
     
     memset(stream, '.', len);
     
-    memcpy(stream, mapBuf->back(), TILE_PACKET_SIZE);
+    memcpy(stream, mapBuf->at(0), TILE_PACKET_SIZE);
     free(mapBuf->at(0));
     
     for(int x = 1; x < mapBuf->size(); x++)
     {
         memcpy(stream + ((x*(TILE_PACKET_SIZE) - 1)), mapBuf->at(x), TILE_PACKET_SIZE);
-        printf("we are at vector position %d\n", x);
         free(mapBuf->at(x));
 
     }

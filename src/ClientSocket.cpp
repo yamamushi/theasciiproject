@@ -155,7 +155,6 @@ void ClientSession::confirmSize(const boost::system::error_code& error)
 
 void ClientSession::read_map(const boost::system::error_code& error)
 {
-    block_while_paused();
     
     if(!error)
     {
@@ -177,55 +176,46 @@ void ClientSession::read_map(const boost::system::error_code& error)
 
 void ClientSession::callNewMap(const boost::system::error_code& error, std::size_t bytes_transferred)
 {
-    block_while_paused();
+
     if(!error)
     {
         
-        int offset = 0;
-        
-        for(int x=0; x < 128; x++)
-        {
-            if(strcmp(&buf[x], "t"))
-            {
-                offset = x;
-                break;
-            }
-            
-        }
+
         
         
         int count = 0;
         
-        for(int x = 0; x < (bytes_transferred/TILE_PACKET_SIZE); x++)
+        for(int x = 0; x < (bytes_transferred)/(TILE_PACKET_SIZE); x++)
         {
             char *unpack = new char[TILE_PACKET_SIZE];
             
-            memset(unpack, '\0', TILE_PACKET_SIZE);
-            memcpy(unpack, &buf[((x*TILE_PACKET_SIZE)+offset) - 1], TILE_PACKET_SIZE);
-            
+            memset(unpack, '.', TILE_PACKET_SIZE);
+            memcpy(unpack, &buf[(x*TILE_PACKET_SIZE) - 1], TILE_PACKET_SIZE);
             
             packer->unpackFromNet(clientMap, (unsigned char*)unpack, output);
-            
+
             free(unpack);
             count++;
         }
         
         output->render();
         
+        free(buf);
+               
         
-        sprintf(cmd, "\r\n");
         command = "startMapStream\r\n";
-        // direction = "\r\n";
-        block_while_paused();
-        if(sent)
-        {
-            boost::asio::async_write(socket_, boost::asio::buffer(direction), boost::bind(&ClientSession::sendMapRequest, this, boost::asio::placeholders::error));
-        }
-        else
-        {
-            
-            boost::asio::async_write(socket_, boost::asio::buffer(direction), boost::bind(&ClientSession::sendMapRequest, this, boost::asio::placeholders::error));
-        }
+
+       // set_paused(true);
+        
+        direction.append(cmd);
+        direction.append("\r\n");
+        
+        string serverCall = direction;
+      //  set_paused(false);
+        
+        boost::asio::async_write(socket_, boost::asio::buffer(serverCall), boost::bind(&ClientSession::sendMapRequest, this, boost::asio::placeholders::error));
+
+
     }
     else
     {
@@ -243,10 +233,11 @@ void ClientSession::sendMapRequest(const boost::system::error_code& error)
 {
     if(!error)
     {
-        direction = "\r\n";
         
-        block_while_paused();
+        sprintf(cmd, "");
+        direction = "\r\n";
         sleep(0.1);
+
         boost::asio::async_write(socket_, boost::asio::buffer(command), boost::bind(&ClientSession::sizeMap, this, boost::asio::placeholders::error));
         
     }
@@ -259,11 +250,12 @@ void ClientSession::sendMapRequest(const boost::system::error_code& error)
 
 void ClientSession::sendAPICall(int api)
 {
-    std::ostringstream oss;
-    oss << api;
 
-        direction += oss.str();
-        direction.append("\r\n");
+   // block_while_paused();
+    
+    sprintf(cmd, "%d", api);
+
+
 }
 
 

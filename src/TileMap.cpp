@@ -334,8 +334,7 @@ void TileMap::orientWalls(){
                 if(TypeID == (virtMap[x+1][y]->getTypeID()) ){
                     
                     // ╚
-                    if(TypeID == (virtMap[x][y-1])->getTypeID() &&
-                       TypeID == (virtMap[x+1][y]->getTypeID()) ){
+                    if(TypeID == (virtMap[x][y-1])->getTypeID() ){
                         
                         if(TypeID == (virtMap[x][y+1]->getTypeID()) &&
                            TypeID == (virtMap[x-1][y]->getTypeID()) &&
@@ -369,8 +368,7 @@ void TileMap::orientWalls(){
                     
                     // ╔
                     
-                    if(TypeID == (virtMap[x][y+1]->getTypeID()) &&
-                       TypeID == (virtMap[x+1][y]->getTypeID()) ){
+                    if(TypeID == (virtMap[x][y+1]->getTypeID())){
                         
                         if(TypeID == (virtMap[x][y-1]->getTypeID()) &&
                            TypeID == (virtMap[x-1][y]->getTypeID()) &&
@@ -387,6 +385,13 @@ void TileMap::orientWalls(){
                         if(TypeID != (virtMap[x+1][y+1]->getTypeID()) &&
                            TypeID != (virtMap[x-1][y]->getTypeID()) &&
                            TypeID != (virtMap[x][y-1]->getTypeID()) ){
+                            center->setOrientation(2);
+                        }
+                        if(TypeID != (virtMap[x-1][y+1]->getTypeID()) &&
+                           TypeID != (virtMap[x-1][y]->getTypeID()) &&
+                           TypeID != (virtMap[x-1][y-1]->getTypeID()) &&
+                           TypeID != (virtMap[x][y-1]->getTypeID()) &&
+                           TypeID != (virtMap[x+1][y+1]->getTypeID())){
                             center->setOrientation(2);
                         }
                     }
@@ -430,13 +435,39 @@ void TileMap::orientWalls(){
                     
                     if(TypeID == (virtMap[x+1][y]->getTypeID()) &&
                        TypeID == (virtMap[x][y-1]->getTypeID()) &&
-                       TypeID == (virtMap[x][y+1]->getTypeID()) &&
-                       TypeID != (virtMap[x+1][y-1]->getTypeID()) &&
-                       TypeID != (virtMap[x+1][y+1]->getTypeID()) &&
-                       TypeID != (virtMap[x-1][y-1]->getTypeID()) &&
-                       TypeID != (virtMap[x-1][y+1]->getTypeID()) ){
-                        center->setOrientation(10);
+                       TypeID == (virtMap[x][y+1]->getTypeID()) ){
+                        if(TypeID != (virtMap[x+1][y-1]->getTypeID()) &&
+                           TypeID != (virtMap[x+1][y+1]->getTypeID()) &&
+                           TypeID != (virtMap[x-1][y-1]->getTypeID()) &&
+                           TypeID != (virtMap[x-1][y+1]->getTypeID()) ){
+                            center->setOrientation(10);
+                        }
+                        if(TypeID == (virtMap[x+1][y-1]->getTypeID()) &&
+                           TypeID != (virtMap[x+1][y+1]->getTypeID()) &&
+                           TypeID != (virtMap[x-1][y-1]->getTypeID()) &&
+                           TypeID != (virtMap[x-1][y+1]->getTypeID()) ){
+                            center->setOrientation(10);
+                        }
+                        if(TypeID != (virtMap[x+1][y-1]->getTypeID()) &&
+                           TypeID == (virtMap[x+1][y+1]->getTypeID()) &&
+                           TypeID != (virtMap[x-1][y-1]->getTypeID()) &&
+                           TypeID != (virtMap[x-1][y+1]->getTypeID()) ){
+                            center->setOrientation(10);
+                        }
+                        if(TypeID != (virtMap[x+1][y-1]->getTypeID()) &&
+                           TypeID != (virtMap[x+1][y+1]->getTypeID()) &&
+                           TypeID == (virtMap[x-1][y-1]->getTypeID()) &&
+                           TypeID != (virtMap[x-1][y+1]->getTypeID()) ){
+                            center->setOrientation(10);
+                        }
+                        if(TypeID != (virtMap[x+1][y-1]->getTypeID()) &&
+                           TypeID != (virtMap[x+1][y+1]->getTypeID()) &&
+                           TypeID != (virtMap[x-1][y-1]->getTypeID()) &&
+                           TypeID == (virtMap[x-1][y+1]->getTypeID()) ){
+                            center->setOrientation(10);
+                        }
                     }
+                    
                 }
             }
             
@@ -484,81 +515,81 @@ void TileMap::orientWalls(int x1, int y1, int x2, int y2){
 }
 
 void TileMap::importRoom(Room *source){
-	rooms[numRooms] = source;
-	numRooms++;
+    rooms[numRooms] = source;
+    numRooms++;
 }
 
 void TileMap::importAllRooms(TileMap *source){
-	TileMap *tmp = source;
+    TileMap *tmp = source;
     
-	if (tmp->numRooms != 0){
-		for( x = 0; x < tmp->numRooms; x++){
-			importRoom(tmp->rooms[x]);
-		}
-	}
+    if (tmp->numRooms != 0){
+        for( x = 0; x < tmp->numRooms; x++){
+            importRoom(tmp->rooms[x]);
+        }
+    }
 }
 
 void TileMap::clearRooms(){
-	for(x = 0; x < numRooms; x++){
-		clearRoom(x);
-	}
+    for(x = 0; x < numRooms; x++){
+        clearRoom(x);
+    }
 }
 
 void TileMap::clearRoom(int x){
-	delete rooms[x];
-	numRooms--;
+    delete rooms[x];
+    numRooms--;
 }
 
 void TileMap::importHall(Hall *source){
-	halls[numHalls] = source;
-	numHalls++;
+    halls[numHalls] = source;
+    numHalls++;
 }
 
 void TileMap::importAllHalls(TileMap *source){
-	TileMap *tmp = source;
+    TileMap *tmp = source;
     
-	if (tmp->numHalls != 0){
-		for(  x = 0; x < tmp->numHalls; x++){
-			importHall(tmp->halls[x]);
-		}
-	}
+    if (tmp->numHalls != 0){
+        for(  x = 0; x < tmp->numHalls; x++){
+            importHall(tmp->halls[x]);
+        }
+    }
 }
 
 void TileMap::clearHall(int x){
-	delete halls[x];
-	numHalls--;
+    delete halls[x];
+    numHalls--;
 }
 
 void TileMap::clearHalls(){
-	for ( x=0; x < numHalls; x++)
-		clearHall(x);
+    for ( x=0; x < numHalls; x++)
+        clearHall(x);
 }
 
 void TileMap::copyVirtMap(TileMap *source){
     
-	TileMap *tmp = source;
+    TileMap *tmp = source;
     
-	for( x = 0; x < MAP_WIDTH; x++){
-		for( y = 0; y < MAP_HEIGHT; y++){
-			virtMap[x][y] = tmp->virtMap[x][y];
-		}
-	}
+    for( x = 0; x < MAP_WIDTH; x++){
+        for( y = 0; y < MAP_HEIGHT; y++){
+            virtMap[x][y] = tmp->virtMap[x][y];
+        }
+    }
 }
 
 
 void TileMap::importMap(TileMap *source){
     
-	TileMap *tmp = source;
+    TileMap *tmp = source;
     
-	refreshMap();
-	clearRooms();
-	clearHalls();
+    refreshMap();
+    clearRooms();
+    clearHalls();
     
-	importAllRooms(tmp);
-	importAllHalls(tmp);
+    importAllRooms(tmp);
+    importAllHalls(tmp);
     
-	drawAllRooms();
-	drawAllHalls();
+    drawAllRooms();
+    drawAllHalls();
     orientWalls();
     
 }

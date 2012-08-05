@@ -20,7 +20,7 @@ int renderForPlayer(Entity *target, vector<char *> *outbuf)
     int offset, posx, posy;
     posx = target->posX();
     posy = target->posY();
-    offset = 13;
+    offset = 11;
     
     
     for (x = (posx-offset); x < (posx+offset); x++) {
