@@ -52,7 +52,7 @@ int main(int argc, char *argv[]){
         
     TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);    
     // Temporary Dungeon Generator
-    Dungeon::Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);    
+    Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);    
     // init Fov Lib ASAP after TileMap and Dungeon have been initialized.
     FovLib *fovLib = new FovLib(map);
     // Obviously our entity map would depend on FOV being loaded.
