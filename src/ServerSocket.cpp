@@ -115,6 +115,10 @@ void client_connection::receive_command(const boost::system::error_code& error)
     {
         boost::asio::async_read_until(socket_, line_command_, "\r\n", boost::bind(&client_connection::handle_request_line, shared_from_this(), boost::asio::placeholders::error ));
     }
+    else
+    {
+        disconnect();
+    }
     
 }
 
@@ -381,11 +385,7 @@ void client_connection::disconnect()
     
    delete mapBuf;
     client_pool_.leave(shared_from_this());    
-   // socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_both);
-   // socket_.close();
-    
-
-    
+   
     
 }
 
