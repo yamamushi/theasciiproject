@@ -427,6 +427,7 @@
 		747D227E15BFB07700CE1AC9 /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = TODO.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/TODO.txt"; sourceTree = "<absolute>"; };
 		747D228415C0339E00CE1AC9 /* at.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = at.jpg; sourceTree = "<group>"; };
 		747D228515C0566300CE1AC9 /* LICENSE_1_0_BOOST.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE_1_0_BOOST.txt; sourceTree = "<group>"; };
+		7492895215CF09B800BACA68 /* BOOST-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "BOOST-LICENSE.txt"; sourceTree = "<group>"; };
 		74C5767C15C1D1F20033691A /* BoostLibs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoostLibs.h; sourceTree = "<group>"; };
 		74C5767E15C1EC6D0033691A /* Collect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collect.cpp; sourceTree = "<group>"; };
 		74C5768015C1EC780033691A /* Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collect.h; sourceTree = "<group>"; };
@@ -698,6 +699,7 @@
 				7444885D15BF04EF006595CE /* README-SDL.txt */,
 				7444885E15BF04EF006595CE /* TPL-LICENSE.txt */,
 				747D228515C0566300CE1AC9 /* LICENSE_1_0_BOOST.txt */,
+				7492895215CF09B800BACA68 /* BOOST-LICENSE.txt */,
 			);
 			path = licenses;
 			sourceTree = "<group>";
