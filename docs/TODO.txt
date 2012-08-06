@@ -1,3 +1,13 @@
+08/06/2012 TODO List:
+
+Networking - Updates to the packet collection methods will be necessary
+        To stabilize network traffic at a reasonable level.
+
+Database - Work will begin this week on implementing an accounting/login
+        System so that players can create unique accounts and interact
+        With eachother in the game world.
+
+
 07/25/2012 TODO List:
 
 Networking - Going to rip out the C++ Sockets library in favor of

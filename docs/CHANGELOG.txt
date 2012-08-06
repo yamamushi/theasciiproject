@@ -3,6 +3,11 @@ Copyright (c) 2012 Jonathan Rumion
 07/25/2012
 ==================================
 
+0.0.0j(Rev 5)
+
+Asynchronous networking has been stabilized, however there will likely be a rewrite of the data packing methods in order to cut down on the bandwidth overhead.
+
+
 0.0.0i(Rev 3)
 
 I've gone through and have updated all of the "original" code in the project

@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
         boost::asio::io_service io_service;
         
         tcp::resolver resolver(io_service);
-        tcp::resolver::query query("localhost", "5250");
+        tcp::resolver::query query("pub.theasciiproject.com", "5250");
         tcp::resolver::iterator iterator = resolver.resolve(query);
         
         
