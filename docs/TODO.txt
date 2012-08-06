@@ -8,6 +8,7 @@ Database - Work will begin this week on implementing an accounting/login
         With eachother in the game world.
 
 
+
 07/25/2012 TODO List:
 
 Networking - Going to rip out the C++ Sockets library in favor of
@@ -115,5 +116,6 @@ Consolidate coloring tiles into a function called
 
 While we're at it, we can also create
 "void setColor(entity *target, TCODColor foreinit)"
+
 
 
