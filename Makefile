@@ -2,13 +2,14 @@ SRCDIR=./src
 INCDIR=./include
 LIBTCOD=./include/libtcod
 BUILDDIR=./build/
-CFLAGS=$(FLAGS) -I$(LIBTCOD) -I$(INCDIR) -I$(SRCDIR) -Wall -Wswitch -std=c++11
+CFLAGS=$(FLAGS) -I$(LIBTCOD) -I$(INCDIR) -I$(SRCDIR) -Wall -Wswitch
+CPPFLAGS=$(FLAGS) -I$(LIBTCOD) -I$(INCDIR) -I$(SRCDIR) -Wall -Wswitch -std=c++11
 CC=gcc
 CPP=g++
 .SUFFIXES: .o .h .c .hpp .cpp
 
 %.o : $(SRCDIR)/%.cpp
-	$(CPP) $(CFLAGS) -o $(BUILDDIR)$@ -c $<
+	$(CPP) $(CPPFLAGS) -o $(BUILDDIR)$@ -c $<
 %.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -o $(BUILDDIR)$@ -c $<
 
@@ -23,10 +24,10 @@ SERVER_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
 all : client server
 
 client : $(CLIENT_OBJS)
-	$(CPP) $(addprefix $(BUILDDIR), $(CLIENT_OBJS)) -o ./bin/$@ -lSockets -lssl -lcrypto -ltcod -ltcodxx -Wl,-rpath,. -lpthread -lssl -lcrypto -lboost_system -lboost_thread
+	$(CPP) $(addprefix $(BUILDDIR), $(CLIENT_OBJS)) -o ./bin/$@ -lssl -lcrypto -ltcod -ltcodxx -Wl,-rpath,. -lpthread -lssl -lcrypto -lboost_system -lboost_thread
 
 server : $(SERVER_OBJS)
-	$(CPP) $(addprefix $(BUILDDIR), $(SERVER_OBJS)) -o ./bin/$@ -lSockets -lssl -lcrypto -ltcod -ltcodxx -Wl,-rpath,. -lpthread -lssl -lcrypto -lboost_system -lboost_thread
+	$(CPP) $(addprefix $(BUILDDIR), $(SERVER_OBJS)) -o ./bin/$@ -lssl -lcrypto -ltcod -ltcodxx -Wl,-rpath,. -lpthread -lssl -lcrypto -lboost_system -lboost_thread
 
 clean :
 	\rm -f $(addprefix $(BUILDDIR), $(CLIENT_OBJS) $(SERVER_OBJS))
