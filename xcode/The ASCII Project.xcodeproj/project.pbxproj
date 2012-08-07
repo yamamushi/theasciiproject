@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7404071915C67C9D001F86B1 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888615BF04EF006595CE /* Graphics.cpp */; };
+		742F3FA315D0920200372A7A /* DBConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 742F3FA215D0920200372A7A /* DBConnector.cpp */; };
 		743612DD15BFA75800CC2BCA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743612AC15BFA55A00CC2BCA /* Cocoa.framework */; };
 		743612E315BFA75800CC2BCA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 743612E115BFA75800CC2BCA /* InfoPlist.strings */; };
 		743612E915BFA75800CC2BCA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 743612E715BFA75800CC2BCA /* Credits.rtf */; };
@@ -90,6 +91,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		742F3FA215D0920200372A7A /* DBConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DBConnector.cpp; sourceTree = "<group>"; };
+		742F3FA515D0921500372A7A /* DBConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBConnector.h; sourceTree = "<group>"; };
 		743612AC15BFA55A00CC2BCA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		743612AF15BFA55A00CC2BCA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		743612B015BFA55A00CC2BCA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -608,6 +611,7 @@
 				7444885615BF04EF006595CE /* TileMap.h */,
 				7444885715BF04EF006595CE /* Tiles.h */,
 				7444885815BF04EF006595CE /* tpl.h */,
+				742F3FA515D0921500372A7A /* DBConnector.h */,
 			);
 			name = include;
 			path = ../include;
@@ -790,6 +794,7 @@
 				7444888E15BF04EF006595CE /* TileMap.cpp */,
 				7444888F15BF04EF006595CE /* Tiles.cpp */,
 				7444889015BF04EF006595CE /* tpl.c */,
+				742F3FA215D0920200372A7A /* DBConnector.cpp */,
 			);
 			name = src;
 			path = ../src;
@@ -1193,6 +1198,7 @@
 				744488C115BF04EF006595CE /* Serialization.cpp in Sources */,
 				74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */,
 				744488BE15BF04EF006595CE /* Main_Server.cpp in Sources */,
+				742F3FA315D0920200372A7A /* DBConnector.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1418,6 +1424,7 @@
 					"-lpthread",
 					"-lboost_system-mt",
 					"-lboost_thread-mt",
+					"-lpqxx",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1456,6 +1463,7 @@
 					"-lpthread",
 					"-lboost_system-mt",
 					"-lboost_thread-mt",
+					"-lpqxx",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
