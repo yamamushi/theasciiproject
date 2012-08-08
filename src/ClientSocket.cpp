@@ -236,7 +236,7 @@ void ClientSession::sendMapRequest(const boost::system::error_code& error)
         
         sprintf(cmd, "");
         direction = "\r\n";
-        sleep(0.1);
+        boost::this_thread::sleep_for(boost::chrono::nanoseconds(1));
 
         boost::asio::async_write(socket_, boost::asio::buffer(command), boost::bind(&ClientSession::sizeMap, this, boost::asio::placeholders::error));
         
