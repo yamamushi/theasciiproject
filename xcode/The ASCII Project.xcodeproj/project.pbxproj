@@ -431,6 +431,7 @@
 		747D228415C0339E00CE1AC9 /* at.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = at.jpg; sourceTree = "<group>"; };
 		747D228515C0566300CE1AC9 /* LICENSE_1_0_BOOST.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE_1_0_BOOST.txt; sourceTree = "<group>"; };
 		7492895215CF09B800BACA68 /* BOOST-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "BOOST-LICENSE.txt"; sourceTree = "<group>"; };
+		74C4255115D4BA7100CBFD82 /* server.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = server.conf; sourceTree = "<group>"; };
 		74C5767C15C1D1F20033691A /* BoostLibs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoostLibs.h; sourceTree = "<group>"; };
 		74C5767E15C1EC6D0033691A /* Collect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collect.cpp; sourceTree = "<group>"; };
 		74C5768015C1EC780033691A /* Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collect.h; sourceTree = "<group>"; };
@@ -548,6 +549,7 @@
 		744487E215BF04EF006595CE /* bin */ = {
 			isa = PBXGroup;
 			children = (
+				74C4255115D4BA7100CBFD82 /* server.conf */,
 				744487E415BF04EF006595CE /* README.txt */,
 			);
 			path = bin;
@@ -595,6 +597,7 @@
 				7444880815BF04EF006595CE /* ClientSocket.h */,
 				74C5768015C1EC780033691A /* Collect.h */,
 				7444880915BF04EF006595CE /* constants.h */,
+				742F3FA515D0921500372A7A /* DBConnector.h */,
 				7444880A15BF04EF006595CE /* Dungeon.h */,
 				7444880B15BF04EF006595CE /* Entities.h */,
 				7444880C15BF04EF006595CE /* EntityMap.h */,
@@ -611,7 +614,6 @@
 				7444885615BF04EF006595CE /* TileMap.h */,
 				7444885715BF04EF006595CE /* Tiles.h */,
 				7444885815BF04EF006595CE /* tpl.h */,
-				742F3FA515D0921500372A7A /* DBConnector.h */,
 			);
 			name = include;
 			path = ../include;
@@ -780,6 +782,7 @@
 				7444888015BF04EF006595CE /* ClientMap.cpp */,
 				7444888115BF04EF006595CE /* ClientSocket.cpp */,
 				74C5767E15C1EC6D0033691A /* Collect.cpp */,
+				742F3FA215D0920200372A7A /* DBConnector.cpp */,
 				7444888215BF04EF006595CE /* Dungeon.cpp */,
 				7444888315BF04EF006595CE /* Entities.cpp */,
 				7444888415BF04EF006595CE /* EntityMap.cpp */,
@@ -794,7 +797,6 @@
 				7444888E15BF04EF006595CE /* TileMap.cpp */,
 				7444888F15BF04EF006595CE /* Tiles.cpp */,
 				7444889015BF04EF006595CE /* tpl.c */,
-				742F3FA215D0920200372A7A /* DBConnector.cpp */,
 			);
 			name = src;
 			path = ../src;
@@ -1187,7 +1189,6 @@
 				744488C415BF04EF006595CE /* Tiles.cpp in Sources */,
 				744488C315BF04EF006595CE /* TileMap.cpp in Sources */,
 				744488B815BF04EF006595CE /* Entities.cpp in Sources */,
-				744488B915BF04EF006595CE /* EntityMap.cpp in Sources */,
 				744488BA15BF04EF006595CE /* FovLib.cpp in Sources */,
 				744488B715BF04EF006595CE /* Dungeon.cpp in Sources */,
 				744488C015BF04EF006595CE /* RenderMap.cpp in Sources */,
@@ -1196,9 +1197,10 @@
 				744488B515BF04EF006595CE /* ClientMap.cpp in Sources */,
 				7404071915C67C9D001F86B1 /* Graphics.cpp in Sources */,
 				744488C115BF04EF006595CE /* Serialization.cpp in Sources */,
+				744488B915BF04EF006595CE /* EntityMap.cpp in Sources */,
 				74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */,
-				744488BE15BF04EF006595CE /* Main_Server.cpp in Sources */,
 				742F3FA315D0920200372A7A /* DBConnector.cpp in Sources */,
+				744488BE15BF04EF006595CE /* Main_Server.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1425,6 +1427,7 @@
 					"-lboost_system-mt",
 					"-lboost_thread-mt",
 					"-lpqxx",
+					"-lboost_program_options-mt",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1464,6 +1467,7 @@
 					"-lboost_system-mt",
 					"-lboost_thread-mt",
 					"-lpqxx",
+					"-lboost_program_options-mt",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;

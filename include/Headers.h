@@ -57,6 +57,7 @@
 #include <string>
 #include <mutex>
 #include <future>
+#include <iterator>
 #include <cstring>
 #include <wchar.h>
 #include <clocale>
@@ -65,10 +66,12 @@
 #include <inttypes.h>
 #include <sstream>
 #include <time.h>
+#include <fstream>
 
 // Now's a good time to bring in Boost
 // Which we'll store references to here
 #include "BoostLibs.h"
+namespace po = boost::program_options;
 
 // Implementing the tpl serialization library
 #include "tpl.h"

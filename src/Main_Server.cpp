@@ -41,6 +41,7 @@
 #include "ServerSocket.h"
 
 
+
 Entity *test;
 
 
@@ -48,11 +49,82 @@ Entity *test;
 
 // Lets's Rock n' Roll
 
-int main(int argc, char *argv[]){
+int main(int ac, char* av[]){
+    
+    int db_port;
+    std::string db_hostname;
+    std::string db_username;
+    std::string db_pass;
+    std::string config_file;
+    
+    try {
         
-    TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);    
+        po::options_description desc("Allowed options");
+        desc.add_options()
+        ("config,c", po::value<std::string>(&config_file)->default_value("server.conf"),"Configuration file, default server.conf")
+        ("help,h", "display this help text")
+        ("version,v", "display version number")
+        ;
+        
+        po::options_description config("Config File Options");
+        config.add_options()
+        ("host", po::value<std::string>(&db_hostname)->default_value("localhost"),"Database Hostname")
+        ("port", po::value<int>(&db_port)->default_value(5432), "Database Port")
+        ("username", po::value<std::string>(&db_username), "Database Username")
+        ("dbpass", po::value<std::string>(&db_pass), "Database Password")
+        ;
+        
+        po::options_description config_file_options;
+        config_file_options.add(config);
+        
+        po::variables_map vm;
+        po::store(po::parse_command_line(ac, av, desc), vm);
+        po::notify(vm);
+        
+        if (vm.count("help")) {
+            cout << desc << endl;
+            cout << config << endl;
+            exit(0);
+        }
+        if (vm.count("version")) {
+            cout << "The ASCII Project - Server - Version 0.0.0j" << endl;
+            exit(0);
+        }
+        
+        
+        std::ifstream ifs(config_file.c_str());
+        if(!ifs)
+        {
+            cout << "could not open config file: " << config_file << endl;
+            cout << "Usage:" << endl;
+            cout << desc << endl;
+            cout << config << endl;
+            exit(0);
+        }
+        else
+        {
+            store(parse_config_file(ifs, config_file_options), vm);
+            notify(vm);
+        }
+        
+        cout << "Host is: " << db_hostname << endl;
+        
+
+    }
+    catch(exception& e) {
+        cerr << "error: " << e.what() << "\n";
+        return 1;
+    }
+    catch(...) {
+        cerr << "Exception of unknown type!\n";
+    }
+    
+    
+    
+    
+    TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);
     // Temporary Dungeon Generator
-    Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);    
+    Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
     // init Fov Lib ASAP after TileMap and Dungeon have been initialized.
     FovLib *fovLib = new FovLib(map);
     // Obviously our entity map would depend on FOV being loaded.
@@ -71,11 +143,11 @@ int main(int argc, char *argv[]){
     player->move(map->rooms[1]->cX, map->rooms[1]->cY);
     
     RenderMap *rMap = new RenderMap(map, entMap);
-    player->associateClient(rMap);    
+    player->associateClient(rMap);
     rMap->refreshMap();
-        
+    
     test = player;
-
+    
     
     try
     {
@@ -89,7 +161,7 @@ int main(int argc, char *argv[]){
         std::cerr << e.what() << std::endl;
     }
     
-        
+    
     
     
     return 0;
