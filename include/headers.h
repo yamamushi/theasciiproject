@@ -45,7 +45,7 @@
 #ifndef __MINGW32__
 #include <arpa/inet.h>   /* ntohl htonl */
 #endif
-#include <string.h>      /* memcpy */
+ 
 #include <math.h>
 #include <algorithm>
 #include <iostream>
@@ -59,6 +59,7 @@
 #include <string>
 #include <mutex>
 #include <future>
+#include <iterator>
 #include <cstring>
 #include <wchar.h>
 #include <clocale>
@@ -67,10 +68,15 @@
 #include <inttypes.h>
 #include <sstream>
 #include <time.h>
+#include <fstream>
+
+// postgresql connector
+#include <pqxx/pqxx>
 
 // Now's a good time to bring in Boost
 // Which we'll store references to here
 #include "BoostLibs.h"
+namespace po = boost::program_options;
 
 // Implementing the tpl serialization library
 #include "tpl.h"
@@ -102,6 +108,7 @@ using boost::asio::ip::tcp;
 
 // This will be rewritten "soon"
 #include "Keyboard.h"
+#include "DBConnector.h"
 
 
 
