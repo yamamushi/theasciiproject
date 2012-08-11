@@ -28,3 +28,5 @@ server
 # Xcode stuff
 */xcuserdatad/
 *.xcworkspace
+
+.DS_Store
