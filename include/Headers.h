@@ -42,13 +42,10 @@
 
 
 // Standard Library headers
+#ifndef __MINGW32__
 #include <arpa/inet.h>   /* ntohl htonl */
-<<<<<<< development
-#include <string.h>      /* memcpy */
-=======
 #endif
  
->>>>>>> local
 #include <math.h>
 #include <algorithm>
 #include <iostream>
