@@ -12,12 +12,26 @@ private:
     std::string db_pass;
     
     
+    
+    
 public:
     
-    DBConnector(std::string host, std::string port, std::string user, std::string pass);
+    DBConnector(std::string host, int port, std::string user, std::string pass);
+    
+    pqxx::work *PrepareConn();
+    
+    void ValidateSchema();
+    
+    void AddAccount();
+    void GenerateHash();
+    void GenerateToken();
     
     
+    bool isValidHash();
+    bool isValidToken();
     
+    
+    void testShared();
     
     
 };
