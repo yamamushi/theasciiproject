@@ -42,8 +42,10 @@
 
 
 // Standard Library headers
+#ifndef __MINGW32__
 #include <arpa/inet.h>   /* ntohl htonl */
-#include <string.h>      /* memcpy */
+#endif
+ 
 #include <math.h>
 #include <algorithm>
 #include <iostream>
@@ -67,6 +69,9 @@
 #include <sstream>
 #include <time.h>
 #include <fstream>
+
+// postgresql connector
+#include <pqxx/pqxx>
 
 // Now's a good time to bring in Boost
 // Which we'll store references to here
@@ -103,6 +108,7 @@ using boost::asio::ip::tcp;
 
 // This will be rewritten "soon"
 #include "Keyboard.h"
+#include "DBConnector.h"
 
 
 

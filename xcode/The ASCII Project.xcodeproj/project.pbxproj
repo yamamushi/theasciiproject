@@ -1426,6 +1426,7 @@
 					"-lpthread",
 					"-lboost_system-mt",
 					"-lboost_thread-mt",
+					"-lpq",
 					"-lpqxx",
 					"-lboost_program_options-mt",
 				);
@@ -1466,6 +1467,7 @@
 					"-lpthread",
 					"-lboost_system-mt",
 					"-lboost_thread-mt",
+					"-lpq",
 					"-lpqxx",
 					"-lboost_program_options-mt",
 				);

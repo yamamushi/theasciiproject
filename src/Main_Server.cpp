@@ -41,6 +41,7 @@
 #include "ServerSocket.h"
 
 
+std::shared_ptr<DBConnector> dbEngine;
 
 Entity *test;
 
@@ -120,6 +121,7 @@ int main(int ac, char* av[]){
     }
     
     
+    std::shared_ptr<DBConnector> dbEngine(new DBConnector(db_hostname, db_port, db_username, db_pass));
     
     
     TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);
