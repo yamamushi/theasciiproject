@@ -22,6 +22,7 @@ DBConnector::DBConnector(std::string host, int port, std::string user, std::stri
     
     AddAccount("Boosh", "password");
     GenerateHash("Boosh", "password");
+    GenerateHash("Boosh", "wrongpassword");
     
 }
 
@@ -125,7 +126,7 @@ bool DBConnector::AddAccount(std::string user, std::string pass)
     
 }
 
-void DBConnector::GenerateHash(std::string user, std::string pass)
+bool DBConnector::GenerateHash(std::string user, std::string pass)
 {
     std::regex e("[\\']");
     std::string cleanUser = std::regex_replace(user, e, "");
@@ -134,13 +135,39 @@ void DBConnector::GenerateHash(std::string user, std::string pass)
     pqxx::connection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
     pqxx::work validatePass(conn);
     
-    pqxx::result md5hash = validatePass.exec("SELECT hash FROM accounting WHERE username= '" + cleanUser + "';");
+    pqxx::result doesAccountExist = validatePass.exec("SELECT id FROM accounting WHERE username='" + cleanUser + "';");
     
-    validatePass.commit();
-    
-    std::string md5pass = md5hash[0][0].as<std::string>();
-    
-    cout << md5pass << endl;
+    if(doesAccountExist.size() != 1)
+    {
+        
+        validatePass.commit();
+        return false;
+                
+    }
+    else
+    {
+
+        pqxx::result md5hash = validatePass.exec("SELECT hash FROM accounting WHERE username='" + cleanUser + "';");
+        pqxx::result tmphash = validatePass.exec("SELECT MD5('" + cleanPass + "');");
+        
+        validatePass.commit();
+        
+        std::string md5pass = md5hash[0][0].as<std::string>();
+        std::string tmpHash = tmphash[0][0].as<std::string>();
+        
+        if ( md5pass.compare(tmpHash) != 0)
+        {
+            cout << "invalid pass" << endl;
+            return false;
+        }
+        else
+        {
+            cout << "valid pass" << endl;
+            return true;
+        }
+        
+        
+    }
     
 }
 

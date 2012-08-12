@@ -26,7 +26,7 @@ public:
     
     
     bool AddAccount(std::string user, std::string pass);
-    void GenerateHash(std::string user, std::string pass);
+    bool GenerateHash(std::string user, std::string pass);
     void GenerateToken();
     
     
