@@ -156,6 +156,14 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             
             
         }
+        else if( command == "testdb" || command == "testDB")
+        {
+            extern std::shared_ptr<DBConnector> dbEngine;
+            dbEngine->testShared();
+            
+            
+            boost::asio::async_write(socket_, boost::asio::buffer(&prompt[0], 0), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+        }
         else if( command == "quit")
         {
             disconnect();

@@ -40,6 +40,7 @@
 #include "Headers.h"
 #include "ServerSocket.h"
 
+std::shared_ptr<DBConnector> dbEngine;
 
 
 Entity *test;
@@ -55,6 +56,7 @@ int main(int ac, char* av[]){
     std::string db_hostname;
     std::string db_username;
     std::string db_pass;
+    std::string db_name;
     std::string config_file;
     
     try {
@@ -72,6 +74,7 @@ int main(int ac, char* av[]){
         ("port", po::value<int>(&db_port)->default_value(5432), "Database Port")
         ("username", po::value<std::string>(&db_username), "Database Username")
         ("dbpass", po::value<std::string>(&db_pass), "Database Password")
+        ("dbname", po::value<std::string>(&db_name)->default_value(db_username), "Database Name")
         ;
         
         po::options_description config_file_options;
@@ -119,6 +122,8 @@ int main(int ac, char* av[]){
         cerr << "Exception of unknown type!\n";
     }
     
+    
+    std::shared_ptr<DBConnector> dbEngine(new DBConnector(db_hostname, db_port, db_username, db_pass, db_name));
     
     
     

@@ -69,6 +69,7 @@
 #include <sstream>
 #include <time.h>
 #include <fstream>
+#include <regex>
 
 // postgresql connector
 #include <pqxx/pqxx>
