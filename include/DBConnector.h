@@ -26,11 +26,11 @@ public:
     
     
     bool AddAccount(std::string user, std::string pass);
-    bool GenerateHash(std::string user, std::string pass);
-    void GenerateToken();
+
     
+    bool isValidHash(std::string user, std::string pass);
     
-    bool isValidHash();
+    std::string GenerateToken(std::string user, std::string pass);
     bool isValidToken();
     
     

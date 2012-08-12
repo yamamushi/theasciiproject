@@ -21,8 +21,7 @@ DBConnector::DBConnector(std::string host, int port, std::string user, std::stri
     ValidateSchema();
     
     AddAccount("Boosh", "password");
-    GenerateHash("Boosh", "password");
-    GenerateHash("Boosh", "wrongpassword");
+    GenerateToken("Boosh", "password");
     
 }
 
@@ -126,7 +125,7 @@ bool DBConnector::AddAccount(std::string user, std::string pass)
     
 }
 
-bool DBConnector::GenerateHash(std::string user, std::string pass)
+bool DBConnector::isValidHash(std::string user, std::string pass)
 {
     std::regex e("[\\']");
     std::string cleanUser = std::regex_replace(user, e, "");
@@ -171,16 +170,59 @@ bool DBConnector::GenerateHash(std::string user, std::string pass)
     
 }
 
-void DBConnector::GenerateToken()
+std::string DBConnector::GenerateToken(std::string user, std::string pass)
 {
     
+    std::regex e("[\\']");
+    std::string cleanUser = std::regex_replace(user, e, "");
+    std::string cleanPass = std::regex_replace(pass, e, "");
+    
+    if(isValidHash(cleanUser, cleanPass))
+    {
+        pqxx::connection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
+        pqxx::work tokenGenerator(conn);
+        
+        pqxx::result md5hash = tokenGenerator.exec("SELECT hash FROM accounting WHERE username='" + cleanUser + "';");
+        std::string md5pass = md5hash[0][0].as<std::string>();
+        
+        
+        time_t rawtime;
+        
+        struct tm * timeinfo;
+        time( &rawtime );
+        timeinfo = localtime(&rawtime);
+        string loctime = asctime(timeinfo);
+        
+        srand((unsigned int)time(&rawtime));
+        
+        std::stringstream tmpstream;
+        tmpstream << rand();
+        
+        std::string tokenizeMe = md5pass;
+        tokenizeMe += tmpstream.str();
+        tokenizeMe += loctime;
+        
+        
+        cout << tokenizeMe << endl;
+        
+        pqxx::result token = tokenGenerator.exec("SELECT MD5('" + tokenizeMe + "');");
+        
+        std::string finalToken = token[0][0].as<std::string>();
+        
+        
+        tokenGenerator.exec("UPDATE accounting SET token='" + finalToken + "' WHERE username='" + cleanUser + "';");
+        
+        tokenGenerator.commit();
+        
+        return finalToken;
+        
+    }
+    else
+    {
+        return string("invalid Credentials");
+    }
 }
 
-
-bool DBConnector::isValidHash()
-{
-    return true;
-}
 
 bool DBConnector::isValidToken()
 {
