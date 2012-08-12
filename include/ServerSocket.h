@@ -86,11 +86,14 @@ private:
     char *mapSize;
     char headerSize[2];
     
-    string prompt = "";
+    std::string prompt = "";
+    std::string sessionToken;
+    std::string user;
+    std::string pass;
     
     bool moved;
     
-    size_t len;
+    std::size_t len;
     
     std::vector<char *> *mapBuf;
     
@@ -98,7 +101,7 @@ private:
     
     tcp::socket socket_;
     client_pool& client_pool_;
-    boost::asio::streambuf line_command_;
+    boost::asio::streambuf *line_command_;
     
   
     
@@ -110,6 +113,24 @@ public:
     void start();
     
     void kickStart();
+    
+    void startSession(const boost::system::error_code& error);
+    void sessionStartHandler(const boost::system::error_code& error);
+    
+    void catchUsername(const boost::system::error_code& error);
+    
+    void startLogin(const boost::system::error_code& error);
+    void loginUser(const boost::system::error_code& error);
+    
+    void catchPassword(const boost::system::error_code& error);
+    void startPass(const boost::system::error_code& error);
+    void loginPass(const boost::system::error_code& error);
+    
+    void login(const boost::system::error_code& error);
+    void createAccount(const boost::system::error_code& error);
+    
+    
+    
     
     
     void receive_command(const boost::system::error_code& error);

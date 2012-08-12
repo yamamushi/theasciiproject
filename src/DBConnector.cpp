@@ -12,16 +12,14 @@ DBConnector::DBConnector(std::string host, int port, std::string user, std::stri
     std::stringstream tmpstream;
     tmpstream << port;
     
-    db_port = tmpstream.str();
+    std::string dbport = tmpstream.str();
+    db_port = dbport;
     
     db_user = user;
     db_pass = pass;
     db_name = db;
     
     ValidateSchema();
-    
-    AddAccount("Boosh", "password");
-    GenerateToken("Boosh", "password");
     
 }
 
@@ -33,7 +31,7 @@ void DBConnector::ValidateSchema()
     try
     {
         
-        pqxx::connection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
+        pqxx::asyncconnection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
         
         pqxx::work schemaCheck(conn);
         
@@ -85,14 +83,14 @@ void DBConnector::ValidateSchema()
 
 
 
-bool DBConnector::AddAccount(std::string user, std::string pass)
+bool DBConnector::AddAccount(const std::string user, const std::string pass)
 {
     
     std::regex e("[\\']");
     std::string cleanUser = std::regex_replace(user, e, "");
     std::string cleanPass = std::regex_replace(pass, e, "");
     
-    pqxx::connection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
+    pqxx::asyncconnection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
     pqxx::work addAccount(conn);
     
     pqxx::result doesAccountExist = addAccount.exec("SELECT id FROM accounting WHERE username='" + cleanUser + "';");
@@ -125,13 +123,19 @@ bool DBConnector::AddAccount(std::string user, std::string pass)
     
 }
 
-bool DBConnector::isValidHash(std::string user, std::string pass)
+bool DBConnector::isValidHash(const std::string user, const std::string pass)
 {
-    std::regex e("[\\']");
-    std::string cleanUser = std::regex_replace(user, e, "");
-    std::string cleanPass = std::regex_replace(pass, e, "");
     
-    pqxx::connection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
+    std::string User, Pass;
+    User = user;
+    Pass = pass;
+    
+    
+    std::regex e("[\\']");
+    std::string cleanUser = std::regex_replace(User, e, "");
+    std::string cleanPass = std::regex_replace(Pass, e, "");
+        
+    pqxx::asyncconnection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
     pqxx::work validatePass(conn);
     
     pqxx::result doesAccountExist = validatePass.exec("SELECT id FROM accounting WHERE username='" + cleanUser + "';");
@@ -156,12 +160,12 @@ bool DBConnector::isValidHash(std::string user, std::string pass)
         
         if ( md5pass.compare(tmpHash) != 0)
         {
-            cout << "invalid pass" << endl;
+           // cout << "invalid pass" << endl;
             return false;
         }
         else
         {
-            cout << "valid pass" << endl;
+           // cout << "valid pass" << endl;
             return true;
         }
         
@@ -170,7 +174,7 @@ bool DBConnector::isValidHash(std::string user, std::string pass)
     
 }
 
-std::string DBConnector::GenerateToken(std::string user, std::string pass)
+std::string DBConnector::GenerateToken(const std::string user, const std::string pass)
 {
     
     std::regex e("[\\']");
@@ -179,7 +183,7 @@ std::string DBConnector::GenerateToken(std::string user, std::string pass)
     
     if(isValidHash(cleanUser, cleanPass))
     {
-        pqxx::connection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
+        pqxx::asyncconnection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
         pqxx::work tokenGenerator(conn);
         
         pqxx::result md5hash = tokenGenerator.exec("SELECT hash FROM accounting WHERE username='" + cleanUser + "';");
@@ -203,8 +207,6 @@ std::string DBConnector::GenerateToken(std::string user, std::string pass)
         tokenizeMe += loctime;
         
         
-        cout << tokenizeMe << endl;
-        
         pqxx::result token = tokenGenerator.exec("SELECT MD5('" + tokenizeMe + "');");
         
         std::string finalToken = token[0][0].as<std::string>();
@@ -224,9 +226,51 @@ std::string DBConnector::GenerateToken(std::string user, std::string pass)
 }
 
 
-bool DBConnector::isValidToken()
+bool DBConnector::isValidToken(const std::string user, const std::string token)
 {
-    return true;
+    std::regex e("[\\']");
+    std::string cleanUser = std::regex_replace(user, e, "");
+    std::string cleanPass = std::regex_replace(token, e, "");
+    
+    
+    pqxx::asyncconnection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
+    pqxx::work validateToken(conn);
+    
+    pqxx::result doesAccountExist = validateToken.exec("SELECT id FROM accounting WHERE username='" + cleanUser + "';");
+    
+    if(doesAccountExist.size() != 1)
+    {
+        
+        validateToken.commit();
+        return false;
+        
+    }
+    else
+    {
+        
+        pqxx::result RealToken = validateToken.exec("SELECT token FROM accounting WHERE username='" + cleanUser + "';");
+        
+        validateToken.commit();
+        
+        std::string realToken = RealToken[0][0].as<std::string>();
+
+        
+        if ( realToken.compare(token) != 0)
+        {
+            cout << "invalid token" << endl;
+            return false;
+        }
+        else
+        {
+            cout << "valid token" << endl;
+            return true;
+        }
+        
+        
+    }
+
+    
+    
 }
 
 

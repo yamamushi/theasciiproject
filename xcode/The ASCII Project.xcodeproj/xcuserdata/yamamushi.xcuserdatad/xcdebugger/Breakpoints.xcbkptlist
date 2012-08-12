@@ -7,14 +7,27 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../src/Main_Server.cpp"
-         timestampString = "366426222.635958"
+         filePath = "../src/DBConnector.cpp"
+         timestampString = "366448090.752481"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "126"
-         endingLineNumber = "126"
-         landmarkName = "main(int ac, char* av[])"
-         landmarkType = "7">
+         startingLineNumber = "20"
+         endingLineNumber = "20"
+         landmarkName = "DBConnector::DBConnector(std::string host, int port, std::string user, std::string pass, std::string db)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../src/ServerSocket.cpp"
+         timestampString = "366507034.469257"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "136"
+         endingLineNumber = "136"
+         landmarkName = "client_connection::sessionStartHandler(const boost::system::error_code&amp; error)"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

@@ -40,7 +40,7 @@
 #include "Headers.h"
 #include "ServerSocket.h"
 
-std::shared_ptr<DBConnector> dbEngine;
+DBConnector *dbEngine;
 
 
 Entity *test;
@@ -123,7 +123,7 @@ int main(int ac, char* av[]){
     }
     
     
-    std::shared_ptr<DBConnector> dbEngine(new DBConnector(db_hostname, db_port, db_username, db_pass, db_name));
+    dbEngine = new DBConnector(db_hostname, db_port, db_username, db_pass, db_name);
     
     
     
