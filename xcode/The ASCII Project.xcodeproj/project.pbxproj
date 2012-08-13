@@ -11,6 +11,7 @@
 		74254F8115D7257700FDE75B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 74254F7F15D7257700FDE75B /* Credits.rtf */; };
 		74254F8215D7257700FDE75B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74254F8015D7257700FDE75B /* InfoPlist.strings */; };
 		742F3FA315D0920200372A7A /* DBConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 742F3FA215D0920200372A7A /* DBConnector.cpp */; };
+		743475DD15D8CF8C006C3CFA /* arial12x12.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 743475DC15D8CF7B006C3CFA /* arial12x12.png */; };
 		743612DD15BFA75800CC2BCA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743612AC15BFA55A00CC2BCA /* Cocoa.framework */; };
 		743612F315BFA7DC00CC2BCA /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		743612F515BFA7E900CC2BCA /* libtcod-gui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887B15BF04EF006595CE /* libtcod-gui.dylib */; };
@@ -41,7 +42,6 @@
 		744488C515BF04EF006595CE /* tpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 7444889015BF04EF006595CE /* tpl.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
 		744488CC15BF0B84006595CE /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		744488CD15BF0C23006595CE /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
-		74448A3115BF2D07006595CE /* libSockets.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488D515BF297E006595CE /* libSockets.a */; };
 		745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
 /* End PBXBuildFile section */
@@ -63,6 +63,7 @@
 			dstPath = data;
 			dstSubfolderSpec = 7;
 			files = (
+				743475DD15D8CF8C006C3CFA /* arial12x12.png in CopyFiles */,
 				7436130315BFA8D000CC2BCA /* font.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,7 +84,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				74448A3115BF2D07006595CE /* libSockets.a in CopyFiles */,
 				744488CC15BF0B84006595CE /* SDL.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +95,7 @@
 		74254F8015D7257700FDE75B /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = Client/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		742F3FA215D0920200372A7A /* DBConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DBConnector.cpp; sourceTree = "<group>"; };
 		742F3FA515D0921500372A7A /* DBConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBConnector.h; sourceTree = "<group>"; };
+		743475DC15D8CF7B006C3CFA /* arial12x12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arial12x12.png; sourceTree = "<group>"; };
 		743612AC15BFA55A00CC2BCA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		743612AF15BFA55A00CC2BCA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		743612B015BFA55A00CC2BCA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -567,6 +568,7 @@
 		744487FB15BF04EF006595CE /* data */ = {
 			isa = PBXGroup;
 			children = (
+				743475DC15D8CF7B006C3CFA /* arial12x12.png */,
 				747D228415C0339E00CE1AC9 /* at.jpg */,
 				744487FC15BF04EF006595CE /* font.png */,
 				744487FD15BF04EF006595CE /* readme.txt */,
@@ -1245,6 +1247,7 @@
 					"-lssl",
 					"-lcrypto",
 					"-ltcod",
+					"-ltcod-gui",
 					"-Wl,-rpath,.",
 					"-lpthread",
 					"-lboost_system",
@@ -1288,6 +1291,7 @@
 					"-lssl",
 					"-lcrypto",
 					"-ltcod",
+					"-ltcod-gui",
 					"-Wl,-rpath,.",
 					"-lpthread",
 					"-lboost_system",

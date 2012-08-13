@@ -70,6 +70,7 @@
 #include <time.h>
 #include <fstream>
 #include <regex>
+#include <stdarg.h>
 
 // postgresql connector
 #include <pqxx/pqxx>
@@ -91,6 +92,7 @@ using boost::asio::ip::tcp;
 
 // 3rd party local headers
 #include "libtcod/libtcod.hpp"
+#include "libtcod/gui/gui.hpp"
 
 
 // Our most important objects
