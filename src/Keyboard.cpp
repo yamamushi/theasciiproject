@@ -57,9 +57,9 @@ bool Keyboard::handleKeys(){
 	TCOD_key_t Key = TCODConsole::checkForKeypress(true);
 	bool quit = false;
 
-    
-	if(Key.vk == TCODK_ENTER && TCODK_ALT)
-		TCODConsole::setFullscreen(!TCODConsole::isFullscreen());
+    // Full screen broken atm
+	//if(Key.vk == TCODK_ENTER && TCODK_ALT)
+	//	TCODConsole::setFullscreen(!TCODConsole::isFullscreen());
     
     
 	switch(Key.vk)

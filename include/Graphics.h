@@ -46,6 +46,7 @@ class ClientSession;
 
 class GraphicsTCOD {
     
+private:
     
     TileMap *input;
     ClientMap *cMap;
@@ -54,16 +55,33 @@ class GraphicsTCOD {
     
     
     
+    
 public:
     
     
     TCODConsole *output;
-    TCODConsole *offScreenConsole;
+    TCODConsole *widgetCon;
     
     bool rendering;
     
     GraphicsTCOD(ClientMap *clientMap);
     void init(ClientMap *clientMap);
+    
+    static void loginCbk(Widget *w, void *userData);  
+    static void quitCbk(Widget *w, void *userData);
+    
+    void drawMenu();
+    void drawMainInterface();
+    
+    void getUser();
+    void getPassword();
+    
+    void loginError();
+    
+    void newAccountMenu(Widget *w, void *data);
+    void quitMenu(Widget *w, void *data);
+    
+    
     
     void drawAt(int x, int y);
     void drawAll();

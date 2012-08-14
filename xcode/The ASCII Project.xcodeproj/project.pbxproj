@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		7404071915C67C9D001F86B1 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888615BF04EF006595CE /* Graphics.cpp */; };
+		74254F8115D7257700FDE75B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 74254F7F15D7257700FDE75B /* Credits.rtf */; };
+		74254F8215D7257700FDE75B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74254F8015D7257700FDE75B /* InfoPlist.strings */; };
 		742F3FA315D0920200372A7A /* DBConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 742F3FA215D0920200372A7A /* DBConnector.cpp */; };
+		743475DD15D8CF8C006C3CFA /* arial12x12.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 743475DC15D8CF7B006C3CFA /* arial12x12.png */; };
 		743612DD15BFA75800CC2BCA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743612AC15BFA55A00CC2BCA /* Cocoa.framework */; };
-		743612E315BFA75800CC2BCA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 743612E115BFA75800CC2BCA /* InfoPlist.strings */; };
-		743612E915BFA75800CC2BCA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 743612E715BFA75800CC2BCA /* Credits.rtf */; };
 		743612F315BFA7DC00CC2BCA /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		743612F515BFA7E900CC2BCA /* libtcod-gui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887B15BF04EF006595CE /* libtcod-gui.dylib */; };
 		743612F615BFA7EC00CC2BCA /* libtcod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887C15BF04EF006595CE /* libtcod.dylib */; };
@@ -41,9 +42,11 @@
 		744488C515BF04EF006595CE /* tpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 7444889015BF04EF006595CE /* tpl.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
 		744488CC15BF0B84006595CE /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		744488CD15BF0C23006595CE /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
-		74448A3115BF2D07006595CE /* libSockets.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488D515BF297E006595CE /* libSockets.a */; };
 		745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
+		749EC50315DA291C0012A646 /* MenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
+		749EC50515DA293F0012A646 /* MenuBackground.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
+		74D863AD15D9E0010029D3F1 /* ClientWidgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D863AC15D9E0010029D3F1 /* ClientWidgets.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,9 +63,11 @@
 		7436130215BFA8BF00CC2BCA /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
-			dstPath = data;
+			dstPath = data/images;
 			dstSubfolderSpec = 7;
 			files = (
+				749EC50515DA293F0012A646 /* MenuBackground.png in CopyFiles */,
+				743475DD15D8CF8C006C3CFA /* arial12x12.png in CopyFiles */,
 				7436130315BFA8D000CC2BCA /* font.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,7 +88,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				74448A3115BF2D07006595CE /* libSockets.a in CopyFiles */,
 				744488CC15BF0B84006595CE /* SDL.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,16 +95,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		74254F7F15D7257700FDE75B /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = Client/Credits.rtf; sourceTree = SOURCE_ROOT; };
+		74254F8015D7257700FDE75B /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = Client/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		742F3FA215D0920200372A7A /* DBConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DBConnector.cpp; sourceTree = "<group>"; };
 		742F3FA515D0921500372A7A /* DBConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBConnector.h; sourceTree = "<group>"; };
+		743475DC15D8CF7B006C3CFA /* arial12x12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arial12x12.png; sourceTree = "<group>"; };
 		743612AC15BFA55A00CC2BCA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		743612AF15BFA55A00CC2BCA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		743612B015BFA55A00CC2BCA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		743612B115BFA55A00CC2BCA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		743612DB15BFA75800CC2BCA /* The ASCII Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The ASCII Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		743612E015BFA75800CC2BCA /* client-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "client-Info.plist"; sourceTree = "<group>"; };
-		743612E215BFA75800CC2BCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		743612E815BFA75800CC2BCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		7436130415BFAAB100CC2BCA /* client-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "client-Prefix.pch"; sourceTree = "<group>"; };
 		7436130515BFAC0D00CC2BCA /* Platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Platform.cpp; sourceTree = "<group>"; };
 		7436130715BFAC2400CC2BCA /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
@@ -241,7 +246,6 @@
 		7444889415BF04EF006595CE /* SDL.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = SDL.dll; sourceTree = "<group>"; };
 		7444889915BF04EF006595CE /* The ASCII Project.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "The ASCII Project.xcodeproj"; sourceTree = "<group>"; };
 		744488CB15BF0B84006595CE /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL.framework; sourceTree = "<group>"; };
-		744488D515BF297E006595CE /* libSockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSockets.a; sourceTree = "<group>"; };
 		7444897615BF2CE6006595CE /* ajp13.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ajp13.h; sourceTree = "<group>"; };
 		7444897715BF2CE6006595CE /* Ajp13Socket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ajp13Socket.cpp; sourceTree = "<group>"; };
 		7444897815BF2CE6006595CE /* Ajp13Socket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ajp13Socket.h; sourceTree = "<group>"; };
@@ -431,9 +435,13 @@
 		747D228415C0339E00CE1AC9 /* at.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = at.jpg; sourceTree = "<group>"; };
 		747D228515C0566300CE1AC9 /* LICENSE_1_0_BOOST.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE_1_0_BOOST.txt; sourceTree = "<group>"; };
 		7492895215CF09B800BACA68 /* BOOST-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "BOOST-LICENSE.txt"; sourceTree = "<group>"; };
+		749EC50215DA291C0012A646 /* MenuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBackground.png; sourceTree = "<group>"; };
+		74C4255115D4BA7100CBFD82 /* server.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = server.conf; sourceTree = "<group>"; };
 		74C5767C15C1D1F20033691A /* BoostLibs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoostLibs.h; sourceTree = "<group>"; };
 		74C5767E15C1EC6D0033691A /* Collect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collect.cpp; sourceTree = "<group>"; };
 		74C5768015C1EC780033691A /* Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collect.h; sourceTree = "<group>"; };
+		74D863AC15D9E0010029D3F1 /* ClientWidgets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClientWidgets.cpp; sourceTree = "<group>"; };
+		74D863AE15D9E0100029D3F1 /* ClientWidgets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientWidgets.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -483,9 +491,9 @@
 		743612DF15BFA75800CC2BCA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				74254F7F15D7257700FDE75B /* Credits.rtf */,
+				74254F8015D7257700FDE75B /* InfoPlist.strings */,
 				743612E015BFA75800CC2BCA /* client-Info.plist */,
-				743612E115BFA75800CC2BCA /* InfoPlist.strings */,
-				743612E715BFA75800CC2BCA /* Credits.rtf */,
 				7436130415BFAAB100CC2BCA /* client-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -548,6 +556,7 @@
 		744487E215BF04EF006595CE /* bin */ = {
 			isa = PBXGroup;
 			children = (
+				74C4255115D4BA7100CBFD82 /* server.conf */,
 				744487E415BF04EF006595CE /* README.txt */,
 			);
 			path = bin;
@@ -565,6 +574,9 @@
 		744487FB15BF04EF006595CE /* data */ = {
 			isa = PBXGroup;
 			children = (
+				749EC50115DA291C0012A646 /* images */,
+				74D863B515D9EB740029D3F1 /* cfg */,
+				743475DC15D8CF7B006C3CFA /* arial12x12.png */,
 				747D228415C0339E00CE1AC9 /* at.jpg */,
 				744487FC15BF04EF006595CE /* font.png */,
 				744487FD15BF04EF006595CE /* readme.txt */,
@@ -595,6 +607,7 @@
 				7444880815BF04EF006595CE /* ClientSocket.h */,
 				74C5768015C1EC780033691A /* Collect.h */,
 				7444880915BF04EF006595CE /* constants.h */,
+				742F3FA515D0921500372A7A /* DBConnector.h */,
 				7444880A15BF04EF006595CE /* Dungeon.h */,
 				7444880B15BF04EF006595CE /* Entities.h */,
 				7444880C15BF04EF006595CE /* EntityMap.h */,
@@ -611,7 +624,7 @@
 				7444885615BF04EF006595CE /* TileMap.h */,
 				7444885715BF04EF006595CE /* Tiles.h */,
 				7444885815BF04EF006595CE /* tpl.h */,
-				742F3FA515D0921500372A7A /* DBConnector.h */,
+				74D863AE15D9E0100029D3F1 /* ClientWidgets.h */,
 			);
 			name = include;
 			path = ../include;
@@ -766,7 +779,6 @@
 		7444887A15BF04EF006595CE /* osx */ = {
 			isa = PBXGroup;
 			children = (
-				744488D515BF297E006595CE /* libSockets.a */,
 				7444887B15BF04EF006595CE /* libtcod-gui.dylib */,
 				7444887C15BF04EF006595CE /* libtcod.dylib */,
 				7444887D15BF04EF006595CE /* README.txt */,
@@ -780,6 +792,7 @@
 				7444888015BF04EF006595CE /* ClientMap.cpp */,
 				7444888115BF04EF006595CE /* ClientSocket.cpp */,
 				74C5767E15C1EC6D0033691A /* Collect.cpp */,
+				742F3FA215D0920200372A7A /* DBConnector.cpp */,
 				7444888215BF04EF006595CE /* Dungeon.cpp */,
 				7444888315BF04EF006595CE /* Entities.cpp */,
 				7444888415BF04EF006595CE /* EntityMap.cpp */,
@@ -794,7 +807,7 @@
 				7444888E15BF04EF006595CE /* TileMap.cpp */,
 				7444888F15BF04EF006595CE /* Tiles.cpp */,
 				7444889015BF04EF006595CE /* tpl.c */,
-				742F3FA215D0920200372A7A /* DBConnector.cpp */,
+				74D863AC15D9E0010029D3F1 /* ClientWidgets.cpp */,
 			);
 			name = src;
 			path = ../src;
@@ -1079,6 +1092,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		749EC50115DA291C0012A646 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				749EC50215DA291C0012A646 /* MenuBackground.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		74D863B515D9EB740029D3F1 /* cfg */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = cfg;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1157,8 +1185,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				743612E315BFA75800CC2BCA /* InfoPlist.strings in Resources */,
-				743612E915BFA75800CC2BCA /* Credits.rtf in Resources */,
+				74254F8115D7257700FDE75B /* Credits.rtf in Resources */,
+				74254F8215D7257700FDE75B /* InfoPlist.strings in Resources */,
+				749EC50315DA291C0012A646 /* MenuBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1177,6 +1206,7 @@
 				7436130615BFAC0D00CC2BCA /* Platform.cpp in Sources */,
 				745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */,
 				743612FD15BFA82D00CC2BCA /* Main_Client.cpp in Sources */,
+				74D863AD15D9E0010029D3F1 /* ClientWidgets.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1187,7 +1217,6 @@
 				744488C415BF04EF006595CE /* Tiles.cpp in Sources */,
 				744488C315BF04EF006595CE /* TileMap.cpp in Sources */,
 				744488B815BF04EF006595CE /* Entities.cpp in Sources */,
-				744488B915BF04EF006595CE /* EntityMap.cpp in Sources */,
 				744488BA15BF04EF006595CE /* FovLib.cpp in Sources */,
 				744488B715BF04EF006595CE /* Dungeon.cpp in Sources */,
 				744488C015BF04EF006595CE /* RenderMap.cpp in Sources */,
@@ -1196,32 +1225,14 @@
 				744488B515BF04EF006595CE /* ClientMap.cpp in Sources */,
 				7404071915C67C9D001F86B1 /* Graphics.cpp in Sources */,
 				744488C115BF04EF006595CE /* Serialization.cpp in Sources */,
+				744488B915BF04EF006595CE /* EntityMap.cpp in Sources */,
 				74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */,
-				744488BE15BF04EF006595CE /* Main_Server.cpp in Sources */,
 				742F3FA315D0920200372A7A /* DBConnector.cpp in Sources */,
+				744488BE15BF04EF006595CE /* Main_Server.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		743612E115BFA75800CC2BCA /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				743612E215BFA75800CC2BCA /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		743612E715BFA75800CC2BCA /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				743612E815BFA75800CC2BCA /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		743612F115BFA75800CC2BCA /* Debug */ = {
@@ -1262,6 +1273,7 @@
 					"-lssl",
 					"-lcrypto",
 					"-ltcod",
+					"-ltcod-gui",
 					"-Wl,-rpath,.",
 					"-lpthread",
 					"-lboost_system",
@@ -1305,6 +1317,7 @@
 					"-lssl",
 					"-lcrypto",
 					"-ltcod",
+					"-ltcod-gui",
 					"-Wl,-rpath,.",
 					"-lpthread",
 					"-lboost_system",
@@ -1425,6 +1438,8 @@
 					"-lboost_system-mt",
 					"-lboost_thread-mt",
 					"-lpqxx",
+					"-lpq",
+					"-lboost_program_options-mt",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1464,6 +1479,8 @@
 					"-lboost_system-mt",
 					"-lboost_thread-mt",
 					"-lpqxx",
+					"-lpq",
+					"-lboost_program_options-mt",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
