@@ -44,8 +44,18 @@
 		744488CD15BF0C23006595CE /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
-		74D8637B15D9D62C0029D3F1 /* umbra in Resources */ = {isa = PBXBuildFile; fileRef = 74D8637A15D9D62C0029D3F1 /* umbra */; };
-		74D8637E15D9D71D0029D3F1 /* umbra in Resources */ = {isa = PBXBuildFile; fileRef = 74D8637D15D9D71C0029D3F1 /* umbra */; };
+		74D8638C15D9D8A70029D3F1 /* umbra_callback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D8638015D9D8A60029D3F1 /* umbra_callback.cpp */; };
+		74D8638D15D9D8A70029D3F1 /* umbra_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D8638115D9D8A60029D3F1 /* umbra_config.cpp */; };
+		74D8638E15D9D8A70029D3F1 /* umbra_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D8638215D9D8A60029D3F1 /* umbra_engine.cpp */; };
+		74D8638F15D9D8A70029D3F1 /* umbra_font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D8638315D9D8A60029D3F1 /* umbra_font.cpp */; };
+		74D8639015D9D8A70029D3F1 /* umbra_imod_bsod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D8638415D9D8A60029D3F1 /* umbra_imod_bsod.cpp */; };
+		74D8639115D9D8A70029D3F1 /* umbra_imod_credits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D8638515D9D8A60029D3F1 /* umbra_imod_credits.cpp */; };
+		74D8639215D9D8A70029D3F1 /* umbra_imod_speed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D8638615D9D8A60029D3F1 /* umbra_imod_speed.cpp */; };
+		74D8639315D9D8A70029D3F1 /* umbra_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D8638715D9D8A60029D3F1 /* umbra_log.cpp */; };
+		74D8639415D9D8A70029D3F1 /* umbra_module.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D8638815D9D8A60029D3F1 /* umbra_module.cpp */; };
+		74D8639515D9D8A70029D3F1 /* umbra_widget_button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D8638915D9D8A70029D3F1 /* umbra_widget_button.cpp */; };
+		74D8639615D9D8A70029D3F1 /* umbra_widget_checkbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D8638A15D9D8A70029D3F1 /* umbra_widget_checkbox.cpp */; };
+		74D8639715D9D8A70029D3F1 /* umbra_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D8638B15D9D8A70029D3F1 /* umbra_widget.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -438,8 +448,36 @@
 		74C5767C15C1D1F20033691A /* BoostLibs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoostLibs.h; sourceTree = "<group>"; };
 		74C5767E15C1EC6D0033691A /* Collect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collect.cpp; sourceTree = "<group>"; };
 		74C5768015C1EC780033691A /* Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collect.h; sourceTree = "<group>"; };
-		74D8637A15D9D62C0029D3F1 /* umbra */ = {isa = PBXFileReference; lastKnownFileType = folder; path = umbra; sourceTree = "<group>"; };
-		74D8637D15D9D71C0029D3F1 /* umbra */ = {isa = PBXFileReference; lastKnownFileType = folder; path = umbra; sourceTree = "<group>"; };
+		74D8638015D9D8A60029D3F1 /* umbra_callback.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = umbra_callback.cpp; path = ../xcode/umbra_callback.cpp; sourceTree = "<group>"; };
+		74D8638115D9D8A60029D3F1 /* umbra_config.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = umbra_config.cpp; path = ../xcode/umbra_config.cpp; sourceTree = "<group>"; };
+		74D8638215D9D8A60029D3F1 /* umbra_engine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = umbra_engine.cpp; path = ../xcode/umbra_engine.cpp; sourceTree = "<group>"; };
+		74D8638315D9D8A60029D3F1 /* umbra_font.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = umbra_font.cpp; path = ../xcode/umbra_font.cpp; sourceTree = "<group>"; };
+		74D8638415D9D8A60029D3F1 /* umbra_imod_bsod.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = umbra_imod_bsod.cpp; path = ../xcode/umbra_imod_bsod.cpp; sourceTree = "<group>"; };
+		74D8638515D9D8A60029D3F1 /* umbra_imod_credits.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = umbra_imod_credits.cpp; path = ../xcode/umbra_imod_credits.cpp; sourceTree = "<group>"; };
+		74D8638615D9D8A60029D3F1 /* umbra_imod_speed.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = umbra_imod_speed.cpp; path = ../xcode/umbra_imod_speed.cpp; sourceTree = "<group>"; };
+		74D8638715D9D8A60029D3F1 /* umbra_log.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = umbra_log.cpp; path = ../xcode/umbra_log.cpp; sourceTree = "<group>"; };
+		74D8638815D9D8A60029D3F1 /* umbra_module.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = umbra_module.cpp; path = ../xcode/umbra_module.cpp; sourceTree = "<group>"; };
+		74D8638915D9D8A70029D3F1 /* umbra_widget_button.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = umbra_widget_button.cpp; path = ../xcode/umbra_widget_button.cpp; sourceTree = "<group>"; };
+		74D8638A15D9D8A70029D3F1 /* umbra_widget_checkbox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = umbra_widget_checkbox.cpp; path = ../xcode/umbra_widget_checkbox.cpp; sourceTree = "<group>"; };
+		74D8638B15D9D8A70029D3F1 /* umbra_widget.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = umbra_widget.cpp; path = ../xcode/umbra_widget.cpp; sourceTree = "<group>"; };
+		74D8639A15D9D9090029D3F1 /* umbra.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra.hpp; sourceTree = "<group>"; };
+		74D8639B15D9D9090029D3F1 /* umbra_callback.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_callback.hpp; sourceTree = "<group>"; };
+		74D8639C15D9D9090029D3F1 /* umbra_circle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_circle.hpp; sourceTree = "<group>"; };
+		74D8639D15D9D9090029D3F1 /* umbra_config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_config.hpp; sourceTree = "<group>"; };
+		74D8639E15D9D9090029D3F1 /* umbra_engine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_engine.hpp; sourceTree = "<group>"; };
+		74D8639F15D9D9090029D3F1 /* umbra_font.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_font.hpp; sourceTree = "<group>"; };
+		74D863A015D9D9090029D3F1 /* umbra_imod_bsod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_imod_bsod.hpp; sourceTree = "<group>"; };
+		74D863A115D9D9090029D3F1 /* umbra_imod_credits.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_imod_credits.hpp; sourceTree = "<group>"; };
+		74D863A215D9D9090029D3F1 /* umbra_imod_speed.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_imod_speed.hpp; sourceTree = "<group>"; };
+		74D863A315D9D9090029D3F1 /* umbra_key.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_key.hpp; sourceTree = "<group>"; };
+		74D863A415D9D9090029D3F1 /* umbra_log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_log.hpp; sourceTree = "<group>"; };
+		74D863A515D9D9090029D3F1 /* umbra_module.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_module.hpp; sourceTree = "<group>"; };
+		74D863A615D9D9090029D3F1 /* umbra_module_factory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_module_factory.hpp; sourceTree = "<group>"; };
+		74D863A715D9D9090029D3F1 /* umbra_point.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_point.hpp; sourceTree = "<group>"; };
+		74D863A815D9D9090029D3F1 /* umbra_rect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_rect.hpp; sourceTree = "<group>"; };
+		74D863A915D9D9090029D3F1 /* umbra_widget.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_widget.hpp; sourceTree = "<group>"; };
+		74D863AA15D9D9090029D3F1 /* umbra_widget_button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_widget_button.hpp; sourceTree = "<group>"; };
+		74D863AB15D9D9090029D3F1 /* umbra_widget_checkbox.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = umbra_widget_checkbox.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -598,7 +636,7 @@
 		7444880615BF04EF006595CE /* include */ = {
 			isa = PBXGroup;
 			children = (
-				74D8637A15D9D62C0029D3F1 /* umbra */,
+				74D8639915D9D9090029D3F1 /* umbra */,
 				74C5767C15C1D1F20033691A /* BoostLibs.h */,
 				7444880715BF04EF006595CE /* ClientMap.h */,
 				7444880815BF04EF006595CE /* ClientSocket.h */,
@@ -786,7 +824,7 @@
 		7444887F15BF04EF006595CE /* src */ = {
 			isa = PBXGroup;
 			children = (
-				74D8637D15D9D71C0029D3F1 /* umbra */,
+				74D8639815D9D8B70029D3F1 /* umbra */,
 				7444888015BF04EF006595CE /* ClientMap.cpp */,
 				7444888115BF04EF006595CE /* ClientSocket.cpp */,
 				74C5767E15C1EC6D0033691A /* Collect.cpp */,
@@ -1089,6 +1127,50 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		74D8639815D9D8B70029D3F1 /* umbra */ = {
+			isa = PBXGroup;
+			children = (
+				74D8638015D9D8A60029D3F1 /* umbra_callback.cpp */,
+				74D8638115D9D8A60029D3F1 /* umbra_config.cpp */,
+				74D8638215D9D8A60029D3F1 /* umbra_engine.cpp */,
+				74D8638315D9D8A60029D3F1 /* umbra_font.cpp */,
+				74D8638415D9D8A60029D3F1 /* umbra_imod_bsod.cpp */,
+				74D8638515D9D8A60029D3F1 /* umbra_imod_credits.cpp */,
+				74D8638615D9D8A60029D3F1 /* umbra_imod_speed.cpp */,
+				74D8638715D9D8A60029D3F1 /* umbra_log.cpp */,
+				74D8638815D9D8A60029D3F1 /* umbra_module.cpp */,
+				74D8638915D9D8A70029D3F1 /* umbra_widget_button.cpp */,
+				74D8638A15D9D8A70029D3F1 /* umbra_widget_checkbox.cpp */,
+				74D8638B15D9D8A70029D3F1 /* umbra_widget.cpp */,
+			);
+			name = umbra;
+			sourceTree = "<group>";
+		};
+		74D8639915D9D9090029D3F1 /* umbra */ = {
+			isa = PBXGroup;
+			children = (
+				74D8639A15D9D9090029D3F1 /* umbra.hpp */,
+				74D8639B15D9D9090029D3F1 /* umbra_callback.hpp */,
+				74D8639C15D9D9090029D3F1 /* umbra_circle.hpp */,
+				74D8639D15D9D9090029D3F1 /* umbra_config.hpp */,
+				74D8639E15D9D9090029D3F1 /* umbra_engine.hpp */,
+				74D8639F15D9D9090029D3F1 /* umbra_font.hpp */,
+				74D863A015D9D9090029D3F1 /* umbra_imod_bsod.hpp */,
+				74D863A115D9D9090029D3F1 /* umbra_imod_credits.hpp */,
+				74D863A215D9D9090029D3F1 /* umbra_imod_speed.hpp */,
+				74D863A315D9D9090029D3F1 /* umbra_key.hpp */,
+				74D863A415D9D9090029D3F1 /* umbra_log.hpp */,
+				74D863A515D9D9090029D3F1 /* umbra_module.hpp */,
+				74D863A615D9D9090029D3F1 /* umbra_module_factory.hpp */,
+				74D863A715D9D9090029D3F1 /* umbra_point.hpp */,
+				74D863A815D9D9090029D3F1 /* umbra_rect.hpp */,
+				74D863A915D9D9090029D3F1 /* umbra_widget.hpp */,
+				74D863AA15D9D9090029D3F1 /* umbra_widget_button.hpp */,
+				74D863AB15D9D9090029D3F1 /* umbra_widget_checkbox.hpp */,
+			);
+			path = umbra;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1169,8 +1251,6 @@
 			files = (
 				74254F8115D7257700FDE75B /* Credits.rtf in Resources */,
 				74254F8215D7257700FDE75B /* InfoPlist.strings in Resources */,
-				74D8637B15D9D62C0029D3F1 /* umbra in Resources */,
-				74D8637E15D9D71D0029D3F1 /* umbra in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1181,6 +1261,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74D8638C15D9D8A70029D3F1 /* umbra_callback.cpp in Sources */,
+				74D8638D15D9D8A70029D3F1 /* umbra_config.cpp in Sources */,
+				74D8638E15D9D8A70029D3F1 /* umbra_engine.cpp in Sources */,
+				74D8638F15D9D8A70029D3F1 /* umbra_font.cpp in Sources */,
+				74D8639015D9D8A70029D3F1 /* umbra_imod_bsod.cpp in Sources */,
+				74D8639115D9D8A70029D3F1 /* umbra_imod_credits.cpp in Sources */,
+				74D8639215D9D8A70029D3F1 /* umbra_imod_speed.cpp in Sources */,
+				74D8639315D9D8A70029D3F1 /* umbra_log.cpp in Sources */,
+				74D8639415D9D8A70029D3F1 /* umbra_module.cpp in Sources */,
+				74D8639515D9D8A70029D3F1 /* umbra_widget_button.cpp in Sources */,
+				74D8639615D9D8A70029D3F1 /* umbra_widget_checkbox.cpp in Sources */,
+				74D8639715D9D8A70029D3F1 /* umbra_widget.cpp in Sources */,
 				743612F715BFA82D00CC2BCA /* ClientMap.cpp in Sources */,
 				743612F915BFA82D00CC2BCA /* Graphics.cpp in Sources */,
 				743612FA15BFA82D00CC2BCA /* Keyboard.cpp in Sources */,
