@@ -106,19 +106,19 @@ void GraphicsTCOD::drawMenu()
     Widget::setConsole(output);
     
     
-    new StatusBar(0,0,MAP_WIDTH,1);
+    //new StatusBar(0,0,MAP_WIDTH,1);
     
-    VBox *vbox=new VBox(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 7,0);
-    ToolBar *stats = new ToolBar(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 7,15,"Main Menu",NULL);
+    VBox *vbox=new VBox(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 + 10,0);
+    ToolBar *mainMenu = new ToolBar(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 + 10,15,NULL,NULL);
     //stats->addWidget(new Label(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 6,"Login","Login"));
-    stats->addWidget(new Button("Connect",NULL,loginCbk,NULL));
+    mainMenu->addWidget(new Button("Connect",NULL,loginCbk,NULL));
     //stats->addWidget(new Label(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 5,"New Account","New Account"));
     //stats->addWidget(new Button("New Account",NULL,newAccountCbk,NULL));
 	//stats->addWidget(new Label(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 4,"Options","Options"));
-    stats->addWidget(new Button("Options",NULL,testCbk,NULL));
+    mainMenu->addWidget(new Button("Options",NULL,NULL,NULL));
     //stats->addWidget(new Label(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 3,"Quit","Quit"));
-    stats->addWidget(new Button("Quit",NULL,quitCbk,NULL));
-    vbox->addWidget(stats);
+    mainMenu->addWidget(new Button("Quit",NULL,quitCbk,NULL));
+    vbox->addWidget(mainMenu);
     
     vbox->setBackgroundColor(TCODColor(0,0,0), TCODColor(128,128,128));
     
@@ -128,47 +128,49 @@ void GraphicsTCOD::drawMenu()
     
     render();
     
-    bool quit = false;
-    while(!quit)
+    //static char *prompt = (char *)"The ASCII Project 0.0.0k  Yamamushi@gmail.com (c)2012";
+
+    render();
+    
+    TCODImage *image = new TCODImage("data/images/MenuBackground.png");
+    
+    
+   // bool quit = false;
+    while(true)
     {
         TCOD_key_t key;
         TCOD_mouse_t mouse;
         
         TCODSystem::checkForEvent(TCOD_EVENT_KEY_PRESS|TCOD_EVENT_MOUSE,&key,&mouse);
         Widget::updateWidgets(key,mouse);
+                
+        Widget::renderWidgets();   
         
-        
-        Widget::renderWidgets();
         render();
+        
+        image->blitRect(output, 2, 0);
+        
+        output->setDefaultForeground(TCODColor(255, 255, 255));
+        output->print(MAP_WIDTH-26, MAP_HEIGHT-3, (const char*)"The ASCII Project 0.0.0k", TCOD_LEFT);
+        output->print(MAP_WIDTH-29, MAP_HEIGHT-2, (const char*)"Yamamushi@gmail.com (c)2012", TCOD_LEFT);
+        output->rect(0, 0, 20, 1, true);
+        
         
         if(drawLogin)
         {
-            //getUser();
-            //getPassword();
             break;
-        }
-        
-        if(drawNewAccount)
-        {
-            getUser();
-            getPassword();
         }
         
     }
     
-    vbox->removeWidget(stats);
+    vbox->removeWidget(mainMenu);
     delete vbox;
     
     output->setDefaultBackground(TCODColor(0, 0, 0));
     output->clear();
     render();
+
     
-}
-
-
-void GraphicsTCOD::testCbk(Widget *w, void *userData)
-{
-    // placeholder function that does nothing
 }
 
 
@@ -178,18 +180,102 @@ void GraphicsTCOD::loginCbk(Widget *w, void *userData)
     drawLogin = true;
 }
 
-void GraphicsTCOD::newAccountCbk(Widget *w, void *userData)
-{
-    extern bool drawNewAccount;
-    drawNewAccount = true;
-
-}
-
 
 void GraphicsTCOD::quitCbk(Widget *w, void *userData)
 {
     exit(0);
 }
+
+
+void GraphicsTCOD::drawMainInterface()
+{
+    Widget::setConsole(output);
+    
+    
+    //new StatusBar(0,0,MAP_WIDTH-20,1);
+    
+    HBox *hMenu=new HBox(4,-1,0);
+    ToolBar *menuToolbar = new ToolBar(0,0,6,NULL,NULL);
+    menuToolbar->addWidget(new Button("Menu",NULL,NULL,NULL));
+    hMenu->addWidget(menuToolbar);
+    
+    
+    ToolBar *playerToolbar = new ToolBar(0,0,6, NULL, NULL);
+    playerToolbar->addWidget(new Button("Player", NULL, NULL, NULL));
+    hMenu->addWidget(playerToolbar);
+    
+    ToolBar *socialToolbar = new ToolBar(0,0,6, NULL, NULL);
+    socialToolbar->addWidget(new Button("Social", NULL, NULL, NULL));
+    hMenu->addWidget(socialToolbar);
+    
+    
+    ToolBar *worldToolbar = new ToolBar(0,0,6, NULL, NULL);
+    worldToolbar->addWidget(new Button("World", NULL, NULL, NULL));
+    hMenu->addWidget(worldToolbar);
+    
+    
+    ToolBar *toolsToolbar = new ToolBar(0,0,6, NULL, NULL);
+    toolsToolbar->addWidget(new Button("Tools", NULL, NULL, NULL));
+    hMenu->addWidget(toolsToolbar);
+    
+    
+    ToolBar *helpToolbar = new ToolBar(0,0,6, NULL, NULL);
+    helpToolbar->addWidget(new Button("Help", NULL, NULL, NULL));
+    hMenu->addWidget(helpToolbar);
+    
+    
+    hMenu->setBackgroundColor(TCODColor(0,0,0), TCODColor(128,128,128));
+    
+ 
+    output->vline(MAP_WIDTH-18, 0, 32);
+    output->vline(MAP_WIDTH/2, 32, 13);
+    output->hline(0, 32, MAP_WIDTH);
+    output->hline(MAP_WIDTH/2 + 1, MAP_HEIGHT-3, MAP_WIDTH/2);
+    output->hline(MAP_WIDTH/2 + 1, MAP_HEIGHT-1, MAP_WIDTH/2);
+    
+    
+    output->print(MAP_WIDTH/2, 32, L"\u2566");
+    output->print(MAP_WIDTH-18, 32, L"\u2569");
+    output->print(MAP_WIDTH/2, MAP_HEIGHT-3, L"\u2560");
+    output->print(MAP_WIDTH/2, MAP_HEIGHT-1, L"\u2560");
+    
+    
+    char *prompt = (char *)"$>";
+    TCODText *inputText = new TCODText(MAIN_WIDTH/2 + 1, MAIN_HEIGHT-2, MAIN_WIDTH/2 - 3, 1, MAIN_WIDTH/2 - 6);
+    inputText->setProperties(32, 1000, (const char *)prompt, 1);
+    inputText->setColors(TCODColor(0,255,0), TCODColor(0,0,0), 1.0f);
+
+    inputText->render(output);
+    
+    
+    while(true)
+    {
+        TCOD_key_t key;
+        TCOD_mouse_t mouse;
+        
+        TCODSystem::checkForEvent(TCOD_EVENT_KEY_PRESS|TCOD_EVENT_MOUSE,&key,&mouse);
+        Widget::updateWidgets(key,mouse);
+        
+        inputText->update(key);
+        Widget::renderWidgets();
+        inputText->render(output);
+        
+        render();
+        
+        
+        
+        
+        if(key.vk == TCODK_ENTER)
+        {
+            exit(0);
+        }
+    
+    }
+    
+}
+
+
+
 
 void GraphicsTCOD::getUser()
 {
@@ -333,8 +419,6 @@ void GraphicsTCOD::loginError()
 
 
 void GraphicsTCOD::render(){
-    
-    //TCODConsole::blit(offScreenConsole, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
     
     
     output->setDirty(0, 0, MAIN_WIDTH, MAIN_HEIGHT);

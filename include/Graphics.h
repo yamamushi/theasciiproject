@@ -62,22 +62,16 @@ public:
     TCODConsole *output;
     TCODConsole *widgetCon;
     
-    //std::string user;
-    //std::string pass;
-    
     bool rendering;
     
     GraphicsTCOD(ClientMap *clientMap);
     void init(ClientMap *clientMap);
     
-    static void testCbk(Widget *w, void *userData);
-    
-    static void loginCbk(Widget *w, void *userData);
-    static void newAccountCbk(Widget *w, void *userData);
-    
+    static void loginCbk(Widget *w, void *userData);  
     static void quitCbk(Widget *w, void *userData);
     
     void drawMenu();
+    void drawMainInterface();
     
     void getUser();
     void getPassword();

@@ -16,15 +16,6 @@
 *.local
 
 
-# Not really a point in distributing
-# Prebuilt binaries at this point
-client
-server
-
 # Netbeans stuff 
 /nbproject/private/
 
-
-# Xcode stuff
-*/xcuserdatad/
-*.xcworkspace

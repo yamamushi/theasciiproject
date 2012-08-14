@@ -63,6 +63,8 @@ int main(int argc, char *argv[])
     {
         
         output->drawMenu();
+        output->drawMainInterface();
+        
         extern std::string user;
         extern std::string pass;
         
@@ -77,9 +79,7 @@ int main(int argc, char *argv[])
         boost::thread t(boost::bind(&boost::asio::io_service::run, &io_service));
         
         Keyboard *kboard = new Keyboard(&c);
-        
-        //c.Connect();
-
+         
         
         // Main Game Loop
         while (!TCODConsole::isWindowClosed()) {

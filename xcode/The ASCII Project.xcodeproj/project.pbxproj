@@ -43,6 +43,8 @@
 		744488CC15BF0B84006595CE /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		744488CD15BF0C23006595CE /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
+		749EC50315DA291C0012A646 /* MenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
+		749EC50515DA293F0012A646 /* MenuBackground.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
 		74D863AD15D9E0010029D3F1 /* ClientWidgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D863AC15D9E0010029D3F1 /* ClientWidgets.cpp */; };
 /* End PBXBuildFile section */
@@ -61,9 +63,10 @@
 		7436130215BFA8BF00CC2BCA /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
-			dstPath = data/cfg;
+			dstPath = data/images;
 			dstSubfolderSpec = 7;
 			files = (
+				749EC50515DA293F0012A646 /* MenuBackground.png in CopyFiles */,
 				743475DD15D8CF8C006C3CFA /* arial12x12.png in CopyFiles */,
 				7436130315BFA8D000CC2BCA /* font.png in CopyFiles */,
 			);
@@ -243,7 +246,6 @@
 		7444889415BF04EF006595CE /* SDL.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = SDL.dll; sourceTree = "<group>"; };
 		7444889915BF04EF006595CE /* The ASCII Project.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "The ASCII Project.xcodeproj"; sourceTree = "<group>"; };
 		744488CB15BF0B84006595CE /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL.framework; sourceTree = "<group>"; };
-		744488D515BF297E006595CE /* libSockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSockets.a; sourceTree = "<group>"; };
 		7444897615BF2CE6006595CE /* ajp13.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ajp13.h; sourceTree = "<group>"; };
 		7444897715BF2CE6006595CE /* Ajp13Socket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ajp13Socket.cpp; sourceTree = "<group>"; };
 		7444897815BF2CE6006595CE /* Ajp13Socket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ajp13Socket.h; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 		747D228415C0339E00CE1AC9 /* at.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = at.jpg; sourceTree = "<group>"; };
 		747D228515C0566300CE1AC9 /* LICENSE_1_0_BOOST.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE_1_0_BOOST.txt; sourceTree = "<group>"; };
 		7492895215CF09B800BACA68 /* BOOST-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "BOOST-LICENSE.txt"; sourceTree = "<group>"; };
+		749EC50215DA291C0012A646 /* MenuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBackground.png; sourceTree = "<group>"; };
 		74C4255115D4BA7100CBFD82 /* server.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = server.conf; sourceTree = "<group>"; };
 		74C5767C15C1D1F20033691A /* BoostLibs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoostLibs.h; sourceTree = "<group>"; };
 		74C5767E15C1EC6D0033691A /* Collect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collect.cpp; sourceTree = "<group>"; };
@@ -571,6 +574,7 @@
 		744487FB15BF04EF006595CE /* data */ = {
 			isa = PBXGroup;
 			children = (
+				749EC50115DA291C0012A646 /* images */,
 				74D863B515D9EB740029D3F1 /* cfg */,
 				743475DC15D8CF7B006C3CFA /* arial12x12.png */,
 				747D228415C0339E00CE1AC9 /* at.jpg */,
@@ -775,7 +779,6 @@
 		7444887A15BF04EF006595CE /* osx */ = {
 			isa = PBXGroup;
 			children = (
-				744488D515BF297E006595CE /* libSockets.a */,
 				7444887B15BF04EF006595CE /* libtcod-gui.dylib */,
 				7444887C15BF04EF006595CE /* libtcod.dylib */,
 				7444887D15BF04EF006595CE /* README.txt */,
@@ -1089,6 +1092,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		749EC50115DA291C0012A646 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				749EC50215DA291C0012A646 /* MenuBackground.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		74D863B515D9EB740029D3F1 /* cfg */ = {
 			isa = PBXGroup;
 			children = (
@@ -1176,6 +1187,7 @@
 			files = (
 				74254F8115D7257700FDE75B /* Credits.rtf in Resources */,
 				74254F8215D7257700FDE75B /* InfoPlist.strings in Resources */,
+				749EC50315DA291C0012A646 /* MenuBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
