@@ -172,6 +172,8 @@ void client_connection::login(const boost::system::error_code& error)
         delete line_command_;
         line_command_ = new boost::asio::streambuf;
         
+        cout << "Received Connect Attempt: User - " << user << " :: pass - " << pass << endl;
+        
         if( user.compare("") == 0)
         {
             boost::asio::async_read_until(socket_, *line_command_, "\r\n", boost::bind(&client_connection::login, shared_from_this(), boost::asio::placeholders::error ));

@@ -46,6 +46,9 @@
 bool drawLogin;
 bool drawNewAccount;
 
+std::string user;
+std::string pass;
+
 
 GraphicsTCOD::GraphicsTCOD(ClientMap *clientMap){
 	init(clientMap);
@@ -91,9 +94,6 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     output->setDefaultBackground(TCODColor(0, 0, 0));
     output->clear();
     render();
-    
-    drawMenu();
-
 
 }
 
@@ -143,19 +143,13 @@ void GraphicsTCOD::drawMenu()
         {
             getUser();
             getPassword();
+            break;
         }
         
         if(drawNewAccount)
         {
             getUser();
             getPassword();
-        }
-        
-        
-        if(key.vk == TCODK_ENTER)
-        {
-            output->clear();
-            quit = true;
         }
         
     }
@@ -197,6 +191,7 @@ void GraphicsTCOD::quitCbk(Widget *w, void *userData)
 
 void GraphicsTCOD::getUser()
 {
+    extern std::string user;
     
     output->setDefaultBackground(TCODColor(0, 0, 0));
     output->clear();
@@ -229,7 +224,7 @@ void GraphicsTCOD::getUser()
     }
     
     const char *userName = testText->getText();
-    cout << userName << endl;
+    
     user = userName;
     
     testText->reset();
@@ -243,6 +238,7 @@ void GraphicsTCOD::getUser()
 void GraphicsTCOD::getPassword()
 {
 
+    extern std::string pass;
     output->clear();
     render();
     
@@ -256,7 +252,7 @@ void GraphicsTCOD::getPassword()
     
     TCODText *inputText = new TCODText(MAIN_WIDTH/2 + 3, MAIN_HEIGHT/2 - 7, 20, 1, 16);
     inputText->setProperties(33, 5, (const char *)"", 5);
-    inputText->setColors(TCODColor(255,0,0), TCODColor(255,0,0), 1.0);
+    //inputText->setColors(TCODColor(0,0,0), TCODColor(0,0,0), 1.0);
     
     inputText->render(output);
     render();
@@ -280,7 +276,7 @@ void GraphicsTCOD::getPassword()
     }
     
     const char *userPass = inputText->getText();
-    cout << userPass << endl;
+    
     pass = userPass;
     
     testText->reset();
@@ -296,6 +292,41 @@ void GraphicsTCOD::getPassword()
     drawLogin = false;
     extern bool drawNewAccount;
     drawNewAccount = false;
+}
+
+
+void GraphicsTCOD::loginError()
+{
+    
+    output->clear();
+    render();
+    
+    char *prompt = (char *)"Login Error - Invalid Username or Password";
+    TCODText *loginErrorText = new TCODText(MAIN_WIDTH/2 - 20, MAIN_HEIGHT/2-7, 45, 1, 16);
+    loginErrorText->setProperties(33, 5, (const char *)prompt, 5);
+    loginErrorText->setColors(TCODColor(255,0,0), TCODColor(0,0,0), 1.0);
+    
+    loginErrorText->render(output);
+    render();
+    
+    bool quit = false;
+    while(!quit)
+    {
+        TCOD_key_t key = TCODConsole::checkForKeypress();
+        
+        if(key.vk == TCODK_ENTER)
+        {
+            quit = true;
+        }
+        
+    }
+    cout << "login error" << endl;
+    
+    loginErrorText->reset();
+    output->clear();
+    render();
+    delete loginErrorText;
+    
 }
 
 

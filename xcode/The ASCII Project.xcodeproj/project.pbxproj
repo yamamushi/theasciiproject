@@ -44,6 +44,8 @@
 		744488CD15BF0C23006595CE /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
+		74D8637B15D9D62C0029D3F1 /* umbra in Resources */ = {isa = PBXBuildFile; fileRef = 74D8637A15D9D62C0029D3F1 /* umbra */; };
+		74D8637E15D9D71D0029D3F1 /* umbra in Resources */ = {isa = PBXBuildFile; fileRef = 74D8637D15D9D71C0029D3F1 /* umbra */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -436,6 +438,8 @@
 		74C5767C15C1D1F20033691A /* BoostLibs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoostLibs.h; sourceTree = "<group>"; };
 		74C5767E15C1EC6D0033691A /* Collect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collect.cpp; sourceTree = "<group>"; };
 		74C5768015C1EC780033691A /* Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collect.h; sourceTree = "<group>"; };
+		74D8637A15D9D62C0029D3F1 /* umbra */ = {isa = PBXFileReference; lastKnownFileType = folder; path = umbra; sourceTree = "<group>"; };
+		74D8637D15D9D71C0029D3F1 /* umbra */ = {isa = PBXFileReference; lastKnownFileType = folder; path = umbra; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -594,6 +598,7 @@
 		7444880615BF04EF006595CE /* include */ = {
 			isa = PBXGroup;
 			children = (
+				74D8637A15D9D62C0029D3F1 /* umbra */,
 				74C5767C15C1D1F20033691A /* BoostLibs.h */,
 				7444880715BF04EF006595CE /* ClientMap.h */,
 				7444880815BF04EF006595CE /* ClientSocket.h */,
@@ -781,6 +786,7 @@
 		7444887F15BF04EF006595CE /* src */ = {
 			isa = PBXGroup;
 			children = (
+				74D8637D15D9D71C0029D3F1 /* umbra */,
 				7444888015BF04EF006595CE /* ClientMap.cpp */,
 				7444888115BF04EF006595CE /* ClientSocket.cpp */,
 				74C5767E15C1EC6D0033691A /* Collect.cpp */,
@@ -1163,6 +1169,8 @@
 			files = (
 				74254F8115D7257700FDE75B /* Credits.rtf in Resources */,
 				74254F8215D7257700FDE75B /* InfoPlist.strings in Resources */,
+				74D8637B15D9D62C0029D3F1 /* umbra in Resources */,
+				74D8637E15D9D71D0029D3F1 /* umbra in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

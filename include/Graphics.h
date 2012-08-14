@@ -62,8 +62,8 @@ public:
     TCODConsole *output;
     TCODConsole *widgetCon;
     
-    std::string user;
-    std::string pass;
+    //std::string user;
+    //std::string pass;
     
     bool rendering;
     
@@ -81,6 +81,8 @@ public:
     
     void getUser();
     void getPassword();
+    
+    void loginError();
     
     void newAccountMenu(Widget *w, void *data);
     void quitMenu(Widget *w, void *data);

@@ -64,16 +64,20 @@ private:
     
     char *buf;
     
-    string prompt = "ascii> ";
+    string prompt;
     string command;
     string direction;
+    
+    string sessionToken;
     
     bool m_pause;
     bool m2_pause;
     bool rendering;
     
+    tcp::resolver::iterator endpoint_iterator_;
+    
     boost::asio::io_service& io_service_;
-    boost::asio::streambuf line_command_;
+    boost::asio::streambuf *line_command_;
     boost::mutex m_pause_mutex;
     boost::condition_variable m_pause_changed;
     
@@ -82,7 +86,7 @@ private:
     boost::condition_variable m2_pause_changed;
     
     
-    boost::asio::streambuf line_feed_;
+    boost::asio::streambuf *line_feed_;
    
     
 
@@ -97,9 +101,21 @@ public:
     bool writing;
     
     ClientSession(boost::asio::io_service& io_service, tcp::resolver::iterator endpoint_iterator, ClientMap *client, GraphicsTCOD *screen);
-    void Connect(const boost::system::error_code& error);
+    void Connect();
     
     void ignorePrompt(const boost::system::error_code& error);
+    
+    
+    void requestLogin(const boost::system::error_code& error);
+    void sendCredentials(const boost::system::error_code& error);
+    void receiveCredResponse(const boost::system::error_code& error);
+    void handleCredResponse(const boost::system::error_code& error);
+    
+    
+    
+    void requestNewAccount(const boost::system::error_code& error);
+    
+    
     
     void sizeMap(const boost::system::error_code& error);
     void confirmSize(const boost::system::error_code& error);

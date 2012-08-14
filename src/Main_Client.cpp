@@ -46,7 +46,6 @@
 using boost::asio::ip::tcp;
 
 
-
 // Lets's Rock n' Roll!!!
 
 int main(int argc, char *argv[])
@@ -62,10 +61,15 @@ int main(int argc, char *argv[])
     
     try
     {
+        
+        output->drawMenu();
+        extern std::string user;
+        extern std::string pass;
+        
         boost::asio::io_service io_service;
         
         tcp::resolver resolver(io_service);
-        tcp::resolver::query query("pub.theasciiproject.com", "5250");
+        tcp::resolver::query query("localhost", "5250");
         tcp::resolver::iterator iterator = resolver.resolve(query);
         
         
@@ -74,12 +78,16 @@ int main(int argc, char *argv[])
         
         Keyboard *kboard = new Keyboard(&c);
         
+    
+        c.Connect();
+        
+        
         // Main Game Loop
         while (!TCODConsole::isWindowClosed()) {
 
             
             bool quit = kboard->handleKeys();
-            c.set_paused(false);
+            //c.set_paused(false);
             
             if (quit)
             {
