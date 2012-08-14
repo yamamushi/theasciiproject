@@ -36,6 +36,9 @@
  * =====================================================================================
  */
 
+#include <pqxx/pqxx> /* Moved from Headers.h */
+#include "DBConnector.h" /* Moved from Headers.h */
+
 #include "Headers.h"
 #include "ServerSocket.h"
 

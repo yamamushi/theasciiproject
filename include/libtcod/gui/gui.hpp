@@ -1,7 +1,7 @@
 #ifndef _GUI_HPP
 #define _GUI_HPP
 
-#include "libtcod.hpp"
+#include "../libtcod.hpp"
 
 #ifdef TCOD_VISUAL_STUDIO
 #pragma warning(disable:4996)
