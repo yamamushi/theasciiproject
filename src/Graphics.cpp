@@ -45,6 +45,8 @@
 
 bool drawLogin;
 bool drawNewAccount;
+bool drawMenuCheck;
+bool closeMenuCheck;
 
 std::string user;
 std::string pass;
@@ -58,11 +60,10 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     
     cMap = clientMap;
     
-    extern bool drawLogin;
-    extern bool drawNewAccount;
     drawLogin = false;
     drawNewAccount = false;
-    
+    drawMenuCheck = false;
+    closeMenuCheck = false;
     
     setlocale(LC_ALL, "en_US.UTF-8");
     TCODConsole::setCustomFont("data/font.png", TCOD_FONT_LAYOUT_ASCII_INROW, 32, 2048);
@@ -91,7 +92,7 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     
     
     
-    TCODConsole::setKeyboardRepeat(2000, 100);
+    TCODConsole::setKeyboardRepeat(200, 100);
     
     output->setDefaultBackground(TCODColor(0, 0, 0));
     output->clear();
@@ -120,7 +121,8 @@ void GraphicsTCOD::drawMenu()
     mainMenu->addWidget(new Button("Quit",NULL,quitCbk,NULL));
     vbox->addWidget(mainMenu);
     
-    vbox->setBackgroundColor(TCODColor(0,0,0), TCODColor(128,128,128));
+    Widget::setBackgroundColor(TCODColor(0,0,0), TCODColor(128,128,128));
+    Widget::setForegroundColor(TCODColor(255,255,255), TCODColor(255,255,255));
     
     Widget::renderWidgets();
     
@@ -186,6 +188,24 @@ void GraphicsTCOD::quitCbk(Widget *w, void *userData)
     exit(0);
 }
 
+void GraphicsTCOD::menuCbk(Widget *w, void *userData)
+{
+    if(!drawMenuCheck)
+        drawMenuCheck = true;
+    else
+        drawMenuCheck = false;
+    
+}
+
+void GraphicsTCOD::closeMenuCbk(Widget *w, void *userData)
+{
+    if(closeMenuCheck)
+        closeMenuCheck = false;
+    else
+        closeMenuCheck = true;
+
+}
+
 
 void GraphicsTCOD::drawMainInterface()
 {
@@ -194,9 +214,9 @@ void GraphicsTCOD::drawMainInterface()
     
     //new StatusBar(0,0,MAP_WIDTH-20,1);
     
-    HBox *hMenu=new HBox(4,-1,0);
+    HBox *hMenu=new HBox(12,-1,0);
     ToolBar *menuToolbar = new ToolBar(0,0,6,NULL,NULL);
-    menuToolbar->addWidget(new Button("Menu",NULL,NULL,NULL));
+    menuToolbar->addWidget(new Button("Menu",NULL,menuCbk,NULL));
     hMenu->addWidget(menuToolbar);
     
     
@@ -227,27 +247,54 @@ void GraphicsTCOD::drawMainInterface()
     hMenu->setBackgroundColor(TCODColor(0,0,0), TCODColor(128,128,128));
     
  
-    output->vline(MAP_WIDTH-18, 0, 32);
     output->vline(MAP_WIDTH/2, 32, 13);
     output->hline(0, 32, MAP_WIDTH);
     output->hline(MAP_WIDTH/2 + 1, MAP_HEIGHT-3, MAP_WIDTH/2);
-    output->hline(MAP_WIDTH/2 + 1, MAP_HEIGHT-1, MAP_WIDTH/2);
+    output->hline(0, MAP_HEIGHT-1, MAP_WIDTH);
     
     
     output->print(MAP_WIDTH/2, 32, L"\u2566");
-    output->print(MAP_WIDTH-18, 32, L"\u2569");
     output->print(MAP_WIDTH/2, MAP_HEIGHT-3, L"\u2560");
-    output->print(MAP_WIDTH/2, MAP_HEIGHT-1, L"\u2560");
+    output->print(MAP_WIDTH/2, MAP_HEIGHT-1, L"\u2569");
     
-    
+    /*
     char *prompt = (char *)"$>";
     TCODText *inputText = new TCODText(MAIN_WIDTH/2 + 1, MAIN_HEIGHT-2, MAIN_WIDTH/2 - 3, 1, MAIN_WIDTH/2 - 6);
     inputText->setProperties(32, 1000, (const char *)prompt, 1);
     inputText->setColors(TCODColor(0,255,0), TCODColor(0,0,0), 1.0f);
 
     inputText->render(output);
+    */
     
     
+  /*  Widget *inputBoxWidget = new Widget();
+    inputBoxWidget->setConsole(output);
+    inputBoxWidget->setBackgroundColor(TCODColor(0,0,0), TCODColor(0,0,0));
+    inputBoxWidget->setForegroundColor(TCODColor(0,255,0), TCODColor(0,0,0)); */
+    
+   
+    
+  //  VBox *inputBox = new VBox(MAIN_WIDTH/2 + 1, 34, 0);
+  //  TextBox *outputText = new TextBox (0, 33, MAIN_WIDTH/2 - 2, MAIN_WIDTH/2 - 2, "$>", "Testing");
+  //  inputBox->addWidget(outputText);
+    
+    //inputBox->setBackgroundColor(TCODColor(0,0,0), TCODColor(0,0,0));
+    
+    TCODConsole *offscreenConsole = new TCODConsole(MAIN_WIDTH/2-1,12);
+    offscreenConsole->setDefaultBackground(TCODColor::red);
+
+    
+    inputText = new TCODText(0, offscreenConsole->getHeight()-2, offscreenConsole->getWidth(), 1, offscreenConsole->getWidth());
+    inputText->setProperties(32, 1000, "$>", 1);
+    inputText->setColors(TCODColor(0,255,0), TCODColor(0,0,0), 1.0f);
+    
+    inputText->render(offscreenConsole);
+    offscreenConsole->print(0,0, "Welcome To The ASCII Project");
+    offscreenConsole->hline(0,offscreenConsole->getHeight()-1, offscreenConsole->getWidth());
+    offscreenConsole->hline(0,offscreenConsole->getHeight()-3, offscreenConsole->getWidth());
+    
+    
+    bool popupOpen = false;
     while(true)
     {
         TCOD_key_t key;
@@ -255,20 +302,62 @@ void GraphicsTCOD::drawMainInterface()
         
         TCODSystem::checkForEvent(TCOD_EVENT_KEY_PRESS|TCOD_EVENT_MOUSE,&key,&mouse);
         Widget::updateWidgets(key,mouse);
-        
-        inputText->update(key);
+
+        if(!popupOpen)
+        {
+            inputText->update(key);
+        }
+        inputText->render(offscreenConsole);
         Widget::renderWidgets();
-        inputText->render(output);
         
+        TCODConsole::blit(offscreenConsole,0,0,0,0,output,MAIN_WIDTH/2+1,33, 1.0f, 1.0f);
         render();
         
+        if(drawMenuCheck)
+        {
+            menuPopup=new VBox(35,10,0);
+            ToolBar *menuPopupOptions = new ToolBar(0,0,6,NULL,NULL);
+            menuPopupOptions->addWidget(new Button("Return",NULL,closeMenuCbk,NULL));
+            menuPopupOptions->addWidget(new Button("Quit",NULL,quitCbk,NULL));
+            menuPopup->addWidget(menuPopupOptions);
+            
+            popupOpen = true;
+            drawMenuCheck = false;
+        }
+
+        if(closeMenuCheck)
+        {
+            menuPopup->clear();
+            delete menuPopup;
+            output->clear();
+            
+            output->vline(MAP_WIDTH/2, 32, 13);
+            output->hline(0, 32, MAP_WIDTH);
+            output->hline(MAP_WIDTH/2 + 1, MAP_HEIGHT-3, MAP_WIDTH/2);
+            output->hline(0, MAP_HEIGHT-1, MAP_WIDTH);
+            
+            
+            output->print(MAP_WIDTH/2, 32, L"\u2566");
+            output->print(MAP_WIDTH/2, MAP_HEIGHT-3, L"\u2560");
+            output->print(MAP_WIDTH/2, MAP_HEIGHT-1, L"\u2569");
+
+            popupOpen = false;
+            closeMenuCheck = false;
+        }
         
         
+
         
         if(key.vk == TCODK_ENTER)
         {
-            exit(0);
-        }
+            inputText->reset();
+            delete inputText;
+            
+            inputText = new TCODText(0, offscreenConsole->getHeight()-2, offscreenConsole->getWidth(), 1, offscreenConsole->getWidth());
+            inputText->setProperties(32, 1000, "$>", 1);
+            inputText->setColors(TCODColor(0,255,0), TCODColor(0,0,0), 1.0f);
+            
+        } 
     
     }
     
@@ -340,7 +429,7 @@ void GraphicsTCOD::getPassword()
     
     TCODText *inputText = new TCODText(MAIN_WIDTH/2 + 3, MAIN_HEIGHT/2 - 7, 20, 1, 16);
     inputText->setProperties(33, 5, (const char *)"", 5);
-    //inputText->setColors(TCODColor(0,0,0), TCODColor(0,0,0), 1.0);
+    inputText->setColors(TCODColor(0,255,0), TCODColor(0,0,0), 1.0);
     
     inputText->render(output);
     render();
@@ -421,7 +510,7 @@ void GraphicsTCOD::loginError()
 void GraphicsTCOD::render(){
     
     
-    output->setDirty(0, 0, MAIN_WIDTH, MAIN_HEIGHT);
+    
 	TCODConsole::blit(output, 0, 0, MAP_WIDTH, MAP_HEIGHT, TCODConsole::root, 0, 0);
     
     TCODConsole::flush();

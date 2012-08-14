@@ -50,10 +50,12 @@ private:
     
     TileMap *input;
     ClientMap *cMap;
+    TCODText *inputText;
     float H, S, V, HD, SD, VD;
     float TH, TS, TV, THD, TSD, TVD;
+
     
-    
+    VBox *menuPopup;
     
     
 public:
@@ -69,6 +71,8 @@ public:
     
     static void loginCbk(Widget *w, void *userData);  
     static void quitCbk(Widget *w, void *userData);
+    static void menuCbk(Widget *w, void *userData);
+    static void closeMenuCbk(Widget *w, void *userData);
     
     void drawMenu();
     void drawMainInterface();
