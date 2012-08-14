@@ -78,9 +78,8 @@ int main(int argc, char *argv[])
         
         Keyboard *kboard = new Keyboard(&c);
         
-    
-        c.Connect();
-        
+        //c.Connect();
+
         
         // Main Game Loop
         while (!TCODConsole::isWindowClosed()) {

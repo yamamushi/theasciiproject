@@ -67,7 +67,7 @@ ClientSession::ClientSession(boost::asio::io_service& io_service, tcp::resolver:
     m_pause = false;
     sent = true;
     
-    boost::asio::async_connect(socket_, endpoint_iterator_, boost::bind(&ClientSession::ignorePrompt, this, boost::asio::placeholders::error));
+    //boost::asio::async_connect(socket_, endpoint_iterator_, boost::bind(&ClientSession::ignorePrompt, this, boost::asio::placeholders::error));
     
 }
 

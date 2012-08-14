@@ -89,6 +89,8 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     
     TCODConsole::flush();
     
+    
+    
     TCODConsole::setKeyboardRepeat(2000, 100);
     
     output->setDefaultBackground(TCODColor(0, 0, 0));
@@ -109,9 +111,9 @@ void GraphicsTCOD::drawMenu()
     VBox *vbox=new VBox(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 7,0);
     ToolBar *stats = new ToolBar(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 7,15,"Main Menu",NULL);
     //stats->addWidget(new Label(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 6,"Login","Login"));
-    stats->addWidget(new Button("Login",NULL,loginCbk,NULL));
+    stats->addWidget(new Button("Connect",NULL,loginCbk,NULL));
     //stats->addWidget(new Label(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 5,"New Account","New Account"));
-    stats->addWidget(new Button("New Account",NULL,newAccountCbk,NULL));
+    //stats->addWidget(new Button("New Account",NULL,newAccountCbk,NULL));
 	//stats->addWidget(new Label(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 4,"Options","Options"));
     stats->addWidget(new Button("Options",NULL,testCbk,NULL));
     //stats->addWidget(new Label(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 3,"Quit","Quit"));
@@ -141,8 +143,8 @@ void GraphicsTCOD::drawMenu()
         
         if(drawLogin)
         {
-            getUser();
-            getPassword();
+            //getUser();
+            //getPassword();
             break;
         }
         

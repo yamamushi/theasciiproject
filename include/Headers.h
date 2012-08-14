@@ -93,8 +93,6 @@ using boost::asio::ip::tcp;
 // 3rd party local headers
 #include "libtcod/libtcod.hpp"
 #include "libtcod/gui/gui.hpp"
-#include "umbra/umbra.hpp"
-
 
 // Our most important objects
 #include "Tiles.h"
@@ -125,6 +123,7 @@ using boost::asio::ip::tcp;
 // Graphics Stuff
 #include "RenderMap.h"
 #include "ClientMap.h"
+#include "ClientWidgets.h"
 #include "Graphics.h"
 
 

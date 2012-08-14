@@ -105,7 +105,13 @@ void client_connection::start()
 void client_connection::kickStart()
 {
     
-    boost::asio::async_write(socket_, boost::asio::buffer(string("ascii=> ")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
+    boost::asio::async_write(socket_, boost::asio::buffer(string("Welcome to The ASCII Project Public Server\r\n\r\n"
+                                                                 "Commands Available:\r\n"
+                                                                 "-------------------\n\n"
+                                                                 "login: user pass\r\n"
+                                                                 "newaccount: user pass\r\n"
+                                                                 "quit\r\n\r\n"
+                                                                 "ascii=> ")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
     
 }
 
