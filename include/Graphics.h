@@ -64,6 +64,7 @@ public:
     TCODConsole *output;
     TCODConsole *widgetCon;
     TCODConsole *offscreenConsole;
+    TCODConsole *textOutputConsole;
     
     bool rendering;
     
