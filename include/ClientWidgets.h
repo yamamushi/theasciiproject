@@ -5,12 +5,17 @@ private:
     std::vector<std::string> *textBuffer;
     char *scrollbackBuffer;
     
+    int maxBuffer;
+    
+    TCODConsole *console;
+    
     
 public :
     
-    ScrollBox( int x, int y, int w, int h);
+    ScrollBox( int x, int y, int w, int h, int MaxBuffer, TCODConsole *Console);
     virtual ~ScrollBox();
-    void render(TCODConsole *console=con);
+    void attachConsole(TCODConsole *Console);
+    void render();
     void update(const TCOD_key_t k);
     void insertText(std::string newText);
     

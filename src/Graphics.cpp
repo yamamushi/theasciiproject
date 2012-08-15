@@ -77,6 +77,9 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     output = mainConsole;
 
     offscreenConsole = new TCODConsole(MAIN_WIDTH/2,13);
+    textOutputConsole = new TCODConsole(MAIN_WIDTH/2+1,13);
+    //textOutputConsole->setDefaultForeground(TCODColor(0,255,0));
+    //textOutputConsole->flush();
 
     // Apply remap for our non-unicode ascii based box-drawing functions
     TCODConsole::mapAsciiCodeToFont(179, 17, 298);
@@ -265,8 +268,8 @@ void GraphicsTCOD::drawMainInterface()
     
 
     
-    ScrollBox *chatBox = new ScrollBox(0, 32, MAP_WIDTH/2+1, 13);
-    ScrollBox *serverBox = new ScrollBox(0, 0, offscreenConsole->getWidth(), offscreenConsole->getHeight()-2);
+    ScrollBox *chatBox = new ScrollBox(0, 0, textOutputConsole->getWidth(), textOutputConsole->getHeight(), 512, textOutputConsole);
+    ScrollBox *serverBox = new ScrollBox(0, 0, offscreenConsole->getWidth(), offscreenConsole->getHeight()-2, 512, offscreenConsole);
     //serverBox->setConsole(offscreenConsole);
 
     
@@ -298,12 +301,14 @@ void GraphicsTCOD::drawMainInterface()
         }
         inputText->render(offscreenConsole);
         chatBox->render();
-        serverBox->render(offscreenConsole);
+        serverBox->render();
         Widget::renderWidgets();
         
         fixBottom();
         
+        
         TCODConsole::blit(offscreenConsole,0,0,0,0,output,MAIN_WIDTH/2,32, 1.0f, 1.0f);
+        TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
         render();
         
         if(drawMenuCheck)
@@ -375,6 +380,10 @@ void GraphicsTCOD::fixBottom()
     offscreenConsole->print(0,offscreenConsole->getHeight()-1,L"\u2569");
     offscreenConsole->print(offscreenConsole->getWidth()-1,offscreenConsole->getHeight()-3,L"\u2563");
     offscreenConsole->print(offscreenConsole->getWidth()-1,offscreenConsole->getHeight()-1,L"\u255D");
+    
+    textOutputConsole->print(textOutputConsole->getWidth()-1,0,L"\u2566");
+    textOutputConsole->print(textOutputConsole->getWidth()-1,offscreenConsole->getHeight()-1,L"\u2569");
+    textOutputConsole->print(textOutputConsole->getWidth()-1,offscreenConsole->getHeight()-3,L"\u2560");
     
 }
 
