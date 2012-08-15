@@ -36,6 +36,9 @@
  * =====================================================================================
  */
 
+#include <pqxx/pqxx> /* Moved from Headers.h */
+#include "DBConnector.h" /* Moved from Headers.h */
+
 #include "Headers.h"
 #include "ServerSocket.h"
 
@@ -272,7 +275,7 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         {
             if(dbEngine->isValidToken( user, token))
             {
-                handleAPI(stoi(command));
+                handleAPI(atoi(command.c_str()));
                 boost::asio::async_write(socket_, boost::asio::buffer(string("ascii=> ")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
             }
             else

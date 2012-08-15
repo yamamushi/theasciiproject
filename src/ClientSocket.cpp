@@ -100,7 +100,7 @@ void ClientSession::requestLogin(const boost::system::error_code& error)
     {
         cout << "prompt received" << endl;
         
-        sleep(0.5);
+        boost::this_thread::sleep_for(boost::chrono::milliseconds(500));
         boost::asio::async_write(socket_, boost::asio::buffer(string("login")), boost::bind(&ClientSession::sendCredentials, this, boost::asio::placeholders::error));
         
     }
@@ -333,7 +333,7 @@ void ClientSession::sendMapRequest(const boost::system::error_code& error)
         
         sprintf(cmd, "");
         direction = "\r\n";
-        sleep(0.1);
+        boost::this_thread::sleep_for(boost::chrono::milliseconds(100));
         
         boost::asio::async_write(socket_, boost::asio::buffer(command), boost::bind(&ClientSession::sizeMap, this, boost::asio::placeholders::error));
         

@@ -73,7 +73,7 @@
 #include <stdarg.h>
 
 // postgresql connector
-#include <pqxx/pqxx>
+//#include <pqxx/pqxx> /* Moved to ServerSocket.cpp */
 
 // Now's a good time to bring in Boost
 // Which we'll store references to here
@@ -112,7 +112,7 @@ using boost::asio::ip::tcp;
 
 // This will be rewritten "soon"
 #include "Keyboard.h"
-#include "DBConnector.h"
+//#include "DBConnector.h" /* Moved to ServerSocket.cpp */
 
 
 
