@@ -274,9 +274,10 @@ void GraphicsTCOD::drawMainInterface()
     
    
     
-  //  VBox *inputBox = new VBox(MAIN_WIDTH/2 + 1, 34, 0);
-  //  TextBox *outputText = new TextBox (0, 33, MAIN_WIDTH/2 - 2, MAIN_WIDTH/2 - 2, "$>", "Testing");
-  //  inputBox->addWidget(outputText);
+    VBox *outputBox = new VBox(0, 33, 0);
+    //TextBox *outputText = new TextBox (0, 33, MAIN_WIDTH/2 - 2, MAIN_WIDTH/2 - 2, "$>", "Testing");
+    Slider *testSlider = new Slider(0, 0, 10, 0.0f, 20.0f, "Slider");
+    outputBox->addWidget(testSlider);
     
     //inputBox->setBackgroundColor(TCODColor(0,0,0), TCODColor(0,0,0));
     
@@ -292,6 +293,8 @@ void GraphicsTCOD::drawMainInterface()
     offscreenConsole->print(0,0, "Welcome To The ASCII Project");
     offscreenConsole->hline(0,offscreenConsole->getHeight()-1, offscreenConsole->getWidth());
     offscreenConsole->hline(0,offscreenConsole->getHeight()-3, offscreenConsole->getWidth());
+    
+    
     
     
     bool popupOpen = false;
