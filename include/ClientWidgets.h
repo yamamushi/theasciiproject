@@ -1,4 +1,4 @@
-class TCODLIB_GUI_API ScrollBox : public Widget {
+class ScrollBox : public Widget {
     
 private:
     
