@@ -76,6 +76,7 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     TCODSystem::setFps(25);    
     output = mainConsole;
 
+    offscreenConsole = new TCODConsole(MAIN_WIDTH/2,13);
 
     // Apply remap for our non-unicode ascii based box-drawing functions
     TCODConsole::mapAsciiCodeToFont(179, 17, 298);
@@ -127,12 +128,6 @@ void GraphicsTCOD::drawMenu()
     Widget::renderWidgets();
     
     TCODMouse::showCursor(true);
-    
-    render();
-    
-    //static char *prompt = (char *)"The ASCII Project 0.0.0k  Yamamushi@gmail.com (c)2012";
-
-    render();
     
     TCODImage *image = new TCODImage("data/images/MenuBackground.png");
     
@@ -246,16 +241,8 @@ void GraphicsTCOD::drawMainInterface()
     
     hMenu->setBackgroundColor(TCODColor(0,0,0), TCODColor(128,128,128));
     
- 
-    output->vline(MAP_WIDTH/2, 32, 13);
-    output->hline(0, 32, MAP_WIDTH);
-    output->hline(MAP_WIDTH/2 + 1, MAP_HEIGHT-3, MAP_WIDTH/2);
-    output->hline(0, MAP_HEIGHT-1, MAP_WIDTH);
     
     
-    output->print(MAP_WIDTH/2, 32, L"\u2566");
-    output->print(MAP_WIDTH/2, MAP_HEIGHT-3, L"\u2560");
-    output->print(MAP_WIDTH/2, MAP_HEIGHT-1, L"\u2569");
     
     /*
     char *prompt = (char *)"$>";
@@ -271,31 +258,30 @@ void GraphicsTCOD::drawMainInterface()
     inputBoxWidget->setConsole(output);
     inputBoxWidget->setBackgroundColor(TCODColor(0,0,0), TCODColor(0,0,0));
     inputBoxWidget->setForegroundColor(TCODColor(0,255,0), TCODColor(0,0,0)); */
-    
-   
-    
-    VBox *outputBox = new VBox(0, 33, 0);
-    //TextBox *outputText = new TextBox (0, 33, MAIN_WIDTH/2 - 2, MAIN_WIDTH/2 - 2, "$>", "Testing");
-    Slider *testSlider = new Slider(0, 0, 10, 0.0f, 20.0f, "Slider");
-    outputBox->addWidget(testSlider);
+
     
     //inputBox->setBackgroundColor(TCODColor(0,0,0), TCODColor(0,0,0));
     
-    TCODConsole *offscreenConsole = new TCODConsole(MAIN_WIDTH/2-1,12);
-    offscreenConsole->setDefaultBackground(TCODColor::red);
+    
 
     
-    inputText = new TCODText(0, offscreenConsole->getHeight()-2, offscreenConsole->getWidth(), 1, offscreenConsole->getWidth());
+    ScrollBox *chatBox = new ScrollBox(0, 32, MAP_WIDTH/2+1, 13);
+    ScrollBox *serverBox = new ScrollBox(0, 0, offscreenConsole->getWidth(), offscreenConsole->getHeight()-2);
+    //serverBox->setConsole(offscreenConsole);
+
+    
+    inputText = new TCODText(1, offscreenConsole->getHeight()-2, offscreenConsole->getWidth()-2, 1, offscreenConsole->getWidth()-2);
     inputText->setProperties(32, 1000, "$>", 1);
     inputText->setColors(TCODColor(0,255,0), TCODColor(0,0,0), 1.0f);
     
     inputText->render(offscreenConsole);
-    offscreenConsole->print(0,0, "Welcome To The ASCII Project");
+    //offscreenConsole->print(0,0, "Welcome To The ASCII Project");
     offscreenConsole->hline(0,offscreenConsole->getHeight()-1, offscreenConsole->getWidth());
     offscreenConsole->hline(0,offscreenConsole->getHeight()-3, offscreenConsole->getWidth());
+    offscreenConsole->vline(0,0, offscreenConsole->getHeight());
+    offscreenConsole->vline(offscreenConsole->getWidth()-1,0, offscreenConsole->getHeight());
     
-    
-    
+
     
     bool popupOpen = false;
     while(true)
@@ -311,9 +297,13 @@ void GraphicsTCOD::drawMainInterface()
             inputText->update(key);
         }
         inputText->render(offscreenConsole);
+        chatBox->render();
+        serverBox->render(offscreenConsole);
         Widget::renderWidgets();
         
-        TCODConsole::blit(offscreenConsole,0,0,0,0,output,MAIN_WIDTH/2+1,33, 1.0f, 1.0f);
+        fixBottom();
+        
+        TCODConsole::blit(offscreenConsole,0,0,0,0,output,MAIN_WIDTH/2,32, 1.0f, 1.0f);
         render();
         
         if(drawMenuCheck)
@@ -334,15 +324,7 @@ void GraphicsTCOD::drawMainInterface()
             delete menuPopup;
             output->clear();
             
-            output->vline(MAP_WIDTH/2, 32, 13);
-            output->hline(0, 32, MAP_WIDTH);
-            output->hline(MAP_WIDTH/2 + 1, MAP_HEIGHT-3, MAP_WIDTH/2);
-            output->hline(0, MAP_HEIGHT-1, MAP_WIDTH);
-            
-            
-            output->print(MAP_WIDTH/2, 32, L"\u2566");
-            output->print(MAP_WIDTH/2, MAP_HEIGHT-3, L"\u2560");
-            output->print(MAP_WIDTH/2, MAP_HEIGHT-1, L"\u2569");
+            fixBottom();
 
             popupOpen = false;
             closeMenuCheck = false;
@@ -353,16 +335,46 @@ void GraphicsTCOD::drawMainInterface()
         
         if(key.vk == TCODK_ENTER)
         {
+            std::string tmpText = inputText->getText();
+            chatBox->insertText(tmpText);
+            
             inputText->reset();
             delete inputText;
             
-            inputText = new TCODText(0, offscreenConsole->getHeight()-2, offscreenConsole->getWidth(), 1, offscreenConsole->getWidth());
+            inputText = new TCODText(1, offscreenConsole->getHeight()-2, offscreenConsole->getWidth()-2, 1, offscreenConsole->getWidth()-2);
             inputText->setProperties(32, 1000, "$>", 1);
             inputText->setColors(TCODColor(0,255,0), TCODColor(0,0,0), 1.0f);
             
         } 
     
     }
+    
+}
+
+
+void GraphicsTCOD::fixBottom()
+{
+    
+    output->vline(MAP_WIDTH/2, 32, 13);
+    output->hline(0, 32, MAP_WIDTH);
+    output->hline(MAP_WIDTH/2 + 1, MAP_HEIGHT-3, MAP_WIDTH/2);
+    output->hline(0, MAP_HEIGHT-1, MAP_WIDTH);
+    output->vline(MAP_WIDTH-1, 32, 13);
+    
+    output->print(MAP_WIDTH/2, 32, L"\u2566");
+    output->print(MAP_WIDTH/2, MAP_HEIGHT-3, L"\u2560");
+    output->print(MAP_WIDTH/2, MAP_HEIGHT-1, L"\u2569");
+    output->print(0, 32, L"\u2554");
+    output->print(0, MAP_HEIGHT-1, L"\u255A");
+    output->print(MAP_WIDTH-1, 32, L"\u2557");
+    output->print(MAP_WIDTH-1, MAP_HEIGHT-1, L"\u255D");
+    output->print(MAP_WIDTH-1, MAP_HEIGHT-3, L"\u2563");
+    
+    offscreenConsole->print(0,0,L"\u2566");
+    offscreenConsole->print(0,offscreenConsole->getHeight()-3,L"\u2560");
+    offscreenConsole->print(0,offscreenConsole->getHeight()-1,L"\u2569");
+    offscreenConsole->print(offscreenConsole->getWidth()-1,offscreenConsole->getHeight()-3,L"\u2563");
+    offscreenConsole->print(offscreenConsole->getWidth()-1,offscreenConsole->getHeight()-1,L"\u255D");
     
 }
 

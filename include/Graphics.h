@@ -63,6 +63,7 @@ public:
     
     TCODConsole *output;
     TCODConsole *widgetCon;
+    TCODConsole *offscreenConsole;
     
     bool rendering;
     
@@ -85,7 +86,7 @@ public:
     void newAccountMenu(Widget *w, void *data);
     void quitMenu(Widget *w, void *data);
     
-    
+    void fixBottom();
     
     void drawAt(int x, int y);
     void drawAll();
