@@ -276,8 +276,9 @@ void GraphicsTCOD::drawMainInterface()
     inputText = new TCODText(1, offscreenConsole->getHeight()-2, offscreenConsole->getWidth()-2, 1, offscreenConsole->getWidth()-2);
     inputText->setProperties(32, 1000, "$>", 1);
     inputText->setColors(TCODColor(0,255,0), TCODColor(0,0,0), 1.0f);
-    
     inputText->render(offscreenConsole);
+    
+    
     //offscreenConsole->print(0,0, "Welcome To The ASCII Project");
     offscreenConsole->hline(0,offscreenConsole->getHeight()-1, offscreenConsole->getWidth());
     offscreenConsole->hline(0,offscreenConsole->getHeight()-3, offscreenConsole->getWidth());
@@ -285,7 +286,6 @@ void GraphicsTCOD::drawMainInterface()
     offscreenConsole->vline(offscreenConsole->getWidth()-1,0, offscreenConsole->getHeight());
     
 
-    
     bool popupOpen = false;
     while(true)
     {
@@ -305,7 +305,6 @@ void GraphicsTCOD::drawMainInterface()
         Widget::renderWidgets();
         
         fixBottom();
-        
         
         TCODConsole::blit(offscreenConsole,0,0,0,0,output,MAIN_WIDTH/2,32, 1.0f, 1.0f);
         TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
@@ -337,11 +336,17 @@ void GraphicsTCOD::drawMainInterface()
         
         
 
-        
-        if(key.vk == TCODK_ENTER)
+        if(key.vk == TCODK_ESCAPE)
+        {
+            inputText->reset();
+            
+        }
+        else if(key.vk == TCODK_ENTER)
         {
             std::string tmpText = inputText->getText();
-            chatBox->insertText(tmpText);
+            
+            if(tmpText != "")
+                chatBox->insertText(tmpText);
             
             inputText->reset();
             delete inputText;
@@ -350,8 +355,8 @@ void GraphicsTCOD::drawMainInterface()
             inputText->setProperties(32, 1000, "$>", 1);
             inputText->setColors(TCODColor(0,255,0), TCODColor(0,0,0), 1.0f);
             
-        } 
-    
+        }
+
     }
     
 }
