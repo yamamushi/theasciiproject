@@ -39,6 +39,7 @@
 // First our custom headers
 #include "Headers.h"
 #include "ServerSocket.h"
+#include "DBConnector.h"
 
 DBConnector *dbEngine;
 

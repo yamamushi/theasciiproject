@@ -1,5 +1,7 @@
 
 #include "Headers.h"
+#include "DBConnector.h"
+
 
 
 DBConnector::DBConnector(std::string host, int port, std::string user, std::string pass, std::string db)
