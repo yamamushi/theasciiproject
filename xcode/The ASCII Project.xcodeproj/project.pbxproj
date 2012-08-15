@@ -42,6 +42,7 @@
 		744488C515BF04EF006595CE /* tpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 7444889015BF04EF006595CE /* tpl.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
 		744488CC15BF0B84006595CE /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		744488CD15BF0C23006595CE /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
+		7445A26A15DAAD8F00EBBF9B /* ui_input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7445A26915DAAD8F00EBBF9B /* ui_input.cpp */; };
 		745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
 		749EC50315DA291C0012A646 /* MenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
 		749EC50515DA293F0012A646 /* MenuBackground.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
@@ -426,6 +427,8 @@
 		74448A2E15BF2CE6006595CE /* XmlException.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XmlException.h; sourceTree = "<group>"; };
 		74448A2F15BF2CE6006595CE /* XmlNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = XmlNode.cpp; sourceTree = "<group>"; };
 		74448A3015BF2CE6006595CE /* XmlNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XmlNode.h; sourceTree = "<group>"; };
+		7445A26915DAAD8F00EBBF9B /* ui_input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ui_input.cpp; sourceTree = "<group>"; };
+		7445A26C15DAAD9E00EBBF9B /* ui_input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ui_input.hpp; sourceTree = "<group>"; };
 		747D227915BFB07700CE1AC9 /* ABOUT.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = ABOUT.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/ABOUT.txt"; sourceTree = "<absolute>"; };
 		747D227A15BFB07700CE1AC9 /* CHANGELOG.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHANGELOG.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/CHANGELOG.txt"; sourceTree = "<absolute>"; };
 		747D227B15BFB07700CE1AC9 /* DIRECTORIES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = DIRECTORIES.txt; path = "/Users/yamamushi/NetBeansProjects/The ASCII Project/docs/DIRECTORIES.txt"; sourceTree = "<absolute>"; };
@@ -602,6 +605,7 @@
 		7444880615BF04EF006595CE /* include */ = {
 			isa = PBXGroup;
 			children = (
+				7445A26C15DAAD9E00EBBF9B /* ui_input.hpp */,
 				74C5767C15C1D1F20033691A /* BoostLibs.h */,
 				7444880715BF04EF006595CE /* ClientMap.h */,
 				7444880815BF04EF006595CE /* ClientSocket.h */,
@@ -789,6 +793,7 @@
 		7444887F15BF04EF006595CE /* src */ = {
 			isa = PBXGroup;
 			children = (
+				7445A26915DAAD8F00EBBF9B /* ui_input.cpp */,
 				7444888015BF04EF006595CE /* ClientMap.cpp */,
 				7444888115BF04EF006595CE /* ClientSocket.cpp */,
 				74C5767E15C1EC6D0033691A /* Collect.cpp */,
@@ -1205,8 +1210,9 @@
 				743612FC15BFA82D00CC2BCA /* tpl.c in Sources */,
 				7436130615BFAC0D00CC2BCA /* Platform.cpp in Sources */,
 				745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */,
-				743612FD15BFA82D00CC2BCA /* Main_Client.cpp in Sources */,
 				74D863AD15D9E0010029D3F1 /* ClientWidgets.cpp in Sources */,
+				7445A26A15DAAD8F00EBBF9B /* ui_input.cpp in Sources */,
+				743612FD15BFA82D00CC2BCA /* Main_Client.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

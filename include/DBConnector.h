@@ -1,5 +1,5 @@
 
-
+#include <pqxx/pqxx>
 
 
 class DBConnector {

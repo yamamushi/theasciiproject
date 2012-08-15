@@ -93,6 +93,7 @@ using boost::asio::ip::tcp;
 // 3rd party local headers
 #include "libtcod/libtcod.hpp"
 #include "libtcod/gui/gui.hpp"
+#include "ui_input.hpp"
 
 
 // Our most important objects
