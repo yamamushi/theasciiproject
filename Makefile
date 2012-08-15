@@ -46,6 +46,7 @@ win-all: win-client win-server
 win-client: nonempty.o mmap.o $(CLIENT_OBJS)
 	$(CPP) $(BUILDDIR)mmap.o $(BUILDDIR)nonempty.o $(addprefix $(BUILDDIR), $(CLIENT_OBJS)) -o ./bin/$@ -lssl -lcrypto -Wl,-rpath,. -lpthread -lssl -lcrypto $(LDLIB)
 	cp $(LIBWIN)/*.dll ./bin/
+	cp -r ./data ./bin/
 
 win-server: $(SERVER_OBJS)
 	$(CPP) $(addprefix $(BUILDDIR), $(SERVER_OBJS)) -o ./bin/$@ -lssl -lcrypto -Wl,-rpath,. -lpthread -lssl -lcrypto $(LDLIB)
