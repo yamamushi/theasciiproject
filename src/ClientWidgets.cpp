@@ -28,13 +28,39 @@ ScrollBox::~ScrollBox()
 }
 
 
-void ScrollBox::update(const TCOD_key_t k)
+void ScrollBox::setRealPosition(int x, int y)
 {
-    if ( keyboardFocus == this )
+    
+    realX = x;
+    realY = y;
+    
+}
+
+
+void ScrollBox::update(const TCOD_mouse_t k)
+{
+    
+    if (mouse.cx == realX + w - 2 && mouse.cy == realY + 1)
     {
-        
+        onUpArrow = true;
+        //cout << "Up" << endl;
+    }
+    else if (mouse.cx == realX + w - 2 && mouse.cy == realY + h - 2 )
+    {
+        onDownArrow = true;
+        //cout << "Down" << endl;
+    }
+    else
+    {
+        onUpArrow = false;
+        onDownArrow = false;
     }
     
+    
+    if(k.lbutton)
+    {
+        onButtonPress();
+    }
 }
 
 
@@ -69,8 +95,8 @@ void ScrollBox::render()
     
     if(!textBuffer->empty())
     {
-        if(textBuffer->size() == maxBuffer)
-            textBuffer->erase(textBuffer->begin());
+        if(textBuffer->size() >= maxBuffer)
+            textBuffer->resize(maxBuffer);
         
         std::string checkForCommand = textBuffer->back();
         
@@ -147,7 +173,19 @@ void ScrollBox::render()
 
 void ScrollBox::onButtonPress()
 {
-    
+    if(textBuffer->size() > h - 2)  // we ignore the top and the bottom positions.
+    {
+        if(onUpArrow)
+        {
+       
+            cout << "Up" << endl;
+        }
+        else if(onDownArrow)
+        {
+        
+            cout << "Down" << endl;
+        }
+    }
 }
 
 

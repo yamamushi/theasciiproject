@@ -271,7 +271,8 @@ void GraphicsTCOD::drawMainInterface()
     ScrollBox *chatBox = new ScrollBox(0, 0, textOutputConsole->getWidth(), textOutputConsole->getHeight(), 512, textOutputConsole);
     ScrollBox *serverBox = new ScrollBox(0, 0, offscreenConsole->getWidth(), offscreenConsole->getHeight()-2, 512, offscreenConsole);
     //serverBox->setConsole(offscreenConsole);
-
+    chatBox->setRealPosition(0, 32);
+    serverBox->setRealPosition(MAIN_WIDTH/2, 32);
     
     inputText = new TCODText(1, offscreenConsole->getHeight()-2, offscreenConsole->getWidth()-2, 1, offscreenConsole->getWidth()-2);
     inputText->setProperties(32, 1000, "$>", 1);
@@ -298,6 +299,8 @@ void GraphicsTCOD::drawMainInterface()
         if(!popupOpen)
         {
             inputText->update(key);
+            chatBox->update(mouse);
+            serverBox->update(mouse);
         }
         inputText->render(offscreenConsole);
         chatBox->render();

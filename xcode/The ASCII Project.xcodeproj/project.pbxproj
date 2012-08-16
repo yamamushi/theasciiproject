@@ -44,6 +44,7 @@
 		744488CD15BF0C23006595CE /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		7445A26A15DAAD8F00EBBF9B /* ui_input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7445A26915DAAD8F00EBBF9B /* ui_input.cpp */; };
 		745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
+		7466BEF215DCB8A800584BE9 /* ClientWidgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D863AC15D9E0010029D3F1 /* ClientWidgets.cpp */; };
 		749EC50315DA291C0012A646 /* MenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
 		749EC50515DA293F0012A646 /* MenuBackground.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
@@ -1220,6 +1221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7466BEF215DCB8A800584BE9 /* ClientWidgets.cpp in Sources */,
 				744488C415BF04EF006595CE /* Tiles.cpp in Sources */,
 				744488C315BF04EF006595CE /* TileMap.cpp in Sources */,
 				744488B815BF04EF006595CE /* Entities.cpp in Sources */,
