@@ -4,8 +4,8 @@ SRCDIR=./src
 INCDIR=./include
 INCTCOD=./include/libtcod
 BUILDDIR=./build/
-CFLAGS=$(FLAGS) -I$(INCTCOD) -I$(INCDIR) -I$(SRCDIR) -Wall -Wswitch
-CPPFLAGS=$(FLAGS) -I$(INCTCOD) -I$(INCDIR) -I$(SRCDIR) -Wall -Wswitch -std=c++11
+CFLAGS=$(FLAGS) -I$(INCTCOD) -I$(INCDIR) -I$(SRCDIR) -w #-Wall -Wswitch
+CPPFLAGS=$(FLAGS) -I$(INCTCOD) -I$(INCDIR) -I$(SRCDIR) -w -std=c++11 #-Wall -Wswitch -std=c++11
 
 LIBWIN=./windows
 
@@ -30,7 +30,7 @@ CPP=g++
 %.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -o $(BUILDDIR)$@ -c $<
 	
-CLIENT_OBJS=tpl.o ClientSocket.o ClientMap.o Graphics.o \
+CLIENT_OBJS=tpl.o ClientWidgets.o ClientSocket.o ClientMap.o Graphics.o \
     Keyboard.o Serialization.o Main_Client.o
 
 SERVER_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
@@ -46,6 +46,7 @@ win-all: win-client win-server
 win-client: nonempty.o mmap.o $(CLIENT_OBJS)
 	$(CPP) $(BUILDDIR)mmap.o $(BUILDDIR)nonempty.o $(addprefix $(BUILDDIR), $(CLIENT_OBJS)) -o ./bin/$@ -lssl -lcrypto -Wl,-rpath,. -lpthread -lssl -lcrypto $(LDLIB)
 	cp $(LIBWIN)/*.dll ./bin/
+	cp -r ./data ./bin/
 
 win-server: $(SERVER_OBJS)
 	$(CPP) $(addprefix $(BUILDDIR), $(SERVER_OBJS)) -o ./bin/$@ -lssl -lcrypto -Wl,-rpath,. -lpthread -lssl -lcrypto $(LDLIB)
