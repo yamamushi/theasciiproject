@@ -1,8 +1,4 @@
-
-
-
 class TCODLIB_GUI_API Slider : public TextBox {
-    
 public :
 	Slider(int x,int y,int w, float min, float max, const char *label, const char *tip=NULL);
 	virtual ~Slider();
