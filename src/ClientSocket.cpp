@@ -67,28 +67,128 @@ ClientSession::ClientSession(boost::asio::io_service& io_service, tcp::resolver:
     m_pause = false;
     sent = true;
     
-    //boost::asio::async_connect(socket_, endpoint_iterator_, boost::bind(&ClientSession::ignorePrompt, this, boost::asio::placeholders::error));
+    
+    extern ScrollBox *sConsole;
+    commander = sConsole;
+    
     
 }
 
 
-void ClientSession::Connect()
+bool ClientSession::Connect()
+{
+    boost::system::error_code ec;
+    boost::asio::connect(socket_, endpoint_iterator_, ec);
+    if(ec)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+    
+}
+
+
+void ClientSession::getLoginScreen()
 {
     
+    commander->insertText("Reading Data");
     
-    //cout << "Connected\n" << endl;
+    boost::asio::streambuf buffer;
     
-    //boost::asio::async_write(socket_, boost::asio::buffer(string("startMapStream " + sessionToken + "\r\n")), boost::bind(&ClientSession::sizeMap, this, boost::asio::placeholders::error));
+    boost::system::error_code ec;
+    read_until(socket_, buffer, prompt, ec);
+    if(!ec)
+    {
+        
+        cout << "Data Read" << endl;
+        std::string serverResponse;
+        
+        std::istream is(&buffer);
+        //is.get(*line_command_) >> serverResponse;
+        //std::string serverResponse(static_cast<stringstream const&>(stringstream() << is.rdbuf()).str());
+        
+        getline(is, serverResponse, '\0');
+        cout << serverResponse << endl;
+        
+        commander->insertText(serverResponse);
+
+        
+    }
     
+    else
+    {
+        commander->insertText("Error - Connection Closed");
+        close();
+    }
 }
+
 
 
 void ClientSession::ignorePrompt(const boost::system::error_code& error)
 {
     if(!error)
     {
-        cout << "Connected\n" << endl;
-        async_read_until(socket_, *line_command_, prompt, boost::bind(&ClientSession::requestLogin, this, boost::asio::placeholders::error));
+        
+        cout << "Data Read" << endl;
+        std::string serverResponse;
+        
+        std::istream is(line_command_);
+        //is.get(*line_command_) >> serverResponse;
+        //std::string serverResponse(static_cast<stringstream const&>(stringstream() << is.rdbuf()).str());
+        
+        
+        
+        while(is.good())
+        {
+            char c = is.get();
+            serverResponse.insert(serverResponse.end(), c);
+        }
+        
+        cout << line_command_ << endl;
+        cout << serverResponse << endl;
+        
+        delete line_command_;
+        line_command_ = new boost::asio::streambuf;
+        
+        int stringLength = (int)serverResponse.length();
+        
+        
+        if(stringLength >= ((MAIN_WIDTH/2) - 4))
+        {
+            std::string tmpString;
+            while(!serverResponse.empty())
+            {
+                if(tmpString.size() >= (MAIN_WIDTH/2)-6)
+                {
+                    tmpString.copy(&serverResponse[0], (MAIN_WIDTH/2)-5);
+                    serverResponse.erase(0, (MAIN_WIDTH/2)-5);
+                    commander->insertText(tmpString);
+                }
+                else
+                {
+                    //commander->insertText(serverResponse);
+                    tmpString.copy(&serverResponse[0], serverResponse.size());
+                    commander->insertText(tmpString);
+                }
+                
+                
+            }
+            
+        }
+        
+        
+        
+        
+        
+        
+        //   async_read_until(socket_, *line_command_, prompt, boost::bind(&ClientSession::requestLogin, this, boost::asio::placeholders::error));
+    }
+    else
+    {
+        close();
     }
 }
 
@@ -98,7 +198,8 @@ void ClientSession::requestLogin(const boost::system::error_code& error)
 {
     if(!error)
     {
-        cout << "prompt received" << endl;
+        commander->insertText("Successfully Connected to Server");
+        commander->connected = true;
         
         boost::this_thread::sleep_for(boost::chrono::milliseconds(500));
         boost::asio::async_write(socket_, boost::asio::buffer(string("login")), boost::bind(&ClientSession::sendCredentials, this, boost::asio::placeholders::error));
@@ -140,10 +241,10 @@ void ClientSession::sendCredentials(const boost::system::error_code& error)
 void ClientSession::receiveCredResponse(const boost::system::error_code& error)
 {
     if(!error)
-    { 
+    {
         cout << "login creds sent" << endl;
         async_read_until(socket_, *line_feed_, string(" "), boost::bind(&ClientSession::handleCredResponse, this, boost::asio::placeholders::error));
-                
+        
     }
     else
     {
@@ -173,7 +274,7 @@ void ClientSession::handleCredResponse(const boost::system::error_code& error)
         cout << "handling cred response" << endl;
         output->loginError();
         cout << "login error sent" << endl;
-
+        
         
     }
     else

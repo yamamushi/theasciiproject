@@ -54,7 +54,7 @@ private:
     float H, S, V, HD, SD, VD;
     float TH, TS, TV, THD, TSD, TVD;
 
-    
+    bool connected;
     VBox *menuPopup;
     
     
@@ -63,8 +63,10 @@ public:
     
     TCODConsole *output;
     TCODConsole *widgetCon;
-    TCODConsole *offscreenConsole;
+    TCODConsole *serverConsole;
     TCODConsole *textOutputConsole;
+    ClientSession *cnet;
+    
     
     bool rendering;
     

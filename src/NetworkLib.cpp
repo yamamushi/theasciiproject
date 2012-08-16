@@ -1,17 +1,20 @@
 #include "Headers.h"
 
 
-void* Packet::Serialize() {
-    struct SerializedPacket *s = new SerializedPacket();
-    s->senderId = htonl(this->senderId);
-    s->sequenceNumber = htonl(this->sequenceNumber);
-    memcpy(s->data, this->data, MaxDataSize);
-    return s;
-}
 
-void Packet::Deserialize(char *message) {
-    struct SerializedPacket *s = (struct SerializedPacket*)message;
-    this->senderId = ntohl(s->senderId);
-    this->sequenceNumber = ntohl(s->sequenceNumber);
-    memcpy(this->data, s->data, MaxDataSize);
+boost::thread *connection;
+
+void ScrollBox::connectServer(ClientMap *cMap, GraphicsTCOD *graphicsEngine)
+{
+    
+    
+    boost::asio::io_service pri_io_service;
+    tcp::resolver pri_resolver(pri_io_service);
+    tcp::resolver::query pri_query("localhost", "5250");
+    
+    tcp::resolver::iterator iterator = pri_resolver.resolve(pri_query);
+    
+    ClientSession c(pri_io_service, iterator, cMap, graphicsEngine);
+    
+    
 }

@@ -60,6 +60,7 @@ private:
     ClientMap *clientMap;
     ClientMapPacker *packer;
     GraphicsTCOD *output;
+    ScrollBox *commander;
     
     
     char *buf;
@@ -101,7 +102,12 @@ public:
     bool writing;
     
     ClientSession(boost::asio::io_service& io_service, tcp::resolver::iterator endpoint_iterator, ClientMap *client, GraphicsTCOD *screen);
-    void Connect();
+    bool Connect();
+    
+    void getLoginScreen();
+    
+    void sendCommand();
+    void readData();
     
     void ignorePrompt(const boost::system::error_code& error);
     

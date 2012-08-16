@@ -133,6 +133,7 @@ using boost::asio::ip::tcp;
 // Our Network Layer should
 // Always go last
 #include "ClientSocket.h"
+#include "NetworkLib.h"
 
 
 

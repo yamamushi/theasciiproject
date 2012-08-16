@@ -45,6 +45,9 @@
 		7445A26A15DAAD8F00EBBF9B /* ui_input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7445A26915DAAD8F00EBBF9B /* ui_input.cpp */; };
 		745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
 		7466BEF215DCB8A800584BE9 /* ClientWidgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D863AC15D9E0010029D3F1 /* ClientWidgets.cpp */; };
+		7466BEF415DD659500584BE9 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
+		7466BEF515DD893D00584BE9 /* NetworkLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888A15BF04EF006595CE /* NetworkLib.cpp */; };
+		7466BEF615DDB84300584BE9 /* NetworkLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888A15BF04EF006595CE /* NetworkLib.cpp */; };
 		749EC50315DA291C0012A646 /* MenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
 		749EC50515DA293F0012A646 /* MenuBackground.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
@@ -1204,6 +1207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7466BEF515DD893D00584BE9 /* NetworkLib.cpp in Sources */,
 				743612F715BFA82D00CC2BCA /* ClientMap.cpp in Sources */,
 				743612F915BFA82D00CC2BCA /* Graphics.cpp in Sources */,
 				743612FA15BFA82D00CC2BCA /* Keyboard.cpp in Sources */,
@@ -1221,7 +1225,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7466BEF215DCB8A800584BE9 /* ClientWidgets.cpp in Sources */,
+				7466BEF615DDB84300584BE9 /* NetworkLib.cpp in Sources */,
+				7466BEF415DD659500584BE9 /* ClientSocket.cpp in Sources */,
 				744488C415BF04EF006595CE /* Tiles.cpp in Sources */,
 				744488C315BF04EF006595CE /* TileMap.cpp in Sources */,
 				744488B815BF04EF006595CE /* Entities.cpp in Sources */,
@@ -1237,6 +1242,7 @@
 				74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */,
 				742F3FA315D0920200372A7A /* DBConnector.cpp in Sources */,
 				744488BE15BF04EF006595CE /* Main_Server.cpp in Sources */,
+				7466BEF215DCB8A800584BE9 /* ClientWidgets.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,12 +10,18 @@ private:
     int realX;
     int realY;
     
-    TCODConsole *console;
+    bool acceptCommands;
     
+    
+    TCODConsole *console;
+    GraphicsTCOD *graphics;
+    ClientMap *clientMap;
     
 public :
     
-    ScrollBox( int x, int y, int w, int h, int MaxBuffer, TCODConsole *Console);
+    bool connected;
+    
+    ScrollBox( int x, int y, int w, int h, int MaxBuffer, TCODConsole *Console, ClientMap *cMap, GraphicsTCOD *graphicsEngine);
     virtual ~ScrollBox();
     void attachConsole(TCODConsole *Console);
     void render();
@@ -23,6 +29,9 @@ public :
     void insertText(std::string newText);
     
     void setRealPosition(int x, int y);
+    void takeCommands(bool accept);
+    
+    static void connectServer(ClientMap *cMap, GraphicsTCOD *graphicsEngine);
     
 protected :
     

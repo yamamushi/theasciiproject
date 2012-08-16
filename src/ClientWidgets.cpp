@@ -1,15 +1,23 @@
 #include "Headers.h"
 
 
+using boost::asio::ip::tcp;
+
+
 
 // x and y are our positions on the screen, w and h are our width and height.
-ScrollBox::ScrollBox( int x, int y, int w, int h, int MaxBuffer, TCODConsole *Console) : Widget(x,y,w,h)
+ScrollBox::ScrollBox( int x, int y, int w, int h, int MaxBuffer, TCODConsole *Console, ClientMap *cMap, GraphicsTCOD *graphicsEngine) : Widget(x,y,w,h)
 {
     
     maxBuffer = MaxBuffer;
     textBuffer = new std::vector<std::string>;
     console = Console;
     scrollBuffer = 0;
+    acceptCommands = false;
+    connected = false;
+    
+    graphics = graphicsEngine;
+    clientMap = cMap;
 }
 
 
@@ -61,6 +69,12 @@ void ScrollBox::update(const TCOD_mouse_t k)
     {
         onButtonPress();
     }
+    
+    if(k.wheel_up)
+        onScrollUp();
+    
+    if(k.wheel_down)
+        onScrollDown();
 }
 
 
@@ -69,6 +83,10 @@ void ScrollBox::attachConsole(TCODConsole *Console)
     console = Console;
 }
 
+void ScrollBox::takeCommands(bool accept)
+{
+    acceptCommands = accept;
+}
 
 void ScrollBox::insertText(std::string newText)
 {
@@ -76,7 +94,7 @@ void ScrollBox::insertText(std::string newText)
     if(textBuffer)
     {
         if(textBuffer->size() >= maxBuffer)
-           textBuffer->erase(textBuffer->begin());
+            textBuffer->erase(textBuffer->begin());
         
         textBuffer->push_back(newText);
     }
@@ -101,17 +119,34 @@ void ScrollBox::render()
         
         std::string checkForCommand = textBuffer->back();
         
-        if(checkForCommand == "/quit")
-            exit(0);
-        if(checkForCommand == "/clear")
+        if(acceptCommands)
         {
-            scrollBuffer = 0;
-            textBuffer->clear();
+            if(checkForCommand == "/exit")
+            {
+                exit(0);
+            }
+            
+            if(checkForCommand == "/clear")
+            {
+                scrollBuffer = 0;
+                textBuffer->clear();
+            }
+
+            else if (checkForCommand == "/connect" && connected)
+            {
+                textBuffer->pop_back();
+                insertText("Already Connected, disconnect first");
+            }
+            
+            if(checkForCommand == "/reconnect")
+            {
+                textBuffer->pop_back();
+                connectServer(clientMap, graphics);
+            }
         }
         
-        
         if(textBuffer->size() > h - 2)  // we ignore the top and the bottom positions.
-        {     
+        {
             for(int i=1; i < h - 1; i++)     // The "-3" is to account for i+1+y potentially overflowwing.
             {                              // We start at i=1 ot account for the vector at position 0
                 
@@ -128,12 +163,12 @@ void ScrollBox::render()
                 int stringLength = (int)tmpString.length();
                 
                 
-                if(stringLength >= w)
+                if(stringLength >= w-4)
                 {
-                    int size = stringLength/w;
+                    int size = stringLength/(w-4);
                     
                     for(x = 1; x < size; x++)
-                        tmpString.insert((x*w)-3, "\n");
+                        tmpString.insert((x*w)-6, "\n");
                 }
                 
                 tmpString.insert(0, "%c");
@@ -158,10 +193,10 @@ void ScrollBox::render()
                 
                 if(stringLength >= w)
                 {
-                    int size = stringLength/w;
+                    int size = stringLength/(w);
                     
                     for(x = 1; x < size; x++)
-                        tmpString.insert((x*w)-3, "\n");
+                        tmpString.insert((x*w)-6, "\n");
                 }
                 
                 tmpString.insert(0, "%c");
@@ -175,6 +210,9 @@ void ScrollBox::render()
     
     
 }
+
+
+
 
 
 /*
@@ -211,13 +249,15 @@ void ScrollBox::onButtonRelease()
 
 void ScrollBox::onScrollUp()
 {
-    
+    if(scrollBuffer < maxBuffer && scrollBuffer < textBuffer->size() - h + 2)
+        scrollBuffer++;
 }
 
 
 void ScrollBox::onScrollDown()
 {
-    
+    if(scrollBuffer > 0)
+        scrollBuffer--;
 }
 
 

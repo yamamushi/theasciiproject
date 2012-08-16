@@ -42,8 +42,8 @@
 #include "Platform.h"
 
 
-// Our ASIO tcp object
-using boost::asio::ip::tcp;
+GraphicsTCOD *graphicsEngine;
+ClientMap *cMap;
 
 
 // Lets's Rock n' Roll!!!
@@ -55,49 +55,17 @@ int main(int argc, char *argv[])
     macApp_setRelativePath();
 #endif
     
-    ClientMap *cMap = new ClientMap;
-    GraphicsTCOD *output = new GraphicsTCOD(cMap);
+    cMap = new ClientMap;
+    graphicsEngine = new GraphicsTCOD(cMap);
 
     
     try
     {
         
-        output->drawMenu();
-        output->drawMainInterface();
+        graphicsEngine->drawMenu();
+        graphicsEngine->drawMainInterface();
         
-        extern std::string user;
-        extern std::string pass;
-        
-        boost::asio::io_service io_service;
-        
-        tcp::resolver resolver(io_service);
-        tcp::resolver::query query("localhost", "5250");
-        tcp::resolver::iterator iterator = resolver.resolve(query);
-        
-        
-        ClientSession c(io_service, iterator, cMap, output);
-        boost::thread t(boost::bind(&boost::asio::io_service::run, &io_service));
-        
-        Keyboard *kboard = new Keyboard(&c);
-         
-        
-        // Main Game Loop
-        while (!TCODConsole::isWindowClosed()) {
 
-            
-            bool quit = kboard->handleKeys();
-            //c.set_paused(false);
-            
-            if (quit)
-            {
-                c.close();
-                t.join();
-                break;
-            }
-            
-            
-                        
-        }
     }
     catch (std::exception& e)
     {
