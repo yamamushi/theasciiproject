@@ -9,7 +9,7 @@ ScrollBox::ScrollBox( int x, int y, int w, int h, int MaxBuffer, TCODConsole *Co
     maxBuffer = MaxBuffer;
     textBuffer = new std::vector<std::string>;
     console = Console;
-    
+    scrollBuffer = 0;
 }
 
 
@@ -75,6 +75,9 @@ void ScrollBox::insertText(std::string newText)
     
     if(textBuffer)
     {
+        if(textBuffer->size() >= maxBuffer)
+           textBuffer->erase(textBuffer->begin());
+        
         textBuffer->push_back(newText);
     }
     
@@ -95,21 +98,32 @@ void ScrollBox::render()
     
     if(!textBuffer->empty())
     {
-        if(textBuffer->size() >= maxBuffer)
-            textBuffer->resize(maxBuffer);
         
         std::string checkForCommand = textBuffer->back();
         
         if(checkForCommand == "/quit")
             exit(0);
+        if(checkForCommand == "/clear")
+        {
+            scrollBuffer = 0;
+            textBuffer->clear();
+        }
+        
         
         if(textBuffer->size() > h - 2)  // we ignore the top and the bottom positions.
         {     
             for(int i=1; i < h - 1; i++)     // The "-3" is to account for i+1+y potentially overflowwing.
             {                              // We start at i=1 ot account for the vector at position 0
                 
-                
-                std::string tmpString = textBuffer->at((textBuffer->size())-i);
+                std::string tmpString;
+                if(((int)textBuffer->size() - i - scrollBuffer) >= 0)
+                {
+                    tmpString = textBuffer->at((textBuffer->size())-i-scrollBuffer);
+                }
+                else
+                {
+                    break;
+                }
                 
                 int stringLength = (int)tmpString.length();
                 
@@ -177,13 +191,13 @@ void ScrollBox::onButtonPress()
     {
         if(onUpArrow)
         {
-       
-            cout << "Up" << endl;
+            if(scrollBuffer < maxBuffer && scrollBuffer < textBuffer->size() - h + 2)
+                scrollBuffer++;
         }
         else if(onDownArrow)
         {
-        
-            cout << "Down" << endl;
+            if(scrollBuffer > 0)
+                scrollBuffer--;
         }
     }
 }

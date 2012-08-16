@@ -6,6 +6,7 @@ private:
     char *scrollbackBuffer;
     
     int maxBuffer;
+    int scrollBuffer;
     int realX;
     int realY;
     
