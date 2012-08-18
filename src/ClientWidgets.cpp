@@ -96,7 +96,83 @@ void ScrollBox::insertText(std::string newText)
         if(textBuffer->size() >= maxBuffer)
             textBuffer->erase(textBuffer->begin());
         
-        textBuffer->push_back(newText);
+        std::string fixedLengthText;
+        
+        if(newText.length() > (w-4))
+        {
+           // fixedLengthText = "Too Big\nPlease Try Again";
+            
+          //  char *fixMe = new char[w];
+            int range = 0;
+            for(int i = 0; i < newText.length(); i++)
+            {
+                 
+                if(newText.at(i) == '\n' || i == newText.length()-1)
+                {
+                    //cout << "new line!" << endl;
+                  
+                    
+                    if(range > (w-4))
+                    {
+                        //cout << range - (w-4) << endl;
+                        int diff = range - (w-5);
+                        
+                        std::string temp(newText.begin()+(i-range), newText.begin()+(i-diff));
+                        cout << temp << endl;
+                        
+                        textBuffer->push_back(temp);
+                        
+                        std::string temp2(newText.begin()+(i-diff), newText.begin()+(i));
+                        cout << temp2 << endl;
+                        
+                        textBuffer->push_back(temp2);
+                        range = 0;
+                    }
+                    
+                    else if(newText.at(i) == '\n' )
+                    {
+                        newText.replace(i, 1, " ");
+                        if(i - range + 1 >= 0 )//&& i - range + 1 < i)
+                        {
+                            std::string temp(newText.begin()+(i - range + 1), newText.begin()+(i));
+                            textBuffer->push_back(temp);
+                            range = 0;
+                        }
+                        else
+                        {
+                            std::string temp(newText.begin()+(i - range), newText.begin()+(i));
+                            textBuffer->push_back(temp);
+                            range = 0;
+                        }
+                    }
+                    else
+                    {
+                        if(i - range + 1 >= 0 )//&& i - range + 1 < i)
+                        {
+                            std::string temp(newText.begin()+(i - range + 1), newText.begin()+(i));
+                            textBuffer->push_back(temp);
+                            range = 0;
+                        }
+                        else
+                        {
+                            std::string temp(newText.begin()+(i - range), newText.begin()+(i));
+                            textBuffer->push_back(temp);
+                            range = 0;
+                        }
+                    }
+
+                }
+                
+                range++;
+            }
+        }
+        else
+        {
+            fixedLengthText = newText;
+            textBuffer->push_back(fixedLengthText);
+        }
+        
+        
     }
     
 }
@@ -121,29 +197,20 @@ void ScrollBox::render()
         
         if(acceptCommands)
         {
-            if(checkForCommand == "/exit")
+            if(checkForCommand == ".exit")
             {
                 exit(0);
             }
             
-            if(checkForCommand == "/clear")
+            if(checkForCommand == ".clear")
             {
                 scrollBuffer = 0;
                 textBuffer->clear();
             }
-
-            else if (checkForCommand == "/connect" && connected)
-            {
-                textBuffer->pop_back();
-                insertText("Already Connected, disconnect first");
-            }
             
-            if(checkForCommand == "/reconnect")
-            {
-                textBuffer->pop_back();
-                connectServer(clientMap, graphics);
-            }
         }
+        
+        
         
         if(textBuffer->size() > h - 2)  // we ignore the top and the bottom positions.
         {
@@ -160,16 +227,6 @@ void ScrollBox::render()
                     break;
                 }
                 
-                int stringLength = (int)tmpString.length();
-                
-                
-                if(stringLength >= w-4)
-                {
-                    int size = stringLength/(w-4);
-                    
-                    for(x = 1; x < size; x++)
-                        tmpString.insert((x*w)-6, "\n");
-                }
                 
                 tmpString.insert(0, "%c");
                 tmpString.insert(tmpString.length(), "%c");
@@ -187,17 +244,6 @@ void ScrollBox::render()
                 
                 
                 std::string tmpString = textBuffer->at((textBuffer->size())-i);
-                
-                int stringLength = (int)tmpString.length();
-                
-                
-                if(stringLength >= w)
-                {
-                    int size = stringLength/(w);
-                    
-                    for(x = 1; x < size; x++)
-                        tmpString.insert((x*w)-6, "\n");
-                }
                 
                 tmpString.insert(0, "%c");
                 tmpString.insert(tmpString.length(), "%c");
