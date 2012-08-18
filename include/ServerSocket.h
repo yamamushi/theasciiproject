@@ -101,6 +101,10 @@ private:
     
     tcp::socket socket_;
     client_pool& client_pool_;
+    
+    boost::asio::streambuf *username_feed_;
+    boost::asio::streambuf *pass_feed_;
+    
     boost::asio::streambuf *line_command_;
     
   
@@ -126,7 +130,15 @@ public:
     void startPass(const boost::system::error_code& error);
     void loginPass(const boost::system::error_code& error);
     
+    void loginGetUser(const boost::system::error_code& error);
+    void loginPassPrompt(const boost::system::error_code& error);
+    void loginGetPass(const boost::system::error_code& error);
     void login(const boost::system::error_code& error);
+    
+    
+    void newAccountGetUser(const boost::system::error_code& error);
+    void newAccountGetPassPrompt(const boost::system::error_code& error);
+    void newAccountGetPass(const boost::system::error_code& error);
     void createAccount(const boost::system::error_code& error);
     
     

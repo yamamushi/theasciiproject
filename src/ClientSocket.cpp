@@ -129,6 +129,7 @@ void ClientSession::sendCommand(std::string command)
 {
     //   command.erase(0);
     command.erase(0, 1);
+        
     command.append("\r\n");
     
     cout << command << endl;
@@ -154,7 +155,7 @@ void ClientSession::getResponse()
     
     boost::system::error_code ec;
 
-    read_until(socket_, buffer, "\r\n\r\n", ec);
+    read_until(socket_, buffer, "\r\n", ec);
     if(!ec)
     {
         

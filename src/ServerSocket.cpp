@@ -85,6 +85,9 @@ void client_connection::start()
     sent = 0;
     maxsent = 0;
     
+    username_feed_ = new boost::asio::streambuf;
+    pass_feed_ = new boost::asio::streambuf;
+    
     line_command_ = new boost::asio::streambuf;
     
     client_pool_.join(shared_from_this());
@@ -108,12 +111,12 @@ void client_connection::start()
 void client_connection::kickStart()
 {
     
-    boost::asio::async_write(socket_, boost::asio::buffer(string("Welcome to The ASCII Project Public Server \n\n"
+    boost::asio::async_write(socket_, boost::asio::buffer(string("Welcome to The ASCII Project\n\n"
                                                                  "Commands Available: \n"
                                                                  "------------------- \n\n"
-                                                                 "/login user pass \n"
-                                                                 "/newaccount user pass \n"
-                                                                 "/quit \r\n\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
+                                                                 "login\n"
+                                                                 "newaccount\n"
+                                                                 "quit \r\n\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
     
 }
 
@@ -150,11 +153,14 @@ void client_connection::sessionStartHandler(const boost::system::error_code& err
         
         if(command == "login" || command == "Login")
         {
-            boost::asio::async_read_until(socket_, *line_command_, "\r\n", boost::bind(&client_connection::login, shared_from_this(), boost::asio::placeholders::error ));
+            //boost::asio::async_read_until(socket_, *line_command_, "\r\n", boost::bind(&client_connection::login, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string("Username: \r\n\r\n")), boost::bind(&client_connection::loginGetUser, shared_from_this(), boost::asio::placeholders::error ));
         }
         else if(command == "newAccount" || command == "newUser" || command == "newaccount" || command == "newuser")
         {
-            boost::asio::async_read_until(socket_, *line_command_, "\r\n", boost::bind(&client_connection::createAccount, shared_from_this(), boost::asio::placeholders::error ));
+            //boost::asio::async_read_until(socket_, *line_command_, "\r\n", boost::bind(&client_connection::createAccount, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string("Username: \r\n\r\n")), boost::bind(&client_connection::newAccountGetUser, shared_from_this(), boost::asio::placeholders::error ));
+            
         }
         else if(command == "quit")
         {
@@ -173,13 +179,72 @@ void client_connection::sessionStartHandler(const boost::system::error_code& err
 }
 
 
+
+void client_connection::loginGetUser(const boost::system::error_code& error)
+{
+    if(!error)
+    {
+        boost::asio::async_read_until(socket_, *username_feed_, "\r\n", boost::bind(&client_connection::loginPassPrompt, shared_from_this(), boost::asio::placeholders::error ));
+    }
+    else
+    {
+        disconnect();
+    }
+    
+}
+
+
+
+void client_connection::loginPassPrompt(const boost::system::error_code& error)
+{
+    if(!error)
+    {
+        boost::asio::async_write(socket_, boost::asio::buffer(string("Password: \r\n\r\n")), boost::bind(&client_connection::loginGetPass, shared_from_this(), boost::asio::placeholders::error ));
+    }
+    else
+    {
+        disconnect();
+    }
+    
+    
+    
+}
+
+
+
+
+void client_connection::loginGetPass(const boost::system::error_code& error)
+{
+    if(!error)
+    {
+        boost::asio::async_read_until(socket_, *pass_feed_, "\r\n", boost::bind(&client_connection::login, shared_from_this(), boost::asio::placeholders::error ));
+    }
+    else
+    {
+        disconnect();
+    }
+    
+}
+
+
+
 void client_connection::login(const boost::system::error_code& error)
 {
     if (!error)
     {
         std::string garbage;
-        std::istream is(line_command_);
-        is >> user >> pass >> garbage;
+        std::istream userStream(username_feed_);
+        std::istream passStream(pass_feed_);
+        //is >> user >> pass >> garbage;
+        
+        userStream >> user;
+        passStream >> pass;
+        
+        delete username_feed_;
+        delete pass_feed_;
+        
+        username_feed_ = new boost::asio::streambuf;
+        pass_feed_ = new boost::asio::streambuf;
         
         delete line_command_;
         line_command_ = new boost::asio::streambuf;
@@ -202,7 +267,7 @@ void client_connection::login(const boost::system::error_code& error)
             else
             {
                 sessionToken = dbEngine->GenerateToken(user, pass);
-                boost::asio::async_write(socket_, boost::asio::buffer(string("Welcome to The ASCII Project " + user + "\n" + sessionToken + " \r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+                boost::asio::async_write(socket_, boost::asio::buffer(string("Welcome " + user + " \r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
             }
         }
         
@@ -214,13 +279,82 @@ void client_connection::login(const boost::system::error_code& error)
     
 }
 
+
+
+
+
+
+void client_connection::newAccountGetUser(const boost::system::error_code& error)
+{
+    if(!error)
+    {
+        boost::asio::async_read_until(socket_, *username_feed_, "\r\n", boost::bind(&client_connection::newAccountGetPassPrompt, shared_from_this(), boost::asio::placeholders::error ));
+    }
+    else
+    {
+        disconnect();
+    }
+    
+}
+
+
+
+void client_connection::newAccountGetPassPrompt(const boost::system::error_code& error)
+{
+    if(!error)
+    {
+        boost::asio::async_write(socket_, boost::asio::buffer(string("Password: \r\n\r\n")), boost::bind(&client_connection::newAccountGetPass, shared_from_this(), boost::asio::placeholders::error ));
+    }
+    else
+    {
+        disconnect();
+    }
+    
+    
+    
+}
+
+
+
+
+void client_connection::newAccountGetPass(const boost::system::error_code& error)
+{
+    if(!error)
+    {
+        boost::asio::async_read_until(socket_, *pass_feed_, "\r\n", boost::bind(&client_connection::createAccount, shared_from_this(), boost::asio::placeholders::error ));
+    }
+    else
+    {
+        disconnect();
+    }
+    
+}
+
+
+
+
+
 void client_connection::createAccount(const boost::system::error_code& error)
 {
     if (!error)
     {
         std::string garbage;
-        std::istream is(line_command_);
-        is >> user >> pass >> garbage;
+        std::istream userStream(username_feed_);
+        std::istream passStream(pass_feed_);
+        //is >> user >> pass >> garbage;
+        
+        userStream >> user;
+        passStream >> pass;
+        
+        delete username_feed_;
+        delete pass_feed_;
+        
+        username_feed_ = new boost::asio::streambuf;
+        pass_feed_ = new boost::asio::streambuf;
+        
+        delete line_command_;
+        line_command_ = new boost::asio::streambuf;
+        
         
         if( user.compare("") == 0 || pass.compare("") == 0)
         {
@@ -280,6 +414,8 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         line_command_ = new boost::asio::streambuf;
         
         
+              
+        
         if(isInteger(command))
         {
             if(dbEngine->isValidToken( user, token))
@@ -291,6 +427,11 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             {
                 disconnect();
             }
+        }
+        else if( command == "getToken")
+        {
+            sessionToken = dbEngine->GenerateToken(user, pass);
+            boost::asio::async_write(socket_, boost::asio::buffer(string(sessionToken + "\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         else if( command == "startMapStream")
         {

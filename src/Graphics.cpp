@@ -385,60 +385,6 @@ void GraphicsTCOD::drawMainInterface()
                 {
                     exit(0);
                 }
-                else if(tmpText.find("/login") != string::npos)
-                {
-                    if(connected)
-                    {
-                        size_t foundPos = tmpText.find(" ");
-                        
-                        if(foundPos == string::npos)
-                        {
-                            chatBox->insertText("Invalid Syntax - Usage:");
-                            chatBox->insertText("/login user pass");
-                        }
-                        else
-                        {
-                            cnet->sendCommand("/login");
-                            tmpText.erase(1,6);
-                            cnet->sendCommand(tmpText);
-
-                            cnet->getResponse();
-                            
-                        }
-                        
-                    }
-                    else
-                    {
-                        chatBox->insertText("Please /connect first");
-                    }
-                }
-                else if(tmpText.find("/newaccount") != string::npos)
-                {
-                    if(connected)
-                    {
-                        size_t foundPos = tmpText.find(" ");
-                        
-                        if(foundPos == string::npos)
-                        {
-                            chatBox->insertText("Invalid Syntax - Usage:");
-                            chatBox->insertText("/newaccount user pass");
-                        }
-                        else
-                        {
-                            cnet->sendCommand("/newaccount");
-                            tmpText.erase(1,11);
-                            cnet->sendCommand(tmpText);
-                            
-                            cnet->getResponse();
-                            
-                        }
-                        
-                    }
-                    else
-                    {
-                        chatBox->insertText("Please /connect first");
-                    }
-                }
                 else
                 {
                     cnet->sendCommand(tmpText);
