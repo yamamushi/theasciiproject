@@ -134,7 +134,7 @@ void ScrollBox::insertText(std::string newText)
                         newText.replace(i, 1, " ");
                         if(i - range + 1 >= 0 )//&& i - range + 1 < i)
                         {
-                            std::string temp(newText.begin()+(i - range + 1), newText.begin()+(i));
+                            std::string temp(newText.begin()+(i - range), newText.begin()+(i));
                             textBuffer->push_back(temp);
                             range = 0;
                         }
@@ -149,7 +149,7 @@ void ScrollBox::insertText(std::string newText)
                     {
                         if(i - range + 1 >= 0 )//&& i - range + 1 < i)
                         {
-                            std::string temp(newText.begin()+(i - range + 1), newText.begin()+(i));
+                            std::string temp(newText.begin()+(i - range), newText.begin()+(i));
                             textBuffer->push_back(temp);
                             range = 0;
                         }
@@ -183,9 +183,11 @@ void ScrollBox::render()
     
     console->setDefaultBackground(back);
     console->setDefaultForeground(fore);
+    
+    console->setColorControl(TCOD_COLCTRL_1, TCODColor(255,255,255), TCODColor(0,0,0));
     console->printFrame(x,y,w,h,true,TCOD_BKGND_SET);
-    console->print(x+w-2, y+1, L"\u21E7");
-    console->print(x+w-2, y+h-2, L"\u21E9");
+    console->print(x+w-2, y+1, L"\u21E7", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    console->print(x+w-2, y+h-2, L"\u21E9", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
     
     console->setColorControl(TCOD_COLCTRL_2, TCODColor(0,255,0), TCODColor(0,0,0));
     

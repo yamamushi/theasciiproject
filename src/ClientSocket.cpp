@@ -94,8 +94,6 @@ bool ClientSession::Connect()
 void ClientSession::getLoginScreen()
 {
     
-    commander->insertText("Reading Data");
-    
     boost::asio::streambuf buffer;
     
     boost::system::error_code ec;
@@ -107,22 +105,73 @@ void ClientSession::getLoginScreen()
         std::string serverResponse;
         
         std::istream is(&buffer);
-        //is.get(*line_command_) >> serverResponse;
-        //std::string serverResponse(static_cast<stringstream const&>(stringstream() << is.rdbuf()).str());
         
         getline(is, serverResponse, '\0');
         cout << serverResponse << endl;
         
         commander->insertText(serverResponse);
-
+        
         
     }
     
     else
     {
         commander->insertText("Error - Connection Closed");
+        output->connected = false;
         close();
     }
+}
+
+
+void ClientSession::sendCommand(std::string command, bool getResponse)
+{
+    //   command.erase(0);
+    command.replace(0, 1, "");
+    command.append("\r\n");
+    
+    cout << command << endl;
+    
+    boost::system::error_code sendError;
+    boost::asio::write(socket_, boost::asio::buffer(command, command.length()), sendError);
+    if(sendError)
+    {
+        commander->insertText("Sending Error");
+        output->connected = false;
+        close();
+    }
+    
+    if(getResponse)
+    {
+        boost::asio::streambuf buffer;
+        
+        boost::system::error_code ec;
+        sleep(0.1);
+        read_until(socket_, buffer, "", ec);
+        if(!ec)
+        {
+            
+            cout << "Data Read" << endl;
+            std::string serverResponse;
+            
+            std::istream is(&buffer);
+            
+            getline(is, serverResponse, '\0');
+            cout << serverResponse << endl;
+            
+            commander->insertText(serverResponse);
+            
+            
+        }
+        else
+        {
+            commander->insertText("Error - Connection Closed");
+            output->connected = false;
+            close();
+        }
+    }
+    
+    
+    
 }
 
 

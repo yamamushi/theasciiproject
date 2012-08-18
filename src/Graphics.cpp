@@ -77,16 +77,16 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     //	TCODConsole::credits();
     
     TCODConsole *mainConsole = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
-    TCODSystem::setFps(25);    
+    TCODSystem::setFps(25);
     output = mainConsole;
-
+    
     serverConsole = new TCODConsole(MAIN_WIDTH/2,13);
     textOutputConsole = new TCODConsole(MAIN_WIDTH/2+1,13);
     
     
     //textOutputConsole->setDefaultForeground(TCODColor(0,255,0));
     //textOutputConsole->flush();
-
+    
     // Apply remap for our non-unicode ascii based box-drawing functions
     TCODConsole::mapAsciiCodeToFont(179, 17, 298);
     TCODConsole::mapAsciiCodeToFont(180, 3, 299);
@@ -107,7 +107,7 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     output->setDefaultBackground(TCODColor(0, 0, 0));
     output->clear();
     render();
-
+    
 }
 
 
@@ -141,7 +141,7 @@ void GraphicsTCOD::drawMenu()
     TCODImage *image = new TCODImage("data/images/MenuBackground.png");
     
     
-   // bool quit = false;
+    // bool quit = false;
     while(true)
     {
         TCOD_key_t key;
@@ -149,8 +149,8 @@ void GraphicsTCOD::drawMenu()
         
         TCODSystem::checkForEvent(TCOD_EVENT_KEY_PRESS|TCOD_EVENT_MOUSE,&key,&mouse);
         Widget::updateWidgets(key,mouse);
-                
-        Widget::renderWidgets();   
+        
+        Widget::renderWidgets();
         
         render();
         
@@ -175,7 +175,7 @@ void GraphicsTCOD::drawMenu()
     output->setDefaultBackground(TCODColor(0, 0, 0));
     output->clear();
     render();
-
+    
     
 }
 
@@ -207,7 +207,7 @@ void GraphicsTCOD::closeMenuCbk(Widget *w, void *userData)
         closeMenuCheck = false;
     else
         closeMenuCheck = true;
-
+    
 }
 
 
@@ -250,8 +250,8 @@ void GraphicsTCOD::drawMainInterface()
     
     hMenu->setBackgroundColor(TCODColor(0,0,0), TCODColor(128,128,128));
     
-
-
+    
+    
     
     ScrollBox *chatBox = new ScrollBox(0, 0, textOutputConsole->getWidth(), textOutputConsole->getHeight(), 512, textOutputConsole, cMap, this);
     ScrollBox *serverBox = new ScrollBox(0, 0, serverConsole->getWidth(), serverConsole->getHeight()-2, 512, serverConsole, cMap, this);
@@ -275,9 +275,9 @@ void GraphicsTCOD::drawMainInterface()
     serverConsole->vline(0,0, serverConsole->getHeight());
     serverConsole->vline(serverConsole->getWidth()-1,0, serverConsole->getHeight());
     
-
+    
     bool popupOpen = false;
-    bool connected = false;
+    connected = false;
     
     boost::asio::io_service pri_io_service;
     tcp::resolver pri_resolver(pri_io_service);
@@ -294,7 +294,7 @@ void GraphicsTCOD::drawMainInterface()
         
         TCODSystem::checkForEvent(TCOD_EVENT_KEY_PRESS|TCOD_EVENT_MOUSE,&key,&mouse);
         Widget::updateWidgets(key,mouse);
-
+        
         if(!popupOpen)
         {
             inputText->update(key);
@@ -323,7 +323,7 @@ void GraphicsTCOD::drawMainInterface()
             popupOpen = true;
             drawMenuCheck = false;
         }
-
+        
         if(closeMenuCheck)
         {
             menuPopup->clear();
@@ -331,13 +331,13 @@ void GraphicsTCOD::drawMainInterface()
             output->clear();
             
             fixBottom();
-
+            
             popupOpen = false;
             closeMenuCheck = false;
         }
         
         
-
+        
         if(key.vk == TCODK_ESCAPE)
         {
             inputText->reset();
@@ -355,7 +355,7 @@ void GraphicsTCOD::drawMainInterface()
                 if(tmpText == "/connect" && !connected)
                 {
                     // Begin Networking
-
+                    
                     if(cnet->Connect())
                     {
                         chatBox->insertText("Connected Successfully");
@@ -368,11 +368,69 @@ void GraphicsTCOD::drawMainInterface()
                         connected = false;
                         
                     }
-
+                    
                 }
                 else if(tmpText == "/connect" && connected)
                 {
                     chatBox->insertText("Already Connected");
+                }
+                else if(tmpText.find("/login") != string::npos)
+                {
+                    if(connected)
+                    {
+                        size_t foundPos = tmpText.find(" ");
+                        
+                        if(foundPos == string::npos)
+                        {
+                            chatBox->insertText("Invalid Syntax - Usage:");
+                            chatBox->insertText("/login user pass");
+                        }
+                        else
+                        {
+                            
+                            cnet->sendCommand("/login", false);
+                            tmpText.erase(1,6);
+                            cnet->sendCommand(tmpText);
+                            //cout << tmpText << endl;
+                            
+                        }
+                        
+                    }
+                    else
+                    {
+                        chatBox->insertText("Please /connect first");
+                    }
+                }
+                else if(tmpText.find("/newaccount") != string::npos)
+                {
+                    if(connected)
+                    {
+                        size_t foundPos = tmpText.find(" ");
+                        
+                        if(foundPos == string::npos)
+                        {
+                            chatBox->insertText("Invalid Syntax - Usage:");
+                            chatBox->insertText("/newaccount user pass");
+                        }
+                        else
+                        {
+                            
+                            cnet->sendCommand("/newaccount", false);
+                            tmpText.erase(1,11);
+                            cnet->sendCommand(tmpText);
+                            
+                        }
+                        
+                    }
+                    else
+                    {
+                        chatBox->insertText("Please /connect first");
+                    }
+                }
+                else
+                {
+                    cnet->sendCommand(tmpText);
+                    
                 }
             }
             
@@ -384,7 +442,7 @@ void GraphicsTCOD::drawMainInterface()
             inputText->setColors(TCODColor(0,255,0), TCODColor(0,0,0), 1.0f);
             
         }
-
+        
     }
     
 }
@@ -393,30 +451,33 @@ void GraphicsTCOD::drawMainInterface()
 void GraphicsTCOD::fixBottom()
 {
     
+    
+    output->setColorControl(TCOD_COLCTRL_1, TCODColor(255,255,255), TCODColor(0,0,0));
+    
     output->vline(MAP_WIDTH/2, 32, 13);
     output->hline(0, 32, MAP_WIDTH);
     output->hline(MAP_WIDTH/2 + 1, MAP_HEIGHT-3, MAP_WIDTH/2);
     output->hline(0, MAP_HEIGHT-1, MAP_WIDTH);
     output->vline(MAP_WIDTH-1, 32, 13);
     
-    output->print(MAP_WIDTH/2, 32, L"\u2566");
-    output->print(MAP_WIDTH/2, MAP_HEIGHT-3, L"\u2560");
-    output->print(MAP_WIDTH/2, MAP_HEIGHT-1, L"\u2569");
-    output->print(0, 32, L"\u2554");
-    output->print(0, MAP_HEIGHT-1, L"\u255A");
-    output->print(MAP_WIDTH-1, 32, L"\u2557");
-    output->print(MAP_WIDTH-1, MAP_HEIGHT-1, L"\u255D");
-    output->print(MAP_WIDTH-1, MAP_HEIGHT-3, L"\u2563");
+    output->print(MAP_WIDTH/2, 32, L"\u2566", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(MAP_WIDTH/2, MAP_HEIGHT-3, L"\u2560", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(MAP_WIDTH/2, MAP_HEIGHT-1, L"\u2569", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(0, 32, L"\u2554", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(0, MAP_HEIGHT-1, L"\u255A", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(MAP_WIDTH-1, 32, L"\u2557", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(MAP_WIDTH-1, MAP_HEIGHT-1, L"\u255D", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(MAP_WIDTH-1, MAP_HEIGHT-3, L"\u2563", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
     
-    serverConsole->print(0,0,L"\u2566");
-    serverConsole->print(0,serverConsole->getHeight()-3,L"\u2560");
-    serverConsole->print(0,serverConsole->getHeight()-1,L"\u2569");
-    serverConsole->print(serverConsole->getWidth()-1,serverConsole->getHeight()-3,L"\u2563");
-    serverConsole->print(serverConsole->getWidth()-1,serverConsole->getHeight()-1,L"\u255D");
+    serverConsole->print(0,0,L"\u2566", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    serverConsole->print(0,serverConsole->getHeight()-3,L"\u2560", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    serverConsole->print(0,serverConsole->getHeight()-1,L"\u2569", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    serverConsole->print(serverConsole->getWidth()-1,serverConsole->getHeight()-3,L"\u2563", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    serverConsole->print(serverConsole->getWidth()-1,serverConsole->getHeight()-1,L"\u255D", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
     
-    textOutputConsole->print(textOutputConsole->getWidth()-1,0,L"\u2566");
-    textOutputConsole->print(textOutputConsole->getWidth()-1,textOutputConsole->getHeight()-1,L"\u2569");
-    textOutputConsole->print(textOutputConsole->getWidth()-1,textOutputConsole->getHeight()-3,L"\u2560");
+    textOutputConsole->print(textOutputConsole->getWidth()-1,0,L"\u2566", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    textOutputConsole->print(textOutputConsole->getWidth()-1,textOutputConsole->getHeight()-1,L"\u2569", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    textOutputConsole->print(textOutputConsole->getWidth()-1,textOutputConsole->getHeight()-3,L"\u2560", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
     
 }
 
@@ -465,13 +526,13 @@ void GraphicsTCOD::getUser()
     delete testText;
     output->clear();
     render();
-
+    
 }
 
 
 void GraphicsTCOD::getPassword()
 {
-
+    
     extern std::string pass;
     output->clear();
     render();
@@ -479,7 +540,7 @@ void GraphicsTCOD::getPassword()
     char *prompt = (char *)"Password: ";
     TCODText *testText = new TCODText(MAIN_WIDTH/2 - 7, MAIN_HEIGHT/2 - 7, 20, 1, 16);
     testText->setProperties(33, 5, (const char *)prompt, 5);
-
+    
     testText->render(output);
     render();
     

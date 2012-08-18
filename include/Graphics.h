@@ -54,7 +54,7 @@ private:
     float H, S, V, HD, SD, VD;
     float TH, TS, TV, THD, TSD, TVD;
 
-    bool connected;
+    
     VBox *menuPopup;
     
     
@@ -69,6 +69,7 @@ public:
     
     
     bool rendering;
+    bool connected;
     
     GraphicsTCOD(ClientMap *clientMap);
     void init(ClientMap *clientMap);
