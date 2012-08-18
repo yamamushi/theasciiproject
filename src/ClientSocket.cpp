@@ -85,6 +85,8 @@ bool ClientSession::Connect()
     }
     else
     {
+        socket_.set_option(boost::asio::socket_base::reuse_address(true));
+        socket_.set_option(boost::asio::socket_base::keep_alive(true));
         return true;
     }
     

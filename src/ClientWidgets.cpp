@@ -209,10 +209,7 @@ void ScrollBox::render()
         
         if(acceptCommands)
         {
-            if(checkForCommand == ".exit")
-            {
-                exit(0);
-            }
+
             
             if(checkForCommand == ".clear")
             {

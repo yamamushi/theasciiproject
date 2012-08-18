@@ -377,6 +377,7 @@ void GraphicsTCOD::drawMainInterface()
                 else if(tmpText == "/quit"  && connected)
                 {
                     cnet->sendCommand("/quit");
+                    cnet->close();
                     connected = false;
                     chatBox->insertText("Disconnected");
                 }
