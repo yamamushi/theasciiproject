@@ -142,7 +142,7 @@ void GraphicsTCOD::drawMenu()
     
     
     // bool quit = false;
-    while(true)
+    while(!TCODConsole::isWindowClosed())
     {
         TCOD_key_t key;
         TCOD_mouse_t mouse;
@@ -262,6 +262,16 @@ void GraphicsTCOD::drawMainInterface()
     
     serverBox->setRealPosition(MAIN_WIDTH/2, 32);
     serverBox->takeCommands(true);
+    
+    
+    serverBox->insertText("Welcome to The ASCII Project");
+    serverBox->insertText(" Version 0.0.0k ");
+    
+    for(int i=0; i < ((serverBox->h - 2) - 3); i++)
+        serverBox->insertText(" ");
+    
+    serverBox->insertText("Please /connect to continue...");
+    
     sConsole = chatBox;
     
     inputText = new TCODText(1, serverConsole->getHeight()-2, serverConsole->getWidth()-2, 1, serverConsole->getWidth()-2);
@@ -288,7 +298,7 @@ void GraphicsTCOD::drawMainInterface()
     
     cnet = new ClientSession(pri_io_service, iterator, cMap, this);
     
-    while(true)
+    while( !TCODConsole::isWindowClosed() )
     {
         TCOD_key_t key;
         TCOD_mouse_t mouse;

@@ -57,15 +57,19 @@ int main(int argc, char *argv[])
     
     cMap = new ClientMap;
     graphicsEngine = new GraphicsTCOD(cMap);
-
+    
     
     try
     {
         
         graphicsEngine->drawMenu();
-        graphicsEngine->drawMainInterface();
         
-
+        while(!TCODConsole::isWindowClosed())
+        {
+            graphicsEngine->drawMainInterface();
+        }
+        
+        
     }
     catch (std::exception& e)
     {
