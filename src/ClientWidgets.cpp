@@ -211,7 +211,7 @@ void ScrollBox::render()
         {
 
             
-            if(checkForCommand == ".clear")
+            if(checkForCommand == ">.clear")
             {
                 scrollBuffer = 0;
                 textBuffer->clear();

@@ -261,6 +261,7 @@ void GraphicsTCOD::drawMainInterface()
     commandConsole = chatBox;
     
     serverBox->setRealPosition(MAIN_WIDTH/2, 32);
+    serverBox->takeCommands(true);
     sConsole = chatBox;
     
     inputText = new TCODText(1, serverConsole->getHeight()-2, serverConsole->getWidth()-2, 1, serverConsole->getWidth()-2);
@@ -348,8 +349,10 @@ void GraphicsTCOD::drawMainInterface()
             std::string tmpText = inputText->getText();
             
             if(tmpText != "" && tmpText.at(0) != '/')
-                chatBox->insertText(tmpText);
-            
+            {
+                std::string chatText(">" + tmpText);
+                serverBox->insertText(chatText);
+            }
             if(tmpText != "" &&  tmpText.at(0) == '/')
             {
                 if(tmpText == "/connect" && !connected)
@@ -387,10 +390,17 @@ void GraphicsTCOD::drawMainInterface()
                 }
                 else
                 {
-                    cnet->sendCommand(tmpText);
-                    
-                    cnet->getResponse();
-                    
+                    if(!connected)
+                    {
+                        chatBox->insertText("Not Connected, please /connect first");
+                        
+                    }
+                    else
+                    {
+                        cnet->sendCommand(tmpText);
+                        
+                        cnet->getResponse();
+                    }
                 }
             }
             
