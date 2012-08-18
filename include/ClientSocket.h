@@ -106,8 +106,8 @@ public:
     
     void getLoginScreen();
     
-    void sendCommand(std::string command, bool getResponse=true);
-    void readData();
+    void sendCommand(std::string command);
+    void getResponse();
     
     void ignorePrompt(const boost::system::error_code& error);
     

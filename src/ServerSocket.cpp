@@ -111,10 +111,9 @@ void client_connection::kickStart()
     boost::asio::async_write(socket_, boost::asio::buffer(string("Welcome to The ASCII Project Public Server \n\n"
                                                                  "Commands Available: \n"
                                                                  "------------------- \n\n"
-                                                                 "login: user pass \n"
-                                                                 "newaccount: user pass \n"
-                                                                 "quit: \n\n"
-                                                                 "ascii=> ")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
+                                                                 "/login user pass \n"
+                                                                 "/newaccount user pass \n"
+                                                                 "/quit \r\n\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
     
 }
 
@@ -163,7 +162,7 @@ void client_connection::sessionStartHandler(const boost::system::error_code& err
         }
         else
         {
-            boost::asio::async_write(socket_, boost::asio::buffer(string("ascii=> ")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string(" \r\n\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
         }
         
     }
@@ -198,12 +197,12 @@ void client_connection::login(const boost::system::error_code& error)
             if(!dbEngine->isValidHash((const std::string)user, (const std::string)pass))
             {
                 
-                boost::asio::async_write(socket_, boost::asio::buffer(string("Invalid Username or Password - Syntax(username password)\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
+                boost::asio::async_write(socket_, boost::asio::buffer(string("Invalid Username or Password - Syntax(username password) \r\n\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
             }
             else
             {
                 sessionToken = dbEngine->GenerateToken(user, pass);
-                boost::asio::async_write(socket_, boost::asio::buffer(string("Welcome to The ASCII Project " + user + "\n" + sessionToken + "\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+                boost::asio::async_write(socket_, boost::asio::buffer(string("Welcome to The ASCII Project " + user + "\n" + sessionToken + " \r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
             }
         }
         
@@ -225,18 +224,18 @@ void client_connection::createAccount(const boost::system::error_code& error)
         
         if( user.compare("") == 0 || pass.compare("") == 0)
         {
-            boost::asio::async_write(socket_, boost::asio::buffer(string("New Account Syntax(username password)\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string("New Account Syntax(username password) \r\n\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
         }
         else
         {
             extern DBConnector *dbEngine;
             if(dbEngine->AddAccount(user, pass))
             {
-                boost::asio::async_write(socket_, boost::asio::buffer(string("Account Created, you may now login\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
+                boost::asio::async_write(socket_, boost::asio::buffer(string("Account Created, you may now login \r\n\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
             }
             else
             {
-                boost::asio::async_write(socket_, boost::asio::buffer(string("Username Already Exists\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
+                boost::asio::async_write(socket_, boost::asio::buffer(string("Username Already Exists \r\n\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
             }
             
         }
@@ -286,7 +285,7 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             if(dbEngine->isValidToken( user, token))
             {
                 handleAPI(atoi(command.c_str()));
-                boost::asio::async_write(socket_, boost::asio::buffer(string("ascii=> ")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+                boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
             }
             else
             {
@@ -304,12 +303,12 @@ void client_connection::handle_request_line(const boost::system::error_code& err
                 
                 memset(mapSize, '\0', 16);
                 
-                sprintf(mapSize, "%d", (int)len);
+                sprintf(mapSize, "%d\r\n\r\n", (int)len);
                 
                 // int x = atoi(mapSize);
                 //  printf("map is %d\n", x);
-                
-                boost::asio::async_write(socket_, boost::asio::buffer(&mapSize[0], 16), boost::bind(&client_connection::clientAcceptMapSize, shared_from_this(), boost::asio::placeholders::error));
+                std::string mSize(mapSize);
+                boost::asio::async_write(socket_, boost::asio::buffer(mSize), boost::bind(&client_connection::clientAcceptMapSize, shared_from_this(), boost::asio::placeholders::error));
             }
             else
             {
@@ -334,15 +333,15 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             
             string time = asctime(timeinfo);
             
-            boost::asio::async_write(socket_, boost::asio::buffer(time), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string(time + "\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         else if( command == "" )
         {
-            boost::asio::async_write(socket_, boost::asio::buffer(string("ascii=> ")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         else
         {
-            boost::asio::async_read_until(socket_, *line_command_, "\r\n", boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         
     }

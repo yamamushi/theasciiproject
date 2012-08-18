@@ -97,7 +97,7 @@ void ClientSession::getLoginScreen()
     boost::asio::streambuf buffer;
     
     boost::system::error_code ec;
-    read_until(socket_, buffer, prompt, ec);
+    read_until(socket_, buffer, "\r\n\r\n", ec);
     if(!ec)
     {
         
@@ -123,16 +123,16 @@ void ClientSession::getLoginScreen()
 }
 
 
-void ClientSession::sendCommand(std::string command, bool getResponse)
+void ClientSession::sendCommand(std::string command)
 {
     //   command.erase(0);
-    command.replace(0, 1, "");
+    command.erase(0, 1);
     command.append("\r\n");
     
     cout << command << endl;
     
     boost::system::error_code sendError;
-    boost::asio::write(socket_, boost::asio::buffer(command, command.length()), sendError);
+    boost::asio::write(socket_, boost::asio::buffer(string(command)), sendError);
     if(sendError)
     {
         commander->insertText("Sending Error");
@@ -140,37 +140,40 @@ void ClientSession::sendCommand(std::string command, bool getResponse)
         close();
     }
     
-    if(getResponse)
+    
+}
+
+
+
+
+void ClientSession::getResponse()
+{
+    boost::asio::streambuf buffer;
+    
+    boost::system::error_code ec;
+
+    read_until(socket_, buffer, "\r\n\r\n", ec);
+    if(!ec)
     {
-        boost::asio::streambuf buffer;
         
-        boost::system::error_code ec;
-        sleep(0.1);
-        read_until(socket_, buffer, "", ec);
-        if(!ec)
-        {
-            
-            cout << "Data Read" << endl;
-            std::string serverResponse;
-            
-            std::istream is(&buffer);
-            
-            getline(is, serverResponse, '\0');
-            cout << serverResponse << endl;
-            
-            commander->insertText(serverResponse);
-            
-            
-        }
-        else
-        {
-            commander->insertText("Error - Connection Closed");
-            output->connected = false;
-            close();
-        }
+        cout << "Data Read" << endl;
+        std::string serverResponse;
+        
+        std::istream is(&buffer);
+        
+        getline(is, serverResponse, '\0');
+        cout << serverResponse << endl;
+        
+        commander->insertText(serverResponse);
+        
+        
     }
-    
-    
+    else
+    {
+        commander->insertText("Error - Connection Closed");
+        output->connected = false;
+        close();
+    }
     
 }
 

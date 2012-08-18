@@ -110,7 +110,8 @@ void ScrollBox::insertText(std::string newText)
                 if(newText.at(i) == '\n' || i == newText.length()-1)
                 {
                     //cout << "new line!" << endl;
-                  
+
+                    
                     
                     if(range > (w-4))
                     {
@@ -168,6 +169,15 @@ void ScrollBox::insertText(std::string newText)
         }
         else
         {
+            for(int i =0; i < newText.length(); i++)
+            {
+                if(newText.at(i) == '\r' || newText.at(i) == '\n')
+                    newText.replace(i, 1, " ");
+                
+            }
+                
+            
+            
             fixedLengthText = newText;
             textBuffer->push_back(fixedLengthText);
         }
@@ -248,7 +258,7 @@ void ScrollBox::render()
                 std::string tmpString = textBuffer->at((textBuffer->size())-i);
                 
                 tmpString.insert(0, "%c");
-                tmpString.insert(tmpString.length(), "%c");
+                tmpString.append("%c");
                 
                 console->print(x+1, h-1-i, (const char*)&tmpString[0], TCOD_COLCTRL_2, TCOD_COLCTRL_STOP);
                 

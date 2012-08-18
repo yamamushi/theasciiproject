@@ -23,7 +23,6 @@
 		743612FC15BFA82D00CC2BCA /* tpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 7444889015BF04EF006595CE /* tpl.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
 		743612FD15BFA82D00CC2BCA /* Main_Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888815BF04EF006595CE /* Main_Client.cpp */; };
 		7436130015BFA84900CC2BCA /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
-		7436130315BFA8D000CC2BCA /* font.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487FC15BF04EF006595CE /* font.png */; };
 		7436130615BFAC0D00CC2BCA /* Platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7436130515BFAC0D00CC2BCA /* Platform.cpp */; };
 		744487DA15BF047E006595CE /* server.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487D915BF047E006595CE /* server.1 */; };
 		744488B315BF04EF006595CE /* libtcod-gui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887B15BF04EF006595CE /* libtcod-gui.dylib */; };
@@ -48,6 +47,7 @@
 		7466BEF415DD659500584BE9 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
 		7466BEF515DD893D00584BE9 /* NetworkLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888A15BF04EF006595CE /* NetworkLib.cpp */; };
 		7466BEF615DDB84300584BE9 /* NetworkLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888A15BF04EF006595CE /* NetworkLib.cpp */; };
+		748010AC15DF8AD800F3D22E /* font.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487FC15BF04EF006595CE /* font.png */; };
 		749EC50315DA291C0012A646 /* MenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
 		749EC50515DA293F0012A646 /* MenuBackground.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
@@ -68,12 +68,12 @@
 		7436130215BFA8BF00CC2BCA /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
-			dstPath = data/images;
+			dstPath = data;
 			dstSubfolderSpec = 7;
 			files = (
+				748010AC15DF8AD800F3D22E /* font.png in CopyFiles */,
 				749EC50515DA293F0012A646 /* MenuBackground.png in CopyFiles */,
 				743475DD15D8CF8C006C3CFA /* arial12x12.png in CopyFiles */,
-				7436130315BFA8D000CC2BCA /* font.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

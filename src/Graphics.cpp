@@ -374,6 +374,16 @@ void GraphicsTCOD::drawMainInterface()
                 {
                     chatBox->insertText("Already Connected");
                 }
+                else if(tmpText == "/quit"  && connected)
+                {
+                    cnet->sendCommand("/quit");
+                    connected = false;
+                    chatBox->insertText("Disconnected");
+                }
+                else if (tmpText == "/quit" && !connected)
+                {
+                    exit(0);
+                }
                 else if(tmpText.find("/login") != string::npos)
                 {
                     if(connected)
@@ -387,11 +397,11 @@ void GraphicsTCOD::drawMainInterface()
                         }
                         else
                         {
-                            
-                            cnet->sendCommand("/login", false);
+                            cnet->sendCommand("/login");
                             tmpText.erase(1,6);
                             cnet->sendCommand(tmpText);
-                            //cout << tmpText << endl;
+
+                            cnet->getResponse();
                             
                         }
                         
@@ -414,10 +424,11 @@ void GraphicsTCOD::drawMainInterface()
                         }
                         else
                         {
-                            
-                            cnet->sendCommand("/newaccount", false);
+                            cnet->sendCommand("/newaccount");
                             tmpText.erase(1,11);
                             cnet->sendCommand(tmpText);
+                            
+                            cnet->getResponse();
                             
                         }
                         
@@ -430,6 +441,8 @@ void GraphicsTCOD::drawMainInterface()
                 else
                 {
                     cnet->sendCommand(tmpText);
+                    
+                    cnet->getResponse();
                     
                 }
             }
