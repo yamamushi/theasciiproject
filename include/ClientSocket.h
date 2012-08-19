@@ -88,6 +88,7 @@ private:
     
     
     boost::asio::streambuf *line_feed_;
+    boost::asio::streambuf *map_size_;
    
     
 
@@ -123,9 +124,11 @@ public:
     
     
     
-    void sizeMap(const boost::system::error_code& error);
-    void confirmSize(const boost::system::error_code& error);
-    void read_map(const boost::system::error_code& error);
+    void sizeMap();
+    int confirmSize();
+    void read_map(int dataSize);
+    
+    
     void callNewMap(const boost::system::error_code& error, std::size_t bytes_transferred);
     
     void ignoreMap(const boost::system::error_code& error, std::size_t bytes_transferred);

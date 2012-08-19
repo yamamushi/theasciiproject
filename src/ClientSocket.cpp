@@ -52,6 +52,7 @@ ClientSession::ClientSession(boost::asio::io_service& io_service, tcp::resolver:
     
     line_command_ = new boost::asio::streambuf;
     line_feed_ = new boost::asio::streambuf;
+    map_size_ = new boost::asio::streambuf;
     
     packer = new ClientMapPacker();
     
@@ -129,7 +130,7 @@ void ClientSession::sendCommand(std::string command)
 {
     //   command.erase(0);
     command.erase(0, 1);
-        
+    
     command.append("\r\n");
     
     cout << command << endl;
@@ -154,7 +155,7 @@ void ClientSession::getResponse()
     boost::asio::streambuf buffer;
     
     boost::system::error_code ec;
-
+    
     read_until(socket_, buffer, "\r\n", ec);
     if(!ec)
     {
@@ -169,6 +170,8 @@ void ClientSession::getResponse()
         
         commander->insertText(serverResponse);
         
+        if(serverResponse.find("Welcome") != std::string::npos)
+            output->loggedIn = true;
         
     }
     else
@@ -352,53 +355,51 @@ void ClientSession::handleCredResponse(const boost::system::error_code& error)
 
 
 
-void ClientSession::sizeMap(const boost::system::error_code& error)
+void ClientSession::sizeMap()
 {
-    if(!error)
+    
+    boost::system::error_code sendError;
+    boost::asio::write(socket_, boost::asio::buffer(string("startMapStream\r\n")), sendError);
+    
+    if(sendError)
     {
-        
-        //boost::asio::async_read_until(socket_, *line_command_, "\n", boost::bind(&ClientSession::confirmSize, this, boost::asio::placeholders::error ));
-        boost::asio::async_read(socket_, boost::asio::buffer(mapSize, 16), boost::bind(&ClientSession::confirmSize, this, boost::asio::placeholders::error));
-        
-    }
-    else
-    {
+        commander->insertText("Sending Error");
+        output->connected = false;
         close();
     }
     
 }
 
 
-void ClientSession::confirmSize(const boost::system::error_code& error)
+int ClientSession::confirmSize()
 {
-    if(!error)
+    boost::asio::streambuf buffer;
+    boost::system::error_code ec;
+    
+    boost::asio::read_until(socket_, buffer, "\r\n", ec);
+    if(!ec)
     {
-        output->render();
         
-        std::string tmpHolder;
+        cout << "Data Read" << endl;
+        std::string serverResponse;
         
-        for(int i=0; i < 16; i++)
-        {
-            if (isdigit(mapSize[i]))
-            {
-                tmpHolder += mapSize[i];
-            }
-        }
+        std::istream is(&buffer);
         
-        std::istringstream conv(tmpHolder);
-        conv >> mapSize_;
+        getline(is, serverResponse, '\0');
+        cout << serverResponse << endl;
+        
+        int size = atoi(serverResponse.c_str());
+        return size;
         
         
-        mapSize_ = mapSize_;
-        
-        boost::asio::async_write(socket_, boost::asio::buffer(string("00")), boost::bind(&ClientSession::read_map, this, boost::asio::placeholders::error));
     }
     else
     {
+        commander->insertText("Error - Connection Closed");
+        output->connected = false;
         close();
+        return 0;
     }
-    
-    
 }
 
 
@@ -406,23 +407,35 @@ void ClientSession::confirmSize(const boost::system::error_code& error)
 
 
 
-void ClientSession::read_map(const boost::system::error_code& error)
+void ClientSession::read_map(int dataSize)
 {
     
-    if(!error)
+    
+    buf = new char[dataSize];
+    
+    
+    boost::asio::read(socket_, boost::asio::buffer(buf, dataSize));
+    
+    int count = 0;
+    
+    for(int x = 0; x < (dataSize)/(TILE_PACKET_SIZE); x++)
     {
+        char *unpack = new char[TILE_PACKET_SIZE];
         
-        buf = new char[mapSize_];
+        memset(unpack, '.', TILE_PACKET_SIZE);
+        memcpy(unpack, &buf[(x*TILE_PACKET_SIZE) - 1], TILE_PACKET_SIZE);
         
+        packer->unpackFromNet(clientMap, (unsigned char*)unpack, output);
         
-        boost::asio::async_read(socket_, boost::asio::buffer(buf, mapSize_), boost::bind(&ClientSession::callNewMap, this, boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
-        
-        
+        free(unpack);
+        count++;
     }
-    else
-    {
-        close();
-    }
+    
+    
+    free(buf);
+    
+    
+    
 }
 
 
@@ -452,22 +465,9 @@ void ClientSession::callNewMap(const boost::system::error_code& error, std::size
             count++;
         }
         
-        output->render();
         
         free(buf);
         
-        
-        command = "startMapStream\r\n";
-        
-        // set_paused(true);
-        
-        direction.append(cmd);
-        direction.append("\r\n");
-        
-        string serverCall = direction;
-        //  set_paused(false);
-        
-        boost::asio::async_write(socket_, boost::asio::buffer(serverCall), boost::bind(&ClientSession::sendMapRequest, this, boost::asio::placeholders::error));
         
         
     }
@@ -491,7 +491,7 @@ void ClientSession::sendMapRequest(const boost::system::error_code& error)
         direction = "\r\n";
         boost::this_thread::sleep_for(boost::chrono::milliseconds(100));
         
-        boost::asio::async_write(socket_, boost::asio::buffer(command), boost::bind(&ClientSession::sizeMap, this, boost::asio::placeholders::error));
+        //  boost::asio::async_write(socket_, boost::asio::buffer(command), boost::bind(&ClientSession::sizeMap, this, boost::asio::placeholders::error));
         
     }
     

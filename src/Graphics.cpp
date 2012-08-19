@@ -253,6 +253,9 @@ void GraphicsTCOD::drawMainInterface()
     
     
     
+       
+    
+    
     ScrollBox *chatBox = new ScrollBox(0, 0, textOutputConsole->getWidth(), textOutputConsole->getHeight(), 512, textOutputConsole, cMap, this);
     ScrollBox *serverBox = new ScrollBox(0, 0, serverConsole->getWidth(), serverConsole->getHeight()-2, 512, serverConsole, cMap, this);
     //serverBox->setConsole(serverConsole);
@@ -289,6 +292,7 @@ void GraphicsTCOD::drawMainInterface()
     
     bool popupOpen = false;
     connected = false;
+    loggedIn = false;
     
     boost::asio::io_service pri_io_service;
     tcp::resolver pri_resolver(pri_io_service);
@@ -322,6 +326,17 @@ void GraphicsTCOD::drawMainInterface()
         TCODConsole::blit(serverConsole,0,0,0,0,output,MAIN_WIDTH/2,32, 1.0f, 1.0f);
         TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
         render();
+        
+        if(connected && loggedIn)
+        {
+            cnet->sizeMap();
+            int dataSize = cnet->confirmSize();
+            cnet->sendCommand("/");
+            if(dataSize > 0)
+                cnet->read_map(dataSize);
+            
+        }
+        
         
         if(drawMenuCheck)
         {
@@ -392,6 +407,7 @@ void GraphicsTCOD::drawMainInterface()
                     cnet->sendCommand("/quit");
                     cnet->close();
                     connected = false;
+                    loggedIn = false;
                     chatBox->insertText("Disconnected");
                 }
                 else if (tmpText == "/quit" && !connected)
@@ -423,7 +439,12 @@ void GraphicsTCOD::drawMainInterface()
             
         }
         
+        
+        
+        
     }
+    
+    
     
 }
 
@@ -606,7 +627,6 @@ void GraphicsTCOD::loginError()
 
 
 void GraphicsTCOD::render(){
-    
     
     
 	TCODConsole::blit(output, 0, 0, MAP_WIDTH, MAP_HEIGHT, TCODConsole::root, 0, 0);

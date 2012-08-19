@@ -70,6 +70,7 @@ public:
     
     bool rendering;
     bool connected;
+    bool loggedIn;
     
     GraphicsTCOD(ClientMap *clientMap);
     void init(ClientMap *clientMap);
