@@ -70,19 +70,21 @@
 
 
 
-EntityMap::EntityMap(int x, int y, TileMap *map, FovLib *FOVLib){
+EntityMap::EntityMap(int x, int y, TileMap *map, FovLib *FOVLib, RenderMap *renderMap){
     
-	initEntityMap(x, y, map, FOVLib);
+	initEntityMap(x, y, map, FOVLib, renderMap);
     
 }
 
-void EntityMap::initEntityMap(int x, int y, TileMap *map, FovLib *FOVLib){
+void EntityMap::initEntityMap(int x, int y, TileMap *map, FovLib *FOVLib, RenderMap *renderMap){
     
 	width = x;
 	height = y;
     
     contextMap = map;
     fovLib = FOVLib;
+    rMap = renderMap;
+    rMap->initEntMap(this);
     
     
 }
@@ -98,7 +100,57 @@ void EntityMap::addToMap(Entity *entity){
     src->init_in_world(fovLib);
     src->setEntityMap(this);
     
+    src->associateClient(rMap);
+    rMap->refreshMap();
+    
 }
+
+void EntityMap::placeInRandomRoom(Entity *ent)
+{
+    TCODRandom *rng = new TCODRandom();
+    int room = rng->getInt( 0, MAX_ROOMS);
+    
+    ent->move(contextMap->rooms[room]->cX, contextMap->rooms[room]->cY);
+    
+}
+
+
+
+
+void EntityMap::removeFromEntMap(Entity *ent)
+{
+    cout << "entered erase function" << endl;
+    for(int x=0; x<MAP_WIDTH; x++)
+    {
+        for(int y=0; y<MAP_WIDTH; y++)
+        {
+            if(!pos[x][y].empty())
+            {
+                
+                int size = (int)pos[x][y].size();
+                for(int s = 0; s < size; s++)
+                {
+                    //cout << "erasing" << endl;
+                    
+                    if(pos[x][y].at(s) == ent)
+                    {
+                        //cout << "erased" << endl;
+                        pos[x][y].erase(pos[x][y].begin() + s);
+                        break;
+                        
+                    }
+                    cout << "i is " << (int)pos[x][y].size() << endl;
+                }
+            }
+           
+            
+        }
+    }
+       
+    
+}
+
+
 
 void EntityMap::createEntity(int type){
     
@@ -131,6 +183,8 @@ void EntityMap::initAllEnts(){
 			}
 		}
 	}
+    
+    rMap->refreshMap();
 }
 
 void EntityMap::refreshEntityMap(){
@@ -163,10 +217,13 @@ void EntityMap::refreshEntityMap(){
 		}
 	}
     
+    rMap->refreshMap();
+    
 }
 
 bool EntityMap::checkOccupied(int x, int y){
     
+   
 	if ( !(pos[x][y].empty()) ){
 		return true;
 	}

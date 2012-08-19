@@ -69,8 +69,10 @@ void FovLib::refreshFov(Entity *tgt){
     
     int x, y;
     
+    cout << &tgt->wSymbol << endl;
     // Compute FOV
     tcodMap->computeFov(tgt->posX(), tgt->posY(), TORCH_RADIUS, FOV_LIGHT_WALLS, FOV_ALGO);
+    
     
     for (x = 0; x < MAP_WIDTH; x++)
     {

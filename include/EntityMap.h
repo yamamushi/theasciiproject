@@ -43,38 +43,43 @@ class FovLib;
 
 
 class EntityMap {
-
-	private:
-
-		int width, height;
-                std::vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
-
-		int colorTable[MAP_WIDTH][MAP_HEIGHT];
-		char *symbolTable[MAP_WIDTH][MAP_HEIGHT];
-
-		Entity *current;
-                TileMap *contextMap;
-                FovLib *fovLib;
-
-	public:
-
-		Entity *player;
-
-		EntityMap(int x, int y, TileMap *map, FovLib *FOVLib);
-		void initEntityMap(int x, int y, TileMap *map, FovLib *FOVLib);
-		void refreshGraphicsMap();
-
-		void addToMap(Entity *entity);
-		void createEntity(int type);
-
-                void initAllEnts();
-		void refreshEntityMap();
-
-		bool checkOccupied(int x, int y);
-		Entity * outputLastEntity(int x, int y);
-
-                void refreshFovFor(Entity *tgt);
-
-
-
+    
+private:
+    
+    int width, height;
+    
+    
+    int colorTable[MAP_WIDTH][MAP_HEIGHT];
+    char *symbolTable[MAP_WIDTH][MAP_HEIGHT];
+    
+    Entity *current;
+    TileMap *contextMap;
+    FovLib *fovLib;
+    RenderMap *rMap;
+    
+public:
+    
+    Entity *player;
+    std::vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
+    
+    EntityMap(int x, int y, TileMap *map, FovLib *FOVLib, RenderMap *renderMap);
+    void initEntityMap(int x, int y, TileMap *map, FovLib *FOVLib, RenderMap *renderMap);
+    void refreshGraphicsMap();
+    
+    void placeInRandomRoom(Entity *ent);
+    void removeFromEntMap(Entity *ent);
+    
+    void addToMap(Entity *entity);
+    void createEntity(int type);
+    
+    void initAllEnts();
+    void refreshEntityMap();
+    
+    bool checkOccupied(int x, int y);
+    Entity * outputLastEntity(int x, int y);
+    
+    void refreshFovFor(Entity *tgt);
+    
+    
+    
 };

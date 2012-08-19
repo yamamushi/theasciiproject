@@ -35,6 +35,7 @@ public:
     std::string GenerateToken(const std::string user, const std::string pass);
     bool isValidToken(const std::string user, const std::string token);
     
+    std::string getDatFilename(const std::string user, const std::string token);
     
     void testShared();
     

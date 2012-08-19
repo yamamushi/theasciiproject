@@ -56,8 +56,10 @@ private:
 
 public:
 
-    RenderMap(TileMap *tiles, EntityMap *entities);
-    void initRenderMap(TileMap *tiles, EntityMap *entities);
+    RenderMap(TileMap *tiles);
+    void initRenderMap(TileMap *tiles);
+    
+    void initEntMap(EntityMap *entMap);
 
     void refreshMap();
 

@@ -15,11 +15,12 @@ int renderForPlayer(Entity *target, vector<char *> *outbuf)
     
     int x, y;
     int size = 0;
-    
-    target->refreshFov();
     int offset, posx, posy;
+    
     posx = target->posX();
     posy = target->posY();
+    
+    
     offset = 11;
     
     

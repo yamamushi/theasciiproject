@@ -112,8 +112,16 @@ bool DBConnector::AddAccount(const std::string user, const std::string pass)
         std::stringstream tmpstream;
         tmpstream << rand();
         
-        addAccount.exec("INSERT INTO accounting (username, timestamp, hash) VALUES ('" + cleanUser + "', '" + loctime + "', MD5('"  + cleanPass + "'));" );
+        addAccount.exec("INSERT INTO accounting (username, timestamp, hash, filename) VALUES ('" + cleanUser + "', '" + loctime + "', MD5('"  + cleanPass + "'), '" + cleanUser + ".dat');" );
         addAccount.commit();
+        
+        Entity rawEntity(cleanUser, L"\u263A", 0, 0, 0.0, 0.0, 1.0);
+        
+        std::ofstream ofs("data/ents/" + cleanUser + ".dat");
+        boost::archive::binary_oarchive oa(ofs);
+        oa << rawEntity;
+        ofs.close();
+        
         return true;
     }
     else
@@ -273,6 +281,34 @@ bool DBConnector::isValidToken(const std::string user, const std::string token)
 
     
     
+}
+
+
+std::string DBConnector::getDatFilename(const std::string user, const std::string token)
+{
+    if(isValidToken(user, token))
+    {
+        pqxx::asyncconnection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
+        pqxx::work getFilename(conn);
+        
+        std::regex e("[\\']");
+        std::string cleanUser = std::regex_replace(user, e, "");
+        std::string cleanPass = std::regex_replace(token, e, "");
+        
+        pqxx::result doesFilenameExist = getFilename.exec("SELECT filename FROM accounting WHERE username='" + cleanUser + "';");
+        
+        std::string filename = doesFilenameExist[0][0].as<std::string>();
+        
+        return filename;
+        
+        
+    }
+    else
+    {
+        return "ERROR";
+    }
+    
+       
 }
 
 

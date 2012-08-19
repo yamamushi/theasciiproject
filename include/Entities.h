@@ -51,6 +51,7 @@ private:
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)
     {
+        ar & entName;
         ar & wSymbol;
         ar & X;
         ar & Y;
@@ -61,26 +62,39 @@ private:
     
    
     int X, Y;
-    std::wstring wSymbol;
+    
+    std::string entName;
+    
+    
     wchar_t *symbol;
-    TileMap *world;
-    FovLib *FOV;
+    
+    
+    
     unsigned int TypeID, SubTypeID;
     unsigned int UID;
     
     bool initialized, clientActive;
     
     EntityMap *entMap;
-    
+    TileMap *world;
+    FovLib *FOV;
     ClientMap *cMap;
     RenderMap *rMap;
     
 public:
     
-    Entity(){}
-    Entity(std::wstring wsymbol_, int x, int y, int h, int s, int v) : wSymbol(wsymbol_), X(x), Y(y), H(h), S(s), V(v) { symbol = (wchar_t *)wSymbol.c_str();}
+    float H, S, V;
+    int R, G, B;
+    std::wstring wSymbol;
     
+    
+    Entity(){}
+    Entity(std::string entName_, std::wstring wsymbol_, int x, int y, int h, int s, int v) : entName(entName_), wSymbol(wsymbol_), X(x), Y(y), H(h), S(s), V(v) { symbol = (wchar_t *)wSymbol.c_str();}
     Entity(wchar_t *sym){init_entity(sym);};
+    
+    
+    
+    
     
     void init_entity( wchar_t *symbol );
     bool move(int dx, int dy);
@@ -88,10 +102,12 @@ public:
     int posX();
     int posY();
     bool fov[MAP_WIDTH][MAP_HEIGHT];
-    float H, S, V;
-    int R, G, B;
+  
     
     void init_in_world(FovLib *FOV);
+    
+    void setEntName(std::string entName_);
+    std::string getEntName();
     
     
     wchar_t *getSymbol();

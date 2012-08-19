@@ -77,6 +77,23 @@ void Entity::init_entity(wchar_t *p)
     }
 }
 
+
+void Entity::setEntName(std::string entName_)
+{
+    
+    entName = entName_;
+    
+}
+
+
+std::string Entity::getEntName()
+{
+    
+    return entName;
+    
+}
+
+
 bool Entity::move(int dx, int dy)
 {
     
@@ -86,7 +103,6 @@ bool Entity::move(int dx, int dy)
             
             if (clientActive) {
                 
-                rMap->refreshMap();
                 clientFovSync();
             }
             refreshFov();
@@ -100,7 +116,6 @@ bool Entity::move(int dx, int dy)
             
             if (clientActive) {
                 
-                rMap->refreshMap();
                 clientFovSync();
             }
             
@@ -142,6 +157,7 @@ void Entity::clientFovSync(){
 void Entity::refreshFov()
 {
     
+    
     FOV->refreshFov(this);
     
 }
@@ -162,6 +178,8 @@ void Entity::init_in_world(FovLib *fovLib)
     FOV = fovLib;
     initialized = true;
     world = fovLib->getTileMap();
+    
+    
     
 }
 
@@ -201,12 +219,18 @@ void Entity::associateClient(RenderMap *RMap)
     rMap = RMap;
     clientActive = true;
     
+    int x, y;
+    for (x = 0; x < MAP_WIDTH; x++) {
+        for (y = 0; y < MAP_HEIGHT; y++) {
+            fov[x][y] = false;
+        }
+    }
+    
     
     clientFovSync();
     refreshFov();
     entMap->refreshEntityMap();
-    rMap->refreshMap();
-    
+        
 }
 
 bool Entity::getAssociated()

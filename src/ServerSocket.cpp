@@ -95,13 +95,14 @@ void client_connection::start()
     mapBuf = new vector<char *>;
     mapSize = new char[16];
     
+    player = nullptr;
+    
     cmd = new char[2];
     cmd[0] = '\r';
     cmd[1] = '\n';
     stream = new char[MAX_PACKET_SIZE];
     memset(stream, '.', MAX_PACKET_SIZE);
-    updatePlayerMap();
-    
+        
     kickStart();
 }
 
@@ -261,12 +262,31 @@ void client_connection::login(const boost::system::error_code& error)
             
             if(!dbEngine->isValidHash((const std::string)user, (const std::string)pass))
             {
-                
                 boost::asio::async_write(socket_, boost::asio::buffer(string("Invalid Username or Password - Syntax(username password) \r\n\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
             }
             else
             {
                 sessionToken = dbEngine->GenerateToken(user, pass);
+                std::regex e("[\\']");
+                std::string cleanUser = std::regex_replace(user, e, "");
+                
+                std::ifstream ifs("data/ents/" + dbEngine->getDatFilename(user, sessionToken));
+                boost::archive::binary_iarchive ia(ifs);
+                Entity tmpEntity;
+                ia >> tmpEntity;
+                
+                player = &tmpEntity;
+                
+
+                   
+                    extern EntityMap *entMap;
+                    entMap->addToMap(player);
+                    entMap->placeInRandomRoom(player);
+                    player->setSymbol((wchar_t *)player->wSymbol.c_str());
+                player->refreshFov();
+
+                    
+                
                 boost::asio::async_write(socket_, boost::asio::buffer(string("Welcome " + user + " \r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
             }
         }
@@ -365,6 +385,8 @@ void client_connection::createAccount(const boost::system::error_code& error)
             extern DBConnector *dbEngine;
             if(dbEngine->AddAccount(user, pass))
             {
+                cout << dbEngine->getDatFilename(user, dbEngine->GenerateToken(user, pass)) << endl;
+                
                 boost::asio::async_write(socket_, boost::asio::buffer(string("Account Created, you may now login \r\n\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
             }
             else
@@ -483,6 +505,10 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             
             boost::asio::async_write(socket_, boost::asio::buffer(string(time + "\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
+        else if(command == "test")
+        {
+            player->refreshFov();
+        }
         else if( command == "" )
         {
             boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
@@ -594,10 +620,10 @@ void client_connection::updatePlayerMap()
 {
     sent = 0;
     
-    extern Entity *test;
-    
     mapBuf->clear();
-    renderForPlayer(test, mapBuf);
+    
+    player->refreshFov();
+    renderForPlayer(player, mapBuf);
     
     
     len = ((mapBuf->size())*TILE_PACKET_SIZE);
@@ -635,50 +661,49 @@ void client_connection::updatePlayerMap()
 
 void client_connection::handleAPI(int api)
 {
-    extern Entity *test;
-    
+        
     // We start off by mapping our numpad keys
     // To movement directions
     
     if ( api == 1)
     {
-        test->move(-1, 1);
+        player->move(-1, 1);
     }
     else if ( api == 2)
     {
-        test->move(0, 1);
+        player->move(0, 1);
     }
     else if ( api == 3)
     {
-        test->move(1, 1);
+        player->move(1, 1);
     }
     else if (api == 4)
     {
-        test->move(-1, 0);
+        player->move(-1, 0);
     }
     else if (api == 5)
     {
-        test->move(0, 0);
+        player->move(0, 0);
     }
     else if (api == 6)
     {
-        test->move(1, 0);
+        player->move(1, 0);
     }
     else if (api == 7)
     {
-        test->move(-1, -1);
+        player->move(-1, -1);
     }
     else if (api == 8)
     {
-        test->move(0, -1);
+        player->move(0, -1);
     }
     else if (api == 9)
     {
-        test->move(1, -1);
+        player->move(1, -1);
     }
     else
     {
-        test->move(0, 0);
+        player->move(0, 0);
     }
     
 }
@@ -694,6 +719,14 @@ void client_connection::disconnect()
     free(mapSize);
     
     delete mapBuf;
+    
+    if(player != nullptr)
+    {
+        extern EntityMap *entMap;
+        entMap->removeFromEntMap(player);
+        //delete player;
+    }
+        
     client_pool_.leave(shared_from_this());
     
     

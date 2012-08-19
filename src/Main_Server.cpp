@@ -42,11 +42,7 @@
 #include "DBConnector.h"
 
 DBConnector *dbEngine;
-
-
-Entity *test;
-
-
+EntityMap *entMap;
 
 
 // Lets's Rock n' Roll
@@ -156,33 +152,29 @@ int main(int ac, char* av[]){
     // init Fov Lib ASAP after TileMap and Dungeon have been initialized.
     FovLib *fovLib = new FovLib(map);
     // Obviously our entity map would depend on FOV being loaded.
-    EntityMap *entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT, map, fovLib);
+    RenderMap *rMap = new RenderMap(map);
     
-    Entity *player = new Player();
+    entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT, map, fovLib, rMap);
+    
+    
     Goblin *goblin = new Goblin();
-    
-    Entity testingPlayer(L"\uFFFF", 5, 8, 5.5, 3.2, 9.5);
-    
-    std::ofstream ofs("data/ents/tmpEnt");
-    boost::archive::binary_oarchive oa(ofs);
-    oa << testingPlayer;
-    ofs.close();
+    entMap->addToMap(goblin);
     
     
     // Entities don't have to be initialized at the same time, they can
     // also be initialized individually.
-    entMap->addToMap(player);
+    
     entMap->initAllEnts();
-    entMap->addToMap(goblin);
     
     goblin->move(map->rooms[5]->cX, map->rooms[5]->cY);
-    player->move(map->rooms[1]->cX, map->rooms[1]->cY);
     
-    RenderMap *rMap = new RenderMap(map, entMap);
-    player->associateClient(rMap);
-    rMap->refreshMap();
+   // player->move(map->rooms[1]->cX, map->rooms[1]->cY);
     
-    test = player;
+    
+ //   player->associateClient(rMap);
+ //   rMap->refreshMap();
+    
+   // test = player;
     
     
     try

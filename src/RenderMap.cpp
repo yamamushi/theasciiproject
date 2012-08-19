@@ -41,19 +41,25 @@
 #include "Headers.h"
 
 
-RenderMap::RenderMap(TileMap *tiles, EntityMap *entities){
+RenderMap::RenderMap(TileMap *tiles){
     
-    initRenderMap(tiles, entities);
+    initRenderMap(tiles);
     
 }
 
-void RenderMap::initRenderMap(TileMap *tiles, EntityMap *entities){
+void RenderMap::initRenderMap(TileMap *tiles){
     
     tMap = tiles;
-    eMap = entities;
-    refreshMap();
     
 }
+
+
+void RenderMap::initEntMap(EntityMap *entMap)
+{
+    eMap = entMap;
+    refreshMap();
+}
+
 
 void RenderMap::refreshMap(){
     
