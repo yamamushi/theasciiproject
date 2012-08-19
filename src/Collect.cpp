@@ -28,7 +28,7 @@ int renderForPlayer(Entity *target, vector<char *> *outbuf)
         for (y = (posy-offset); y < (posy+offset); y++) {
             if((x > 0) && (x < MAP_WIDTH) && (y > 0) && (y < MAP_HEIGHT))
             {
-                if(target->fov[x][y] || target->returnCMap()->cMap[x][y]->explored)
+                if(target->returnCMap()->cMap[x][y]->explored)
                 {
                     ClientMapPacker *packer = new ClientMapPacker();
                     char *buf = new char[TILE_PACKET_SIZE];

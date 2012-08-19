@@ -120,32 +120,27 @@ void EntityMap::placeInRandomRoom(Entity *ent)
 void EntityMap::removeFromEntMap(Entity *ent)
 {
     cout << "entered erase function" << endl;
-    for(int x=0; x<MAP_WIDTH; x++)
-    {
-        for(int y=0; y<MAP_WIDTH; y++)
-        {
-            if(!pos[x][y].empty())
-            {
-                
-                int size = (int)pos[x][y].size();
-                for(int s = 0; s < size; s++)
-                {
-                    //cout << "erasing" << endl;
-                    
-                    if(pos[x][y].at(s) == ent)
+	int x, y, z;
+    
+    std::string srcName = ent->getEntName();
+    
+	for ( x = 0; x < width; x++){
+		for ( y = 0; y < height; y++){
+			if (!(pos[x][y].empty())){
+				for ( z = 0; z < pos[x][y].size(); z++){
+                    if(pos[x][y].at(z)->getEntName() == srcName)
                     {
-                        //cout << "erased" << endl;
-                        pos[x][y].erase(pos[x][y].begin() + s);
+                        pos[x][y].erase(pos[x][y].begin()+z);
+                  //  pos[x][y].at(z)->setEntityMap(this);
+                        cout << "erased at " << x << " " <<  y << " " <<  z << endl;
                         break;
-                        
                     }
-                    cout << "i is " << (int)pos[x][y].size() << endl;
                 }
-            }
-           
-            
-        }
-    }
+			}
+		}
+	}
+    
+    rMap->refreshMap();
        
     
 }

@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../src/EntityMap.cpp"
-         timestampString = "367097958.335161"
+         timestampString = "367101363.049126"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "173"
-         endingLineNumber = "173"
+         startingLineNumber = "168"
+         endingLineNumber = "168"
          landmarkName = "EntityMap::initAllEnts()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../src/EntityMap.cpp"
-         timestampString = "367097958.335161"
+         timestampString = "367101363.049126"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "174"
-         endingLineNumber = "174"
+         startingLineNumber = "169"
+         endingLineNumber = "169"
          landmarkName = "EntityMap::initAllEnts()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../src/EntityMap.cpp"
-         timestampString = "367097958.335161"
+         timestampString = "367101363.049126"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "226"
-         endingLineNumber = "226"
+         startingLineNumber = "221"
+         endingLineNumber = "221"
          landmarkName = "EntityMap::checkOccupied(int x, int y)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -65,6 +65,32 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "26"
          endingLineNumber = "26"
+         landmarkName = "renderForPlayer(Entity *target, vector&lt;char *&gt; *outbuf)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../src/Main_Server.cpp"
+         timestampString = "367099583.439114"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "157"
+         endingLineNumber = "157"
+         landmarkName = "main(int ac, char* av[])"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../src/Collect.cpp"
+         timestampString = "367100842.97113"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "29"
+         endingLineNumber = "29"
          landmarkName = "renderForPlayer(Entity *target, vector&lt;char *&gt; *outbuf)"
          landmarkType = "7">
       </FileBreakpoint>

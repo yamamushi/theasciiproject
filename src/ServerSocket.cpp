@@ -457,7 +457,7 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         }
         else if( command == "startMapStream")
         {
-            if(dbEngine->isValidToken( user, token))
+           // if(dbEngine->isValidToken( user, token))
             {
                 
                 updatePlayerMap();
@@ -473,10 +473,10 @@ void client_connection::handle_request_line(const boost::system::error_code& err
                 std::string mSize(mapSize);
                 boost::asio::async_write(socket_, boost::asio::buffer(mSize), boost::bind(&client_connection::clientAcceptMapSize, shared_from_this(), boost::asio::placeholders::error));
             }
-            else
-            {
-                disconnect();
-            }
+          //  else
+          //  {
+         //       disconnect();
+         //   }
             
             
         }

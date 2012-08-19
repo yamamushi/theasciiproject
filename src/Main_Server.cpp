@@ -155,7 +155,7 @@ int main(int ac, char* av[]){
     RenderMap *rMap = new RenderMap(map);
     
     entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT, map, fovLib, rMap);
-    
+       
     
     Goblin *goblin = new Goblin();
     entMap->addToMap(goblin);
