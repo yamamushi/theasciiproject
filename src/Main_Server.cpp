@@ -53,6 +53,23 @@ Entity *test;
 
 int main(int ac, char* av[]){
     
+    boost::filesystem::path dataDir("data");
+    boost::filesystem::path mapDir("data/maps");
+    boost::filesystem::path entDir("data/ents");
+    
+    if(!boost::filesystem::exists(dataDir))
+        boost::filesystem::create_directory(dataDir);
+    
+    if(!boost::filesystem::exists(mapDir))
+        boost::filesystem::create_directory(mapDir);
+    
+    if(!boost::filesystem::exists(entDir))
+        boost::filesystem::create_directory(entDir);
+    
+    
+    
+    
+    
     int db_port;
     std::string db_hostname;
     std::string db_username;
@@ -123,6 +140,11 @@ int main(int ac, char* av[]){
         cerr << "Exception of unknown type!\n";
     }
     
+
+    
+    
+    
+    
     
     dbEngine = new DBConnector(db_hostname, db_port, db_username, db_pass, db_name);
     
@@ -138,6 +160,14 @@ int main(int ac, char* av[]){
     
     Entity *player = new Player();
     Goblin *goblin = new Goblin();
+    
+    Entity testingPlayer(L"\uFFFF", 5, 8, 5.5, 3.2, 9.5);
+    
+    std::ofstream ofs("data/ents/tmpEnt");
+    boost::archive::binary_oarchive oa(ofs);
+    oa << testingPlayer;
+    ofs.close();
+    
     
     // Entities don't have to be initialized at the same time, they can
     // also be initialized individually.

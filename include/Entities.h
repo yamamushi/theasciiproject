@@ -47,8 +47,21 @@ class RenderMap;
 
 class Entity {
 private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & wSymbol;
+        ar & X;
+        ar & Y;
+        ar & H;
+        ar & S;
+        ar & V;
+    }
     
+   
     int X, Y;
+    std::wstring wSymbol;
     wchar_t *symbol;
     TileMap *world;
     FovLib *FOV;
@@ -64,6 +77,10 @@ private:
     
 public:
     
+    Entity(){}
+    Entity(std::wstring wsymbol_, int x, int y, int h, int s, int v) : wSymbol(wsymbol_), X(x), Y(y), H(h), S(s), V(v) { symbol = (wchar_t *)wSymbol.c_str();}
+    
+    Entity(wchar_t *sym){init_entity(sym);};
     
     void init_entity( wchar_t *symbol );
     bool move(int dx, int dy);

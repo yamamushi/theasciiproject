@@ -255,27 +255,27 @@ void Entity::setEntityMap(EntityMap *map)
 
 
 
-Monster::Monster()
+Monster::Monster() : Entity((wchar_t *)L"\uFFF7")
 {
     
-    init_entity((wchar_t *)L"\u263A");
+    //Entity((wchar_t *)L"\u263A");
     
 }
 
-Player::Player()
+Player::Player() : Entity((wchar_t *)L"\u263A")
 {
     
-    init_entity((wchar_t *)L"\u263A");
+   // Entity((wchar_t *)L"\u263A");
     H = 0.0;
     S = 0.0;
     V = 1.0;
     
 }
 
-Goblin::Goblin()
+Goblin::Goblin() : Entity((wchar_t *)L"\uFFF7")
 {
     
-    init_entity((wchar_t *)L"\uFFF7");
+  //  Entity((wchar_t *)L"\uFFF7");
     H = 30.0;
     S = 0.58;
     V = 0.40;

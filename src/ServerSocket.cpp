@@ -458,6 +458,13 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             
             
         }
+        else if( command == "getPos" || command == "getpos")
+        {
+          //  std::string playerPos(player->posX())
+            
+            
+            
+        }        
         else if( command == "quit")
         {
             

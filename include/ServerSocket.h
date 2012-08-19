@@ -98,6 +98,7 @@ private:
     std::vector<char *> *mapBuf;
     
     ClientMap *cMap;
+    Entity *player;
     
     tcp::socket socket_;
     client_pool& client_pool_;

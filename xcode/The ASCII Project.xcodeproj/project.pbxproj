@@ -1292,6 +1292,7 @@
 					"-lpthread",
 					"-lboost_system",
 					"-lboost_thread",
+					"-lboost_filesystem",
 				);
 				PRODUCT_NAME = "The ASCII Project";
 				SDKROOT = macosx;
@@ -1336,6 +1337,7 @@
 					"-lpthread",
 					"-lboost_system",
 					"-lboost_thread",
+					"-lboost_filesystem",
 				);
 				PRODUCT_NAME = "The ASCII Project";
 				SDKROOT = macosx;
@@ -1454,6 +1456,8 @@
 					"-lpqxx",
 					"-lpq",
 					"-lboost_program_options-mt",
+					"-lboost_filesystem-mt",
+					"-lboost_serialization-mt",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1495,6 +1499,8 @@
 					"-lpqxx",
 					"-lpq",
 					"-lboost_program_options-mt",
+					"-lboost_filesystem-mt",
+					"-lboost_serialization-mt",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
