@@ -82,6 +82,7 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     
     serverConsole = new TCODConsole(MAIN_WIDTH/2,13);
     textOutputConsole = new TCODConsole(MAIN_WIDTH/2+1,13);
+    mapOutput = new TCODConsole(MAP_WIDTH, MAP_HEIGHT);
     
     
     //textOutputConsole->setDefaultForeground(TCODColor(0,255,0));
@@ -119,8 +120,8 @@ void GraphicsTCOD::drawMenu()
     
     //new StatusBar(0,0,MAP_WIDTH,1);
     
-    VBox *vbox=new VBox(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 + 10,0);
-    ToolBar *mainMenu = new ToolBar(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 + 10,15,NULL,NULL);
+    VBox *vbox=new VBox(MAIN_WIDTH/2 - 7,MAIN_HEIGHT/2 + 10,0);
+    ToolBar *mainMenu = new ToolBar(MAIN_WIDTH/2 - 7,MAIN_HEIGHT/2 + 10,15,NULL,NULL);
     //stats->addWidget(new Label(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 6,"Login","Login"));
     mainMenu->addWidget(new Button("Connect",NULL,loginCbk,NULL));
     //stats->addWidget(new Label(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 5,"New Account","New Account"));
@@ -157,8 +158,8 @@ void GraphicsTCOD::drawMenu()
         image->blitRect(output, 2, 0);
         
         output->setDefaultForeground(TCODColor(255, 255, 255));
-        output->print(MAP_WIDTH-26, MAP_HEIGHT-3, (const char*)"The ASCII Project 0.0.0k", TCOD_LEFT);
-        output->print(MAP_WIDTH-29, MAP_HEIGHT-2, (const char*)"Yamamushi@gmail.com (c)2012", TCOD_LEFT);
+        output->print(MAIN_WIDTH-26, MAIN_HEIGHT-3, (const char*)"The ASCII Project 0.0.0k", TCOD_LEFT);
+        output->print(MAIN_WIDTH-29, MAIN_HEIGHT-2, (const char*)"Yamamushi@gmail.com (c)2012", TCOD_LEFT);
         output->rect(0, 0, 20, 1, true);
         
         
@@ -289,7 +290,7 @@ void GraphicsTCOD::drawMainInterface()
     serverConsole->vline(0,0, serverConsole->getHeight());
     serverConsole->vline(serverConsole->getWidth()-1,0, serverConsole->getHeight());
     
-    
+    bool textInput = true;
     bool popupOpen = false;
     connected = false;
     loggedIn = false;
@@ -323,6 +324,7 @@ void GraphicsTCOD::drawMainInterface()
         
         fixBottom();
         
+        TCODConsole::blit(mapOutput, 0, 0, 0, 0, output, 0, 2);
         TCODConsole::blit(serverConsole,0,0,0,0,output,MAIN_WIDTH/2,32, 1.0f, 1.0f);
         TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
         render();
@@ -362,15 +364,41 @@ void GraphicsTCOD::drawMainInterface()
             closeMenuCheck = false;
         }
         
+        if(!textInput && loggedIn)
+        {
+            if(key.vk == TCODK_UP)
+            {
+                cnet->sendCommand("/8");
+                cnet->ignoreResponse();
+            }
+            else if(key.vk == TCODK_DOWN)
+            {
+                cnet->sendCommand("/2");
+                cnet->ignoreResponse();
+            }
+            else if(key.vk == TCODK_RIGHT)
+            {
+                cnet->sendCommand("/6");
+                cnet->ignoreResponse();
+            }
+            else if(key.vk == TCODK_LEFT)
+            {
+                cnet->sendCommand("/4");
+                cnet->ignoreResponse();
+            }
+            
+        }
+        
         
         
         if(key.vk == TCODK_ESCAPE)
         {
             inputText->reset();
-            
+            textInput = false;
         }
         else if(key.vk == TCODK_ENTER)
         {
+            textInput = true;
             std::string tmpText = inputText->getText();
             
             if(tmpText != "" && tmpText.at(0) != '/')
@@ -439,6 +467,7 @@ void GraphicsTCOD::drawMainInterface()
             
         }
         
+        //output->clear();
         
         
         
@@ -455,20 +484,20 @@ void GraphicsTCOD::fixBottom()
     
     output->setColorControl(TCOD_COLCTRL_1, TCODColor(255,255,255), TCODColor(0,0,0));
     
-    output->vline(MAP_WIDTH/2, 32, 13);
-    output->hline(0, 32, MAP_WIDTH);
-    output->hline(MAP_WIDTH/2 + 1, MAP_HEIGHT-3, MAP_WIDTH/2);
-    output->hline(0, MAP_HEIGHT-1, MAP_WIDTH);
-    output->vline(MAP_WIDTH-1, 32, 13);
+    output->vline(MAIN_WIDTH/2, 32, 13);
+    output->hline(0, 32, MAIN_WIDTH);
+    output->hline(MAIN_WIDTH/2 + 1, MAIN_HEIGHT-3, MAIN_HEIGHT/2);
+    output->hline(0, MAIN_WIDTH-1, MAIN_HEIGHT);
+    output->vline(MAIN_WIDTH-1, 32, 13);
     
-    output->print(MAP_WIDTH/2, 32, L"\u2566", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
-    output->print(MAP_WIDTH/2, MAP_HEIGHT-3, L"\u2560", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
-    output->print(MAP_WIDTH/2, MAP_HEIGHT-1, L"\u2569", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(MAIN_WIDTH/2, 32, L"\u2566", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(MAIN_WIDTH/2, MAIN_HEIGHT-3, L"\u2560", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(MAP_WIDTH/2, MAIN_HEIGHT-1, L"\u2569", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
     output->print(0, 32, L"\u2554", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
-    output->print(0, MAP_HEIGHT-1, L"\u255A", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
-    output->print(MAP_WIDTH-1, 32, L"\u2557", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
-    output->print(MAP_WIDTH-1, MAP_HEIGHT-1, L"\u255D", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
-    output->print(MAP_WIDTH-1, MAP_HEIGHT-3, L"\u2563", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(0, MAIN_WIDTH-1, L"\u255A", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(MAIN_WIDTH-1, 32, L"\u2557", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(MAIN_WIDTH-1, MAIN_HEIGHT-1, L"\u255D", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(MAIN_WIDTH-1, MAIN_HEIGHT-3, L"\u2563", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
     
     serverConsole->print(0,0,L"\u2566", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
     serverConsole->print(0,serverConsole->getHeight()-3,L"\u2560", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
@@ -628,8 +657,9 @@ void GraphicsTCOD::loginError()
 
 void GraphicsTCOD::render(){
     
+    //drawAll();
     
-	TCODConsole::blit(output, 0, 0, MAP_WIDTH, MAP_HEIGHT, TCODConsole::root, 0, 0);
+	TCODConsole::blit(output, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
     
     TCODConsole::flush();
     
@@ -643,35 +673,38 @@ void GraphicsTCOD::flushScreen(){
 
 void GraphicsTCOD::drawAt(int x, int y)
 {
-    if (cMap->returnVisible(x, y)){
+    if (cMap->returnVisible(x, y))
+    {
         H = cMap->returnH(x, y);
         S = cMap->returnS(x, y);
         V = cMap->returnV(x, y);
         
-        output->setCharBackground(x, y, TCODColor(0,0,0));
-        output->setDefaultForeground(TCODColor(H, S, V));
+        mapOutput->setCharBackground(x, y, TCODColor(0,0,0));
+        mapOutput->setDefaultForeground(TCODColor(H, S, V));
         
-        output->print(x, y, cMap->cMap[x][y]->symbol);
+        mapOutput->print(x, y, cMap->cMap[x][y]->symbol);
     }
-    else{
+    else if(cMap->returnExplored(x,y))
+    {
         HD = cMap->returnHD(x, y);
         SD = cMap->returnSD(x, y);
         VD = cMap->returnVD(x, y);
-        output->setCharBackground(x, y, TCODColor(0,0,0));
-        output->setDefaultForeground(TCODColor(HD, SD, VD));
+        mapOutput->setCharBackground(x, y, TCODColor(0,0,0));
+        mapOutput->setDefaultForeground(TCODColor(HD, SD, VD));
         
-        output->print(x, y, cMap->cMap[x][y]->symbol);
+        mapOutput->print(x, y, cMap->cMap[x][y]->symbol);
     }
 }
 
 
-void GraphicsTCOD::drawAll(){
+void GraphicsTCOD::drawAll()
+{
     
     for(int x = 0; x < MAP_WIDTH; x++)
     {
         for(int y=0; y < MAP_HEIGHT; y++)
         {
-            if(!cMap->testIgnore(x, y))
+           // if(!cMap->testIgnore(x, y))
                 drawAt(x, y);
         }
     }
@@ -688,10 +721,10 @@ void GraphicsTCOD::prepare(int x, int y){
         HD = cMap->returnHD(x, y);
         SD = cMap->returnSD(x, y);
         VD = cMap->returnVD(x, y);
-        output->setCharBackground(x, y, TCODColor(0,0,0));
-        output->setDefaultForeground(TCODColor(HD, SD, VD));
+        mapOutput->setCharBackground(x, y, TCODColor(0,0,0));
+        mapOutput->setDefaultForeground(TCODColor(HD, SD, VD));
         
-        output->print(x, y, cMap->cMap[x][y]->symbol);
+        mapOutput->print(x, y, cMap->cMap[x][y]->symbol);
     }
 }
 

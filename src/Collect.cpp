@@ -17,24 +17,29 @@ int renderForPlayer(Entity *target, vector<char *> *outbuf)
     int size = 0;
     int offset, posx, posy;
     
-    posx = target->posX();
-    posy = target->posY();
+    
+    Entity tgt = *target;
+    
+    posx = tgt.posX();
+    posy = tgt.posY();
     
     
-    offset = 11;
-    
-    
+
+ 
+    offset = 10;
+
     for (x = (posx-offset); x < (posx+offset); x++) {
         for (y = (posy-offset); y < (posy+offset); y++) {
             if((x > 0) && (x < MAP_WIDTH) && (y > 0) && (y < MAP_HEIGHT))
             {
-                if(target->returnCMap()->cMap[x][y]->explored || target->returnCMap()->cMap[x][y]->visible)
+                if(tgt.fov[x][y] || tgt.returnCMap()->cMap[x][y]->explored)
                 {
                     ClientMapPacker *packer = new ClientMapPacker();
                     char *buf = new char[TILE_PACKET_SIZE];
                     memset(buf, '.', TILE_PACKET_SIZE);
                     
-                    packer->packToNet( *target->returnCMap()->cMap[x][y], (unsigned char*)buf);
+                                    
+                    packer->packToNet( *tgt.returnCMap()->cMap[x][y], (unsigned char*)buf);
                     
                     outbuf->push_back(buf);
                     size++;

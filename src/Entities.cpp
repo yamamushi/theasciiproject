@@ -143,9 +143,9 @@ void Entity::clientFovSync(){
                 cMap->cMap[x][y]->SD = rMap->returnSD(x, y);
                 cMap->cMap[x][y]->V = rMap->returnV(x, y);
                 cMap->cMap[x][y]->VD = rMap->returnVD(x, y);
-                cMap->cMap[x][y]->explored = true;
-                cMap->cMap[x][y]->occupied = rMap->returnOccupied(x, y);
-                cMap->cMap[x][y]->visible = rMap->returnVisible(x, y);
+                //cMap->cMap[x][y]->explored = true;
+                //cMap->cMap[x][y]->occupied = rMap->returnOccupied(x, y);
+                //cMap->cMap[x][y]->visible = rMap->returnVisible(x, y);
                 
             }
         }
@@ -157,9 +157,8 @@ void Entity::clientFovSync(){
 void Entity::refreshFov()
 {
     
-    
     FOV->refreshFov(this);
-    
+    clientFovSync();
 }
 
 int Entity::posX()
@@ -179,7 +178,7 @@ void Entity::init_in_world(FovLib *fovLib)
     initialized = true;
     world = fovLib->getTileMap();
     
-    
+
     
 }
 
@@ -219,18 +218,16 @@ void Entity::associateClient(RenderMap *RMap)
     rMap = RMap;
     clientActive = true;
     
-    int x, y;
-    for (x = 0; x < MAP_WIDTH; x++) {
-        for (y = 0; y < MAP_HEIGHT; y++) {
+    for (int x = 0; x < MAP_WIDTH; x++) {
+        for (int y = 0; y < MAP_HEIGHT; y++) {
             fov[x][y] = false;
         }
     }
     
-    
-    clientFovSync();
-    refreshFov();
     entMap->refreshEntityMap();
-        
+    
+  //  clientFovSync();
+ //   refreshFov();
 }
 
 bool Entity::getAssociated()

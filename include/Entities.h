@@ -60,7 +60,7 @@ private:
         ar & V;
     }
     
-   
+    
     int X, Y;
     
     std::string entName;
@@ -88,7 +88,16 @@ public:
     std::wstring wSymbol;
     
     
-    Entity(){}
+    Entity()
+    {
+        int x, y;
+        for (x = 0; x < MAP_WIDTH; x++) {
+            for (y = 0; y < MAP_HEIGHT; y++) {
+                fov[x][y] = false;
+            }
+        }
+    }
+    
     Entity(std::string entName_, std::wstring wsymbol_, int x, int y, int h, int s, int v) : entName(entName_), wSymbol(wsymbol_), X(x), Y(y), H(h), S(s), V(v) { symbol = (wchar_t *)wSymbol.c_str();}
     Entity(wchar_t *sym){init_entity(sym);};
     
@@ -102,7 +111,7 @@ public:
     int posX();
     int posY();
     bool fov[MAP_WIDTH][MAP_HEIGHT];
-  
+    
     
     void init_in_world(FovLib *FOV);
     

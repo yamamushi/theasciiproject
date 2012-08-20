@@ -108,9 +108,10 @@ void EntityMap::addToMap(Entity *entity){
 void EntityMap::placeInRandomRoom(Entity *ent)
 {
     TCODRandom *rng = new TCODRandom();
-    int room = rng->getInt( 0, MAX_ROOMS);
+    int room = rng->getInt( 1, MAX_ROOMS-1);  //derp.
     
     ent->move(contextMap->rooms[room]->cX, contextMap->rooms[room]->cY);
+    delete rng;
     
 }
 
@@ -119,7 +120,7 @@ void EntityMap::placeInRandomRoom(Entity *ent)
 
 void EntityMap::removeFromEntMap(Entity *ent)
 {
-    cout << "entered erase function" << endl;
+    
 	int x, y, z;
     
     std::string srcName = ent->getEntName();
@@ -131,7 +132,7 @@ void EntityMap::removeFromEntMap(Entity *ent)
                     if(pos[x][y].at(z)->getEntName() == srcName)
                     {
                         pos[x][y].erase(pos[x][y].begin()+z);
-                  //  pos[x][y].at(z)->setEntityMap(this);
+                        
                         cout << "erased at " << x << " " <<  y << " " <<  z << endl;
                         break;
                     }
@@ -141,7 +142,7 @@ void EntityMap::removeFromEntMap(Entity *ent)
 	}
     
     rMap->refreshMap();
-       
+    
     
 }
 
@@ -216,25 +217,32 @@ void EntityMap::refreshEntityMap(){
     
 }
 
-bool EntityMap::checkOccupied(int x, int y){
+bool EntityMap::checkOccupied(int x, int y)
+{
     
-   
-	if ( !(pos[x][y].empty()) ){
+    
+	if ( !(pos[x][y].empty()) )
+    {
 		return true;
 	}
 	else
 		return false;
 }
 
-Entity * EntityMap::outputLastEntity(int x, int y){
+Entity * EntityMap::outputLastEntity(int x, int y)
+{
     
-	//if ( !(pos[x][y].empty()) ){
-    Entity *current = pos[x][y].back();
-    return current;
-	//}
+	if( !(pos[x][y].empty()) )
+    {
+        Entity *current = pos[x][y].back();
+        return current;
+	}
+    else
+        return nullptr;
 }
 
-void EntityMap::refreshFovFor(Entity *tgt){
+void EntityMap::refreshFovFor(Entity *tgt)
+{
     
     fovLib->refreshFov(tgt);
     

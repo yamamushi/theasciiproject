@@ -69,9 +69,17 @@ void FovLib::refreshFov(Entity *tgt){
     
     int x, y;
     
-    cout << &tgt->wSymbol << endl;
+    delete tcodMap;
+    tcodMap = new TCODMap(MAP_WIDTH, MAP_HEIGHT);
+    
+    for(x = 0; x < MAP_WIDTH; x++){
+        for(y = 0; y < MAP_HEIGHT; y++){
+            tcodMap->setProperties(x, y, !(tileMap->virtMap[x][y]->block_sight), !(tileMap->virtMap[x][y]->blocked));
+        }
+    }
+    
     // Compute FOV
-    tcodMap->computeFov(tgt->posX(), tgt->posY(), TORCH_RADIUS, FOV_LIGHT_WALLS, FOV_ALGO);
+    tcodMap->computeFov(tgt->posX(), tgt->posY(), TORCH_RADIUS, FOV_LIGHT_WALLS);
     
     
     for (x = 0; x < MAP_WIDTH; x++)

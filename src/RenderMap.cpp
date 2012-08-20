@@ -77,9 +77,9 @@ void RenderMap::refreshMap(){
                 rMap[x][y].SD = tMap->virtMap[x][y]->SD;
                 rMap[x][y].V = tMap->virtMap[x][y]->V;
                 rMap[x][y].VD = tMap->virtMap[x][y]->VD;
-                rMap[x][y].explored = tMap->virtMap[x][y]->isExplored();
+                //rMap[x][y].explored = tMap->virtMap[x][y]->isExplored();
                 rMap[x][y].occupied = false;
-                rMap[x][y].visible = tMap->virtMap[x][y]->isVisible();
+                //rMap[x][y].visible = tMap->virtMap[x][y]->isVisible();
                 
                 
             }
@@ -92,9 +92,9 @@ void RenderMap::refreshMap(){
                 rMap[x][y].H = scan->H;
                 rMap[x][y].S = scan->S;
                 rMap[x][y].V = scan->V;
-                rMap[x][y].explored = tMap->virtMap[x][y]->isExplored();
+                //rMap[x][y].explored = tMap->virtMap[x][y]->isExplored();
                 rMap[x][y].occupied = true;
-                rMap[x][y].visible = tMap->virtMap[x][y]->isVisible();
+                //rMap[x][y].visible = tMap->virtMap[x][y]->isVisible();
                 
             }
         }

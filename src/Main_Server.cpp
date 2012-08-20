@@ -136,11 +136,6 @@ int main(int ac, char* av[]){
         cerr << "Exception of unknown type!\n";
     }
     
-
-    
-    
-    
-    
     
     dbEngine = new DBConnector(db_hostname, db_port, db_username, db_pass, db_name);
     
@@ -168,13 +163,6 @@ int main(int ac, char* av[]){
     
     goblin->move(map->rooms[5]->cX, map->rooms[5]->cY);
     
-   // player->move(map->rooms[1]->cX, map->rooms[1]->cY);
-    
-    
- //   player->associateClient(rMap);
- //   rMap->refreshMap();
-    
-   // test = player;
     
     
     try

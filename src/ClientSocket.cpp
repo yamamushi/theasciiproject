@@ -103,14 +103,12 @@ void ClientSession::getLoginScreen()
     read_until(socket_, buffer, "\r\n\r\n", ec);
     if(!ec)
     {
-        
-        cout << "Data Read" << endl;
+
         std::string serverResponse;
         
         std::istream is(&buffer);
         
         getline(is, serverResponse, '\0');
-        cout << serverResponse << endl;
         
         commander->insertText(serverResponse);
         
@@ -128,12 +126,11 @@ void ClientSession::getLoginScreen()
 
 void ClientSession::sendCommand(std::string command)
 {
-    //   command.erase(0);
+    
     command.erase(0, 1);
     
     command.append("\r\n");
-    
-    cout << command << endl;
+
     
     boost::system::error_code sendError;
     boost::asio::write(socket_, boost::asio::buffer(string(command)), sendError);
@@ -156,17 +153,16 @@ void ClientSession::getResponse()
     
     boost::system::error_code ec;
     
-    read_until(socket_, buffer, "\r\n", ec);
+    read_until(socket_, buffer, "\r\n\r\n", ec);
     if(!ec)
     {
-        
-        cout << "Data Read" << endl;
+
         std::string serverResponse;
         
         std::istream is(&buffer);
         
         getline(is, serverResponse, '\0');
-        cout << serverResponse << endl;
+
         
         commander->insertText(serverResponse);
         
@@ -185,172 +181,27 @@ void ClientSession::getResponse()
 
 
 
-void ClientSession::ignorePrompt(const boost::system::error_code& error)
+void ClientSession::ignoreResponse()
 {
-    if(!error)
+    boost::asio::streambuf buffer;
+    
+    boost::system::error_code ec;
+    
+    read_until(socket_, buffer, "\r\n\r\n", ec);
+    if(!ec)
     {
         
-        cout << "Data Read" << endl;
-        std::string serverResponse;
-        
-        std::istream is(line_command_);
-        //is.get(*line_command_) >> serverResponse;
-        //std::string serverResponse(static_cast<stringstream const&>(stringstream() << is.rdbuf()).str());
-        
-        
-        
-        while(is.good())
-        {
-            char c = is.get();
-            serverResponse.insert(serverResponse.end(), c);
-        }
-        
-        cout << line_command_ << endl;
-        cout << serverResponse << endl;
-        
-        delete line_command_;
-        line_command_ = new boost::asio::streambuf;
-        
-        int stringLength = (int)serverResponse.length();
-        
-        
-        if(stringLength >= ((MAIN_WIDTH/2) - 4))
-        {
-            std::string tmpString;
-            while(!serverResponse.empty())
-            {
-                if(tmpString.size() >= (MAIN_WIDTH/2)-6)
-                {
-                    tmpString.copy(&serverResponse[0], (MAIN_WIDTH/2)-5);
-                    serverResponse.erase(0, (MAIN_WIDTH/2)-5);
-                    commander->insertText(tmpString);
-                }
-                else
-                {
-                    //commander->insertText(serverResponse);
-                    tmpString.copy(&serverResponse[0], serverResponse.size());
-                    commander->insertText(tmpString);
-                }
-                
-                
-            }
-            
-        }
-        
-        
-        
-        
-        
-        
-        //   async_read_until(socket_, *line_command_, prompt, boost::bind(&ClientSession::requestLogin, this, boost::asio::placeholders::error));
-    }
-    else
-    {
-        close();
-    }
-}
-
-
-
-void ClientSession::requestLogin(const boost::system::error_code& error)
-{
-    if(!error)
-    {
-        commander->insertText("Successfully Connected to Server");
-        commander->connected = true;
-        
-        boost::this_thread::sleep_for(boost::chrono::milliseconds(500));
-        boost::asio::async_write(socket_, boost::asio::buffer(string("login")), boost::bind(&ClientSession::sendCredentials, this, boost::asio::placeholders::error));
+        ;
         
     }
     else
     {
+        commander->insertText("Error - Connection Closed");
+        output->connected = false;
         close();
     }
     
 }
-
-
-
-void ClientSession::sendCredentials(const boost::system::error_code& error)
-{
-    if(!error)
-    {
-        cout << "login command sent" << endl;
-        
-        extern std::string user;
-        extern std::string pass;
-        cout << user << endl << pass << endl;
-        
-        cout << string(user + " " + pass) << endl;
-        
-        delete line_command_;
-        line_command_ = new boost::asio::streambuf;
-        
-        boost::asio::async_write(socket_, boost::asio::buffer(string(user + " " + pass + "\r\n")), boost::bind(&ClientSession::receiveCredResponse, this, boost::asio::placeholders::error));
-    }
-    else
-    {
-        close();
-    }
-    
-}
-
-void ClientSession::receiveCredResponse(const boost::system::error_code& error)
-{
-    if(!error)
-    {
-        cout << "login creds sent" << endl;
-        async_read_until(socket_, *line_feed_, string(" "), boost::bind(&ClientSession::handleCredResponse, this, boost::asio::placeholders::error));
-        
-    }
-    else
-    {
-        
-    }
-}
-
-
-
-void ClientSession::handleCredResponse(const boost::system::error_code& error)
-{
-    if(!error)
-    {
-        std::string serverResponse;
-        
-        std::istream is(line_feed_);
-        is >> serverResponse;
-        
-        cout << line_feed_ << endl;
-        
-        delete line_feed_;
-        line_feed_ = new boost::asio::streambuf;
-        
-        
-        cout << serverResponse << endl;
-        
-        cout << "handling cred response" << endl;
-        output->loginError();
-        cout << "login error sent" << endl;
-        
-        
-    }
-    else
-    {
-        close();
-    }
-    
-    
-}
-
-
-
-
-
-
-
-
-
 
 
 
@@ -376,11 +227,11 @@ int ClientSession::confirmSize()
     boost::asio::streambuf buffer;
     boost::system::error_code ec;
     
-    boost::asio::read_until(socket_, buffer, "\r\n", ec);
+    boost::asio::read_until(socket_, buffer, "\r\n\r\n", ec);
     if(!ec)
     {
         
-        cout << "Data Read" << endl;
+        //cout << "Data Read" << endl;
         std::string serverResponse;
         
         std::istream is(&buffer);
@@ -435,65 +286,6 @@ void ClientSession::read_map(int dataSize)
     free(buf);
     
     
-    
-}
-
-
-void ClientSession::callNewMap(const boost::system::error_code& error, std::size_t bytes_transferred)
-{
-    
-    if(!error)
-    {
-        
-        
-        
-        delete line_command_;
-        line_command_ = new boost::asio::streambuf;
-        
-        int count = 0;
-        
-        for(int x = 0; x < (bytes_transferred)/(TILE_PACKET_SIZE); x++)
-        {
-            char *unpack = new char[TILE_PACKET_SIZE];
-            
-            memset(unpack, '.', TILE_PACKET_SIZE);
-            memcpy(unpack, &buf[(x*TILE_PACKET_SIZE) - 1], TILE_PACKET_SIZE);
-            
-            packer->unpackFromNet(clientMap, (unsigned char*)unpack, output);
-            
-            free(unpack);
-            count++;
-        }
-        
-        
-        free(buf);
-        
-        
-        
-    }
-    else
-    {
-        close();
-    }
-    
-}
-
-
-
-
-
-void ClientSession::sendMapRequest(const boost::system::error_code& error)
-{
-    if(!error)
-    {
-        
-        sprintf(cmd, "");
-        direction = "\r\n";
-        boost::this_thread::sleep_for(boost::chrono::milliseconds(100));
-        
-        //  boost::asio::async_write(socket_, boost::asio::buffer(command), boost::bind(&ClientSession::sizeMap, this, boost::asio::placeholders::error));
-        
-    }
     
 }
 

@@ -99,6 +99,7 @@ private:
     
     ClientMap *cMap;
     Entity *player;
+    Entity tmpEntity;
     
     tcp::socket socket_;
     client_pool& client_pool_;

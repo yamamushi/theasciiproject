@@ -65,6 +65,7 @@ public:
     TCODConsole *widgetCon;
     TCODConsole *serverConsole;
     TCODConsole *textOutputConsole;
+    TCODConsole *mapOutput;
     ClientSession *cnet;
     
     

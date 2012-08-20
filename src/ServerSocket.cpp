@@ -272,18 +272,21 @@ void client_connection::login(const boost::system::error_code& error)
                 
                 std::ifstream ifs("data/ents/" + dbEngine->getDatFilename(user, sessionToken));
                 boost::archive::binary_iarchive ia(ifs);
-                Entity tmpEntity;
+                
                 ia >> tmpEntity;
                 
                 player = &tmpEntity;
                 
 
                    
-                    extern EntityMap *entMap;
-                    entMap->addToMap(player);
-                    entMap->placeInRandomRoom(player);
-                    player->setSymbol((wchar_t *)player->wSymbol.c_str());
-                player->refreshFov();
+                extern EntityMap *entMap;
+                
+                player->setSymbol((wchar_t *)player->wSymbol.c_str());
+                entMap->addToMap(player);
+                entMap->placeInRandomRoom(player);
+                updatePlayerMap();
+                
+                //player->clientFovSync();
 
                     
                 
@@ -440,15 +443,15 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         
         if(isInteger(command))
         {
-            if(dbEngine->isValidToken( user, token))
+          //  if(dbEngine->isValidToken( user, token))
             {
                 handleAPI(atoi(command.c_str()));
                 boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
             }
-            else
-            {
-                disconnect();
-            }
+          //  else
+          //  {
+           //     disconnect();
+           // }
         }
         else if( command == "getToken")
         {
@@ -622,7 +625,10 @@ void client_connection::updatePlayerMap()
     
     mapBuf->clear();
     
+    
+    //player->clientFovSync();
     player->refreshFov();
+    
     renderForPlayer(player, mapBuf);
     
     

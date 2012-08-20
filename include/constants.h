@@ -46,13 +46,13 @@
 #define MAIN_HEIGHT 45
 
 #define MAP_WIDTH 80
-#define MAP_HEIGHT 45
+#define MAP_HEIGHT 30
 
 #define LIMIT_FPS 20
 
 #define ROOM_MAX_SIZE 10
 #define ROOM_MIN_SIZE 6
-#define MAX_ROOMS 20
+#define MAX_ROOMS 10
 #define MAX_HALLS 100
 
 

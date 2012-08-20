@@ -109,6 +109,8 @@ public:
     
     void sendCommand(std::string command);
     void getResponse();
+    void ignoreResponse();
+    
     
     void ignorePrompt(const boost::system::error_code& error);
     
