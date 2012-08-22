@@ -70,6 +70,8 @@ public:
     void drawHall(int i);
     void drawAllHalls();
     
+    
+    void orientWall(int x, int y);
     void orientWalls();
     void orientWalls(int x1, int y1, int x2, int y2);
     

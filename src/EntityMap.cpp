@@ -86,6 +86,8 @@ void EntityMap::initEntityMap(int x, int y, TileMap *map, FovLib *FOVLib, Render
     rMap = renderMap;
     rMap->initEntMap(this);
     
+    deleting = false;
+    
     
 }
 
@@ -121,6 +123,8 @@ void EntityMap::placeInRandomRoom(Entity *ent)
 void EntityMap::removeFromEntMap(Entity *ent)
 {
     
+    deleting = true;
+    
 	int x, y, z;
     
     std::string srcName = ent->getEntName();
@@ -141,77 +145,77 @@ void EntityMap::removeFromEntMap(Entity *ent)
 		}
 	}
     
+    deleting = false;
+    
     rMap->refreshMap();
     
-    
 }
 
-
-
-void EntityMap::createEntity(int type){
-    
-	Entity *newEntity;
-    
-	switch (type) {
-            
-		case MONSTER:
-			newEntity = new Monster();
-            addToMap(newEntity);
-		case PLAYER:
-			newEntity = new Player();
-            addToMap(newEntity);
-	}
-    
-}
 
 void EntityMap::initAllEnts(){
     
     
 	int x, y, z;
     
-	for ( x = 0; x < width; x++){
-		for ( y = 0; y < height; y++){
-			if (!(pos[x][y].empty())){
-				for ( z = 0; z < pos[x][y].size(); z++){
-					pos[x][y].at(z)->init_in_world(fovLib);
-                    pos[x][y].at(z)->setEntityMap(this);
-				}
-			}
-		}
-	}
+    if (!deleting)
+    {
+        for ( x = 0; x < width; x++){
+            for ( y = 0; y < height; y++){
+                if (!(pos[x][y].empty())){
+                    for ( z = 0; z < pos[x][y].size(); z++){
+                        pos[x][y].at(z)->init_in_world(fovLib);
+                        pos[x][y].at(z)->setEntityMap(this);
+                        
+                        if(deleting)
+                            break;
+                    }
+                }
+            }
+        }
+    }
     
     rMap->refreshMap();
 }
 
 void EntityMap::refreshEntityMap(){
     
-	int x, y, z;
     
-	for ( x = 0; x < width; x++){
-		for ( y = 0; y < height; y++){
-			if( !(pos[x][y].empty()) ){
-				for ( z = 0; z < pos[x][y].size(); z++){
-					// check each entity in this vector
-					// move entity to new vector
-					// coordinates at x and y
-                    
-					// First we check to see if this entities
-					// coordinates differ from our own:
-					Entity *cur = pos[x][y].back();
-                    
-					if ( (x != (cur->posX())) || (y != (cur->posY())) ){
-						// now we do some magic
-						int newX = cur->posX();
-						int newY = cur->posY();
+    
+    int x, y, z;
+    
+    if (!deleting)
+    {
+        
+        
+        for ( x = 0; x < width; x++){
+            for ( y = 0; y < height; y++){
+                if( !(pos[x][y].empty()) ){
+                    for ( z = 0; z < pos[x][y].size(); z++){
+                        // check each entity in this vector
+                        // move entity to new vector
+                        // coordinates at x and y
                         
-						pos[newX][newY].push_back(cur);
-                        pos[x][y].pop_back();
+                        // First we check to see if this entities
+                        // coordinates differ from our own:
+                        Entity *cur = pos[x][y].back();
                         
-					}
-				}
-			}
-		}
-	}
+                        if ( (x != (cur->posX())) || (y != (cur->posY())) ){
+                            // now we do some magic
+                            int newX = cur->posX();
+                            int newY = cur->posY();
+                            
+                            pos[newX][newY].push_back(cur);
+                            pos[x][y].pop_back();
+                            
+                            if(deleting)
+                                break;
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     rMap->refreshMap();
     
@@ -232,7 +236,7 @@ bool EntityMap::checkOccupied(int x, int y)
 Entity * EntityMap::outputLastEntity(int x, int y)
 {
     
-	if( !(pos[x][y].empty()) )
+	if( !(pos[x][y].empty())  && !deleting )
     {
         Entity *current = pos[x][y].back();
         return current;

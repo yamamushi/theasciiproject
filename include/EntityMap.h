@@ -48,6 +48,9 @@ private:
     
     int width, height;
     
+    bool deleting;
+    bool rendering;
+    
     
     int colorTable[MAP_WIDTH][MAP_HEIGHT];
     char *symbolTable[MAP_WIDTH][MAP_HEIGHT];

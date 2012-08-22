@@ -57,6 +57,8 @@ public:
     bool occupied;
     bool needsOrientation;
     
+    
+    
     Tile(bool blked=true);
     void init_Tile(bool);
     virtual ~Tile() {}

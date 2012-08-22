@@ -65,6 +65,9 @@ public:
     void deliver();
     
     
+    
+    
+    
 };
 
 
@@ -97,8 +100,6 @@ private:
     
     std::vector<char *> *mapBuf;
     
-    ClientMap *cMap;
-    Entity *player;
     Entity tmpEntity;
     
     tcp::socket socket_;
@@ -108,10 +109,14 @@ private:
     boost::asio::streambuf *pass_feed_;
     
     boost::asio::streambuf *line_command_;
+    boost::asio::streambuf *chat_message_;
     
   
     
 public:
+    
+    Entity *player;
+    
     
     client_connection(boost::asio::io_service& io_service, client_pool& pool) : socket_(io_service), client_pool_(pool) {};
     
@@ -150,6 +155,10 @@ public:
     void receive_command(const boost::system::error_code& error);
     
     void handle_request_line(const boost::system::error_code& error);
+    
+    void handleChatInput(const boost::system::error_code& error);
+    void sizeChatOutput(const boost::system::error_code& error);
+    void handleChatOutput(const boost::system::error_code& error);
     
     void sync();
     void handle_write(size_t bytes, const boost::system::error_code& error);

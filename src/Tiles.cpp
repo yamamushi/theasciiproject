@@ -56,6 +56,7 @@ void Tile::init_Tile(bool blked){
 	explored = false;
 	occupied = false;
     
+    
     symbol = (wchar_t *)L"\uFFF0";
     
     TypeID = 0;
