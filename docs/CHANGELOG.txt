@@ -1,7 +1,12 @@
 The ASCII Project Changelog
 Copyright (c) 2012 Jonathan Rumion
-07/25/2012
+08/21/2012
 ==================================
+
+0.0.0l
+
+Updates are coming too often to keep this updated, please refer to http://www.theasciiproject.com for more information.
+
 
 0.0.0j(Rev 5)
 
