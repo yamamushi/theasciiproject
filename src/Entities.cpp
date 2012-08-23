@@ -97,32 +97,41 @@ std::string Entity::getEntName()
 bool Entity::move(int dx, int dy)
 {
     
-    if (initialized) {
-        if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
-            entMap->refreshEntityMap();
-            
-            if (clientActive) {
+    if(dx+X > 1 && dx+X < MAP_WIDTH-1 && dy+Y > 1 && dy+Y < MAP_HEIGHT-1)
+    {
+        if (initialized) {
+            if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
+                entMap->refreshEntityMap();
                 
-                clientFovSync();
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return false;
             }
-            
+            else {
+                X += dx;
+                Y += dy;
+                
+                entMap->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return true;
+            }
+        }
+        else
+        {
             return false;
         }
-        else {
-            X += dx;
-            Y += dy;
-            
-            entMap->refreshEntityMap();
-            
-            if (clientActive) {
-                
-                clientFovSync();
-            }
-            
-            
-            return true;
-        }
-    } else {
+    }
+    else
+    {
         return false;
     }
     
@@ -132,74 +141,92 @@ bool Entity::move(int dx, int dy)
 bool Entity::digTile(int dx, int dy)
 {
     
-    if (initialized) {
-        if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
-            entMap->contextMap->removeTile(dx + X, dy + Y);
-            //entMap->refreshTileMap();
-            entMap->refreshEntityMap();
-            
-            if (clientActive) {
+    if(dx+X > 1 && dx+X < MAP_WIDTH-1 && dy+Y > 1 && dy+Y < MAP_HEIGHT-1)
+    {
+        if (initialized) {
+            if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
+                entMap->contextMap->removeTile(dx + X, dy + Y);
+                //entMap->refreshTileMap();
+                entMap->refreshEntityMap();
                 
-                clientFovSync();
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return true;
             }
-            
-            return true;
+            else {
+                
+                entMap->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return false;
+            }
         }
-        else {
-            
-            entMap->refreshEntityMap();
-            
-            if (clientActive) {
-                
-                clientFovSync();
-            }
-            
-            
+        else
+        {
             return false;
         }
-    } else {
+        
+        
+    }
+    else
+    {
         return false;
     }
 }
-
-
 
 
 
 bool Entity::placeTile(int dx, int dy)
 {
     
-    if (initialized) {
-        if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
-            entMap->refreshEntityMap();
-            
-            if (clientActive) {
+    if(dx+X > 1 && dx+X < MAP_WIDTH-1 && dy+Y > 1 && dy+Y < MAP_HEIGHT-1)
+    {
+        if (initialized) {
+            if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
+                entMap->refreshEntityMap();
                 
-                clientFovSync();
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return false;
             }
-            
+            else {
+                
+                entMap->contextMap->placeTile(dx + X, dy + Y);
+                //entMap->refreshTileMap();
+                entMap->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return true;
+            }
+        }
+        else
+        {
             return false;
         }
-        else {
-            
-            entMap->contextMap->placeTile(dx + X, dy + Y);
-            //entMap->refreshTileMap();
-            entMap->refreshEntityMap();
-            
-            if (clientActive) {
-                
-                clientFovSync();
-            }
-            
-            
-            return true;
-        }
-    } else {
+        
+        
+    }
+    else
+    {
         return false;
     }
 }
-
-
 
 void Entity::clientFovSync(){
     
@@ -215,7 +242,7 @@ void Entity::clientFovSync(){
     cX = MAP_WIDTH/2;
     cY= MAP_HEIGHT/2;
     
-    int offset = 20;
+    int offset = 30;
     
     
     
@@ -230,6 +257,8 @@ void Entity::clientFovSync(){
         int y = pY-offset;
         for(int iY = cY-offset; iY < cY+offset; iY++ )
         {
+            cMap->cMap[iX][iY]->explored = true;
+            //cMap->cMap[iX][iY]->visible = false;
             
             if(y > 0 && y < MAP_HEIGHT && x > 0 && x < MAP_WIDTH)
                 
@@ -242,8 +271,7 @@ void Entity::clientFovSync(){
                 cMap->cMap[iX][iY]->SD = rMap->returnSD(x, y);
                 cMap->cMap[iX][iY]->V = rMap->returnV(x, y);
                 cMap->cMap[iX][iY]->VD = rMap->returnVD(x, y);
-                cMap->cMap[x][y]->occupied = rMap->returnOccupied(x, y);
-                
+                //cMap->cMap[cX][cY]->explored = true;
                 
                 
                 if(fov[x][y] == true)
@@ -261,6 +289,8 @@ void Entity::clientFovSync(){
                 
                 
             }
+            
+            
             
             y++;
         }
