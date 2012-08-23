@@ -750,41 +750,133 @@ void client_connection::handleAPI(int api)
     {
         player->move(-1, 1);
     }
+    else if ( api == 11)
+    {
+        player->digTile(-1, 1);
+    }
+    else if ( api == 21)
+    {
+        player->placeTile(-1, 1);
+    }
+    
+    
+    
     else if ( api == 2)
     {
         player->move(0, 1);
     }
+    else if ( api == 12)
+    {
+        player->digTile(0, 1);
+    }
+    else if ( api == 22)
+    {
+        player->placeTile(0, 1);
+    }
+    
+    
+    
     else if ( api == 3)
     {
         player->move(1, 1);
     }
+    else if ( api == 13)
+    {
+        player->digTile(1, 1);
+    }
+    else if ( api == 23)
+    {
+        player->placeTile(1, 1);
+    }
+    
+    
+    
     else if (api == 4)
     {
         player->move(-1, 0);
     }
+    else if ( api == 14)
+    {
+        player->digTile(-1, 0);
+    }
+    else if ( api == 24)
+    {
+        player->placeTile(-1, 0);
+    }
+    
+    
+    /*
     else if (api == 5)
     {
         player->move(0, 0);
     }
+    else if ( api == 15)
+    {
+        player->digTile(0, 0);
+    }
+    else if ( api == 25)
+    {
+        player->placeTile(0, 0);
+    }
+    */
+    
+    
     else if (api == 6)
     {
         player->move(1, 0);
     }
+    else if ( api == 16)
+    {
+        player->digTile(1, 0);
+    }
+    else if ( api == 26)
+    {
+        player->placeTile(1, 0);
+    }
+    
+    
+    
     else if (api == 7)
     {
         player->move(-1, -1);
     }
+    else if ( api == 17)
+    {
+        player->digTile(-1, -1);
+    }
+    else if ( api == 27)
+    {
+        player->placeTile(-1, -1);
+    }
+    
+    
+    
     else if (api == 8)
     {
         player->move(0, -1);
     }
+    else if ( api == 18)
+    {
+        player->digTile(0, -1);
+    }
+    else if ( api == 28)
+    {
+        player->placeTile(0, -1);
+    }
+    
+    
+    
     else if (api == 9)
     {
         player->move(1, -1);
     }
-    else
+    else if ( api == 19)
     {
-        player->move(0, 0);
+        player->digTile(1, -1);
+    }
+    else if ( api == 29)
+    {
+        player->placeTile(1, -1);
     }
     
 }

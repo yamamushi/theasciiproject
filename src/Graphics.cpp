@@ -292,6 +292,10 @@ void GraphicsTCOD::drawMainInterface()
     
     bool textInput = true;
     bool popupOpen = false;
+    bool commandMode = false;
+    bool digActionMode = false;
+    bool placeActionMode = false;
+    
     connected = false;
     loggedIn = false;
     
@@ -316,6 +320,11 @@ void GraphicsTCOD::drawMainInterface()
             inputText->update(key);
             chatBox->update(mouse);
             serverBox->update(mouse);
+            
+            if(connected && loggedIn && commandMode)
+            {
+                output->print(2, MAIN_WIDTH/2, "Command Mode Active");
+            }
         }
         inputText->render(serverConsole);
         chatBox->render();
@@ -387,8 +396,85 @@ void GraphicsTCOD::drawMainInterface()
                 cnet->ignoreResponse();
             }
             
+            else if(key.c == 'w' && !commandMode)
+            {
+                cnet->sendCommand("/8");
+                cnet->ignoreResponse();
+            }
+            else if(key.c == 'a' && !commandMode)
+            {
+                cnet->sendCommand("/4");
+                cnet->ignoreResponse();
+            }
+            else if(key.c == 's' && !commandMode)
+            {
+                cnet->sendCommand("/2");
+                cnet->ignoreResponse();
+            }
+            else if(key.c == 'd' && !commandMode)
+            {
+                cnet->sendCommand("/6");
+                cnet->ignoreResponse();
+            }
+            
+            
+            else if(key.c == 'i' && !commandMode)
+            {
+                if(digActionMode)
+                    cnet->sendCommand("/18");
+                else
+                    cnet->sendCommand("/28");
+                
+                cnet->ignoreResponse();
+            }
+            else if(key.c == 'j' && !commandMode)
+            {
+                if(digActionMode)
+                    cnet->sendCommand("/14");
+                else
+                    cnet->sendCommand("/24");
+                cnet->ignoreResponse();
+            }
+            else if(key.c == 'k' && !commandMode)
+            {
+                if(digActionMode)
+                    cnet->sendCommand("/12");
+                else
+                    cnet->sendCommand("/22");
+                cnet->ignoreResponse();
+            }
+            else if(key.c == 'l' && !commandMode)
+            {
+                if(digActionMode)
+                    cnet->sendCommand("/16");
+                else
+                    cnet->sendCommand("/26");
+                cnet->ignoreResponse();
+            }
+            
+            
+            else if(key.c == 'd' && commandMode)
+            {
+                if(!digActionMode)
+                    digActionMode = true;
+            }
+            else if(key.c == 'p' && commandMode)
+            {
+                if(digActionMode)
+                    digActionMode = false;
+            }
+            
         }
         
+        
+        
+        if(key.vk == TCODK_SPACE)
+        {
+            if(commandMode)
+                commandMode = false;
+            else
+                commandMode = true;
+        }
         
         
         if(key.vk == TCODK_ESCAPE)

@@ -106,7 +106,7 @@ public:
     
     
     void init_entity( wchar_t *symbol );
-    bool move(int dx, int dy);
+    
     void refreshFov();
     int posX();
     int posY();
@@ -135,11 +135,16 @@ public:
     void clientFovSync();
     
     
-    void move_self(int dx, int dy);
+    
     
     void setEntityMap(EntityMap *map);
     
     
+    bool move(int dx, int dy);
+    void move_self(int dx, int dy);
+    
+    bool digTile(int dx, int dy);
+    bool placeTile(int dx, int dy);
     
 };
 

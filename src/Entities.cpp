@@ -128,6 +128,79 @@ bool Entity::move(int dx, int dy)
     
 }
 
+
+bool Entity::digTile(int dx, int dy)
+{
+    
+    if (initialized) {
+        if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
+            entMap->contextMap->removeTile(dx + X, dy + Y);
+            //entMap->refreshTileMap();
+            entMap->refreshEntityMap();
+            
+            if (clientActive) {
+                
+                clientFovSync();
+            }
+            refreshFov();
+            return true;
+        }
+        else {
+            
+            entMap->refreshEntityMap();
+            
+            if (clientActive) {
+                
+                clientFovSync();
+            }
+            
+            refreshFov();
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+
+
+
+
+bool Entity::placeTile(int dx, int dy)
+{
+    
+    if (initialized) {
+        if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
+            entMap->refreshEntityMap();
+            
+            if (clientActive) {
+                
+                clientFovSync();
+            }
+            refreshFov();
+            return false;
+        }
+        else {
+            
+            entMap->contextMap->placeTile(dx + X, dy + Y);
+            //entMap->refreshTileMap();
+            entMap->refreshEntityMap();
+            
+            if (clientActive) {
+                
+                clientFovSync();
+            }
+            
+            refreshFov();
+            return true;
+        }
+    } else {
+        return false;
+    }
+}
+
+
+
 void Entity::clientFovSync(){
     
     int x, y;

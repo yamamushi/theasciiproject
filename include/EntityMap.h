@@ -56,13 +56,15 @@ private:
     char *symbolTable[MAP_WIDTH][MAP_HEIGHT];
     
     Entity *current;
-    TileMap *contextMap;
+    
     FovLib *fovLib;
     RenderMap *rMap;
     
 public:
     
     Entity *player;
+    TileMap *contextMap;
+    
     std::vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
     
     EntityMap(int x, int y, TileMap *map, FovLib *FOVLib, RenderMap *renderMap);
@@ -77,6 +79,7 @@ public:
     
     void initAllEnts();
     void refreshEntityMap();
+    void refreshTileMap();
     
     bool checkOccupied(int x, int y);
     Entity * outputLastEntity(int x, int y);

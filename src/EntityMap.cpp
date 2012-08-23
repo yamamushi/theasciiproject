@@ -221,6 +221,13 @@ void EntityMap::refreshEntityMap(){
     
 }
 
+
+void EntityMap::refreshTileMap()
+{
+    contextMap->orientWalls();
+}
+
+
 bool EntityMap::checkOccupied(int x, int y)
 {
     

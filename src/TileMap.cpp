@@ -608,3 +608,28 @@ void TileMap::importMap(TileMap *source){
 
 
 
+void TileMap::removeTile(int x, int y)
+{
+    delete virtMap[x][y]; // = new Wall();
+    virtMap[x][y] = new Floor();
+    orientWalls();
+}
+
+
+
+void TileMap::placeTile(int x, int y)
+{
+    delete virtMap[x][y];
+    virtMap[x][y] = new Wall();
+    orientWalls();
+}
+
+
+
+
+
+
+
+
+
+

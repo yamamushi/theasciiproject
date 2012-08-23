@@ -89,6 +89,10 @@ public:
     void importMap(TileMap *source);
     
     
+    void removeTile(int x, int y);
+    void placeTile(int x, int y);
+    
+    
     
 };
 
