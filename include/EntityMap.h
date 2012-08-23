@@ -67,8 +67,8 @@ public:
     
     std::vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
     
-    EntityMap(int x, int y, TileMap *map, FovLib *FOVLib, RenderMap *renderMap);
-    void initEntityMap(int x, int y, TileMap *map, FovLib *FOVLib, RenderMap *renderMap);
+    EntityMap(int x, int y, TileMap *map);
+    void initEntityMap(int x, int y, TileMap *map);
     void refreshGraphicsMap();
     
     void placeInRandomRoom(Entity *ent);

@@ -323,7 +323,7 @@ void GraphicsTCOD::drawMainInterface()
             
             if(connected && loggedIn && commandMode)
             {
-                output->print(2, MAIN_WIDTH/2, "Command Mode Active");
+                output->print(MAIN_WIDTH/2, 3, "Command Mode Active");
             }
         }
         inputText->render(serverConsole);
@@ -333,6 +333,10 @@ void GraphicsTCOD::drawMainInterface()
         
         fixBottom();
         
+        mapOutput->clear();
+        drawAll();
+        
+        
         TCODConsole::blit(mapOutput, 0, 0, 0, 0, output, 0, 2);
         TCODConsole::blit(serverConsole,0,0,0,0,output,MAIN_WIDTH/2,32, 1.0f, 1.0f);
         TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
@@ -340,6 +344,8 @@ void GraphicsTCOD::drawMainInterface()
         
         if(connected && loggedIn)
         {
+            
+                       
             cnet->sizeMap();
             int dataSize = cnet->confirmSize();
             cnet->sendCommand("/");
@@ -375,6 +381,14 @@ void GraphicsTCOD::drawMainInterface()
         
         if(!textInput && loggedIn)
         {
+            
+            if(key.vk == TCODK_SPACE)
+            {
+                if(commandMode)
+                    commandMode = false;
+                else
+                    commandMode = true;
+            }
             if(key.vk == TCODK_UP)
             {
                 cnet->sendCommand("/8");
@@ -468,21 +482,21 @@ void GraphicsTCOD::drawMainInterface()
         
         
         
-        if(key.vk == TCODK_SPACE)
-        {
-            if(commandMode)
-                commandMode = false;
-            else
-                commandMode = true;
-        }
+        
         
         
         if(key.vk == TCODK_ESCAPE)
         {
             inputText->reset();
             textInput = false;
+            
+            if(popupOpen)
+            {
+                closeMenuCheck = true;
+            }
         }
-        else if(key.vk == TCODK_ENTER)
+        
+        if(key.vk == TCODK_ENTER)
         {
             textInput = true;
             std::string tmpText = inputText->getText();

@@ -54,7 +54,7 @@ void TileMap::initMap(int i, int z){
     
 	for ( x = 0; x < i; x++){
 		for ( y = 0; y < z; y++){
-			virtMap[x][y] = new Wall();
+			virtMap[x][y] = new Floor();
         }
 	}
     
@@ -65,7 +65,7 @@ void TileMap::clearMap(){
 	for (x = 0; x < MAP_WIDTH; x++){
 		for ( y = 0; y < MAP_HEIGHT; y++){
 			delete virtMap[x][y];
-			virtMap[x][y] = new Wall(true);
+			virtMap[x][y] = new Floor(true);
 		}
 	}
     
@@ -75,11 +75,24 @@ void TileMap::refreshMap(){
     
 	for (x=0; x < wid; x++){
 		for ( y = 0; y < hig; y++){
+            delete virtMap[x][y];
+			virtMap[x][y] = new Floor();
+		}
+	}
+    
+}
+
+void TileMap::fillMap(){
+    
+	for (x=0; x < wid; x++){
+		for ( y = 0; y < hig; y++){
+            delete virtMap[x][y];
 			virtMap[x][y] = new Wall();
 		}
 	}
     
 }
+
 
 bool TileMap::checkBounds(int posX, int posY){
     

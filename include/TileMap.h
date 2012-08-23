@@ -60,6 +60,8 @@ public:
     
     void clearMap();
     void refreshMap();
+    void fillMap();
+    
     bool checkBounds(int, int);
     
     void createRoom(int, int, int, int);

@@ -160,7 +160,7 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf, Graph
        // cout << (int)cMap.x << endl;
        // cout << (int)cMap.y << endl;
         
-        screen->drawAt(cMap.x, cMap.y);
+        //screen->drawAt(cMap.x, cMap.y);
 
         //clientMap->refreshSquare(sMap.x, sMap.y);
         

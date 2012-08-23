@@ -70,20 +70,23 @@
 
 
 
-EntityMap::EntityMap(int x, int y, TileMap *map, FovLib *FOVLib, RenderMap *renderMap){
+EntityMap::EntityMap(int x, int y, TileMap *map){
     
-	initEntityMap(x, y, map, FOVLib, renderMap);
+	initEntityMap(x, y, map);
     
 }
 
-void EntityMap::initEntityMap(int x, int y, TileMap *map, FovLib *FOVLib, RenderMap *renderMap){
+void EntityMap::initEntityMap(int x, int y, TileMap *map){
     
 	width = x;
 	height = y;
     
     contextMap = map;
-    fovLib = FOVLib;
-    rMap = renderMap;
+        
+    fovLib = new FovLib(map);
+    
+    
+    rMap = new RenderMap(contextMap);
     rMap->initEntMap(this);
     
     deleting = false;
@@ -101,8 +104,9 @@ void EntityMap::addToMap(Entity *entity){
 	pos[x][y].push_back(src);
     src->init_in_world(fovLib);
     src->setEntityMap(this);
-    
+
     src->associateClient(rMap);
+    src->move(width/2, height/2);
     rMap->refreshMap();
     
 }

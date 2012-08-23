@@ -284,7 +284,7 @@ void client_connection::login(const boost::system::error_code& error)
                 
                 player->setSymbol((wchar_t *)player->wSymbol.c_str());
                 entMap->addToMap(player);
-                entMap->placeInRandomRoom(player);
+                //entMap->placeInRandomRoom(player);
                 updatePlayerMap();
                 
                 //player->clientFovSync();

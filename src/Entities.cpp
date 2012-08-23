@@ -105,7 +105,7 @@ bool Entity::move(int dx, int dy)
                 
                 clientFovSync();
             }
-            refreshFov();
+            
             return false;
         }
         else {
@@ -119,7 +119,7 @@ bool Entity::move(int dx, int dy)
                 clientFovSync();
             }
             
-            refreshFov();
+            
             return true;
         }
     } else {
@@ -142,7 +142,7 @@ bool Entity::digTile(int dx, int dy)
                 
                 clientFovSync();
             }
-            refreshFov();
+            
             return true;
         }
         else {
@@ -154,7 +154,7 @@ bool Entity::digTile(int dx, int dy)
                 clientFovSync();
             }
             
-            refreshFov();
+            
             return false;
         }
     } else {
@@ -177,7 +177,7 @@ bool Entity::placeTile(int dx, int dy)
                 
                 clientFovSync();
             }
-            refreshFov();
+            
             return false;
         }
         else {
@@ -191,7 +191,7 @@ bool Entity::placeTile(int dx, int dy)
                 clientFovSync();
             }
             
-            refreshFov();
+            
             return true;
         }
     } else {
@@ -203,26 +203,94 @@ bool Entity::placeTile(int dx, int dy)
 
 void Entity::clientFovSync(){
     
-    int x, y;
     
-    for (x = 0; x < MAP_WIDTH; x++) {
-        for (y = 0; y < MAP_HEIGHT; y++) {
-            if (fov[x][y] == true) {
+    refreshFov();
+    
+    
+    int pX, pY;
+    pX = X;
+    pY = Y;
+    
+    int cX, cY;
+    cX = MAP_WIDTH/2;
+    cY= MAP_HEIGHT/2;
+    
+    int offset = 20;
+    
+    
+    
+    
+    
+    
+    //   if(fov[x][y] == true)
+    
+    int x = pX-offset;
+    for(int iX = cX-offset; iX < cX+offset; iX++ )
+    {
+        int y = pY-offset;
+        for(int iY = cY-offset; iY < cY+offset; iY++ )
+        {
+            
+            if(y > 0 && y < MAP_HEIGHT && x > 0 && x < MAP_WIDTH)
                 
-                cMap->cMap[x][y]->symbol = rMap->getSymbol(x, y);
-                cMap->cMap[x][y]->H = rMap->returnH(x, y);
-                cMap->cMap[x][y]->HD = rMap->returnHD(x, y);
-                cMap->cMap[x][y]->S = rMap->returnS(x, y);
-                cMap->cMap[x][y]->SD = rMap->returnSD(x, y);
-                cMap->cMap[x][y]->V = rMap->returnV(x, y);
-                cMap->cMap[x][y]->VD = rMap->returnVD(x, y);
-                //cMap->cMap[x][y]->explored = true;
-                //cMap->cMap[x][y]->occupied = rMap->returnOccupied(x, y);
-                //cMap->cMap[x][y]->visible = rMap->returnVisible(x, y);
+            {
+                
+                cMap->cMap[iX][iY]->symbol = rMap->getSymbol(x, y);
+                cMap->cMap[iX][iY]->H = rMap->returnH(x, y);
+                cMap->cMap[iX][iY]->HD = rMap->returnHD(x, y);
+                cMap->cMap[iX][iY]->S = rMap->returnS(x, y);
+                cMap->cMap[iX][iY]->SD = rMap->returnSD(x, y);
+                cMap->cMap[iX][iY]->V = rMap->returnV(x, y);
+                cMap->cMap[iX][iY]->VD = rMap->returnVD(x, y);
+                cMap->cMap[x][y]->occupied = rMap->returnOccupied(x, y);
+                
+                
+                
+                if(fov[x][y] == true)
+                {
+                    
+                    cMap->cMap[iX][iY]->visible = true;
+                    cMap->cMap[iX][iY]->explored = true;
+                    
+                }
+                else
+                {
+                    cMap->cMap[iX][iY]->visible = false;
+                    cMap->cMap[iX][iY]->occupied = false;
+                }
+                
                 
             }
+            
+            y++;
         }
+        
+        
+        x++;
     }
+    //    }
+    
+    
+    /*
+     for (int x = 0; x < MAP_WIDTH; x++) {
+     for (int y = 0; y < MAP_HEIGHT; y++) {
+     if (fov[x][y] == true) {
+     
+     cMap->cMap[x][y]->symbol = rMap->getSymbol(x, y);
+     cMap->cMap[x][y]->H = rMap->returnH(x, y);
+     cMap->cMap[x][y]->HD = rMap->returnHD(x, y);
+     cMap->cMap[x][y]->S = rMap->returnS(x, y);
+     cMap->cMap[x][y]->SD = rMap->returnSD(x, y);
+     cMap->cMap[x][y]->V = rMap->returnV(x, y);
+     cMap->cMap[x][y]->VD = rMap->returnVD(x, y);
+     //cMap->cMap[x][y]->explored = true;
+     //cMap->cMap[x][y]->occupied = rMap->returnOccupied(x, y);
+     //cMap->cMap[x][y]->visible = rMap->returnVisible(x, y);
+     
+     }
+     }
+     }
+     */
     
     
 }
@@ -231,7 +299,7 @@ void Entity::refreshFov()
 {
     
     FOV->refreshFov(this);
-    clientFovSync();
+    //clientFovSync();
 }
 
 int Entity::posX()
@@ -251,7 +319,7 @@ void Entity::init_in_world(FovLib *fovLib)
     initialized = true;
     world = fovLib->getTileMap();
     
-
+    
     
 }
 
@@ -299,8 +367,8 @@ void Entity::associateClient(RenderMap *RMap)
     
     entMap->refreshEntityMap();
     
-  //  clientFovSync();
- //   refreshFov();
+    //  clientFovSync();
+    //   refreshFov();
 }
 
 bool Entity::getAssociated()
@@ -359,7 +427,7 @@ Monster::Monster() : Entity((wchar_t *)L"\uFFF7")
 Player::Player() : Entity((wchar_t *)L"\u263A")
 {
     
-   // Entity((wchar_t *)L"\u263A");
+    // Entity((wchar_t *)L"\u263A");
     H = 0.0;
     S = 0.0;
     V = 1.0;
@@ -369,7 +437,7 @@ Player::Player() : Entity((wchar_t *)L"\u263A")
 Goblin::Goblin() : Entity((wchar_t *)L"\uFFF7")
 {
     
-  //  Entity((wchar_t *)L"\uFFF7");
+    //  Entity((wchar_t *)L"\uFFF7");
     H = 30.0;
     S = 0.58;
     V = 0.40;

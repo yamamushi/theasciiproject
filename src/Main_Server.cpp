@@ -143,25 +143,16 @@ int main(int ac, char* av[]){
     
     TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);
     // Temporary Dungeon Generator
-    Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
-    // init Fov Lib ASAP after TileMap and Dungeon have been initialized.
-    FovLib *fovLib = new FovLib(map);
-    // Obviously our entity map would depend on FOV being loaded.
-    RenderMap *rMap = new RenderMap(map);
+    //Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
     
-    entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT, map, fovLib, rMap);
+    entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT, map);
        
     
-    Goblin *goblin = new Goblin();
-    entMap->addToMap(goblin);
-    
-    
-    // Entities don't have to be initialized at the same time, they can
-    // also be initialized individually.
-    
-    entMap->initAllEnts();
-    
-    goblin->move(map->rooms[5]->cX, map->rooms[5]->cY);
+    //Goblin *goblin = new Goblin();
+    //entMap->addToMap(goblin);
+   
+    //entMap->initAllEnts();
+    //goblin->move(map->rooms[5]->cX, map->rooms[5]->cY);
     
     
     

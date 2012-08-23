@@ -102,6 +102,9 @@ using boost::asio::ip::tcp;
 #include "Entities.h"
 #include "EntityMap.h"
 
+// Our single most important object
+#include "WorldMap.h"
+
 // Our standalone engine libraries
 #include "FovLib.h"
 

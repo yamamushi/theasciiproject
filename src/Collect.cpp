@@ -20,19 +20,19 @@ int renderForPlayer(Entity *target, vector<char *> *outbuf)
     
     Entity tgt = *target;
     
-    posx = tgt.posX();
-    posy = tgt.posY();
+    posx = MAP_WIDTH/2;//tgt.posX();
+    posy = MAP_HEIGHT/2;//tgt.posY();
     
     
 
  
-    offset = 10;
+    offset = 20;
 
     for (x = (posx-offset); x < (posx+offset); x++) {
         for (y = (posy-offset); y < (posy+offset); y++) {
             if((x > 0) && (x < MAP_WIDTH) && (y > 0) && (y < MAP_HEIGHT))
             {
-                if(tgt.fov[x][y] || tgt.returnCMap()->cMap[x][y]->explored)
+                if(tgt.returnCMap()->cMap[x][y]->explored)
                 {
                     ClientMapPacker *packer = new ClientMapPacker();
                     char *buf = new char[TILE_PACKET_SIZE];
