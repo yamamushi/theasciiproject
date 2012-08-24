@@ -281,6 +281,10 @@ void client_connection::login(const boost::system::error_code& error)
 
                    
                 extern EntityMap *entMap;
+                extern WorldMap *worldMap;
+                
+                
+                
                 
                 player->setSymbol((wchar_t *)player->wSymbol.c_str());
                 entMap->addToMap(player);

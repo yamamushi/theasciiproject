@@ -43,6 +43,7 @@
 
 DBConnector *dbEngine;
 EntityMap *entMap;
+WorldMap *worldMap;
 
 
 // Lets's Rock n' Roll
@@ -154,6 +155,9 @@ int main(int ac, char* av[]){
     //entMap->initAllEnts();
     //goblin->move(map->rooms[5]->cX, map->rooms[5]->cY);
     
+    
+    worldMap = new WorldMap();
+    worldMap->initWorldMap();
     
     
     try

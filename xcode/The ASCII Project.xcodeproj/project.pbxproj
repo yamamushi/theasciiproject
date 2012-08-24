@@ -16,7 +16,6 @@
 		743612F515BFA7E900CC2BCA /* libtcod-gui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887B15BF04EF006595CE /* libtcod-gui.dylib */; };
 		743612F615BFA7EC00CC2BCA /* libtcod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887C15BF04EF006595CE /* libtcod.dylib */; };
 		743612F715BFA82D00CC2BCA /* ClientMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888015BF04EF006595CE /* ClientMap.cpp */; };
-		743612F915BFA82D00CC2BCA /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888615BF04EF006595CE /* Graphics.cpp */; };
 		743612FB15BFA82D00CC2BCA /* Serialization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888C15BF04EF006595CE /* Serialization.cpp */; };
 		743612FC15BFA82D00CC2BCA /* tpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 7444889015BF04EF006595CE /* tpl.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
 		743612FD15BFA82D00CC2BCA /* Main_Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888815BF04EF006595CE /* Main_Client.cpp */; };
@@ -43,12 +42,10 @@
 		745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
 		74627EBF15E6A69300B66CAB /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74627EBE15E6A69300B66CAB /* WorldMap.cpp */; };
 		74627EC015E6A69300B66CAB /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74627EBE15E6A69300B66CAB /* WorldMap.cpp */; };
-		74627EC215E6AA1E00B66CAB /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
-		74627EC315E6AA1E00B66CAB /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888615BF04EF006595CE /* Graphics.cpp */; };
-		7466BEF215DCB8A800584BE9 /* ClientWidgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D863AC15D9E0010029D3F1 /* ClientWidgets.cpp */; };
 		7466BEF515DD893D00584BE9 /* NetworkLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888A15BF04EF006595CE /* NetworkLib.cpp */; };
 		7466BEF615DDB84300584BE9 /* NetworkLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888A15BF04EF006595CE /* NetworkLib.cpp */; };
 		748010AC15DF8AD800F3D22E /* font.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487FC15BF04EF006595CE /* font.png */; };
+		74943A2D15E7F6860049537B /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888615BF04EF006595CE /* Graphics.cpp */; };
 		749EC50315DA291C0012A646 /* MenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
 		749EC50515DA293F0012A646 /* MenuBackground.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
@@ -1212,9 +1209,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74943A2D15E7F6860049537B /* Graphics.cpp in Sources */,
 				7466BEF515DD893D00584BE9 /* NetworkLib.cpp in Sources */,
 				743612F715BFA82D00CC2BCA /* ClientMap.cpp in Sources */,
-				743612F915BFA82D00CC2BCA /* Graphics.cpp in Sources */,
 				743612FB15BFA82D00CC2BCA /* Serialization.cpp in Sources */,
 				743612FC15BFA82D00CC2BCA /* tpl.c in Sources */,
 				7436130615BFAC0D00CC2BCA /* Platform.cpp in Sources */,
@@ -1230,8 +1227,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74627EC215E6AA1E00B66CAB /* ClientSocket.cpp in Sources */,
-				74627EC315E6AA1E00B66CAB /* Graphics.cpp in Sources */,
 				7466BEF615DDB84300584BE9 /* NetworkLib.cpp in Sources */,
 				744488C415BF04EF006595CE /* Tiles.cpp in Sources */,
 				744488C315BF04EF006595CE /* TileMap.cpp in Sources */,
@@ -1247,7 +1242,6 @@
 				74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */,
 				742F3FA315D0920200372A7A /* DBConnector.cpp in Sources */,
 				744488BE15BF04EF006595CE /* Main_Server.cpp in Sources */,
-				7466BEF215DCB8A800584BE9 /* ClientWidgets.cpp in Sources */,
 				74627EBF15E6A69300B66CAB /* WorldMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
