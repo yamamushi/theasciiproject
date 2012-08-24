@@ -89,23 +89,12 @@ void FovLib::refreshFov(Entity *tgt){
             
             if ((tcodMap->isInFov(x, y)))
             {
-              /*  if (tgt->getAssociated())
-                {
-                    ClientMap *clientMap = tgt->returnCMap();
-                    clientMap->cMap[x][y]->visible = true;
-                    clientMap->cMap[x][y]->explored = true;
-                    
-                } */
+
                 tgt->fov[x][y] = true;
             }
             else
             {
-                /*if (tgt->getAssociated())
-                {
-                    ClientMap *clientMap = tgt->returnCMap();
-                    clientMap->cMap[x][y]->visible = false;
-                    clientMap->cMap[x][y]->occupied = false;
-                }*/
+
                 tgt->fov[x][y] = false;
             }
         }

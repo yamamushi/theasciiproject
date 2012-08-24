@@ -41,7 +41,6 @@
 		7445A26A15DAAD8F00EBBF9B /* ui_input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7445A26915DAAD8F00EBBF9B /* ui_input.cpp */; };
 		745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
 		74627EBF15E6A69300B66CAB /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74627EBE15E6A69300B66CAB /* WorldMap.cpp */; };
-		74627EC015E6A69300B66CAB /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74627EBE15E6A69300B66CAB /* WorldMap.cpp */; };
 		7466BEF515DD893D00584BE9 /* NetworkLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888A15BF04EF006595CE /* NetworkLib.cpp */; };
 		7466BEF615DDB84300584BE9 /* NetworkLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888A15BF04EF006595CE /* NetworkLib.cpp */; };
 		748010AC15DF8AD800F3D22E /* font.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487FC15BF04EF006595CE /* font.png */; };
@@ -1219,7 +1218,6 @@
 				74D863AD15D9E0010029D3F1 /* ClientWidgets.cpp in Sources */,
 				7445A26A15DAAD8F00EBBF9B /* ui_input.cpp in Sources */,
 				743612FD15BFA82D00CC2BCA /* Main_Client.cpp in Sources */,
-				74627EC015E6A69300B66CAB /* WorldMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

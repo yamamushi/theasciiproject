@@ -65,7 +65,7 @@ void TileMap::clearMap(){
 	for (x = 0; x < MAP_WIDTH; x++){
 		for ( y = 0; y < MAP_HEIGHT; y++){
 			delete virtMap[x][y];
-			virtMap[x][y] = new Floor(true);
+			virtMap[x][y] = new Floor();
 		}
 	}
     

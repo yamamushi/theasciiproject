@@ -37,8 +37,9 @@ public:
     void initWorldMap();
 
     
-    void addEntToCenter(Entity *);
     
+    void addEntToCenter(Entity *tgt);
+    void removeEnt(Entity *tgt);
     
     
 };

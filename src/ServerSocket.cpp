@@ -277,23 +277,19 @@ void client_connection::login(const boost::system::error_code& error)
                 ia >> tmpEntity;
                 
                 player = &tmpEntity;
-                
 
-                   
-                extern EntityMap *entMap;
+                
                 extern WorldMap *worldMap;
-                
-                
+                               
                 
                 
                 player->setSymbol((wchar_t *)player->wSymbol.c_str());
-                entMap->addToMap(player);
-                //entMap->placeInRandomRoom(player);
+                
+                worldMap->addEntToCenter(player);
+                
                 updatePlayerMap();
                 
-                //player->clientFovSync();
-
-                    
+                                    
                 
                 boost::asio::async_write(socket_, boost::asio::buffer(string("Welcome " + user + " \r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
             }
@@ -899,9 +895,13 @@ void client_connection::disconnect()
     
     if(player != nullptr)
     {
-        extern EntityMap *entMap;
-        entMap->removeFromEntMap(player);
+        //extern EntityMap *entMap;
+        //entMap->removeFromEntMap(player);
         //delete player;
+        extern WorldMap *worldMap;
+        worldMap->removeEnt(player);
+        //delete player;
+        
     }
         
     client_pool_.leave(shared_from_this());

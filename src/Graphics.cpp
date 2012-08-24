@@ -804,7 +804,7 @@ void GraphicsTCOD::drawAll()
     {
         for(int y=0; y < MAP_HEIGHT; y++)
         {
-           // if(!cMap->testIgnore(x, y))
+
                 drawAt(x, y);
         }
     }

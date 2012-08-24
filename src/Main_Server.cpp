@@ -141,21 +141,6 @@ int main(int ac, char* av[]){
     dbEngine = new DBConnector(db_hostname, db_port, db_username, db_pass, db_name);
     
     
-    
-    TileMap *map = new TileMap(MAP_WIDTH, MAP_HEIGHT);
-    // Temporary Dungeon Generator
-    //Dungeon(map, MAP_WIDTH, MAP_HEIGHT, true);
-    
-    entMap = new EntityMap(MAP_WIDTH, MAP_HEIGHT, map);
-       
-    
-    //Goblin *goblin = new Goblin();
-    //entMap->addToMap(goblin);
-   
-    //entMap->initAllEnts();
-    //goblin->move(map->rooms[5]->cX, map->rooms[5]->cY);
-    
-    
     worldMap = new WorldMap();
     worldMap->initWorldMap();
     

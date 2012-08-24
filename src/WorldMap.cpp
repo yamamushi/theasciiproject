@@ -25,8 +25,24 @@ void WorldMap::initWorldMap()
         }
     }
     
+    
+    tMap->at(cX).at(cY).at(cZ)->refreshMap();
+    
 }
 
 
 
+void WorldMap::addEntToCenter(Entity *tgt)
+{
+   
+    eMap->at(cX).at(cY).at(cZ)->addToMap(tgt);
+    
+    
+}
 
+
+void WorldMap::removeEnt(Entity *tgt)
+{
+    eMap->at(cX).at(cY).at(cZ)->removeFromEntMap(tgt);
+    
+}
