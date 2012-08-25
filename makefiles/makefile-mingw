@@ -1,0 +1,49 @@
+SRCDIR=./src
+INCDIR=./include
+INCTCOD=./include/libtcod
+BUILDDIR=./build/
+CFLAGS=$(FLAGS) -I$(INCTCOD) -I$(INCDIR) -I$(SRCDIR) -Wall -Wswitch
+CPPFLAGS=$(FLAGS) -I$(INCTCOD) -I$(INCDIR) -I$(SRCDIR) -Wall -Wswitch -std=c++11
+CC=/c/TAP_dev/mingw/bin/gcc
+CPP=/c/TAP_dev/mingw/bin/g++
+.SUFFIXES: .o .h .c .hpp .cpp
+
+%.o : $(SRCDIR)/%.cpp
+	$(CPP) $(CPPFLAGS) -o $(BUILDDIR)$@ -c $<
+%.o : $(SRCDIR)/%.c
+	$(CC) $(CFLAGS) -o $(BUILDDIR)$@ -c $<
+
+CLIENT_OBJS=Graphics.o NetworkLib.o ClientMap.o Serialization.o tpl.o \
+			Platform.o ClientSocket.o ClientWidgets.o ui_input.o Main_Client.o
+
+SERVER_OBJS=NetworkLib.o Tiles.o TileMap.o Entities.o FovLib.o Dungeon.o \
+			RenderMap.o tpl.o ServerSocket.o ClientMap.o Serialization.o \
+			EntityMap.o Collect.o DBConnector.o Main_Server.o WorldMap.o
+
+all : client server
+
+WINLIBS=./windows
+
+CFLAGS:=-DTPL_NOLIB -DBOOST_THREAD_USE_LIB -I/c/TAP_Dev/Boost/include/boost-1_50 $(CFLAGS)
+CPPFLAGS:=-DTPL_NOLIB -DBOOST_THREAD_USE_LIB -I/c/TAP_dev/Boost/include/boost-1_50 $(CPPFLAGS)
+CLIENT_OBJS:=mmap.o $(CLIENT_OBJS)
+STATICLIBS=boost_thread-mgw47-mt-s-1_50 boost_chrono-mgw47-mt-s-1_50 boost_system-mgw47-s-1_50 ssl crypto 
+
+client.exe:
+	$(CPP) -static -static-libgcc -static-libstdc++ $(addprefix $(BUILDDIR), $(CLIENT_OBJS)) -o ./bin/$@ -Wl,--allow-multiple-definition $(addprefix -L, $(WINLIBS)) -Wl,-Bdynamic -ltcod-mingw -ltcod-gui-mingw -Wl,-Bstatic $(addprefix -l, $(STATICLIBS)) -Wl,-rpath,. -lpthread -lws2_32
+	
+client: $(CLIENT_OBJS) client.exe
+	cp ./windows/*.dll ./bin/
+	cp -r ./data ./bin/
+
+#server.exe: $(SERVER_OBJS)
+#	$(CPP) $(addprefix $(BUILDDIR), $(SERVER_OBJS)) -o ./bin/$@ $(LDLIB)
+
+tpl.o: mmap.o
+	$(CC) -DTPL_NOLIB -I$(INCDIR) -o $(BUILDDIR)tpl.o -c $(SRCDIR)/tpl.c
+
+mmap.o:
+	$(CC) -o $(BUILDDIR)mmap.o -c $(INCDIR)/win/mmap.c
+	
+clean:
+	rm -f $(BUILDDIR)*.o ./bin/*.exe ./bin/*.dll 
