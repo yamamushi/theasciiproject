@@ -75,6 +75,7 @@ public:
     void removeFromEntMap(Entity *ent);
     
     void addToMap(Entity *entity);
+    void addToMapAt(Entity *entity, int x, int y);
     void createEntity(int type);
     
     void initAllEnts();

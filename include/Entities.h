@@ -83,6 +83,7 @@ private:
     
 public:
     
+    int wX, wY, wZ;
     float H, S, V;
     int R, G, B;
     std::wstring wSymbol;
@@ -90,6 +91,7 @@ public:
     
     Entity()
     {
+        cMap = nullptr;
         int x, y;
         for (x = 0; x < MAP_WIDTH; x++) {
             for (y = 0; y < MAP_HEIGHT; y++) {
@@ -98,13 +100,13 @@ public:
         }
     }
     
-    Entity(std::string entName_, std::wstring wsymbol_, int x, int y, int h, int s, int v) : entName(entName_), wSymbol(wsymbol_), X(x), Y(y), H(h), S(s), V(v) { symbol = (wchar_t *)wSymbol.c_str();}
-    Entity(wchar_t *sym){init_entity(sym);};
+    Entity(std::string entName_, std::wstring wsymbol_, int x, int y, int h, int s, int v) : entName(entName_), wSymbol(wsymbol_), X(x), Y(y), H(h), S(s), V(v) { cMap = nullptr; symbol = (wchar_t *)wSymbol.c_str();}
+    Entity(wchar_t *sym){ cMap = nullptr; init_entity(sym);};
     
     
     
     
-    
+    void setPos(int x, int y);
     void init_entity( wchar_t *symbol );
     
     void refreshFov();
@@ -134,6 +136,8 @@ public:
     ClientMap * returnCMap();
     void clientFovSync();
     
+    
+    void setWorldPosition(int x, int y, int z);
     
     
     

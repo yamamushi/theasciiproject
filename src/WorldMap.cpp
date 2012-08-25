@@ -14,19 +14,15 @@ void WorldMap::initWorldMap()
         {            
             for(int z = 0; z < wZ; z++)
             {
-              //  cout << x << " " << y << " " << z << endl;
-                //eMap[x][y][z].push_back(new EntityMap(MAP_WIDTH, MAP_HEIGHT, tMap->at(x).at(y).at(z)) );
-              //  tMap->at(x).at(y).at(z)->
-                //push_back(new TileMap(MAP_WIDTH,MAP_HEIGHT));
-                
-                eMap->at(x).at(y).at(z) = new EntityMap(MAP_WIDTH, MAP_HEIGHT, tMap->at(x).at(y).at(z) );
+
+                eMap->at(x).at(y).at(z) = new EntityMap(MAP_WIDTH, MAP_HEIGHT, new TileMap(MAP_WIDTH, MAP_HEIGHT) );//tMap->at(x).at(y).at(z) );
                 
             }
         }
     }
     
     
-    tMap->at(cX).at(cY).at(cZ)->refreshMap();
+    //tMap->at(cX).at(cY).at(cZ)->refreshMap();
     
 }
 
@@ -35,6 +31,7 @@ void WorldMap::initWorldMap()
 void WorldMap::addEntToCenter(Entity *tgt)
 {
    
+    tgt->setWorldPosition(cX, cY, cZ);
     eMap->at(cX).at(cY).at(cZ)->addToMap(tgt);
     
     
@@ -46,3 +43,71 @@ void WorldMap::removeEnt(Entity *tgt)
     eMap->at(cX).at(cY).at(cZ)->removeFromEntMap(tgt);
     
 }
+
+
+
+void WorldMap::moveEnt(Entity *tgt, int x, int y)
+{
+    
+    bool moved = tgt->move(x, y);
+    
+    int oldx, oldy, tWX, tWY, tWZ;
+    oldx = tgt->posX();
+    oldy = tgt->posY();
+    
+    tWX = tgt->wX;
+    tWY = tgt->wY;
+    tWZ = tgt->wZ;
+    
+    
+    if(!moved && oldx+x <= 0)
+    {
+        moveEntTo(tgt, tWX-1, tWY, tWZ, MAP_WIDTH-2, oldy);
+        return;
+    }
+    else if(!moved && oldx+x >= MAP_WIDTH)
+    {
+        moveEntTo(tgt, tWX+1, tWY, tWZ, 2, oldy);
+        return;
+    }
+    else if(!moved && oldy+y <= 0)
+    {
+        moveEntTo(tgt, tWX, tWY-1, tWZ, oldx, MAP_HEIGHT-2);
+        return;
+    }
+    else if(!moved && oldy+y >= MAP_HEIGHT)
+    {
+        moveEntTo(tgt, tWX, tWY+1, tWZ, oldx, 2);
+        return;
+    }
+}
+
+
+void WorldMap::moveEntTo(Entity *tgt, int x, int y, int z, int px, int py)
+{
+    
+    
+    eMap->at(tgt->wX).at(tgt->wY).at(tgt->wZ)->removeFromEntMap(tgt);
+    
+    tgt->setWorldPosition(x, y, z);
+    eMap->at(x).at(y).at(z)->addToMapAt(tgt, px, py);
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

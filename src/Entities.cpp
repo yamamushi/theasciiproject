@@ -93,11 +93,18 @@ std::string Entity::getEntName()
     
 }
 
+void Entity::setPos(int x, int y)
+{
+    X = x;
+    Y = y;
+    
+}
+
 
 bool Entity::move(int dx, int dy)
 {
     
-    if(dx+X > 1 && dx+X < MAP_WIDTH-1 && dy+Y > 1 && dy+Y < MAP_HEIGHT-1)
+    if(dx+X > 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y < MAP_HEIGHT)
     {
         if (initialized) {
             if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
@@ -226,6 +233,19 @@ bool Entity::placeTile(int dx, int dy)
     {
         return false;
     }
+}
+
+
+
+
+void Entity::setWorldPosition(int x, int y, int z)
+{
+    
+    wX = x;
+    wY = y;
+    wZ = z;
+    
+    
 }
 
 void Entity::clientFovSync(){
@@ -377,7 +397,10 @@ bool Entity::isInitialized()
 
 void Entity::associateClient(RenderMap *RMap)
 {
-    
+    if(cMap != nullptr)
+    {
+        delete cMap;
+    }
     cMap = new ClientMap();
     rMap = RMap;
     clientActive = true;

@@ -17,7 +17,7 @@ public:
     
        
     //boost::multi_array<3, EntityMap *> eMap;
-    std::vector<std::vector<std::vector<TileMap*> > > *tMap;
+    //std::vector<std::vector<std::vector<TileMap*> > > *tMap;
     std::vector<std::vector<std::vector<EntityMap*> > > *eMap;
     
 
@@ -28,7 +28,7 @@ public:
         cout << "World Longitude = " << wY << endl;
         cout << "World Height = " << wZ << endl;
         
-        tMap = new std::vector<std::vector<std::vector<TileMap*> > >(wX, std::vector<std::vector<TileMap*> >(wY, std::vector<TileMap*>(wZ, new TileMap(MAP_WIDTH, MAP_HEIGHT))));
+        //tMap = new std::vector<std::vector<std::vector<TileMap*> > >(wX, std::vector<std::vector<TileMap*> >(wY, std::vector<TileMap*>(wZ, new TileMap(MAP_WIDTH, MAP_HEIGHT))));
         eMap = new std::vector<std::vector<std::vector<EntityMap*> > >(wX, std::vector<std::vector<EntityMap*> >(wY, std::vector<EntityMap*>(wZ, nullptr) ) );
 
         
@@ -40,6 +40,9 @@ public:
     
     void addEntToCenter(Entity *tgt);
     void removeEnt(Entity *tgt);
+    
+    void moveEnt(Entity *tgt, int x, int y);
+    void moveEntTo(Entity *tgt, int x, int y, int z, int px, int py);
     
     
 };

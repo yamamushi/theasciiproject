@@ -54,7 +54,7 @@ void TileMap::initMap(int i, int z){
     
 	for ( x = 0; x < i; x++){
 		for ( y = 0; y < z; y++){
-			virtMap[x][y] = new Wall();
+			virtMap[x][y] = new Floor();
         }
 	}
     

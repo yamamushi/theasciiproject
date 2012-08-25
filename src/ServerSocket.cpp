@@ -745,10 +745,12 @@ void client_connection::handleAPI(int api)
         
     // We start off by mapping our numpad keys
     // To movement directions
+    extern WorldMap *worldMap;
     
     if ( api == 1)
     {
-        player->move(-1, 1);
+        //player->move(-1, 1);
+        worldMap->moveEnt(player, -1, 1);
     }
     else if ( api == 11)
     {
@@ -763,7 +765,8 @@ void client_connection::handleAPI(int api)
     
     else if ( api == 2)
     {
-        player->move(0, 1);
+        //player->move(0, 1);
+        worldMap->moveEnt(player, 0, 1);
     }
     else if ( api == 12)
     {
@@ -778,7 +781,8 @@ void client_connection::handleAPI(int api)
     
     else if ( api == 3)
     {
-        player->move(1, 1);
+        //player->move(1, 1);
+        worldMap->moveEnt(player, 1, 1);
     }
     else if ( api == 13)
     {
@@ -793,7 +797,8 @@ void client_connection::handleAPI(int api)
     
     else if (api == 4)
     {
-        player->move(-1, 0);
+        //player->move(-1, 0);
+        worldMap->moveEnt(player, -1, 0);
     }
     else if ( api == 14)
     {
@@ -823,7 +828,8 @@ void client_connection::handleAPI(int api)
     
     else if (api == 6)
     {
-        player->move(1, 0);
+        //player->move(1, 0);
+        worldMap->moveEnt(player, 1, 0);
     }
     else if ( api == 16)
     {
@@ -838,7 +844,8 @@ void client_connection::handleAPI(int api)
     
     else if (api == 7)
     {
-        player->move(-1, -1);
+        //player->move(-1, -1);
+        worldMap->moveEnt(player, -1, -1);
     }
     else if ( api == 17)
     {
@@ -853,7 +860,8 @@ void client_connection::handleAPI(int api)
     
     else if (api == 8)
     {
-        player->move(0, -1);
+        //player->move(0, -1);
+        worldMap->moveEnt(player, 0, -1);
     }
     else if ( api == 18)
     {
@@ -868,7 +876,8 @@ void client_connection::handleAPI(int api)
     
     else if (api == 9)
     {
-        player->move(1, -1);
+        //player->move(1, -1);
+        worldMap->moveEnt(player, 1, -1);
     }
     else if ( api == 19)
     {

@@ -111,6 +111,28 @@ void EntityMap::addToMap(Entity *entity){
     
 }
 
+
+
+void EntityMap::addToMapAt(Entity *entity, int x, int y){
+    
+	Entity *src = entity;
+    src->setPos(x, y);
+	
+	pos[x][y].push_back(src);
+    src->init_in_world(fovLib);
+    src->setEntityMap(this);
+    
+    src->associateClient(rMap);
+    src->move(0,0);
+    rMap->refreshMap();
+    
+}
+
+
+
+
+
+
 void EntityMap::placeInRandomRoom(Entity *ent)
 {
     TCODRandom *rng = new TCODRandom();
