@@ -60,24 +60,38 @@ void WorldMap::moveEnt(Entity *tgt, int x, int y)
     tWZ = tgt->wZ;
     
     
+    
+    
     if(!moved && oldx+x <= 0)
     {
-        moveEntTo(tgt, tWX-1, tWY, tWZ, MAP_WIDTH-2, oldy);
+        if(tWX == 0)
+            tWX = wX;
+        
+        moveEntTo(tgt, tWX-1, tWY, tWZ, MAP_WIDTH-1, oldy);
         return;
     }
     else if(!moved && oldx+x >= MAP_WIDTH)
     {
-        moveEntTo(tgt, tWX+1, tWY, tWZ, 2, oldy);
+        if(tWX == wX-1)
+            tWX = -1;
+        
+        moveEntTo(tgt, tWX+1, tWY, tWZ, 1, oldy);
         return;
     }
     else if(!moved && oldy+y <= 0)
     {
-        moveEntTo(tgt, tWX, tWY-1, tWZ, oldx, MAP_HEIGHT-2);
+        if(tWY == 0)
+            tWY = wY;
+        
+        moveEntTo(tgt, tWX, tWY-1, tWZ, oldx, MAP_HEIGHT-1);
         return;
     }
     else if(!moved && oldy+y >= MAP_HEIGHT)
     {
-        moveEntTo(tgt, tWX, tWY+1, tWZ, oldx, 2);
+        if(tWY == wY-1)
+            tWY = -1;
+        
+        moveEntTo(tgt, tWX, tWY+1, tWZ, oldx, 1);
         return;
     }
 }
