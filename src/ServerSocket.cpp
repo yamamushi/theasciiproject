@@ -810,11 +810,13 @@ void client_connection::handleAPI(int api)
     }
     
     
-    /*
+    
     else if (api == 5)
     {
-        player->move(0, 0);
+        //worldMap->moveEnt(player, 0, 0);
+        player->clientFovSync();
     }
+    /*
     else if ( api == 15)
     {
         player->digTile(0, 0);

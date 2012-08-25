@@ -15,15 +15,12 @@ void WorldMap::initWorldMap()
             for(int z = 0; z < wZ; z++)
             {
 
-                eMap->at(x).at(y).at(z) = new EntityMap(MAP_WIDTH, MAP_HEIGHT, new TileMap(MAP_WIDTH, MAP_HEIGHT) );//tMap->at(x).at(y).at(z) );
+                eMap->at(x).at(y).at(z) = new EntityMap(MAP_WIDTH, MAP_HEIGHT, new TileMap(MAP_WIDTH, MAP_HEIGHT) );
                 
             }
         }
     }
-    
-    
-    //tMap->at(cX).at(cY).at(cZ)->refreshMap();
-    
+        
 }
 
 
@@ -31,8 +28,8 @@ void WorldMap::initWorldMap()
 void WorldMap::addEntToCenter(Entity *tgt)
 {
    
-    tgt->setWorldPosition(cX, cY, cZ);
-    eMap->at(cX).at(cY).at(cZ)->addToMap(tgt);
+    tgt->setWorldPosition(cX, cY, cZ-1);
+    eMap->at(cX).at(cY).at(cZ-1)->addToMap(tgt);
     
     
 }
@@ -40,7 +37,12 @@ void WorldMap::addEntToCenter(Entity *tgt)
 
 void WorldMap::removeEnt(Entity *tgt)
 {
-    eMap->at(cX).at(cY).at(cZ)->removeFromEntMap(tgt);
+    int tX, tY, tZ;
+    tX = tgt->wX;
+    tY = tgt->wY;
+    tZ = tgt->wZ;
+    
+    eMap->at(tX).at(tY).at(tZ)->removeFromEntMap(tgt);
     
 }
 

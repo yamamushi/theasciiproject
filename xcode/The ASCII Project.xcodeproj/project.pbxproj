@@ -46,7 +46,11 @@
 		748010AC15DF8AD800F3D22E /* font.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487FC15BF04EF006595CE /* font.png */; };
 		74943A2D15E7F6860049537B /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888615BF04EF006595CE /* Graphics.cpp */; };
 		749EC50315DA291C0012A646 /* MenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
-		749EC50515DA293F0012A646 /* MenuBackground.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
+		74C0D66115E898A60069B8DA /* at.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74C0D66015E898A60069B8DA /* at.jpg */; };
+		74C0D66415E8994F0069B8DA /* MenuBackground.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
+		74C0D66715E8A9450069B8DA /* libtcod-gui.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74C0D66515E8A9450069B8DA /* libtcod-gui.dylib */; };
+		74C0D66815E8A9450069B8DA /* libtcod.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74C0D66615E8A9450069B8DA /* libtcod.dylib */; };
+		74C0D66A15E973180069B8DA /* libpng.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74C0D66915E973180069B8DA /* libpng.framework */; };
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
 		74D863AD15D9E0010029D3F1 /* ClientWidgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D863AC15D9E0010029D3F1 /* ClientWidgets.cpp */; };
 /* End PBXBuildFile section */
@@ -58,6 +62,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				74C0D66A15E973180069B8DA /* libpng.framework in CopyFiles */,
+				74C0D66715E8A9450069B8DA /* libtcod-gui.dylib in CopyFiles */,
+				74C0D66815E8A9450069B8DA /* libtcod.dylib in CopyFiles */,
 				7436130015BFA84900CC2BCA /* SDL.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,11 +72,11 @@
 		7436130215BFA8BF00CC2BCA /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
-			dstPath = data;
+			dstPath = data/images;
 			dstSubfolderSpec = 7;
 			files = (
+				74C0D66415E8994F0069B8DA /* MenuBackground.png in CopyFiles */,
 				748010AC15DF8AD800F3D22E /* font.png in CopyFiles */,
-				749EC50515DA293F0012A646 /* MenuBackground.png in CopyFiles */,
 				743475DD15D8CF8C006C3CFA /* arial12x12.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +449,10 @@
 		747D228515C0566300CE1AC9 /* LICENSE_1_0_BOOST.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE_1_0_BOOST.txt; sourceTree = "<group>"; };
 		7492895215CF09B800BACA68 /* BOOST-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "BOOST-LICENSE.txt"; sourceTree = "<group>"; };
 		749EC50215DA291C0012A646 /* MenuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBackground.png; sourceTree = "<group>"; };
+		74C0D66015E898A60069B8DA /* at.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = at.jpg; path = ../at.jpg; sourceTree = "<group>"; };
+		74C0D66515E8A9450069B8DA /* libtcod-gui.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libtcod-gui.dylib"; path = "../libtcod-gui.dylib"; sourceTree = "<group>"; };
+		74C0D66615E8A9450069B8DA /* libtcod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtcod.dylib; path = ../libtcod.dylib; sourceTree = "<group>"; };
+		74C0D66915E973180069B8DA /* libpng.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libpng.framework; sourceTree = "<group>"; };
 		74C4255115D4BA7100CBFD82 /* server.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = server.conf; sourceTree = "<group>"; };
 		74C5767C15C1D1F20033691A /* BoostLibs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoostLibs.h; sourceTree = "<group>"; };
 		74C5767E15C1EC6D0033691A /* Collect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collect.cpp; sourceTree = "<group>"; };
@@ -488,6 +499,9 @@
 		743612DE15BFA75800CC2BCA /* client */ = {
 			isa = PBXGroup;
 			children = (
+				74C0D66515E8A9450069B8DA /* libtcod-gui.dylib */,
+				74C0D66615E8A9450069B8DA /* libtcod.dylib */,
+				74C0D66015E898A60069B8DA /* at.jpg */,
 				7444888815BF04EF006595CE /* Main_Client.cpp */,
 				743612DF15BFA75800CC2BCA /* Supporting Files */,
 			);
@@ -508,6 +522,7 @@
 		744487C615BF0464006595CE = {
 			isa = PBXGroup;
 			children = (
+				74C0D66915E973180069B8DA /* libpng.framework */,
 				7444889515BF04EF006595CE /* xcode */,
 				7444887F15BF04EF006595CE /* src */,
 				7444880615BF04EF006595CE /* include */,
@@ -1198,6 +1213,7 @@
 				74254F8115D7257700FDE75B /* Credits.rtf in Resources */,
 				74254F8215D7257700FDE75B /* InfoPlist.strings in Resources */,
 				749EC50315DA291C0012A646 /* MenuBackground.png in Resources */,
+				74C0D66115E898A60069B8DA /* at.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1275,6 +1291,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "client/client-Info.plist";
+				INSTALL_PATH = "@rpath";
+				LD_DYLIB_INSTALL_NAME = "";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../osx\"",
@@ -1288,9 +1307,9 @@
 					"-ltcod-gui",
 					"-Wl,-rpath,.",
 					"-lpthread",
-					"-lboost_system",
-					"-lboost_thread",
-					"-lboost_filesystem",
+					"/usr/local/lib/libboost_system-mt.a",
+					"/usr/local/lib/libboost_thread-mt.a",
+					"/usr/local/lib/libboost_filesystem-mt.a",
 				);
 				PRODUCT_NAME = "The ASCII Project";
 				SDKROOT = macosx;
@@ -1321,6 +1340,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "client/client-Info.plist";
+				INSTALL_PATH = "@rpath";
+				LD_DYLIB_INSTALL_NAME = "";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../osx\"",
@@ -1333,9 +1355,9 @@
 					"-ltcod-gui",
 					"-Wl,-rpath,.",
 					"-lpthread",
-					"-lboost_system",
-					"-lboost_thread",
-					"-lboost_filesystem",
+					"/usr/local/lib/libboost_system-mt.a",
+					"/usr/local/lib/libboost_thread-mt.a",
+					"/usr/local/lib/libboost_filesystem-mt.a",
 				);
 				PRODUCT_NAME = "The ASCII Project";
 				SDKROOT = macosx;
@@ -1364,14 +1386,10 @@
 					"-DMACOSX",
 				);
 				OTHER_LDFLAGS = (
-					"-lSockets",
 					"-lssl",
 					"-lcrypto",
 					"-ltcod",
 					"-Wl,-rpath,.",
-					"-lpthread",
-					"-lboost_system-mt",
-					"-lboost_thread-mt",
 				);
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -1399,14 +1417,10 @@
 					"-DMACOSX",
 				);
 				OTHER_LDFLAGS = (
-					"-lSockets",
 					"-lssl",
 					"-lcrypto",
 					"-ltcod",
 					"-Wl,-rpath,.",
-					"-lpthread",
-					"-lboost_system-mt",
-					"-lboost_thread-mt",
 				);
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;

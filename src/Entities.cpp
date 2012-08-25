@@ -148,7 +148,7 @@ bool Entity::move(int dx, int dy)
 bool Entity::digTile(int dx, int dy)
 {
     
-    if(dx+X > 1 && dx+X < MAP_WIDTH-1 && dy+Y > 1 && dy+Y < MAP_HEIGHT-1)
+    if(dx+X >= 0 && dx+X <= MAP_WIDTH && dy+Y >= 0 && dy+Y <= MAP_HEIGHT)
     {
         if (initialized) {
             if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
@@ -194,7 +194,7 @@ bool Entity::digTile(int dx, int dy)
 bool Entity::placeTile(int dx, int dy)
 {
     
-    if(dx+X > 1 && dx+X < MAP_WIDTH-1 && dy+Y > 1 && dy+Y < MAP_HEIGHT-1)
+    if(dx+X > 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y < MAP_HEIGHT)
     {
         if (initialized) {
             if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){

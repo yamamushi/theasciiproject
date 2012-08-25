@@ -87,7 +87,7 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     
     //textOutputConsole->setDefaultForeground(TCODColor(0,255,0));
     //textOutputConsole->flush();
-    
+    TCODConsole::mapAsciiCodesToFont(0, 65535, 0, 0);
     // Apply remap for our non-unicode ascii based box-drawing functions
     TCODConsole::mapAsciiCodeToFont(179, 17, 298);
     TCODConsole::mapAsciiCodeToFont(180, 3, 299);
@@ -301,7 +301,7 @@ void GraphicsTCOD::drawMainInterface()
     
     boost::asio::io_service pri_io_service;
     tcp::resolver pri_resolver(pri_io_service);
-    tcp::resolver::query pri_query("localhost", "5250");
+    tcp::resolver::query pri_query("pub.theasciiproject.com", "5250");
     
     tcp::resolver::iterator iterator = pri_resolver.resolve(pri_query);
     
@@ -478,6 +478,12 @@ void GraphicsTCOD::drawMainInterface()
                     digActionMode = false;
             }
             
+            else if(key.vk == TCODK_NONE)
+            {
+                cnet->sendCommand("/5");
+                cnet->ignoreResponse();
+            }
+            
         }
         
         
@@ -567,7 +573,6 @@ void GraphicsTCOD::drawMainInterface()
             
         }
         
-        //output->clear();
         
         
         
