@@ -72,7 +72,7 @@ FOV_RESTRICTIVE : Mingos' Restrictive Precise Angle Shadowcasting (MRPAS). Origi
 
 #define FOV_ALGO FOV_BASIC
 #define FOV_LIGHT_WALLS true
-#define TORCH_RADIUS 12
+#define TORCH_RADIUS 7 
 
 #define TILE_PACKET_SIZE 128
 
