@@ -453,6 +453,7 @@
 		74C0D66515E8A9450069B8DA /* libtcod-gui.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libtcod-gui.dylib"; path = "../libtcod-gui.dylib"; sourceTree = "<group>"; };
 		74C0D66615E8A9450069B8DA /* libtcod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtcod.dylib; path = ../libtcod.dylib; sourceTree = "<group>"; };
 		74C0D66915E973180069B8DA /* libpng.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libpng.framework; sourceTree = "<group>"; };
+		74C0D66B15E980BA0069B8DA /* libpng-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "libpng-LICENSE.txt"; path = "/Users/yamamushi/libpng-LICENSE.txt"; sourceTree = "<absolute>"; };
 		74C4255115D4BA7100CBFD82 /* server.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = server.conf; sourceTree = "<group>"; };
 		74C5767C15C1D1F20033691A /* BoostLibs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoostLibs.h; sourceTree = "<group>"; };
 		74C5767E15C1EC6D0033691A /* Collect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collect.cpp; sourceTree = "<group>"; };
@@ -733,6 +734,7 @@
 		7444885915BF04EF006595CE /* licenses */ = {
 			isa = PBXGroup;
 			children = (
+				74C0D66B15E980BA0069B8DA /* libpng-LICENSE.txt */,
 				7444885A15BF04EF006595CE /* GPL-LICENSE.txt */,
 				7444885B15BF04EF006595CE /* LIBTCOD-CREDITS.txt */,
 				7444885C15BF04EF006595CE /* LIBTCOD-LICENSE.txt */,
