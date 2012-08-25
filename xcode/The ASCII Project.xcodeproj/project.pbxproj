@@ -1456,6 +1456,7 @@
 					"-lboost_program_options-mt",
 					"-lboost_filesystem-mt",
 					"-lboost_serialization-mt",
+					"-lboost_regex-mt",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1499,6 +1500,7 @@
 					"-lboost_program_options-mt",
 					"-lboost_filesystem-mt",
 					"-lboost_serialization-mt",
+					"-lboost_regex-mt",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;

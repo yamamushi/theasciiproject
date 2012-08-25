@@ -88,9 +88,9 @@ void DBConnector::ValidateSchema()
 bool DBConnector::AddAccount(const std::string user, const std::string pass)
 {
     
-    std::regex e("[\\']");
-    std::string cleanUser = std::regex_replace(user, e, "");
-    std::string cleanPass = std::regex_replace(pass, e, "");
+    boost::regex e("[\\']");
+    std::string cleanUser = boost::regex_replace(user, e, "");
+    std::string cleanPass = boost::regex_replace(pass, e, "");
     
     pqxx::asyncconnection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
     pqxx::work addAccount(conn);
@@ -141,9 +141,9 @@ bool DBConnector::isValidHash(const std::string user, const std::string pass)
     Pass = pass;
     
     
-    std::regex e("[\\']");
-    std::string cleanUser = std::regex_replace(User, e, "");
-    std::string cleanPass = std::regex_replace(Pass, e, "");
+    boost::regex e("[\\']");
+    std::string cleanUser = boost::regex_replace(User, e, "");
+    std::string cleanPass = boost::regex_replace(Pass, e, "");
         
     pqxx::asyncconnection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
     pqxx::work validatePass(conn);
@@ -187,9 +187,9 @@ bool DBConnector::isValidHash(const std::string user, const std::string pass)
 std::string DBConnector::GenerateToken(const std::string user, const std::string pass)
 {
     
-    std::regex e("[\\']");
-    std::string cleanUser = std::regex_replace(user, e, "");
-    std::string cleanPass = std::regex_replace(pass, e, "");
+    boost::regex e("[\\']");
+    std::string cleanUser = boost::regex_replace(user, e, "");
+    std::string cleanPass = boost::regex_replace(pass, e, "");
     
     if(isValidHash(cleanUser, cleanPass))
     {
@@ -238,9 +238,9 @@ std::string DBConnector::GenerateToken(const std::string user, const std::string
 
 bool DBConnector::isValidToken(const std::string user, const std::string token)
 {
-    std::regex e("[\\']");
-    std::string cleanUser = std::regex_replace(user, e, "");
-    std::string cleanPass = std::regex_replace(token, e, "");
+    boost::regex e("[\\']");
+    std::string cleanUser = boost::regex_replace(user, e, "");
+    std::string cleanPass = boost::regex_replace(token, e, "");
     
     
     pqxx::asyncconnection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
@@ -291,9 +291,9 @@ std::string DBConnector::getDatFilename(const std::string user, const std::strin
         pqxx::asyncconnection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
         pqxx::work getFilename(conn);
         
-        std::regex e("[\\']");
-        std::string cleanUser = std::regex_replace(user, e, "");
-        std::string cleanPass = std::regex_replace(token, e, "");
+        boost::regex e("[\\']");
+        std::string cleanUser = boost::regex_replace(user, e, "");
+        std::string cleanPass = boost::regex_replace(token, e, "");
         
         pqxx::result doesFilenameExist = getFilename.exec("SELECT filename FROM accounting WHERE username='" + cleanUser + "';");
         

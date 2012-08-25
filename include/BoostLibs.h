@@ -26,3 +26,5 @@
 
 
 #include <boost/thread/thread.hpp>
+
+#include <boost/regex.hpp>

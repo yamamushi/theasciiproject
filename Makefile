@@ -18,7 +18,7 @@ ifeq ($(UNAME),MINGW32_NT-6.1)
 
 	LDLIB=-ltcod-mingw -ltcod-gui-mingw -lboost_system-mgw47-1_50 -lboost_thread-mgw47-mt-1_50 -L$(LIBSSL) -L$(LIBWIN) -lws2_32
 else	
-	LDLIB=-ltcod -ltcodxx -lboost_system -lboost_thread
+	LDLIB=-ltcod -ltcodxx -lboost_system -lboost_thread -lpqxx -lpq -lboost_program_options -lboost_filesystem -lboost_serialization -lboost_regex
 endif
 
 CC=gcc
@@ -33,10 +33,10 @@ CPP=g++
 CLIENT_OBJS=tpl.o ClientWidgets.o ClientSocket.o ClientMap.o Graphics.o \
     Keyboard.o Serialization.o Main_Client.o
 
-SERVER_OBJS=Tiles.o TileMap.o Entities.o EntityMap.o \
-    FovLib.o Dungeon.o Keyboard.o RenderMap.o tpl.o \
-    ServerSocket.o ClientSocket.o ClientMap.o Graphics.o \
-	Collect.o Serialization.o Main_Server.o
+SERVER_OBJS=NetworkLib.o Tiles.o TileMap.o Entities.o EntityMap.o \
+        FovLib.o Dungeon.o RenderMap.o tpl.o \
+        ServerSocket.o ClientSocket.o ClientMap.o Graphics.o \
+        DBConnector.o WorldMap.o Collect.o Serialization.o Main_Server.o
 
 all : client server
 

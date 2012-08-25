@@ -268,8 +268,8 @@ void client_connection::login(const boost::system::error_code& error)
             else
             {
                 sessionToken = dbEngine->GenerateToken(user, pass);
-                std::regex e("[\\']");
-                std::string cleanUser = std::regex_replace(user, e, "");
+                boost::regex e("[\\']");
+                std::string cleanUser = boost::regex_replace(user, e, "");
                 
                 std::ifstream ifs("data/ents/" + dbEngine->getDatFilename(user, sessionToken));
                 boost::archive::binary_iarchive ia(ifs);
