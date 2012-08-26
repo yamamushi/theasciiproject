@@ -70,7 +70,7 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     closeMenuCheck = false;
     
     setlocale(LC_ALL, "en_US.UTF-8");
-    TCODConsole::setCustomFont("data/font.png", TCOD_FONT_LAYOUT_ASCII_INROW, 32, 2048);
+    TCODConsole::setCustomFont("data/font.png", TCOD_FONT_LAYOUT_ASCII_INROW | TCOD_FONT_TYPE_GRAYSCALE, 32, 2048);
     
     //TCODConsole::setCustomFont("data/arial12x12.png", TCOD_FONT_LAYOUT_TCOD | TCOD_FONT_TYPE_GREYSCALE);
     TCODConsole::initRoot(MAIN_WIDTH,MAIN_HEIGHT,"The ASCII Project",false,TCOD_RENDERER_SDL);
@@ -788,7 +788,7 @@ void GraphicsTCOD::drawAt(int x, int y)
         mapOutput->setCharBackground(x, y, TCODColor(0,0,0));
         mapOutput->setDefaultForeground(TCODColor((float)H, (float)S, (float)V));
         
-        mapOutput->print(x, y, (wchar_t*)cMap->cMap[x][y]->symbol);
+        mapOutput->print(x, y, (const wchar_t*)cMap->cMap[x][y]->symbol);
     }
     else if(cMap->returnExplored(x,y))
     {
@@ -798,7 +798,7 @@ void GraphicsTCOD::drawAt(int x, int y)
         mapOutput->setCharBackground(x, y, TCODColor(0,0,0));
         mapOutput->setDefaultForeground(TCODColor((float)HD, (float)SD, (float)VD));
         
-        mapOutput->print(x, y, (wchar_t*)cMap->cMap[x][y]->symbol);
+        mapOutput->print(x, y, (const wchar_t*)cMap->cMap[x][y]->symbol);
     }
 }
 
