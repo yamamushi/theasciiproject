@@ -88,6 +88,7 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     //textOutputConsole->setDefaultForeground(TCODColor(0,255,0));
     //textOutputConsole->flush();
     TCODConsole::mapAsciiCodesToFont(0, 65535, 0, 0);
+    mapOutput->mapAsciiCodesToFont(0, 65535, 0, 0);
     // Apply remap for our non-unicode ascii based box-drawing functions
     TCODConsole::mapAsciiCodeToFont(179, 17, 298);
     TCODConsole::mapAsciiCodeToFont(180, 3, 299);
@@ -785,9 +786,9 @@ void GraphicsTCOD::drawAt(int x, int y)
         V = cMap->returnV(x, y);
         
         mapOutput->setCharBackground(x, y, TCODColor(0,0,0));
-        mapOutput->setDefaultForeground(TCODColor(H, S, V));
+        mapOutput->setDefaultForeground(TCODColor((float)H, (float)S, (float)V));
         
-        mapOutput->print(x, y, cMap->cMap[x][y]->symbol);
+        mapOutput->print(x, y, (wchar_t*)cMap->cMap[x][y]->symbol);
     }
     else if(cMap->returnExplored(x,y))
     {
@@ -795,9 +796,9 @@ void GraphicsTCOD::drawAt(int x, int y)
         SD = cMap->returnSD(x, y);
         VD = cMap->returnVD(x, y);
         mapOutput->setCharBackground(x, y, TCODColor(0,0,0));
-        mapOutput->setDefaultForeground(TCODColor(HD, SD, VD));
+        mapOutput->setDefaultForeground(TCODColor((float)HD, (float)SD, (float)VD));
         
-        mapOutput->print(x, y, cMap->cMap[x][y]->symbol);
+        mapOutput->print(x, y, (wchar_t*)cMap->cMap[x][y]->symbol);
     }
 }
 
