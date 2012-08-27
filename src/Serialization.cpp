@@ -16,22 +16,8 @@ s_render_t ClientMapPacker::clientToSerial(render_t source)
     s_render_t lMap;
     
     setlocale(LC_ALL, "en_US.UTF-8");
-    
-    // We do our intitial conversion and setup of our converted render_t struct
-    
-    
-    
-    wchar_t *wstr = cMap.symbol;
-    char* ascii = new char[wcslen(cMap.symbol) + 1];
-    size_t size = wcstombs(ascii, wstr, sizeof (wchar_t));
-    
-    lMap.size = (int)size;
-    int i;
-    for (i = 0; i < size; i++) {
-        lMap.ASCII[i] = ascii[i];
-    }
-    
-    free(ascii);
+
+    lMap.ASCII = (int)*cMap.symbol;
     
     
     lMap.x = cMap.x;
@@ -49,11 +35,6 @@ s_render_t ClientMapPacker::clientToSerial(render_t source)
         lMap.explored = 0;
     }
     
-    if (cMap.occupied) {
-        lMap.occupied = 1;
-    } else {
-        lMap.occupied = 0;
-    }
     
     if (cMap.visible) {
         lMap.visible = 1;
@@ -71,13 +52,12 @@ render_t ClientMapPacker::serialToClient(s_render_t lMap)
     setlocale(LC_ALL, "en_US.UTF-8");
     
     render_t cMap;
+
+    wchar_t *wstr = new wchar_t[2];
     
-    size_t size = lMap.size;
-    wchar_t *wstr = new wchar_t[1];
-    
-    
-    mbstowcs(wstr, lMap.ASCII, size);
-    
+    wstr[0] = (wchar_t)lMap.ASCII;
+    wstr[1] = '\0';
+
     rMap->symbol = wstr;
     
     
@@ -98,11 +78,6 @@ render_t ClientMapPacker::serialToClient(s_render_t lMap)
         cMap.explored = false;
     }
     
-    if (lMap.occupied == 1) {
-        cMap.occupied = true;
-    } else {
-        cMap.occupied = false;
-    }
     
     if (lMap.visible == 1) {
         cMap.visible = true;
@@ -121,7 +96,7 @@ void ClientMapPacker::packToNet(render_t source, unsigned char *buf)
     s_render_t sMap = clientToSerial(source);
     
     /* fixed-length array of s_render_t structures */
-    tn = tpl_map((char *)"S(ic#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
+    tn = tpl_map((char *)"S(iiiffffffii)", &sMap);
     tpl_pack(tn, 0);
     tpl_dump(tn, TPL_MEM | TPL_PREALLOCD, buf, TILE_PACKET_SIZE);
     tpl_free(tn);
@@ -132,7 +107,7 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf, Graph
     clientMap = client;
     s_render_t sMap;
     
-    tn = tpl_map((char *)"S(ic#iiffffffiii)", &sMap, sizeof(sMap.ASCII));
+    tn = tpl_map((char *)"S(iiiffffffii)", &sMap);
     
     if(!tpl_load(tn, TPL_MEM | TPL_EXCESS_OK, buf, TILE_PACKET_SIZE))
     {
@@ -153,7 +128,7 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf, Graph
         clientMap->cMap[cMap.x][cMap.y]->SD = cMap.SD;
         clientMap->cMap[cMap.x][cMap.y]->VD = cMap.VD;
         clientMap->cMap[cMap.x][cMap.y]->explored = cMap.explored;
-        clientMap->cMap[cMap.x][cMap.y]->occupied = cMap.occupied;
+        
         clientMap->cMap[cMap.x][cMap.y]->visible = cMap.visible;
         
         
