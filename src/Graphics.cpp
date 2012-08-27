@@ -779,7 +779,7 @@ void GraphicsTCOD::flushScreen(){
 
 void GraphicsTCOD::drawAt(int x, int y)
 {
-    if (cMap->returnVisible(x, y))
+    if (cMap->returnVisible(x, y) || cMap->returnExplored(x,y))
     {
         H = cMap->returnH(x, y);
         S = cMap->returnS(x, y);
@@ -787,16 +787,6 @@ void GraphicsTCOD::drawAt(int x, int y)
         
         mapOutput->setCharBackground(x, y, TCODColor(0,0,0));
         mapOutput->setDefaultForeground(TCODColor((float)H, (float)S, (float)V));
-        
-        mapOutput->print(x, y, (const wchar_t*)cMap->cMap[x][y]->symbol);
-    }
-    else if(cMap->returnExplored(x,y))
-    {
-        HD = cMap->returnHD(x, y);
-        SD = cMap->returnSD(x, y);
-        VD = cMap->returnVD(x, y);
-        mapOutput->setCharBackground(x, y, TCODColor(0,0,0));
-        mapOutput->setDefaultForeground(TCODColor((float)HD, (float)SD, (float)VD));
         
         mapOutput->print(x, y, (const wchar_t*)cMap->cMap[x][y]->symbol);
     }

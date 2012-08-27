@@ -297,7 +297,7 @@ void Entity::clientFovSync(){
                 else
                 {
                     cMap->cMap[iX][iY]->visible = false;
-                    //cMap->cMap[iX][iY]->occupied = false;
+                    cMap->cMap[iX][iY]->occupied = false;
                 }
                 
                 

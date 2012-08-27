@@ -19,27 +19,29 @@ s_render_t ClientMapPacker::clientToSerial(render_t source)
 
     lMap.ASCII = (int)*cMap.symbol;
     
-    
     lMap.x = cMap.x;
     lMap.y = cMap.y;
-    lMap.H = (double) cMap.H;
-    lMap.S = (double) cMap.S;
-    lMap.V = (double) cMap.V;
-    lMap.HD = (double) cMap.HD;
-    lMap.SD = (double) cMap.SD;
-    lMap.VD = (double) cMap.VD;
     
-    if (cMap.explored) {
-        lMap.explored = 1;
-    } else {
-        lMap.explored = 0;
+    if (cMap.visible)
+    {
+        lMap.H = (double) cMap.H;
+        lMap.S = (double) cMap.S;
+        lMap.V = (double) cMap.V;
+    }
+    else
+    {
+        lMap.H = (double) cMap.HD;
+        lMap.S = (double) cMap.SD;
+        lMap.V = (double) cMap.VD;
     }
     
     
-    if (cMap.visible) {
-        lMap.visible = 1;
-    } else {
-        lMap.visible = 0;
+    if (!cMap.explored && !cMap.visible) {
+        lMap.drawMe = 0;
+    }
+    else
+    {
+        lMap.drawMe = 1;
     }
     
     return lMap;
@@ -66,20 +68,18 @@ render_t ClientMapPacker::serialToClient(s_render_t lMap)
     cMap.H = (float) lMap.H;
     cMap.S = (float) lMap.S;
     cMap.V = (float) lMap.V;
-    cMap.HD = (float) lMap.HD;
-    cMap.SD = (float) lMap.SD;
-    cMap.VD = (float) lMap.VD;
+
     
     
     
-    if (lMap.explored == 1) {
+    if (lMap.drawMe == 1) {
         cMap.explored = true;
     } else {
         cMap.explored = false;
     }
     
     
-    if (lMap.visible == 1) {
+    if (lMap.drawMe == 1) {
         cMap.visible = true;
     } else {
         cMap.visible = false;
@@ -96,7 +96,7 @@ void ClientMapPacker::packToNet(render_t source, unsigned char *buf)
     s_render_t sMap = clientToSerial(source);
     
     /* fixed-length array of s_render_t structures */
-    tn = tpl_map((char *)"S(iiiffffffii)", &sMap);
+    tn = tpl_map((char *)"S(iiifffi)", &sMap);
     tpl_pack(tn, 0);
     tpl_dump(tn, TPL_MEM | TPL_PREALLOCD, buf, TILE_PACKET_SIZE);
     tpl_free(tn);
@@ -107,7 +107,7 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf, Graph
     clientMap = client;
     s_render_t sMap;
     
-    tn = tpl_map((char *)"S(iiiffffffii)", &sMap);
+    tn = tpl_map((char *)"S(iiifffi)", &sMap);
     
     if(!tpl_load(tn, TPL_MEM | TPL_EXCESS_OK, buf, TILE_PACKET_SIZE))
     {
@@ -124,20 +124,9 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf, Graph
         clientMap->cMap[cMap.x][cMap.y]->H = cMap.H;
         clientMap->cMap[cMap.x][cMap.y]->S = cMap.S;
         clientMap->cMap[cMap.x][cMap.y]->V = cMap.V;
-        clientMap->cMap[cMap.x][cMap.y]->HD = cMap.HD;
-        clientMap->cMap[cMap.x][cMap.y]->SD = cMap.SD;
-        clientMap->cMap[cMap.x][cMap.y]->VD = cMap.VD;
-        clientMap->cMap[cMap.x][cMap.y]->explored = cMap.explored;
-        
+        clientMap->cMap[cMap.x][cMap.y]->explored = cMap.explored; 
         clientMap->cMap[cMap.x][cMap.y]->visible = cMap.visible;
         
-        
-       // cout << (int)cMap.x << endl;
-       // cout << (int)cMap.y << endl;
-        
-        //screen->drawAt(cMap.x, cMap.y);
-
-        //clientMap->refreshSquare(sMap.x, sMap.y);
         
     }
     
