@@ -217,9 +217,6 @@ void GraphicsTCOD::drawMainInterface()
 {
     Widget::setConsole(output);
     
-    
-    //new StatusBar(0,0,MAP_WIDTH-20,1);
-    
     HBox *hMenu=new HBox(12,-1,0);
     ToolBar *menuToolbar = new ToolBar(0,0,6,NULL,NULL);
     menuToolbar->addWidget(new Button("Menu",NULL,menuCbk,NULL));
@@ -252,10 +249,7 @@ void GraphicsTCOD::drawMainInterface()
     
     hMenu->setBackgroundColor(TCODColor(0,0,0), TCODColor(128,128,128));
     
-    
-    
-    
-       
+
     
     
     ScrollBox *chatBox = new ScrollBox(0, 0, textOutputConsole->getWidth(), textOutputConsole->getHeight(), 512, textOutputConsole, cMap, this);
@@ -339,13 +333,7 @@ void GraphicsTCOD::drawMainInterface()
         fixBottom();
         
         mapOutput->clear();
-        drawAll();
-        
-        
-        TCODConsole::blit(mapOutput, 0, 0, 0, 0, output, 0, 2);
-        TCODConsole::blit(serverConsole,0,0,0,0,output,MAIN_WIDTH/2,32, 1.0f, 1.0f);
-        TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
-        render();
+
     
         
         
@@ -408,21 +396,25 @@ void GraphicsTCOD::drawMainInterface()
             {
                 cnet->sendCommand("/8");
                 cnet->ignoreResponse();
+                requestMap();
             }
             else if(key.c == 'a' && !commandMode)
             {
                 cnet->sendCommand("/4");
                 cnet->ignoreResponse();
+                requestMap();
             }
             else if(key.c == 's' && !commandMode)
             {
                 cnet->sendCommand("/2");
                 cnet->ignoreResponse();
+                requestMap();
             }
             else if(key.c == 'd' && !commandMode)
             {
                 cnet->sendCommand("/6");
                 cnet->ignoreResponse();
+                requestMap();
             }
             
             
@@ -434,6 +426,7 @@ void GraphicsTCOD::drawMainInterface()
                     cnet->sendCommand("/28");
                 
                 cnet->ignoreResponse();
+                requestMap();
             }
             else if(key.c == 'j' && !commandMode)
             {
@@ -442,6 +435,7 @@ void GraphicsTCOD::drawMainInterface()
                 else
                     cnet->sendCommand("/24");
                 cnet->ignoreResponse();
+                requestMap();
             }
             else if(key.c == 'k' && !commandMode)
             {
@@ -450,6 +444,7 @@ void GraphicsTCOD::drawMainInterface()
                 else
                     cnet->sendCommand("/22");
                 cnet->ignoreResponse();
+                requestMap();
             }
             else if(key.c == 'l' && !commandMode)
             {
@@ -458,6 +453,7 @@ void GraphicsTCOD::drawMainInterface()
                 else
                     cnet->sendCommand("/26");
                 cnet->ignoreResponse();
+                requestMap();
             }
             
             
@@ -500,7 +496,7 @@ void GraphicsTCOD::drawMainInterface()
         
         if(key.vk == TCODK_ENTER)
         {
-            textInput = true;
+            textInput = false;
             std::string tmpText = inputText->getText();
             
             if(tmpText != "" && tmpText.at(0) != '/')
@@ -570,6 +566,13 @@ void GraphicsTCOD::drawMainInterface()
         }
         
         
+        drawAll();
+        
+        
+        TCODConsole::blit(mapOutput, 0, 0, 0, 0, output, 0, 2);
+        TCODConsole::blit(serverConsole,0,0,0,0,output,MAIN_WIDTH/2,32, 1.0f, 1.0f);
+        TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
+        render();
         
         
     }
