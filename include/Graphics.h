@@ -81,6 +81,8 @@ public:
     static void menuCbk(Widget *w, void *userData);
     static void closeMenuCbk(Widget *w, void *userData);
     
+    void requestMap();
+    
     void drawMenu();
     void drawMainInterface();
     

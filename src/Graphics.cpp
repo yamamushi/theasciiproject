@@ -159,7 +159,7 @@ void GraphicsTCOD::drawMenu()
         image->blitRect(output, 2, 0);
         
         output->setDefaultForeground(TCODColor(255, 255, 255));
-        output->print(MAIN_WIDTH-26, MAIN_HEIGHT-3, (const char*)"The ASCII Project 0.0.0k", TCOD_LEFT);
+        output->print(MAIN_WIDTH-26, MAIN_HEIGHT-3, (const char*)"The ASCII Project 0.0.0m", TCOD_LEFT);
         output->print(MAIN_WIDTH-29, MAIN_HEIGHT-2, (const char*)"Yamamushi@gmail.com (c)2012", TCOD_LEFT);
         output->rect(0, 0, 20, 1, true);
         
@@ -270,10 +270,14 @@ void GraphicsTCOD::drawMainInterface()
     
     
     serverBox->insertText("Welcome to The ASCII Project");
-    serverBox->insertText(" Version 0.0.0k ");
+    serverBox->insertText(" Version 0.0.0m ");
+    serverBox->insertText(" ");
+    serverBox->insertText("Tip: all server input begins with ");
+    serverBox->insertText("The / character.");
     
-    for(int i=0; i < ((serverBox->h - 2) - 3); i++)
-        serverBox->insertText(" ");
+    serverBox->insertText(" ");
+    serverBox->insertText(" ");
+    serverBox->insertText(" ");
     
     serverBox->insertText("Please /connect to continue...");
     
@@ -302,7 +306,7 @@ void GraphicsTCOD::drawMainInterface()
     
     boost::asio::io_service pri_io_service;
     tcp::resolver pri_resolver(pri_io_service);
-    tcp::resolver::query pri_query("localhost", "5250");
+    tcp::resolver::query pri_query("pub.theasciiproject.com", "5250");
     
     tcp::resolver::iterator iterator = pri_resolver.resolve(pri_query);
     
@@ -342,18 +346,7 @@ void GraphicsTCOD::drawMainInterface()
         TCODConsole::blit(serverConsole,0,0,0,0,output,MAIN_WIDTH/2,32, 1.0f, 1.0f);
         TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
         render();
-        
-        if(connected && loggedIn)
-        {
-            
-                       
-            cnet->sizeMap();
-            int dataSize = cnet->confirmSize();
-            cnet->sendCommand("/");
-            if(dataSize > 0)
-                cnet->read_map(dataSize);
-            
-        }
+    
         
         
         if(drawMenuCheck)
@@ -481,8 +474,10 @@ void GraphicsTCOD::drawMainInterface()
             
             else if(key.vk == TCODK_NONE)
             {
+                
                 cnet->sendCommand("/5");
                 cnet->ignoreResponse();
+                requestMap();
             }
             
         }
@@ -580,6 +575,25 @@ void GraphicsTCOD::drawMainInterface()
     }
     
     
+    
+}
+
+
+
+void GraphicsTCOD::requestMap()
+{
+    
+    if(connected && loggedIn)
+    {
+        
+        
+        cnet->sizeMap();
+        int dataSize = cnet->confirmSize();
+        cnet->sendCommand("/");
+        if(dataSize > 0)
+            cnet->read_map(dataSize);
+        
+    }
     
 }
 
