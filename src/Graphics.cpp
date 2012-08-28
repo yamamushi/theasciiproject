@@ -396,25 +396,23 @@ void GraphicsTCOD::drawMainInterface()
             {
                 cnet->sendCommand("/8");
                 cnet->ignoreResponse();
-                requestMap();
+                
             }
             else if(key.c == 'a' && !commandMode)
             {
                 cnet->sendCommand("/4");
                 cnet->ignoreResponse();
-                requestMap();
+                
             }
             else if(key.c == 's' && !commandMode)
             {
                 cnet->sendCommand("/2");
                 cnet->ignoreResponse();
-                requestMap();
             }
             else if(key.c == 'd' && !commandMode)
             {
                 cnet->sendCommand("/6");
                 cnet->ignoreResponse();
-                requestMap();
             }
             
             
@@ -426,7 +424,6 @@ void GraphicsTCOD::drawMainInterface()
                     cnet->sendCommand("/28");
                 
                 cnet->ignoreResponse();
-                requestMap();
             }
             else if(key.c == 'j' && !commandMode)
             {
@@ -435,7 +432,6 @@ void GraphicsTCOD::drawMainInterface()
                 else
                     cnet->sendCommand("/24");
                 cnet->ignoreResponse();
-                requestMap();
             }
             else if(key.c == 'k' && !commandMode)
             {
@@ -444,7 +440,6 @@ void GraphicsTCOD::drawMainInterface()
                 else
                     cnet->sendCommand("/22");
                 cnet->ignoreResponse();
-                requestMap();
             }
             else if(key.c == 'l' && !commandMode)
             {
@@ -453,7 +448,6 @@ void GraphicsTCOD::drawMainInterface()
                 else
                     cnet->sendCommand("/26");
                 cnet->ignoreResponse();
-                requestMap();
             }
             
             
@@ -473,9 +467,9 @@ void GraphicsTCOD::drawMainInterface()
                 
                 cnet->sendCommand("/5");
                 cnet->ignoreResponse();
-                requestMap();
             }
-            
+            requestMap();
+
         }
         
         

@@ -311,30 +311,7 @@ void Entity::clientFovSync(){
         
         x++;
     }
-    //    }
-    
-    
-    /*
-     for (int x = 0; x < MAP_WIDTH; x++) {
-     for (int y = 0; y < MAP_HEIGHT; y++) {
-     if (fov[x][y] == true) {
-     
-     cMap->cMap[x][y]->symbol = rMap->getSymbol(x, y);
-     cMap->cMap[x][y]->H = rMap->returnH(x, y);
-     cMap->cMap[x][y]->HD = rMap->returnHD(x, y);
-     cMap->cMap[x][y]->S = rMap->returnS(x, y);
-     cMap->cMap[x][y]->SD = rMap->returnSD(x, y);
-     cMap->cMap[x][y]->V = rMap->returnV(x, y);
-     cMap->cMap[x][y]->VD = rMap->returnVD(x, y);
-     //cMap->cMap[x][y]->explored = true;
-     //cMap->cMap[x][y]->occupied = rMap->returnOccupied(x, y);
-     //cMap->cMap[x][y]->visible = rMap->returnVisible(x, y);
-     
-     }
-     }
-     }
-     */
-    
+
     
 }
 
