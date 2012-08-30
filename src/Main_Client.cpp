@@ -64,6 +64,7 @@ int main(int argc, char *argv[])
         
         graphicsEngine->drawMenu();
         
+        
         while(!TCODConsole::isWindowClosed())
         {
             graphicsEngine->drawMainInterface();

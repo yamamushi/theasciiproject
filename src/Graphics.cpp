@@ -293,6 +293,7 @@ void GraphicsTCOD::drawMainInterface()
     bool popupOpen = false;
     bool commandMode = false;
     bool digActionMode = false;
+    bool mapChecked = false;
     //bool placeActionMode = false;
     
     connected = false;
@@ -305,6 +306,9 @@ void GraphicsTCOD::drawMainInterface()
     tcp::resolver::iterator iterator = pri_resolver.resolve(pri_query);
     
     cnet = new ClientSession(pri_io_service, iterator, cMap, this);
+    //TCODConsole::disableKeyboardRepeat();
+   
+    int timer = 0;
     
     while( !TCODConsole::isWindowClosed() )
     {
@@ -392,23 +396,31 @@ void GraphicsTCOD::drawMainInterface()
             {
                 cnet->sendCommand("/8");
                 cnet->ignoreResponse();
+                requestMap();
+                mapChecked = true;
                 
             }
             else if(key.c == 'a' && !commandMode)
             {
                 cnet->sendCommand("/4");
                 cnet->ignoreResponse();
+                requestMap();
+                mapChecked = true;
                 
             }
             else if(key.c == 's' && !commandMode)
             {
                 cnet->sendCommand("/2");
                 cnet->ignoreResponse();
+                requestMap();
+                mapChecked = true;
             }
             else if(key.c == 'd' && !commandMode)
             {
                 cnet->sendCommand("/6");
                 cnet->ignoreResponse();
+                requestMap();
+                mapChecked = true;
             }
             
             
@@ -420,6 +432,8 @@ void GraphicsTCOD::drawMainInterface()
                     cnet->sendCommand("/28");
                 
                 cnet->ignoreResponse();
+                requestMap();
+                mapChecked = true;
             }
             else if(key.c == 'j' && !commandMode)
             {
@@ -428,6 +442,8 @@ void GraphicsTCOD::drawMainInterface()
                 else
                     cnet->sendCommand("/24");
                 cnet->ignoreResponse();
+                requestMap();
+                mapChecked = true;
             }
             else if(key.c == 'k' && !commandMode)
             {
@@ -436,6 +452,8 @@ void GraphicsTCOD::drawMainInterface()
                 else
                     cnet->sendCommand("/22");
                 cnet->ignoreResponse();
+                requestMap();
+                mapChecked = true;
             }
             else if(key.c == 'l' && !commandMode)
             {
@@ -444,6 +462,8 @@ void GraphicsTCOD::drawMainInterface()
                 else
                     cnet->sendCommand("/26");
                 cnet->ignoreResponse();
+                requestMap();
+                mapChecked = true;
             }
             
             
@@ -457,9 +477,7 @@ void GraphicsTCOD::drawMainInterface()
                 if(digActionMode)
                     digActionMode = false;
             }
-            
-            requestMap();
-            
+
         }
         
         
@@ -568,9 +586,17 @@ void GraphicsTCOD::drawMainInterface()
             mapOutput->setDefaultForeground(TCODColor(255,255,255));
             mapOutput->printEx(mapOutput->getWidth()/2, mapOutput->getHeight()-1, TCOD_BKGND_NONE, TCOD_CENTER, "Select Mode", TCODColor(255,255,255));
         }
+        
+        
+        if(!mapChecked && timer == 0)
+        {
+            requestMap();
+            mapChecked = true;
+        }
+        else
+            mapChecked = false;
+        
         TCODConsole::blit(mapOutput, 0, 0, 0, 0, output, 0, 2);
-        
-        
         inputText->render(serverConsole);
         chatBox->render();
         serverBox->render();
@@ -583,6 +609,11 @@ void GraphicsTCOD::drawMainInterface()
         TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
         render();
         
+        timer++;
+        if(timer >= 30)
+        {
+            timer = 0;
+        }
         
         
     }
@@ -605,6 +636,7 @@ void GraphicsTCOD::requestMap()
         cnet->sendCommand("/");
         if(dataSize > 0)
             cnet->read_map(dataSize);
+        
         
     }
     
