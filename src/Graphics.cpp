@@ -615,7 +615,7 @@ void GraphicsTCOD::drawMainInterface()
             timer = 0;
         }
         
-        if(connected && loggedIn && textInput == false)
+        if((key.c == 'a' || key.c == 's' || key.c == 'w' || key.c == 'd') && connected && loggedIn && !textInput)
         {
             while(key.vk != TCODK_NONE)
             {
