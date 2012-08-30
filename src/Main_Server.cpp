@@ -145,10 +145,13 @@ int main(int ac, char* av[]){
     worldMap->initWorldMap();
     
     
+
     try
     {
         boost::asio::io_service io_service;
         tcp::endpoint endpoint(tcp::v4(), 5250);
+        boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);
+        signals.async_wait(boost::bind(&boost::asio::io_service::stop, &io_service));
         game_server server(io_service, endpoint);
         io_service.run();
     }
