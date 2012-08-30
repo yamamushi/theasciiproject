@@ -104,7 +104,7 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     
     
     
-    TCODConsole::setKeyboardRepeat(200, 100);
+    TCODConsole::setKeyboardRepeat(100, 10);
     
     output->setDefaultBackground(TCODColor(0, 0, 0));
     output->clear();
@@ -307,7 +307,7 @@ void GraphicsTCOD::drawMainInterface()
     
     cnet = new ClientSession(pri_io_service, iterator, cMap, this);
     //TCODConsole::disableKeyboardRepeat();
-   
+    
     int timer = 0;
     
     while( !TCODConsole::isWindowClosed() )
@@ -327,7 +327,7 @@ void GraphicsTCOD::drawMainInterface()
             serverBox->update(mouse);
             
             
-                    
+            
         }
         
         
@@ -396,31 +396,31 @@ void GraphicsTCOD::drawMainInterface()
             {
                 cnet->sendCommand("/8");
                 cnet->ignoreResponse();
-                requestMap();
-                mapChecked = true;
+                timer = 0;
+                mapChecked = false;
                 
             }
             else if(key.c == 'a' && !commandMode)
             {
                 cnet->sendCommand("/4");
                 cnet->ignoreResponse();
-                requestMap();
-                mapChecked = true;
+                timer = 0;
+                mapChecked = false;
                 
             }
             else if(key.c == 's' && !commandMode)
             {
                 cnet->sendCommand("/2");
                 cnet->ignoreResponse();
-                requestMap();
-                mapChecked = true;
+                timer = 0;
+                mapChecked = false;
             }
             else if(key.c == 'd' && !commandMode)
             {
                 cnet->sendCommand("/6");
                 cnet->ignoreResponse();
-                requestMap();
-                mapChecked = true;
+                timer = 0;
+                mapChecked = false;
             }
             
             
@@ -432,8 +432,8 @@ void GraphicsTCOD::drawMainInterface()
                     cnet->sendCommand("/28");
                 
                 cnet->ignoreResponse();
-                requestMap();
-                mapChecked = true;
+                timer = 0;
+                mapChecked = false;
             }
             else if(key.c == 'j' && !commandMode)
             {
@@ -442,8 +442,8 @@ void GraphicsTCOD::drawMainInterface()
                 else
                     cnet->sendCommand("/24");
                 cnet->ignoreResponse();
-                requestMap();
-                mapChecked = true;
+                timer = 0;
+                mapChecked = false;
             }
             else if(key.c == 'k' && !commandMode)
             {
@@ -452,8 +452,8 @@ void GraphicsTCOD::drawMainInterface()
                 else
                     cnet->sendCommand("/22");
                 cnet->ignoreResponse();
-                requestMap();
-                mapChecked = true;
+                timer = 0;
+                mapChecked = false;
             }
             else if(key.c == 'l' && !commandMode)
             {
@@ -462,8 +462,8 @@ void GraphicsTCOD::drawMainInterface()
                 else
                     cnet->sendCommand("/26");
                 cnet->ignoreResponse();
-                requestMap();
-                mapChecked = true;
+                timer = 0;
+                mapChecked = false;
             }
             
             
@@ -477,7 +477,7 @@ void GraphicsTCOD::drawMainInterface()
                 if(digActionMode)
                     digActionMode = false;
             }
-
+            
         }
         
         
@@ -601,9 +601,9 @@ void GraphicsTCOD::drawMainInterface()
         chatBox->render();
         serverBox->render();
         Widget::renderWidgets();
-        fixBottom();   
+        fixBottom();
         
-            
+        
         
         TCODConsole::blit(serverConsole,0,0,0,0,output,MAIN_WIDTH/2,32, 1.0f, 1.0f);
         TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
@@ -614,6 +614,14 @@ void GraphicsTCOD::drawMainInterface()
         {
             timer = 0;
         }
+        
+        if(connected && loggedIn && textInput == false)
+        {
+            while(key.vk != TCODK_NONE)
+            {
+                TCODSystem::checkForEvent(TCOD_EVENT_KEY_PRESS|TCOD_EVENT_MOUSE,&key,&mouse);
+            }
+        } 
         
         
     }

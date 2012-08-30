@@ -21,6 +21,7 @@
 		743612FD15BFA82D00CC2BCA /* Main_Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888815BF04EF006595CE /* Main_Client.cpp */; };
 		7436130015BFA84900CC2BCA /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		7436130615BFAC0D00CC2BCA /* Platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7436130515BFAC0D00CC2BCA /* Platform.cpp */; };
+		743EA88815EF9D2B00909E83 /* font.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487FC15BF04EF006595CE /* font.png */; };
 		744487DA15BF047E006595CE /* server.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487D915BF047E006595CE /* server.1 */; };
 		744488B315BF04EF006595CE /* libtcod-gui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887B15BF04EF006595CE /* libtcod-gui.dylib */; };
 		744488B415BF04EF006595CE /* libtcod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887C15BF04EF006595CE /* libtcod.dylib */; };
@@ -43,7 +44,6 @@
 		74627EBF15E6A69300B66CAB /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74627EBE15E6A69300B66CAB /* WorldMap.cpp */; };
 		7466BEF515DD893D00584BE9 /* NetworkLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888A15BF04EF006595CE /* NetworkLib.cpp */; };
 		7466BEF615DDB84300584BE9 /* NetworkLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888A15BF04EF006595CE /* NetworkLib.cpp */; };
-		748010AC15DF8AD800F3D22E /* font.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487FC15BF04EF006595CE /* font.png */; };
 		74943A2D15E7F6860049537B /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888615BF04EF006595CE /* Graphics.cpp */; };
 		749EC50315DA291C0012A646 /* MenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 749EC50215DA291C0012A646 /* MenuBackground.png */; };
 		74C0D66115E898A60069B8DA /* at.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74C0D66015E898A60069B8DA /* at.jpg */; };
@@ -76,8 +76,17 @@
 			dstSubfolderSpec = 7;
 			files = (
 				74C0D66415E8994F0069B8DA /* MenuBackground.png in CopyFiles */,
-				748010AC15DF8AD800F3D22E /* font.png in CopyFiles */,
 				743475DD15D8CF8C006C3CFA /* arial12x12.png in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		743EA88715EF9D1E00909E83 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = data;
+			dstSubfolderSpec = 7;
+			files = (
+				743EA88815EF9D2B00909E83 /* font.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1146,6 +1155,7 @@
 				743612D915BFA75800CC2BCA /* Resources */,
 				743612FE15BFA83D00CC2BCA /* CopyFiles */,
 				7436130215BFA8BF00CC2BCA /* CopyFiles */,
+				743EA88715EF9D1E00909E83 /* CopyFiles */,
 			);
 			buildRules = (
 			);
