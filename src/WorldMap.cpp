@@ -16,6 +16,7 @@ void WorldMap::initWorldMap()
             {
 
                 eMap->at(x).at(y).at(z) = new EntityMap(MAP_WIDTH, MAP_HEIGHT, new TileMap(MAP_WIDTH, MAP_HEIGHT) );
+                eMap->at(x).at(y).at(z)->initWorldMap(this, x, y, z);
                 
             }
         }
@@ -69,8 +70,8 @@ void WorldMap::moveEnt(Entity *tgt, int x, int y)
     {
         if(tWX == 0)
             tWX = wX;
-        
-        moveEntTo(tgt, tWX-1, tWY, tWZ, MAP_WIDTH-1, oldy);
+        if(!eMap->at(tWX-1).at(tWY).at(tWZ)->contextMap->virtMap[MAP_WIDTH-1][oldy]->blocked)
+            moveEntTo(tgt, tWX-1, tWY, tWZ, MAP_WIDTH-1, oldy);
         return;
     }
     else if(!moved && oldx+x >= MAP_WIDTH)
@@ -78,7 +79,8 @@ void WorldMap::moveEnt(Entity *tgt, int x, int y)
         if(tWX == wX-1)
             tWX = -1;
         
-        moveEntTo(tgt, tWX+1, tWY, tWZ, 1, oldy);
+        if(!eMap->at(tWX+1).at(tWY).at(tWZ)->contextMap->virtMap[1][oldy]->blocked)
+            moveEntTo(tgt, tWX+1, tWY, tWZ, 1, oldy);
         return;
     }
     else if(!moved && oldy+y <= 0)
@@ -86,7 +88,8 @@ void WorldMap::moveEnt(Entity *tgt, int x, int y)
         if(tWY == 0)
             tWY = wY;
         
-        moveEntTo(tgt, tWX, tWY-1, tWZ, oldx, MAP_HEIGHT-1);
+        if(!eMap->at(tWX).at(tWY-1).at(tWZ)->contextMap->virtMap[oldx][MAP_HEIGHT-1]->blocked)
+            moveEntTo(tgt, tWX, tWY-1, tWZ, oldx, MAP_HEIGHT-1);
         return;
     }
     else if(!moved && oldy+y >= MAP_HEIGHT)
@@ -94,7 +97,8 @@ void WorldMap::moveEnt(Entity *tgt, int x, int y)
         if(tWY == wY-1)
             tWY = -1;
         
-        moveEntTo(tgt, tWX, tWY+1, tWZ, oldx, 1);
+        if(!eMap->at(tWX).at(tWY+1).at(tWZ)->contextMap->virtMap[oldx][1]->blocked)
+            moveEntTo(tgt, tWX, tWY+1, tWZ, oldx, 1);
         return;
     }
 }
@@ -102,6 +106,7 @@ void WorldMap::moveEnt(Entity *tgt, int x, int y)
 
 void WorldMap::moveEntTo(Entity *tgt, int x, int y, int z, int px, int py)
 {
+    
     
     
     eMap->at(tgt->wX).at(tgt->wY).at(tgt->wZ)->removeFromEntMap(tgt);
@@ -123,28 +128,25 @@ EntityMap *WorldMap::getNextEntMap(Entity *tgt, int dir)
     tWY = tgt->wY;
     //tWZ = tgt->wZ;
     
-    if(dir == 4)
+    if (dir == 1)
     {
-        if(tWX == 0)
+        if(tWX != 0 && tgt->wY+1 == wY)
         {
-            return eMap->at(wX-1).at(tgt->wY).at(tgt->wZ);
+            return eMap->at(tgt->wX-1).at(0).at(tgt->wZ);
         }
-        else
+        else if(tWX != 0 && tgt->wY+1 != wY)
         {
-            return eMap->at(tgt->wX-1).at(tgt->wY).at(tgt->wZ);
+            return eMap->at(tgt->wX-1).at(tgt->wY+1).at(tgt->wZ);
+        }
+        else if(tWX == 0 && tgt->wY+1 == wY)
+        {
+            return eMap->at(wX-1).at(0).at(tgt->wZ);
+        }
+        else if(tgt->wX == 0 && tgt->wY+1 != wY)
+        {
+            return eMap->at(wX-1).at(tgt->wY+1).at(tgt->wZ);
         }
         
-    }
-    else if(dir == 8)
-    {
-        if(tWY == 0)
-        {
-            return eMap->at(tgt->wX).at(wY-1).at(tgt->wZ);
-        }
-        else
-        {
-            return eMap->at(tgt->wX).at(tgt->wY-1).at(tgt->wZ);
-        }
     }
     else if(dir == 2)
     {
@@ -155,6 +157,37 @@ EntityMap *WorldMap::getNextEntMap(Entity *tgt, int dir)
         else
         {
             return eMap->at(tgt->wX).at(tgt->wY+1).at(tgt->wZ);
+        }
+        
+    }
+    else if(dir == 3)
+    {
+        if(tgt->wX+1 != wX && tgt->wY+1 != wY)
+        {
+            return eMap->at(tgt->wX+1).at(tgt->wY+1).at(tgt->wZ);
+        }
+        else if(tgt->wX+1 != wX && tgt->wY+1 == wY)
+        {
+            return eMap->at(tgt->wX+1).at(0).at(tgt->wZ);
+        }
+        else if(tgt->wX+1 == wX && tgt->wY+1 != wY)
+        {
+            return eMap->at(0).at(tgt->wY+1).at(tgt->wZ);
+        }
+        else if(tgt->wX+1 == wX && tgt->wY+1 == wY)
+        {
+            return eMap->at(0).at(0).at(tgt->wZ);
+        }
+    }
+    else if(dir == 4)
+    {
+        if(tWX == 0)
+        {
+            return eMap->at(wX-1).at(tgt->wY).at(tgt->wZ);
+        }
+        else
+        {
+            return eMap->at(tgt->wX-1).at(tgt->wY).at(tgt->wZ);
         }
         
     }
@@ -169,6 +202,56 @@ EntityMap *WorldMap::getNextEntMap(Entity *tgt, int dir)
             return eMap->at(tgt->wX+1).at(tgt->wY).at(tgt->wZ);
         }
     }
+    else if(dir == 7)
+    {
+        if(tWX != 0 && tgt->wY != 0)
+        {
+            return eMap->at(tgt->wX-1).at(tgt->wY-1).at(tgt->wZ);
+        }
+        else if(tWX != 0 && tgt->wY == 0)
+        {
+            return eMap->at(tgt->wX-1).at(wY-1).at(tgt->wZ);
+        }
+        else if(tWX == 0 && tgt->wY != wY)
+        {
+            return eMap->at(wX-1).at(tgt->wY-1).at(tgt->wZ);
+        }
+        else if(tWX == 0 && tgt->wY == wY)
+        {
+            return eMap->at(wX-1).at(wY-1).at(tgt->wZ);
+        }
+    }
+    else if(dir == 8)
+    {
+        if(tWY == 0)
+        {
+            return eMap->at(tgt->wX).at(wY-1).at(tgt->wZ);
+        }
+        else
+        {
+            return eMap->at(tgt->wX).at(tgt->wY-1).at(tgt->wZ);
+        }
+    }
+    else if(dir == 9)
+    {
+        if(tWX+1 != wX && tgt->wY != 0)
+        {
+            return eMap->at(tgt->wX+1).at(tgt->wY-1).at(tgt->wZ);
+        }
+        else if(tWX+1 != wX && tgt->wY == 0)
+        {
+            return eMap->at(tgt->wX+1).at(wY-1).at(tgt->wZ);
+        }
+        else if(tWX+1 == wX && tgt->wY != wY)
+        {
+            return eMap->at(0).at(tgt->wY-1).at(tgt->wZ);
+        }
+        else if(tWX+1 == wX && tgt->wY == wY)
+        {
+            return eMap->at(0).at(wY-1).at(tgt->wZ);
+        }
+    }
+    
     else
         return nullptr;
     

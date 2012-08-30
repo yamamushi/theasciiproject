@@ -94,6 +94,23 @@ void EntityMap::initEntityMap(int x, int y, TileMap *map){
     
 }
 
+
+
+void EntityMap::initWorldMap(WorldMap *WMap, int x, int y, int z)
+{
+    
+    wMap = WMap;
+    wX = x;
+    wY = y;
+    wZ = z;
+      
+    
+}
+
+
+
+
+
 void EntityMap::addToMap(Entity *entity){
     
 	Entity *src = entity;

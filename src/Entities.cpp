@@ -148,7 +148,7 @@ bool Entity::move(int dx, int dy)
 bool Entity::digTile(int dx, int dy)
 {
     
-    if(dx+X >= 0 && dx+X <= MAP_WIDTH && dy+Y >= 0 && dy+Y <= MAP_HEIGHT)
+    if(dx+X > 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y < MAP_HEIGHT)
     {
         if (initialized) {
             if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
@@ -183,6 +183,137 @@ bool Entity::digTile(int dx, int dy)
         
         
     }
+    else if(dx+X > 0 && dx+X >= MAP_WIDTH && dy+Y >= 0 && dy+Y < MAP_HEIGHT)
+    {
+        if (initialized) {
+            if ((wMap->getNextEntMap(this, 6)->contextMap->virtMap[1][(dy + Y)]->blocked)){
+                
+                wMap->getNextEntMap(this, 6)->contextMap->removeTile(1, dy+Y);
+                wMap->getNextEntMap(this, 6)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return true;
+            }
+            else {
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    else if(dx+X <= 0 && dx+X < MAP_WIDTH && dy+Y >= 0 && dy+Y < MAP_HEIGHT)
+    {
+        if (initialized) {
+            if ((wMap->getNextEntMap(this, 4)->contextMap->virtMap[MAP_WIDTH-1][(dy + Y)]->blocked)){
+                wMap->getNextEntMap(this, 4)->contextMap->removeTile(MAP_WIDTH-1, dy+Y);
+                wMap->getNextEntMap(this, 4)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return true;
+            }
+            else {
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    else if(dx+X >= 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y >= MAP_HEIGHT)
+    {
+        cout << "test 1" << endl;
+        if (initialized) {
+            if ((wMap->getNextEntMap(this, 2)->contextMap->virtMap[dx+X][(1)]->blocked)){
+                wMap->getNextEntMap(this, 2)->contextMap->removeTile(dx+X,1);
+                wMap->getNextEntMap(this, 2)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return true;
+            }
+            else {
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+    else if(dx+X >= 0 && dx+X < MAP_WIDTH && dy+Y <= 0 && dy+Y < MAP_HEIGHT)
+    {
+        cout << "test 2" << endl;;
+        if (initialized) {
+            if ((wMap->getNextEntMap(this, 8)->contextMap->virtMap[dx+X][(MAP_HEIGHT-1)]->blocked)){
+                wMap->getNextEntMap(this, 8)->contextMap->removeTile(dx+X, MAP_HEIGHT-1);
+                wMap->getNextEntMap(this, 8)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return true;
+            }
+            else {
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+
     else
     {
         return false;
@@ -212,6 +343,147 @@ bool Entity::placeTile(int dx, int dy)
                 entMap->contextMap->placeTile(dx + X, dy + Y);
                 //entMap->refreshTileMap();
                 entMap->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    else if(dx+X > 0 && dx+X >= MAP_WIDTH && dy+Y >= 0 && dy+Y < MAP_HEIGHT)
+    {
+        if (initialized) {
+            if ((wMap->getNextEntMap(this, 6)->contextMap->virtMap[1][(dy + Y)]->blocked) || wMap->getNextEntMap(this, 6)->checkOccupied(1, dy+Y)){
+                wMap->getNextEntMap(this, 6)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return false;
+            }
+            else {
+                
+                wMap->getNextEntMap(this, 6)->contextMap->placeTile(1, dy + Y);
+                //entMap->refreshTileMap();
+                wMap->getNextEntMap(this, 6)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    else if(dx+X <= 0 && dx+X < MAP_WIDTH && dy+Y >= 0 && dy+Y < MAP_HEIGHT)
+    {
+        if (initialized) {
+            if ((wMap->getNextEntMap(this, 4)->contextMap->virtMap[MAP_WIDTH-1][(dy + Y)]->blocked) || wMap->getNextEntMap(this, 4)->checkOccupied(MAP_WIDTH-1, dy+Y)){
+                wMap->getNextEntMap(this, 4)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return false;
+            }
+            else {
+                
+                wMap->getNextEntMap(this, 4)->contextMap->placeTile(MAP_WIDTH-1, dy + Y);
+                //entMap->refreshTileMap();
+                wMap->getNextEntMap(this, 4)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    else if(dx+X >= 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y >= MAP_HEIGHT)
+    {
+        if (initialized) {
+            if ((wMap->getNextEntMap(this, 2)->contextMap->virtMap[dx+X][(1)]->blocked) || wMap->getNextEntMap(this, 2)->checkOccupied(dx+X, 1)){
+                wMap->getNextEntMap(this, 2)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return false;
+            }
+            else {
+                
+                wMap->getNextEntMap(this, 2)->contextMap->placeTile(dx+X, 1);
+                //entMap->refreshTileMap();
+                wMap->getNextEntMap(this, 2)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    else if(dx+X >= 0 && dx+X < MAP_WIDTH && dy+Y <= 0 && dy+Y < MAP_HEIGHT)
+    {
+        cout << "checking north" << endl;
+        if (initialized) {
+            if ((wMap->getNextEntMap(this, 8)->contextMap->virtMap[X][(MAP_HEIGHT-1)]->blocked) || wMap->getNextEntMap(this, 8)->checkOccupied(dx+X, MAP_HEIGHT-1)){
+                wMap->getNextEntMap(this, 8)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return false;
+            }
+            else {
+                
+                wMap->getNextEntMap(this, 8)->contextMap->placeTile(dx+X, MAP_HEIGHT-1);
+                //entMap->refreshTileMap();
+                wMap->getNextEntMap(this, 8)->refreshEntityMap();
                 
                 if (clientActive) {
                     
@@ -455,8 +727,86 @@ void Entity::clientFovSync(){
                  } */
                 
             }
+            else if(y < 0 && y < MAP_HEIGHT && x > 0 && x > MAP_WIDTH)
+            {
+                
+                RenderMap *trMap = wMap->getNextEntMap(this, 9)->rMap;
+                int ix, iy;
+                ix = x-MAP_WIDTH;
+                iy = MAP_HEIGHT+y;
+                
+                cMap->cMap[iX-1][iY+1]->symbol = trMap->getSymbol(ix, iy);
+                cMap->cMap[iX-1][iY+1]->H = trMap->returnH(ix, iy);
+                cMap->cMap[iX-1][iY+1]->HD = trMap->returnHD(ix, iy);
+                cMap->cMap[iX-1][iY+1]->S = trMap->returnS(ix, iy);
+                cMap->cMap[iX-1][iY+1]->SD = trMap->returnSD(ix, iy);
+                cMap->cMap[iX-1][iY+1]->V = trMap->returnV(ix, iy);
+                cMap->cMap[iX-1][iY+1]->VD = trMap->returnVD(ix, iy);
+                //cMap->cMap[iX][iY]->visible = true;
+                //cMap->cMap[cX][cY]->explored = true;
+                
 
-
+            }
+            else if(y > 0 && y > MAP_HEIGHT && x > 0 && x > MAP_WIDTH)
+            {
+                
+                RenderMap *trMap = wMap->getNextEntMap(this, 3)->rMap;
+                int ix, iy;
+                ix = x-MAP_WIDTH;
+                iy = y-MAP_HEIGHT;
+                
+                cMap->cMap[iX-1][iY-1]->symbol = trMap->getSymbol(ix, iy);
+                cMap->cMap[iX-1][iY-1]->H = trMap->returnH(ix, iy);
+                cMap->cMap[iX-1][iY-1]->HD = trMap->returnHD(ix, iy);
+                cMap->cMap[iX-1][iY-1]->S = trMap->returnS(ix, iy);
+                cMap->cMap[iX-1][iY-1]->SD = trMap->returnSD(ix, iy);
+                cMap->cMap[iX-1][iY-1]->V = trMap->returnV(ix, iy);
+                cMap->cMap[iX-1][iY-1]->VD = trMap->returnVD(ix, iy);
+                //cMap->cMap[iX][iY]->visible = true;
+                //cMap->cMap[cX][cY]->explored = true;
+                
+                
+            }
+            else if(y < 0 && y < MAP_HEIGHT && x < 0 && x < MAP_WIDTH)
+            {
+                
+                RenderMap *trMap = wMap->getNextEntMap(this, 7)->rMap;
+                int ix, iy;
+                ix = MAP_WIDTH+x;
+                iy = MAP_HEIGHT+y;
+                
+                cMap->cMap[iX+1][iY+1]->symbol = trMap->getSymbol(ix, iy);
+                cMap->cMap[iX+1][iY+1]->H = trMap->returnH(ix, iy);
+                cMap->cMap[iX+1][iY+1]->HD = trMap->returnHD(ix, iy);
+                cMap->cMap[iX+1][iY+1]->S = trMap->returnS(ix, iy);
+                cMap->cMap[iX+1][iY+1]->SD = trMap->returnSD(ix, iy);
+                cMap->cMap[iX+1][iY+1]->V = trMap->returnV(ix, iy);
+                cMap->cMap[iX+1][iY+1]->VD = trMap->returnVD(ix, iy);
+                //cMap->cMap[iX][iY]->visible = true;
+                //cMap->cMap[cX][cY]->explored = true;
+                
+                
+            }
+            else if(y > 0 && y > MAP_HEIGHT && x < 0 && x < MAP_WIDTH)
+            {
+                
+                RenderMap *trMap = wMap->getNextEntMap(this, 1)->rMap;
+                int ix, iy;
+                ix = MAP_WIDTH+x;
+                iy = y-MAP_HEIGHT;
+                
+                cMap->cMap[iX+1][iY-1]->symbol = trMap->getSymbol(ix, iy);
+                cMap->cMap[iX+1][iY-1]->H = trMap->returnH(ix, iy);
+                cMap->cMap[iX+1][iY-1]->HD = trMap->returnHD(ix, iy);
+                cMap->cMap[iX+1][iY-1]->S = trMap->returnS(ix, iy);
+                cMap->cMap[iX+1][iY-1]->SD = trMap->returnSD(ix, iy);
+                cMap->cMap[iX+1][iY-1]->V = trMap->returnV(ix, iy);
+                cMap->cMap[iX+1][iY-1]->VD = trMap->returnVD(ix, iy);
+                //cMap->cMap[iX][iY]->visible = true;
+                //cMap->cMap[cX][cY]->explored = true;
+                
+                
+            }
             
             
             y++;

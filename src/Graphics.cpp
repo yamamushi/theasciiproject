@@ -298,16 +298,34 @@ void GraphicsTCOD::drawMainInterface()
     
     connected = false;
     loggedIn = false;
+    APIinQueue = false;
+    
     
     boost::asio::io_service pri_io_service;
     tcp::resolver pri_resolver(pri_io_service);
-    tcp::resolver::query pri_query("pub.theasciiproject.com", "5250");
     
-    tcp::resolver::iterator iterator = pri_resolver.resolve(pri_query);
+    if(DEBUG_MODE)
+    {
+        tcp::resolver::query pri_query("localhost", "5250");
+        
+        tcp::resolver::iterator iterator = pri_resolver.resolve(pri_query);
+        
+        cnet = new ClientSession(pri_io_service, iterator, cMap, this);
+        
+        
+    }
+    else
+    {
+        tcp::resolver::query pri_query("pub.theasciiproject.com", "5250");
+        
+        tcp::resolver::iterator iterator = pri_resolver.resolve(pri_query);
+        
+        cnet = new ClientSession(pri_io_service, iterator, cMap, this);
+        
+        
+        
+    }
     
-    cnet = new ClientSession(pri_io_service, iterator, cMap, this);
-    
-    APIinQueue = false;
     boost::thread netThread(&GraphicsTCOD::requestMap, this);
     
     
@@ -404,7 +422,7 @@ void GraphicsTCOD::drawMainInterface()
                 
                 apiCall = "/8";
                 APIinQueue = true;
-            
+                
                 
             }
             else if(key.c == 'a' && !commandMode)
@@ -412,7 +430,7 @@ void GraphicsTCOD::drawMainInterface()
                 
                 apiCall = "/4";
                 APIinQueue = true;
-            
+                
                 
             }
             else if(key.c == 's' && !commandMode)
@@ -420,14 +438,14 @@ void GraphicsTCOD::drawMainInterface()
                 
                 apiCall = "/2";
                 APIinQueue = true;
- 
+                
             }
             else if(key.c == 'd' && !commandMode)
             {
                 
                 apiCall = "/6";
                 APIinQueue = true;
- 
+                
             }
             
             
@@ -440,7 +458,7 @@ void GraphicsTCOD::drawMainInterface()
                 
                 
                 APIinQueue = true;
-               
+                
             }
             else if(key.c == 'j' && !commandMode)
             {
@@ -463,7 +481,7 @@ void GraphicsTCOD::drawMainInterface()
                 
                 
                 APIinQueue = true;
-
+                
             }
             else if(key.c == 'l' && !commandMode)
             {
@@ -564,7 +582,7 @@ void GraphicsTCOD::drawMainInterface()
                         cnet->sendCommand(tmpText);
                         cnet->getResponse();
                     }
-
+                    
                     else if(connected && loggedIn)
                     {
                         serverCommandInQueue = true;
@@ -616,7 +634,7 @@ void GraphicsTCOD::drawMainInterface()
         TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
         render();
         
-
+        
         
         /* if((key.c == 'a' || key.c == 's' || key.c == 'w' || key.c == 'd') && connected && loggedIn && !textInput)
          {

@@ -39,7 +39,7 @@
 
 
 class FovLib;
-
+class WorldMap;
 
 
 class EntityMap {
@@ -66,11 +66,21 @@ public:
     TileMap *contextMap;
     FovLib *fovLib;
     RenderMap *rMap;
+    WorldMap *wMap;
+    
+    
+    int wX;
+    int wY;
+    int wZ;
     
     std::vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
     
     EntityMap(int x, int y, TileMap *map);
     void initEntityMap(int x, int y, TileMap *map);
+    
+    
+    void initWorldMap(WorldMap *WMap, int x, int y, int z);
+    
     void refreshGraphicsMap();
     
     void placeInRandomRoom(Entity *ent);

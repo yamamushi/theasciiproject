@@ -36,6 +36,11 @@
  * =====================================================================================
  */
 
+
+
+
+#define DEBUG_MODE true
+
 // the constant TCP_BUFSIZE_READ is the maximum size of the standard input
 // buffer of TcpSocket
 #define RSIZE TCP_BUFSIZE_READ
