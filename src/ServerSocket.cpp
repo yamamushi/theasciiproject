@@ -515,10 +515,6 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             
             boost::asio::async_write(socket_, boost::asio::buffer(string(time + "\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
-        else if(command == "test")
-        {
-            player->refreshFov();
-        }
         else if( command == "" )
         {
             boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
@@ -701,8 +697,8 @@ void client_connection::updatePlayerMap()
     mapBuf->clear();
     
     
-    //player->clientFovSync();
-    player->refreshFov();
+    player->clientFovSync();
+    //player->refreshFov();
     
     renderForPlayer(player, mapBuf);
     
@@ -811,11 +807,11 @@ void client_connection::handleAPI(int api)
     
     
     
-    else if (api == 5)
+    /*else if (api == 5)
     {
         //worldMap->moveEnt(player, 0, 0);
         player->clientFovSync();
-    }
+    } */
     /*
     else if ( api == 15)
     {

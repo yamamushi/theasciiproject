@@ -57,13 +57,15 @@ private:
     
     Entity *current;
     
-    FovLib *fovLib;
-    RenderMap *rMap;
+    
+    
     
 public:
     
     Entity *player;
     TileMap *contextMap;
+    FovLib *fovLib;
+    RenderMap *rMap;
     
     std::vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
     

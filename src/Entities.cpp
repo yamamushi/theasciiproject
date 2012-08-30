@@ -107,7 +107,7 @@ bool Entity::move(int dx, int dy)
     if(dx+X > 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y < MAP_HEIGHT)
     {
         if (initialized) {
-            if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
+            if ((world->virtMap[(dx + X)][(dy + Y)]->blocked) || entMap->checkOccupied(dx+X, dy+Y)){
                 entMap->refreshEntityMap();
                 
                 if (clientActive) {
@@ -197,7 +197,7 @@ bool Entity::placeTile(int dx, int dy)
     if(dx+X > 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y < MAP_HEIGHT)
     {
         if (initialized) {
-            if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
+            if ((world->virtMap[(dx + X)][(dy + Y)]->blocked) || entMap->checkOccupied(dx+X, dy+Y)){
                 entMap->refreshEntityMap();
                 
                 if (clientActive) {
@@ -236,6 +236,15 @@ bool Entity::placeTile(int dx, int dy)
 }
 
 
+void Entity::setGlobal(WorldMap *WMap)
+{
+    
+    if(WMap != nullptr)
+        wMap = WMap;
+
+    
+}
+
 
 
 void Entity::setWorldPosition(int x, int y, int z)
@@ -262,7 +271,8 @@ void Entity::clientFovSync(){
     cX = MAP_WIDTH/2;
     cY= MAP_HEIGHT/2;
     
-    int offset = 30;
+    
+    int offset = cY-4;
     
     int x = pX-offset;
     for(int iX = cX-offset; iX < cX+offset; iX++ )
@@ -271,7 +281,7 @@ void Entity::clientFovSync(){
         for(int iY = cY-offset; iY < cY+offset; iY++ )
         {
             cMap->cMap[iX][iY]->explored = true;
-            //cMap->cMap[iX][iY]->visible = true;
+            cMap->cMap[iX][iY]->visible = true;
             
             if(y > 0 && y < MAP_HEIGHT && x > 0 && x < MAP_WIDTH)
                 
@@ -287,6 +297,77 @@ void Entity::clientFovSync(){
                 //cMap->cMap[cX][cY]->explored = true;
                 
                 
+              /*  if(fov[x][y] == true)
+                {
+                    
+                    cMap->cMap[iX][iY]->visible = true;
+                    //cMap->cMap[iX][iY]->explored = true;
+                    
+                }
+                else
+                {
+                    cMap->cMap[iX][iY]->visible = false;
+                    cMap->cMap[iX][iY]->occupied = false;
+                } */
+                
+                
+            }
+            
+            else if(y > 0 && y > MAP_HEIGHT && x > 0 && x < MAP_WIDTH)    
+            {
+                
+                RenderMap *trMap = wMap->getNextEntMap(this, 2)->rMap;
+                int iy;
+                iy = y-MAP_HEIGHT;
+                
+                cMap->cMap[iX][iY-1]->symbol = trMap->getSymbol(x, iy);
+                cMap->cMap[iX][iY-1]->H = trMap->returnH(x, iy);
+                cMap->cMap[iX][iY-1]->HD = trMap->returnHD(x, iy);
+                cMap->cMap[iX][iY-1]->S = trMap->returnS(x, iy);
+                cMap->cMap[iX][iY-1]->SD = trMap->returnSD(x, iy);
+                cMap->cMap[iX][iY-1]->V = trMap->returnV(x, iy);
+                cMap->cMap[iX][iY-1]->VD = trMap->returnVD(x, iy);
+                //cMap->cMap[iX][iY]->visible = true;
+                //cMap->cMap[cX][cY]->explored = true;
+                
+              /*  FovLib *tFov = wMap->getNextEntMap(this, 2)->fovLib;
+                tFov->refreshFov(this, x, y);
+                
+                if(fov[x][y] == true)
+                {
+                    
+                    cMap->cMap[iX][iY]->visible = true;
+                    //cMap->cMap[iX][iY]->explored = true;
+                    
+                }
+                else
+                {
+                    cMap->cMap[iX][iY]->visible = false;
+                    cMap->cMap[iX][iY]->occupied = false;
+                } */
+                
+            } 
+            
+            else if(y < 0 && y < MAP_HEIGHT && x > 0 && x < MAP_WIDTH)
+            {
+                
+                RenderMap *trMap = wMap->getNextEntMap(this, 8)->rMap;
+                int iy;
+                iy = MAP_HEIGHT+y;
+                
+                cMap->cMap[iX][iY+1]->symbol = trMap->getSymbol(x, iy);
+                cMap->cMap[iX][iY+1]->H = trMap->returnH(x, iy);
+                cMap->cMap[iX][iY+1]->HD = trMap->returnHD(x, iy);
+                cMap->cMap[iX][iY+1]->S = trMap->returnS(x, iy);
+                cMap->cMap[iX][iY+1]->SD = trMap->returnSD(x, iy);
+                cMap->cMap[iX][iY+1]->V = trMap->returnV(x, iy);
+                cMap->cMap[iX][iY+1]->VD = trMap->returnVD(x, iy);
+                //cMap->cMap[iX][iY]->visible = true;
+                //cMap->cMap[cX][cY]->explored = true;
+           /*
+                FovLib *tFov = wMap->getNextEntMap(this, 8)->fovLib;
+                tFov->refreshFov(this, x, y);
+                
                 if(fov[x][y] == true)
                 {
                     
@@ -299,10 +380,83 @@ void Entity::clientFovSync(){
                     cMap->cMap[iX][iY]->visible = false;
                     cMap->cMap[iX][iY]->occupied = false;
                 }
-                
-                
+                */
+
             }
             
+            else if(y > 0 && y < MAP_HEIGHT && x < 0 && x < MAP_WIDTH)
+            {
+                
+                RenderMap *trMap = wMap->getNextEntMap(this, 4)->rMap;
+                int ix;
+                ix = MAP_WIDTH+x;
+                
+                cMap->cMap[iX+1][iY]->symbol = trMap->getSymbol(ix, y);
+                cMap->cMap[iX+1][iY]->H = trMap->returnH(ix, y);
+                cMap->cMap[iX+1][iY]->HD = trMap->returnHD(ix, y);
+                cMap->cMap[iX+1][iY]->S = trMap->returnS(ix, y);
+                cMap->cMap[iX+1][iY]->SD = trMap->returnSD(ix, y);
+                cMap->cMap[iX+1][iY]->V = trMap->returnV(ix, y);
+                cMap->cMap[iX+1][iY]->VD = trMap->returnVD(ix, y);
+                //cMap->cMap[iX][iY]->visible = true;
+                //cMap->cMap[cX][cY]->explored = true;
+                /*
+                 FovLib *tFov = wMap->getNextEntMap(this, 8)->fovLib;
+                 tFov->refreshFov(this, x, y);
+                 
+                 if(fov[x][y] == true)
+                 {
+                 
+                 cMap->cMap[iX][iY]->visible = true;
+                 //cMap->cMap[iX][iY]->explored = true;
+                 
+                 }
+                 else
+                 {
+                 cMap->cMap[iX][iY]->visible = false;
+                 cMap->cMap[iX][iY]->occupied = false;
+                 }
+                 */
+                
+            }
+
+            
+            else if(y > 0 && y < MAP_HEIGHT && x > 0 && x > MAP_WIDTH)
+            {
+                
+                RenderMap *trMap = wMap->getNextEntMap(this, 6)->rMap;
+                int ix;
+                ix = x-MAP_WIDTH;
+                
+                cMap->cMap[iX-1][iY]->symbol = trMap->getSymbol(ix, y);
+                cMap->cMap[iX-1][iY]->H = trMap->returnH(ix, y);
+                cMap->cMap[iX-1][iY]->HD = trMap->returnHD(ix, y);
+                cMap->cMap[iX-1][iY]->S = trMap->returnS(ix, y);
+                cMap->cMap[iX-1][iY]->SD = trMap->returnSD(ix, y);
+                cMap->cMap[iX-1][iY]->V = trMap->returnV(ix, y);
+                cMap->cMap[iX-1][iY]->VD = trMap->returnVD(ix, y);
+                //cMap->cMap[iX][iY]->visible = true;
+                //cMap->cMap[cX][cY]->explored = true;
+                
+                /*  FovLib *tFov = wMap->getNextEntMap(this, 2)->fovLib;
+                 tFov->refreshFov(this, x, y);
+                 
+                 if(fov[x][y] == true)
+                 {
+                 
+                 cMap->cMap[iX][iY]->visible = true;
+                 //cMap->cMap[iX][iY]->explored = true;
+                 
+                 }
+                 else
+                 {
+                 cMap->cMap[iX][iY]->visible = false;
+                 cMap->cMap[iX][iY]->occupied = false;
+                 } */
+                
+            }
+
+
             
             
             y++;
@@ -319,7 +473,7 @@ void Entity::refreshFov()
 {
     
     FOV->refreshFov(this);
-    //clientFovSync();
+    
 }
 
 int Entity::posX()

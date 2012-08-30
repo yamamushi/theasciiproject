@@ -103,6 +103,38 @@ void FovLib::refreshFov(Entity *tgt){
 }
 
 
+void FovLib::refreshFov(Entity *tgt, int X, int Y){
+    
+    int x, y;
+    
+    delete tcodMap;
+    tcodMap = new TCODMap(MAP_WIDTH, MAP_HEIGHT);
+    
+    for(x = 0; x < MAP_WIDTH; x++){
+        for(y = 0; y < MAP_HEIGHT; y++){
+            tcodMap->setProperties(x, y, !(tileMap->virtMap[x][y]->block_sight), !(tileMap->virtMap[x][y]->blocked));
+        }
+    }
+    
+    // Compute FOV
+    tcodMap->computeFov(X, Y, TORCH_RADIUS, FOV_LIGHT_WALLS);
+    
+    
+    for (x = 0; x < MAP_WIDTH; x++)
+    {
+        for (y = 0; y < MAP_HEIGHT; y++)
+        {
+            
+            if ((tcodMap->isInFov(x, y)))
+            {
+                tgt->fov[x][y] = true;
+            }
+        }
+    }
+    
+}
+
+
 TileMap *FovLib::getTileMap(){
     
     return tileMap;

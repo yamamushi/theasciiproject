@@ -43,6 +43,7 @@ class EntityMap;
 class FovLib;
 class ClientMap;
 class RenderMap;
+class WorldMap;
 
 
 class Entity {
@@ -80,6 +81,7 @@ private:
     FovLib *FOV;
     ClientMap *cMap;
     RenderMap *rMap;
+    WorldMap *wMap;
     
 public:
     
@@ -116,6 +118,7 @@ public:
     
     
     void init_in_world(FovLib *FOV);
+    void setGlobal(WorldMap *WMap);
     
     void setEntName(std::string entName_);
     std::string getEntName();

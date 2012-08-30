@@ -44,5 +44,7 @@ public:
     void moveEnt(Entity *tgt, int x, int y);
     void moveEntTo(Entity *tgt, int x, int y, int z, int px, int py);
     
+    EntityMap *getNextEntMap(Entity *tgt, int dir);
+    
     
 };

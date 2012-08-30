@@ -28,6 +28,7 @@ void WorldMap::initWorldMap()
 void WorldMap::addEntToCenter(Entity *tgt)
 {
    
+    tgt->setGlobal(this);
     tgt->setWorldPosition(cX, cY, cZ-1);
     eMap->at(cX).at(cY).at(cZ-1)->addToMap(tgt);
     
@@ -113,6 +114,66 @@ void WorldMap::moveEntTo(Entity *tgt, int x, int y, int z, int px, int py)
 }
 
 
+
+EntityMap *WorldMap::getNextEntMap(Entity *tgt, int dir)
+{
+    int tWX, tWY;
+    
+    tWX = tgt->wX;
+    tWY = tgt->wY;
+    //tWZ = tgt->wZ;
+    
+    if(dir == 4)
+    {
+        if(tWX == 0)
+        {
+            return eMap->at(wX-1).at(tgt->wY).at(tgt->wZ);
+        }
+        else
+        {
+            return eMap->at(tgt->wX-1).at(tgt->wY).at(tgt->wZ);
+        }
+        
+    }
+    else if(dir == 8)
+    {
+        if(tWY == 0)
+        {
+            return eMap->at(tgt->wX).at(wY-1).at(tgt->wZ);
+        }
+        else
+        {
+            return eMap->at(tgt->wX).at(tgt->wY-1).at(tgt->wZ);
+        }
+    }
+    else if(dir == 2)
+    {
+        if(tWY == wY-1)
+        {
+            return eMap->at(tgt->wX).at(0).at(tgt->wZ);
+        }
+        else
+        {
+            return eMap->at(tgt->wX).at(tgt->wY+1).at(tgt->wZ);
+        }
+        
+    }
+    else if(dir == 6)
+    {
+        if(tWX == wX-1)
+        {
+            return eMap->at(0).at(tgt->wY).at(tgt->wZ);
+        }
+        else
+        {
+            return eMap->at(tgt->wX+1).at(tgt->wY).at(tgt->wZ);
+        }
+    }
+    else
+        return nullptr;
+    
+
+}
 
 
 

@@ -49,6 +49,7 @@ public:
     void initFovLib(TileMap *map);
 
     void refreshFov(Entity *tgt);
+    void refreshFov(Entity *tgt, int X, int Y);
 
     TileMap * getTileMap();
 

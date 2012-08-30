@@ -249,7 +249,7 @@ void GraphicsTCOD::drawMainInterface()
     
     hMenu->setBackgroundColor(TCODColor(0,0,0), TCODColor(128,128,128));
     
-
+    
     
     
     ScrollBox *chatBox = new ScrollBox(0, 0, textOutputConsole->getWidth(), textOutputConsole->getHeight(), 512, textOutputConsole, cMap, this);
@@ -289,7 +289,7 @@ void GraphicsTCOD::drawMainInterface()
     serverConsole->vline(0,0, serverConsole->getHeight());
     serverConsole->vline(serverConsole->getWidth()-1,0, serverConsole->getHeight());
     
-    bool textInput = true;
+    bool textInput = false;
     bool popupOpen = false;
     bool commandMode = false;
     bool digActionMode = false;
@@ -300,7 +300,7 @@ void GraphicsTCOD::drawMainInterface()
     
     boost::asio::io_service pri_io_service;
     tcp::resolver pri_resolver(pri_io_service);
-    tcp::resolver::query pri_query("pub.theasciiproject.com", "5250");
+    tcp::resolver::query pri_query("localhost", "5250");
     
     tcp::resolver::iterator iterator = pri_resolver.resolve(pri_query);
     
@@ -316,25 +316,21 @@ void GraphicsTCOD::drawMainInterface()
         
         if(!popupOpen)
         {
-            inputText->update(key);
+            if(textInput)
+                inputText->update(key);
+            
             chatBox->update(mouse);
             serverBox->update(mouse);
             
-            if(connected && loggedIn && commandMode)
-            {
-                output->print(MAIN_WIDTH/2, 3, "Command Mode Active");
-            }
+            
+                    
         }
-        inputText->render(serverConsole);
-        chatBox->render();
-        serverBox->render();
-        Widget::renderWidgets();
         
-        fixBottom();
+        
         
         mapOutput->clear();
-
-    
+        
+        
         
         
         if(drawMenuCheck)
@@ -462,14 +458,8 @@ void GraphicsTCOD::drawMainInterface()
                     digActionMode = false;
             }
             
-            else if(key.vk == TCODK_NONE)
-            {
-                
-                cnet->sendCommand("/5");
-                cnet->ignoreResponse();
-            }
             requestMap();
-
+            
         }
         
         
@@ -488,9 +478,10 @@ void GraphicsTCOD::drawMainInterface()
             }
         }
         
-        if(key.vk == TCODK_ENTER)
+        if(key.vk == TCODK_ENTER && textInput == true)
         {
-            textInput = false;
+            
+            
             std::string tmpText = inputText->getText();
             
             if(tmpText != "" && tmpText.at(0) != '/')
@@ -557,16 +548,41 @@ void GraphicsTCOD::drawMainInterface()
             inputText->setProperties(32, 1000, "$>", 1);
             inputText->setColors(TCODColor(0,255,0), TCODColor(0,0,0), 1.0f);
             
+            textInput = false;
+            
+        }
+        else if(key.vk == TCODK_ENTER && textInput == false)
+        {
+            textInput = true;
         }
         
         
         drawAll();
-        
-        
+        if(connected && loggedIn && !commandMode)
+        {
+            mapOutput->setDefaultForeground(TCODColor(255,255,255));
+            mapOutput->printEx(mapOutput->getWidth()/2, mapOutput->getHeight()-1, TCOD_BKGND_NONE, TCOD_CENTER, "Action Mode", TCODColor(255,255,255));
+        }
+        else if(connected && loggedIn && commandMode)
+        {
+            mapOutput->setDefaultForeground(TCODColor(255,255,255));
+            mapOutput->printEx(mapOutput->getWidth()/2, mapOutput->getHeight()-1, TCOD_BKGND_NONE, TCOD_CENTER, "Select Mode", TCODColor(255,255,255));
+        }
         TCODConsole::blit(mapOutput, 0, 0, 0, 0, output, 0, 2);
+        
+        
+        inputText->render(serverConsole);
+        chatBox->render();
+        serverBox->render();
+        Widget::renderWidgets();
+        fixBottom();   
+        
+            
+        
         TCODConsole::blit(serverConsole,0,0,0,0,output,MAIN_WIDTH/2,32, 1.0f, 1.0f);
         TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
         render();
+        
         
         
     }
@@ -598,6 +614,7 @@ void GraphicsTCOD::requestMap()
 void GraphicsTCOD::fixBottom()
 {
     
+    output->rect(0, 0, 8, 3, true);
     
     output->setColorControl(TCOD_COLCTRL_1, TCODColor(255,255,255), TCODColor(0,0,0));
     
@@ -629,156 +646,18 @@ void GraphicsTCOD::fixBottom()
 }
 
 
-
-
-void GraphicsTCOD::getUser()
-{
-    extern std::string user;
-    
-    output->setDefaultBackground(TCODColor(0, 0, 0));
-    output->clear();
-    render();
-    
-    char *prompt = (char *)"Username: ";
-    TCODText *testText = new TCODText(MAIN_WIDTH/2 - 7, MAIN_HEIGHT/2 - 7, 36, 1, 16);
-    testText->setProperties(33, 5, (const char *)prompt, 5);
-    
-    
-    testText->render(output);
-    render();
-    
-    bool quit = false;
-    while(!quit)
-    {
-        TCOD_key_t key = TCODConsole::waitForKeypress(true);
-        
-        testText->update(key);
-        
-        testText->render(output);
-        
-        render();
-        
-        if(key.vk == TCODK_ENTER)
-        {
-            quit = true;
-        }
-        
-    }
-    
-    const char *userName = testText->getText();
-    
-    user = userName;
-    
-    testText->reset();
-    delete testText;
-    output->clear();
-    render();
-    
-}
-
-
-void GraphicsTCOD::getPassword()
-{
-    
-    extern std::string pass;
-    output->clear();
-    render();
-    
-    char *prompt = (char *)"Password: ";
-    TCODText *testText = new TCODText(MAIN_WIDTH/2 - 7, MAIN_HEIGHT/2 - 7, 20, 1, 16);
-    testText->setProperties(33, 5, (const char *)prompt, 5);
-    
-    testText->render(output);
-    render();
-    
-    
-    TCODText *inputText = new TCODText(MAIN_WIDTH/2 + 3, MAIN_HEIGHT/2 - 7, 20, 1, 16);
-    inputText->setProperties(33, 5, (const char *)"", 5);
-    inputText->setColors(TCODColor(0,255,0), TCODColor(0,0,0), 1.0);
-    
-    inputText->render(output);
-    render();
-    
-    bool quit = false;
-    while(!quit)
-    {
-        TCOD_key_t key = TCODConsole::waitForKeypress(true);
-        
-        inputText->update(key);
-        
-        inputText->render(output);
-        
-        render();
-        
-        if(key.vk == TCODK_ENTER)
-        {
-            quit = true;
-        }
-        
-    }
-    
-    const char *userPass = inputText->getText();
-    
-    pass = userPass;
-    
-    testText->reset();
-    delete testText;
-    
-    inputText->reset();
-    delete inputText;
-    
-    output->clear();
-    render();
-    
-    extern bool drawLogin;
-    drawLogin = false;
-    extern bool drawNewAccount;
-    drawNewAccount = false;
-}
-
-
-void GraphicsTCOD::loginError()
-{
-    
-    output->clear();
-    render();
-    
-    char *prompt = (char *)"Login Error - Invalid Username or Password";
-    TCODText *loginErrorText = new TCODText(MAIN_WIDTH/2 - 20, MAIN_HEIGHT/2-7, 45, 1, 16);
-    loginErrorText->setProperties(33, 5, (const char *)prompt, 5);
-    loginErrorText->setColors(TCODColor(255,0,0), TCODColor(0,0,0), 1.0);
-    
-    loginErrorText->render(output);
-    render();
-    
-    bool quit = false;
-    while(!quit)
-    {
-        TCOD_key_t key = TCODConsole::checkForKeypress();
-        
-        if(key.vk == TCODK_ENTER)
-        {
-            quit = true;
-        }
-        
-    }
-    cout << "login error" << endl;
-    
-    loginErrorText->reset();
-    output->clear();
-    render();
-    delete loginErrorText;
-    
-}
-
-
 void GraphicsTCOD::render(){
     
     //drawAll();
     
+    
+    
 	TCODConsole::blit(output, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
     
+    
+    
     TCODConsole::flush();
+    
     
     
 }
@@ -811,8 +690,8 @@ void GraphicsTCOD::drawAll()
     {
         for(int y=0; y < MAP_HEIGHT; y++)
         {
-
-                drawAt(x, y);
+            
+            drawAt(x, y);
         }
     }
 }
