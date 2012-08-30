@@ -237,7 +237,7 @@ int ClientSession::confirmSize()
         std::istream is(&buffer);
         
         getline(is, serverResponse, '\0');
-        cout << serverResponse << endl;
+        //cout << serverResponse << endl;
         
         int size = atoi(serverResponse.c_str());
         return size;

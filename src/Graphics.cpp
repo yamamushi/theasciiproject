@@ -293,7 +293,7 @@ void GraphicsTCOD::drawMainInterface()
     bool popupOpen = false;
     bool commandMode = false;
     bool digActionMode = false;
-    bool mapChecked = false;
+    
     //bool placeActionMode = false;
     
     connected = false;
@@ -313,7 +313,6 @@ void GraphicsTCOD::drawMainInterface()
     
     //TCODConsole::disableKeyboardRepeat();
     
-    int timer = 0;
     
     while( !TCODConsole::isWindowClosed() )
     {
@@ -405,8 +404,7 @@ void GraphicsTCOD::drawMainInterface()
                 
                 apiCall = "/8";
                 APIinQueue = true;
-                timer = 0;
-                mapChecked = false;
+            
                 
             }
             else if(key.c == 'a' && !commandMode)
@@ -414,8 +412,7 @@ void GraphicsTCOD::drawMainInterface()
                 
                 apiCall = "/4";
                 APIinQueue = true;
-                timer = 0;
-                mapChecked = false;
+            
                 
             }
             else if(key.c == 's' && !commandMode)
@@ -423,16 +420,14 @@ void GraphicsTCOD::drawMainInterface()
                 
                 apiCall = "/2";
                 APIinQueue = true;
-                timer = 0;
-                mapChecked = false;
+ 
             }
             else if(key.c == 'd' && !commandMode)
             {
                 
                 apiCall = "/6";
                 APIinQueue = true;
-                timer = 0;
-                mapChecked = false;
+ 
             }
             
             
@@ -445,8 +440,7 @@ void GraphicsTCOD::drawMainInterface()
                 
                 
                 APIinQueue = true;
-                timer = 0;
-                mapChecked = false;
+               
             }
             else if(key.c == 'j' && !commandMode)
             {
@@ -457,8 +451,8 @@ void GraphicsTCOD::drawMainInterface()
                 
                 
                 APIinQueue = true;
-                timer = 0;
-                mapChecked = false;
+                
+                
             }
             else if(key.c == 'k' && !commandMode)
             {
@@ -469,8 +463,7 @@ void GraphicsTCOD::drawMainInterface()
                 
                 
                 APIinQueue = true;
-                timer = 0;
-                mapChecked = false;
+
             }
             else if(key.c == 'l' && !commandMode)
             {
@@ -479,11 +472,9 @@ void GraphicsTCOD::drawMainInterface()
                 else
                     apiCall = "/26";
                 
-                
-                
                 APIinQueue = true;
-                timer = 0;
-                mapChecked = false;
+                
+                
             }
             
             
@@ -625,11 +616,7 @@ void GraphicsTCOD::drawMainInterface()
         TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
         render();
         
-        timer++;
-        if(timer >= 30)
-        {
-            timer = 0;
-        }
+
         
         /* if((key.c == 'a' || key.c == 's' || key.c == 'w' || key.c == 'd') && connected && loggedIn && !textInput)
          {

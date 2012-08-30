@@ -1499,7 +1499,7 @@ TPL_API int tpl_load(tpl_node *r, int mode, ...) {
             } else if (rc == ERR_FLEN_MISMATCH) {
                 tpl_hook.oops("%s: array lengths mismatch\n", filename);
             } else {
-                tpl_hook.oops("%s: not a valid tpl file\n", filename);
+                //tpl_hook.oops("%s: not a valid tpl file\n", filename);
             }
             tpl_unmap_file( &((tpl_root_data*)(r->data))->mmap );
             return -1;
@@ -1512,7 +1512,7 @@ TPL_API int tpl_load(tpl_node *r, int mode, ...) {
             if (rc == ERR_FMT_MISMATCH) {
                 tpl_hook.oops("format signature mismatch\n");
             } else {
-                tpl_hook.oops("not a valid tpl file\n");
+                //tpl_hook.oops("not a valid tpl file\n");
             }
             return -1;
         }
