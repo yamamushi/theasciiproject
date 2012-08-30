@@ -72,6 +72,11 @@ public:
     bool rendering;
     bool connected;
     bool loggedIn;
+    bool APIinQueue;
+    bool serverCommandInQueue;
+    
+    std::string apiCall;
+    std::string serverCall;
     
     GraphicsTCOD(ClientMap *clientMap);
     void init(ClientMap *clientMap);

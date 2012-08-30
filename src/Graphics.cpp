@@ -306,6 +306,11 @@ void GraphicsTCOD::drawMainInterface()
     tcp::resolver::iterator iterator = pri_resolver.resolve(pri_query);
     
     cnet = new ClientSession(pri_io_service, iterator, cMap, this);
+    
+    APIinQueue = false;
+    boost::thread netThread(&GraphicsTCOD::requestMap, this);
+    
+    
     //TCODConsole::disableKeyboardRepeat();
     
     int timer = 0;
@@ -373,52 +378,59 @@ void GraphicsTCOD::drawMainInterface()
             }
             if(key.vk == TCODK_UP)
             {
-                cnet->sendCommand("/8");
-                cnet->ignoreResponse();
+                apiCall = "/8";
+                APIinQueue = true;
             }
             else if(key.vk == TCODK_DOWN)
             {
-                cnet->sendCommand("/2");
-                cnet->ignoreResponse();
+                
+                apiCall = "/2";
+                APIinQueue = true;
             }
             else if(key.vk == TCODK_RIGHT)
             {
-                cnet->sendCommand("/6");
-                cnet->ignoreResponse();
+                
+                apiCall = "/6";
+                APIinQueue = true;
             }
             else if(key.vk == TCODK_LEFT)
             {
-                cnet->sendCommand("/4");
-                cnet->ignoreResponse();
+                
+                apiCall = "/4";
+                APIinQueue = true;
             }
             
             else if(key.c == 'w' && !commandMode)
             {
-                cnet->sendCommand("/8");
-                cnet->ignoreResponse();
+                
+                apiCall = "/8";
+                APIinQueue = true;
                 timer = 0;
                 mapChecked = false;
                 
             }
             else if(key.c == 'a' && !commandMode)
             {
-                cnet->sendCommand("/4");
-                cnet->ignoreResponse();
+                
+                apiCall = "/4";
+                APIinQueue = true;
                 timer = 0;
                 mapChecked = false;
                 
             }
             else if(key.c == 's' && !commandMode)
             {
-                cnet->sendCommand("/2");
-                cnet->ignoreResponse();
+                
+                apiCall = "/2";
+                APIinQueue = true;
                 timer = 0;
                 mapChecked = false;
             }
             else if(key.c == 'd' && !commandMode)
             {
-                cnet->sendCommand("/6");
-                cnet->ignoreResponse();
+                
+                apiCall = "/6";
+                APIinQueue = true;
                 timer = 0;
                 mapChecked = false;
             }
@@ -427,41 +439,49 @@ void GraphicsTCOD::drawMainInterface()
             else if(key.c == 'i' && !commandMode)
             {
                 if(digActionMode)
-                    cnet->sendCommand("/18");
+                    apiCall = "/18";
                 else
-                    cnet->sendCommand("/28");
+                    apiCall = "/28";
                 
-                cnet->ignoreResponse();
+                
+                APIinQueue = true;
                 timer = 0;
                 mapChecked = false;
             }
             else if(key.c == 'j' && !commandMode)
             {
                 if(digActionMode)
-                    cnet->sendCommand("/14");
+                    apiCall = "/14";
                 else
-                    cnet->sendCommand("/24");
-                cnet->ignoreResponse();
+                    apiCall = "/24";
+                
+                
+                APIinQueue = true;
                 timer = 0;
                 mapChecked = false;
             }
             else if(key.c == 'k' && !commandMode)
             {
                 if(digActionMode)
-                    cnet->sendCommand("/12");
+                    apiCall = "/12";
                 else
-                    cnet->sendCommand("/22");
-                cnet->ignoreResponse();
+                    apiCall = "/22";
+                
+                
+                APIinQueue = true;
                 timer = 0;
                 mapChecked = false;
             }
             else if(key.c == 'l' && !commandMode)
             {
                 if(digActionMode)
-                    cnet->sendCommand("/16");
+                    apiCall = "/16";
                 else
-                    cnet->sendCommand("/26");
-                cnet->ignoreResponse();
+                    apiCall = "/26";
+                
+                
+                
+                APIinQueue = true;
                 timer = 0;
                 mapChecked = false;
             }
@@ -533,11 +553,9 @@ void GraphicsTCOD::drawMainInterface()
                 }
                 else if(tmpText == "/quit"  && connected)
                 {
-                    cnet->sendCommand("/quit");
-                    cnet->close();
-                    connected = false;
-                    loggedIn = false;
-                    chatBox->insertText("Disconnected");
+                    serverCommandInQueue = true;
+                    serverCall = "/quit";
+                    
                 }
                 else if (tmpText == "/quit" && !connected)
                 {
@@ -550,11 +568,16 @@ void GraphicsTCOD::drawMainInterface()
                         chatBox->insertText("Not Connected, please /connect first");
                         
                     }
-                    else
+                    else if(connected && !loggedIn)
                     {
                         cnet->sendCommand(tmpText);
-                        
                         cnet->getResponse();
+                    }
+
+                    else if(connected && loggedIn)
+                    {
+                        serverCommandInQueue = true;
+                        serverCall = tmpText;
                     }
                 }
             }
@@ -588,13 +611,6 @@ void GraphicsTCOD::drawMainInterface()
         }
         
         
-        if(!mapChecked && timer == 0)
-        {
-            requestMap();
-            mapChecked = true;
-        }
-        else
-            mapChecked = false;
         
         TCODConsole::blit(mapOutput, 0, 0, 0, 0, output, 0, 2);
         inputText->render(serverConsole);
@@ -615,13 +631,13 @@ void GraphicsTCOD::drawMainInterface()
             timer = 0;
         }
         
-        if((key.c == 'a' || key.c == 's' || key.c == 'w' || key.c == 'd') && connected && loggedIn && !textInput)
-        {
-            while(key.vk != TCODK_NONE)
-            {
-                TCODSystem::checkForEvent(TCOD_EVENT_KEY_PRESS|TCOD_EVENT_MOUSE,&key,&mouse);
-            }
-        } 
+        /* if((key.c == 'a' || key.c == 's' || key.c == 'w' || key.c == 'd') && connected && loggedIn && !textInput)
+         {
+         while(key.vk != TCODK_NONE)
+         {
+         TCODSystem::checkForEvent(TCOD_EVENT_KEY_PRESS|TCOD_EVENT_MOUSE,&key,&mouse);
+         }
+         } */
         
         
     }
@@ -635,17 +651,50 @@ void GraphicsTCOD::drawMainInterface()
 void GraphicsTCOD::requestMap()
 {
     
-    if(connected && loggedIn)
+    
+    while(true)
     {
-        
-        
-        cnet->sizeMap();
-        int dataSize = cnet->confirmSize();
-        cnet->sendCommand("/");
-        if(dataSize > 0)
-            cnet->read_map(dataSize);
-        
-        
+        if(connected && loggedIn)
+        {
+            if(APIinQueue)
+            {
+                
+                cnet->sendCommand(apiCall);
+                cnet->ignoreResponse();
+                APIinQueue = false;
+                
+            }
+            
+            if(serverCommandInQueue)
+            {
+                
+                cnet->sendCommand(serverCall);
+                cnet->getResponse();
+                
+                serverCommandInQueue = false;
+                
+                if(serverCall == "/quit")
+                {
+                    cnet->close();
+                    connected = false;
+                    loggedIn = false;
+                    break;
+                }
+                
+            }
+            
+            
+            
+            cnet->sizeMap();
+            int dataSize = cnet->confirmSize();
+            cnet->sendCommand("/");
+            if(dataSize > 0)
+                cnet->read_map(dataSize);
+            
+            //boost::posix_time::seconds sleepTime(1);
+            //boost::this_thread::sleep(sleepTime);
+            
+        }
     }
     
 }
