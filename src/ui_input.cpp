@@ -24,7 +24,12 @@
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "Headers.h"
+#include <cstring>
+#include "libtcod/libtcod.hpp"
+
+#include "constants.h"
+
+#include "ui_input.hpp"
 
 void TextInput::init(const char *title, const char *text, int maxSize) {
 	this->title=title;
@@ -45,6 +50,10 @@ void TextInput::init(const char *title, const char *text, int maxSize) {
 	con->rect(0,0,width,height,false,TCOD_BKGND_SET);
 	con->rect(1,1,width-2,height-2,true,TCOD_BKGND_NONE);
 	con->printRect(2,2,width-4,0,text);
+}
+
+const char *TextInput::getText() { 
+    return txt->getText();
 }
 
 TextInput::~TextInput() {

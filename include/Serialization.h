@@ -1,3 +1,6 @@
+#pragma once
+#include "tpl.h"
+#include "constants.h"
 
 class ClientMap;
 class GraphicsTCOD;

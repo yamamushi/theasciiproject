@@ -1,8 +1,10 @@
-#include "Headers.h"
+#include <string>
+#include <iostream>
 
+#include "ClientWidgets.h"
 
-using boost::asio::ip::tcp;
-
+using std::cout;
+using std::endl;
 
 
 // x and y are our positions on the screen, w and h are our width and height.

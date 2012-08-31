@@ -1,5 +1,7 @@
 
+#include <vector>
 
+using std::vector;
 
 
 std::string make_daytime_string();
