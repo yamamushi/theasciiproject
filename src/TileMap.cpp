@@ -651,6 +651,13 @@ void TileMap::placeTile(int x, int y)
 }
 
 
+void TileMap::airTile(int x, int y)
+{
+    delete virtMap[x][y];
+    virtMap[x][y] = new Air();
+    
+}
+
 
 void TileMap::digHole(int x, int y)
 {

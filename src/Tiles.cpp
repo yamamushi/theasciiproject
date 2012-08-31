@@ -153,6 +153,7 @@ Slope::Slope(bool blked)
     block_sight = blked;
     blocked = blked;
     needsOrientation = false;
+    setTypeID(4);
     
     
     H = 30.4;
@@ -191,6 +192,7 @@ Air::Air(bool blked)
 	SD = 1.0;
 	VD = 0.18;
     
+    setTypeID(3);
     setSymbol((wchar_t *)L"\u2592");
 
     

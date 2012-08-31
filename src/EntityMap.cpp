@@ -273,30 +273,32 @@ void EntityMap::refreshEntityMap(){
 
 void EntityMap::refreshRenderMap()
 {
-    rMap->refreshMap();
     
-    if(wX > wMap->cX)
-    {
+    
+    //if(wZ > wMap->cZ)
+    //{
         for(int x = 0; x < MAP_WIDTH; x++)
         {
             for(int y = 0; y < MAP_HEIGHT; y++)
             {
                 if(wMap->getEntityZ(this, -1) != nullptr)
                 {
-                    //cout << "tested" << endl;
-                    if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() != 1)
+                    
+                    if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 1 && contextMap->virtMap[x][y]->getTypeID() != 1)
                     {
-                        
                         contextMap->virtMap[x][y]->setHSV(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->HD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->SD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->VD);
-                        contextMap->virtMap[x][y]->setSymbol((wchar_t *)L"\u2059");
-                        //cout << "here" << endl;
+                        contextMap->virtMap[x][y]->setSymbol(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getSymbol());
+
                     }
+                    
+
                 }
             }
         }
         
-    }
+    //}
     
+    rMap->refreshMap();
 }
 
 

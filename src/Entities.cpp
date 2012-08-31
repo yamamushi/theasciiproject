@@ -152,7 +152,15 @@ bool Entity::digTile(int dx, int dy)
     {
         if (initialized) {
             if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
-                entMap->contextMap->removeTile(dx + X, dy + Y);
+                
+                if(wMap->getEntityZ(entMap, -1)->contextMap->virtMap[dx+X][dy+Y]->getTypeID() != 1)
+                {
+                    entMap->contextMap->airTile(dx+X, dy+Y);
+                }
+                else
+                {
+                    entMap->contextMap->removeTile(dx + X, dy + Y);
+                }
                 //entMap->refreshTileMap();
                 entMap->refreshEntityMap();
                 
@@ -188,7 +196,17 @@ bool Entity::digTile(int dx, int dy)
         if (initialized) {
             if ((wMap->getNextEntMap(this, 6)->contextMap->virtMap[1][(dy + Y)]->blocked)){
                 
-                wMap->getNextEntMap(this, 6)->contextMap->removeTile(1, dy+Y);
+                
+                if(wMap->getEntityZ(wMap->getNextEntMap(this, 6), -1)->contextMap->virtMap[1][dy+Y]->getTypeID() != 1)
+                {
+                    wMap->getNextEntMap(this, 6)->contextMap->airTile(1, dy+Y);
+                }
+                else
+                {
+                    wMap->getNextEntMap(this, 6)->contextMap->removeTile(1, dy+Y);
+                }
+                
+                
                 wMap->getNextEntMap(this, 6)->refreshEntityMap();
                 
                 if (clientActive) {
@@ -220,7 +238,19 @@ bool Entity::digTile(int dx, int dy)
     {
         if (initialized) {
             if ((wMap->getNextEntMap(this, 4)->contextMap->virtMap[MAP_WIDTH-1][(dy + Y)]->blocked)){
-                wMap->getNextEntMap(this, 4)->contextMap->removeTile(MAP_WIDTH-1, dy+Y);
+                
+                
+                
+                if(wMap->getEntityZ(wMap->getNextEntMap(this, 4), -1)->contextMap->virtMap[MAP_WIDTH-1][dy+Y]->getTypeID() != 1)
+                {
+                    wMap->getNextEntMap(this, 4)->contextMap->airTile(MAP_WIDTH-1, dy+Y);
+                }
+                else
+                {
+                    wMap->getNextEntMap(this, 4)->contextMap->removeTile(MAP_WIDTH-1, dy+Y);
+                }
+                
+               
                 wMap->getNextEntMap(this, 4)->refreshEntityMap();
                 
                 if (clientActive) {
@@ -253,7 +283,18 @@ bool Entity::digTile(int dx, int dy)
         cout << "test 1" << endl;
         if (initialized) {
             if ((wMap->getNextEntMap(this, 2)->contextMap->virtMap[dx+X][(1)]->blocked)){
-                wMap->getNextEntMap(this, 2)->contextMap->removeTile(dx+X,1);
+                
+                
+                if(wMap->getEntityZ(wMap->getNextEntMap(this, 2), -1)->contextMap->virtMap[dx+X][1]->getTypeID() != 1)
+                {
+                    wMap->getNextEntMap(this, 2)->contextMap->airTile(dx+X, 1);
+                }
+                else
+                {
+                    wMap->getNextEntMap(this, 2)->contextMap->removeTile(dx+X, 1);
+                }
+                
+                
                 wMap->getNextEntMap(this, 2)->refreshEntityMap();
                 
                 if (clientActive) {
@@ -285,7 +326,18 @@ bool Entity::digTile(int dx, int dy)
         cout << "test 2" << endl;;
         if (initialized) {
             if ((wMap->getNextEntMap(this, 8)->contextMap->virtMap[dx+X][(MAP_HEIGHT-1)]->blocked)){
-                wMap->getNextEntMap(this, 8)->contextMap->removeTile(dx+X, MAP_HEIGHT-1);
+                
+                
+                if(wMap->getEntityZ(wMap->getNextEntMap(this, 8), -1)->contextMap->virtMap[dx+X][MAP_HEIGHT-1]->getTypeID() != 1)
+                {
+                    wMap->getNextEntMap(this, 8)->contextMap->airTile(dx+X, MAP_HEIGHT-1);
+                }
+                else
+                {
+                    wMap->getNextEntMap(this, 8)->contextMap->removeTile(dx+X, MAP_HEIGHT-1);
+                }
+
+                                
                 wMap->getNextEntMap(this, 8)->refreshEntityMap();
                 
                 if (clientActive) {
