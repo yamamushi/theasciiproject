@@ -24,6 +24,11 @@
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#include <cstdlib>
+
+class TCODConsole;
+class TCODText;
+
 class TextInput {
 public :
 	TextInput() : con(NULL),txt(NULL) {}
@@ -31,7 +36,7 @@ public :
 	void init(const char *title, const char *text, int maxSize);
 	void render(int x, int y);
 	bool update(float elapsed, TCOD_key_t k);
-	const char *getText() { return txt->getText(); }
+	const char *getText();
 protected :
 	const char *title;
 	const char *text;

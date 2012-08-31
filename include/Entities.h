@@ -1,3 +1,4 @@
+#pragma once
 /*
  * =====================================================================================
  *
@@ -37,12 +38,16 @@
  * =====================================================================================
  */
 
+#include "BoostLibs.h"
+
+#include "constants.h"
 
 
+class ClientMap;
 class EntityMap;
 class FovLib;
-class ClientMap;
 class RenderMap;
+class TileMap;
 class WorldMap;
 
 

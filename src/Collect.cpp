@@ -1,6 +1,11 @@
+#include <string>
+#include <vector>
 
-#include "Headers.h"
+#include "Entities.h"
+#include "ClientMap.h"
+#include "Serialization.h"
 
+using std::vector;
 
 
 std::string make_daytime_string()

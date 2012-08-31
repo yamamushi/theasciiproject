@@ -36,9 +36,14 @@
  * =====================================================================================
  */
 
-#include "Headers.h"
+#include "libtcod/libtcod.hpp"
 
+#include "constants.h"
 
+#include "FovLib.h"
+#include "TileMap.h"
+#include "Entities.h"
+#include "ClientMap.h"
 
 
 FovLib::FovLib(TileMap *map){

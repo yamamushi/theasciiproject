@@ -1,5 +1,11 @@
+#include <iostream>
+#include <vector>
 
+using std::cout;
+using std::endl;
 
+class EntityMap;
+class Entity;
 
 class WorldMap {
     

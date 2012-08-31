@@ -40,6 +40,11 @@
 // I apologize ahead of time for the code indentation here, Netbeans
 // is not playing nice right now.
 
+#include "constants.h"
+
+class TileMap;
+class Entity;
+class EntityMap;
 
 class RenderMap {
 

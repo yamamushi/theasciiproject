@@ -1,3 +1,14 @@
+#pragma once
+
+#include <string>
+#include <vector>
+
+#include "libtcod/gui/gui.hpp"
+
+class TCODConsole;
+class GraphicsTCOD;
+class ClientMap;
+
 class ScrollBox : public Widget {
     
 private:
