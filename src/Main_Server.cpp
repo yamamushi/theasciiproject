@@ -36,10 +36,19 @@
  * =====================================================================================
  */
 
-// First our custom headers
-#include "Headers.h"
+#include <iostream>
+#include <fstream>
+#include <exception>
+#include "BoostLibs.h"
+
 #include "ServerSocket.h"
 #include "DBConnector.h"
+#include "WorldMap.h"
+
+namespace po = boost::program_options;
+using std::cout;
+using std::cerr;
+using std::endl;
 
 DBConnector *dbEngine;
 EntityMap *entMap;
@@ -129,7 +138,7 @@ int main(int ac, char* av[]){
         
 
     }
-    catch(exception& e) {
+    catch(std::exception& e) {
         cerr << "error: " << e.what() << "\n";
         return 1;
     }

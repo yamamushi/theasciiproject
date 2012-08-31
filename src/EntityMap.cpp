@@ -38,10 +38,19 @@
  */
 
 
+#include <iostream>
 
-#include "Headers.h"
+#include "libtcod/libtcod.hpp"
 
+#include "EntityMap.h"
+#include "TileMap.h"
+#include "FovLib.h"
+#include "RenderMap.h"
+#include "Entities.h"
+#include "WorldMap.h"
 
+using std::cout;
+using std::endl;
 
 
 
@@ -67,7 +76,6 @@
  *
  *
  */
-
 
 
 EntityMap::EntityMap(int x, int y, TileMap *map){

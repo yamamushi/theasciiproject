@@ -36,6 +36,11 @@
  * =====================================================================================
  */
 
+class ClientMap;
+class TileMap;
+class Entity;
+class TCODMap;
+
 class FovLib {
 
 private:

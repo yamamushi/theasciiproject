@@ -36,10 +36,15 @@
  * =====================================================================================
  */
 
-#include "Headers.h"
+#include <mutex>
 
+#include "constants.h"
 
-using boost::asio::ip::tcp;
+#include "ClientSocket.h"
+
+#include "ClientWidgets.h"
+#include "Serialization.h"
+#include "Graphics.h"
 
 
 

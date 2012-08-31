@@ -38,7 +38,12 @@
  */
 
 
-#include "Headers.h"
+#include <list>
+#include <utility>
+#include <cstdlib>
+#include <wchar.h>
+
+#include "ClientMap.h"
 
 
 ClientMap::ClientMap(){
@@ -135,26 +140,26 @@ void ClientMap::createSquare(int x, int y){
 
 void ClientMap::addIgnore(int x, int y)
 {
-    pair <int,int> ignoring;
-    ignoring = make_pair(x, y);
-    
+    std::pair <int,int> ignoring;
+    ignoring = std::make_pair(x, y);
+
     std::list<std::pair<int,int> >::const_iterator iterator;
     for (iterator = ignoreList.begin(); iterator != ignoreList.end(); ++iterator)
     {
         if(ignoring == *iterator)
             return;
     }
-    
+
     ignoreList.push_front(ignoring);
-    
+
 }
 
 
 bool ClientMap::testIgnore(int x, int y)
 {
-    pair <int,int> testPair;
-    testPair = make_pair(x, y);
-    
+    std::pair <int,int> testPair;
+    testPair = std::make_pair(x, y);
+
     std::list<std::pair<int,int> >::const_iterator iterator;
     for (iterator = ignoreList.begin(); iterator != ignoreList.end(); ++iterator)
     {

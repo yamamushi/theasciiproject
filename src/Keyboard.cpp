@@ -37,8 +37,11 @@
  */
 
 
-#include "Headers.h"
+#include "Keyboard.h"
 
+#include "libtcod/libtcod.hpp"
+
+#include "ClientSocket.h"
 
 
 Keyboard::Keyboard(ClientSession *Client){

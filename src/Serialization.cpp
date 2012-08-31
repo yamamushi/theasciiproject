@@ -1,4 +1,7 @@
-#include "Headers.h"
+#include <clocale>
+
+#include "Serialization.h"
+#include "ClientMap.h"
 
 ClientMapPacker::ClientMapPacker()
 {

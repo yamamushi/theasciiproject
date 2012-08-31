@@ -36,11 +36,19 @@
  * =====================================================================================
  */
 
-//#include <pqxx/pqxx> /* Moved from Headers.h */
-#include "DBConnector.h" /* Moved from Headers.h */
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include "DBConnector.h"
 
-#include "Headers.h"
 #include "ServerSocket.h"
+#include "WorldMap.h"
+#include "Collect.h"
+
+using std::vector;
+using std::string;
+using std::cout;
+using std::endl;
 
 typedef boost::shared_ptr<client_connection> pointer;
 typedef boost::shared_ptr<client_participant> client_participant_ptr;

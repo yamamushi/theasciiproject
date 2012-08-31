@@ -36,8 +36,15 @@
  * =====================================================================================
  */
 
-class GraphicsTCOD;
+#include <mutex>
+#include "BoostLibs.h"
+
+using std::string;
+
+class ClientMap;
 class ClientMapPacker;
+class GraphicsTCOD;
+class ScrollBox;
 
 //typedef std::deque<chat_message> chat_message_queue;
 

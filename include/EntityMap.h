@@ -1,3 +1,4 @@
+#pragma once
 /*
  * =====================================================================================
  *
@@ -38,8 +39,16 @@
  */
 
 
+#include <vector>
+
+#include "constants.h"
+
+
 class FovLib;
 class WorldMap;
+class Entity;
+class RenderMap;
+class TileMap;
 
 
 class EntityMap {
