@@ -1,5 +1,5 @@
 
-The ASCII Project - 0.0.0m
+The ASCII Project - 0.0.0n
 ===============================
 http://www.theasciiproject.com
 IRC = freenode.net ##asciimmo
