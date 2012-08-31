@@ -82,7 +82,7 @@ void EntityMap::initEntityMap(int x, int y, TileMap *map){
 	height = y;
     
     contextMap = map;
-        
+    
     fovLib = new FovLib(map);
     
     
@@ -103,8 +103,10 @@ void EntityMap::initWorldMap(WorldMap *WMap, int x, int y, int z)
     wX = x;
     wY = y;
     wZ = z;
-      
     
+    
+    
+    refreshRenderMap();
 }
 
 
@@ -112,6 +114,8 @@ void EntityMap::initWorldMap(WorldMap *WMap, int x, int y, int z)
 
 
 void EntityMap::addToMap(Entity *entity){
+    
+    refreshRenderMap();
     
 	Entity *src = entity;
 	int x, y;
@@ -121,16 +125,18 @@ void EntityMap::addToMap(Entity *entity){
 	pos[x][y].push_back(src);
     src->init_in_world(fovLib);
     src->setEntityMap(this);
-
+    
     src->associateClient(rMap);
     src->move(width/2, height/2);
-    rMap->refreshMap();
+    
     
 }
 
 
 
 void EntityMap::addToMapAt(Entity *entity, int x, int y){
+    
+    refreshRenderMap();
     
 	Entity *src = entity;
     src->setPos(x, y);
@@ -141,7 +147,7 @@ void EntityMap::addToMapAt(Entity *entity, int x, int y){
     
     src->associateClient(rMap);
     src->move(0,0);
-    rMap->refreshMap();
+    
     
 }
 
@@ -190,7 +196,7 @@ void EntityMap::removeFromEntMap(Entity *ent)
     
     deleting = false;
     
-    rMap->refreshMap();
+    refreshRenderMap();
     
 }
 
@@ -217,7 +223,7 @@ void EntityMap::initAllEnts(){
         }
     }
     
-    rMap->refreshMap();
+    refreshRenderMap();
 }
 
 void EntityMap::refreshEntityMap(){
@@ -260,7 +266,36 @@ void EntityMap::refreshEntityMap(){
         }
     }
     
+    refreshRenderMap();
+    
+}
+
+
+void EntityMap::refreshRenderMap()
+{
     rMap->refreshMap();
+    
+    if(wX > wMap->cX)
+    {
+        for(int x = 0; x < MAP_WIDTH; x++)
+        {
+            for(int y = 0; y < MAP_HEIGHT; y++)
+            {
+                if(wMap->getEntityZ(this, -1) != nullptr)
+                {
+                    //cout << "tested" << endl;
+                    if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() != 1)
+                    {
+                        
+                        contextMap->virtMap[x][y]->setHSV(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->HD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->SD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->VD);
+                        contextMap->virtMap[x][y]->setSymbol((wchar_t *)L"\u2059");
+                        //cout << "here" << endl;
+                    }
+                }
+            }
+        }
+        
+    }
     
 }
 
@@ -298,7 +333,7 @@ Entity * EntityMap::outputLastEntity(int x, int y)
 void EntityMap::refreshFovFor(Entity *tgt)
 {
     
-    fovLib->refreshFov(tgt);
+    fovLib->refreshFov(tgt, 7);
     
 }
 

@@ -104,6 +104,17 @@ bool Tile::isExplored(){
 	return explored;
 }
 
+
+
+void Tile::setHSV(float h, float s, float v)
+{
+    
+    H = h;
+    S = s;
+    V = v;    
+}
+
+
 void Tile::setSymbol(wchar_t *ch){
     symbol = ch;
 }
@@ -135,6 +146,62 @@ unsigned int Tile::getSubTypeID(){
 //}
 
 
+
+Slope::Slope(bool blked)
+{
+    
+    block_sight = blked;
+    blocked = blked;
+    needsOrientation = false;
+    
+    
+    H = 30.4;
+	S = 1.0;
+	V = 0.3;
+    
+	HD = 30.4;
+	SD = 1.0;
+	VD = 0.1;
+    
+    setSymbol((wchar_t *)L"\u25B2");
+    
+    
+    
+}
+
+
+void Slope::setOrientation(int i){
+    ;
+}
+
+
+Air::Air(bool blked)
+{
+    
+    block_sight = blked;
+    blocked = blked;
+    needsOrientation = false;
+    
+    
+    H = 195.0;
+	S = 1.0;
+	V = 0.48;
+    
+	HD = 195.0;
+	SD = 1.0;
+	VD = 0.18;
+    
+    setSymbol((wchar_t *)L"\u2592");
+
+    
+    
+}
+
+
+
+void Air::setOrientation(int i){
+    ;
+}
 
 
 

@@ -93,6 +93,7 @@ public:
     void initAllEnts();
     void refreshEntityMap();
     void refreshTileMap();
+    void refreshRenderMap();
     
     bool checkOccupied(int x, int y);
     Entity * outputLastEntity(int x, int y);

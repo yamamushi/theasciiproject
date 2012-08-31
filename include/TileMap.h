@@ -94,7 +94,11 @@ public:
     void removeTile(int x, int y);
     void placeTile(int x, int y);
     
+    void digHole(int x, int y);
+    
+    void replaceTile(int x, int y, Tile *src);
     
     
+    void airMap();
 };
 

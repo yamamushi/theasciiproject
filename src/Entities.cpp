@@ -532,7 +532,7 @@ void Entity::setWorldPosition(int x, int y, int z)
 void Entity::clientFovSync(){
     
     
-    refreshFov();
+    //refreshFov(10);
     
     
     int pX, pY;
@@ -819,10 +819,10 @@ void Entity::clientFovSync(){
     
 }
 
-void Entity::refreshFov()
+void Entity::refreshFov(int radius)
 {
     
-    FOV->refreshFov(this);
+    FOV->refreshFov(this, radius);
     
 }
 

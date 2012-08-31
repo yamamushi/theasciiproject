@@ -807,21 +807,17 @@ void client_connection::handleAPI(int api)
     
     
     
-    /*else if (api == 5)
+    else if (api == 5)
     {
-        //worldMap->moveEnt(player, 0, 0);
-        player->clientFovSync();
-    } */
-    /*
+        worldMap->changEntZ(player, 1);
+    }
+    
+    
     else if ( api == 15)
     {
-        player->digTile(0, 0);
+        worldMap->changEntZ(player, -1);
     }
-    else if ( api == 25)
-    {
-        player->placeTile(0, 0);
-    }
-    */
+
     
     
     else if (api == 6)

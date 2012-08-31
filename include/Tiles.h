@@ -68,6 +68,7 @@ public:
     bool isVisible();
     bool isExplored();
     
+    void setHSV(float h, float s, float v);
     void setSymbol(wchar_t *ch);
     wchar_t *getSymbol();
     
@@ -108,6 +109,29 @@ public:
     virtual void setOrientation(int i);
     
     
+};
+
+
+class Slope : public Tile {
+    
+private:
+    
+public:
+    Slope(bool blked=false);
+    virtual void setOrientation(int i);
+};
+
+
+class Air : public Tile
+{
+    
+    
+private:
+    
+public:
+    
+    Air(bool blked=false);
+    virtual void setOrientation(int i);
 };
 
 

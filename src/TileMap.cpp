@@ -94,6 +94,19 @@ void TileMap::fillMap(){
 }
 
 
+
+void TileMap::airMap(){
+    
+	for (x=0; x < wid; x++){
+		for ( y = 0; y < hig; y++){
+            delete virtMap[x][y];
+			virtMap[x][y] = new Air();
+		}
+	}
+    
+}
+
+
 bool TileMap::checkBounds(int posX, int posY){
     
 	if (virtMap[posX][posY]->isBlocked() || posX <= 0 || posX >= MAP_WIDTH || posY < 0 || posY >= MAP_HEIGHT)
@@ -639,7 +652,19 @@ void TileMap::placeTile(int x, int y)
 
 
 
+void TileMap::digHole(int x, int y)
+{
+    delete virtMap[x][y];
+    virtMap[x][y] = new Slope;
+}
 
+
+void TileMap::replaceTile(int x, int y, Tile *src)
+{
+    delete virtMap[x][y];
+    virtMap[x][y] = src;
+    orientWalls();
+}
 
 
 

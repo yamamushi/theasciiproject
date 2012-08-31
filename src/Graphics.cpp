@@ -448,6 +448,21 @@ void GraphicsTCOD::drawMainInterface()
                 
             }
             
+              
+            
+            else if(key.c == '<' && !commandMode)
+            {
+                
+                apiCall = "/5";
+                APIinQueue = true;
+                
+            }
+            else if(key.c == '>' && !commandMode)
+            {
+                
+                apiCall = "/15";
+                APIinQueue = true;
+            }
             
             else if(key.c == 'i' && !commandMode)
             {

@@ -41,15 +41,16 @@ class FovLib {
 private:
     TCODMap *tcodMap;
     TileMap *tileMap;
-
+    
+    ClientMap *cMap;
 
 public:
 
     FovLib(TileMap *map);
     void initFovLib(TileMap *map);
 
-    void refreshFov(Entity *tgt);
-    void refreshFov(Entity *tgt, int X, int Y);
+    void refreshFov(Entity *tgt, int radius);
+    void refreshFov(Entity *tgt, int X, int Y, int radius);
 
     TileMap * getTileMap();
 

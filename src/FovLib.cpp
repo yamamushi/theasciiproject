@@ -65,7 +65,7 @@ void FovLib::initFovLib(TileMap *map){
 }
 
 
-void FovLib::refreshFov(Entity *tgt){
+void FovLib::refreshFov(Entity *tgt, int radius){
     
     int x, y;
     
@@ -74,12 +74,12 @@ void FovLib::refreshFov(Entity *tgt){
     
     for(x = 0; x < MAP_WIDTH; x++){
         for(y = 0; y < MAP_HEIGHT; y++){
-            tcodMap->setProperties(x, y, !(tileMap->virtMap[x][y]->block_sight), !(tileMap->virtMap[x][y]->blocked));
+            tcodMap->setProperties(x, y, !(tgt->cMap->cMap[x][y]->blockSight), !(tgt->cMap->cMap[x][y]->blocked));
         }
     }
     
     // Compute FOV
-    tcodMap->computeFov(tgt->posX(), tgt->posY(), TORCH_RADIUS, FOV_LIGHT_WALLS);
+    tcodMap->computeFov(tgt->posX(), tgt->posY(), radius, FOV_LIGHT_WALLS);
     
     
     for (x = 0; x < MAP_WIDTH; x++)
@@ -103,7 +103,7 @@ void FovLib::refreshFov(Entity *tgt){
 }
 
 
-void FovLib::refreshFov(Entity *tgt, int X, int Y){
+void FovLib::refreshFov(Entity *tgt, int X, int Y, int radius){
     
     int x, y;
     
@@ -112,12 +112,12 @@ void FovLib::refreshFov(Entity *tgt, int X, int Y){
     
     for(x = 0; x < MAP_WIDTH; x++){
         for(y = 0; y < MAP_HEIGHT; y++){
-            tcodMap->setProperties(x, y, !(tileMap->virtMap[x][y]->block_sight), !(tileMap->virtMap[x][y]->blocked));
+            tcodMap->setProperties(x, y, !(tgt->cMap->cMap[x][y]->blockSight), !(tgt->cMap->cMap[x][y]->blocked));
         }
     }
     
     // Compute FOV
-    tcodMap->computeFov(X, Y, TORCH_RADIUS, FOV_LIGHT_WALLS);
+    tcodMap->computeFov(X, Y, radius, FOV_LIGHT_WALLS);
     
     
     for (x = 0; x < MAP_WIDTH; x++)

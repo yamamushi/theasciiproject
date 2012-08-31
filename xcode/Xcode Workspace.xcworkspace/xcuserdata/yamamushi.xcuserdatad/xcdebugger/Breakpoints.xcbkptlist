@@ -7,26 +7,26 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../src/Graphics.cpp"
-         timestampString = "368038973.69516"
+         filePath = "../src/EntityMap.cpp"
+         timestampString = "368092213.754067"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "333"
-         endingLineNumber = "333"
-         landmarkName = "GraphicsTCOD::drawMainInterface()"
+         startingLineNumber = "294"
+         endingLineNumber = "294"
+         landmarkName = "EntityMap::refreshRenderMap()"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../src/Graphics.cpp"
-         timestampString = "368038973.69516"
+         filePath = "../src/EntityMap.cpp"
+         timestampString = "368092213.754067"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "338"
-         endingLineNumber = "338"
-         landmarkName = "GraphicsTCOD::drawMainInterface()"
+         startingLineNumber = "292"
+         endingLineNumber = "292"
+         landmarkName = "EntityMap::refreshRenderMap()"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

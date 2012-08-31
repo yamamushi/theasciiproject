@@ -6,15 +6,11 @@ class WorldMap {
 private:
     
     
-    int wX, wY, wZ;
-    int cX, cY, cZ;
-    
-    
-    
-    
-    
 public:
     
+    
+    int wX, wY, wZ;
+    int cX, cY, cZ;
        
     //boost::multi_array<3, EntityMap *> eMap;
     //std::vector<std::vector<std::vector<TileMap*> > > *tMap;
@@ -44,7 +40,12 @@ public:
     void moveEnt(Entity *tgt, int x, int y);
     void moveEntTo(Entity *tgt, int x, int y, int z, int px, int py);
     
-    EntityMap *getNextEntMap(Entity *tgt, int dir);
+    void changEntZ(Entity *tgt, int z);
     
+    
+    
+    EntityMap *getNextEntMap(Entity *tgt, int dir);
+    EntityMap *getNextEntMap(EntityMap *tgt, int dir);
+    EntityMap *getEntityZ(EntityMap *tgt, int z);
     
 };

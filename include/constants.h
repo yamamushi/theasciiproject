@@ -128,6 +128,8 @@ struct render_t {
     bool explored;
     bool occupied;
     bool visible;
+    bool blockSight;
+    bool blocked;
 };
 
 struct s_render_t {

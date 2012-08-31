@@ -74,6 +74,8 @@ void ClientMap::clearMap(){
             cMap[x][y]->explored = false;
             cMap[x][y]->occupied = false;
             cMap[x][y]->visible = false;
+            cMap[x][y]->blockSight = false;
+            cMap[x][y]->blocked = false;
             
         }
     }
@@ -125,7 +127,8 @@ void ClientMap::createSquare(int x, int y){
     cMap[x][y]->explored = false;
     cMap[x][y]->occupied = false;
     cMap[x][y]->visible = false;
-    
+    cMap[x][y]->blockSight = false;
+    cMap[x][y]->blocked = false;
 }
 
 
@@ -183,6 +186,8 @@ void ClientMap::cleanMap()
             {
                 cMap[x][y]->occupied = false;
                 cMap[x][y]->visible = false;
+                cMap[x][y]->blockSight = false;
+                cMap[x][y]->blocked = false;
             }
         }
     }

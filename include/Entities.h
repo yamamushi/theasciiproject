@@ -79,11 +79,14 @@ private:
     EntityMap *entMap;
     TileMap *world;
     FovLib *FOV;
-    ClientMap *cMap;
+    
     RenderMap *rMap;
     WorldMap *wMap;
     
 public:
+    
+    
+    ClientMap *cMap;
     
     int wX, wY, wZ;
     float H, S, V;
@@ -111,7 +114,7 @@ public:
     void setPos(int x, int y);
     void init_entity( wchar_t *symbol );
     
-    void refreshFov();
+    void refreshFov(int radius);
     int posX();
     int posY();
     bool fov[MAP_WIDTH][MAP_HEIGHT];
