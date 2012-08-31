@@ -40,7 +40,16 @@
  */
 
 
-#include "Headers.h"
+#include "BoostLibs.h"
+#include "constants.h"
+
+#include "libtcod/libtcod.hpp"
+#include "libtcod/gui/gui.hpp"
+
+#include "Graphics.h"
+#include "ClientWidgets.h"
+#include "ClientSocket.h"
+#include "ClientMap.h"
 
 
 bool drawLogin;

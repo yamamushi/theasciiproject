@@ -36,10 +36,13 @@
  * =====================================================================================
  */
 
-// First our custom headers
-//
-#include "Headers.h"
+#include <iostream>
+
+#include "libtcod/libtcod.hpp"
 #include "Platform.h"
+
+#include "Graphics.h"
+#include "ClientMap.h"
 
 
 GraphicsTCOD *graphicsEngine;
@@ -74,7 +77,7 @@ int main(int argc, char *argv[])
     }
     catch (std::exception& e)
     {
-        cerr << "Exception: " << e.what() << "\n";
+        std::cerr << "Exception: " << e.what() << "\n";
     }
     
     return 0;

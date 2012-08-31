@@ -37,8 +37,11 @@
  */
 
 
+#include "libtcod/libtcod.hpp"
+#include "constants.h"
+#include "Dungeon.h"
 
-#include "Headers.h"
+#include "TileMap.h"
 
 
 Dungeon::Dungeon(TileMap *destination, int width, int height, bool create = false){

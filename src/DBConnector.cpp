@@ -1,6 +1,14 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include "BoostLibs.h"
 
-#include "Headers.h"
 #include "DBConnector.h"
+#include "Entities.h"
+
+using std::string;
+using std::cout;
+using std::endl;
 
 
 

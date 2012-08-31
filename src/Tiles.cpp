@@ -37,12 +37,13 @@
  * =====================================================================================
  */
 
-#include "Headers.h"
+#include <algorithm>
 
-using namespace std;
+#include "Tiles.h"
+#include "constants.h"
 
-
-
+using std::min;
+using std::max;
 
 
 Tile::Tile(bool blked){

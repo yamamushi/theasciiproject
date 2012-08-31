@@ -1,3 +1,4 @@
+#pragma once
 /*
  * =====================================================================================
  *
@@ -39,9 +40,16 @@
  * =====================================================================================
  */
 
+#include <string>
 
+class TileMap;
+class ClientMap;
 class ClientSession;
 
+class VBox;
+class TCODConsole;
+class Widget;
+class TCODText;
 
 
 class GraphicsTCOD {

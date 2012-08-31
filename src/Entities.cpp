@@ -37,7 +37,13 @@
  * =====================================================================================
  */
 
-#include "Headers.h"
+#include "Entities.h"
+#include "TileMap.h"
+#include "EntityMap.h"
+#include "WorldMap.h"
+#include "ClientMap.h"
+#include "RenderMap.h"
+#include "FovLib.h"
 
 // Temporary location for these variables, they will be moved elsewhere
 // When DB library code is integrated (soon-ish).

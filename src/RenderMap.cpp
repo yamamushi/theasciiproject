@@ -38,7 +38,11 @@
  */
 
 
-#include "Headers.h"
+#include "RenderMap.h"
+
+#include "EntityMap.h"
+#include "TileMap.h"
+#include "Entities.h"
 
 
 RenderMap::RenderMap(TileMap *tiles){

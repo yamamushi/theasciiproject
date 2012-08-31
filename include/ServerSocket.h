@@ -36,9 +36,11 @@
  * =====================================================================================
  */
 
+#include "BoostLibs.h"
+#include "Entities.h"
+
+
 class ClientMapPacker;
-
-
 
 
 class client_participant
