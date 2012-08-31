@@ -73,7 +73,7 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     TCODConsole::setCustomFont("data/font.png", TCOD_FONT_LAYOUT_ASCII_INROW | TCOD_FONT_TYPE_GRAYSCALE, 32, 2048);
     
     //TCODConsole::setCustomFont("data/arial12x12.png", TCOD_FONT_LAYOUT_TCOD | TCOD_FONT_TYPE_GREYSCALE);
-    TCODConsole::initRoot(MAIN_WIDTH,MAIN_HEIGHT,"The ASCII Project",false,TCOD_RENDERER_SDL);
+    TCODConsole::initRoot(MAIN_WIDTH,MAIN_HEIGHT,"The ASCII Project 0.0.0n",false,TCOD_RENDERER_SDL);
     //	TCODConsole::credits();
     
     TCODConsole *mainConsole = new TCODConsole(MAIN_WIDTH, MAIN_HEIGHT);
@@ -159,8 +159,8 @@ void GraphicsTCOD::drawMenu()
         image->blitRect(output, 2, 0);
         
         output->setDefaultForeground(TCODColor(255, 255, 255));
-        output->print(MAIN_WIDTH-26, MAIN_HEIGHT-3, (const char*)"The ASCII Project 0.0.0m", TCOD_LEFT);
-        output->print(MAIN_WIDTH-29, MAIN_HEIGHT-2, (const char*)"Yamamushi@gmail.com (c)2012", TCOD_LEFT);
+        output->print(MAIN_WIDTH-26, MAIN_HEIGHT-3, (const char*)"The ASCII Project 0.0.0n", TCOD_LEFT);
+        output->print(MAIN_WIDTH-29, MAIN_HEIGHT-2, (const char*)"www.TheASCIIProject.com (c)2012", TCOD_LEFT);
         output->rect(0, 0, 20, 1, true);
         
         
@@ -264,7 +264,7 @@ void GraphicsTCOD::drawMainInterface()
     
     
     serverBox->insertText("Welcome to The ASCII Project");
-    serverBox->insertText(" Version 0.0.0m ");
+    serverBox->insertText(" Version 0.0.0n ");
     serverBox->insertText(" ");
     serverBox->insertText("Tip: all server input begins with ");
     serverBox->insertText("The / character.");
