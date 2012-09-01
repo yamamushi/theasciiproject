@@ -69,7 +69,8 @@ public:
     bool isVisible();
     bool isExplored();
     
-    void setHSV(float h, float s, float v);
+    void setHSV(float h, float s, float v, bool dark=false);
+        
     void setSymbol(wchar_t *ch);
     wchar_t *getSymbol();
     
@@ -100,6 +101,20 @@ public:
     
     
 };
+
+
+
+class solidEarth : public Tile {
+    
+private:
+       
+    
+public:
+    solidEarth(bool blked=true);
+    virtual void setOrientation(int i);
+ 
+};
+
 
 
 class Floor : public Tile {

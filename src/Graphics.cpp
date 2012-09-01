@@ -309,6 +309,8 @@ void GraphicsTCOD::drawMainInterface()
     loggedIn = false;
     APIinQueue = false;
     
+    actionMode = "placeFloor";
+    
     
     boost::asio::io_service pri_io_service;
     tcp::resolver pri_resolver(pri_io_service);
@@ -457,7 +459,7 @@ void GraphicsTCOD::drawMainInterface()
                 
             }
             
-              
+            
             
             else if(key.c == '<' && !commandMode)
             {
@@ -475,21 +477,28 @@ void GraphicsTCOD::drawMainInterface()
             
             else if(key.c == 'i' && !commandMode)
             {
-                if(digActionMode)
+                if(actionMode == "removeTile")
                     apiCall = "/18";
-                else
+                else if(actionMode == "placeWall")
                     apiCall = "/28";
-                
+                else if(actionMode == "placeFloor")
+                    apiCall = "/38";
+                else if(actionMode == "digHole")
+                    apiCall = "/48";
                 
                 APIinQueue = true;
                 
             }
             else if(key.c == 'j' && !commandMode)
             {
-                if(digActionMode)
+                if(actionMode == "removeTile")
                     apiCall = "/14";
-                else
+                else if(actionMode == "placeWall")
                     apiCall = "/24";
+                else if(actionMode == "placeFloor")
+                    apiCall = "/34";
+                else if(actionMode == "digHole")
+                    apiCall = "/44";
                 
                 
                 APIinQueue = true;
@@ -498,37 +507,69 @@ void GraphicsTCOD::drawMainInterface()
             }
             else if(key.c == 'k' && !commandMode)
             {
-                if(digActionMode)
+                if(actionMode == "removeTile")
                     apiCall = "/12";
-                else
+                else if(actionMode == "placeWall")
                     apiCall = "/22";
-                
+                else if(actionMode == "placeFloor")
+                    apiCall = "/32";
+                else if(actionMode == "digHole")
+                    apiCall = "/42";
                 
                 APIinQueue = true;
                 
             }
             else if(key.c == 'l' && !commandMode)
             {
-                if(digActionMode)
+                if(actionMode == "removeTile")
                     apiCall = "/16";
-                else
+                else if(actionMode == "placeWall")
                     apiCall = "/26";
+                else if(actionMode == "placeFloor")
+                    apiCall = "/36";
+                else if(actionMode == "digHole")
+                    apiCall = "/46";
                 
                 APIinQueue = true;
                 
+            }
+            else if(key.c == 'u' && !commandMode)
+            {
+                if(actionMode == "digHole")
+                {
+                    apiCall = "/25";
+                    
+                    APIinQueue = true;
+                }
+                
+            }
+            else if(key.c == 'o' && !commandMode)
+            {
+                if(actionMode == "digHole")
+                {
+                    apiCall = "/35";
+                    
+                    APIinQueue = true;
+                }
                 
             }
             
             
-            else if(key.c == 'd' && commandMode)
+            else if((key.c == 'd' || key.c == 'r') && commandMode)
             {
-                if(!digActionMode)
-                    digActionMode = true;
+                actionMode = "removeTile";
             }
-            else if(key.c == 'p' && commandMode)
+            else if(key.c == 'w' && commandMode)
             {
-                if(digActionMode)
-                    digActionMode = false;
+                actionMode = "placeWall";
+            }
+            else if(key.c == 'D' && commandMode)
+            {
+                actionMode = "digHole";
+            }
+            else if(key.c == 'f' && commandMode)
+            {
+                actionMode = "placeFloor";
             }
             
         }

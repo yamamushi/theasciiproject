@@ -40,7 +40,7 @@
 
 
 
-#define DEBUG_MODE false
+#define DEBUG_MODE true
 
 // the constant TCP_BUFSIZE_READ is the maximum size of the standard input
 // buffer of TcpSocket
@@ -131,6 +131,7 @@ struct render_t {
     bool visible;
     bool blockSight;
     bool blocked;
+    bool walkable;
 };
 
 struct s_render_t {

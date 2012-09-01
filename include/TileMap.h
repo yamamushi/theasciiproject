@@ -94,7 +94,12 @@ public:
     
     
     void removeTile(int x, int y);
+    void floorTile(int x, int y);
     void placeTile(int x, int y);
+    
+    void wallTile(int x, int y);
+    void slopeTile(int x, int y);
+    
     
     void digHole(int x, int y);
     void airTile(int x, int y);

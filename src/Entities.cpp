@@ -113,7 +113,7 @@ bool Entity::move(int dx, int dy)
     if(dx+X > 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y < MAP_HEIGHT)
     {
         if (initialized) {
-            if ((world->virtMap[(dx + X)][(dy + Y)]->blocked) || entMap->checkOccupied(dx+X, dy+Y)){
+            if ((world->virtMap[(dx + X)][(dy + Y)]->blocked) || entMap->checkOccupied(dx+X, dy+Y) || (world->virtMap[(dx+ X)][(dy + Y)]->getTypeID() == 3 && wMap->getEntityZ(entMap, -1)->contextMap->virtMap[(dx+X)][(dy+Y)]->getTypeID() != 1 && wMap->getEntityZ(entMap, -1)->contextMap->virtMap[(dx+X)][(dy+Y)]->getTypeID() != 4 )){
                 entMap->refreshEntityMap();
                 
                 if (clientActive) {
@@ -151,7 +151,7 @@ bool Entity::move(int dx, int dy)
 }
 
 
-bool Entity::digTile(int dx, int dy)
+bool Entity::removeWall(int dx, int dy)
 {
     
     if(dx+X > 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y < MAP_HEIGHT)
@@ -159,13 +159,15 @@ bool Entity::digTile(int dx, int dy)
         if (initialized) {
             if ((world->virtMap[(dx + X)][(dy + Y)]->blocked)){
                 
-                if(wMap->getEntityZ(entMap, -1)->contextMap->virtMap[dx+X][dy+Y]->getTypeID() != 1)
+                
+                if(wMap->getEntityZ(entMap, 1) != nullptr && wMap->getEntityZ(entMap, 1)->contextMap->virtMap[dx+X][dy+Y]->getTypeID() != 3)
                 {
-                    entMap->contextMap->airTile(dx+X, dy+Y);
+                    entMap->contextMap->floorTile(dx+X, dy+Y);
                 }
+
                 else
                 {
-                    entMap->contextMap->removeTile(dx + X, dy + Y);
+                    entMap->contextMap->slopeTile(dx + X, dy + Y);
                 }
                 //entMap->refreshTileMap();
                 entMap->refreshEntityMap();
@@ -202,14 +204,15 @@ bool Entity::digTile(int dx, int dy)
         if (initialized) {
             if ((wMap->getNextEntMap(this, 6)->contextMap->virtMap[1][(dy + Y)]->blocked)){
                 
-                
-                if(wMap->getEntityZ(wMap->getNextEntMap(this, 6), -1)->contextMap->virtMap[1][dy+Y]->getTypeID() != 1)
+                if(wMap->getEntityZ(wMap->getNextEntMap(this, 6), 1) != nullptr && wMap->getEntityZ(wMap->getNextEntMap(this, 6), 1)->contextMap->virtMap[1][dy+Y]->getTypeID() != 3)
                 {
-                    wMap->getNextEntMap(this, 6)->contextMap->airTile(1, dy+Y);
+                    wMap->getNextEntMap(this, 6)->contextMap->floorTile(1, dy+Y);
                 }
+
+                
                 else
                 {
-                    wMap->getNextEntMap(this, 6)->contextMap->removeTile(1, dy+Y);
+                    wMap->getNextEntMap(this, 6)->contextMap->slopeTile(1, dy+Y);
                 }
                 
                 
@@ -247,16 +250,17 @@ bool Entity::digTile(int dx, int dy)
                 
                 
                 
-                if(wMap->getEntityZ(wMap->getNextEntMap(this, 4), -1)->contextMap->virtMap[MAP_WIDTH-1][dy+Y]->getTypeID() != 1)
+                if(wMap->getEntityZ(wMap->getNextEntMap(this, 4), 1) != nullptr && wMap->getEntityZ(wMap->getNextEntMap(this, 4), 1)->contextMap->virtMap[MAP_WIDTH-1][dy+Y]->getTypeID() != 3)
                 {
-                    wMap->getNextEntMap(this, 4)->contextMap->airTile(MAP_WIDTH-1, dy+Y);
-                }
-                else
-                {
-                    wMap->getNextEntMap(this, 4)->contextMap->removeTile(MAP_WIDTH-1, dy+Y);
+                    wMap->getNextEntMap(this, 4)->contextMap->floorTile(MAP_WIDTH-1, dy+Y);
                 }
                 
-               
+                else
+                {
+                    wMap->getNextEntMap(this, 4)->contextMap->slopeTile(MAP_WIDTH-1, dy+Y);
+                }
+                
+                
                 wMap->getNextEntMap(this, 4)->refreshEntityMap();
                 
                 if (clientActive) {
@@ -286,18 +290,21 @@ bool Entity::digTile(int dx, int dy)
     }
     else if(dx+X >= 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y >= MAP_HEIGHT)
     {
-        cout << "test 1" << endl;
+        
         if (initialized) {
             if ((wMap->getNextEntMap(this, 2)->contextMap->virtMap[dx+X][(1)]->blocked)){
                 
                 
-                if(wMap->getEntityZ(wMap->getNextEntMap(this, 2), -1)->contextMap->virtMap[dx+X][1]->getTypeID() != 1)
+                
+                if(wMap->getEntityZ(wMap->getNextEntMap(this, 2), 1) != nullptr && wMap->getEntityZ(wMap->getNextEntMap(this, 2), 1)->contextMap->virtMap[dx+X][1]->getTypeID() != 3)
                 {
-                    wMap->getNextEntMap(this, 2)->contextMap->airTile(dx+X, 1);
+                    wMap->getNextEntMap(this, 2)->contextMap->floorTile(dx+X, 1);
                 }
+                
+                
                 else
                 {
-                    wMap->getNextEntMap(this, 2)->contextMap->removeTile(dx+X, 1);
+                    wMap->getNextEntMap(this, 2)->contextMap->slopeTile(dx+X, 1);
                 }
                 
                 
@@ -329,21 +336,24 @@ bool Entity::digTile(int dx, int dy)
     }
     else if(dx+X >= 0 && dx+X < MAP_WIDTH && dy+Y <= 0 && dy+Y < MAP_HEIGHT)
     {
-        cout << "test 2" << endl;;
+        
         if (initialized) {
             if ((wMap->getNextEntMap(this, 8)->contextMap->virtMap[dx+X][(MAP_HEIGHT-1)]->blocked)){
                 
                 
-                if(wMap->getEntityZ(wMap->getNextEntMap(this, 8), -1)->contextMap->virtMap[dx+X][MAP_HEIGHT-1]->getTypeID() != 1)
+                
+                if(wMap->getEntityZ(wMap->getNextEntMap(this, 8), 1) != nullptr && wMap->getEntityZ(wMap->getNextEntMap(this, 8), 1)->contextMap->virtMap[dx+X][MAP_HEIGHT-1]->getTypeID() != 3)
                 {
-                    wMap->getNextEntMap(this, 8)->contextMap->airTile(dx+X, MAP_HEIGHT-1);
+                    wMap->getNextEntMap(this, 8)->contextMap->floorTile(dx+X, MAP_HEIGHT-1);
                 }
+                
+               
                 else
                 {
-                    wMap->getNextEntMap(this, 8)->contextMap->removeTile(dx+X, MAP_HEIGHT-1);
+                    wMap->getNextEntMap(this, 8)->contextMap->slopeTile(dx+X, MAP_HEIGHT-1);
                 }
-
-                                
+                
+                
                 wMap->getNextEntMap(this, 8)->refreshEntityMap();
                 
                 if (clientActive) {
@@ -371,7 +381,7 @@ bool Entity::digTile(int dx, int dy)
         
         
     }
-
+    
     else
     {
         return false;
@@ -380,7 +390,7 @@ bool Entity::digTile(int dx, int dy)
 
 
 
-bool Entity::placeTile(int dx, int dy)
+bool Entity::placeWall(int dx, int dy)
 {
     
     if(dx+X > 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y < MAP_HEIGHT)
@@ -398,7 +408,7 @@ bool Entity::placeTile(int dx, int dy)
             }
             else {
                 
-                entMap->contextMap->placeTile(dx + X, dy + Y);
+                entMap->contextMap->wallTile(dx + X, dy + Y);
                 //entMap->refreshTileMap();
                 entMap->refreshEntityMap();
                 
@@ -433,7 +443,7 @@ bool Entity::placeTile(int dx, int dy)
             }
             else {
                 
-                wMap->getNextEntMap(this, 6)->contextMap->placeTile(1, dy + Y);
+                wMap->getNextEntMap(this, 6)->contextMap->wallTile(1, dy + Y);
                 //entMap->refreshTileMap();
                 wMap->getNextEntMap(this, 6)->refreshEntityMap();
                 
@@ -468,7 +478,7 @@ bool Entity::placeTile(int dx, int dy)
             }
             else {
                 
-                wMap->getNextEntMap(this, 4)->contextMap->placeTile(MAP_WIDTH-1, dy + Y);
+                wMap->getNextEntMap(this, 4)->contextMap->wallTile(MAP_WIDTH-1, dy + Y);
                 //entMap->refreshTileMap();
                 wMap->getNextEntMap(this, 4)->refreshEntityMap();
                 
@@ -503,7 +513,7 @@ bool Entity::placeTile(int dx, int dy)
             }
             else {
                 
-                wMap->getNextEntMap(this, 2)->contextMap->placeTile(dx+X, 1);
+                wMap->getNextEntMap(this, 2)->contextMap->wallTile(dx+X, 1);
                 //entMap->refreshTileMap();
                 wMap->getNextEntMap(this, 2)->refreshEntityMap();
                 
@@ -539,7 +549,7 @@ bool Entity::placeTile(int dx, int dy)
             }
             else {
                 
-                wMap->getNextEntMap(this, 8)->contextMap->placeTile(dx+X, MAP_HEIGHT-1);
+                wMap->getNextEntMap(this, 8)->contextMap->wallTile(dx+X, MAP_HEIGHT-1);
                 //entMap->refreshTileMap();
                 wMap->getNextEntMap(this, 8)->refreshEntityMap();
                 
@@ -566,12 +576,549 @@ bool Entity::placeTile(int dx, int dy)
 }
 
 
+
+
+
+bool Entity::placeFloor(int dx, int dy)
+{
+    
+    
+    if(dx+X > 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y < MAP_HEIGHT)
+    {
+        if (initialized) {
+            if ((world->virtMap[(dx + X)][(dy + Y)]->blocked) || entMap->checkOccupied(dx+X, dy+Y)){
+                entMap->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return false;
+            }
+            else {
+                
+                entMap->contextMap->floorTile(dx + X, dy + Y);
+                //entMap->refreshTileMap();
+                entMap->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    else if(dx+X > 0 && dx+X >= MAP_WIDTH && dy+Y >= 0 && dy+Y < MAP_HEIGHT)
+    {
+        if (initialized) {
+            if ((wMap->getNextEntMap(this, 6)->contextMap->virtMap[1][(dy + Y)]->blocked) || wMap->getNextEntMap(this, 6)->checkOccupied(1, dy+Y)){
+                wMap->getNextEntMap(this, 6)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return false;
+            }
+            else {
+                
+                wMap->getNextEntMap(this, 6)->contextMap->floorTile(1, dy + Y);
+                //entMap->refreshTileMap();
+                wMap->getNextEntMap(this, 6)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    else if(dx+X <= 0 && dx+X < MAP_WIDTH && dy+Y >= 0 && dy+Y < MAP_HEIGHT)
+    {
+        if (initialized) {
+            if ((wMap->getNextEntMap(this, 4)->contextMap->virtMap[MAP_WIDTH-1][(dy + Y)]->blocked) || wMap->getNextEntMap(this, 4)->checkOccupied(MAP_WIDTH-1, dy+Y)){
+                wMap->getNextEntMap(this, 4)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return false;
+            }
+            else {
+                
+                wMap->getNextEntMap(this, 4)->contextMap->floorTile(MAP_WIDTH-1, dy + Y);
+                //entMap->refreshTileMap();
+                wMap->getNextEntMap(this, 4)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    else if(dx+X >= 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y >= MAP_HEIGHT)
+    {
+        if (initialized) {
+            if ((wMap->getNextEntMap(this, 2)->contextMap->virtMap[dx+X][(1)]->blocked) || wMap->getNextEntMap(this, 2)->checkOccupied(dx+X, 1)){
+                wMap->getNextEntMap(this, 2)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return false;
+            }
+            else {
+                
+                wMap->getNextEntMap(this, 2)->contextMap->floorTile(dx+X, 1);
+                //entMap->refreshTileMap();
+                wMap->getNextEntMap(this, 2)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    else if(dx+X >= 0 && dx+X < MAP_WIDTH && dy+Y <= 0 && dy+Y < MAP_HEIGHT)
+    {
+        cout << "checking north" << endl;
+        if (initialized) {
+            if ((wMap->getNextEntMap(this, 8)->contextMap->virtMap[X][(MAP_HEIGHT-1)]->blocked) || wMap->getNextEntMap(this, 8)->checkOccupied(dx+X, MAP_HEIGHT-1)){
+                wMap->getNextEntMap(this, 8)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return false;
+            }
+            else {
+                
+                wMap->getNextEntMap(this, 8)->contextMap->floorTile(dx+X, MAP_HEIGHT-1);
+                //entMap->refreshTileMap();
+                wMap->getNextEntMap(this, 8)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    else
+    {
+        return false;
+    }
+    
+}
+
+
+bool Entity::digUp()
+{
+    
+    if(initialized)
+    {
+        if(wMap->getEntityZ(entMap, 1) != nullptr && wMap->getEntityZ(entMap, 1)->contextMap->virtMap[X][Y]->getTypeID() != 3)
+        {
+                        
+
+            
+            wMap->getEntityZ(entMap, 1)->contextMap->airTile(X, Y);
+            wMap->getEntityZ(entMap, 1)->refreshEntityMap();
+            entMap->contextMap->slopeTile(X, Y);
+            entMap->refreshEntityMap();
+            
+            if (clientActive) {
+                
+                clientFovSync();
+            }
+            
+            return true;
+            
+        }
+        else
+        {
+            return false;
+            
+        }
+                
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+bool Entity::digDown()
+{
+    
+    if(initialized)
+    {
+        if(wMap->getEntityZ(entMap, -1) != nullptr && wMap->getEntityZ(entMap, -1)->contextMap->virtMap[X][Y]->getTypeID() == 1)
+        {
+            wMap->getEntityZ(entMap, -1)->contextMap->slopeTile(X, Y);
+            wMap->getEntityZ(entMap, -1)->refreshEntityMap();
+            
+            entMap->contextMap->airTile(X, Y);
+            
+            entMap->refreshEntityMap();
+            if (clientActive) {
+                
+                clientFovSync();
+            }
+            
+            return true;
+            
+        }
+        else
+        {
+            return false;
+            
+        }
+        
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+
+bool Entity::digHole(int dx, int dy)
+{
+    
+    if(dx+X > 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y < MAP_HEIGHT)
+    {
+        if (initialized) {
+            if (!(world->virtMap[(dx + X)][(dy + Y)]->blocked)){
+                
+                
+                if(wMap->getEntityZ(entMap, -1) == nullptr)
+                {
+                    entMap->contextMap->floorTile(dx+X, dy+Y);
+                    
+                }
+                
+                else if(wMap->getEntityZ(entMap, -1) != nullptr && wMap->getEntityZ(entMap, -1)->contextMap->virtMap[dx+X][dy+Y]->getTypeID() == 1)
+                {
+                    entMap->contextMap->airTile(dx+X, dy+Y);
+                    wMap->getEntityZ(entMap, -1)->contextMap->slopeTile(dx+X, dy+Y);
+                }
+                
+                else
+                {
+                    entMap->contextMap->airTile(dx + X, dy + Y);
+                }
+                //entMap->refreshTileMap();
+                entMap->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return true;
+            }
+            else {
+                
+                entMap->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    else if(dx+X > 0 && dx+X >= MAP_WIDTH && dy+Y >= 0 && dy+Y < MAP_HEIGHT)
+    {
+        if (initialized) {
+            if (!(wMap->getNextEntMap(this, 6)->contextMap->virtMap[1][(dy + Y)]->blocked)){
+                
+                if(wMap->getEntityZ(wMap->getNextEntMap(this, 6), -1) == nullptr)
+                {
+                    wMap->getNextEntMap(this, 6)->contextMap->floorTile(1, dy+Y);
+                }
+                
+                else if(wMap->getEntityZ(wMap->getNextEntMap(this, 6), -1) != nullptr && wMap->getEntityZ(wMap->getNextEntMap(this, 6), -1)->contextMap->virtMap[1][dy+Y]->getTypeID() == 1)
+                {
+                    wMap->getNextEntMap(this, 6)->contextMap->airTile(1, dy+Y);
+                    wMap->getEntityZ(wMap->getNextEntMap(this, 6), -1)->contextMap->slopeTile(1, dy + Y);
+                }
+                
+                else
+                {
+                    wMap->getNextEntMap(this, 6)->contextMap->airTile(1, dy+Y);
+                }
+                
+                
+                wMap->getNextEntMap(this, 6)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return true;
+            }
+            else {
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    else if(dx+X <= 0 && dx+X < MAP_WIDTH && dy+Y >= 0 && dy+Y < MAP_HEIGHT)
+    {
+        if (initialized) {
+            if (!(wMap->getNextEntMap(this, 4)->contextMap->virtMap[MAP_WIDTH-1][(dy + Y)]->blocked)){
+                
+                
+                
+                if(wMap->getEntityZ(wMap->getNextEntMap(this, 4), -1) == nullptr)
+                {
+                    wMap->getNextEntMap(this, 4)->contextMap->floorTile(MAP_WIDTH-1, dy+Y);
+                }
+                
+                else if(wMap->getEntityZ(wMap->getNextEntMap(this, 4), -1) != nullptr && wMap->getEntityZ(wMap->getNextEntMap(this, 4), -1)->contextMap->virtMap[MAP_WIDTH-1][dy+Y]->getTypeID() == 1)
+                {
+                    wMap->getNextEntMap(this, 4)->contextMap->airTile(MAP_WIDTH-1, dy+Y);
+                    wMap->getEntityZ(wMap->getNextEntMap(this, 4), -1)->contextMap->slopeTile(MAP_WIDTH-1, dy + Y);
+                }
+                
+                else
+                {
+                    wMap->getNextEntMap(this, 4)->contextMap->airTile(MAP_WIDTH-1, dy+Y);
+                }
+                
+                
+                wMap->getNextEntMap(this, 4)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return true;
+            }
+            else {
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    else if(dx+X >= 0 && dx+X < MAP_WIDTH && dy+Y > 0 && dy+Y >= MAP_HEIGHT)
+    {
+        
+        if (initialized) {
+            if (!(wMap->getNextEntMap(this, 2)->contextMap->virtMap[dx+X][(1)]->blocked)){
+                
+                
+                
+                if(wMap->getEntityZ(wMap->getNextEntMap(this, 2), -1) != nullptr && wMap->getEntityZ(wMap->getNextEntMap(this, 2), -1)->contextMap->virtMap[dx+X][1]->getTypeID() != 1)
+                {
+                    wMap->getNextEntMap(this, 2)->contextMap->floorTile(dx+X, 1);
+                }
+                
+                else if(wMap->getEntityZ(wMap->getNextEntMap(this, 2), -1) != nullptr && wMap->getEntityZ(wMap->getNextEntMap(this, 2), -1)->contextMap->virtMap[dx+X][1]->getTypeID() == 1)
+                {
+                    wMap->getNextEntMap(this, 2)->contextMap->airTile(dx+X, 1);
+                    wMap->getEntityZ(wMap->getNextEntMap(this, 2), -1)->contextMap->slopeTile(dx+X, 1);
+                }
+                
+                else
+                {
+                    wMap->getNextEntMap(this, 2)->contextMap->airTile(dx+X, 1);
+                }
+                
+                
+                wMap->getNextEntMap(this, 2)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return true;
+            }
+            else {
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+    else if(dx+X >= 0 && dx+X < MAP_WIDTH && dy+Y <= 0 && dy+Y < MAP_HEIGHT)
+    {
+        
+        if (initialized) {
+            if (!(wMap->getNextEntMap(this, 8)->contextMap->virtMap[dx+X][(MAP_HEIGHT-1)]->blocked)){
+                
+                
+                
+                if(wMap->getEntityZ(wMap->getNextEntMap(this, 8), -1) != nullptr && wMap->getEntityZ(wMap->getNextEntMap(this, 8), -1)->contextMap->virtMap[dx+X][MAP_HEIGHT-1]->getTypeID() != 1)
+                {
+                    wMap->getNextEntMap(this, 8)->contextMap->floorTile(dx+X, MAP_HEIGHT-1);
+                }
+                
+                else if(wMap->getEntityZ(wMap->getNextEntMap(this, 8), -1) != nullptr && wMap->getEntityZ(wMap->getNextEntMap(this, 8), -1)->contextMap->virtMap[dx+X][MAP_HEIGHT-1]->getTypeID() == 1)
+                {
+                    
+                    wMap->getNextEntMap(this, 8)->contextMap->airTile(dx+X, MAP_HEIGHT-1);
+                    wMap->getEntityZ(wMap->getNextEntMap(this, 8), -1)->contextMap->slopeTile(dx+X, MAP_HEIGHT-1);
+                }
+                
+                
+                else
+                {
+                    wMap->getNextEntMap(this, 8)->contextMap->airTile(dx+X, MAP_HEIGHT-1);
+                }
+                
+                
+                wMap->getNextEntMap(this, 8)->refreshEntityMap();
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                return true;
+            }
+            else {
+                
+                if (clientActive) {
+                    
+                    clientFovSync();
+                }
+                
+                
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+    }
+    
+    else
+    {
+        return false;
+    }
+    
+}
+
+
+
+
+
+
 void Entity::setGlobal(WorldMap *WMap)
 {
     
     if(WMap != nullptr)
         wMap = WMap;
-
+    
     
 }
 
@@ -627,23 +1174,23 @@ void Entity::clientFovSync(){
                 //cMap->cMap[cX][cY]->explored = true;
                 
                 
-              /*  if(fov[x][y] == true)
-                {
-                    
-                    cMap->cMap[iX][iY]->visible = true;
-                    //cMap->cMap[iX][iY]->explored = true;
-                    
-                }
-                else
-                {
-                    cMap->cMap[iX][iY]->visible = false;
-                    cMap->cMap[iX][iY]->occupied = false;
-                } */
+                /*  if(fov[x][y] == true)
+                 {
+                 
+                 cMap->cMap[iX][iY]->visible = true;
+                 //cMap->cMap[iX][iY]->explored = true;
+                 
+                 }
+                 else
+                 {
+                 cMap->cMap[iX][iY]->visible = false;
+                 cMap->cMap[iX][iY]->occupied = false;
+                 } */
                 
                 
             }
             
-            else if(y > 0 && y > MAP_HEIGHT && x > 0 && x < MAP_WIDTH)    
+            else if(y > 0 && y > MAP_HEIGHT && x > 0 && x < MAP_WIDTH)
             {
                 
                 RenderMap *trMap = wMap->getNextEntMap(this, 2)->rMap;
@@ -660,23 +1207,23 @@ void Entity::clientFovSync(){
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 
-              /*  FovLib *tFov = wMap->getNextEntMap(this, 2)->fovLib;
-                tFov->refreshFov(this, x, y);
+                /*  FovLib *tFov = wMap->getNextEntMap(this, 2)->fovLib;
+                 tFov->refreshFov(this, x, y);
+                 
+                 if(fov[x][y] == true)
+                 {
+                 
+                 cMap->cMap[iX][iY]->visible = true;
+                 //cMap->cMap[iX][iY]->explored = true;
+                 
+                 }
+                 else
+                 {
+                 cMap->cMap[iX][iY]->visible = false;
+                 cMap->cMap[iX][iY]->occupied = false;
+                 } */
                 
-                if(fov[x][y] == true)
-                {
-                    
-                    cMap->cMap[iX][iY]->visible = true;
-                    //cMap->cMap[iX][iY]->explored = true;
-                    
-                }
-                else
-                {
-                    cMap->cMap[iX][iY]->visible = false;
-                    cMap->cMap[iX][iY]->occupied = false;
-                } */
-                
-            } 
+            }
             
             else if(y < 0 && y < MAP_HEIGHT && x > 0 && x < MAP_WIDTH)
             {
@@ -694,24 +1241,24 @@ void Entity::clientFovSync(){
                 cMap->cMap[iX][iY+1]->VD = trMap->returnVD(x, iy);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
-           /*
-                FovLib *tFov = wMap->getNextEntMap(this, 8)->fovLib;
-                tFov->refreshFov(this, x, y);
+                /*
+                 FovLib *tFov = wMap->getNextEntMap(this, 8)->fovLib;
+                 tFov->refreshFov(this, x, y);
+                 
+                 if(fov[x][y] == true)
+                 {
+                 
+                 cMap->cMap[iX][iY]->visible = true;
+                 //cMap->cMap[iX][iY]->explored = true;
+                 
+                 }
+                 else
+                 {
+                 cMap->cMap[iX][iY]->visible = false;
+                 cMap->cMap[iX][iY]->occupied = false;
+                 }
+                 */
                 
-                if(fov[x][y] == true)
-                {
-                    
-                    cMap->cMap[iX][iY]->visible = true;
-                    //cMap->cMap[iX][iY]->explored = true;
-                    
-                }
-                else
-                {
-                    cMap->cMap[iX][iY]->visible = false;
-                    cMap->cMap[iX][iY]->occupied = false;
-                }
-                */
-
             }
             
             else if(y > 0 && y < MAP_HEIGHT && x < 0 && x < MAP_WIDTH)
@@ -749,7 +1296,7 @@ void Entity::clientFovSync(){
                  */
                 
             }
-
+            
             
             else if(y > 0 && y < MAP_HEIGHT && x > 0 && x > MAP_WIDTH)
             {
@@ -803,7 +1350,7 @@ void Entity::clientFovSync(){
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 
-
+                
             }
             else if(y > 0 && y > MAP_HEIGHT && x > 0 && x > MAP_WIDTH)
             {
@@ -873,7 +1420,7 @@ void Entity::clientFovSync(){
         
         x++;
     }
-
+    
     
 }
 

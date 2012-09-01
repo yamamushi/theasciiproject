@@ -158,8 +158,13 @@ public:
     bool move(int dx, int dy);
     void move_self(int dx, int dy);
     
-    bool digTile(int dx, int dy);
-    bool placeTile(int dx, int dy);
+    bool removeWall(int dx, int dy);
+    bool placeWall(int dx, int dy);
+    
+    bool placeFloor(int dx, int dy);
+    bool digHole(int dx, int dy);
+    bool digUp();
+    bool digDown();
     
 };
 

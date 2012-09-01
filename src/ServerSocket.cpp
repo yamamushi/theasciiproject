@@ -758,13 +758,20 @@ void client_connection::handleAPI(int api)
     }
     else if ( api == 11)
     {
-        player->digTile(-1, 1);
+        player->removeWall(-1, 1);
     }
     else if ( api == 21)
     {
-        player->placeTile(-1, 1);
+        player->placeWall(-1, 1);
     }
-    
+    else if ( api == 31)
+    {
+        player->placeFloor(-1, 1);
+    }
+    else if ( api == 41)
+    {
+        player->digHole(-1, 1);
+    }
     
     
     else if ( api == 2)
@@ -774,11 +781,19 @@ void client_connection::handleAPI(int api)
     }
     else if ( api == 12)
     {
-        player->digTile(0, 1);
+        player->removeWall(0, 1);
     }
     else if ( api == 22)
     {
-        player->placeTile(0, 1);
+        player->placeWall(0, 1);
+    }
+    else if ( api == 32)
+    {
+        player->placeFloor(0, 1);
+    }
+    else if ( api == 42)
+    {
+        player->digHole(0, 1);
     }
     
     
@@ -790,11 +805,19 @@ void client_connection::handleAPI(int api)
     }
     else if ( api == 13)
     {
-        player->digTile(1, 1);
+        player->removeWall(1, 1);
     }
     else if ( api == 23)
     {
-        player->placeTile(1, 1);
+        player->placeWall(1, 1);
+    }
+    else if ( api == 33)
+    {
+        player->placeFloor(1, 1);
+    }
+    else if ( api == 43)
+    {
+        player->digHole(1, 1);
     }
     
     
@@ -806,11 +829,19 @@ void client_connection::handleAPI(int api)
     }
     else if ( api == 14)
     {
-        player->digTile(-1, 0);
+        player->removeWall(-1, 0);
     }
     else if ( api == 24)
     {
-        player->placeTile(-1, 0);
+        player->placeWall(-1, 0);
+    }
+    else if ( api == 34)
+    {
+        player->placeFloor(-1, 0);
+    }
+    else if ( api == 44)
+    {
+        player->digHole(-1, 0);
     }
     
     
@@ -826,6 +857,15 @@ void client_connection::handleAPI(int api)
         worldMap->changEntZ(player, -1);
     }
 
+    else if ( api == 25)
+    {
+        player->digUp();
+    }
+    
+    else if ( api == 35)
+    {
+        player->digDown();
+    }
     
     
     else if (api == 6)
@@ -835,11 +875,19 @@ void client_connection::handleAPI(int api)
     }
     else if ( api == 16)
     {
-        player->digTile(1, 0);
+        player->removeWall(1, 0);
     }
     else if ( api == 26)
     {
-        player->placeTile(1, 0);
+        player->placeWall(1, 0);
+    }
+    else if ( api == 36)
+    {
+        player->placeFloor(1, 0);
+    }
+    else if ( api == 46)
+    {
+        player->digHole(1, 0);
     }
     
     
@@ -851,11 +899,19 @@ void client_connection::handleAPI(int api)
     }
     else if ( api == 17)
     {
-        player->digTile(-1, -1);
+        player->removeWall(-1, -1);
     }
     else if ( api == 27)
     {
-        player->placeTile(-1, -1);
+        player->placeWall(-1, -1);
+    }
+    else if ( api == 37)
+    {
+        player->placeFloor(-1, -1);
+    }
+    else if ( api == 47)
+    {
+        player->digHole(-1, -1);
     }
     
     
@@ -867,11 +923,19 @@ void client_connection::handleAPI(int api)
     }
     else if ( api == 18)
     {
-        player->digTile(0, -1);
+        player->removeWall(0, -1);
     }
     else if ( api == 28)
     {
-        player->placeTile(0, -1);
+        player->placeWall(0, -1);
+    }
+    else if ( api == 38)
+    {
+        player->placeFloor(0, -1);
+    }
+    else if ( api == 48)
+    {
+        player->digHole(0, -1);
     }
     
     
@@ -883,11 +947,19 @@ void client_connection::handleAPI(int api)
     }
     else if ( api == 19)
     {
-        player->digTile(1, -1);
+        player->removeWall(1, -1);
     }
     else if ( api == 29)
     {
-        player->placeTile(1, -1);
+        player->placeWall(1, -1);
+    }
+    else if ( api == 39)
+    {
+        player->placeFloor(1, -1);
+    }
+    else if ( api == 49)
+    {
+        player->digHole(1, -1);
     }
     
 }

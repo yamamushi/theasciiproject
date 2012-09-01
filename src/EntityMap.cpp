@@ -194,7 +194,7 @@ void EntityMap::removeFromEntMap(Entity *ent)
                     {
                         pos[x][y].erase(pos[x][y].begin()+z);
                         
-                        cout << "erased at " << x << " " <<  y << " " <<  z << endl;
+                        //cout << "erased at " << x << " " <<  y << " " <<  z << endl;
                         break;
                     }
                 }
@@ -292,13 +292,24 @@ void EntityMap::refreshRenderMap()
                 if(wMap->getEntityZ(this, -1) != nullptr)
                 {
                     
-                    if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 1 && contextMap->virtMap[x][y]->getTypeID() != 1)
+                    if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 1 && contextMap->virtMap[x][y]->getTypeID() == 3)
+                    {
+                        
+                        contextMap->floorTile(x, y);;
+
+                    }
+                    else if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() != 3 && contextMap->virtMap[x][y]->getTypeID() == 3)
                     {
                         contextMap->virtMap[x][y]->setHSV(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->HD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->SD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->VD);
                         contextMap->virtMap[x][y]->setSymbol(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getSymbol());
-
+                        
                     }
-                    
+                    else if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 3 && contextMap->virtMap[x][y]->getTypeID() == 3)
+                    {
+                        
+                        contextMap->airTile(x, y);
+                        
+                    }
 
                 }
             }

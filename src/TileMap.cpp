@@ -87,7 +87,7 @@ void TileMap::fillMap(){
 	for (x=0; x < wid; x++){
 		for ( y = 0; y < hig; y++){
             delete virtMap[x][y];
-			virtMap[x][y] = new Wall();
+			virtMap[x][y] = new solidEarth();
 		}
 	}
     
@@ -182,7 +182,7 @@ void TileMap::orientWalls()
         for(y=1; y < (MAP_HEIGHT - 1); y++){
             orientWall(x, y);
         }
-    } 
+    }
 }
 
 
@@ -642,6 +642,14 @@ void TileMap::removeTile(int x, int y)
 }
 
 
+void TileMap::floorTile(int x, int y)
+{
+
+    delete virtMap[x][y];
+    virtMap[x][y] = new Floor();
+
+}
+
 
 void TileMap::placeTile(int x, int y)
 {
@@ -651,12 +659,30 @@ void TileMap::placeTile(int x, int y)
 }
 
 
+void TileMap::wallTile(int x, int y)
+{
+    delete virtMap[x][y];
+    virtMap[x][y] = new Wall();
+    orientWalls();
+}
+
 void TileMap::airTile(int x, int y)
 {
     delete virtMap[x][y];
     virtMap[x][y] = new Air();
     
 }
+
+void TileMap::slopeTile(int x, int y)
+{
+    
+    
+    delete virtMap[x][y];
+    virtMap[x][y] = new Slope();
+
+    
+}
+
 
 
 void TileMap::digHole(int x, int y)

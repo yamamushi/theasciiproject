@@ -86,6 +86,8 @@ public:
     std::string apiCall;
     std::string serverCall;
     
+    std::string actionMode;
+    
     GraphicsTCOD(ClientMap *clientMap);
     void init(ClientMap *clientMap);
     

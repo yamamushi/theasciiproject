@@ -107,12 +107,21 @@ bool Tile::isExplored(){
 
 
 
-void Tile::setHSV(float h, float s, float v)
+void Tile::setHSV(float h, float s, float v, bool dark)
 {
-    
-    H = h;
-    S = s;
-    V = v;    
+    if(!dark)
+    {
+        H = h;
+        S = s;
+        V = v;
+    }
+    else
+    {
+        HD = h;
+        SD = s;
+        VD = v;
+        
+    }
 }
 
 
@@ -159,14 +168,13 @@ Slope::Slope(bool blked)
     
     H = 30.4;
 	S = 1.0;
-	V = 0.3;
+	V = 0.4;
     
 	HD = 30.4;
 	SD = 1.0;
-	VD = 0.1;
+	VD = 0.4;
     
     setSymbol((wchar_t *)L"\u25B2");
-    
     
     
 }
@@ -195,7 +203,7 @@ Air::Air(bool blked)
     
     setTypeID(3);
     setSymbol((wchar_t *)L"\u2592");
-
+    
     
     
 }
@@ -203,6 +211,36 @@ Air::Air(bool blked)
 
 
 void Air::setOrientation(int i){
+    ;
+}
+
+
+solidEarth::solidEarth(bool blked)
+{
+    
+    block_sight = blked;
+    blocked = blked;
+    needsOrientation = false;
+    
+    
+    H = 30.4;
+	S = 1.0;
+	V = 0.3;
+    
+	HD = 30.4;
+	SD = 1.0;
+	VD = 0.1;
+    
+    setTypeID(1);
+    setSymbol((wchar_t *)L"\u2593");
+    
+    
+    
+}
+
+
+
+void solidEarth::setOrientation(int i){
     ;
 }
 
