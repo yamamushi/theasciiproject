@@ -79,6 +79,7 @@ public:
     
     bool rendering;
     bool connected;
+    bool commandMode;
     bool loggedIn;
     bool APIinQueue;
     bool serverCommandInQueue;

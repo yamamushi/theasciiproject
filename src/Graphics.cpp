@@ -300,13 +300,14 @@ void GraphicsTCOD::drawMainInterface()
     
     bool textInput = false;
     bool popupOpen = false;
-    bool commandMode = false;
-    bool digActionMode = false;
+    
+    
     
     //bool placeActionMode = false;
     
     connected = false;
     loggedIn = false;
+    commandMode = false;
     APIinQueue = false;
     
     actionMode = "placeFloor";
@@ -365,7 +366,7 @@ void GraphicsTCOD::drawMainInterface()
         
         
         
-        mapOutput->clear();
+        
         
         
         
@@ -671,8 +672,8 @@ void GraphicsTCOD::drawMainInterface()
             textInput = true;
         }
         
+        //mapOutput->clear();
         
-        drawAll();
         if(connected && loggedIn && !commandMode)
         {
             mapOutput->setDefaultForeground(TCODColor(255,255,255));
@@ -685,7 +686,7 @@ void GraphicsTCOD::drawMainInterface()
         }
         
         
-        
+        drawAll();
         TCODConsole::blit(mapOutput, 0, 0, 0, 0, output, 0, 2);
         inputText->render(serverConsole);
         chatBox->render();
@@ -698,7 +699,7 @@ void GraphicsTCOD::drawMainInterface()
         TCODConsole::blit(serverConsole,0,0,0,0,output,MAIN_WIDTH/2,32, 1.0f, 1.0f);
         TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
         render();
-        
+        mapOutput->clear();
         
         
         /* if((key.c == 'a' || key.c == 's' || key.c == 'w' || key.c == 'd') && connected && loggedIn && !textInput)
@@ -761,6 +762,8 @@ void GraphicsTCOD::requestMap()
             if(dataSize > 0)
                 cnet->read_map(dataSize);
             
+            
+            
             //boost::posix_time::seconds sleepTime(1);
             //boost::this_thread::sleep(sleepTime);
             
@@ -812,9 +815,7 @@ void GraphicsTCOD::render(){
     
     
 	TCODConsole::blit(output, 0, 0, MAIN_WIDTH, MAIN_HEIGHT, TCODConsole::root, 0, 0);
-    
-    
-    
+
     TCODConsole::flush();
     
     
