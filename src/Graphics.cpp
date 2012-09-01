@@ -699,7 +699,7 @@ void GraphicsTCOD::drawMainInterface()
         TCODConsole::blit(serverConsole,0,0,0,0,output,MAIN_WIDTH/2,32, 1.0f, 1.0f);
         TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
         render();
-        mapOutput->clear();
+        //mapOutput->clear();
         
         
         /* if((key.c == 'a' || key.c == 's' || key.c == 'w' || key.c == 'd') && connected && loggedIn && !textInput)
@@ -754,7 +754,7 @@ void GraphicsTCOD::requestMap()
                 
             }
             
-            
+            //cMap->cleanMap();
             
             cnet->sizeMap();
             int dataSize = cnet->confirmSize();

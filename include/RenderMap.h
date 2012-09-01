@@ -80,6 +80,8 @@ public:
     bool returnExplored(int x, int y);
     bool returnOccupied(int x, int y);
     bool returnVisible(int x, int y);
+    bool returnBlocked(int x, int y);
+    bool returnBlockSight(int x, int y);
 
 
 };

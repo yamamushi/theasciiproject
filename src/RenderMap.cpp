@@ -83,6 +83,8 @@ void RenderMap::refreshMap(){
                 rMap[x][y].VD = tMap->virtMap[x][y]->VD;
                 //rMap[x][y].explored = tMap->virtMap[x][y]->isExplored();
                 rMap[x][y].occupied = false;
+                rMap[x][y].blocked = tMap->virtMap[x][y]->blocked;
+                rMap[x][y].blockSight = tMap->virtMap[x][y]->block_sight;
                 //rMap[x][y].visible = tMap->virtMap[x][y]->isVisible();
                 
                 
@@ -98,6 +100,8 @@ void RenderMap::refreshMap(){
                 rMap[x][y].V = scan->V;
                 //rMap[x][y].explored = tMap->virtMap[x][y]->isExplored();
                 rMap[x][y].occupied = true;
+                rMap[x][y].blocked = tMap->virtMap[x][y]->blocked;
+                rMap[x][y].blockSight = tMap->virtMap[x][y]->block_sight;
                 //rMap[x][y].visible = tMap->virtMap[x][y]->isVisible();
                 
             }
@@ -112,6 +116,20 @@ render_t RenderMap::exportSquare(int x, int y){
 }
 
 
+
+bool RenderMap::returnBlocked(int x, int y)
+{
+    
+    return rMap[x][y].blocked;
+    
+}
+
+bool RenderMap::returnBlockSight(int x, int y)
+{
+    
+    return rMap[x][y].blockSight;
+    
+}
 
 wchar_t *RenderMap::getSymbol(int x, int y){
     

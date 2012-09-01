@@ -300,8 +300,13 @@ void EntityMap::refreshRenderMap()
                     }
                     else if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() != 3 && contextMap->virtMap[x][y]->getTypeID() == 3)
                     {
-                        contextMap->virtMap[x][y]->setHSV(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->HD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->SD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->VD);
-                        contextMap->virtMap[x][y]->setSymbol(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getSymbol());
+                        contextMap->virtMap[x][y]->setHSV(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->H, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->S, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->V);
+                        contextMap->virtMap[x][y]->setHSV(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->HD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->SD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->VD, true);
+                        
+                        if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 4)
+                            contextMap->virtMap[x][y]->setSymbol((wchar_t*)L"\u25BC");
+                        else
+                            contextMap->virtMap[x][y]->setSymbol(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getSymbol());
                         
                     }
                     else if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 3 && contextMap->virtMap[x][y]->getTypeID() == 3)

@@ -84,7 +84,7 @@ void FovLib::refreshFov(Entity *tgt, int radius){
     }
     
     // Compute FOV
-    tcodMap->computeFov(tgt->posX(), tgt->posY(), radius, FOV_LIGHT_WALLS);
+    tcodMap->computeFov(MAP_WIDTH/2, MAP_HEIGHT/2, radius, FOV_LIGHT_WALLS);
     
     
     for (x = 0; x < MAP_WIDTH; x++)
@@ -132,7 +132,13 @@ void FovLib::refreshFov(Entity *tgt, int X, int Y, int radius){
             
             if ((tcodMap->isInFov(x, y)))
             {
-                tgt->fov[x][y] = true;
+                //tgt->fov[x][y] = true;
+                tgt->cMap->cMap[x][y]->visible = true;
+                tgt->cMap->cMap[x][y]->explored = true;
+            }
+            else
+            {
+                tgt->cMap->cMap[x][y]->visible = false;
             }
         }
     }

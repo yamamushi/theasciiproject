@@ -1158,7 +1158,7 @@ void Entity::clientFovSync(){
         for(int iY = cY-offset; iY < cY+offset; iY++ )
         {
             cMap->cMap[iX][iY]->explored = true;
-            cMap->cMap[iX][iY]->visible = true;
+            //cMap->cMap[iX][iY]->visible = true;
             
             if(y > 0 && y < MAP_HEIGHT && x > 0 && x < MAP_WIDTH)
                 
@@ -1171,6 +1171,9 @@ void Entity::clientFovSync(){
                 cMap->cMap[iX][iY]->SD = rMap->returnSD(x, y);
                 cMap->cMap[iX][iY]->V = rMap->returnV(x, y);
                 cMap->cMap[iX][iY]->VD = rMap->returnVD(x, y);
+                cMap->cMap[iX][iY]->blocked = rMap->returnBlocked(x, y);
+                cMap->cMap[iX][iY]->blockSight = rMap->returnBlockSight(x, y);
+               // cMap->cMap[ix][iY]->bloc
                 //cMap->cMap[cX][cY]->explored = true;
                 
                 
@@ -1204,6 +1207,9 @@ void Entity::clientFovSync(){
                 cMap->cMap[iX][iY-1]->SD = trMap->returnSD(x, iy);
                 cMap->cMap[iX][iY-1]->V = trMap->returnV(x, iy);
                 cMap->cMap[iX][iY-1]->VD = trMap->returnVD(x, iy);
+                
+                cMap->cMap[iX][iY-1]->blocked = rMap->returnBlocked(x, iy);
+                cMap->cMap[iX][iY-1]->blockSight = rMap->returnBlockSight(x, iy);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 
@@ -1239,6 +1245,9 @@ void Entity::clientFovSync(){
                 cMap->cMap[iX][iY+1]->SD = trMap->returnSD(x, iy);
                 cMap->cMap[iX][iY+1]->V = trMap->returnV(x, iy);
                 cMap->cMap[iX][iY+1]->VD = trMap->returnVD(x, iy);
+                
+                cMap->cMap[iX][iY+1]->blocked = rMap->returnBlocked(x, iy);
+                cMap->cMap[iX][iY+1]->blockSight = rMap->returnBlockSight(x, iy);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 /*
@@ -1275,6 +1284,9 @@ void Entity::clientFovSync(){
                 cMap->cMap[iX+1][iY]->SD = trMap->returnSD(ix, y);
                 cMap->cMap[iX+1][iY]->V = trMap->returnV(ix, y);
                 cMap->cMap[iX+1][iY]->VD = trMap->returnVD(ix, y);
+                
+                cMap->cMap[iX+1][iY]->blocked = rMap->returnBlocked(ix, y);
+                cMap->cMap[iX+1][iY]->blockSight = rMap->returnBlockSight(ix, y);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 /*
@@ -1312,6 +1324,10 @@ void Entity::clientFovSync(){
                 cMap->cMap[iX-1][iY]->SD = trMap->returnSD(ix, y);
                 cMap->cMap[iX-1][iY]->V = trMap->returnV(ix, y);
                 cMap->cMap[iX-1][iY]->VD = trMap->returnVD(ix, y);
+                
+                
+                cMap->cMap[iX-1][iY]->blocked = rMap->returnBlocked(ix, y);
+                cMap->cMap[iX-1][iY]->blockSight = rMap->returnBlockSight(ix, y);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 
@@ -1347,6 +1363,9 @@ void Entity::clientFovSync(){
                 cMap->cMap[iX-1][iY+1]->SD = trMap->returnSD(ix, iy);
                 cMap->cMap[iX-1][iY+1]->V = trMap->returnV(ix, iy);
                 cMap->cMap[iX-1][iY+1]->VD = trMap->returnVD(ix, iy);
+                
+                cMap->cMap[iX-1][iY+1]->blocked = rMap->returnBlocked(ix, iy);
+                cMap->cMap[iX-1][iY+1]->blockSight = rMap->returnBlockSight(ix, iy);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 
@@ -1367,6 +1386,9 @@ void Entity::clientFovSync(){
                 cMap->cMap[iX-1][iY-1]->SD = trMap->returnSD(ix, iy);
                 cMap->cMap[iX-1][iY-1]->V = trMap->returnV(ix, iy);
                 cMap->cMap[iX-1][iY-1]->VD = trMap->returnVD(ix, iy);
+                
+                cMap->cMap[iX-1][iY-1]->blocked = rMap->returnBlocked(ix, iy);
+                cMap->cMap[iX-1][iY-1]->blockSight = rMap->returnBlockSight(ix, iy);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 
@@ -1387,6 +1409,9 @@ void Entity::clientFovSync(){
                 cMap->cMap[iX+1][iY+1]->SD = trMap->returnSD(ix, iy);
                 cMap->cMap[iX+1][iY+1]->V = trMap->returnV(ix, iy);
                 cMap->cMap[iX+1][iY+1]->VD = trMap->returnVD(ix, iy);
+                
+                cMap->cMap[iX+1][iY+1]->blocked = rMap->returnBlocked(ix, iy);
+                cMap->cMap[iX+1][iY+1]->blockSight = rMap->returnBlockSight(ix, iy);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 
@@ -1407,12 +1432,18 @@ void Entity::clientFovSync(){
                 cMap->cMap[iX+1][iY-1]->SD = trMap->returnSD(ix, iy);
                 cMap->cMap[iX+1][iY-1]->V = trMap->returnV(ix, iy);
                 cMap->cMap[iX+1][iY-1]->VD = trMap->returnVD(ix, iy);
+                
+                cMap->cMap[iX+1][iY-1]->blocked = rMap->returnBlocked(ix, iy);
+                cMap->cMap[iX+1][iY-1]->blockSight = rMap->returnBlockSight(ix, iy);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 
                 
             }
             
+            //refreshFov(7);
+            FOV->refreshFov(this, cX, cY, 7);
+
             
             y++;
         }
