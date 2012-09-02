@@ -193,6 +193,7 @@ void ClientMap::cleanMap()
                 cMap[x][y]->visible = false;
                 cMap[x][y]->blockSight = false;
                 cMap[x][y]->blocked = false;
+                
             }
         }
     }

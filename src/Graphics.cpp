@@ -169,7 +169,7 @@ void GraphicsTCOD::drawMenu()
         
         output->setDefaultForeground(TCODColor(255, 255, 255));
         output->print(MAIN_WIDTH-26, MAIN_HEIGHT-3, (const char*)"The ASCII Project 0.0.0n", TCOD_LEFT);
-        output->print(MAIN_WIDTH-29, MAIN_HEIGHT-2, (const char*)"www.TheASCIIProject.com (c)2012", TCOD_LEFT);
+        output->print(MAIN_WIDTH-29, MAIN_HEIGHT-2, (const char*)"TheASCIIProject.com (c)2012", TCOD_LEFT);
         output->rect(0, 0, 20, 1, true);
         
         

@@ -39,6 +39,7 @@
 class ClientMap;
 class TileMap;
 class Entity;
+class EntityMap;
 class TCODMap;
 
 class FovLib {
@@ -56,6 +57,9 @@ public:
 
     void refreshFov(Entity *tgt, int radius);
     void refreshFov(Entity *tgt, int X, int Y, int radius);
+    
+    
+    void refreshFov(EntityMap *tgt, int X, int Y, int radius);
 
     TileMap * getTileMap();
 

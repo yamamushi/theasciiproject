@@ -124,6 +124,7 @@ void EntityMap::initWorldMap(WorldMap *WMap, int x, int y, int z)
 void EntityMap::addToMap(Entity *entity){
     
     refreshRenderMap();
+    refreshLightMap();
     
 	Entity *src = entity;
 	int x, y;
@@ -144,7 +145,9 @@ void EntityMap::addToMap(Entity *entity){
 
 void EntityMap::addToMapAt(Entity *entity, int x, int y){
     
+    
     refreshRenderMap();
+    refreshLightMap();
     
 	Entity *src = entity;
     src->setPos(x, y);
@@ -285,45 +288,112 @@ void EntityMap::refreshRenderMap()
     
     //if(wZ > wMap->cZ)
     //{
-        for(int x = 0; x < MAP_WIDTH; x++)
+    for(int x = 0; x < MAP_WIDTH; x++)
+    {
+        for(int y = 0; y < MAP_HEIGHT; y++)
         {
-            for(int y = 0; y < MAP_HEIGHT; y++)
+            if(wMap->getEntityZ(this, -1) != nullptr)
             {
-                if(wMap->getEntityZ(this, -1) != nullptr)
+                
+                if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 1 && contextMap->virtMap[x][y]->getTypeID() == 3)
                 {
                     
-                    if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 1 && contextMap->virtMap[x][y]->getTypeID() == 3)
-                    {
-                        
-                        contextMap->floorTile(x, y);;
-
-                    }
-                    else if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() != 3 && contextMap->virtMap[x][y]->getTypeID() == 3)
-                    {
-                        contextMap->virtMap[x][y]->setHSV(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->H, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->S, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->V);
-                        contextMap->virtMap[x][y]->setHSV(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->HD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->SD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->VD, true);
-                        
-                        if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 4)
-                            contextMap->virtMap[x][y]->setSymbol((wchar_t*)L"\u25BC");
-                        else
-                            contextMap->virtMap[x][y]->setSymbol(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getSymbol());
-                        
-                    }
-                    else if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 3 && contextMap->virtMap[x][y]->getTypeID() == 3)
-                    {
-                        
-                        contextMap->airTile(x, y);
-                        
-                    }
-
+                    contextMap->floorTile(x, y);;
+                    
                 }
+                else if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() != 3 && contextMap->virtMap[x][y]->getTypeID() == 3)
+                {
+                    contextMap->virtMap[x][y]->setHSV(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->HD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->HD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->HD);
+                    contextMap->virtMap[x][y]->setHSV(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->HD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->SD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->VD, true);
+                    
+                    if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 4)
+                        contextMap->virtMap[x][y]->setSymbol((wchar_t*)L"\u25BC");
+                    else
+                        contextMap->virtMap[x][y]->setSymbol(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getSymbol());
+                    
+                }
+                else if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 3 && contextMap->virtMap[x][y]->getTypeID() == 3)
+                {
+                    
+                    contextMap->airTile(x, y);
+                    
+                }
+                
             }
+            
         }
-        
+    }
+    
     //}
     
     rMap->refreshMap();
 }
+
+void EntityMap::refreshLightMap()
+{
+    if(wMap->getEntityZ(this, 1) != nullptr)
+    {
+        for(int x = 0; x < MAP_WIDTH; x++)
+        {
+            for(int y = 0; y < MAP_HEIGHT; y++)
+            {
+                contextMap->virtMap[x][y]->isLit = false;
+                if(wMap->getEntityZ(this, 1)->contextMap->virtMap[x][y]->getTypeID() == 3 && contextMap->virtMap[x][y]->getTypeID() != 3)
+                {
+                    
+                    bool uncovered = true;
+                    bool finished = false;
+                    int countZ = 1;
+                    
+                    while(!finished)
+                    {
+                        if(wMap->getEntityZ(this, countZ) != nullptr)
+                        {
+                            if(wMap->getEntityZ(this, countZ)->contextMap->virtMap[x][y]->getTypeID() == 3)
+                            {
+                                uncovered = true;
+                            }
+                            else
+                            {
+                                uncovered = false;
+                                finished = true;
+                            }
+                            
+                        }
+                        else
+                        {
+                            finished = true;
+                            
+                        }
+                        countZ++;
+                    }
+                    
+                    if(uncovered)
+                    {
+                        
+                        int lightSpread;
+                        
+                        lightSpread =  wZ*2;//(wMap->cZ-1);   //(int)floor(log(wZ/(wMap->wZ))/(log(2)));
+                        
+                        if(lightSpread > 0)
+                        {
+                            fovLib->refreshFov(this, x, y, lightSpread);
+                            
+                        }
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    rMap->refreshMap();
+    
+}
+
+
 
 
 void EntityMap::refreshTileMap()

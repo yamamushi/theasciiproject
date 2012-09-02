@@ -85,7 +85,7 @@ void RenderMap::refreshMap(){
                 rMap[x][y].occupied = false;
                 rMap[x][y].blocked = tMap->virtMap[x][y]->blocked;
                 rMap[x][y].blockSight = tMap->virtMap[x][y]->block_sight;
-                //rMap[x][y].visible = tMap->virtMap[x][y]->isVisible();
+                rMap[x][y].isLit = tMap->virtMap[x][y]->isLit;
                 
                 
             }
@@ -102,6 +102,7 @@ void RenderMap::refreshMap(){
                 rMap[x][y].occupied = true;
                 rMap[x][y].blocked = tMap->virtMap[x][y]->blocked;
                 rMap[x][y].blockSight = tMap->virtMap[x][y]->block_sight;
+                rMap[x][y].isLit = tMap->virtMap[x][y]->isLit;
                 //rMap[x][y].visible = tMap->virtMap[x][y]->isVisible();
                 
             }
@@ -115,6 +116,13 @@ render_t RenderMap::exportSquare(int x, int y){
     
 }
 
+
+bool RenderMap::returnLit(int x, int y)
+{
+    
+    return rMap[x][y].isLit;
+    
+}
 
 
 bool RenderMap::returnBlocked(int x, int y)

@@ -79,8 +79,10 @@ void Entity::init_entity(wchar_t *p)
     for (x = 0; x < MAP_WIDTH; x++) {
         for (y = 0; y < MAP_HEIGHT; y++) {
             fov[x][y] = false;
+            sharedFov[x][y] = false;
         }
     }
+    
 }
 
 
@@ -128,6 +130,7 @@ bool Entity::move(int dx, int dy)
                 Y += dy;
                 
                 entMap->refreshEntityMap();
+                //entMap->refreshLightMap();
                 
                 if (clientActive) {
                     
@@ -725,7 +728,7 @@ bool Entity::placeFloor(int dx, int dy)
     }
     else if(dx+X >= 0 && dx+X < MAP_WIDTH && dy+Y <= 0 && dy+Y < MAP_HEIGHT)
     {
-        cout << "checking north" << endl;
+        
         if (initialized) {
             if ((wMap->getNextEntMap(this, 8)->contextMap->virtMap[X][(MAP_HEIGHT-1)]->blocked) || wMap->getNextEntMap(this, 8)->checkOccupied(dx+X, MAP_HEIGHT-1)){
                 wMap->getNextEntMap(this, 8)->refreshEntityMap();
@@ -781,6 +784,7 @@ bool Entity::digUp()
             wMap->getEntityZ(entMap, 1)->refreshEntityMap();
             entMap->contextMap->slopeTile(X, Y);
             entMap->refreshEntityMap();
+            entMap->refreshLightMap();
             
             if (clientActive) {
                 
@@ -817,6 +821,7 @@ bool Entity::digDown()
             entMap->contextMap->airTile(X, Y);
             
             entMap->refreshEntityMap();
+            wMap->getEntityZ(entMap, -1)->refreshLightMap();
             if (clientActive) {
                 
                 clientFovSync();
@@ -836,6 +841,8 @@ bool Entity::digDown()
     {
         return false;
     }
+    
+    
 }
 
 
@@ -859,6 +866,7 @@ bool Entity::digHole(int dx, int dy)
                 {
                     entMap->contextMap->airTile(dx+X, dy+Y);
                     wMap->getEntityZ(entMap, -1)->contextMap->slopeTile(dx+X, dy+Y);
+                    wMap->getEntityZ(entMap, -1)->refreshLightMap();
                 }
                 
                 else
@@ -867,6 +875,7 @@ bool Entity::digHole(int dx, int dy)
                 }
                 //entMap->refreshTileMap();
                 entMap->refreshEntityMap();
+                
                 
                 if (clientActive) {
                     
@@ -909,6 +918,7 @@ bool Entity::digHole(int dx, int dy)
                 {
                     wMap->getNextEntMap(this, 6)->contextMap->airTile(1, dy+Y);
                     wMap->getEntityZ(wMap->getNextEntMap(this, 6), -1)->contextMap->slopeTile(1, dy + Y);
+                    wMap->getEntityZ(wMap->getNextEntMap(this, 6), -1)->refreshLightMap();
                 }
                 
                 else
@@ -918,6 +928,7 @@ bool Entity::digHole(int dx, int dy)
                 
                 
                 wMap->getNextEntMap(this, 6)->refreshEntityMap();
+                
                 
                 if (clientActive) {
                     
@@ -960,6 +971,7 @@ bool Entity::digHole(int dx, int dy)
                 {
                     wMap->getNextEntMap(this, 4)->contextMap->airTile(MAP_WIDTH-1, dy+Y);
                     wMap->getEntityZ(wMap->getNextEntMap(this, 4), -1)->contextMap->slopeTile(MAP_WIDTH-1, dy + Y);
+                    wMap->getEntityZ(wMap->getNextEntMap(this, 4), -1)->refreshLightMap();
                 }
                 
                 else
@@ -969,6 +981,7 @@ bool Entity::digHole(int dx, int dy)
                 
                 
                 wMap->getNextEntMap(this, 4)->refreshEntityMap();
+                
                 
                 if (clientActive) {
                     
@@ -1012,6 +1025,7 @@ bool Entity::digHole(int dx, int dy)
                 {
                     wMap->getNextEntMap(this, 2)->contextMap->airTile(dx+X, 1);
                     wMap->getEntityZ(wMap->getNextEntMap(this, 2), -1)->contextMap->slopeTile(dx+X, 1);
+                    wMap->getEntityZ(wMap->getNextEntMap(this, 2), -1)->refreshLightMap();
                 }
                 
                 else
@@ -1021,6 +1035,7 @@ bool Entity::digHole(int dx, int dy)
                 
                 
                 wMap->getNextEntMap(this, 2)->refreshEntityMap();
+                
                 
                 if (clientActive) {
                     
@@ -1064,6 +1079,7 @@ bool Entity::digHole(int dx, int dy)
                     
                     wMap->getNextEntMap(this, 8)->contextMap->airTile(dx+X, MAP_HEIGHT-1);
                     wMap->getEntityZ(wMap->getNextEntMap(this, 8), -1)->contextMap->slopeTile(dx+X, MAP_HEIGHT-1);
+                    wMap->getEntityZ(wMap->getNextEntMap(this, 8), -1)->refreshLightMap();
                 }
                 
                 
@@ -1074,6 +1090,7 @@ bool Entity::digHole(int dx, int dy)
                 
                 
                 wMap->getNextEntMap(this, 8)->refreshEntityMap();
+                
                 
                 if (clientActive) {
                     
@@ -1139,7 +1156,6 @@ void Entity::clientFovSync(){
     
     //refreshFov(10);
     
-    
     int pX, pY;
     pX = X;
     pY = Y;
@@ -1151,6 +1167,8 @@ void Entity::clientFovSync(){
     
     int offset = cY-4;
     
+    FOV->refreshFov(this, cX, cY, 7);
+    
     int x = pX-offset;
     for(int iX = cX-offset; iX < cX+offset; iX++ )
     {
@@ -1158,7 +1176,7 @@ void Entity::clientFovSync(){
         for(int iY = cY-offset; iY < cY+offset; iY++ )
         {
             cMap->cMap[iX][iY]->explored = true;
-            //cMap->cMap[iX][iY]->visible = true;
+            //cMap->cMap[iX][iY]->sendMe = true;
             
             if(y > 0 && y < MAP_HEIGHT && x > 0 && x < MAP_WIDTH)
                 
@@ -1173,6 +1191,8 @@ void Entity::clientFovSync(){
                 cMap->cMap[iX][iY]->VD = rMap->returnVD(x, y);
                 cMap->cMap[iX][iY]->blocked = rMap->returnBlocked(x, y);
                 cMap->cMap[iX][iY]->blockSight = rMap->returnBlockSight(x, y);
+                cMap->cMap[iX][iY]->isLit = rMap->returnLit(x, y);
+
                // cMap->cMap[ix][iY]->bloc
                 //cMap->cMap[cX][cY]->explored = true;
                 
@@ -1210,6 +1230,8 @@ void Entity::clientFovSync(){
                 
                 cMap->cMap[iX][iY-1]->blocked = rMap->returnBlocked(x, iy);
                 cMap->cMap[iX][iY-1]->blockSight = rMap->returnBlockSight(x, iy);
+                
+                cMap->cMap[iX][iY-1]->isLit = rMap->returnLit(x, iy);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 
@@ -1248,6 +1270,8 @@ void Entity::clientFovSync(){
                 
                 cMap->cMap[iX][iY+1]->blocked = rMap->returnBlocked(x, iy);
                 cMap->cMap[iX][iY+1]->blockSight = rMap->returnBlockSight(x, iy);
+                
+                cMap->cMap[iX][iY+1]->isLit = rMap->returnLit(x, iy);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 /*
@@ -1287,6 +1311,8 @@ void Entity::clientFovSync(){
                 
                 cMap->cMap[iX+1][iY]->blocked = rMap->returnBlocked(ix, y);
                 cMap->cMap[iX+1][iY]->blockSight = rMap->returnBlockSight(ix, y);
+                
+                cMap->cMap[iX+1][iY]->isLit = rMap->returnLit(ix, y);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 /*
@@ -1328,6 +1354,8 @@ void Entity::clientFovSync(){
                 
                 cMap->cMap[iX-1][iY]->blocked = rMap->returnBlocked(ix, y);
                 cMap->cMap[iX-1][iY]->blockSight = rMap->returnBlockSight(ix, y);
+                
+                cMap->cMap[iX-1][iY]->isLit = rMap->returnLit(ix, y);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 
@@ -1366,6 +1394,8 @@ void Entity::clientFovSync(){
                 
                 cMap->cMap[iX-1][iY+1]->blocked = rMap->returnBlocked(ix, iy);
                 cMap->cMap[iX-1][iY+1]->blockSight = rMap->returnBlockSight(ix, iy);
+                
+                cMap->cMap[iX-1][iY+1]->isLit = rMap->returnLit(ix, iy);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 
@@ -1389,6 +1419,8 @@ void Entity::clientFovSync(){
                 
                 cMap->cMap[iX-1][iY-1]->blocked = rMap->returnBlocked(ix, iy);
                 cMap->cMap[iX-1][iY-1]->blockSight = rMap->returnBlockSight(ix, iy);
+                
+                cMap->cMap[iX-1][iY-1]->isLit = rMap->returnLit(ix, iy);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 
@@ -1412,6 +1444,8 @@ void Entity::clientFovSync(){
                 
                 cMap->cMap[iX+1][iY+1]->blocked = rMap->returnBlocked(ix, iy);
                 cMap->cMap[iX+1][iY+1]->blockSight = rMap->returnBlockSight(ix, iy);
+                
+                cMap->cMap[iX+1][iY+1]->isLit = rMap->returnLit(ix, iy);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 
@@ -1435,6 +1469,8 @@ void Entity::clientFovSync(){
                 
                 cMap->cMap[iX+1][iY-1]->blocked = rMap->returnBlocked(ix, iy);
                 cMap->cMap[iX+1][iY-1]->blockSight = rMap->returnBlockSight(ix, iy);
+                
+                cMap->cMap[iX+1][iY+1]->isLit = rMap->returnLit(ix, iy);
                 //cMap->cMap[iX][iY]->visible = true;
                 //cMap->cMap[cX][cY]->explored = true;
                 
@@ -1442,7 +1478,7 @@ void Entity::clientFovSync(){
             }
             
             //refreshFov(7);
-            FOV->refreshFov(this, cX, cY, 7);
+            
 
             
             y++;
@@ -1452,6 +1488,7 @@ void Entity::clientFovSync(){
         x++;
     }
     
+    FOV->refreshFov(this, cX, cY, 7);
     
 }
 
@@ -1479,6 +1516,7 @@ void Entity::init_in_world(FovLib *fovLib)
     initialized = true;
     world = fovLib->getTileMap();
     
+   
     
     
 }
@@ -1524,7 +1562,8 @@ void Entity::associateClient(RenderMap *RMap)
     
     for (int x = 0; x < MAP_WIDTH; x++) {
         for (int y = 0; y < MAP_HEIGHT; y++) {
-            fov[x][y] = false;
+            //fov[x][y] = false;
+            cMap->cMap[x][y]->explored = false;
         }
     }
     

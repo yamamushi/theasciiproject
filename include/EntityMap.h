@@ -103,6 +103,7 @@ public:
     void refreshEntityMap();
     void refreshTileMap();
     void refreshRenderMap();
+    void refreshLightMap();
     
     bool checkOccupied(int x, int y);
     Entity * outputLastEntity(int x, int y);

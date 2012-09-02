@@ -132,6 +132,9 @@ struct render_t {
     bool blockSight;
     bool blocked;
     bool walkable;
+    bool isLit;
+    bool distantVisible;
+    bool sendMe;
 };
 
 struct s_render_t {

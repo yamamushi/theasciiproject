@@ -82,6 +82,7 @@ public:
     bool returnVisible(int x, int y);
     bool returnBlocked(int x, int y);
     bool returnBlockSight(int x, int y);
+    bool returnLit(int x, int y);
 
 
 };

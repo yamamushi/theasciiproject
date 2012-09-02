@@ -43,6 +43,7 @@
 #include "FovLib.h"
 #include "TileMap.h"
 #include "Entities.h"
+#include "EntityMap.h"
 #include "ClientMap.h"
 
 
@@ -94,12 +95,12 @@ void FovLib::refreshFov(Entity *tgt, int radius){
             
             if ((tcodMap->isInFov(x, y)))
             {
-
+                
                 tgt->fov[x][y] = true;
             }
             else
             {
-
+                
                 tgt->fov[x][y] = false;
             }
         }
@@ -135,15 +136,83 @@ void FovLib::refreshFov(Entity *tgt, int X, int Y, int radius){
                 //tgt->fov[x][y] = true;
                 tgt->cMap->cMap[x][y]->visible = true;
                 tgt->cMap->cMap[x][y]->explored = true;
+                tileMap->virtMap[x][y]->isLit = true;
             }
             else
             {
-                tgt->cMap->cMap[x][y]->visible = false;
+                
+                if(tileMap->virtMap[x][y]->isLit)
+                {
+                    tgt->cMap->cMap[x][y]->visible = true;
+                    tileMap->virtMap[x][y]->isLit = false;
+                }
+                else
+                {
+                    if(tgt->cMap->cMap[x][y]->explored == false)
+                    {
+                        tgt->cMap->cMap[x][y]->H = 0.0f;
+                        tgt->cMap->cMap[x][y]->S = 0.0f;
+                        tgt->cMap->cMap[x][y]->V = 0.0f;
+                        
+                        tgt->cMap->cMap[x][y]->HD = 0.0f;
+                        tgt->cMap->cMap[x][y]->SD = 0.0f;
+                        tgt->cMap->cMap[x][y]->VD = 0.0f; 
+                        
+                        //tgt->cMap->cMap[x][y]->symbol = (wchar_t *)L"\u2593";
+                    }
+                    
+                    
+                    tgt->cMap->cMap[x][y]->visible = false;
+                }
             }
         }
     }
     
 }
+
+
+
+void FovLib::refreshFov(EntityMap *tgt, int X, int Y, int radius){
+    
+    int x, y;
+    
+    delete tcodMap;
+    tcodMap = new TCODMap(MAP_WIDTH, MAP_HEIGHT);
+    
+    for(x = 0; x < MAP_WIDTH; x++){
+        for(y = 0; y < MAP_HEIGHT; y++){
+            tcodMap->setProperties(x, y, !(tgt->contextMap->virtMap[x][y]->block_sight), !(tgt->contextMap->virtMap[x][y]->blocked));
+        }
+    }
+    
+    // Compute FOV
+    tcodMap->computeFov(X, Y, radius, FOV_LIGHT_WALLS);
+    
+    
+    for (x = 0; x < MAP_WIDTH; x++)
+    {
+        for (y = 0; y < MAP_HEIGHT; y++)
+        {
+            
+            if ((tcodMap->isInFov(x, y) && !tgt->contextMap->virtMap[x][y]->block_sight))
+            {
+                
+                tgt->contextMap->virtMap[x][y]->isLit = true;
+                
+            }
+            else
+            {
+                
+                tgt->contextMap->virtMap[x][y]->isLit = false;
+                
+            }
+        }
+    }
+    
+}
+
+
+
 
 
 TileMap *FovLib::getTileMap(){

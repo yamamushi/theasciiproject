@@ -123,6 +123,7 @@ public:
     int posX();
     int posY();
     bool fov[MAP_WIDTH][MAP_HEIGHT];
+    bool sharedFov[MAP_WIDTH][MAP_HEIGHT];
     
     
     void init_in_world(FovLib *FOV);

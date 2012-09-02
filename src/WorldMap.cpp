@@ -2,6 +2,7 @@
 
 #include "Entities.h"
 #include "EntityMap.h"
+#include "ClientMap.h"
 #include "TileMap.h"
 
 
@@ -31,10 +32,16 @@ void WorldMap::initWorldMap()
                     eMap->at(x).at(y).at(z)->contextMap->fillMap();
                     eMap->at(x).at(y).at(z)->refreshRenderMap();
                 }
+                else if (z == cZ)
+                {
+                    eMap->at(x).at(y).at(z)->refreshRenderMap();
+                    eMap->at(x).at(y).at(z)->refreshLightMap();
+                }
+                
             }
         }
     }
-    
+        
 }
 
 
@@ -142,6 +149,8 @@ void WorldMap::changEntZ(Entity *tgt, int z)
         if(!eMap->at(tgt->wX).at(tgt->wY).at(origZ+z)->contextMap->virtMap[tgt->posX()][tgt->posY()]->blocked && eMap->at(tgt->wX).at(tgt->wY).at(tgt->wZ)->contextMap->virtMap[tgt->posX()][tgt->posY()]->getTypeID() == 4)
             moveEntTo(tgt, tgt->wX, tgt->wY, origZ+z, tgt->posX(), tgt->posY());
         
+        
+        
     }
     else if( z == -1)
     {
@@ -162,6 +171,9 @@ void WorldMap::moveEntTo(Entity *tgt, int x, int y, int z, int px, int py)
     eMap->at(tgt->wX).at(tgt->wY).at(tgt->wZ)->removeFromEntMap(tgt);
     
     tgt->setWorldPosition(x, y, z);
+    tgt->cMap->deleteMap();
+    tgt->cMap->clearMap();
+    
     eMap->at(x).at(y).at(z)->addToMapAt(tgt, px, py);
     
     
@@ -468,7 +480,7 @@ EntityMap *WorldMap::getEntityZ(EntityMap *tgt, int z)
         return nullptr;
         
     }
-    else if(origZ+z == wZ)
+    else if(origZ+z >= wZ)
     {
         
         return nullptr;

@@ -57,6 +57,7 @@ public:
     bool explored;
     bool occupied;
     bool needsOrientation;
+    bool isLit;
     
     
     
