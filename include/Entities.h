@@ -81,7 +81,7 @@ private:
     
     bool initialized, clientActive;
     
-    EntityMap *entMap;
+    
     TileMap *world;
     FovLib *FOV;
     
@@ -90,7 +90,7 @@ private:
     
 public:
     
-    
+    EntityMap *entMap;
     ClientMap *cMap;
     
     int wX, wY, wZ;

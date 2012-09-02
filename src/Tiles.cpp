@@ -56,6 +56,7 @@ void Tile::init_Tile(bool blked){
 	visible = false;
 	explored = false;
 	occupied = false;
+    isLit = false;
     
     
     symbol = (wchar_t *)L"\uFFF0";
@@ -81,11 +82,11 @@ void Tile::init_Tile(bool blked){
     
 	if(blked){
 		block_sight = true;
-		explored = false;
+		
 	}
 	else{
 		block_sight = false;
-		visible = true;
+		
 	}
 }
 

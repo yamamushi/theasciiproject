@@ -113,7 +113,7 @@ void EntityMap::initWorldMap(WorldMap *WMap, int x, int y, int z)
     wZ = z;
     
     
-    
+    refreshLightMap();
     refreshRenderMap();
 }
 
@@ -123,8 +123,9 @@ void EntityMap::initWorldMap(WorldMap *WMap, int x, int y, int z)
 
 void EntityMap::addToMap(Entity *entity){
     
-    refreshRenderMap();
     refreshLightMap();
+    refreshRenderMap();
+    
     
 	Entity *src = entity;
 	int x, y;
@@ -145,9 +146,9 @@ void EntityMap::addToMap(Entity *entity){
 
 void EntityMap::addToMapAt(Entity *entity, int x, int y){
     
-    
-    refreshRenderMap();
     refreshLightMap();
+    refreshRenderMap();
+    
     
 	Entity *src = entity;
     src->setPos(x, y);
@@ -207,6 +208,7 @@ void EntityMap::removeFromEntMap(Entity *ent)
     
     deleting = false;
     
+    refreshLightMap();
     refreshRenderMap();
     
 }
@@ -234,6 +236,7 @@ void EntityMap::initAllEnts(){
         }
     }
     
+    refreshLightMap();
     refreshRenderMap();
 }
 
@@ -331,14 +334,23 @@ void EntityMap::refreshRenderMap()
 
 void EntityMap::refreshLightMap()
 {
+    
+    for(int x=0; x < MAP_WIDTH; x++)
+    {
+        for(int y=0; y < MAP_HEIGHT; y++)
+        {
+            contextMap->virtMap[x][y]->isLit = false;   
+        }
+    }
+    
     if(wMap->getEntityZ(this, 1) != nullptr)
     {
         for(int x = 0; x < MAP_WIDTH; x++)
         {
             for(int y = 0; y < MAP_HEIGHT; y++)
             {
-                contextMap->virtMap[x][y]->isLit = false;
-                if(wMap->getEntityZ(this, 1)->contextMap->virtMap[x][y]->getTypeID() == 3 && contextMap->virtMap[x][y]->getTypeID() != 3)
+                //contextMap->virtMap[x][y]->isLit = false;
+                if(wMap->getEntityZ(this, 1)->contextMap->virtMap[x][y]->getTypeID() == 3 )//&& contextMap->virtMap[x][y]->getTypeID() != 3)
                 {
                     
                     bool uncovered = true;
@@ -362,6 +374,7 @@ void EntityMap::refreshLightMap()
                         }
                         else
                         {
+                            uncovered = true;
                             finished = true;
                             
                         }
@@ -373,7 +386,7 @@ void EntityMap::refreshLightMap()
                         
                         int lightSpread;
                         
-                        lightSpread =  wZ*2;//(wMap->cZ-1);   //(int)floor(log(wZ/(wMap->wZ))/(log(2)));
+                        lightSpread =  (wZ-(wMap->cZ-2));   //(int)floor(log(wZ/(wMap->wZ))/(log(2)));
                         
                         if(lightSpread > 0)
                         {
