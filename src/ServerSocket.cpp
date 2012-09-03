@@ -307,10 +307,10 @@ void client_connection::login(const boost::system::error_code& error)
                 
                 updatePlayerMap();
                 
-                std::string message(user + " - " + "Has logged in.\r\n");
+                std::string message("  " + user + " - " + "Has logged in.\r\n");
                 client_pool_.deliver(message);
                 
-                boost::asio::async_write(socket_, boost::asio::buffer(string("Welcome " + user + " \r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+                boost::asio::async_write(socket_, boost::asio::buffer(string("\nGreetings, " + user + "\nWelcome To The ASCII Project!\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
             }
         }
         
@@ -513,7 +513,14 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         }
         else if(command == "chat" || command == "Chat")
         {
-            boost::asio::async_read_until(socket_, *chat_message_, "\r\n", boost::bind(&client_connection::handleChatInput, shared_from_this(), boost::asio::placeholders::error ));
+            //boost::asio::async_read_until(socket_, *chat_message_, "\r\n", boost::bind(&client_connection::handleChatInput, shared_from_this(), boost::asio::placeholders::error ));
+            
+            std::string outboundMessage(chatStream);
+            chatStream.clear();
+            chatStream.append("\r\n");
+            
+            
+            boost::asio::async_write(socket_, boost::asio::buffer(string(outboundMessage + "\r\n")), boost::bind(&client_connection::handleChatInput, shared_from_this(), boost::asio::placeholders::error ));
         }
         
         else if( command == "quit")
@@ -558,33 +565,7 @@ void client_connection::handleChatInput(const boost::system::error_code &error)
     if (!error)
     {
             
-        std::string message, poolMessage, outboundMessage;
-        
-        std::istream is(chat_message_);
-                
-        getline(is, message, '\0');
-        
-        if(message != "\r\n")
-        {
-        
-            poolMessage.append(user + ": " + message);
-        
-            client_pool_.deliver(poolMessage);
-        }
-        
-        delete chat_message_;
-        chat_message_ = new boost::asio::streambuf;
-        
-        outboundMessage = chatStream;
-        chatStream = "";
-        
-        boost::asio::async_write(socket_, boost::asio::buffer(std::string(outboundMessage + "\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error));
-        
-        
-        //boost::asio::async_write(socket_, boost::asio::buffer(std::string(user + ": " + message + "\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error));
-        
-        
-        //boost::asio::async_read_until(socket_, *chat_message_, "\r\n", boost::bind(&client_connection::handleChatOutput, shared_from_this(), boost::asio::placeholders::error ));
+        boost::asio::async_read_until(socket_, *chat_message_, "\r\n", boost::bind(&client_connection::handleChatOutput, shared_from_this(), boost::asio::placeholders::error )); 
     }
     else
     {
@@ -624,6 +605,33 @@ void client_connection::handleChatOutput(const boost::system::error_code &error)
 {
     if (!error)
     {
+        
+        
+        std::string message, poolMessage;
+        
+        std::istream is(chat_message_);
+        
+        getline(is, message, '\0');
+        
+        if(message != "\r\n")
+        {
+            
+            poolMessage.append(user + ": " + message);
+            
+            client_pool_.deliver(poolMessage);
+        }
+        
+        delete chat_message_;
+        chat_message_ = new boost::asio::streambuf;
+
+        
+        boost::asio::async_write(socket_, boost::asio::buffer(std::string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error));
+        
+        
+        //boost::asio::async_write(socket_, boost::asio::buffer(std::string(user + ": " + message + "\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error));
+        
+        
+        //boost::asio::async_read_until(socket_, *chat_message_, "\r\n", boost::bind(&client_connection::handleChatOutput, shared_from_this(), boost::asio::placeholders::error ));
         
        // boost::asio::async_write(socket_, boost::asio::buffer(std::string(user + ": " + message)), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error));
     }

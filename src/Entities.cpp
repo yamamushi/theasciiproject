@@ -1171,7 +1171,7 @@ void Entity::clientFovSync(){
     
     int cX, cY;
     cX = MAP_WIDTH/2;
-    cY= MAP_HEIGHT/2;
+    cY = MAP_HEIGHT/2;
     
     
     int offset = cY-4;
@@ -1184,9 +1184,9 @@ void Entity::clientFovSync(){
         int y = pY-offset;
         for(int iY = cY-offset; iY < cY+offset; iY++ )
         {
-            cMap->cMap[iX][iY]->sendMe = true;
+            cMap->cMap[iX][iY]->explored = true;
             cMap->cMap[iX][iY]->visible = false;
-            cMap->cMap[iX][iY]->explored = false;
+            
             
             if(y > 0 && y < MAP_HEIGHT && x > 0 && x < MAP_WIDTH)
                 
@@ -1499,6 +1499,7 @@ void Entity::clientFovSync(){
     }
     
     FOV->refreshFov(this, cX, cY, 7);
+
     
 }
 

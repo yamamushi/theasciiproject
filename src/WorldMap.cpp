@@ -147,7 +147,18 @@ void WorldMap::changEntZ(Entity *tgt, int z)
     else if( z == 1)
     {
         if(!eMap->at(tgt->wX).at(tgt->wY).at(origZ+z)->contextMap->virtMap[tgt->posX()][tgt->posY()]->blocked && eMap->at(tgt->wX).at(tgt->wY).at(tgt->wZ)->contextMap->virtMap[tgt->posX()][tgt->posY()]->getTypeID() == 4 && eMap->at(tgt->wX).at(tgt->wY).at(origZ+z)->contextMap->virtMap[tgt->posX()][tgt->posY()]->getTypeID() == 3)
+        {
+            for(int x=0; x < MAP_WIDTH; x++)
+            {
+                for(int y=0; y < MAP_HEIGHT; y++)
+                {
+                    tgt->returnCMap()->cMap[x][y]->explored = false;
+                }
+            }
+            
             moveEntTo(tgt, tgt->wX, tgt->wY, origZ+z, tgt->posX(), tgt->posY());
+            
+        }
         
         
         
@@ -155,7 +166,19 @@ void WorldMap::changEntZ(Entity *tgt, int z)
     else if( z == -1)
     {
         if(!eMap->at(tgt->wX).at(tgt->wY).at(origZ+z)->contextMap->virtMap[tgt->posX()][tgt->posY()]->blocked && eMap->at(tgt->wX).at(tgt->wY).at(tgt->wZ-1)->contextMap->virtMap[tgt->posX()][tgt->posY()]->getTypeID() == 4 && eMap->at(tgt->wX).at(tgt->wY).at(tgt->wZ)->contextMap->virtMap[tgt->posX()][tgt->posY()]->getTypeID() == 3)
+        {
+            for(int x=0; x < MAP_WIDTH; x++)
+            {
+                for(int y=0; y < MAP_HEIGHT; y++)
+                {
+                    tgt->returnCMap()->cMap[x][y]->explored = false;
+                }
+            }
+            
             moveEntTo(tgt, tgt->wX, tgt->wY, origZ+z, tgt->posX(), tgt->posY());
+        
+            
+        }
     }
     
     

@@ -189,9 +189,12 @@ void ClientSession::getChatMessage()
         
         getline(is, serverResponse, '\0');
         
-        if(serverResponse != "\r\n\r\n");
+        if(serverResponse.find("\r\n\r\n") != 0)
+        {
+            serverResponse.erase(0,2);
             chatBox->insertText(serverResponse);
 
+        }
         
     }
     else
@@ -229,7 +232,8 @@ void ClientSession::getResponse()
         if(serverResponse.find("Welcome") != std::string::npos)
         {
             output->loggedIn = true;
-            
+            chatBox->insertText(" ");
+            chatBox->insertText(" ");
         }
     }
     else

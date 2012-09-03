@@ -124,7 +124,7 @@ void FovLib::refreshFov(Entity *tgt, int X, int Y, int radius){
     }
     
     // Compute FOV
-    tcodMap->computeFov(X, Y, radius, FOV_LIGHT_WALLS, FOV_SHADOW);
+    tcodMap->computeFov(X, Y, radius, FOV_LIGHT_WALLS);
     
     
     for (x = 0; x < MAP_WIDTH; x++)
@@ -136,7 +136,7 @@ void FovLib::refreshFov(Entity *tgt, int X, int Y, int radius){
             {
                 //tgt->fov[x][y] = true;
                 tgt->cMap->cMap[x][y]->visible = true;
-                tgt->cMap->cMap[x][y]->explored = true;
+               // tgt->cMap->cMap[x][y]->explored = true;
                 //tileMap->virtMap[x][y]->isLit = true;
             }
 
@@ -144,7 +144,7 @@ void FovLib::refreshFov(Entity *tgt, int X, int Y, int radius){
     }
     
     
-    tcodMap->computeFov(X, Y, radius+6, FOV_LIGHT_WALLS, FOV_SHADOW);
+    tcodMap->computeFov(X, Y, radius+5, FOV_LIGHT_WALLS);
     
     
     for (x = 0; x < MAP_WIDTH; x++)
@@ -156,31 +156,13 @@ void FovLib::refreshFov(Entity *tgt, int X, int Y, int radius){
             {
                 //tgt->fov[x][y] = true;
                 tgt->cMap->cMap[x][y]->visible = true;
-                tgt->cMap->cMap[x][y]->explored = true;
+                //tgt->cMap->cMap[x][y]->explored = true;
                 //tileMap->virtMap[x][y]->isLit = true;
-            }
-            else if(tcodMap->isInFov(x, y))
-            {
-                tgt->cMap->cMap[x][y]->explored = true;
-            }
-
-        }
-    }
-    
-    tcodMap->computeFov(X, Y, radius+10, FOV_LIGHT_WALLS, FOV_SHADOW);
-    
-    
-    for (x = 0; x < MAP_WIDTH; x++)
-    {
-        for (y = 0; y < MAP_HEIGHT; y++)
-        {
-            if(tcodMap->isInFov(x, y))
-            {
-                tgt->cMap->cMap[x][y]->explored = true;
             }
             
         }
     }
+  
     
     
 }
@@ -203,7 +185,7 @@ void FovLib::refreshFov(EntityMap *tgt, int X, int Y, int radius){
     }
     
     // Compute FOV
-    tcodMap->computeFov(X, Y, radius+1, false);
+    tcodMap->computeFov(X, Y, radius+1, true);
     
     
     for (x = 0; x < MAP_WIDTH; x++)
