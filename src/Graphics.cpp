@@ -343,7 +343,7 @@ void GraphicsTCOD::drawMainInterface()
         
     }
     
-    //boost::thread netThread(&GraphicsTCOD::requestMap, this);
+    boost::thread netThread(&GraphicsTCOD::requestMap, this);
     
     
     //TCODConsole::disableKeyboardRepeat();
@@ -612,15 +612,17 @@ void GraphicsTCOD::drawMainInterface()
             {
                 if(!connected)
                 {
+                    
                     chatText = tmpText;
                     serverBox->insertText(chatText);
                     chatText = "";
                 }
                 else
                 {
+                    //chatText.clear();
                     chatText = tmpText;
                     chatMessageInQueue = true;
-                
+                    
                 }
                 
             }
@@ -710,7 +712,7 @@ void GraphicsTCOD::drawMainInterface()
             mapOutput->printEx(mapOutput->getWidth()/2, mapOutput->getHeight()-1, TCOD_BKGND_NONE, TCOD_CENTER, "Select Mode", TCODColor(255,255,255));
         }
         
-        requestMap();
+        //requestMap();
         drawAll();
         TCODConsole::blit(mapOutput, 0, 0, 0, 0, output, 0, 2);
         inputText->render(serverConsole);
@@ -748,81 +750,88 @@ void GraphicsTCOD::requestMap()
 {
     
     
-    //  while(true)
-    //  {
-    if(connected && loggedIn)
+    while(true)
     {
-                
-        if(connected && APIinQueue)
-        {
-            
-            cnet->sendCommand(apiCall);
-            cnet->ignoreResponse();
-            APIinQueue = false;
-            
-        }
-        
-        if(connected && serverCommandInQueue)
-        {
-            
-            cnet->sendCommand(serverCall);
-            cnet->getResponse();
-            
-            serverCommandInQueue = false;
-            
-            if(serverCall == "/quit")
-            {
-                cnet->close();
-                connected = false;
-                loggedIn = false;
-                //break;
-            }
-            
-        }
-        
-        if(connected)
-        {
-            //if(chatMessageInQueue)
-            {
-                //cnet->sendCommand("/0");
-                //cnet->ignoreResponse();
-                cnet->sendCommand("/chat");
-                cnet->getChatMessage();
-                cnet->sendChatMessage(chatText);
-                cnet->ignoreResponse();
-                
-                chatText.clear();
-                chatMessageInQueue = false;
-                cnet->sendCommand("/0");
-                cnet->ignoreResponse();
-            }
-          /*  else
-            {
-                chatText = "";
-                cnet->sendCommand("/chat");
-                cnet->sendChatMessage(chatText);
-                cnet->getChatMessage();
-            } */
-            
-        }
-        
-        cMap->clientRefresh();
-        
         if(connected && loggedIn)
         {
-            cnet->sizeMap();
-            int dataSize = cnet->confirmSize();
-            cnet->sendCommand("/");
-            if(dataSize > 0)
-                cnet->read_map(dataSize);
+            
+            if(connected && APIinQueue)
+            {
+                
+                cnet->sendCommand(apiCall);
+                cnet->ignoreResponse();
+                APIinQueue = false;
+                
+            }
+            
+            if(connected && serverCommandInQueue)
+            {
+                
+                cnet->sendCommand(serverCall);
+                cnet->getResponse();
+                
+                serverCommandInQueue = false;
+                
+                if(serverCall == "/quit")
+                {
+                    cnet->close();
+                    connected = false;
+                    loggedIn = false;
+                    //break;
+                }
+                
+            }
+            
+            if(connected)
+            {
+                //if(chatMessageInQueue)
+                {
+                    //cnet->sendCommand("/0");
+                    //cnet->ignoreResponse();
+                    cnet->sendCommand("/chat");
+                    cnet->getChatMessage();
+                    cnet->sendChatMessage(chatText);
+                    chatText.clear();
+                    cnet->ignoreResponse();
+                    
+                    if(chatMessageInQueue)
+                    {
+                        
+                        chatMessageInQueue = false;
+                    }
+                    
+                    
+                    
+                    cnet->sendCommand("/0");
+                    cnet->ignoreResponse();
+                    
+                }
+                /*  else
+                 {
+                 chatText = "";
+                 cnet->sendCommand("/chat");
+                 cnet->sendChatMessage(chatText);
+                 cnet->getChatMessage();
+                 } */
+                
+            }
+            
+            //cMap->clientRefresh();
+            
+            if(connected && loggedIn)
+            {
+                cnet->sizeMap();
+                int dataSize = cnet->confirmSize();
+                cnet->sendCommand("/");
+                if(dataSize > 0)
+                    cnet->read_map(dataSize);
+            }
+            
+            //boost::posix_time::seconds sleepTime(1);
+            //boost::this_thread::sleep(sleepTime);
+            
         }
-        
-        
-        //boost::posix_time::seconds sleepTime(1);
-        //boost::this_thread::sleep(sleepTime);
-        
     }
-    //  }
     
 }
 
