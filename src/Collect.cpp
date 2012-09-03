@@ -37,7 +37,7 @@ int renderForPlayer(Entity *target, vector<char *> *outbuf)
         for (y = (posy-offset); y < (posy+offset); y++) {
             if((x > 0) && (x < MAP_WIDTH) && (y > 0) && (y < MAP_HEIGHT))
             {
-                if(tgt.returnCMap()->cMap[x][y]->explored)
+                if(tgt.returnCMap()->cMap[x][y]->visible || (!tgt.returnCMap()->cMap[x][y]->visible && tgt.returnCMap()->cMap[x][y]->explored))
                 {   
                     
                     ClientMapPacker *packer = new ClientMapPacker();

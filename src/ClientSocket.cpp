@@ -74,9 +74,9 @@ ClientSession::ClientSession(boost::asio::io_service& io_service, tcp::resolver:
     sent = true;
     
     
-    extern ScrollBox *sConsole;
-    commander = sConsole;
     
+    commander = screen->chatBox;
+    chatBox = screen->serverBox;
     
 }
 
@@ -152,6 +152,61 @@ void ClientSession::sendCommand(std::string command)
 
 
 
+void ClientSession::sendChatMessage(std::string message)
+{
+    
+    //message.append(" \r\n");
+    
+    boost::system::error_code sendError;
+    boost::asio::write(socket_, boost::asio::buffer(string(message + "\r\n")), sendError);
+    if(sendError)
+    {
+        commander->insertText("Sending Error");
+        output->connected = false;
+        close();
+    }
+    
+    
+}
+
+
+
+void ClientSession::getChatMessage()
+{
+    
+    
+    boost::asio::streambuf buffer;
+    
+    boost::system::error_code ec;
+    
+    read_until(socket_, buffer, "\r\n\r\n", ec);
+    if(!ec)
+    {
+        
+        std::string serverResponse;
+        
+        std::istream is(&buffer);
+        
+        getline(is, serverResponse, '\0');
+        
+        if(serverResponse != "\r\n\r\n");
+            chatBox->insertText(serverResponse);
+
+        
+    }
+    else
+    {
+        commander->insertText("Error - Connection Closed");
+        output->connected = false;
+        close();
+    }
+    
+    
+}
+
+
+
+
 void ClientSession::getResponse()
 {
     boost::asio::streambuf buffer;
@@ -172,8 +227,10 @@ void ClientSession::getResponse()
         commander->insertText(serverResponse);
         
         if(serverResponse.find("Welcome") != std::string::npos)
+        {
             output->loggedIn = true;
-        
+            
+        }
     }
     else
     {

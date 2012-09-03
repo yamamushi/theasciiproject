@@ -287,7 +287,7 @@ void EntityMap::refreshEntityMap(){
 
 void EntityMap::refreshRenderMap()
 {
-    
+    refreshTileMap();
     
     //if(wZ > wMap->cZ)
     //{

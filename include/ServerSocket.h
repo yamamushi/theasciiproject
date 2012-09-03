@@ -49,6 +49,7 @@ public:
     virtual ~client_participant() {}
     virtual void sync() = 0;
     virtual void updatePlayerMap() = 0;
+    virtual void addToChatStream(std::string message) = 0;
 };
 
 typedef boost::shared_ptr<client_participant> client_participant_ptr;
@@ -64,7 +65,7 @@ private:
 public:
     void join(client_participant_ptr client);
     void leave(client_participant_ptr client);
-    void deliver();
+    void deliver(std::string message);
     
     
     
@@ -96,6 +97,8 @@ private:
     std::string user;
     std::string pass;
     
+    std::string chatStream;
+    
     bool moved;
     
     std::size_t len;
@@ -123,6 +126,11 @@ public:
     client_connection(boost::asio::io_service& io_service, client_pool& pool) : socket_(io_service), client_pool_(pool) {};
     
     tcp::socket& socket();
+    
+    void addToChatStream(std::string message);
+    
+    
+    
     void start();
     
     void kickStart();
@@ -159,9 +167,9 @@ public:
     void handle_request_line(const boost::system::error_code& error);
     
     void handleChatInput(const boost::system::error_code& error);
-    void sizeChatOutput(const boost::system::error_code& error);
     void handleChatOutput(const boost::system::error_code& error);
-    
+    void sizeChatOutput(const boost::system::error_code& error);
+        
     void sync();
     void handle_write(size_t bytes, const boost::system::error_code& error);
     

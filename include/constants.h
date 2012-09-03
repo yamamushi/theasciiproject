@@ -54,6 +54,10 @@
 #define MAP_WIDTH 80
 #define MAP_HEIGHT 30
 
+
+#define MAP_WINDOW_WIDTH 80
+#define MAP_WINDOW_HEIGHT 30
+
 #define LIMIT_FPS 20
 
 #define ROOM_MAX_SIZE 10

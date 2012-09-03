@@ -61,6 +61,8 @@ public:
     void clearMap();
     void cleanMap();
     void deleteMap();
+    void clientRefresh();
+    
     void refreshSquare(int x, int y);
     void removeSquare(int x, int y);
     void createSquare(int x, int y);

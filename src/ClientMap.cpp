@@ -99,6 +99,31 @@ void ClientMap::deleteMap(){
     
 }
 
+
+
+void ClientMap::clientRefresh(){
+    
+    int x, y;
+    
+    for (x = 0; x < MAP_WIDTH; x++){
+        for (y = 0; y < MAP_HEIGHT; y++){
+            
+            cMap[x][y]->H = 0.0;
+            cMap[x][y]->HD = 0.0;
+            cMap[x][y]->S = 0.0;
+            cMap[x][y]->SD = 0.0;
+            cMap[x][y]->V = 0.0;
+            cMap[x][y]->VD = 0.0;
+            cMap[x][y]->visible = false;
+            
+        }
+    }
+    
+}
+
+
+
+
 void ClientMap::refreshSquare(int x, int y){
     
     //removeSquare(x, y);

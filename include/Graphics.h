@@ -50,6 +50,7 @@ class VBox;
 class TCODConsole;
 class Widget;
 class TCODText;
+class ScrollBox;
 
 
 class GraphicsTCOD {
@@ -76,6 +77,9 @@ public:
     TCODConsole *mapOutput;
     ClientSession *cnet;
     
+    ScrollBox *chatBox;
+    ScrollBox *serverBox;
+    
     
     bool rendering;
     bool connected;
@@ -83,9 +87,11 @@ public:
     bool loggedIn;
     bool APIinQueue;
     bool serverCommandInQueue;
+    bool chatMessageInQueue;
     
     std::string apiCall;
     std::string serverCall;
+    std::string chatText;
     
     std::string actionMode;
     

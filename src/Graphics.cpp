@@ -91,7 +91,7 @@ void GraphicsTCOD::init(ClientMap *clientMap){
     
     serverConsole = new TCODConsole(MAIN_WIDTH/2,13);
     textOutputConsole = new TCODConsole(MAIN_WIDTH/2+1,13);
-    mapOutput = new TCODConsole(MAP_WIDTH, MAP_HEIGHT);
+    mapOutput = new TCODConsole(MAP_WINDOW_WIDTH, MAP_WINDOW_HEIGHT);
     
     
     //textOutputConsole->setDefaultForeground(TCODColor(0,255,0));
@@ -128,17 +128,17 @@ void GraphicsTCOD::drawMenu()
     Widget::setConsole(output);
     
     
-    //new StatusBar(0,0,MAP_WIDTH,1);
+    //new StatusBar(0,0,MAP_WINDOW_WIDTH,1);
     
     VBox *vbox=new VBox(MAIN_WIDTH/2 - 7,MAIN_HEIGHT/2 + 10,0);
     ToolBar *mainMenu = new ToolBar(MAIN_WIDTH/2 - 7,MAIN_HEIGHT/2 + 10,15,NULL,NULL);
-    //stats->addWidget(new Label(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 6,"Login","Login"));
+    //stats->addWidget(new Label(MAP_WINDOW_WIDTH/2 - 7,MAP_WINDOW_HEIGHT/2 - 6,"Login","Login"));
     mainMenu->addWidget(new Button("Connect",NULL,loginCbk,NULL));
-    //stats->addWidget(new Label(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 5,"New Account","New Account"));
+    //stats->addWidget(new Label(MAP_WINDOW_WIDTH/2 - 7,MAP_WINDOW_HEIGHT/2 - 5,"New Account","New Account"));
     //stats->addWidget(new Button("New Account",NULL,newAccountCbk,NULL));
-	//stats->addWidget(new Label(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 4,"Options","Options"));
+	//stats->addWidget(new Label(MAP_WINDOW_WIDTH/2 - 7,MAP_WINDOW_HEIGHT/2 - 4,"Options","Options"));
     mainMenu->addWidget(new Button("Options",NULL,NULL,NULL));
-    //stats->addWidget(new Label(MAP_WIDTH/2 - 7,MAP_HEIGHT/2 - 3,"Quit","Quit"));
+    //stats->addWidget(new Label(MAP_WINDOW_WIDTH/2 - 7,MAP_WINDOW_HEIGHT/2 - 3,"Quit","Quit"));
     mainMenu->addWidget(new Button("Quit",NULL,quitCbk,NULL));
     vbox->addWidget(mainMenu);
     
@@ -265,8 +265,8 @@ void GraphicsTCOD::drawMainInterface()
     
     
     
-    ScrollBox *chatBox = new ScrollBox(0, 0, textOutputConsole->getWidth(), textOutputConsole->getHeight(), 512, textOutputConsole, cMap, this);
-    ScrollBox *serverBox = new ScrollBox(0, 0, serverConsole->getWidth(), serverConsole->getHeight()-2, 512, serverConsole, cMap, this);
+    chatBox = new ScrollBox(0, 0, textOutputConsole->getWidth(), textOutputConsole->getHeight(), 512, textOutputConsole, cMap, this);
+    serverBox = new ScrollBox(0, 0, serverConsole->getWidth(), serverConsole->getHeight()-2, 512, serverConsole, cMap, this);
     //serverBox->setConsole(serverConsole);
     chatBox->setRealPosition(0, 32);
     chatBox->takeCommands(true);
@@ -313,9 +313,10 @@ void GraphicsTCOD::drawMainInterface()
     loggedIn = false;
     commandMode = false;
     APIinQueue = false;
+    chatMessageInQueue = false;
     
     actionMode = "placeFloor";
-    
+    chatText = "";
     
     boost::asio::io_service pri_io_service;
     tcp::resolver pri_resolver(pri_io_service);
@@ -609,8 +610,19 @@ void GraphicsTCOD::drawMainInterface()
             
             if(tmpText != "" && tmpText.at(0) != '/')
             {
-                std::string chatText(">" + tmpText);
-                serverBox->insertText(chatText);
+                if(!connected)
+                {
+                    chatText = tmpText;
+                    serverBox->insertText(chatText);
+                    chatText = "";
+                }
+                else
+                {
+                    chatText = tmpText;
+                    chatMessageInQueue = true;
+                    
+                }
+                
             }
             if(tmpText != "" &&  tmpText.at(0) == '/')
             {
@@ -737,6 +749,7 @@ void GraphicsTCOD::requestMap()
     //  {
     if(connected && loggedIn)
     {
+                
         if(connected && APIinQueue)
         {
             
@@ -764,7 +777,31 @@ void GraphicsTCOD::requestMap()
             
         }
         
-        //cMap->cleanMap();
+        if(connected)
+        {
+            if(chatMessageInQueue)
+            {
+                cnet->sendCommand("/0");
+                cnet->ignoreResponse();
+                cnet->sendCommand("/chat");
+                cnet->sendChatMessage(chatText);
+                cnet->getChatMessage();
+                chatText.clear();
+                chatMessageInQueue = false;
+                cnet->sendCommand("/0");
+                cnet->ignoreResponse();
+            }
+          /*  else
+            {
+                chatText = "";
+                cnet->sendCommand("/chat");
+                cnet->sendChatMessage(chatText);
+                cnet->getChatMessage();
+            } */
+            
+        }
+        
+        cMap->clientRefresh();
         
         if(connected && loggedIn)
         {
@@ -800,7 +837,7 @@ void GraphicsTCOD::fixBottom()
     
     output->print(MAIN_WIDTH/2, 32, L"\u2566", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
     output->print(MAIN_WIDTH/2, MAIN_HEIGHT-3, L"\u2560", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
-    output->print(MAP_WIDTH/2, MAIN_HEIGHT-1, L"\u2569", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
+    output->print(MAIN_WIDTH/2, MAIN_HEIGHT-1, L"\u2569", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
     output->print(0, 32, L"\u2554", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
     output->print(0, MAIN_WIDTH-1, L"\u255A", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
     output->print(MAIN_WIDTH-1, 32, L"\u2557", TCOD_COLCTRL_1, TCOD_COLCTRL_STOP);
@@ -858,9 +895,9 @@ void GraphicsTCOD::drawAt(int x, int y)
 void GraphicsTCOD::drawAll()
 {
     
-    for(int x = 0; x < MAP_WIDTH; x++)
+    for(int x = 0; x < MAP_WINDOW_WIDTH; x++)
     {
-        for(int y=0; y < MAP_HEIGHT; y++)
+        for(int y=0; y < MAP_WINDOW_HEIGHT; y++)
         {
             
             drawAt(x, y);

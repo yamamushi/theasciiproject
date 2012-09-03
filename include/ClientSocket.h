@@ -68,6 +68,7 @@ private:
     ClientMapPacker *packer;
     GraphicsTCOD *output;
     ScrollBox *commander;
+    ScrollBox *chatBox;
     
     
     char *buf;
@@ -117,6 +118,9 @@ public:
     void sendCommand(std::string command);
     void getResponse();
     void ignoreResponse();
+    
+    void sendChatMessage(std::string message);
+    void getChatMessage();
     
     
     void ignorePrompt(const boost::system::error_code& error);
