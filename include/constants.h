@@ -40,7 +40,7 @@
 
 
 
-#define DEBUG_MODE false
+#define DEBUG_MODE true
 
 // the constant TCP_BUFSIZE_READ is the maximum size of the standard input
 // buffer of TcpSocket
@@ -84,7 +84,7 @@ FOV_RESTRICTIVE : Mingos' Restrictive Precise Angle Shadowcasting (MRPAS). Origi
 #define FOV_LIGHT_WALLS true
 #define TORCH_RADIUS 7 
 
-#define TILE_PACKET_SIZE 60
+#define TILE_PACKET_SIZE 64
 
 #define MAX_PACKET_SIZE 131071
 #define MAX_VECTOR_BUFFER 1024

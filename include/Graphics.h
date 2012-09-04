@@ -82,6 +82,7 @@ public:
     
     
     bool rendering;
+    bool unpacking;
     bool connected;
     bool commandMode;
     bool loggedIn;

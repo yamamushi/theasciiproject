@@ -136,7 +136,7 @@ void FovLib::refreshFov(Entity *tgt, int X, int Y, int radius){
             {
                 //tgt->fov[x][y] = true;
                 tgt->cMap->cMap[x][y]->visible = true;
-               // tgt->cMap->cMap[x][y]->explored = true;
+                //tgt->cMap->cMap[x][y]->explored = true;
                 //tileMap->virtMap[x][y]->isLit = true;
             }
 

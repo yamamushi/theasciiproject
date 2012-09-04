@@ -1176,6 +1176,15 @@ void Entity::clientFovSync(){
     
     int offset = cY-4;
     
+    
+    for(int xx = 0; xx < MAP_WIDTH; xx++)
+    {
+        for( int yy = 0; yy < MAP_HEIGHT; yy++)
+        {
+            cMap->cMap[xx][yy]->explored = false;
+        }
+    }
+    
     //FOV->refreshFov(this, cX, cY, 7);
     
     int x = pX-offset;

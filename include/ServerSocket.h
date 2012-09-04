@@ -121,6 +121,7 @@ private:
 public:
     
     Entity *player;
+    ClientMap *savedMap;
     
     
     client_connection(boost::asio::io_service& io_service, client_pool& pool) : socket_(io_service), client_pool_(pool) {};

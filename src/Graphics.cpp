@@ -308,7 +308,7 @@ void GraphicsTCOD::drawMainInterface()
     
     
     //bool placeActionMode = false;
-    
+    unpacking = true;
     connected = false;
     loggedIn = false;
     commandMode = false;
@@ -713,7 +713,12 @@ void GraphicsTCOD::drawMainInterface()
         }
         
         //requestMap();
+        
+       // if(!unpacking)
+       //     drawAll();
+        
         drawAll();
+        
         TCODConsole::blit(mapOutput, 0, 0, 0, 0, output, 0, 2);
         inputText->render(serverConsole);
         chatBox->render();
@@ -782,7 +787,7 @@ void GraphicsTCOD::requestMap()
                 
             }
             
-            if(connected)
+            if(connected && loggedIn)
             {
                 //if(chatMessageInQueue)
                 {
@@ -818,14 +823,20 @@ void GraphicsTCOD::requestMap()
             
             //cMap->clientRefresh();
             
+            unpacking = true;
             if(connected && loggedIn)
             {
                 cnet->sizeMap();
                 int dataSize = cnet->confirmSize();
                 cnet->sendCommand("/");
-                if(dataSize > 0)
-                    cnet->read_map(dataSize);
+                //if(dataSize > 0)
+                cnet->read_map(dataSize);
             }
+            unpacking = false;
+            //mapOutput->clear();
+            
+            
+            
             
             //boost::posix_time::seconds sleepTime(1);
             //boost::this_thread::sleep(sleepTime);

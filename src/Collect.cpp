@@ -15,7 +15,7 @@ std::string make_daytime_string()
 };
 
 
-int renderForPlayer(Entity *target, vector<char *> *outbuf)
+int renderForPlayer(Entity *target, vector<char *> *outbuf, ClientMap *savedMap)
 {
     
     int x, y;
@@ -25,35 +25,69 @@ int renderForPlayer(Entity *target, vector<char *> *outbuf)
     
     Entity tgt = *target;
     
+    
+    
     posx = MAP_WIDTH/2;//tgt.posX();
     posy = MAP_HEIGHT/2;//tgt.posY();
     
     
-
- 
-    offset = 10;
-
+    
+    
+    offset = 12;
+    
     for (x = (posx-offset); x < (posx+offset); x++) {
         for (y = (posy-offset); y < (posy+offset); y++) {
             if((x > 0) && (x < MAP_WIDTH) && (y > 0) && (y < MAP_HEIGHT))
             {
-                if(tgt.returnCMap()->cMap[x][y]->explored)   //visible || (!tgt.returnCMap()->cMap[x][y]->visible && tgt.returnCMap()->cMap[x][y]->explored))
-                {   
+             //   if(tgt.returnCMap()->cMap[x][y]->explored)   //visible || (!tgt.returnCMap()->cMap[x][y]->visible && tgt.returnCMap()->cMap[x][y]->explored))
+               // {
+                    if(savedMap->cMap[x][y]->x != tgt.returnCMap()->cMap[x][y]->x || savedMap->cMap[x][y]->y != tgt.returnCMap()->cMap[x][y]->y || savedMap->cMap[x][y]->H != tgt.returnCMap()->cMap[x][y]->H || savedMap->cMap[x][y]->S != tgt.returnCMap()->cMap[x][y]->S || savedMap->cMap[x][y]->V != tgt.returnCMap()->cMap[x][y]->V || savedMap->cMap[x][y]->HD != tgt.returnCMap()->cMap[x][y]->HD || savedMap->cMap[x][y]->SD != tgt.returnCMap()->cMap[x][y]->SD || savedMap->cMap[x][y]->VD != tgt.returnCMap()->cMap[x][y]->VD || (savedMap->cMap[x][y]->symbol != tgt.returnCMap()->cMap[x][y]->symbol ) || savedMap->cMap[x][y]->visible != tgt.returnCMap()->cMap[x][y]->visible || (x > (posx-4) && x < (posx+4) && y > (posy-4) && y < (posy+4) ))
+                    {
+                        savedMap->cMap[x][y]->x = tgt.returnCMap()->cMap[x][y]->x;
+                        savedMap->cMap[x][y]->y = tgt.returnCMap()->cMap[x][y]->y;
+                        savedMap->cMap[x][y]->H = tgt.returnCMap()->cMap[x][y]->H;
+                        savedMap->cMap[x][y]->S = tgt.returnCMap()->cMap[x][y]->S;
+                        savedMap->cMap[x][y]->V = tgt.returnCMap()->cMap[x][y]->V;
+                        savedMap->cMap[x][y]->HD = tgt.returnCMap()->cMap[x][y]->HD;
+                        savedMap->cMap[x][y]->SD = tgt.returnCMap()->cMap[x][y]->SD;
+                        savedMap->cMap[x][y]->VD = tgt.returnCMap()->cMap[x][y]->VD;
+                        savedMap->cMap[x][y]->symbol = tgt.returnCMap()->cMap[x][y]->symbol;
+                        savedMap->cMap[x][y]->visible = tgt.returnCMap()->cMap[x][y]->visible;
+                        savedMap->cMap[x][y]->explored = tgt.returnCMap()->cMap[x][y]->explored;
+                        
+                        
+                        ClientMapPacker *packer = new ClientMapPacker();
+                        char *buf = new char[TILE_PACKET_SIZE];
+                        memset(buf, '.', TILE_PACKET_SIZE);
+                        
+                        
+                        packer->packToNet( *tgt.returnCMap()->cMap[x][y], (unsigned char*)buf);
+                        
+                        outbuf->push_back(buf);
+                        size++;
+                        delete packer;
+                    }
                     
-                    ClientMapPacker *packer = new ClientMapPacker();
-                    char *buf = new char[TILE_PACKET_SIZE];
-                    memset(buf, '.', TILE_PACKET_SIZE);
-                    
-                                    
-                    packer->packToNet( *tgt.returnCMap()->cMap[x][y], (unsigned char*)buf);
-                    
-                    outbuf->push_back(buf);
-                    size++;
-                    delete packer;
-                }
+               // }
             }
             
         }
+    }
+    
+    if(size == 0)
+    {
+       
+        
+        ClientMapPacker *packer = new ClientMapPacker();
+        char *buf = new char[TILE_PACKET_SIZE];
+        memset(buf, '.', TILE_PACKET_SIZE);
+        
+        
+        packer->packToNet( *tgt.returnCMap()->cMap[posx][posy], (unsigned char*)buf);
+        
+        outbuf->push_back(buf);
+        size++;
+        delete packer;
     }
     
     return size;

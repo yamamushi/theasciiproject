@@ -105,7 +105,7 @@ void ScrollBox::insertText(std::string newText)
            // fixedLengthText = "Too Big\nPlease Try Again";
             
           //  char *fixMe = new char[w];
-            //newText.erase(newText.length()-3, 2);
+            newText.erase(newText.length()-3, 2);
             int range = 0;
             for(int i = 0; i < newText.length(); i++)
             {
@@ -259,7 +259,7 @@ void ScrollBox::render()
                 std::string tmpString = textBuffer->at((textBuffer->size())-i);
                 
                 tmpString.insert(0, "%c");
-                tmpString.erase(tmpString.end());
+                //tmpString.erase(tmpString.end());
                 tmpString.append("%c");
                 
                 console->print(x+1, h-1-i, (const char*)&tmpString[0], TCOD_COLCTRL_2, TCOD_COLCTRL_STOP);

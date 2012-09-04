@@ -41,6 +41,7 @@
 #include <fstream>
 #include "DBConnector.h"
 
+#include "ClientMap.h"
 #include "ServerSocket.h"
 #include "WorldMap.h"
 #include "Collect.h"
@@ -103,6 +104,7 @@ void client_connection::start()
     
     mapBuf = new vector<char *>;
     mapSize = new char[16];
+    savedMap = new ClientMap();
     
     player = nullptr;
     
@@ -305,7 +307,7 @@ void client_connection::login(const boost::system::error_code& error)
                 
                 worldMap->addEntToCenter(player);
                 
-                updatePlayerMap();
+                //updatePlayerMap();
                 
                 std::string message("  " + user + " - " + "Has logged in.\r\n");
                 client_pool_.deliver(message);
@@ -743,7 +745,7 @@ void client_connection::updatePlayerMap()
     player->clientFovSync();
     //player->refreshFov();
     
-    renderForPlayer(player, mapBuf);
+    renderForPlayer(player, mapBuf, savedMap);
     
     
     len = ((mapBuf->size())*TILE_PACKET_SIZE);
@@ -1014,6 +1016,7 @@ void client_connection::disconnect()
     free(mapSize);
     
     delete mapBuf;
+    delete savedMap;
     
     if(player != nullptr)
     {
