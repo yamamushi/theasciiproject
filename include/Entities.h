@@ -146,7 +146,7 @@ public:
     
     bool getAssociated();
     ClientMap * returnCMap();
-    void clientFovSync();
+    void clientFovSync(bool forceReset=false);
     
     
     void setWorldPosition(int x, int y, int z);

@@ -94,6 +94,8 @@ void client_connection::start()
     sent = 0;
     maxsent = 0;
     
+    forceReset = false;
+    
     username_feed_ = new boost::asio::streambuf;
     pass_feed_ = new boost::asio::streambuf;
     
@@ -475,6 +477,18 @@ void client_connection::handle_request_line(const boost::system::error_code& err
            //     disconnect();
            // }
         }
+        else if(command == "mapReset")
+        {
+            //  if(dbEngine->isValidToken( user, token))
+            {
+                forceReset = true;
+                boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            }
+            //  else
+            //  {
+            //     disconnect();
+            // }
+        }
         else if( command == "getToken")
         {
             sessionToken = dbEngine->GenerateToken(user, pass);
@@ -742,8 +756,9 @@ void client_connection::updatePlayerMap()
     mapBuf->clear();
     
     
-    player->clientFovSync();
+    player->clientFovSync(forceReset);
     //player->refreshFov();
+    forceReset = false;
     
     renderForPlayer(player, mapBuf, savedMap);
     

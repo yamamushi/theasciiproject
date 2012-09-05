@@ -134,14 +134,22 @@ void FovLib::refreshFov(Entity *tgt, int X, int Y, int radius){
             
             if((tcodMap->isInFov(x, y)))
             {
-                //tgt->fov[x][y] = true;
-                tgt->cMap->cMap[x][y]->visible = true;
-                tgt->cMap->cMap[x][y]->explored = true;
-                //tileMap->virtMap[x][y]->isLit = true;
+                if(!tgt->cMap->cMap[x][y]->visible)
+                {
+                    tgt->cMap->cMap[x][y]->visible = true;
+                    tgt->cMap->cMap[x][y]->explored = true;
+                    tgt->cMap->cMap[x][y]->sendMe = true;
+                }
+
             }
             else
             {
-                tgt->cMap->cMap[x][y]->visible = false;
+                if(tgt->cMap->cMap[x][y]->visible)
+                {
+                    tgt->cMap->cMap[x][y]->sendMe = true;
+                    tgt->cMap->cMap[x][y]->visible = false;
+                }
+
             }
 
         }
@@ -159,15 +167,20 @@ void FovLib::refreshFov(Entity *tgt, int X, int Y, int radius){
             if(tcodMap->isInFov(x, y) && tgt->cMap->cMap[x][y]->isLit)
             {
                 //tgt->fov[x][y] = true;
-                tgt->cMap->cMap[x][y]->visible = true;
-                tgt->cMap->cMap[x][y]->explored = true;
+                if(!tgt->cMap->cMap[x][y]->visible)
+                {
+                    tgt->cMap->cMap[x][y]->visible = true;
+                    tgt->cMap->cMap[x][y]->explored = true;
+                    tgt->cMap->cMap[x][y]->sendMe = true;
+                }
+                else
+                {
+                    tgt->cMap->cMap[x][y]->visible = true;
+                    tgt->cMap->cMap[x][y]->explored = true;
+                }
+                                
                 //tileMap->virtMap[x][y]->isLit = true;
-            }
-            else if(!tcodMap->isInFov(x, y))
-            {
-                tgt->cMap->cMap[x][y]->visible = false;
-            }
-            
+            }            
         }
     }
   

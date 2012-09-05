@@ -100,6 +100,7 @@ private:
     std::string chatStream;
     
     bool moved;
+    bool forceReset;
     
     std::size_t len;
     

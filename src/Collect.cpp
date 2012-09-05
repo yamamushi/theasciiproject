@@ -39,26 +39,16 @@ int renderForPlayer(Entity *target, vector<char *> *outbuf, ClientMap *savedMap)
         for (y = 0; y < MAP_HEIGHT; y++) {
            // if((x > 0) && (x < MAP_WIDTH) && (y > 0) && (y < MAP_HEIGHT))
            // {
-                if(tgt.returnCMap()->cMap[x][y]->explored)
+                if(tgt.returnCMap()->cMap[x][y]->sendMe)
              //   {
                //     if(savedMap->cMap[x][y]->x != tgt.returnCMap()->cMap[x][y]->x || savedMap->cMap[x][y]->y != tgt.returnCMap()->cMap[x][y]->y)
                //     {
-                    if( (tgt.returnCMap()->cMap[x][y]->x == posx && tgt.returnCMap()->cMap[x][y]->y < 12) || tgt.returnCMap()->cMap[x][y]->y == posy|| (savedMap->cMap[x][y]->H != tgt.returnCMap()->cMap[x][y]->H) || (savedMap->cMap[x][y]->S != tgt.returnCMap()->cMap[x][y]->S) || (savedMap->cMap[x][y]->V != tgt.returnCMap()->cMap[x][y]->V) || (savedMap->cMap[x][y]->HD != tgt.returnCMap()->cMap[x][y]->HD) || (savedMap->cMap[x][y]->SD != tgt.returnCMap()->cMap[x][y]->SD) || (savedMap->cMap[x][y]->VD != tgt.returnCMap()->cMap[x][y]->VD) || (savedMap->cMap[x][y]->symbol != tgt.returnCMap()->cMap[x][y]->symbol) || (savedMap->cMap[x][y]->visible != tgt.returnCMap()->cMap[x][y]->visible) || (savedMap->cMap[x][y]->blocked != tgt.returnCMap()->cMap[x][y]->blocked) || (savedMap->cMap[x][y]->occupied != tgt.returnCMap()->cMap[x][y]->occupied) )
+                   // if( (savedMap->cMap[x][y]->H != tgt.returnCMap()->cMap[x][y]->H) || (savedMap->cMap[x][y]->S != tgt.returnCMap()->cMap[x][y]->S) || (savedMap->cMap[x][y]->V != tgt.returnCMap()->cMap[x][y]->V) || (savedMap->cMap[x][y]->HD != tgt.returnCMap()->cMap[x][y]->HD) || (savedMap->cMap[x][y]->SD != tgt.returnCMap()->cMap[x][y]->SD) || (savedMap->cMap[x][y]->VD != tgt.returnCMap()->cMap[x][y]->VD) || (savedMap->cMap[x][y]->ASCII != (int)*tgt.returnCMap()->cMap[x][y]->symbol) || (savedMap->cMap[x][y]->visible != tgt.returnCMap()->cMap[x][y]->visible) || (savedMap->cMap[x][y]->blocked != tgt.returnCMap()->cMap[x][y]->blocked) || (savedMap->cMap[x][y]->occupied != tgt.returnCMap()->cMap[x][y]->occupied) )
                     {
                        // tgt.returnCMap()->cMap[x][y]->x = savedMap->cMap[x][y]->x;
                        // tgt.returnCMap()->cMap[x][y]->y = savedMap->cMap[x][y]->y;
                         
-                        savedMap->cMap[x][y]->H = tgt.returnCMap()->cMap[x][y]->H;
-                        savedMap->cMap[x][y]->S = tgt.returnCMap()->cMap[x][y]->S;
-                        savedMap->cMap[x][y]->V = tgt.returnCMap()->cMap[x][y]->V;
-                        savedMap->cMap[x][y]->HD = tgt.returnCMap()->cMap[x][y]->HD;
-                        savedMap->cMap[x][y]->SD = tgt.returnCMap()->cMap[x][y]->SD;
-                        savedMap->cMap[x][y]->VD = tgt.returnCMap()->cMap[x][y]->VD;
-                        savedMap->cMap[x][y]->symbol = tgt.returnCMap()->cMap[x][y]->symbol;
-                        savedMap->cMap[x][y]->visible = tgt.returnCMap()->cMap[x][y]->visible;
-                        savedMap->cMap[x][y]->explored = tgt.returnCMap()->cMap[x][y]->explored;
-                        savedMap->cMap[x][y]->blocked = tgt.returnCMap()->cMap[x][y]->blocked;
-                        savedMap->cMap[x][y]->occupied = tgt.returnCMap()->cMap[x][y]->occupied;
+                        tgt.returnCMap()->cMap[x][y]->sendMe = false;
                         
                         
                         ClientMapPacker *packer = new ClientMapPacker();

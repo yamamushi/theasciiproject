@@ -140,6 +140,8 @@ struct render_t {
     bool distantVisible;
     bool sendMe;
     
+    int ASCII;
+    
     
     bool drawn;
 };

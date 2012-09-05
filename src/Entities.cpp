@@ -1160,7 +1160,7 @@ void Entity::setWorldPosition(int x, int y, int z)
     
 }
 
-void Entity::clientFovSync(){
+void Entity::clientFovSync(bool forceReset){
     
     
     //refreshFov(10);
@@ -1174,21 +1174,13 @@ void Entity::clientFovSync(){
     cY = MAP_HEIGHT/2;
     
     
-    int offsetX = cX-30;//cY-4;
+    int offsetX = cX-25;//cY-4;
     int offsetY = cY-4;
     
     
-    for(int xx = 0; xx < MAP_WIDTH; xx++)
-    {
-        for( int yy = 0; yy < MAP_HEIGHT; yy++)
-        {
-            //cMap->clientRefresh();
-            cMap->cMap[xx][yy]->explored = true;
-            cMap->cMap[xx][yy]->visible = false;
-            
-            
-        }
-    }
+
+    
+    //cMap->clientRefresh();
     
     FOV->refreshFov(this, cX, cY, 7);
     
@@ -1199,41 +1191,74 @@ void Entity::clientFovSync(){
         for(int iY = cY-offsetY; iY < cY+offsetY; iY++ )
         {
             cMap->cMap[iX][iY]->explored = true;
-            cMap->cMap[iX][iY]->visible = false;
+            //cMap->cMap[iX][iY]->visible = false;
             
+            if(forceReset)
+            {
+                cMap->cMap[iX][iY]->sendMe = true;
+            }
             
+                
             if(y > 0 && y < MAP_HEIGHT && x > 0 && x < MAP_WIDTH)
                 
             {
                 
-                cMap->cMap[iX][iY]->symbol = rMap->getSymbol(x, y);
-                cMap->cMap[iX][iY]->H = rMap->returnH(x, y);
-                cMap->cMap[iX][iY]->HD = rMap->returnHD(x, y);
-                cMap->cMap[iX][iY]->S = rMap->returnS(x, y);
-                cMap->cMap[iX][iY]->SD = rMap->returnSD(x, y);
-                cMap->cMap[iX][iY]->V = rMap->returnV(x, y);
-                cMap->cMap[iX][iY]->VD = rMap->returnVD(x, y);
-                cMap->cMap[iX][iY]->blocked = rMap->returnBlocked(x, y);
-                cMap->cMap[iX][iY]->blockSight = rMap->returnBlockSight(x, y);
-                cMap->cMap[iX][iY]->isLit = rMap->returnLit(x, y);
                 
-                // cMap->cMap[ix][iY]->bloc
-                //cMap->cMap[cX][cY]->explored = true;
+                if(cMap->cMap[iX][iY]->symbol != rMap->getSymbol(x, y))
+                {
+                    cMap->cMap[iX][iY]->sendMe = true;
+                    cMap->cMap[iX][iY]->symbol = rMap->getSymbol(x, y);
+                }
+                if(cMap->cMap[iX][iY]->H != rMap->returnH(x, y))
+                {
+                    cMap->cMap[iX][iY]->sendMe = true;
+                    cMap->cMap[iX][iY]->H = rMap->returnH(x, y);
+                }
+                if(cMap->cMap[iX][iY]->S != rMap->returnS(x, y))
+                {
+                    cMap->cMap[iX][iY]->sendMe = true;
+                    cMap->cMap[iX][iY]->S = rMap->returnS(x, y);
+                }
+                if(cMap->cMap[iX][iY]->V != rMap->returnV(x, y))
+                {
+                    cMap->cMap[iX][iY]->sendMe = true;
+                    cMap->cMap[iX][iY]->V = rMap->returnV(x, y);
+                }
+                
+                if(cMap->cMap[iX][iY]->HD != rMap->returnHD(x, y))
+                {
+                    cMap->cMap[iX][iY]->sendMe = true;
+                    cMap->cMap[iX][iY]->HD = rMap->returnHD(x, y);
+                }
+                if(cMap->cMap[iX][iY]->SD != rMap->returnSD(x, y))
+                {
+                    cMap->cMap[iX][iY]->sendMe = true;
+                    cMap->cMap[iX][iY]->SD = rMap->returnSD(x, y);
+                }
+                if(cMap->cMap[iX][iY]->VD != rMap->returnVD(x, y))
+                {
+                    cMap->cMap[iX][iY]->sendMe = true;
+                    cMap->cMap[iX][iY]->VD = rMap->returnVD(x, y);
+                }
                 
                 
-                /*  if(fov[x][y] == true)
-                 {
-                 
-                 cMap->cMap[iX][iY]->visible = true;
-                 //cMap->cMap[iX][iY]->explored = true;
-                 
-                 }
-                 else
-                 {
-                 cMap->cMap[iX][iY]->visible = false;
-                 cMap->cMap[iX][iY]->occupied = false;
-                 } */
+                if(cMap->cMap[iX][iY]->blocked != rMap->returnBlocked(x, y))
+                {
+                    cMap->cMap[iX][iY]->sendMe = true;
+                    cMap->cMap[iX][iY]->blocked = rMap->returnBlocked(x, y);
+                }
+                if(cMap->cMap[iX][iY]->blockSight != rMap->returnBlockSight(x, y))
+                {
+                    cMap->cMap[iX][iY]->sendMe = true;
+                    cMap->cMap[iX][iY]->blockSight = rMap->returnBlockSight(x, y);
+                }
                 
+                if(cMap->cMap[iX][iY]->isLit != rMap->returnLit(x, y))
+                {
+                    cMap->cMap[iX][iY]->sendMe = true;
+                    cMap->cMap[iX][iY]->isLit = rMap->returnLit(x, y);
+                }
+                                          
                 
             }
             
@@ -1244,37 +1269,69 @@ void Entity::clientFovSync(){
                 int iy;
                 iy = y-MAP_HEIGHT;
                 
-                cMap->cMap[iX][iY-1]->symbol = trMap->getSymbol(x, iy);
-                cMap->cMap[iX][iY-1]->H = trMap->returnH(x, iy);
-                cMap->cMap[iX][iY-1]->HD = trMap->returnHD(x, iy);
-                cMap->cMap[iX][iY-1]->S = trMap->returnS(x, iy);
-                cMap->cMap[iX][iY-1]->SD = trMap->returnSD(x, iy);
-                cMap->cMap[iX][iY-1]->V = trMap->returnV(x, iy);
-                cMap->cMap[iX][iY-1]->VD = trMap->returnVD(x, iy);
+                if(cMap->cMap[iX][iY-1]->symbol != trMap->getSymbol(x, iy))
+                {
+                    cMap->cMap[iX][iY-1]->symbol = trMap->getSymbol(x, iy);
+                    cMap->cMap[iX][iY-1]->sendMe = true;
+                    
+                }
+                if(cMap->cMap[iX][iY-1]->H != trMap->returnH(x, iy))
+                {
+                    cMap->cMap[iX][iY-1]->H = trMap->returnH(x, iy);
+                    cMap->cMap[iX][iY-1]->sendMe = true;
+                    
+                }
+                if(cMap->cMap[iX][iY-1]->HD != trMap->returnHD(x, iy))
+                {
+                    cMap->cMap[iX][iY-1]->HD = trMap->returnHD(x, iy);
+                    cMap->cMap[iX][iY-1]->sendMe = true;
+                    
+                }
+                if(cMap->cMap[iX][iY-1]->S != trMap->returnS(x, iy))
+                {
+                    cMap->cMap[iX][iY-1]->S = trMap->returnS(x, iy);
+                    cMap->cMap[iX][iY-1]->sendMe = true;
+                    
+                }
+                if(cMap->cMap[iX][iY-1]->SD != trMap->returnSD(x, iy))
+                {
+                    cMap->cMap[iX][iY-1]->SD = trMap->returnSD(x, iy);
+                    cMap->cMap[iX][iY-1]->sendMe = true;
+                    
+                }
+                if(cMap->cMap[iX][iY-1]->V != trMap->returnV(x, iy))
+                {
+                    cMap->cMap[iX][iY-1]->V = trMap->returnV(x, iy);
+                    cMap->cMap[iX][iY-1]->sendMe = true;
+                    
+                }
+                if(cMap->cMap[iX][iY-1]->VD != trMap->returnVD(x, iy))
+                {
+                    cMap->cMap[iX][iY-1]->VD = trMap->returnVD(x, iy);
+                    cMap->cMap[iX][iY-1]->sendMe = true;
+                    
+                }
                 
-                cMap->cMap[iX][iY-1]->blocked = rMap->returnBlocked(x, iy);
-                cMap->cMap[iX][iY-1]->blockSight = rMap->returnBlockSight(x, iy);
+                if(cMap->cMap[iX][iY-1]->blocked != trMap->returnBlocked(x, iy))
+                {
+                    cMap->cMap[iX][iY-1]->blocked = trMap->returnBlocked(x, iy);
+                    cMap->cMap[iX][iY-1]->sendMe = true;
+                    
+                }
+                if(cMap->cMap[iX][iY-1]->blockSight != trMap->returnBlockSight(x, iy))
+                {
+                    cMap->cMap[iX][iY-1]->blockSight = trMap->returnBlockSight(x, iy);
+                    cMap->cMap[iX][iY-1]->sendMe = true;
+                    
+                }
                 
-                cMap->cMap[iX][iY-1]->isLit = rMap->returnLit(x, iy);
-                //cMap->cMap[iX][iY]->visible = true;
-                //cMap->cMap[cX][cY]->explored = true;
-                
-                /*  FovLib *tFov = wMap->getNextEntMap(this, 2)->fovLib;
-                 tFov->refreshFov(this, x, y);
-                 
-                 if(fov[x][y] == true)
-                 {
-                 
-                 cMap->cMap[iX][iY]->visible = true;
-                 //cMap->cMap[iX][iY]->explored = true;
-                 
-                 }
-                 else
-                 {
-                 cMap->cMap[iX][iY]->visible = false;
-                 cMap->cMap[iX][iY]->occupied = false;
-                 } */
-                
+                if(cMap->cMap[iX][iY-1]->isLit != trMap->returnLit(x, iy))
+                {
+                    cMap->cMap[iX][iY-1]->isLit = trMap->returnLit(x, iy);
+                    cMap->cMap[iX][iY-1]->sendMe = true;
+                    
+                }
+                                                
             }
             
             else if(y < 0 && y < MAP_HEIGHT && x > 0 && x < MAP_WIDTH)
@@ -1284,38 +1341,61 @@ void Entity::clientFovSync(){
                 int iy;
                 iy = MAP_HEIGHT+y;
                 
-                cMap->cMap[iX][iY+1]->symbol = trMap->getSymbol(x, iy);
-                cMap->cMap[iX][iY+1]->H = trMap->returnH(x, iy);
-                cMap->cMap[iX][iY+1]->HD = trMap->returnHD(x, iy);
-                cMap->cMap[iX][iY+1]->S = trMap->returnS(x, iy);
-                cMap->cMap[iX][iY+1]->SD = trMap->returnSD(x, iy);
-                cMap->cMap[iX][iY+1]->V = trMap->returnV(x, iy);
-                cMap->cMap[iX][iY+1]->VD = trMap->returnVD(x, iy);
+                if(cMap->cMap[iX][iY+1]->symbol != trMap->getSymbol(x, iy))
+                {
+                    cMap->cMap[iX][iY+1]->symbol = trMap->getSymbol(x, iy);
+                    cMap->cMap[iX][iY+1]->sendMe = true;
+                }
                 
-                cMap->cMap[iX][iY+1]->blocked = rMap->returnBlocked(x, iy);
-                cMap->cMap[iX][iY+1]->blockSight = rMap->returnBlockSight(x, iy);
+                if(cMap->cMap[iX][iY+1]->H != trMap->returnH(x, iy))
+                {
+                    cMap->cMap[iX][iY+1]->H = trMap->returnH(x, iy);
+                    cMap->cMap[iX][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX][iY+1]->HD!= trMap->returnHD(x, iy))
+                {
+                    cMap->cMap[iX][iY+1]->HD = trMap->returnHD(x, iy);
+                    cMap->cMap[iX][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX][iY+1]->S != trMap->returnS(x, iy))
+                {
+                    cMap->cMap[iX][iY+1]->S = trMap->returnS(x, iy);
+                    cMap->cMap[iX][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX][iY+1]->SD != trMap->returnSD(x, iy))
+                {
+                    cMap->cMap[iX][iY+1]->SD = trMap->returnSD(x, iy);
+                    cMap->cMap[iX][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX][iY+1]->V != trMap->returnV(x, iy))
+                {
+                    cMap->cMap[iX][iY+1]->V = trMap->returnV(x, iy);
+                    cMap->cMap[iX][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX][iY+1]->VD != trMap->returnVD(x, iy))
+                {
+                    cMap->cMap[iX][iY+1]->VD = trMap->returnVD(x, iy);
+                    cMap->cMap[iX][iY+1]->sendMe = true;
+                }
                 
-                cMap->cMap[iX][iY+1]->isLit = rMap->returnLit(x, iy);
-                //cMap->cMap[iX][iY]->visible = true;
-                //cMap->cMap[cX][cY]->explored = true;
-                /*
-                 FovLib *tFov = wMap->getNextEntMap(this, 8)->fovLib;
-                 tFov->refreshFov(this, x, y);
-                 
-                 if(fov[x][y] == true)
-                 {
-                 
-                 cMap->cMap[iX][iY]->visible = true;
-                 //cMap->cMap[iX][iY]->explored = true;
-                 
-                 }
-                 else
-                 {
-                 cMap->cMap[iX][iY]->visible = false;
-                 cMap->cMap[iX][iY]->occupied = false;
-                 }
-                 */
                 
+                if(cMap->cMap[iX][iY+1]->blocked != trMap->returnBlocked(x, iy))
+                {
+                    cMap->cMap[iX][iY+1]->blocked = trMap->returnBlocked(x, iy);
+                    cMap->cMap[iX][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX][iY+1]->blockSight != trMap->returnBlockSight(x, iy))
+                {
+                    cMap->cMap[iX][iY+1]->blockSight = trMap->returnBlockSight(x, iy);
+                    cMap->cMap[iX][iY+1]->sendMe = true;
+                }
+                                
+                if(cMap->cMap[iX][iY+1]->isLit != trMap->returnLit(x, iy))
+                {
+                    cMap->cMap[iX][iY+1]->isLit = trMap->returnLit(x, iy);
+                    cMap->cMap[iX][iY+1]->sendMe = true;
+                }
+                                
             }
             
             else if(y > 0 && y < MAP_HEIGHT && x < 0 && x < MAP_WIDTH)
@@ -1325,38 +1405,80 @@ void Entity::clientFovSync(){
                 int ix;
                 ix = MAP_WIDTH+x;
                 
-                cMap->cMap[iX+1][iY]->symbol = trMap->getSymbol(ix, y);
-                cMap->cMap[iX+1][iY]->H = trMap->returnH(ix, y);
-                cMap->cMap[iX+1][iY]->HD = trMap->returnHD(ix, y);
-                cMap->cMap[iX+1][iY]->S = trMap->returnS(ix, y);
-                cMap->cMap[iX+1][iY]->SD = trMap->returnSD(ix, y);
-                cMap->cMap[iX+1][iY]->V = trMap->returnV(ix, y);
-                cMap->cMap[iX+1][iY]->VD = trMap->returnVD(ix, y);
+                if(cMap->cMap[iX+1][iY]->symbol != trMap->getSymbol(ix, y))
+                {
+                    
+                    cMap->cMap[iX+1][iY]->symbol = trMap->getSymbol(ix, y);
+                    cMap->cMap[iX+1][iY]->sendMe = true;
+                    
+                }
                 
-                cMap->cMap[iX+1][iY]->blocked = rMap->returnBlocked(ix, y);
-                cMap->cMap[iX+1][iY]->blockSight = rMap->returnBlockSight(ix, y);
+                if(cMap->cMap[iX+1][iY]->H != trMap->returnH(ix, y))
+                {
+                    
+                    cMap->cMap[iX+1][iY]->H = trMap->returnH(ix, y);
+                    cMap->cMap[iX+1][iY]->sendMe = true;
+                    
+                }
+                if(cMap->cMap[iX+1][iY]->HD != trMap->returnHD(ix, y))
+                {
+                    
+                    cMap->cMap[iX+1][iY]->HD = trMap->returnHD(ix, y);
+                    cMap->cMap[iX+1][iY]->sendMe = true;
+                    
+                }
+                if(cMap->cMap[iX+1][iY]->S != trMap->returnS(ix, y))
+                {
+                    
+                    cMap->cMap[iX+1][iY]->S = trMap->returnS(ix, y);
+                    cMap->cMap[iX+1][iY]->sendMe = true;
+                    
+                }
+                if(cMap->cMap[iX+1][iY]->SD != trMap->returnSD(ix, y))
+                {
+                    
+                    cMap->cMap[iX+1][iY]->SD = trMap->returnSD(ix, y);
+                    cMap->cMap[iX+1][iY]->sendMe = true;
+                    
+                }
+                if(cMap->cMap[iX+1][iY]->V != trMap->returnV(ix, y))
+                {
+                    
+                    cMap->cMap[iX+1][iY]->V = trMap->returnV(ix, y);
+                    cMap->cMap[iX+1][iY]->sendMe = true;
+                    
+                }
+                if(cMap->cMap[iX+1][iY]->VD != trMap->returnVD(ix, y))
+                {
+                    
+                    cMap->cMap[iX+1][iY]->VD = trMap->returnVD(ix, y);
+                    cMap->cMap[iX+1][iY]->sendMe = true;
+                    
+                }
                 
-                cMap->cMap[iX+1][iY]->isLit = rMap->returnLit(ix, y);
-                //cMap->cMap[iX][iY]->visible = true;
-                //cMap->cMap[cX][cY]->explored = true;
-                /*
-                 FovLib *tFov = wMap->getNextEntMap(this, 8)->fovLib;
-                 tFov->refreshFov(this, x, y);
-                 
-                 if(fov[x][y] == true)
-                 {
-                 
-                 cMap->cMap[iX][iY]->visible = true;
-                 //cMap->cMap[iX][iY]->explored = true;
-                 
-                 }
-                 else
-                 {
-                 cMap->cMap[iX][iY]->visible = false;
-                 cMap->cMap[iX][iY]->occupied = false;
-                 }
-                 */
-                
+                if(cMap->cMap[iX+1][iY]->blocked != trMap->returnBlocked(ix, y))
+                {
+                    
+                    cMap->cMap[iX+1][iY]->blocked = trMap->returnBlocked(ix, y);
+                    cMap->cMap[iX+1][iY]->sendMe = true;
+                    
+                }
+                if(cMap->cMap[iX+1][iY]->blockSight != trMap->returnBlockSight(ix, y))
+                {
+                    
+                    cMap->cMap[iX+1][iY]->blockSight = trMap->returnBlockSight(ix, y);
+                    cMap->cMap[iX+1][iY]->sendMe = true;
+                    
+                }
+                if(cMap->cMap[iX+1][iY]->isLit != trMap->returnLit(ix, y))
+                {
+                    
+                    cMap->cMap[iX+1][iY]->isLit = trMap->returnLit(ix, y);
+                    cMap->cMap[iX+1][iY]->sendMe = true;
+                    
+                }
+
+               
             }
             
             
@@ -1367,37 +1489,62 @@ void Entity::clientFovSync(){
                 int ix;
                 ix = x-MAP_WIDTH;
                 
-                cMap->cMap[iX-1][iY]->symbol = trMap->getSymbol(ix, y);
-                cMap->cMap[iX-1][iY]->H = trMap->returnH(ix, y);
-                cMap->cMap[iX-1][iY]->HD = trMap->returnHD(ix, y);
-                cMap->cMap[iX-1][iY]->S = trMap->returnS(ix, y);
-                cMap->cMap[iX-1][iY]->SD = trMap->returnSD(ix, y);
-                cMap->cMap[iX-1][iY]->V = trMap->returnV(ix, y);
-                cMap->cMap[iX-1][iY]->VD = trMap->returnVD(ix, y);
+                
+                if(cMap->cMap[iX-1][iY]->symbol != trMap->getSymbol(ix, y))
+                {
+                    cMap->cMap[iX-1][iY]->symbol = trMap->getSymbol(ix, y);
+                    cMap->cMap[iX-1][iY]->sendMe = true;
+                }
                 
                 
-                cMap->cMap[iX-1][iY]->blocked = rMap->returnBlocked(ix, y);
-                cMap->cMap[iX-1][iY]->blockSight = rMap->returnBlockSight(ix, y);
+                if(cMap->cMap[iX-1][iY]->H != trMap->returnH(ix, y))
+                {
+                    cMap->cMap[iX-1][iY]->H = trMap->returnH(ix, y);
+                    cMap->cMap[iX-1][iY]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY]->HD != trMap->returnHD(ix, y))
+                {
+                    cMap->cMap[iX-1][iY]->HD = trMap->returnHD(ix, y);
+                    cMap->cMap[iX-1][iY]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY]->S != trMap->returnS(ix, y))
+                {
+                    cMap->cMap[iX-1][iY]->S = trMap->returnS(ix, y);
+                    cMap->cMap[iX-1][iY]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY]->SD != trMap->returnSD(ix, y))
+                {
+                    cMap->cMap[iX-1][iY]->SD = trMap->returnSD(ix, y);
+                    cMap->cMap[iX-1][iY]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY]->V != trMap->returnV(ix, y))
+                {
+                    cMap->cMap[iX-1][iY]->V = trMap->returnV(ix, y);
+                    cMap->cMap[iX-1][iY]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY]->VD != trMap->returnVD(ix, y))
+                {
+                    cMap->cMap[iX-1][iY]->VD = trMap->returnVD(ix, y);
+                    cMap->cMap[iX-1][iY]->sendMe = true;
+                }
+                    
                 
-                cMap->cMap[iX-1][iY]->isLit = rMap->returnLit(ix, y);
-                //cMap->cMap[iX][iY]->visible = true;
-                //cMap->cMap[cX][cY]->explored = true;
-                
-                /*  FovLib *tFov = wMap->getNextEntMap(this, 2)->fovLib;
-                 tFov->refreshFov(this, x, y);
-                 
-                 if(fov[x][y] == true)
-                 {
-                 
-                 cMap->cMap[iX][iY]->visible = true;
-                 //cMap->cMap[iX][iY]->explored = true;
-                 
-                 }
-                 else
-                 {
-                 cMap->cMap[iX][iY]->visible = false;
-                 cMap->cMap[iX][iY]->occupied = false;
-                 } */
+                if(cMap->cMap[iX-1][iY]->blocked != trMap->returnBlocked(ix, y))
+                {
+                    cMap->cMap[iX-1][iY]->blocked = trMap->returnBlocked(ix, y);
+                    cMap->cMap[iX-1][iY]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY]->blockSight != trMap->returnBlockSight(ix, y))
+                {
+                    cMap->cMap[iX-1][iY]->blockSight = trMap->returnBlockSight(ix, y);
+                    cMap->cMap[iX-1][iY]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY]->isLit != trMap->returnLit(ix, y))
+                {
+                    cMap->cMap[iX-1][iY]->isLit = trMap->returnLit(ix, y);
+                    cMap->cMap[iX-1][iY]->sendMe = true;
+                }
+
                 
             }
             else if(y < 0 && y < MAP_HEIGHT && x > 0 && x > MAP_WIDTH)
@@ -1408,22 +1555,62 @@ void Entity::clientFovSync(){
                 ix = x-MAP_WIDTH;
                 iy = MAP_HEIGHT+y;
                 
-                cMap->cMap[iX-1][iY+1]->symbol = trMap->getSymbol(ix, iy);
-                cMap->cMap[iX-1][iY+1]->H = trMap->returnH(ix, iy);
-                cMap->cMap[iX-1][iY+1]->HD = trMap->returnHD(ix, iy);
-                cMap->cMap[iX-1][iY+1]->S = trMap->returnS(ix, iy);
-                cMap->cMap[iX-1][iY+1]->SD = trMap->returnSD(ix, iy);
-                cMap->cMap[iX-1][iY+1]->V = trMap->returnV(ix, iy);
-                cMap->cMap[iX-1][iY+1]->VD = trMap->returnVD(ix, iy);
-                
-                cMap->cMap[iX-1][iY+1]->blocked = rMap->returnBlocked(ix, iy);
-                cMap->cMap[iX-1][iY+1]->blockSight = rMap->returnBlockSight(ix, iy);
-                
-                cMap->cMap[iX-1][iY+1]->isLit = rMap->returnLit(ix, iy);
-                //cMap->cMap[iX][iY]->visible = true;
-                //cMap->cMap[cX][cY]->explored = true;
+                if(cMap->cMap[iX-1][iY+1]->symbol != trMap->getSymbol(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY+1]->symbol = trMap->getSymbol(ix, iy);
+                    cMap->cMap[iX-1][iY+1]->sendMe = true;
+                }
                 
                 
+                if(cMap->cMap[iX-1][iY+1]->H != trMap->returnH(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY+1]->H = trMap->returnH(ix, iy);
+                    cMap->cMap[iX-1][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY+1]->HD != trMap->returnHD(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY+1]->HD = trMap->returnHD(ix, iy);
+                    cMap->cMap[iX-1][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY+1]->S != trMap->returnS(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY+1]->S = trMap->returnS(ix, iy);
+                    cMap->cMap[iX-1][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY+1]->SD != trMap->returnSD(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY+1]->SD = trMap->returnSD(ix, iy);
+                    cMap->cMap[iX-1][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY+1]->V != trMap->returnV(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY+1]->V = trMap->returnV(ix, iy);
+                    cMap->cMap[iX-1][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY+1]->VD != trMap->returnVD(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY+1]->VD = trMap->returnVD(ix, iy);
+                    cMap->cMap[iX-1][iY+1]->sendMe = true;
+                }
+
+                
+                if(cMap->cMap[iX-1][iY+1]->blocked != trMap->returnBlocked(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY+1]->blocked = trMap->returnBlocked(ix, iy);
+                    cMap->cMap[iX-1][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY+1]->blockSight != trMap->returnBlockSight(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY+1]->blockSight = trMap->returnBlockSight(ix, iy);
+                    cMap->cMap[iX-1][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY+1]->isLit != trMap->returnLit(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY+1]->isLit = trMap->returnLit(ix, iy);
+                    cMap->cMap[iX-1][iY+1]->sendMe = true;
+                }
+
+               
             }
             else if(y > 0 && y > MAP_HEIGHT && x > 0 && x > MAP_WIDTH)
             {
@@ -1433,21 +1620,60 @@ void Entity::clientFovSync(){
                 ix = x-MAP_WIDTH;
                 iy = y-MAP_HEIGHT;
                 
-                cMap->cMap[iX-1][iY-1]->symbol = trMap->getSymbol(ix, iy);
-                cMap->cMap[iX-1][iY-1]->H = trMap->returnH(ix, iy);
-                cMap->cMap[iX-1][iY-1]->HD = trMap->returnHD(ix, iy);
-                cMap->cMap[iX-1][iY-1]->S = trMap->returnS(ix, iy);
-                cMap->cMap[iX-1][iY-1]->SD = trMap->returnSD(ix, iy);
-                cMap->cMap[iX-1][iY-1]->V = trMap->returnV(ix, iy);
-                cMap->cMap[iX-1][iY-1]->VD = trMap->returnVD(ix, iy);
+                if(cMap->cMap[iX-1][iY-1]->symbol != trMap->getSymbol(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY-1]->symbol = trMap->getSymbol(ix, iy);
+                    cMap->cMap[iX-1][iY-1]->sendMe = true;
+                }
                 
-                cMap->cMap[iX-1][iY-1]->blocked = rMap->returnBlocked(ix, iy);
-                cMap->cMap[iX-1][iY-1]->blockSight = rMap->returnBlockSight(ix, iy);
                 
-                cMap->cMap[iX-1][iY-1]->isLit = rMap->returnLit(ix, iy);
-                //cMap->cMap[iX][iY]->visible = true;
-                //cMap->cMap[cX][cY]->explored = true;
-                
+                if(cMap->cMap[iX-1][iY-1]->H != trMap->returnH(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY-1]->H = trMap->returnH(ix, iy);
+                    cMap->cMap[iX-1][iY-1]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY-1]->HD != trMap->returnHD(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY-1]->HD = trMap->returnHD(ix, iy);
+                    cMap->cMap[iX-1][iY-1]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY-1]->S != trMap->returnS(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY-1]->S = trMap->returnS(ix, iy);
+                    cMap->cMap[iX-1][iY-1]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY-1]->SD != trMap->returnSD(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY-1]->SD = trMap->returnSD(ix, iy);
+                    cMap->cMap[iX-1][iY-1]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY-1]->V != trMap->returnV(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY-1]->V = trMap->returnV(ix, iy);
+                    cMap->cMap[iX-1][iY-1]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY-1]->VD != trMap->returnVD(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY-1]->VD = trMap->returnVD(ix, iy);
+                    cMap->cMap[iX-1][iY-1]->sendMe = true;
+                }
+
+                if(cMap->cMap[iX-1][iY-1]->blocked != trMap->returnBlocked(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY-1]->blocked = trMap->returnBlocked(ix, iy);
+                    cMap->cMap[iX-1][iY-1]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY-1]->blockSight != trMap->returnBlockSight(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY-1]->blockSight = trMap->returnBlockSight(ix, iy);
+                    cMap->cMap[iX-1][iY-1]->sendMe = true;
+                }
+                if(cMap->cMap[iX-1][iY-1]->isLit != trMap->returnLit(ix, iy))
+                {
+                    cMap->cMap[iX-1][iY-1]->isLit = trMap->returnLit(ix, iy);
+                    cMap->cMap[iX-1][iY-1]->sendMe = true;
+                }
+          
                 
             }
             else if(y < 0 && y < MAP_HEIGHT && x < 0 && x < MAP_WIDTH)
@@ -1458,21 +1684,61 @@ void Entity::clientFovSync(){
                 ix = MAP_WIDTH+x;
                 iy = MAP_HEIGHT+y;
                 
-                cMap->cMap[iX+1][iY+1]->symbol = trMap->getSymbol(ix, iy);
-                cMap->cMap[iX+1][iY+1]->H = trMap->returnH(ix, iy);
-                cMap->cMap[iX+1][iY+1]->HD = trMap->returnHD(ix, iy);
-                cMap->cMap[iX+1][iY+1]->S = trMap->returnS(ix, iy);
-                cMap->cMap[iX+1][iY+1]->SD = trMap->returnSD(ix, iy);
-                cMap->cMap[iX+1][iY+1]->V = trMap->returnV(ix, iy);
-                cMap->cMap[iX+1][iY+1]->VD = trMap->returnVD(ix, iy);
+                if(cMap->cMap[iX+1][iY+1]->symbol != trMap->getSymbol(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY+1]->symbol = trMap->getSymbol(ix, iy);
+                    cMap->cMap[iX+1][iY+1]->sendMe = true;
+                }
                 
-                cMap->cMap[iX+1][iY+1]->blocked = rMap->returnBlocked(ix, iy);
-                cMap->cMap[iX+1][iY+1]->blockSight = rMap->returnBlockSight(ix, iy);
+                if(cMap->cMap[iX+1][iY+1]->H != trMap->returnH(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY+1]->H = trMap->returnH(ix, iy);
+                    cMap->cMap[iX+1][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX+1][iY+1]->HD != trMap->returnHD(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY+1]->HD = trMap->returnHD(ix, iy);
+                    cMap->cMap[iX+1][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX+1][iY+1]->S != trMap->returnS(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY+1]->S = trMap->returnS(ix, iy);
+                    cMap->cMap[iX+1][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX+1][iY+1]->SD != trMap->returnSD(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY+1]->SD = trMap->returnSD(ix, iy);
+                    cMap->cMap[iX+1][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX+1][iY+1]->V != trMap->returnV(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY+1]->V = trMap->returnV(ix, iy);
+                    cMap->cMap[iX+1][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX+1][iY+1]->VD != trMap->returnVD(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY+1]->VD = trMap->returnVD(ix, iy);
+                    cMap->cMap[iX+1][iY+1]->sendMe = true;
+                }
                 
-                cMap->cMap[iX+1][iY+1]->isLit = rMap->returnLit(ix, iy);
-                //cMap->cMap[iX][iY]->visible = true;
-                //cMap->cMap[cX][cY]->explored = true;
                 
+                if(cMap->cMap[iX+1][iY+1]->blocked != trMap->returnBlocked(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY+1]->blocked = trMap->returnBlocked(ix, iy);
+                    cMap->cMap[iX+1][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX+1][iY+1]->blockSight != trMap->returnBlockSight(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY+1]->blockSight = trMap->returnBlockSight(ix, iy);
+                    cMap->cMap[iX+1][iY+1]->sendMe = true;
+                }
+                if(cMap->cMap[iX+1][iY+1]->isLit != trMap->returnLit(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY+1]->isLit = trMap->returnLit(ix, iy);
+                    cMap->cMap[iX+1][iY+1]->sendMe = true;
+                }
+
+               
                 
             }
             else if(y > 0 && y > MAP_HEIGHT && x < 0 && x < MAP_WIDTH)
@@ -1483,36 +1749,70 @@ void Entity::clientFovSync(){
                 ix = MAP_WIDTH+x;
                 iy = y-MAP_HEIGHT;
                 
-                cMap->cMap[iX+1][iY-1]->symbol = trMap->getSymbol(ix, iy);
-                cMap->cMap[iX+1][iY-1]->H = trMap->returnH(ix, iy);
-                cMap->cMap[iX+1][iY-1]->HD = trMap->returnHD(ix, iy);
-                cMap->cMap[iX+1][iY-1]->S = trMap->returnS(ix, iy);
-                cMap->cMap[iX+1][iY-1]->SD = trMap->returnSD(ix, iy);
-                cMap->cMap[iX+1][iY-1]->V = trMap->returnV(ix, iy);
-                cMap->cMap[iX+1][iY-1]->VD = trMap->returnVD(ix, iy);
-                
-                cMap->cMap[iX+1][iY-1]->blocked = rMap->returnBlocked(ix, iy);
-                cMap->cMap[iX+1][iY-1]->blockSight = rMap->returnBlockSight(ix, iy);
-                
-                cMap->cMap[iX+1][iY+1]->isLit = rMap->returnLit(ix, iy);
-                //cMap->cMap[iX][iY]->visible = true;
-                //cMap->cMap[cX][cY]->explored = true;
+                if(cMap->cMap[iX+1][iY-1]->symbol != trMap->getSymbol(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY-1]->symbol = trMap->getSymbol(ix, iy);
+                    cMap->cMap[iX+1][iY-1]->sendMe = true;
+                }
                 
                 
+                if(cMap->cMap[iX+1][iY-1]->H != trMap->returnH(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY-1]->H = trMap->returnH(ix, iy);
+                    cMap->cMap[iX+1][iY-1]->sendMe = true;
+                }
+                if(cMap->cMap[iX+1][iY-1]->HD != trMap->returnHD(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY-1]->HD = trMap->returnHD(ix, iy);
+                    cMap->cMap[iX+1][iY-1]->sendMe = true;
+                }
+                if(cMap->cMap[iX+1][iY-1]->S != trMap->returnS(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY-1]->S = trMap->returnS(ix, iy);
+                    cMap->cMap[iX+1][iY-1]->sendMe = true;
+                }
+                if(cMap->cMap[iX+1][iY-1]->SD != trMap->returnSD(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY-1]->SD = trMap->returnSD(ix, iy);
+                    cMap->cMap[iX+1][iY-1]->sendMe = true;
+                }
+                if(cMap->cMap[iX+1][iY-1]->V != trMap->returnV(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY-1]->V = trMap->returnV(ix, iy);
+                    cMap->cMap[iX+1][iY-1]->sendMe = true;
+                }
+                if(cMap->cMap[iX+1][iY-1]->VD != trMap->returnVD(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY-1]->VD = trMap->returnVD(ix, iy);
+                    cMap->cMap[iX+1][iY-1]->sendMe = true;
+                }
+
+                
+                if(cMap->cMap[iX+1][iY-1]->blocked != trMap->returnBlocked(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY-1]->blocked = trMap->returnBlocked(ix, iy);
+                    cMap->cMap[iX+1][iY-1]->sendMe = true;
+                }
+                if(cMap->cMap[iX+1][iY-1]->blockSight != trMap->returnBlockSight(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY-1]->blockSight = trMap->returnBlockSight(ix, iy);
+                    cMap->cMap[iX+1][iY-1]->sendMe = true;
+                }
+                if(cMap->cMap[iX+1][iY-1]->isLit != trMap->returnLit(ix, iy))
+                {
+                    cMap->cMap[iX+1][iY-1]->isLit = trMap->returnLit(ix, iy);
+                    cMap->cMap[iX+1][iY-1]->sendMe = true;
+                }
+            
             }
-            
-            //refreshFov(7);
-            
-            
             
             y++;
         }
-        
-        
+      
         x++;
     }
     
-    FOV->refreshFov(this, cX, cY, 7);
+   // FOV->refreshFov(this, cX, cY, 7);
 
     
 }

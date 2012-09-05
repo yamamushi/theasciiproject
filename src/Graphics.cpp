@@ -343,7 +343,7 @@ void GraphicsTCOD::drawMainInterface()
         
     }
     
-   // boost::thread netThread(&GraphicsTCOD::requestMap, this);
+    boost::thread netThread(&GraphicsTCOD::requestMap, this);
     
     
     //TCODConsole::disableKeyboardRepeat();
@@ -464,7 +464,13 @@ void GraphicsTCOD::drawMainInterface()
                 APIinQueue = true;
                 
             }
-            
+            else if(key.c == '5' && commandMode)
+            {
+                
+                apiCall = "/mapReset";
+                APIinQueue = true;
+                
+            }
             
             
             else if(key.c == '<' && !commandMode)
@@ -712,7 +718,7 @@ void GraphicsTCOD::drawMainInterface()
             mapOutput->printEx(mapOutput->getWidth()/2, mapOutput->getHeight()-1, TCOD_BKGND_NONE, TCOD_CENTER, "Select Mode", TCODColor(255,255,255));
         }
         
-        requestMap();
+        //requestMap();
         
        // if(!unpacking)
        //     drawAll();
@@ -755,7 +761,7 @@ void GraphicsTCOD::requestMap()
 {
     
     
-    //while(true)
+    while(true)
     {
         if(connected && loggedIn)
         {
