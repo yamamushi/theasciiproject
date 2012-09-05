@@ -81,6 +81,7 @@ void ClientMap::clearMap(){
             cMap[x][y]->visible = false;
             cMap[x][y]->blockSight = false;
             cMap[x][y]->blocked = false;
+            cMap[x][y]->drawn = false;
             
         }
     }

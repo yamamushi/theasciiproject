@@ -1174,24 +1174,29 @@ void Entity::clientFovSync(){
     cY = MAP_HEIGHT/2;
     
     
-    int offset = cY-4;
+    int offsetX = cX-30;//cY-4;
+    int offsetY = cY-4;
     
     
     for(int xx = 0; xx < MAP_WIDTH; xx++)
     {
         for( int yy = 0; yy < MAP_HEIGHT; yy++)
         {
-            cMap->cMap[xx][yy]->explored = false;
+            //cMap->clientRefresh();
+            cMap->cMap[xx][yy]->explored = true;
+            cMap->cMap[xx][yy]->visible = false;
+            
+            
         }
     }
     
-    //FOV->refreshFov(this, cX, cY, 7);
+    FOV->refreshFov(this, cX, cY, 7);
     
-    int x = pX-offset;
-    for(int iX = cX-offset; iX < cX+offset; iX++ )
+    int x = pX-offsetX;
+    for(int iX = cX-offsetX; iX < cX+offsetX; iX++ )
     {
-        int y = pY-offset;
-        for(int iY = cY-offset; iY < cY+offset; iY++ )
+        int y = pY-offsetY;
+        for(int iY = cY-offsetY; iY < cY+offsetY; iY++ )
         {
             cMap->cMap[iX][iY]->explored = true;
             cMap->cMap[iX][iY]->visible = false;

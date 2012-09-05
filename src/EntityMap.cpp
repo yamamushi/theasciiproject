@@ -242,7 +242,7 @@ void EntityMap::initAllEnts(){
 
 void EntityMap::refreshEntityMap(){
     
-    
+    refreshRenderMap();
     
     int x, y, z;
     
@@ -280,7 +280,7 @@ void EntityMap::refreshEntityMap(){
         }
     }
     
-    refreshRenderMap();
+    
     
 }
 

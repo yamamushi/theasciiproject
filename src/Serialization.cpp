@@ -129,7 +129,7 @@ void ClientMapPacker::unpackFromNet(ClientMap *client, unsigned char *buf, Graph
         clientMap->cMap[cMap.x][cMap.y]->V = cMap.V;
         clientMap->cMap[cMap.x][cMap.y]->explored = cMap.explored; 
         clientMap->cMap[cMap.x][cMap.y]->visible = cMap.visible;
-        
+        clientMap->cMap[cMap.x][cMap.y]->drawn = false;
         
     }
     

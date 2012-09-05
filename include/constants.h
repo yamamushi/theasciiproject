@@ -139,6 +139,9 @@ struct render_t {
     bool isLit;
     bool distantVisible;
     bool sendMe;
+    
+    
+    bool drawn;
 };
 
 struct s_render_t {
@@ -149,6 +152,8 @@ struct s_render_t {
     double S;
     double V;
     int drawMe;
+    
+    
 };
 
 
