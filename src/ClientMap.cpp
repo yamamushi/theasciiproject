@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Client.cpp
+ *       Filename:  ClientMap.cpp
  *
  *    Description:  This object stores the Symbol and Color information
  *              for use in our Client-Side Graphics Rendering library.
