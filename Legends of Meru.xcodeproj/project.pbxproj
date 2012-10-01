@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		74934BFB161958BF00640ED3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74934BFA161958BF00640ED3 /* main.cpp */; };
+		74934C0A16195A6C00640ED3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74934C0916195A6C00640ED3 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,10 +24,8 @@
 
 /* Begin PBXFileReference section */
 		7479667F1619546500465505 /* Legends of Meru */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Legends of Meru"; sourceTree = BUILT_PRODUCTS_DIR; };
-		74934BFA161958BF00640ED3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = "<group>"; };
-		74F939E216195646005ABFBC /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; path = include; sourceTree = "<group>"; };
-		74F939E316195646005ABFBC /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = src; sourceTree = "<group>"; };
-		74F939E4161956A0005ABFBC /* osx */ = {isa = PBXFileReference; lastKnownFileType = folder; path = osx; sourceTree = "<group>"; };
+		74934C0716195A6C00640ED3 /* Legends_of_Meru.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = Legends_of_Meru.1; sourceTree = "<group>"; };
+		74934C0916195A6C00640ED3 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		74F939E61619570F005ABFBC /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,12 +43,10 @@
 		747966741619546500465505 = {
 			isa = PBXGroup;
 			children = (
-				74934BFA161958BF00640ED3 /* main.cpp */,
+				74934C0516195A6C00640ED3 /* include */,
+				74934C0816195A6C00640ED3 /* src */,
+				74934C0616195A6C00640ED3 /* osx */,
 				74F939E61619570F005ABFBC /* Readme.md */,
-				74F939E216195646005ABFBC /* include */,
-				74F939E316195646005ABFBC /* src */,
-				74F939E4161956A0005ABFBC /* osx */,
-				747966801619546500465505 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +56,31 @@
 				7479667F1619546500465505 /* Legends of Meru */,
 			);
 			name = Products;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		74934C0516195A6C00640ED3 /* include */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		74934C0616195A6C00640ED3 /* osx */ = {
+			isa = PBXGroup;
+			children = (
+				747966801619546500465505 /* Products */,
+				74934C0716195A6C00640ED3 /* Legends_of_Meru.1 */,
+			);
+			path = osx;
+			sourceTree = "<group>";
+		};
+		74934C0816195A6C00640ED3 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				74934C0916195A6C00640ED3 /* main.cpp */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -113,7 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74934BFB161958BF00640ED3 /* main.cpp in Sources */,
+				74934C0A16195A6C00640ED3 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
