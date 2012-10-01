@@ -26,6 +26,22 @@
 		7479667F1619546500465505 /* Legends of Meru */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Legends of Meru"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74934C0716195A6C00640ED3 /* Legends_of_Meru.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = Legends_of_Meru.1; sourceTree = "<group>"; };
 		74934C0916195A6C00640ED3 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		74934C1F16195C9E00640ED3 /* GPL-License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "GPL-License.txt"; sourceTree = "<group>"; };
+		74934C2016195C9E00640ED3 /* LICENSE_1_0_BOOST.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_1_0_BOOST.txt; sourceTree = "<group>"; };
+		74934C2216195CBF00640ED3 /* EngineTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EngineTemplate.txt; sourceTree = "<group>"; };
+		74934C23161962DE00640ED3 /* BSD-License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BSD-License.txt"; sourceTree = "<group>"; };
+		74934C241619631F00640ED3 /* BOOST-License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BOOST-License.txt"; sourceTree = "<group>"; };
+		74934C291619698100640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
+		74934C2A1619698F00640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
+		74934C2B161969D200640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
+		74934C2C161969F000640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
+		74934C2D16196A2200640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
+		74934C2E16196A3300640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
+		74934C2F16196A4800640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
+		74934C3016196A6B00640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
+		74934C3116196A8000640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
+		74934C3216196A9E00640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
+		74934C3316196AAE00640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
 		74F939E61619570F005ABFBC /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,6 +61,13 @@
 			children = (
 				74934C0516195A6C00640ED3 /* include */,
 				74934C0816195A6C00640ED3 /* src */,
+				74934C1516195C4200640ED3 /* bin */,
+				74934C1716195C4200640ED3 /* lib */,
+				74934C251619693C00640ED3 /* data */,
+				74934C261619693C00640ED3 /* maps */,
+				74934C271619693C00640ED3 /* misc */,
+				74934C281619693C00640ED3 /* scripts */,
+				74934C1616195C4200640ED3 /* docs */,
 				74934C0616195A6C00640ED3 /* osx */,
 				74F939E61619570F005ABFBC /* Readme.md */,
 			);
@@ -62,6 +85,7 @@
 		74934C0516195A6C00640ED3 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				74934C3216196A9E00640ED3 /* Readme.md */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -71,6 +95,7 @@
 			children = (
 				747966801619546500465505 /* Products */,
 				74934C0716195A6C00640ED3 /* Legends_of_Meru.1 */,
+				74934C3016196A6B00640ED3 /* Readme.md */,
 			);
 			path = osx;
 			sourceTree = "<group>";
@@ -79,16 +104,87 @@
 			isa = PBXGroup;
 			children = (
 				74934C0916195A6C00640ED3 /* main.cpp */,
+				74934C3316196AAE00640ED3 /* Readme.md */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		74934C1516195C4200640ED3 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				74934C3116196A8000640ED3 /* Readme.md */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		74934C1616195C4200640ED3 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				74934C1E16195C8800640ED3 /* licenses */,
+				74934C291619698100640ED3 /* Readme.md */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
+		74934C1716195C4200640ED3 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				74934C2F16196A4800640ED3 /* Readme.md */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		74934C1E16195C8800640ED3 /* licenses */ = {
+			isa = PBXGroup;
+			children = (
+				74934C1F16195C9E00640ED3 /* GPL-License.txt */,
+				74934C2016195C9E00640ED3 /* LICENSE_1_0_BOOST.txt */,
+				74934C241619631F00640ED3 /* BOOST-License.txt */,
+				74934C2216195CBF00640ED3 /* EngineTemplate.txt */,
+				74934C23161962DE00640ED3 /* BSD-License.txt */,
+				74934C2A1619698F00640ED3 /* Readme.md */,
+			);
+			path = licenses;
+			sourceTree = "<group>";
+		};
+		74934C251619693C00640ED3 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				74934C2E16196A3300640ED3 /* Readme.md */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		74934C261619693C00640ED3 /* maps */ = {
+			isa = PBXGroup;
+			children = (
+				74934C2D16196A2200640ED3 /* Readme.md */,
+			);
+			path = maps;
+			sourceTree = "<group>";
+		};
+		74934C271619693C00640ED3 /* misc */ = {
+			isa = PBXGroup;
+			children = (
+				74934C2C161969F000640ED3 /* Readme.md */,
+			);
+			path = misc;
+			sourceTree = "<group>";
+		};
+		74934C281619693C00640ED3 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				74934C2B161969D200640ED3 /* Readme.md */,
+			);
+			path = scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7479667E1619546500465505 /* Legends of Meru */ = {
+		7479667E1619546500465505 /* Server */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 747966891619546500465505 /* Build configuration list for PBXNativeTarget "Legends of Meru" */;
+			buildConfigurationList = 747966891619546500465505 /* Build configuration list for PBXNativeTarget "Server" */;
 			buildPhases = (
 				7479667B1619546500465505 /* Sources */,
 				7479667C1619546500465505 /* Frameworks */,
@@ -98,7 +194,7 @@
 			);
 			dependencies = (
 			);
-			name = "Legends of Meru";
+			name = Server;
 			productName = "Legends of Meru";
 			productReference = 7479667F1619546500465505 /* Legends of Meru */;
 			productType = "com.apple.product-type.tool";
@@ -124,7 +220,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7479667E1619546500465505 /* Legends of Meru */,
+				7479667E1619546500465505 /* Server */,
 			);
 		};
 /* End PBXProject section */
@@ -238,7 +334,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		747966891619546500465505 /* Build configuration list for PBXNativeTarget "Legends of Meru" */ = {
+		747966891619546500465505 /* Build configuration list for PBXNativeTarget "Server" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7479668A1619546500465505 /* Debug */,
