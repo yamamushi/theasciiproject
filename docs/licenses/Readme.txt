@@ -1,0 +1,1 @@
+License Information for Libraries included with "The ASCII Project"

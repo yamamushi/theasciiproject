@@ -1,0 +1,1 @@
+Static Library Files for "The ASCII Project"

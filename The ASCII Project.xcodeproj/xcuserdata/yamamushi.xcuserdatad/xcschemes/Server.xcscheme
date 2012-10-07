@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7479667E1619546500465505"
-               BuildableName = "Legends of Meru"
-               BlueprintName = "Server"
-               ReferencedContainer = "container:Legends of Meru.xcodeproj">
+               BlueprintIdentifier = "749A52121622288B0094A87E"
+               BuildableName = "Server copy"
+               BlueprintName = "Server copy"
+               ReferencedContainer = "container:The ASCII Project.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7479667E1619546500465505"
-            BuildableName = "Legends of Meru"
-            BlueprintName = "Server"
-            ReferencedContainer = "container:Legends of Meru.xcodeproj">
+            BlueprintIdentifier = "749A52121622288B0094A87E"
+            BuildableName = "Server copy"
+            BlueprintName = "Server copy"
+            ReferencedContainer = "container:The ASCII Project.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -51,10 +51,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7479667E1619546500465505"
-            BuildableName = "Legends of Meru"
-            BlueprintName = "Server"
-            ReferencedContainer = "container:Legends of Meru.xcodeproj">
+            BlueprintIdentifier = "749A52121622288B0094A87E"
+            BuildableName = "Server copy"
+            BlueprintName = "Server copy"
+            ReferencedContainer = "container:The ASCII Project.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,10 +69,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7479667E1619546500465505"
-            BuildableName = "Legends of Meru"
-            BlueprintName = "Server"
-            ReferencedContainer = "container:Legends of Meru.xcodeproj">
+            BlueprintIdentifier = "749A52121622288B0094A87E"
+            BuildableName = "Server copy"
+            BlueprintName = "Server copy"
+            ReferencedContainer = "container:The ASCII Project.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

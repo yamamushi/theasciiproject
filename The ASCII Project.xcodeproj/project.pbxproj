@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		74934C0A16195A6C00640ED3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74934C0916195A6C00640ED3 /* main.cpp */; };
+		749A522C162229510094A87E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 749A522B162229510094A87E /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7479667D1619546500465505 /* CopyFiles */ = {
+		749A521E162228F90094A87E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,30 +23,30 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7479667F1619546500465505 /* Legends of Meru */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Legends of Meru"; sourceTree = BUILT_PRODUCTS_DIR; };
-		74934C0716195A6C00640ED3 /* Legends_of_Meru.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = Legends_of_Meru.1; sourceTree = "<group>"; };
-		74934C0916195A6C00640ED3 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		74934C1F16195C9E00640ED3 /* GPL-License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "GPL-License.txt"; sourceTree = "<group>"; };
 		74934C2016195C9E00640ED3 /* LICENSE_1_0_BOOST.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_1_0_BOOST.txt; sourceTree = "<group>"; };
-		74934C2216195CBF00640ED3 /* EngineTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EngineTemplate.txt; sourceTree = "<group>"; };
+		74934C2216195CBF00640ED3 /* EngineTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = EngineTemplate.txt; path = licenses/EngineTemplate.txt; sourceTree = "<group>"; };
 		74934C23161962DE00640ED3 /* BSD-License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BSD-License.txt"; sourceTree = "<group>"; };
 		74934C241619631F00640ED3 /* BOOST-License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BOOST-License.txt"; sourceTree = "<group>"; };
-		74934C291619698100640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
-		74934C2A1619698F00640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
-		74934C2B161969D200640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
-		74934C2C161969F000640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
-		74934C2D16196A2200640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
-		74934C2E16196A3300640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
-		74934C2F16196A4800640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
-		74934C3016196A6B00640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
-		74934C3116196A8000640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
-		74934C3216196A9E00640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
-		74934C3316196AAE00640ED3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
-		74F939E61619570F005ABFBC /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
+		74934C291619698100640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		74934C2A1619698F00640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		74934C2B161969D200640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		74934C2C161969F000640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		74934C2D16196A2200640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		74934C2F16196A4800640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		74934C3016196A6B00640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		74934C3116196A8000640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		74934C3216196A9E00640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		74934C3316196AAE00640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		749A5211162227E20094A87E /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		749A5220162228F90094A87E /* Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Server; sourceTree = BUILT_PRODUCTS_DIR; };
+		749A522A162229340094A87E /* Server.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = Server.1; sourceTree = "<group>"; };
+		749A522B162229510094A87E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		749A522D162229990094A87E /* Readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7479667C1619546500465505 /* Frameworks */ = {
+		749A521D162228F90094A87E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -59,6 +59,7 @@
 		747966741619546500465505 = {
 			isa = PBXGroup;
 			children = (
+				749A5211162227E20094A87E /* README.txt */,
 				74934C0516195A6C00640ED3 /* include */,
 				74934C0816195A6C00640ED3 /* src */,
 				74934C1516195C4200640ED3 /* bin */,
@@ -69,14 +70,13 @@
 				74934C281619693C00640ED3 /* scripts */,
 				74934C1616195C4200640ED3 /* docs */,
 				74934C0616195A6C00640ED3 /* osx */,
-				74F939E61619570F005ABFBC /* Readme.md */,
 			);
 			sourceTree = "<group>";
 		};
 		747966801619546500465505 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7479667F1619546500465505 /* Legends of Meru */,
+				749A5220162228F90094A87E /* Server */,
 			);
 			name = Products;
 			path = ..;
@@ -85,7 +85,7 @@
 		74934C0516195A6C00640ED3 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				74934C3216196A9E00640ED3 /* Readme.md */,
+				74934C3216196A9E00640ED3 /* Readme.txt */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -94,8 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				747966801619546500465505 /* Products */,
-				74934C0716195A6C00640ED3 /* Legends_of_Meru.1 */,
-				74934C3016196A6B00640ED3 /* Readme.md */,
+				749A522A162229340094A87E /* Server.1 */,
+				74934C3016196A6B00640ED3 /* Readme.txt */,
 			);
 			path = osx;
 			sourceTree = "<group>";
@@ -103,8 +103,8 @@
 		74934C0816195A6C00640ED3 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				74934C0916195A6C00640ED3 /* main.cpp */,
-				74934C3316196AAE00640ED3 /* Readme.md */,
+				749A522B162229510094A87E /* main.cpp */,
+				74934C3316196AAE00640ED3 /* Readme.txt */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -112,7 +112,7 @@
 		74934C1516195C4200640ED3 /* bin */ = {
 			isa = PBXGroup;
 			children = (
-				74934C3116196A8000640ED3 /* Readme.md */,
+				74934C3116196A8000640ED3 /* Readme.txt */,
 			);
 			path = bin;
 			sourceTree = "<group>";
@@ -120,8 +120,9 @@
 		74934C1616195C4200640ED3 /* docs */ = {
 			isa = PBXGroup;
 			children = (
+				74934C291619698100640ED3 /* Readme.txt */,
+				74934C2216195CBF00640ED3 /* EngineTemplate.txt */,
 				74934C1E16195C8800640ED3 /* licenses */,
-				74934C291619698100640ED3 /* Readme.md */,
 			);
 			path = docs;
 			sourceTree = "<group>";
@@ -129,7 +130,7 @@
 		74934C1716195C4200640ED3 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				74934C2F16196A4800640ED3 /* Readme.md */,
+				74934C2F16196A4800640ED3 /* Readme.txt */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -140,9 +141,8 @@
 				74934C1F16195C9E00640ED3 /* GPL-License.txt */,
 				74934C2016195C9E00640ED3 /* LICENSE_1_0_BOOST.txt */,
 				74934C241619631F00640ED3 /* BOOST-License.txt */,
-				74934C2216195CBF00640ED3 /* EngineTemplate.txt */,
 				74934C23161962DE00640ED3 /* BSD-License.txt */,
-				74934C2A1619698F00640ED3 /* Readme.md */,
+				74934C2A1619698F00640ED3 /* Readme.txt */,
 			);
 			path = licenses;
 			sourceTree = "<group>";
@@ -150,7 +150,7 @@
 		74934C251619693C00640ED3 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				74934C2E16196A3300640ED3 /* Readme.md */,
+				749A522D162229990094A87E /* Readme.txt */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -158,7 +158,7 @@
 		74934C261619693C00640ED3 /* maps */ = {
 			isa = PBXGroup;
 			children = (
-				74934C2D16196A2200640ED3 /* Readme.md */,
+				74934C2D16196A2200640ED3 /* Readme.txt */,
 			);
 			path = maps;
 			sourceTree = "<group>";
@@ -166,7 +166,7 @@
 		74934C271619693C00640ED3 /* misc */ = {
 			isa = PBXGroup;
 			children = (
-				74934C2C161969F000640ED3 /* Readme.md */,
+				74934C2C161969F000640ED3 /* Readme.txt */,
 			);
 			path = misc;
 			sourceTree = "<group>";
@@ -174,7 +174,7 @@
 		74934C281619693C00640ED3 /* scripts */ = {
 			isa = PBXGroup;
 			children = (
-				74934C2B161969D200640ED3 /* Readme.md */,
+				74934C2B161969D200640ED3 /* Readme.txt */,
 			);
 			path = scripts;
 			sourceTree = "<group>";
@@ -182,21 +182,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7479667E1619546500465505 /* Server */ = {
+		749A521F162228F90094A87E /* Server */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 747966891619546500465505 /* Build configuration list for PBXNativeTarget "Server" */;
+			buildConfigurationList = 749A5227162228F90094A87E /* Build configuration list for PBXNativeTarget "Server" */;
 			buildPhases = (
-				7479667B1619546500465505 /* Sources */,
-				7479667C1619546500465505 /* Frameworks */,
-				7479667D1619546500465505 /* CopyFiles */,
+				749A521C162228F90094A87E /* Sources */,
+				749A521D162228F90094A87E /* Frameworks */,
+				749A521E162228F90094A87E /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Server;
-			productName = "Legends of Meru";
-			productReference = 7479667F1619546500465505 /* Legends of Meru */;
+			productName = Server;
+			productReference = 749A5220162228F90094A87E /* Server */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -208,7 +208,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Jonathan Rumion";
 			};
-			buildConfigurationList = 747966791619546500465505 /* Build configuration list for PBXProject "Legends of Meru" */;
+			buildConfigurationList = 747966791619546500465505 /* Build configuration list for PBXProject "The ASCII Project" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -220,17 +220,17 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7479667E1619546500465505 /* Server */,
+				749A521F162228F90094A87E /* Server */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7479667B1619546500465505 /* Sources */ = {
+		749A521C162228F90094A87E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74934C0A16195A6C00640ED3 /* main.cpp in Sources */,
+				749A522C162229510094A87E /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,16 +308,18 @@
 			};
 			name = Release;
 		};
-		7479668A1619546500465505 /* Debug */ = {
+		749A5228162228F90094A87E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		7479668B1619546500465505 /* Release */ = {
+		749A5229162228F90094A87E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -325,7 +327,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		747966791619546500465505 /* Build configuration list for PBXProject "Legends of Meru" */ = {
+		747966791619546500465505 /* Build configuration list for PBXProject "The ASCII Project" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				747966871619546500465505 /* Debug */,
@@ -334,14 +336,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		747966891619546500465505 /* Build configuration list for PBXNativeTarget "Server" */ = {
+		749A5227162228F90094A87E /* Build configuration list for PBXNativeTarget "Server" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7479668A1619546500465505 /* Debug */,
-				7479668B1619546500465505 /* Release */,
+				749A5228162228F90094A87E /* Debug */,
+				749A5229162228F90094A87E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

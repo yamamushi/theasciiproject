@@ -1,8 +1,8 @@
 //
 //  main.cpp
-//  Legends of Meru
+//  Server
 //
-//  Created by Jonathan Rumion on 9/30/12.
+//  Created by Jonathan Rumion on 10/7/12.
 //  Copyright (c) 2012 Jonathan Rumion. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ int main(int argc, const char * argv[])
 {
 
     // insert code here...
-    std::cout << "Hello Road!\n";
+    std::cout << "Hello, Beef!\n";
     return 0;
 }
 

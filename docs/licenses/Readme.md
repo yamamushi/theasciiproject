@@ -1,1 +1,0 @@
-License Information for Libraries included with "Legends of Meru"

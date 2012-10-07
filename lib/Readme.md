@@ -1,1 +1,0 @@
-Static Library Files for "Legends of Meru"

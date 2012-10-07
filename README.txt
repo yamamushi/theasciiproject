@@ -1,5 +1,5 @@
 
-The ASCII Project - 0.0.0o
+The ASCII Project
 ===============================
 http://www.theasciiproject.com
 IRC = freenode.net ##asciimmo
@@ -7,6 +7,14 @@ Yamamushi - yamamushi@gmail.com
 
 
 The overall aim of "The ASCII Project" is to develop a Unicode graphics based "Roguelike" MMORPG engine which operates a persistent world driven by a player-run economy.
+
+
+
+NEWS
+=====
+
+    10/07/2012 - The project is currently undergoing a major reorganization. Old code is available in the "archive" branch, however please keep in mind that it has no little to no reflection on the current direction of the engine code for "The ASCII Project". I hope to get everything back up and running within the next week or two.
+
 
 
 
@@ -32,12 +40,12 @@ GOALS
 NOTES
 =====
 
-* Various documents of interest are located in docs/, and licenses where necessary have been included in licenses/. If you are new to this project and are just trying to figure out what this is all about, please refer to docs/ABOUT.txt
+    * Various documents of interest are located in docs/, and licenses where necessary have been included in licenses/. If you are new to this project and are just trying to figure out what this is all about, please refer to docs/ABOUT.txt
 
-* The largest online repository of information about this project can be found on our wiki at http://www.theasciiproject.com/wk/ , some of it may be dated as of the time of writing this document, however it does house the most consolidated collections of ideas and goals for this project.
+    * The largest online repository of information about this project can be found on our wiki at http://www.theasciiproject.com/wk/ , some of it may be dated as of the time of writing this document, however it does house the most consolidated collections of ideas and goals for this project.
 
 
 =============================================
 Copyright (c) 2012 Jonathan Rumion
 Source code is available from:
-* https://github.com/yamamushi/theasciiproject
+https://github.com/yamamushi/theasciiproject
