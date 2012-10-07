@@ -38,7 +38,7 @@
 		74934C3116196A8000640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 		74934C3216196A9E00640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 		74934C3316196AAE00640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
-		749A5211162227E20094A87E /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		749A5211162227E20094A87E /* Readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 		749A5220162228F90094A87E /* Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Server; sourceTree = BUILT_PRODUCTS_DIR; };
 		749A522A162229340094A87E /* Server.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = Server.1; sourceTree = "<group>"; };
 		749A522B162229510094A87E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -59,7 +59,7 @@
 		747966741619546500465505 = {
 			isa = PBXGroup;
 			children = (
-				749A5211162227E20094A87E /* README.txt */,
+				749A5211162227E20094A87E /* Readme.txt */,
 				74934C0516195A6C00640ED3 /* include */,
 				74934C0816195A6C00640ED3 /* src */,
 				74934C1516195C4200640ED3 /* bin */,
@@ -343,6 +343,7 @@
 				749A5229162228F90094A87E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
