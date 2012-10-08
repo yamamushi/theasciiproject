@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Server.xcscheme</key>
+		<key>Client.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>The ASCII Project.xcscheme</key>
+		<key>Server.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -33,6 +33,21 @@
 			<true/>
 		</dict>
 		<key>749A521F162228F90094A87E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>74CB1C0D1622EA1C002456CA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>74CB1C181622EA56002456CA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>74CB1C291622EAB5002456CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

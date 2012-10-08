@@ -1,0 +1,3 @@
+SDL 1.2 and older are available under the GNU LGPL license:
+
+http://www.libsdl.org/license-lgpl.php

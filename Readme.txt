@@ -121,7 +121,7 @@ NEWS
         Old code is available in the "archive" branch, however please keep in
         mind that it has no little to no reflection on the current direction
         of the engine code for "The ASCII Project". I hope to get everything 
-        back up and running within the next week or two.
+            back up and running within the next week or two.
 
 
 
