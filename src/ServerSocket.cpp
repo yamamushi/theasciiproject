@@ -90,26 +90,13 @@ tcp::socket& client_connection::socket()
 
 void client_connection::start()
 {
-    len = 0;
-    sent = 0;
-    maxsent = 0;
-    
-    forceReset = false;
-    
-    username_feed_ = new boost::asio::streambuf;
-    pass_feed_ = new boost::asio::streambuf;
     
     line_command_ = new boost::asio::streambuf;
     chat_message_ = new boost::asio::streambuf;
     
     client_pool_.join(shared_from_this());
     
-    mapBuf = new vector<char *>;
-    mapSize = new char[16];
-    
-    cmd = new char[2];
-    cmd[0] = '\r';
-    cmd[1] = '\n';
+
     stream = new char[128];
     
     kickStart();
@@ -126,16 +113,17 @@ void client_connection::kickStart()
     setlocale(LC_ALL, "");
     const char CHAR_MODE[] = "\377\375\x22\n";
     const char CLEAR_CON[] = "\x1b[2J";
+    const char MOVE_CURS[] = "\x1b[H";
     
     std::cout << CHAR_MODE << "testing" << std::endl;
     std::cout << "\u2603";
     
-    boost::asio::async_write(socket_, boost::asio::buffer(string(CHAR_MODE) + string(CLEAR_CON) + string("Welcome to The ASCII Project\n\n"
-                                                                 "Commands Available: \n"
+    boost::asio::async_write(socket_, boost::asio::buffer(string(CHAR_MODE) + string(CLEAR_CON) + string(MOVE_CURS) + string("\x1b[5mWelcome to The ASCII Project \u263A \x1b[25m\n\n"
+                                                                 "\x1b[34mCommands Available: \n"
                                                                  "------------------- \n\n"
-                                                                 "login\n"
+                                                                 "\x1b[31mlogin\n"
                                                                  "newaccount\n"
-                                                                 "quit \r\n\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
+                                                                 "quit \x1b[32m\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
     
 }
 
@@ -165,6 +153,12 @@ void client_connection::receive_command(const boost::system::error_code& error)
 {
     if (!error)
     {
+        std::istream is(line_command_);
+        std::string command;
+        is >> command;
+        std::cout << command;
+        
+        
         sessionToken = "";
         boost::asio::async_read_until(socket_, *line_command_, "*", boost::bind(&client_connection::handle_request_line, shared_from_this(), boost::asio::placeholders::error ));
     }
@@ -209,11 +203,11 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         }
         else if( command == "" )
         {
-            boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[2J\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         else
         {
-            boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[2J\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         
     }
