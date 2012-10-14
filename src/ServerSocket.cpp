@@ -118,12 +118,23 @@ void client_connection::kickStart()
     std::cout << CHAR_MODE << "testing" << std::endl;
     std::cout << "\u2603";
     
-    boost::asio::async_write(socket_, boost::asio::buffer(string(CHAR_MODE) + string(CLEAR_CON) + string(MOVE_CURS) + string("\x1b[5mWelcome to The ASCII Project \u263A \x1b[25m\n\n"
-                                                                 "\x1b[34mCommands Available: \n"
-                                                                 "------------------- \n\n"
+    std::string topbar, bottombar;
+    
+    for(int x=0; x < 80; x++)
+    {
+        topbar.append("\u256C");
+        
+    }
+    
+    boost::asio::async_write(socket_, boost::asio::buffer(string(CHAR_MODE) + string(CLEAR_CON) + string(MOVE_CURS) + string("\x1b[100\n\x1b[5mWelcome to The ASCII Project \u263A \x1b[25m \n") + topbar + string(
+                                                                 "\x1b[19H\x1b[34mCommands Available: \n"
+                                                                 "-------------------\n"
                                                                  "\x1b[31mlogin\n"
                                                                  "newaccount\n"
-                                                                 "quit \x1b[32m\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
+                                                                 "quit \x1b[32m \n"
+                                                                 //"\u2588\u2588\u2588\u2588"
+                                                                 "\x1b[24H\r\n")
+                                                          + topbar + string("\x1b[K\x1b[16H$> ")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
     
 }
 
@@ -189,6 +200,31 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             disconnect();
             
         }
+        else if(command == "flower")
+        {
+            
+            std::string flower("\x1b[2J\x1b[H\x1b[7h\x1b[0;1;40;37m\x1b[?33h\n"
+                               "\x1b[18C\x1b[5m..\x1b[25m\x1b[10C\x1b[0m\x1b[7C\x1b[34m€€€€€€€€€€€\x1b[37m\x1b[19C\x1b[1m   \x1b[5m..\x1b[25m\n"
+                               "\x1b[18C\x1b[5m..\x1b[25m\x1b[10C\x1b[0m    \x1b[34m€€€\x1b[37m \x1b[34m.,;;;;;,.\x1b[37m \x1b[34m€€€\n"
+                               "\x1b[1;37m\x1b[30C\x1b[0m  \x1b[34m€€\x1b[37m \x1b[34m.,%!&&!%;%%%,.\x1b[37m  \x1b[34m€€\x1b[37m\x1b[14C\x1b[1m\x1b[6C.,,;%\n"
+                               "\x1b[29C\x1b[0m \x1b[34m€€.,\x1b[32m%!&\x1b[34m###&!!&@@@&&!;.\x1b[37m \x1b[34m€€\x1b[37m\x1b[10C\x1b[1m...,,;!!%!&!%\n"
+                               "\x1b[24C\x1b[0m\x1b[5C\x1b[34m€.\x1b[32m;&#@@@\x1b[34m@\x1b[32m@@@@@\x1b[34m@@@@@@@\x1b[32m@@&;\x1b[37m \x1b[34m€\x1b[37m   \x1b[1m.,,.,;%!!###@@!;%,\n"
+                               "\x1b[25C\x1b[0m   \x1b[34m€\x1b[32m.;&@@@@@@@@@@@\x1b[34m@@@@@@\x1b[32m@@@@@\x1b[34m;.€\x1b[37m  \x1b[1m,%%;%!%%!#&%!&;\n"
+                               "\x1b[7C\x1b[5m..\x1b[25m\x1b[16C\x1b[0m  \x1b[34m€\x1b[32m,!#@@@@@@@@@@@@\x1b[34m@@@@@@\x1b[32m@@@@\x1b[34m@#;\x1b[37m \x1b[34m€\x1b[37m \x1b[1m.;%;;%%%%%,  \x1b[5m..\x1b[25m\n"
+                               "\x1b[7C\x1b[5m..\x1b[25m\x1b[16C\x1b[0m  \x1b[34m€\x1b[32m;#@@@@@@@@@@@@\x1b[34m@@@@@@@@@@@@@%\x1b[37m \x1b[34m€\x1b[37m \x1b[1m,;%%,,;%;;;.\n"
+                               "\x1b[17C\x1b[5m..\x1b[25m\x1b[7C\x1b[0m \x1b[34m€\x1b[32m%@@#@\x1b[34m@\x1b[32m@@@@@\x1b[34m@@#@@@@@@@@@@@@#%\x1b[37m \x1b[34m€\x1b[37m \x1b[1m;;;%.    .,.\n"
+                               "\x1b[17C\x1b[5m..\x1b[25m\x1b[7C\x1b[0m \x1b[34m€,\x1b[32m%#&&\x1b[34m@@@#######@@@@@\x1b[32m@@@\x1b[34m@@\x1b[32m@#%\x1b[37m \x1b[34m€\x1b[37m \x1b[1m....\n"
+                               "\x1b[26C\x1b[0m \x1b[34m€.,%!!##@@@@@#@#@@\x1b[32m@@@@@@@@@#;\x1b[37m \x1b[34m€\n"
+                               "\x1b[1;37m\x1b[24C.,,.\x1b[0;34m€\x1b[37m \x1b[34m.;%&&#&#&##@@\x1b[32m@@@@@@@@@@#%\x1b[34m.€\n"
+                               "\x1b[1;37m\x1b[21C;!%%%&%\x1b[0m \x1b[34m€\x1b[37m \x1b[34m.,%&@@@###@@\x1b[32m@@@@@@\x1b[34m&\x1b[32m&!!;\x1b[34m.€\x1b[1;37m\x1b[10C\x1b[5m..\x1b[25m\n"
+                               "   .;,\x1b[10C.. ,%&#!;,%%.\x1b[0m \x1b[34m€€\x1b[37m  \x1b[34m.,;%!@@@@@\x1b[32m@@\x1b[34m@##%%,.€€\x1b[37m \x1b[1m\x1b[10C\x1b[5m..\x1b[25m\n"
+                               "   .;,\x1b[7C,;,%!%!&%,,,,,;%,..\x1b[0;34m€€.,;;;%!&&&&&#&!,.€€\n"
+                               "\x1b[1;37m\x1b[6C;%,;%;;!!%%%!&!;,,,,,,;,..\x1b[0m  \x1b[34m€€€.,;;%%%;;;,.€€\n"
+                               "\x1b[37m \x1b[1m\x1b[5C;%,;%;;;,,..,;;,,.\x1b[5C\x1b[0m\x1b[8C\x1b[34m€€€€€€€€€€€\n");
+            
+            boost::asio::async_write(socket_, boost::asio::buffer(flower), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            
+        }
         else if( command == "time")
         {
             time_t rawtime;
@@ -199,15 +235,15 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             
             string time = asctime(timeinfo);
             
-            boost::asio::async_write(socket_, boost::asio::buffer(string(time + "\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[4H\x1b[5m" + time + "\x1b[25m\x1b[16H\x1b[K$> ")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         else if( command == "" )
         {
-            boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[2J\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[16H\x1b[K$> ")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         else
         {
-            boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[2J\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[16H\x1b[K$> ")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         
     }

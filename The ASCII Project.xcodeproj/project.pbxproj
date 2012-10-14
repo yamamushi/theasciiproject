@@ -46,6 +46,8 @@
 		74141E1116265F2D001823B2 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font.png; sourceTree = "<group>"; };
 		74141E1216265F2D001823B2 /* lazy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = lazy.ttf; sourceTree = "<group>"; };
 		74141E1316265F2D001823B2 /* sample_full_unicode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_full_unicode.png; sourceTree = "<group>"; };
+		743627B0162ACDEF00523F8B /* testout.ans */ = {isa = PBXFileReference; lastKnownFileType = text; path = testout.ans; sourceTree = "<group>"; };
+		743627B3162AD56A00523F8B /* world.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = world.txt; sourceTree = "<group>"; };
 		746BE6351622EBD800A95771 /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
 		746BE6371622EBD800A95771 /* Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Server; sourceTree = BUILT_PRODUCTS_DIR; };
 		746BE63A1622ECF300A95771 /* SDL-License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SDL-License.txt"; sourceTree = "<group>"; };
@@ -273,6 +275,8 @@
 		74CB1BF31622661B002456CA /* images */ = {
 			isa = PBXGroup;
 			children = (
+				743627B3162AD56A00523F8B /* world.txt */,
+				743627B0162ACDEF00523F8B /* testout.ans */,
 				74CB1BF41622661B002456CA /* dispose */,
 			);
 			path = images;
