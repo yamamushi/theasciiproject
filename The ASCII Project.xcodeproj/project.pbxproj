@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		749A522C162229510094A87E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 749A522B162229510094A87E /* main.cpp */; };
+		74791998162A0C60008E2FFB /* ServerSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74791996162A0C60008E2FFB /* ServerSocket.cpp */; };
+		749A522C162229510094A87E /* Main_Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 749A522B162229510094A87E /* Main_Client.cpp */; };
 		74CB1BEE16226492002456CA /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CB1BED16226492002456CA /* SDLMain.m */; };
 		74CB1BF0162264E2002456CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CB1BEF162264E2002456CA /* Cocoa.framework */; };
 		74CB1BF216226534002456CA /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CB1BF116226534002456CA /* SDL.framework */; };
@@ -15,8 +16,7 @@
 		74CB1C031622CB36002456CA /* SDL_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CB1C021622CB36002456CA /* SDL_image.framework */; };
 		74CB1C051622CD36002456CA /* SDL_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CB1C041622CD36002456CA /* SDL_ttf.framework */; };
 		74CB1C071622CD48002456CA /* SDL_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CB1C061622CD48002456CA /* SDL_mixer.framework */; };
-		74CB1C141622EA1C002456CA /* Server.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74CB1C131622EA1C002456CA /* Server.1 */; };
-		74CB1C3D1622EB32002456CA /* main_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74CB1C3C1622EB32002456CA /* main_server.cpp */; };
+		74CB1C3D1622EB32002456CA /* Main_Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74CB1C3C1622EB32002456CA /* Main_Server.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,16 +35,26 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				74CB1C141622EA1C002456CA /* Server.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		74141E0D16265849001823B2 /* dots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dots.png; sourceTree = "<group>"; };
+		74141E1016265F2D001823B2 /* arial12x12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arial12x12.png; sourceTree = "<group>"; };
+		74141E1116265F2D001823B2 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font.png; sourceTree = "<group>"; };
+		74141E1216265F2D001823B2 /* lazy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = lazy.ttf; sourceTree = "<group>"; };
+		74141E1316265F2D001823B2 /* sample_full_unicode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_full_unicode.png; sourceTree = "<group>"; };
 		746BE6351622EBD800A95771 /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
 		746BE6371622EBD800A95771 /* Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Server; sourceTree = BUILT_PRODUCTS_DIR; };
 		746BE63A1622ECF300A95771 /* SDL-License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SDL-License.txt"; sourceTree = "<group>"; };
+		74791991162A0AE0008E2FFB /* BoostLibs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoostLibs.h; sourceTree = "<group>"; };
+		74791993162A0B49008E2FFB /* The_ASCII_Project.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = The_ASCII_Project.1; sourceTree = "<group>"; };
+		74791995162A0C4E008E2FFB /* ServerSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerSocket.h; sourceTree = "<group>"; };
+		74791996162A0C60008E2FFB /* ServerSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerSocket.cpp; sourceTree = "<group>"; };
+		74791999162A0E6E008E2FFB /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		7479199A162A1136008E2FFB /* unifont-5.1.20080907.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "unifont-5.1.20080907.ttf"; sourceTree = "<group>"; };
 		74934C1F16195C9E00640ED3 /* GPL-License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "GPL-License.txt"; sourceTree = "<group>"; };
 		74934C2016195C9E00640ED3 /* LICENSE_1_0_BOOST.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_1_0_BOOST.txt; sourceTree = "<group>"; };
 		74934C2216195CBF00640ED3 /* EngineTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = EngineTemplate.txt; path = licenses/EngineTemplate.txt; sourceTree = "<group>"; };
@@ -61,8 +71,9 @@
 		74934C3216196A9E00640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 		74934C3316196AAE00640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 		749A5211162227E20094A87E /* Readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
-		749A522B162229510094A87E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		749A522B162229510094A87E /* Main_Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main_Client.cpp; sourceTree = "<group>"; };
 		749A522D162229990094A87E /* Readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		74B16A75162760BB00884AD2 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		74CB1BEB16226486002456CA /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLMain.h; sourceTree = "<group>"; };
 		74CB1BED16226492002456CA /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLMain.m; sourceTree = "<group>"; };
 		74CB1BEF162264E2002456CA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -70,14 +81,14 @@
 		74CB1BFB1622B4F1002456CA /* screen_constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = screen_constants.h; sourceTree = "<group>"; };
 		74CB1BFC1622B7D9002456CA /* SDL_Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_Functions.h; sourceTree = "<group>"; };
 		74CB1BFD1622B7EB002456CA /* SDL_Functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SDL_Functions.cpp; sourceTree = "<group>"; };
-		74CB1C001622BD0B002456CA /* background.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = background.bmp; sourceTree = "<group>"; };
 		74CB1C011622BD52002456CA /* hello.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = hello.bmp; sourceTree = "<group>"; };
 		74CB1C021622CB36002456CA /* SDL_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_image.framework; path = /Library/Frameworks/SDL_image.framework; sourceTree = "<absolute>"; };
 		74CB1C041622CD36002456CA /* SDL_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_ttf.framework; path = /Library/Frameworks/SDL_ttf.framework; sourceTree = "<absolute>"; };
 		74CB1C061622CD48002456CA /* SDL_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_mixer.framework; path = /Library/Frameworks/SDL_mixer.framework; sourceTree = "<absolute>"; };
 		74CB1C081622D99E002456CA /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
-		74CB1C131622EA1C002456CA /* Server.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; name = Server.1; path = ../Server/Server.1; sourceTree = "<group>"; };
-		74CB1C3C1622EB32002456CA /* main_server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main_server.cpp; sourceTree = "<group>"; };
+		74CB1C3C1622EB32002456CA /* Main_Server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main_Server.cpp; sourceTree = "<group>"; };
+		74FD5BE716250DAE005B8789 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		74FD5BE816250DBF005B8789 /* foo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,20 +114,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74141E0F16265F2D001823B2 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7479199A162A1136008E2FFB /* unifont-5.1.20080907.ttf */,
+				74141E1016265F2D001823B2 /* arial12x12.png */,
+				74141E1116265F2D001823B2 /* font.png */,
+				74141E1216265F2D001823B2 /* lazy.ttf */,
+				74141E1316265F2D001823B2 /* sample_full_unicode.png */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		747966741619546500465505 = {
 			isa = PBXGroup;
 			children = (
 				749A5211162227E20094A87E /* Readme.txt */,
-				74934C0516195A6C00640ED3 /* include */,
-				74934C0816195A6C00640ED3 /* src */,
 				74934C1516195C4200640ED3 /* bin */,
-				74934C1716195C4200640ED3 /* lib */,
 				74934C251619693C00640ED3 /* data */,
+				74934C1616195C4200640ED3 /* docs */,
+				74934C0516195A6C00640ED3 /* include */,
+				74934C1716195C4200640ED3 /* lib */,
 				74934C261619693C00640ED3 /* maps */,
 				74934C271619693C00640ED3 /* misc */,
-				74934C281619693C00640ED3 /* scripts */,
-				74934C1616195C4200640ED3 /* docs */,
 				74934C0616195A6C00640ED3 /* osx */,
+				74934C281619693C00640ED3 /* scripts */,
+				74934C0816195A6C00640ED3 /* src */,
 			);
 			sourceTree = "<group>";
 		};
@@ -133,10 +156,13 @@
 		74934C0516195A6C00640ED3 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				74CB1BEB16226486002456CA /* SDLMain.h */,
-				74934C3216196A9E00640ED3 /* Readme.txt */,
 				74CB1BFB1622B4F1002456CA /* screen_constants.h */,
 				74CB1BFC1622B7D9002456CA /* SDL_Functions.h */,
+				74CB1BEB16226486002456CA /* SDLMain.h */,
+				74934C3216196A9E00640ED3 /* Readme.txt */,
+				74791991162A0AE0008E2FFB /* BoostLibs.h */,
+				74791995162A0C4E008E2FFB /* ServerSocket.h */,
+				74791999162A0E6E008E2FFB /* Constants.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -144,13 +170,13 @@
 		74934C0616195A6C00640ED3 /* osx */ = {
 			isa = PBXGroup;
 			children = (
+				74791993162A0B49008E2FFB /* The_ASCII_Project.1 */,
 				74CB1C061622CD48002456CA /* SDL_mixer.framework */,
 				74CB1C041622CD36002456CA /* SDL_ttf.framework */,
 				74CB1C021622CB36002456CA /* SDL_image.framework */,
 				74CB1BF116226534002456CA /* SDL.framework */,
 				74CB1BEF162264E2002456CA /* Cocoa.framework */,
 				747966801619546500465505 /* Products */,
-				74CB1C131622EA1C002456CA /* Server.1 */,
 				74934C3016196A6B00640ED3 /* Readme.txt */,
 			);
 			path = osx;
@@ -159,11 +185,12 @@
 		74934C0816195A6C00640ED3 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				74CB1C3C1622EB32002456CA /* main_server.cpp */,
-				74CB1BED16226492002456CA /* SDLMain.m */,
-				749A522B162229510094A87E /* main.cpp */,
-				74934C3316196AAE00640ED3 /* Readme.txt */,
+				749A522B162229510094A87E /* Main_Client.cpp */,
+				74CB1C3C1622EB32002456CA /* Main_Server.cpp */,
 				74CB1BFD1622B7EB002456CA /* SDL_Functions.cpp */,
+				74CB1BED16226492002456CA /* SDLMain.m */,
+				74934C3316196AAE00640ED3 /* Readme.txt */,
+				74791996162A0C60008E2FFB /* ServerSocket.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -210,6 +237,7 @@
 		74934C251619693C00640ED3 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				74141E0F16265F2D001823B2 /* fonts */,
 				74CB1BF61622662A002456CA /* sound */,
 				74CB1BF516226623002456CA /* other */,
 				74CB1BF31622661B002456CA /* images */,
@@ -253,9 +281,12 @@
 		74CB1BF41622661B002456CA /* dispose */ = {
 			isa = PBXGroup;
 			children = (
-				74CB1C081622D99E002456CA /* x.png */,
 				74CB1C011622BD52002456CA /* hello.bmp */,
-				74CB1C001622BD0B002456CA /* background.bmp */,
+				74141E0D16265849001823B2 /* dots.png */,
+				74B16A75162760BB00884AD2 /* button.png */,
+				74FD5BE716250DAE005B8789 /* background.png */,
+				74FD5BE816250DBF005B8789 /* foo.png */,
+				74CB1C081622D99E002456CA /* x.png */,
 			);
 			path = dispose;
 			sourceTree = "<group>";
@@ -367,7 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				749A522C162229510094A87E /* main.cpp in Sources */,
+				749A522C162229510094A87E /* Main_Client.cpp in Sources */,
 				74CB1BEE16226492002456CA /* SDLMain.m in Sources */,
 				74CB1BFF1622B7EB002456CA /* SDL_Functions.cpp in Sources */,
 			);
@@ -377,7 +408,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74CB1C3D1622EB32002456CA /* main_server.cpp in Sources */,
+				74CB1C3D1622EB32002456CA /* Main_Server.cpp in Sources */,
+				74791998162A0C60008E2FFB /* ServerSocket.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,299 @@
+/*
+ * =====================================================================================
+ *
+ *       Filename:  ServerSocket.cpp
+ *
+ *    Description:  Experimental Sockets Implementation
+ *
+ *        Version:  1.0
+ *        Created:  07/20/2012 08:38 PM
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Yamamushi (Jon Rumion)
+ *   Organization:  The ASCII Project
+ *
+ *	  License:  GPLv3
+ *
+ *	  Copyright 2012 Jonathan Rumion
+ *
+ *   This file is part of The ASCII Project.
+ *
+ *   The ASCII Project is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   The ASCII Project is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with The ASCII Project.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ * =====================================================================================
+ */
+
+
+
+#include <vector>
+#include <iostream>
+#include <fstream>
+
+#include "Constants.h"
+#include "ServerSocket.h"
+
+
+using std::vector;
+using std::string;
+using std::cout;
+using std::endl;
+
+typedef boost::shared_ptr<client_connection> pointer;
+typedef boost::shared_ptr<client_participant> client_participant_ptr;
+typedef boost::shared_ptr<client_connection> client_connection_ptr;
+
+
+
+void client_pool::join(client_participant_ptr client)
+{
+    clients_.insert(client);
+}
+
+
+void client_pool::leave(client_participant_ptr client)
+{
+    clients_.erase(client);
+}
+
+
+void client_pool::deliver(std::string message)
+{
+    //std::for_each(clients_.begin(), clients_.end(), boost::bind(&client_participant::addToChatStream, _1, message));
+}
+
+
+
+
+
+
+
+
+
+tcp::socket& client_connection::socket()
+{
+    return socket_;
+}
+
+
+void client_connection::start()
+{
+    len = 0;
+    sent = 0;
+    maxsent = 0;
+    
+    forceReset = false;
+    
+    username_feed_ = new boost::asio::streambuf;
+    pass_feed_ = new boost::asio::streambuf;
+    
+    line_command_ = new boost::asio::streambuf;
+    chat_message_ = new boost::asio::streambuf;
+    
+    client_pool_.join(shared_from_this());
+    
+    mapBuf = new vector<char *>;
+    mapSize = new char[16];
+    
+    cmd = new char[2];
+    cmd[0] = '\r';
+    cmd[1] = '\n';
+    stream = new char[128];
+    
+    kickStart();
+}
+
+
+
+
+
+
+void client_connection::kickStart()
+{
+    
+    setlocale(LC_ALL, "");
+    const char CHAR_MODE[] = "\377\375\x22\n";
+    const char CLEAR_CON[] = "\x1b[2J";
+    
+    std::cout << CHAR_MODE << "testing" << std::endl;
+    std::cout << "\u2603";
+    
+    boost::asio::async_write(socket_, boost::asio::buffer(string(CHAR_MODE) + string(CLEAR_CON) + string("Welcome to The ASCII Project\n\n"
+                                                                 "Commands Available: \n"
+                                                                 "------------------- \n\n"
+                                                                 "login\n"
+                                                                 "newaccount\n"
+                                                                 "quit \r\n\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
+    
+}
+
+
+
+void client_connection::startSession(const boost::system::error_code& error)
+{
+    if (!error)
+    {
+        
+        delete line_command_;
+        line_command_ = new boost::asio::streambuf;
+        
+        boost::asio::async_read_until(socket_, *line_command_, "*", boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+        //boost::asio::async_read(socket_, boost::asio::buffer(stream, 1), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+    }
+    else
+    {
+        disconnect();
+    }
+}
+
+
+
+
+void client_connection::receive_command(const boost::system::error_code& error)
+{
+    if (!error)
+    {
+        sessionToken = "";
+        boost::asio::async_read_until(socket_, *line_command_, "*", boost::bind(&client_connection::handle_request_line, shared_from_this(), boost::asio::placeholders::error ));
+    }
+    else
+    {
+        disconnect();
+    }
+    
+}
+
+
+void client_connection::handle_request_line(const boost::system::error_code& error)
+{
+    if (!error)
+    {
+        
+        std::string command, token;
+        
+        std::istream is(line_command_);
+        is >> command >> token ;
+        
+        delete line_command_;
+        line_command_ = new boost::asio::streambuf;
+        
+        if( command == "quit")
+        {
+            
+            disconnect();
+            
+        }
+        else if( command == "time")
+        {
+            time_t rawtime;
+            
+            struct tm * timeinfo;
+            time( &rawtime );
+            timeinfo = localtime(&rawtime);
+            
+            string time = asctime(timeinfo);
+            
+            boost::asio::async_write(socket_, boost::asio::buffer(string(time + "\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+        }
+        else if( command == "" )
+        {
+            boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+        }
+        else
+        {
+            boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+        }
+        
+    }
+    
+    else
+    {
+        disconnect();
+    }
+}
+
+
+
+
+
+void client_connection::disconnect()
+{
+    
+    
+    free(stream);
+    
+    client_pool_.leave(shared_from_this());
+    
+    
+}
+
+
+
+
+
+game_server::game_server(boost::asio::io_service& io_service, const tcp::endpoint& endpoint)
+: io_service_(io_service), acceptor_(io_service, endpoint)
+{
+    start_accept();
+}
+
+
+void game_server::start_accept()
+{
+    client_connection_ptr new_session(new client_connection(io_service_, client_pool_));
+    
+    acceptor_.async_accept(new_session->socket(), boost::bind(&game_server::handle_accept, this, new_session, boost::asio::placeholders::error));
+}
+
+void game_server::handle_accept(client_connection_ptr client, const boost::system::error_code& error)
+{
+    if (!error)
+    {
+        client->start();
+    }
+    
+    start_accept();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

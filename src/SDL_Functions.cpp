@@ -25,6 +25,14 @@ SDL_Surface *load_image(std::string filename)
         optimizedImage = SDL_DisplayFormat(loadedImage);
         SDL_FreeSurface(loadedImage);
         
+        if(optimizedImage != NULL)
+        {
+            
+            Uint32 colorkey = SDL_MapRGB(optimizedImage->format, 0, 0xFF, 0xFF);
+            SDL_SetColorKey(optimizedImage, SDL_SRCCOLORKEY, colorkey);
+            
+        }
+        
     }
     
     return optimizedImage;
@@ -33,7 +41,7 @@ SDL_Surface *load_image(std::string filename)
 
 
 
-void apply_surface(int x, int y, SDL_Surface* source, SDL_Surface* destination)
+void apply_surface(int x, int y, SDL_Surface* source, SDL_Surface* destination, SDL_Rect* clip)
 {
     
     SDL_Rect offset;
@@ -41,7 +49,7 @@ void apply_surface(int x, int y, SDL_Surface* source, SDL_Surface* destination)
     offset.x = x;
     offset.y = y;
     
-    SDL_BlitSurface(source, NULL, destination, &offset);
+    SDL_BlitSurface(source, clip, destination, &offset);
     
 }
 
@@ -63,7 +71,14 @@ bool init()
         return false;
     }
     
-    SDL_WM_SetCaption("Event Test", NULL);
+    //Initialize SDL_ttf
+    if( TTF_Init() == -1 )
+    {
+        return false;
+    }
+    
+    //Set the window caption
+    SDL_WM_SetCaption( "TTF Test", NULL );
     
     return true;
     
@@ -75,10 +90,14 @@ bool init()
 bool load_files()
 {
     
-    extern SDL_Surface *image;
-    image = load_image("../data/images/dispose/x.png");
+    extern SDL_Surface *background;
+    extern TTF_Font *font;
     
-    if(image == NULL)
+    background = load_image("../data/images/dispose/background.png");
+    font = TTF_OpenFont( "../data/fonts/lazy.ttf", 16 );
+
+    
+    if(background == NULL || font == NULL)
     {
         return false;
     }
@@ -91,8 +110,18 @@ bool load_files()
 
 void clean_up()
 {
-    extern SDL_Surface *image;
-    SDL_FreeSurface(image);
+    extern SDL_Surface *message;
+    extern SDL_Surface *upMessage;
+    extern SDL_Surface *downMessage;
+    extern SDL_Surface *leftMessage;
+    extern SDL_Surface *rightMessage;
+    extern SDL_Surface *background;
+    SDL_FreeSurface(message);
+    SDL_FreeSurface(upMessage);
+    SDL_FreeSurface(downMessage);
+    SDL_FreeSurface(leftMessage);
+    SDL_FreeSurface(rightMessage);
+    SDL_FreeSurface(background);
     SDL_Quit();    
     
 }
