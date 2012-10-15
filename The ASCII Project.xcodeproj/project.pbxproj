@@ -56,7 +56,6 @@
 		7403F98C162BDFAB00A89159 /* AnsiTerm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnsiTerm.cpp; sourceTree = "<group>"; };
 		7403F98F162BDFF400A89159 /* IAC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IAC.cpp; sourceTree = "<group>"; };
 		7403F992162BDFFD00A89159 /* IAC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IAC.h; sourceTree = "<group>"; };
-		7403F993162BE40100A89159 /* vi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vi.c; sourceTree = "<group>"; };
 		7403F994162BF5A100A89159 /* UnicodeConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnicodeConstants.h; sourceTree = "<group>"; };
 		74141E0D16265849001823B2 /* dots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dots.png; sourceTree = "<group>"; };
 		74141E1016265F2D001823B2 /* arial12x12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arial12x12.png; sourceTree = "<group>"; };
@@ -288,7 +287,6 @@
 			isa = PBXGroup;
 			children = (
 				74934C2C161969F000640ED3 /* Readme.txt */,
-				7403F993162BE40100A89159 /* vi.c */,
 			);
 			path = misc;
 			sourceTree = "<group>";
