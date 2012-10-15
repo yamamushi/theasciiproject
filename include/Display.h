@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include "Window.h"
+#include "Widgets.h"
 
 
 
@@ -23,6 +24,7 @@ private:
 public:
     
     int Width, Height;
+    bool inputShell;
     Window *MainWindow;
     
     std::vector<std::string> DisplayLines;
@@ -36,6 +38,7 @@ public:
     
     std::string returnDisplay();
     std::string returnDisplay(int x);
+
     
     
 };

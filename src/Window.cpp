@@ -10,11 +10,16 @@
 #include <sstream>
 
 #include "Window.h"
+#include "Widgets.h"
+#include "AnsiConstants.h"
 #include "UnicodeConstants.h"
 
 
 
 Window::Window(int x, int y, bool bordered){
+    
+    
+    
     
     Width = x;
     Height = y;
@@ -45,11 +50,29 @@ Window::Window(int x, int y, bool bordered){
         
     }
     
-    Frame *tmpFrame = new Frame(5, 5, 15, 10);
-    drawFrame(tmpFrame);
+    Widget *shellFrame = new Widget(1, Height-2, Width, Height, this);
+    shellFrame->FrameLines.push_back("\x1b[K\x1b[23H\u2503$> ");
+    FrameList.push_back(shellFrame);
     
-    Frame *wallFrame = new Frame(1, 15, 80, 20);
-    drawFrame(wallFrame);
+    Widget *colorBox = new Widget(75, 5, 85, 10, this);
+    colorBox->fill(BACK_BLUE + FORE_WHITE + "\u2591" + FORE_GREEN + BACK_BLACK);
+    drawFrame(colorBox);
+    
+    colorBox->move(-20, 0);
+    colorBox->fill(BACK_BLUE + FORE_WHITE + "\u2591" + FORE_GREEN + BACK_BLACK);
+    drawFrame(colorBox);
+    
+    
+    colorBox->move(-3, 3);
+    drawFrame(colorBox);
+    
+    
+    Widget *sideFrame = new Widget(1, 1, 20, Height, this);
+    drawFrame(sideFrame);
+    
+    drawFrame(*FrameList.begin());
+    
+    
     
 }
 
@@ -137,33 +160,23 @@ void Window::drawFrame(Frame *frm){
     Frame *tgt = frm;
     
     int x1, y1, x2, y2;
+
+    x1 = tgt->X1;
+    x2 = tgt->X2;
+    y1 = tgt->Y1;
+    y2 = tgt->Y2;
+
     
-    if(tgt->X1 == tgt->X2)
-        return;
-    else if(tgt->X1 < tgt->X2)
-    {
-        x1 = tgt->X1;
-        x2 = tgt->X2;
-    }
-    else{
-        x1 = tgt->X2;
-        x2 = tgt->X1;
-    }
+    if(x1 < 1)
+        x1 = 1;
+    if(x2 > Width)
+        x2 = Width;
+    if(y1 < 1)
+        y1 = 1;
+    if(y2 > Height)
+        y2 = Height;
     
-    if(tgt->Y1 == tgt->Y2)
-        return;
-    else if(tgt->Y1 < tgt->Y2)
-    {
-        y1 = tgt->Y1;
-        y2 = tgt->Y2;
-    }
-    else{
-        y1 = tgt->Y2;
-        y2 = tgt->Y1;
-    }
-    
-    
-    
+    int fLine = 0;
     for(int y = y1; y < y2+1; y++)
     {
         std::string outputLine;
@@ -179,7 +192,7 @@ void Window::drawFrame(Frame *frm){
         
         outputLine.append(outputY);
         
-        
+                
         for(int x = x1; x < x2+1; x++)
         {
             std::stringstream column;
@@ -199,7 +212,7 @@ void Window::drawFrame(Frame *frm){
             
             if(y == y1 && x == x1)
             {
-                if(x == 1)
+                if(x == 1 &&y != 1)
                     outputLine.append(LeftBoxTee);
                 else
                     outputLine.append(TopLeftThinCorner);
@@ -227,8 +240,10 @@ void Window::drawFrame(Frame *frm){
             
             if(y == y1 && x == x2)
             {
-                if(x == Width)
+                if(x == Width && y != 1)
                     outputLine.append(RightBoxTee);
+                else if( y == 1)
+                    outputLine.append(TopDownTee);
                 else
                     outputLine.append(TopRightThinCorner);
             }
@@ -241,14 +256,150 @@ void Window::drawFrame(Frame *frm){
                     outputLine.append(BottomRightThinCorner);
             }
             
+            if(y > y1)
+            {
+                if(x == x1+1)
+                    if( fLine-1 < tgt->FrameLines.size())
+                        {
+                            
+                            outputLine.append(tgt->FrameLines.at(fLine-1));
+                            
+                        }
+                
+            }
             
         }
         
-        WindowLines.at(y).append(outputLine);
-        
+        if(y < Height)
+            WindowLines.at(y).append(outputLine);
+        fLine++;
     }
     
     
 }
+
+
+
+
+
+
+
+
+
+
+Frame::Frame(int x1, int y1, int x2, int y2, Window *tgt){
+    
+    
+    if(x1 == x2)
+        return;
+    else if(x1 < x2)
+    {
+        X1 = x1;
+        X2 = x2;
+    }
+    else{
+        X1 = x2;
+        X2 = x1;
+    }
+    
+    if(y1 == y2)
+        return;
+    else if(y1 < y2)
+    {
+        Y1 = y1;
+        Y2 = y2;
+    }
+    else{
+        Y1 = y2;
+        Y2 = y1;
+    }
+    
+    
+    parentWindow = tgt;
+    
+    
+}
+
+
+
+
+
+
+
+void Frame::move(int x, int y, bool clear){
+    
+    X1 += x;
+    X2 += x;
+
+    Y1 += y;
+    Y2 += y; 
+    
+    if(clear)
+        fill(" ");
+}
+
+
+void Frame::resizeX(int x){
+    
+    X2 += x;    
+    
+}
+
+
+
+
+void Frame::resizeY(int y){
+    
+    Y2 += y;   
+}
+
+
+
+
+void Frame::fill(std::string filler){
+    
+    FrameLines.clear();
+    
+    int length, lines;
+    
+    int x1, y1, x2, y2;
+    
+
+    x1 = X1;
+    x2 = X2;
+    y1 = Y1;
+    y2 = Y2;
+   
+    
+    
+    if(x1 < 1)
+        x1 = 1;
+    if(x2 > parentWindow->Width)
+        x2 = parentWindow->Width;
+    if(y1 < 1)
+        y1 = 1;
+    if(y2 > parentWindow->Height)
+        y2 = parentWindow->Height;
+   
+    
+    length = x2 - x1 - 1;
+    lines = y2 - y1 - 1;
+    
+    std::string fill;
+    
+    for(int x = 0; x < length; x++)
+    {
+        fill.append(filler);
+    }
+    
+    for(int x = 0; x < lines; x++)
+    {
+        FrameLines.push_back(fill);
+    }
+    
+    
+    
+}
+
 
 

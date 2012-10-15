@@ -14,21 +14,7 @@
 #include <string>
 
 
-class Frame {
-    
-private:
-    
-    
-public:
-
-    int X1, X2, Y1, Y2;
-    
-    Frame(int x1, int y1, int x2, int y2){X1 = x1; X2 = x2; Y1 = y1; Y2 = y2;};
-    
-    
-};
-
-
+class Frame;
 
 
 
@@ -36,9 +22,7 @@ class Window {
     
 private:
     
-    
-    
-    
+      
     
 public:
     
@@ -55,13 +39,37 @@ public:
     std::string returnBottomBar();
     std::string borderLine(int lineNumber);
     
+   
     void drawFrame(Frame *frm);
+    
+    void render();
     
     
 };
 
 
 
+class Frame{
+    
+private:
+    
+    
+public:
+    
+    std::vector<std::string> FrameLines;
+    
+    int X1, X2, Y1, Y2;
+    Window *parentWindow;
+    
+    Frame(int x1, int y1, int x2, int y2, Window *tgt);
+    
+    void move(int x, int y, bool clear=true);
+    void resizeX(int x);
+    void resizeY(int y);
+    
+    void fill(std::string filler);
+    
+};
 
 
 

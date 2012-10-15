@@ -17,6 +17,7 @@ Display::Display(int x, int y){
     
    
     MainWindow = new Window(Width, Height, true);
+    inputShell = true;
     
 }
 
@@ -38,6 +39,8 @@ std::string Display::returnDisplay(){
         display.append(MainWindow->returnWindowLine(x));
         
     }
+    if(inputShell)
+        display.append("\x1b[K\x1b[23;5H");
     
     return display;
     

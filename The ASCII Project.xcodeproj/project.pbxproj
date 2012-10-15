@@ -57,6 +57,7 @@
 		7403F98F162BDFF400A89159 /* IAC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IAC.cpp; sourceTree = "<group>"; };
 		7403F992162BDFFD00A89159 /* IAC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IAC.h; sourceTree = "<group>"; };
 		7403F994162BF5A100A89159 /* UnicodeConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnicodeConstants.h; sourceTree = "<group>"; };
+		7403F995162C432900A89159 /* AnsiConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnsiConstants.h; sourceTree = "<group>"; };
 		74141E0D16265849001823B2 /* dots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dots.png; sourceTree = "<group>"; };
 		74141E1016265F2D001823B2 /* arial12x12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arial12x12.png; sourceTree = "<group>"; };
 		74141E1116265F2D001823B2 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font.png; sourceTree = "<group>"; };
@@ -187,6 +188,7 @@
 				7403F98A162BDF8A00A89159 /* Widgets.h */,
 				7403F980162BDF3B00A89159 /* Window.h */,
 				7403F994162BF5A100A89159 /* UnicodeConstants.h */,
+				7403F995162C432900A89159 /* AnsiConstants.h */,
 			);
 			path = include;
 			sourceTree = "<group>";

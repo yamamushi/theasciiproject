@@ -24,6 +24,8 @@ const std::string VerticalThinBoxLine = "\u2503";
 const std::string LeftBoxTee = "\u2523";
 const std::string RightBoxTee = "\u252B";
 
+const std::string TopDownTee = "\u2533";
+
 
 
 
