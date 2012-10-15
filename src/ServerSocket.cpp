@@ -98,6 +98,7 @@ void client_connection::start()
     
 
     stream = new char[128];
+    socket_.set_option(tcp::no_delay(true));
     
     kickStart();
 }
@@ -118,23 +119,51 @@ void client_connection::kickStart()
     std::cout << CHAR_MODE << "testing" << std::endl;
     std::cout << "\u2603";
     
-    std::string topbar, bottombar;
+    std::string topbar, bottombar, borders;
     
-    for(int x=0; x < 80; x++)
+    topbar = "\u250F";
+    bottombar = "\u2517";
+    for(int x=0; x < 78; x++)
     {
-        topbar.append("\u256C");
-        
+        topbar.append("\u2501");
+        bottombar.append("\u2501");
     }
+    topbar.append("\u2513");
+    bottombar.append("\u251B");
     
-    boost::asio::async_write(socket_, boost::asio::buffer(string(CHAR_MODE) + string(CLEAR_CON) + string(MOVE_CURS) + string("\x1b[100\n\x1b[5mWelcome to The ASCII Project \u263A \x1b[25m \n") + topbar + string(
-                                                                 "\x1b[19H\x1b[34mCommands Available: \n"
-                                                                 "-------------------\n"
-                                                                 "\x1b[31mlogin\n"
-                                                                 "newaccount\n"
-                                                                 "quit \x1b[32m \n"
+    borders.append("\x1b[3H\u2503\x1b[3;80H\u2503");
+    borders.append("\x1b[4H\u2503\x1b[4;80H\u2503");
+    borders.append("\x1b[5H\u2503\x1b[5;80H\u2503");
+    borders.append("\x1b[6H\u2503\x1b[6;80H\u2503");
+    borders.append("\x1b[7H\u2503\x1b[7;80H\u2503");
+    borders.append("\x1b[8H\u2503\x1b[8;80H\u2503");
+    borders.append("\x1b[9H\u2503\x1b[9;80H\u2503");
+    borders.append("\x1b[10H\u2503\x1b[10;80H\u2503");
+    borders.append("\x1b[11H\u2503\x1b[11;80H\u2503");
+    borders.append("\x1b[12H\u2503\x1b[12;80H\u2503");
+    borders.append("\x1b[13H\u2503\x1b[13;80H\u2503");
+    borders.append("\x1b[14H\u2503\x1b[14;80H\u2503");
+    borders.append("\x1b[15H\u2503\x1b[15;80H\u2503");
+    borders.append("\x1b[16H\u2503\x1b[16;80H\u2503");
+    borders.append("\x1b[17H\u2503\x1b[17;80H\u2503");
+    borders.append("\x1b[18H\u2503\x1b[18;80H\u2503");
+    borders.append("\x1b[19H\u2503\x1b[19;80H\u2503");
+    borders.append("\x1b[20H\u2503\x1b[20;80H\u2503");
+    borders.append("\x1b[21H\u2503\x1b[21;80H\u2503");
+    borders.append(topbar + "\x1b[22H\u2523\x1b[22;80H\u252B");
+    borders.append("\x1b[23H\u2503\x1b[23;80H\u2503");
+
+    
+    
+    boost::asio::async_write(socket_, boost::asio::buffer(string(CHAR_MODE) + string(CLEAR_CON) + string(MOVE_CURS) + string("\x1b[100\n  Welcome to The ASCII Project \x1b[5m\u263A\x1b[25m \n") + topbar + string(
+                                                                 "\x1b[18H\x1b[34m  Commands Available: \n"
+                                                                 "  -------------------\n"
+                                                                 "\x1b[31m  login\n"
+                                                                 "  newaccount\n"
+                                                                 "  quit \x1b[32m \n"
                                                                  //"\u2588\u2588\u2588\u2588"
                                                                  "\x1b[24H\r\n")
-                                                          + topbar + string("\x1b[K\x1b[16H$> ")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
+                                                          + bottombar + borders + string("\x1b[K\x1b[23H\u2503 $> ")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
     
 }
 
@@ -171,7 +200,7 @@ void client_connection::receive_command(const boost::system::error_code& error)
         
         
         sessionToken = "";
-        boost::asio::async_read_until(socket_, *line_command_, "*", boost::bind(&client_connection::handle_request_line, shared_from_this(), boost::asio::placeholders::error ));
+        boost::asio::async_read_until(socket_, *line_command_, "", boost::bind(&client_connection::handle_request_line, shared_from_this(), boost::asio::placeholders::error ));
     }
     else
     {
@@ -190,17 +219,18 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         
         std::istream is(line_command_);
         is >> command >> token ;
+        cout << command << endl;
         
         delete line_command_;
         line_command_ = new boost::asio::streambuf;
         
-        if( command == "quit")
+        if( command == "q")
         {
             
             disconnect();
             
         }
-        else if(command == "flower")
+        else if(command == "w")
         {
             
             std::string flower("\x1b[2J\x1b[H\x1b[7h\x1b[0;1;40;37m\x1b[?33h\n"
@@ -222,10 +252,10 @@ void client_connection::handle_request_line(const boost::system::error_code& err
                                "\x1b[1;37m\x1b[6C;%,;%;;!!%%%!&!;,,,,,,;,..\x1b[0m  \x1b[34m€€€.,;;%%%;;;,.€€\n"
                                "\x1b[37m \x1b[1m\x1b[5C;%,;%;;;,,..,;;,,.\x1b[5C\x1b[0m\x1b[8C\x1b[34m€€€€€€€€€€€\n");
             
-            boost::asio::async_write(socket_, boost::asio::buffer(flower), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(flower), boost::bind(&client_connection::disconnect, shared_from_this()));
             
         }
-        else if( command == "time")
+        else if( command == "t")
         {
             time_t rawtime;
             
@@ -235,15 +265,15 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             
             string time = asctime(timeinfo);
             
-            boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[4H\x1b[5m" + time + "\x1b[25m\x1b[16H\x1b[K$> ")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[3H\u2503\x1b[5m " + time + "\x1b[25m\x1b[23H\x1b[K\u2503 $> \x1b[23;80H\u2503\x1b[23;5H")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         else if( command == "" )
         {
-            boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[16H\x1b[K$> ")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[23H\x1b[K\u2503 $> \x1b[23;80H\u2503\x1b[23;5H")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         else
         {
-            boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[16H\x1b[K$> ")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[23H\x1b[K\u2503 $> \x1b[23;80H\u2503\x1b[23;5H")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         
     }

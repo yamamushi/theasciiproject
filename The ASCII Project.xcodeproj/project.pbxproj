@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7403F983162BDF5500A89159 /* Display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7403F981162BDF5500A89159 /* Display.cpp */; };
+		7403F986162BDF6700A89159 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7403F984162BDF6700A89159 /* Window.cpp */; };
+		7403F989162BDF7A00A89159 /* Widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7403F987162BDF7A00A89159 /* Widgets.cpp */; };
+		7403F98E162BDFAB00A89159 /* AnsiTerm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7403F98C162BDFAB00A89159 /* AnsiTerm.cpp */; };
+		7403F991162BDFF400A89159 /* IAC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7403F98F162BDFF400A89159 /* IAC.cpp */; };
 		74791998162A0C60008E2FFB /* ServerSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74791996162A0C60008E2FFB /* ServerSocket.cpp */; };
 		749A522C162229510094A87E /* Main_Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 749A522B162229510094A87E /* Main_Client.cpp */; };
 		74CB1BEE16226492002456CA /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CB1BED16226492002456CA /* SDLMain.m */; };
@@ -41,6 +46,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7403F97E162BDF3200A89159 /* Display.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Display.h; sourceTree = "<group>"; };
+		7403F980162BDF3B00A89159 /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		7403F981162BDF5500A89159 /* Display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Display.cpp; sourceTree = "<group>"; };
+		7403F984162BDF6700A89159 /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
+		7403F987162BDF7A00A89159 /* Widgets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Widgets.cpp; sourceTree = "<group>"; };
+		7403F98A162BDF8A00A89159 /* Widgets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Widgets.h; sourceTree = "<group>"; };
+		7403F98B162BDF9E00A89159 /* AnsiTerm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnsiTerm.h; sourceTree = "<group>"; };
+		7403F98C162BDFAB00A89159 /* AnsiTerm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnsiTerm.cpp; sourceTree = "<group>"; };
+		7403F98D162BDFAB00A89159 /* AnsiTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnsiTerm.h; sourceTree = "<group>"; };
+		7403F98F162BDFF400A89159 /* IAC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IAC.cpp; sourceTree = "<group>"; };
+		7403F992162BDFFD00A89159 /* IAC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IAC.h; sourceTree = "<group>"; };
 		74141E0D16265849001823B2 /* dots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dots.png; sourceTree = "<group>"; };
 		74141E1016265F2D001823B2 /* arial12x12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arial12x12.png; sourceTree = "<group>"; };
 		74141E1116265F2D001823B2 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font.png; sourceTree = "<group>"; };
@@ -158,13 +174,18 @@
 		74934C0516195A6C00640ED3 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				7403F98B162BDF9E00A89159 /* AnsiTerm.h */,
+				74791991162A0AE0008E2FFB /* BoostLibs.h */,
+				74791999162A0E6E008E2FFB /* Constants.h */,
+				7403F97E162BDF3200A89159 /* Display.h */,
+				7403F992162BDFFD00A89159 /* IAC.h */,
+				74934C3216196A9E00640ED3 /* Readme.txt */,
 				74CB1BFB1622B4F1002456CA /* screen_constants.h */,
 				74CB1BFC1622B7D9002456CA /* SDL_Functions.h */,
 				74CB1BEB16226486002456CA /* SDLMain.h */,
-				74934C3216196A9E00640ED3 /* Readme.txt */,
-				74791991162A0AE0008E2FFB /* BoostLibs.h */,
 				74791995162A0C4E008E2FFB /* ServerSocket.h */,
-				74791999162A0E6E008E2FFB /* Constants.h */,
+				7403F98A162BDF8A00A89159 /* Widgets.h */,
+				7403F980162BDF3B00A89159 /* Window.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -187,12 +208,18 @@
 		74934C0816195A6C00640ED3 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				7403F98C162BDFAB00A89159 /* AnsiTerm.cpp */,
+				7403F98D162BDFAB00A89159 /* AnsiTerm.h */,
+				7403F981162BDF5500A89159 /* Display.cpp */,
+				7403F98F162BDFF400A89159 /* IAC.cpp */,
 				749A522B162229510094A87E /* Main_Client.cpp */,
 				74CB1C3C1622EB32002456CA /* Main_Server.cpp */,
+				74934C3316196AAE00640ED3 /* Readme.txt */,
 				74CB1BFD1622B7EB002456CA /* SDL_Functions.cpp */,
 				74CB1BED16226492002456CA /* SDLMain.m */,
-				74934C3316196AAE00640ED3 /* Readme.txt */,
 				74791996162A0C60008E2FFB /* ServerSocket.cpp */,
+				7403F987162BDF7A00A89159 /* Widgets.cpp */,
+				7403F984162BDF6700A89159 /* Window.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -414,6 +441,11 @@
 			files = (
 				74CB1C3D1622EB32002456CA /* Main_Server.cpp in Sources */,
 				74791998162A0C60008E2FFB /* ServerSocket.cpp in Sources */,
+				7403F983162BDF5500A89159 /* Display.cpp in Sources */,
+				7403F986162BDF6700A89159 /* Window.cpp in Sources */,
+				7403F989162BDF7A00A89159 /* Widgets.cpp in Sources */,
+				7403F98E162BDFAB00A89159 /* AnsiTerm.cpp in Sources */,
+				7403F991162BDFF400A89159 /* IAC.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
