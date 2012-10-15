@@ -41,7 +41,9 @@
 #define The_ASCII_Project_ServerSocket_h
 
 #include "BoostLibs.h"
-
+#include "Constants.h"
+#include "UnicodeConstants.h"
+#include "Display.h"
 
 
 
@@ -93,32 +95,18 @@ private:
     char *mapSize;
     char headerSize[2];
     
-    std::string prompt = "";
-    std::string sessionToken;
-    std::string user;
-    std::string pass;
-    
-    std::string chatStream;
-    
-    bool moved;
-    bool forceReset;
-    
-    std::size_t len;
-    
     std::vector<char *> *mapBuf;
+    
+    Display *display;
     
    
     tcp::socket socket_;
     client_pool& client_pool_;
-    
-    boost::asio::streambuf *username_feed_;
-    boost::asio::streambuf *pass_feed_;
+
     
     boost::asio::streambuf *line_command_;
-    boost::asio::streambuf *chat_message_;
-    
-    
-    
+
+        
 public:
     
     

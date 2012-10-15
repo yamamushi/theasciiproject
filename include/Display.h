@@ -9,6 +9,40 @@
 #ifndef The_ASCII_Project_Display_h
 #define The_ASCII_Project_Display_h
 
+#include <string>
+#include <vector>
+#include "Window.h"
+
+
+
+class Display {
+  
+private:
+    
+    
+public:
+    
+    int Width, Height;
+    Window *MainWindow;
+    
+    std::vector<std::string> DisplayLines;
+    
+    
+    Display(int x, int y);
+    virtual ~Display();
+    
+    
+    void InitDisplay();
+    
+    std::string returnDisplay();
+    std::string returnDisplay(int x);
+    
+    
+};
+
+
+
+
 
 
 #endif

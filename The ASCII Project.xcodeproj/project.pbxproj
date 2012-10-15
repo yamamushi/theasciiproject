@@ -54,9 +54,10 @@
 		7403F98A162BDF8A00A89159 /* Widgets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Widgets.h; sourceTree = "<group>"; };
 		7403F98B162BDF9E00A89159 /* AnsiTerm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnsiTerm.h; sourceTree = "<group>"; };
 		7403F98C162BDFAB00A89159 /* AnsiTerm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnsiTerm.cpp; sourceTree = "<group>"; };
-		7403F98D162BDFAB00A89159 /* AnsiTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnsiTerm.h; sourceTree = "<group>"; };
 		7403F98F162BDFF400A89159 /* IAC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IAC.cpp; sourceTree = "<group>"; };
 		7403F992162BDFFD00A89159 /* IAC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IAC.h; sourceTree = "<group>"; };
+		7403F993162BE40100A89159 /* vi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vi.c; sourceTree = "<group>"; };
+		7403F994162BF5A100A89159 /* UnicodeConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnicodeConstants.h; sourceTree = "<group>"; };
 		74141E0D16265849001823B2 /* dots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dots.png; sourceTree = "<group>"; };
 		74141E1016265F2D001823B2 /* arial12x12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arial12x12.png; sourceTree = "<group>"; };
 		74141E1116265F2D001823B2 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font.png; sourceTree = "<group>"; };
@@ -186,6 +187,7 @@
 				74791995162A0C4E008E2FFB /* ServerSocket.h */,
 				7403F98A162BDF8A00A89159 /* Widgets.h */,
 				7403F980162BDF3B00A89159 /* Window.h */,
+				7403F994162BF5A100A89159 /* UnicodeConstants.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -209,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				7403F98C162BDFAB00A89159 /* AnsiTerm.cpp */,
-				7403F98D162BDFAB00A89159 /* AnsiTerm.h */,
 				7403F981162BDF5500A89159 /* Display.cpp */,
 				7403F98F162BDFF400A89159 /* IAC.cpp */,
 				749A522B162229510094A87E /* Main_Client.cpp */,
@@ -287,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				74934C2C161969F000640ED3 /* Readme.txt */,
+				7403F993162BE40100A89159 /* vi.c */,
 			);
 			path = misc;
 			sourceTree = "<group>";
