@@ -115,8 +115,8 @@ void client_connection::kickStart()
     setlocale(LC_ALL, "");
         
     const char CHAR_MODE[] = "\377\375\x22\n";
-    const char CLEAR_CON[] = "\x1b[2J";
-    const char MOVE_CURS[] = "\x1b[H";
+ //   const char CLEAR_CON[] = "\x1b[2J";
+ //   const char MOVE_CURS[] = "\x1b[H";
     
     std::cout << CHAR_MODE << "testing" << std::endl;
     std::cout << "\u2603";
@@ -133,49 +133,9 @@ void client_connection::kickStart()
     topbar.append("\u2513");
     bottombar.append("\u251B");
 
-    for(int x=3; x < 24; x++)
-    {
-        
-        std::string count;
-        std::stringstream out;
-        out << x;
-        count = out.str();
-        std::string line("\x1b[1H");
-        line.replace(2, 1, count);
-
-        line.append("\u2503");
-        
-        borders.append(line);
-        
-        cout << line << endl;
-        
-    }
     
     boost::asio::async_write(socket_, boost::asio::buffer(display->returnDisplay()), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
     
-    
-/*
-    borders.append("\x1b[3H\u2503\x1b[3;80H\u2503");
-    borders.append("\x1b[4H\u2503\x1b[4;80H\u2503");
-    borders.append("\x1b[5H\u2503\x1b[5;80H\u2503");
-    borders.append("\x1b[6H\u2503\x1b[6;80H\u2503");
-    borders.append("\x1b[7H\u2503\x1b[7;80H\u2503");
-    borders.append("\x1b[8H\u2503\x1b[8;80H\u2503");
-    borders.append("\x1b[9H\u2503\x1b[9;80H\u2503");
-    borders.append("\x1b[10H\u2503\x1b[10;80H\u2503");
-    borders.append("\x1b[11H\u2503\x1b[11;80H\u2503");
-    borders.append("\x1b[12H\u2503\x1b[12;80H\u2503");
-    borders.append("\x1b[13H\u2503\x1b[13;80H\u2503");
-    borders.append("\x1b[14H\u2503\x1b[14;80H\u2503");
-    borders.append("\x1b[15H\u2503\x1b[15;80H\u2503");
-    borders.append("\x1b[16H\u2503\x1b[16;80H\u2503");
-    borders.append("\x1b[17H\u2503\x1b[17;80H\u2503");
-    borders.append("\x1b[18H\u2503\x1b[18;80H\u2503");
-    borders.append("\x1b[19H\u2503\x1b[19;80H\u2503");
-    borders.append("\x1b[20H\u2503\x1b[20;80H\u2503");
-    borders.append("\x1b[21H\u2503\x1b[21;80H\u2503");
-    borders.append(topbar + "\x1b[22H\u2523\x1b[22;80H\u252B");
-    borders.append("\x1b[23H\u2503\x1b[23;80H\u2503"); */
 
     
     
