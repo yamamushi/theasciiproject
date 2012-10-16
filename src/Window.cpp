@@ -357,8 +357,7 @@ void Frame::move(int x, int y, bool clear){
     Y2 += y; 
     
     if(clear)
-        ;
-        //    fill(" ");
+        fill(" ");
 }
 
 

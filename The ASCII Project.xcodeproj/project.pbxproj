@@ -13,27 +13,11 @@
 		7403F98E162BDFAB00A89159 /* AnsiTerm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7403F98C162BDFAB00A89159 /* AnsiTerm.cpp */; };
 		7403F991162BDFF400A89159 /* IAC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7403F98F162BDFF400A89159 /* IAC.cpp */; };
 		74791998162A0C60008E2FFB /* ServerSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74791996162A0C60008E2FFB /* ServerSocket.cpp */; };
-		749A522C162229510094A87E /* Main_Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 749A522B162229510094A87E /* Main_Client.cpp */; };
-		74CB1BEE16226492002456CA /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CB1BED16226492002456CA /* SDLMain.m */; };
-		74CB1BF0162264E2002456CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CB1BEF162264E2002456CA /* Cocoa.framework */; };
-		74CB1BF216226534002456CA /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CB1BF116226534002456CA /* SDL.framework */; };
-		74CB1BFF1622B7EB002456CA /* SDL_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74CB1BFD1622B7EB002456CA /* SDL_Functions.cpp */; };
-		74CB1C031622CB36002456CA /* SDL_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CB1C021622CB36002456CA /* SDL_image.framework */; };
-		74CB1C051622CD36002456CA /* SDL_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CB1C041622CD36002456CA /* SDL_ttf.framework */; };
-		74CB1C071622CD48002456CA /* SDL_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CB1C061622CD48002456CA /* SDL_mixer.framework */; };
+		749F3E4C162D301A00DA61C3 /* Keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 749F3E4A162D301A00DA61C3 /* Keyboard.cpp */; };
 		74CB1C3D1622EB32002456CA /* Main_Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74CB1C3C1622EB32002456CA /* Main_Server.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		749A521E162228F90094A87E /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		74CB1C0C1622EA1C002456CA /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -65,7 +49,6 @@
 		74141E1316265F2D001823B2 /* sample_full_unicode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_full_unicode.png; sourceTree = "<group>"; };
 		743627B0162ACDEF00523F8B /* testout.ans */ = {isa = PBXFileReference; lastKnownFileType = text; path = testout.ans; sourceTree = "<group>"; };
 		743627B3162AD56A00523F8B /* world.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = world.txt; sourceTree = "<group>"; };
-		746BE6351622EBD800A95771 /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
 		746BE6371622EBD800A95771 /* Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Server; sourceTree = BUILT_PRODUCTS_DIR; };
 		746BE63A1622ECF300A95771 /* SDL-License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SDL-License.txt"; sourceTree = "<group>"; };
 		74791991162A0AE0008E2FFB /* BoostLibs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoostLibs.h; sourceTree = "<group>"; };
@@ -90,16 +73,12 @@
 		74934C3216196A9E00640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 		74934C3316196AAE00640ED3 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 		749A5211162227E20094A87E /* Readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
-		749A522B162229510094A87E /* Main_Client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main_Client.cpp; sourceTree = "<group>"; };
 		749A522D162229990094A87E /* Readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		749F3E48162D300900DA61C3 /* Keyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Keyboard.h; sourceTree = "<group>"; };
+		749F3E4A162D301A00DA61C3 /* Keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Keyboard.cpp; sourceTree = "<group>"; };
 		74B16A75162760BB00884AD2 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
-		74CB1BEB16226486002456CA /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLMain.h; sourceTree = "<group>"; };
-		74CB1BED16226492002456CA /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLMain.m; sourceTree = "<group>"; };
 		74CB1BEF162264E2002456CA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		74CB1BF116226534002456CA /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = /Library/Frameworks/SDL.framework; sourceTree = "<absolute>"; };
-		74CB1BFB1622B4F1002456CA /* screen_constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = screen_constants.h; sourceTree = "<group>"; };
-		74CB1BFC1622B7D9002456CA /* SDL_Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_Functions.h; sourceTree = "<group>"; };
-		74CB1BFD1622B7EB002456CA /* SDL_Functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SDL_Functions.cpp; sourceTree = "<group>"; };
 		74CB1C011622BD52002456CA /* hello.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = hello.bmp; sourceTree = "<group>"; };
 		74CB1C021622CB36002456CA /* SDL_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_image.framework; path = /Library/Frameworks/SDL_image.framework; sourceTree = "<absolute>"; };
 		74CB1C041622CD36002456CA /* SDL_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_ttf.framework; path = /Library/Frameworks/SDL_ttf.framework; sourceTree = "<absolute>"; };
@@ -111,18 +90,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		749A521D162228F90094A87E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				74CB1C071622CD48002456CA /* SDL_mixer.framework in Frameworks */,
-				74CB1C051622CD36002456CA /* SDL_ttf.framework in Frameworks */,
-				74CB1C031622CB36002456CA /* SDL_image.framework in Frameworks */,
-				74CB1BF216226534002456CA /* SDL.framework in Frameworks */,
-				74CB1BF0162264E2002456CA /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		74CB1C0B1622EA1C002456CA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -165,7 +132,6 @@
 		747966801619546500465505 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				746BE6351622EBD800A95771 /* Client */,
 				746BE6371622EBD800A95771 /* Server */,
 			);
 			name = Products;
@@ -181,14 +147,12 @@
 				7403F97E162BDF3200A89159 /* Display.h */,
 				7403F992162BDFFD00A89159 /* IAC.h */,
 				74934C3216196A9E00640ED3 /* Readme.txt */,
-				74CB1BFB1622B4F1002456CA /* screen_constants.h */,
-				74CB1BFC1622B7D9002456CA /* SDL_Functions.h */,
-				74CB1BEB16226486002456CA /* SDLMain.h */,
 				74791995162A0C4E008E2FFB /* ServerSocket.h */,
 				7403F98A162BDF8A00A89159 /* Widgets.h */,
 				7403F980162BDF3B00A89159 /* Window.h */,
 				7403F994162BF5A100A89159 /* UnicodeConstants.h */,
 				7403F995162C432900A89159 /* AnsiConstants.h */,
+				749F3E48162D300900DA61C3 /* Keyboard.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -214,14 +178,12 @@
 				7403F98C162BDFAB00A89159 /* AnsiTerm.cpp */,
 				7403F981162BDF5500A89159 /* Display.cpp */,
 				7403F98F162BDFF400A89159 /* IAC.cpp */,
-				749A522B162229510094A87E /* Main_Client.cpp */,
 				74CB1C3C1622EB32002456CA /* Main_Server.cpp */,
 				74934C3316196AAE00640ED3 /* Readme.txt */,
-				74CB1BFD1622B7EB002456CA /* SDL_Functions.cpp */,
-				74CB1BED16226492002456CA /* SDLMain.m */,
 				74791996162A0C60008E2FFB /* ServerSocket.cpp */,
 				7403F987162BDF7A00A89159 /* Widgets.cpp */,
 				7403F984162BDF6700A89159 /* Window.cpp */,
+				749F3E4A162D301A00DA61C3 /* Keyboard.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -365,23 +327,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		749A521F162228F90094A87E /* Client */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 749A5227162228F90094A87E /* Build configuration list for PBXNativeTarget "Client" */;
-			buildPhases = (
-				749A521C162228F90094A87E /* Sources */,
-				749A521D162228F90094A87E /* Frameworks */,
-				749A521E162228F90094A87E /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Client;
-			productName = Server;
-			productReference = 746BE6351622EBD800A95771 /* Client */;
-			productType = "com.apple.product-type.tool";
-		};
 		74CB1C0D1622EA1C002456CA /* Server */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 74CB1C151622EA1C002456CA /* Build configuration list for PBXNativeTarget "Server" */;
@@ -421,22 +366,11 @@
 			projectRoot = "";
 			targets = (
 				74CB1C0D1622EA1C002456CA /* Server */,
-				749A521F162228F90094A87E /* Client */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		749A521C162228F90094A87E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				749A522C162229510094A87E /* Main_Client.cpp in Sources */,
-				74CB1BEE16226492002456CA /* SDLMain.m in Sources */,
-				74CB1BFF1622B7EB002456CA /* SDL_Functions.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		74CB1C0A1622EA1C002456CA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,6 +382,7 @@
 				7403F989162BDF7A00A89159 /* Widgets.cpp in Sources */,
 				7403F98E162BDFAB00A89159 /* AnsiTerm.cpp in Sources */,
 				7403F991162BDFF400A89159 /* IAC.cpp in Sources */,
+				749F3E4C162D301A00DA61C3 /* Keyboard.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,24 +460,6 @@
 			};
 			name = Release;
 		};
-		749A5228162228F90094A87E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		749A5229162228F90094A87E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		74CB1C161622EA1C002456CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -567,15 +484,6 @@
 			buildConfigurations = (
 				747966871619546500465505 /* Debug */,
 				747966881619546500465505 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		749A5227162228F90094A87E /* Build configuration list for PBXNativeTarget "Client" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				749A5228162228F90094A87E /* Debug */,
-				749A5229162228F90094A87E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
