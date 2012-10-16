@@ -114,40 +114,12 @@ void client_connection::kickStart()
     
     setlocale(LC_ALL, "");
         
-    const char CHAR_MODE[] = "\377\375\x22\n";
+ //   const char CHAR_MODE[] = "\377\375\x22\n";
  //   const char CLEAR_CON[] = "\x1b[2J";
  //   const char MOVE_CURS[] = "\x1b[H";
     
-    std::cout << CHAR_MODE << "testing" << std::endl;
-    std::cout << "\u2603";
-    
-    std::string topbar, bottombar, borders;
-    
-    topbar = "\u250F";
-    bottombar = "\u2517";
-    for(int x=0; x < 78; x++)
-    {
-        topbar.append("\u2501");
-        bottombar.append("\u2501");
-    }
-    topbar.append("\u2513");
-    bottombar.append("\u251B");
-
-    
     boost::asio::async_write(socket_, boost::asio::buffer(display->returnDisplay()), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-    
 
-    
-    
-    /*boost::asio::async_write(socket_, boost::asio::buffer(string(CHAR_MODE) + string(CLEAR_CON) + string(MOVE_CURS) + string("\x1b[100\n  Welcome to The ASCII Project \x1b[5m\u263A\x1b[25m \n") + topbar + string(
-                                                                 "\x1b[18H\x1b[34m  Commands Available: \n"
-                                                                 "  -------------------\n"
-                                                                 "\x1b[31m  login\n"
-                                                                 "  newaccount\n"
-                                                                 "  quit \x1b[32m \n"
-                                                                 //"\u2588\u2588\u2588\u2588"
-                                                                 "\x1b[24H\r\n")
-                                                          + bottombar + borders + string("\x1b[K\x1b[23H\u2503 $> ")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error )); */
     
 }
 
@@ -180,7 +152,7 @@ void client_connection::receive_command(const boost::system::error_code& error)
         std::istream is(line_command_);
         std::string command;
         is >> command;
-        std::cout << command;
+        //std::cout << command;
 
         boost::asio::async_read_until(socket_, *line_command_, "", boost::bind(&client_connection::handle_request_line, shared_from_this(), boost::asio::placeholders::error ));
     }
@@ -201,7 +173,7 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         
         std::istream is(line_command_);
         is >> command >> token ;
-        cout << command << endl;
+        //cout << command << endl;
         
         delete line_command_;
         line_command_ = new boost::asio::streambuf;

@@ -21,10 +21,6 @@ int main(int argc, const char * argv[])
 
     cout << "Testing Boost ASIO" << endl;
     setlocale(LC_ALL, "");
-    const char RED[] = "\x1b[31m";
-    
-    cout << RED << "testing" << endl;
-    cout << "\u2603" << endl;
     
     try
     {
