@@ -261,8 +261,30 @@ void Window::drawFrame(Frame *frm){
                 if(x == x1+1)
                     if( fLine-1 < tgt->FrameLines.size())
                         {
+                            int buffLen, distanceX, len;
                             
-                            outputLine.append(tgt->FrameLines.at(fLine-1));
+                            std::string src, out;
+                            
+                            src = tgt->FrameLines.at(fLine-1);
+                            buffLen = (int)src.length();
+                            
+                            len = x2 - x1;
+                            distanceX = Width - x1;
+                            
+                            if(distanceX < len)
+                            {
+                                int diff;
+                                
+                                diff = len - distanceX;
+                                
+                                if(buffLen > diff)
+                                {
+                                   src.resize(buffLen); 
+                                }
+                            }
+                                                                                      
+                            
+                            outputLine.append(src);
                             
                         }
                 
@@ -335,7 +357,8 @@ void Frame::move(int x, int y, bool clear){
     Y2 += y; 
     
     if(clear)
-        fill(" ");
+        ;
+        //    fill(" ");
 }
 
 
