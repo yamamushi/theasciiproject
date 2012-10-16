@@ -77,12 +77,7 @@
 		749F3E48162D300900DA61C3 /* Keyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Keyboard.h; sourceTree = "<group>"; };
 		749F3E4A162D301A00DA61C3 /* Keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Keyboard.cpp; sourceTree = "<group>"; };
 		74B16A75162760BB00884AD2 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
-		74CB1BEF162264E2002456CA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		74CB1BF116226534002456CA /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = /Library/Frameworks/SDL.framework; sourceTree = "<absolute>"; };
 		74CB1C011622BD52002456CA /* hello.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = hello.bmp; sourceTree = "<group>"; };
-		74CB1C021622CB36002456CA /* SDL_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_image.framework; path = /Library/Frameworks/SDL_image.framework; sourceTree = "<absolute>"; };
-		74CB1C041622CD36002456CA /* SDL_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_ttf.framework; path = /Library/Frameworks/SDL_ttf.framework; sourceTree = "<absolute>"; };
-		74CB1C061622CD48002456CA /* SDL_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_mixer.framework; path = /Library/Frameworks/SDL_mixer.framework; sourceTree = "<absolute>"; };
 		74CB1C081622D99E002456CA /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
 		74CB1C3C1622EB32002456CA /* Main_Server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main_Server.cpp; sourceTree = "<group>"; };
 		74FD5BE716250DAE005B8789 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
@@ -141,18 +136,18 @@
 		74934C0516195A6C00640ED3 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				7403F995162C432900A89159 /* AnsiConstants.h */,
 				7403F98B162BDF9E00A89159 /* AnsiTerm.h */,
 				74791991162A0AE0008E2FFB /* BoostLibs.h */,
 				74791999162A0E6E008E2FFB /* Constants.h */,
 				7403F97E162BDF3200A89159 /* Display.h */,
 				7403F992162BDFFD00A89159 /* IAC.h */,
+				749F3E48162D300900DA61C3 /* Keyboard.h */,
 				74934C3216196A9E00640ED3 /* Readme.txt */,
 				74791995162A0C4E008E2FFB /* ServerSocket.h */,
+				7403F994162BF5A100A89159 /* UnicodeConstants.h */,
 				7403F98A162BDF8A00A89159 /* Widgets.h */,
 				7403F980162BDF3B00A89159 /* Window.h */,
-				7403F994162BF5A100A89159 /* UnicodeConstants.h */,
-				7403F995162C432900A89159 /* AnsiConstants.h */,
-				749F3E48162D300900DA61C3 /* Keyboard.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -161,11 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				74791993162A0B49008E2FFB /* The_ASCII_Project.1 */,
-				74CB1C061622CD48002456CA /* SDL_mixer.framework */,
-				74CB1C041622CD36002456CA /* SDL_ttf.framework */,
-				74CB1C021622CB36002456CA /* SDL_image.framework */,
-				74CB1BF116226534002456CA /* SDL.framework */,
-				74CB1BEF162264E2002456CA /* Cocoa.framework */,
 				747966801619546500465505 /* Products */,
 				74934C3016196A6B00640ED3 /* Readme.txt */,
 			);
@@ -178,12 +168,12 @@
 				7403F98C162BDFAB00A89159 /* AnsiTerm.cpp */,
 				7403F981162BDF5500A89159 /* Display.cpp */,
 				7403F98F162BDFF400A89159 /* IAC.cpp */,
+				749F3E4A162D301A00DA61C3 /* Keyboard.cpp */,
 				74CB1C3C1622EB32002456CA /* Main_Server.cpp */,
 				74934C3316196AAE00640ED3 /* Readme.txt */,
 				74791996162A0C60008E2FFB /* ServerSocket.cpp */,
 				7403F987162BDF7A00A89159 /* Widgets.cpp */,
 				7403F984162BDF6700A89159 /* Window.cpp */,
-				749F3E4A162D301A00DA61C3 /* Keyboard.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
