@@ -44,6 +44,7 @@
 #include <sstream>
 
 #include "ServerSocket.h"
+#include "Keyboard.h"
 
 
 using std::vector;
@@ -100,6 +101,7 @@ void client_connection::start()
     socket_.set_option(tcp::no_delay(true));
     
     display = new Display(80,24);
+    keyboard = new Keyboard(display);
     
     kickStart();
 }
@@ -154,6 +156,7 @@ void client_connection::receive_command(const boost::system::error_code& error)
         is >> command;
         //std::cout << command;
 
+        
         boost::asio::async_read_until(socket_, *line_command_, "", boost::bind(&client_connection::handle_request_line, shared_from_this(), boost::asio::placeholders::error ));
     }
     else
@@ -173,10 +176,14 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         
         std::istream is(line_command_);
         is >> command >> token ;
-        //cout << command << endl;
+        cout << command << endl;
+        
+        std::vector<char> cmd(128);
         
         delete line_command_;
         line_command_ = new boost::asio::streambuf;
+        
+        keyboard->parseKey(command);
         
         if( command == "q")
         {
@@ -221,12 +228,10 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             
             boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[2H\u2503\x1b[5m " + time + "\x1b[25m\x1b[23H\x1b[K\u2503$> \x1b[23;80H\u2503\x1b[23;5H")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
-        else if( command == "" )
-        {
-            boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[23H\x1b[K\u2503$> \x1b[23;80H\u2503\x1b[23;5H")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-        }
         else
         {
+         //   socket_.async_read_some(boost::asio::buffer(cmd, 1), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            
             boost::asio::async_write(socket_, boost::asio::buffer(string("\x1b[23H\x1b[K\u2503$> \x1b[23;80H\u2503\x1b[23;5H")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         

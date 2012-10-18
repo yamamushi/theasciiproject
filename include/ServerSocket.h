@@ -44,6 +44,7 @@
 #include "Constants.h"
 #include "UnicodeConstants.h"
 #include "Display.h"
+#include "Keyboard.h"
 
 
 
@@ -98,6 +99,7 @@ private:
     std::vector<char *> *mapBuf;
     
     Display *display;
+    Keyboard *keyboard;
     
    
     tcp::socket socket_;
