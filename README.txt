@@ -1,5 +1,4 @@
-
-The ASCII Project - 0.0.0o
+The ASCII Project - 0.0.1
 ===============================
 http://www.theasciiproject.com
 IRC = freenode.net ##asciimmo
@@ -7,6 +6,15 @@ Yamamushi - yamamushi@gmail.com
 
 
 The overall aim of "The ASCII Project" is to develop a Unicode graphics based "Roguelike" MMORPG engine which operates a persistent world driven by a player-run economy.
+
+
+News
+=====
+
+11/12/12 
+	
+	We've moved on up to 0.0.1, as I'm now about to pull in major revisions from bits of code I've been experimenting with 
+lately. This code does compile, but I intend on getting back into a code frenzy, so don't tie yourself to anything yet.
 
 
 
@@ -23,7 +31,8 @@ GOALS
 
 	* The above mentioned relationships will continue to develop amongst NPC's without any player input.
     
-    * All C++ source code will remain 100% C++11 compliant, including 3rd party libraries. If changes are necessary to those libraries to remain standards compliant, they will be made where possible. Otherwise we will defer to another library or write our own if necessary.
+    	* All C++ source code will remain 100% C++11 compliant, including 3rd party libraries. If changes are necessary to 
+those libraries to remain standards compliant, they will be made where possible. Otherwise we will defer to another library or write our own if necessary.
 
 	* TBA - I would rather be coding that writing up this readme file, please refer to the homepage at http://www.theasciiproject.com and the wiki at http://www.theasciiproject.com/wk/ for more information.
 
