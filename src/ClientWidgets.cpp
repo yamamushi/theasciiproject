@@ -268,7 +268,7 @@ void ScrollBox::render()
         
         if(textBuffer->size() > h - 2)  // we ignore the top and the bottom positions.
         {
-            for(int i=1; i < h - 1; i++)     // The "-3" is to account for i+1+y potentially overflowwing.
+            for(int i=1; i < h - 2; i++)     // The "-3" is to account for i+1+y potentially overflowwing.
             {                              // We start at i=1 ot account for the vector at position 0
                 
                 std::string tmpString;
@@ -281,10 +281,11 @@ void ScrollBox::render()
                     break;
                 }
                 
-                
+
                 tmpString.insert(0, "%c");
-                tmpString.erase(tmpString.end());
+                //tmpString.erase(tmpString.end());
                 tmpString.insert(tmpString.length(), "%c");
+
                 
                 console->print(x+1, h-1-i, (const char*)&tmpString[0], TCOD_COLCTRL_2, TCOD_COLCTRL_STOP);
                 

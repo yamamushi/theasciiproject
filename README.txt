@@ -1,4 +1,4 @@
-The ASCII Project - 0.0.1
+The ASCII Project - 0.0.1a
 ===============================
 http://www.theasciiproject.com
 IRC = freenode.net ##asciimmo

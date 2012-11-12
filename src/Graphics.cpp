@@ -356,7 +356,7 @@ void GraphicsTCOD::drawMainInterface()
         
         TCODSystem::checkForEvent(TCOD_EVENT_KEY_PRESS|TCOD_EVENT_MOUSE,&key,&mouse);
         Widget::updateWidgets(key,mouse);
-        
+
         if(!popupOpen)
         {
             if(textInput)
@@ -640,12 +640,14 @@ void GraphicsTCOD::drawMainInterface()
                     
                     if(cnet->Connect())
                     {
+
                         chatBox->insertText("Connected Successfully");
                         chatBox->insertText(" ");
                         cnet->getLoginScreen();
                         chatBox->insertText(" ");
                         chatBox->insertText(" ");
                         connected = true;
+
                     }
                     else
                     {
@@ -698,15 +700,16 @@ void GraphicsTCOD::drawMainInterface()
             inputText->setColors(TCODColor(0,255,0), TCODColor(0,0,0), 1.0f);
             
             textInput = false;
-            
+
         }
         else if(key.vk == TCODK_ENTER && textInput == false)
         {
             textInput = true;
         }
+
+        mapOutput->clear();
         
-        //mapOutput->clear();
-        
+
         if(connected && loggedIn && !commandMode)
         {
             mapOutput->setDefaultForeground(TCODColor(255,255,255));
@@ -717,13 +720,17 @@ void GraphicsTCOD::drawMainInterface()
             mapOutput->setDefaultForeground(TCODColor(255,255,255));
             mapOutput->printEx(mapOutput->getWidth()/2, mapOutput->getHeight()-1, TCOD_BKGND_NONE, TCOD_CENTER, "Select Mode", TCODColor(255,255,255));
         }
+
+
         
-        //requestMap();
+        requestMap();
         
        // if(!unpacking)
        //     drawAll();
-        
+
+
         drawAll();
+
         
         TCODConsole::blit(mapOutput, 0, 0, 0, 0, output, 0, 2);
         inputText->render(serverConsole);
@@ -733,12 +740,12 @@ void GraphicsTCOD::drawMainInterface()
         fixBottom();
         
         
-        
+
         TCODConsole::blit(serverConsole,0,0,0,0,output,MAIN_WIDTH/2,32, 1.0f, 1.0f);
         TCODConsole::blit(textOutputConsole,0,0,0,0,output,0,32, 1.0f, 1.0f);
         render();
         //mapOutput->clear();
-        
+
         
         /* if((key.c == 'a' || key.c == 's' || key.c == 'w' || key.c == 'd') && connected && loggedIn && !textInput)
          {
@@ -761,7 +768,7 @@ void GraphicsTCOD::requestMap()
 {
     
     
-    while(true)
+  //   while(true)
     {
         if(connected && loggedIn)
         {
