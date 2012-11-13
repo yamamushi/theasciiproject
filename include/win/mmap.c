@@ -1,5 +1,6 @@
 #include <stdlib.h>
-#include <windows.h>
+// I honestly don't remember what this is for..
+//#include <windows.h>
 #ifdef _WIN32
 #include <io.h>
 #endif
@@ -53,7 +54,7 @@ void *mmap(void *addr, unsigned int len, int prot, int flags, int fd, unsigned i
 		wprot = PAGE_EXECUTE_READWRITE;
 		break;
 	}
-	
+
 	/* Obtaing handle to map region */
 	h = CreateFileMapping((HANDLE) _get_osfhandle(fd), 0, wprot, 0, len, 0);
 	if (h == NULL) {
@@ -75,7 +76,7 @@ void *mmap(void *addr, unsigned int len, int prot, int flags, int fd, unsigned i
 		}
 		return MAP_FAILED;
 	}
-			
+
 
 	/* Translate sharing options into WIN32 constants */
 	switch (wprot) {
@@ -108,7 +109,7 @@ void *mmap(void *addr, unsigned int len, int prot, int flags, int fd, unsigned i
 		CloseHandle(h);
 		return MAP_FAILED;
 	}
-	
+
 	/* All fine */
 	return region;
 }
@@ -118,12 +119,12 @@ void *mmap(void *addr, unsigned int len, int prot, int flags, int fd, unsigned i
  * @brief Unmap a memory region
  *
  * This is a wrapper around UnmapViewOfFile in the win32 API
- * 
+ *
  * @param addr start address
  * @param len length of the region
  * @return 0 for success, -1 for error
  */
-int munmap(void *addr, int len) 
+int munmap(void *addr, int len)
 {
 	if (UnmapViewOfFile(addr)) {
 		return 0;
@@ -145,11 +146,11 @@ int munmap(void *addr, int len)
  * @param flags sync options -- currently ignored
  * @return 0 for success, -1 for error
  */
-int msync(char *addr, int len, int flags) 
+int msync(char *addr, int len, int flags)
 {
 	if (FlushViewOfFile(addr, len) == 0) {
 		DWORD error = GetLastError();
-		
+
 		/* Try and translate some error codes */
 		switch (error) {
 		case ERROR_INVALID_PARAMETER:

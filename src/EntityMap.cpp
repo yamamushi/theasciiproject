@@ -40,7 +40,7 @@
 
 #include <iostream>
 
-#include "libtcod.hpp"
+#include "libtcod/libtcod.hpp"
 
 #include "EntityMap.h"
 #include "TileMap.h"
@@ -79,40 +79,40 @@ using std::endl;
 
 
 EntityMap::EntityMap(int x, int y, TileMap *map){
-    
+
 	initEntityMap(x, y, map);
-    
+
 }
 
 void EntityMap::initEntityMap(int x, int y, TileMap *map){
-    
+
 	width = x;
 	height = y;
-    
+
     contextMap = map;
-    
+
     fovLib = new FovLib(map);
-    
-    
+
+
     rMap = new RenderMap(contextMap);
     rMap->initEntMap(this);
-    
+
     deleting = false;
-    
-    
+
+
 }
 
 
 
 void EntityMap::initWorldMap(WorldMap *WMap, int x, int y, int z)
 {
-    
+
     wMap = WMap;
     wX = x;
     wY = y;
     wZ = z;
-    
-    
+
+
     refreshLightMap();
     refreshRenderMap();
 }
@@ -122,45 +122,45 @@ void EntityMap::initWorldMap(WorldMap *WMap, int x, int y, int z)
 
 
 void EntityMap::addToMap(Entity *entity){
-    
+
     refreshLightMap();
     refreshRenderMap();
-    
-    
+
+
 	Entity *src = entity;
 	int x, y;
-    
+
 	x = src->posX();
 	y = src->posY();
 	pos[x][y].push_back(src);
     src->init_in_world(fovLib);
     src->setEntityMap(this);
-    
+
     src->associateClient(rMap);
     src->move(width/2, height/2);
-    
-    
+
+
 }
 
 
 
 void EntityMap::addToMapAt(Entity *entity, int x, int y){
-    
+
     refreshLightMap();
     refreshRenderMap();
-    
-    
+
+
 	Entity *src = entity;
     src->setPos(x, y);
-	
+
 	pos[x][y].push_back(src);
     src->init_in_world(fovLib);
     src->setEntityMap(this);
-    
+
     src->associateClient(rMap);
     src->move(0,0);
-    
-    
+
+
 }
 
 
@@ -172,10 +172,10 @@ void EntityMap::placeInRandomRoom(Entity *ent)
 {
     TCODRandom *rng = new TCODRandom();
     int room = rng->getInt( 1, MAX_ROOMS-1);  //derp.
-    
+
     ent->move(contextMap->rooms[room]->cX, contextMap->rooms[room]->cY);
     delete rng;
-    
+
 }
 
 
@@ -183,13 +183,13 @@ void EntityMap::placeInRandomRoom(Entity *ent)
 
 void EntityMap::removeFromEntMap(Entity *ent)
 {
-    
+
     deleting = true;
-    
+
 	int x, y, z;
-    
+
     std::string srcName = ent->getEntName();
-    
+
 	for ( x = 0; x < width; x++){
 		for ( y = 0; y < height; y++){
 			if (!(pos[x][y].empty())){
@@ -197,7 +197,7 @@ void EntityMap::removeFromEntMap(Entity *ent)
                     if(pos[x][y].at(z)->getEntName() == srcName)
                     {
                         pos[x][y].erase(pos[x][y].begin()+z);
-                        
+
                         //cout << "erased at " << x << " " <<  y << " " <<  z << endl;
                         break;
                     }
@@ -205,20 +205,20 @@ void EntityMap::removeFromEntMap(Entity *ent)
 			}
 		}
 	}
-    
+
     deleting = false;
-    
+
     refreshLightMap();
     refreshRenderMap();
-    
+
 }
 
 
 void EntityMap::initAllEnts(){
-    
-    
+
+
 	int x, y, z;
-    
+
     if (!deleting)
     {
         for ( x = 0; x < width; x++){
@@ -227,7 +227,7 @@ void EntityMap::initAllEnts(){
                     for ( z = 0; z < pos[x][y].size(); z++){
                         pos[x][y].at(z)->init_in_world(fovLib);
                         pos[x][y].at(z)->setEntityMap(this);
-                        
+
                         if(deleting)
                             break;
                     }
@@ -235,21 +235,21 @@ void EntityMap::initAllEnts(){
             }
         }
     }
-    
+
     refreshLightMap();
     refreshRenderMap();
 }
 
 void EntityMap::refreshEntityMap(){
-    
+
     refreshRenderMap();
-    
+
     int x, y, z;
-    
+
     if (!deleting)
     {
-        
-        
+
+
         for ( x = 0; x < width; x++){
             for ( y = 0; y < height; y++){
                 if( !(pos[x][y].empty()) ){
@@ -257,38 +257,38 @@ void EntityMap::refreshEntityMap(){
                         // check each entity in this vector
                         // move entity to new vector
                         // coordinates at x and y
-                        
+
                         // First we check to see if this entities
                         // coordinates differ from our own:
                         Entity *cur = pos[x][y].back();
-                        
+
                         if ( (x != (cur->posX())) || (y != (cur->posY())) ){
                             // now we do some magic
                             int newX = cur->posX();
                             int newY = cur->posY();
-                            
+
                             pos[newX][newY].push_back(cur);
                             pos[x][y].pop_back();
-                            
+
                             if(deleting)
                                 break;
-                            
+
                         }
                     }
                 }
             }
         }
     }
-    
-    
-    
+
+
+
 }
 
 
 void EntityMap::refreshRenderMap()
 {
     refreshTileMap();
-    
+
     //if(wZ > wMap->cZ)
     //{
     for(int x = 0; x < MAP_WIDTH; x++)
@@ -297,52 +297,52 @@ void EntityMap::refreshRenderMap()
         {
             if(wMap->getEntityZ(this, -1) != nullptr)
             {
-                
+
                 if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 1 && contextMap->virtMap[x][y]->getTypeID() == 3)
                 {
-                    
+
                     contextMap->floorTile(x, y);;
-                    
+
                 }
                 else if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() != 3 && contextMap->virtMap[x][y]->getTypeID() == 3)
                 {
                     contextMap->virtMap[x][y]->setHSV(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->HD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->HD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->HD);
                     contextMap->virtMap[x][y]->setHSV(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->HD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->SD, wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->VD, true);
-                    
+
                     if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 4)
                         contextMap->virtMap[x][y]->setSymbol((wchar_t*)L"\u25BC");
                     else
                         contextMap->virtMap[x][y]->setSymbol(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getSymbol());
-                    
+
                 }
                 else if(wMap->getEntityZ(this, -1)->contextMap->virtMap[x][y]->getTypeID() == 3 && contextMap->virtMap[x][y]->getTypeID() == 3)
                 {
-                    
+
                     contextMap->airTile(x, y);
-                    
+
                 }
-                
+
             }
-            
+
         }
     }
-    
+
     //}
-    
+
     rMap->refreshMap();
 }
 
 void EntityMap::refreshLightMap()
 {
-    
+
     for(int x=0; x < MAP_WIDTH; x++)
     {
         for(int y=0; y < MAP_HEIGHT; y++)
         {
-            contextMap->virtMap[x][y]->isLit = false;   
+            contextMap->virtMap[x][y]->isLit = false;
         }
     }
-    
+
     if(wMap->getEntityZ(this, 1) != nullptr)
     {
         for(int x = 0; x < MAP_WIDTH; x++)
@@ -352,11 +352,11 @@ void EntityMap::refreshLightMap()
                 //contextMap->virtMap[x][y]->isLit = false;
                 if(wMap->getEntityZ(this, 1)->contextMap->virtMap[x][y]->getTypeID() == 3 )//&& contextMap->virtMap[x][y]->getTypeID() != 3)
                 {
-                    
+
                     bool uncovered = true;
                     bool finished = false;
                     int countZ = 1;
-                    
+
                     while(!finished)
                     {
                         if(wMap->getEntityZ(this, countZ) != nullptr)
@@ -370,40 +370,40 @@ void EntityMap::refreshLightMap()
                                 uncovered = false;
                                 finished = true;
                             }
-                            
+
                         }
                         else
                         {
                             uncovered = true;
                             finished = true;
-                            
+
                         }
                         countZ++;
                     }
-                    
+
                     if(uncovered)
                     {
-                        
+
                         int lightSpread;
-                        
+
                         lightSpread =  (wZ-(wMap->cZ-2));   //(int)floor(log(wZ/(wMap->wZ))/(log(2)));
-                        
+
                         if(lightSpread > 0)
                         {
                             fovLib->refreshFov(this, x, y, lightSpread);
-                            
+
                         }
                     }
-                    
+
                 }
-                
+
             }
-            
+
         }
-        
+
     }
     rMap->refreshMap();
-    
+
 }
 
 
@@ -417,8 +417,8 @@ void EntityMap::refreshTileMap()
 
 bool EntityMap::checkOccupied(int x, int y)
 {
-    
-    
+
+
 	if ( !(pos[x][y].empty()) )
     {
 		return true;
@@ -429,7 +429,7 @@ bool EntityMap::checkOccupied(int x, int y)
 
 Entity * EntityMap::outputLastEntity(int x, int y)
 {
-    
+
 	if( !(pos[x][y].empty())  && !deleting )
     {
         Entity *current = pos[x][y].back();
@@ -441,8 +441,8 @@ Entity * EntityMap::outputLastEntity(int x, int y)
 
 void EntityMap::refreshFovFor(Entity *tgt)
 {
-    
+
     fovLib->refreshFov(tgt, 7);
-    
+
 }
 

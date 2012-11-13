@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="theasciiproject" />
+		<Option makefile="/home/yamamushi/theasciiproject/Makefile" />
+		<Option execution_dir="/home/yamamushi/theasciiproject/bin/" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="build/;" />
+		<Build>
+			<Target title="client">
+				<Option output="client" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="/home/yamamushi/theasciiproject/bin/" />
+				<Option object_output="/home/yamamushi/theasciiproject/build/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add directory="/home/yamamushi/theasciiproject/include/" />
+				</Compiler>
+				<Linker>
+					<Add directory="/home/yamamushi/theasciiproject/include/libtcod" />
+					<Add directory="/home/yamamushi/theasciiproject/include/libtcod/gui" />
+				</Linker>
+			</Target>
+			<Target title="server">
+				<Option output="server" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="/home/yamamushi/theasciiproject/bin/" />
+				<Option object_output="/home/yamamushi/theasciiproject/build/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Linker>
+					<Add option="-lstdc++ -lpthread -ltcodgui -ltcod -ltcodxx -lboost_system -lboost_thread -lpqxx -lpq -lboost_program_options -lboost_filesystem -lboost_serialization -lboost_regex" />
+					<Add directory="/home/yamamushi/theasciiproject/include/libtcod" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-std=c++11" />
+			<Add option="-Wswitch" />
+			<Add directory="/home/yamamushi/theasciiproject/include/" />
+		</Compiler>
+		<Linker>
+			<Add option="-lstdc++ -lpthread -ltcodgui -ltcod -ltcodxx -lboost_system -lboost_thread -lpqxx -lpq -lboost_program_options -lboost_filesystem -lboost_serialization -lboost_regex" />
+			<Add directory="/home/yamamushi/theasciiproject/include/" />
+			<Add directory="/home/yamamushi/theasciiproject/include/libtcod" />
+		</Linker>
+		<Unit filename="Makefile" />
+		<Unit filename="include/BoostLibs.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/ClientMap.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/ClientSocket.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/ClientWidgets.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/Collect.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/DBConnector.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/Dungeon.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/Entities.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/EntityMap.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/FovLib.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/Graphics.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/Headers.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/Keyboard.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/NetworkLib.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/Platform.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/RenderMap.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/Serialization.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/ServerSocket.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/TileMap.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/Tiles.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/WorldMap.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/constants.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/bresenham.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/bresenham.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/bsp.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/bsp.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/color.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/color.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/console.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/console.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/console_types.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/fov.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/fov.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/fov_types.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/button.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/container.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/flatlist.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/gui.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/hbox.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/image.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/label.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/radiobutton.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/slider.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/statusbar.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/textbox.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/togglebutton.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/toolbar.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/vbox.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/gui/widget.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/heightmap.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/heightmap.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/image.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/image.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/lex.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/lex.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/libtcod.h">
+			<Option target="client" />
+		</Unit>
+		<Unit filename="include/libtcod/libtcod.hpp">
+			<Option target="client" />
+		</Unit>
+		<Unit filename="include/libtcod/libtcod_int.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/list.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/list.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/mersenne.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/mersenne.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/mersenne_types.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/mouse.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/mouse.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/mouse_types.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/namegen.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/namegen.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/noise.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/noise.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/noise_defaults.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/parser.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/parser.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/path.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/path.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/sys.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/sys.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/tree.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/tree.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/txtfield.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/txtfield.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/wrappers.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/zip.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/libtcod/zip.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/tpl.h" />
+		<Unit filename="include/ui_input.hpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="include/win/mman.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="src/ClientMap.cpp" />
+		<Unit filename="src/ClientSocket.cpp">
+			<Option target="client" />
+		</Unit>
+		<Unit filename="src/ClientWidgets.cpp">
+			<Option target="client" />
+		</Unit>
+		<Unit filename="src/Collect.cpp">
+			<Option target="server" />
+		</Unit>
+		<Unit filename="src/DBConnector.cpp">
+			<Option target="server" />
+		</Unit>
+		<Unit filename="src/Dungeon.cpp">
+			<Option target="server" />
+		</Unit>
+		<Unit filename="src/Entities.cpp">
+			<Option target="server" />
+		</Unit>
+		<Unit filename="src/EntityMap.cpp">
+			<Option target="server" />
+		</Unit>
+		<Unit filename="src/FovLib.cpp">
+			<Option target="server" />
+		</Unit>
+		<Unit filename="src/Graphics.cpp">
+			<Option target="client" />
+		</Unit>
+		<Unit filename="src/Keyboard.cpp">
+			<Option target="client" />
+		</Unit>
+		<Unit filename="src/Main_Client.cpp">
+			<Option target="client" />
+		</Unit>
+		<Unit filename="src/Main_Server.cpp">
+			<Option target="server" />
+		</Unit>
+		<Unit filename="src/NetworkLib.cpp" />
+		<Unit filename="src/Platform.cpp">
+			<Option target="client" />
+		</Unit>
+		<Unit filename="src/RenderMap.cpp">
+			<Option target="server" />
+		</Unit>
+		<Unit filename="src/Serialization.cpp" />
+		<Unit filename="src/ServerSocket.cpp">
+			<Option target="server" />
+		</Unit>
+		<Unit filename="src/TileMap.cpp">
+			<Option target="server" />
+		</Unit>
+		<Unit filename="src/Tiles.cpp">
+			<Option target="server" />
+		</Unit>
+		<Unit filename="src/WorldMap.cpp">
+			<Option target="server" />
+		</Unit>
+		<Unit filename="src/tpl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ui_input.cpp">
+			<Option target="client" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<lib_finder disable_auto="1" />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
