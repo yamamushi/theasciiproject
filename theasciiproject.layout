@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="server" />
+	<File name="include/ClientMap.h" open="0" top="0" tabpos="0">
+		<Cursor position="0" topLine="60" />
+	</File>
+	<File name="include/libtcod/gui/gui.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="53" topLine="0" />
+	</File>
+	<File name="include/libtcod/libtcod.h" open="1" top="0" tabpos="6">
+		<Cursor position="4195" topLine="117" />
+	</File>
+	<File name="include/tpl.h" open="0" top="0" tabpos="0">
+		<Cursor position="1166" topLine="0" />
+	</File>
+	<File name="src/ClientMap.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="1433" topLine="29" />
+	</File>
+	<File name="src/Collect.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="1549" topLine="38" />
+	</File>
+	<File name="src/Dungeon.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1277" topLine="23" />
+	</File>
+	<File name="src/EntityMap.cpp" open="1" top="1" tabpos="7">
+		<Cursor position="1523" topLine="71" />
+	</File>
+	<File name="src/FovLib.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="1317" topLine="22" />
+	</File>
+	<File name="src/Keyboard.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1742" topLine="51" />
+	</File>
+	<File name="src/Main_Server.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1610" topLine="43" />
+	</File>
+	<File name="src/Serialization.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1421" topLine="27" />
+	</File>
+	<File name="src/ServerSocket.cpp" open="1" top="0" tabpos="10">
+		<Cursor position="6822" topLine="238" />
+	</File>
+	<File name="src/tpl.c" open="1" top="0" tabpos="2">
+		<Cursor position="2147" topLine="46" />
+	</File>
+</CodeBlocks_layout_file>
