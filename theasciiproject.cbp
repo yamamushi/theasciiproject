@@ -80,6 +80,7 @@
 		<Unit filename="include/EntityMap.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="include/FileUtil.h" />
 		<Unit filename="include/FovLib.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -334,6 +335,7 @@
 		<Unit filename="src/EntityMap.cpp">
 			<Option target="server" />
 		</Unit>
+		<Unit filename="src/FileUtil.cpp" />
 		<Unit filename="src/FovLib.cpp">
 			<Option target="server" />
 		</Unit>
