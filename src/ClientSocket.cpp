@@ -93,6 +93,7 @@ bool ClientSession::Connect()
     {
         socket_.set_option(boost::asio::socket_base::reuse_address(true));
         socket_.set_option(boost::asio::socket_base::keep_alive(true));
+        socket_.set_option(tcp::no_delay(true));
         return true;
     }
     

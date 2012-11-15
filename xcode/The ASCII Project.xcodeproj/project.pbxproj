@@ -252,7 +252,6 @@
 		7444889215BF04EF006595CE /* libtcod-mingw.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libtcod-mingw.dll"; sourceTree = "<group>"; };
 		7444889315BF04EF006595CE /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		7444889415BF04EF006595CE /* SDL.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = SDL.dll; sourceTree = "<group>"; };
-		7444889915BF04EF006595CE /* The ASCII Project.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "The ASCII Project.xcodeproj"; sourceTree = "<group>"; };
 		744488CB15BF0B84006595CE /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL.framework; sourceTree = "<group>"; };
 		7445A26915DAAD8F00EBBF9B /* ui_input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ui_input.cpp; sourceTree = "<group>"; };
 		7445A26C15DAAD9E00EBBF9B /* ui_input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ui_input.hpp; sourceTree = "<group>"; };
@@ -649,16 +648,10 @@
 			children = (
 				743612DE15BFA75800CC2BCA /* client */,
 				744487D615BF047E006595CE /* server */,
-				7444889915BF04EF006595CE /* The ASCII Project.xcodeproj */,
 			);
 			name = xcode;
 			path = /Users/yamamushi/TheASCIIProject/xcode;
 			sourceTree = "<absolute>";
-		};
-		7444889A15BF04EF006595CE /* Products */ = {
-			isa = PBXGroup;
-			name = Products;
-			sourceTree = "<group>";
 		};
 		7457E69F15BFA2BB00FA7D26 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -745,12 +738,6 @@
 			mainGroup = 744487C615BF0464006595CE;
 			productRefGroup = 744487D415BF047E006595CE /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 7444889A15BF04EF006595CE /* Products */;
-					ProjectRef = 7444889915BF04EF006595CE /* The ASCII Project.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				744487D215BF047E006595CE /* server */,
