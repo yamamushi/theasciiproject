@@ -36,7 +36,7 @@
  * =====================================================================================
  */
 
-#include "libtcod/libtcod.hpp"
+#include "libtcod.hpp"
 
 #include "constants.h"
 

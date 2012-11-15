@@ -40,7 +40,7 @@
 
 #include <iostream>
 
-#include "libtcod/libtcod.hpp"
+#include "libtcod.hpp"
 
 #include "EntityMap.h"
 #include "TileMap.h"
