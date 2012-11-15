@@ -40,6 +40,10 @@
 		7445A26A15DAAD8F00EBBF9B /* ui_input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7445A26915DAAD8F00EBBF9B /* ui_input.cpp */; };
 		74502C00165482CA00528839 /* Main_Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74502BFF165482CA00528839 /* Main_Server.cpp */; };
 		74502C101654843A00528839 /* font.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487FC15BF04EF006595CE /* font.png */; };
+		74502C121654D77500528839 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74502C111654D77500528839 /* Scene.cpp */; };
+		74502C131654D77500528839 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74502C111654D77500528839 /* Scene.cpp */; };
+		74502C161654D78A00528839 /* MapHandler.cpp in Resources */ = {isa = PBXBuildFile; fileRef = 74502C151654D78A00528839 /* MapHandler.cpp */; };
+		74502C181654D83600528839 /* MapHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74502C151654D78A00528839 /* MapHandler.cpp */; };
 		745D707F15C3BAB30000BB89 /* ClientSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888115BF04EF006595CE /* ClientSocket.cpp */; };
 		74627EBF15E6A69300B66CAB /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74627EBE15E6A69300B66CAB /* WorldMap.cpp */; };
 		7466BEF515DD893D00584BE9 /* NetworkLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888A15BF04EF006595CE /* NetworkLib.cpp */; };
@@ -256,6 +260,10 @@
 		7445A26915DAAD8F00EBBF9B /* ui_input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ui_input.cpp; sourceTree = "<group>"; };
 		7445A26C15DAAD9E00EBBF9B /* ui_input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ui_input.hpp; sourceTree = "<group>"; };
 		74502BFF165482CA00528839 /* Main_Server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Main_Server.cpp; path = ../../src/Main_Server.cpp; sourceTree = "<group>"; };
+		74502C111654D77500528839 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
+		74502C141654D78000528839 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
+		74502C151654D78A00528839 /* MapHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapHandler.cpp; sourceTree = "<group>"; };
+		74502C171654D79900528839 /* MapHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapHandler.h; sourceTree = "<group>"; };
 		74627EBE15E6A69300B66CAB /* WorldMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldMap.cpp; sourceTree = "<group>"; };
 		74627EC115E6A69F00B66CAB /* WorldMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldMap.h; sourceTree = "<group>"; };
 		747D227915BFB07700CE1AC9 /* ABOUT.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = ABOUT.txt; path = /Users/yamamushi/TheASCIIProject/docs/ABOUT.txt; sourceTree = "<absolute>"; };
@@ -466,6 +474,8 @@
 				7444885815BF04EF006595CE /* tpl.h */,
 				74D863AE15D9E0100029D3F1 /* ClientWidgets.h */,
 				74627EC115E6A69F00B66CAB /* WorldMap.h */,
+				74502C141654D78000528839 /* Scene.h */,
+				74502C171654D79900528839 /* MapHandler.h */,
 			);
 			name = include;
 			path = ../include;
@@ -628,6 +638,8 @@
 				7444889015BF04EF006595CE /* tpl.c */,
 				74D863AC15D9E0010029D3F1 /* ClientWidgets.cpp */,
 				74627EBE15E6A69300B66CAB /* WorldMap.cpp */,
+				74502C111654D77500528839 /* Scene.cpp */,
+				74502C151654D78A00528839 /* MapHandler.cpp */,
 			);
 			name = src;
 			path = ../src;
@@ -755,6 +767,7 @@
 				74254F8215D7257700FDE75B /* InfoPlist.strings in Resources */,
 				749EC50315DA291C0012A646 /* MenuBackground.png in Resources */,
 				74C0D66115E898A60069B8DA /* at.jpg in Resources */,
+				74502C161654D78A00528839 /* MapHandler.cpp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,6 +788,7 @@
 				74D863AD15D9E0010029D3F1 /* ClientWidgets.cpp in Sources */,
 				7445A26A15DAAD8F00EBBF9B /* ui_input.cpp in Sources */,
 				743612FD15BFA82D00CC2BCA /* Main_Client.cpp in Sources */,
+				74502C131654D77500528839 /* Scene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,6 +811,8 @@
 				74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */,
 				742F3FA315D0920200372A7A /* DBConnector.cpp in Sources */,
 				74627EBF15E6A69300B66CAB /* WorldMap.cpp in Sources */,
+				74502C181654D83600528839 /* MapHandler.cpp in Sources */,
+				74502C121654D77500528839 /* Scene.cpp in Sources */,
 				74502C00165482CA00528839 /* Main_Server.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
