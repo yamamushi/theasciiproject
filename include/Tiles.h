@@ -38,10 +38,28 @@
  * =====================================================================================
  */
 
+#include "BoostLibs.h"
 
 
 class Tile {
 private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & symbol;
+        ar & posX;
+        ar & posY;
+        ar & blocked;
+        ar & block_sight;
+        ar & visible;
+        ar & H;
+        ar & S;
+        ar & V;
+        ar & HD;
+        ar & SD;
+        ar & VD;
+    }
     
     unsigned int TypeID, SubTypeID;
     
@@ -59,8 +77,8 @@ public:
     bool needsOrientation;
     bool isLit;
     
-    
-    
+    // this mess of an initializer ... sigh..
+    Tile(wchar_t *symbol_, int posX_, int posY_, bool blocked_, bool visible_, float H_, float S_, float V_, float HD_, float SD_, float VD_ ) : symbol(symbol_), posX(posX_), posY(posY_), blocked(blocked_), visible(visible_), H(H_), S(S_), V(V_), HD(HD_), SD(SD_), VD(VD_){};
     Tile(bool blked=true);
     void init_Tile(bool);
     virtual ~Tile() {}

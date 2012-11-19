@@ -57,6 +57,7 @@
 		74C0D66A15E973180069B8DA /* libpng.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74C0D66915E973180069B8DA /* libpng.framework */; };
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
 		74D863AD15D9E0010029D3F1 /* ClientWidgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D863AC15D9E0010029D3F1 /* ClientWidgets.cpp */; };
+		74DA3ED9165A159400A4CC13 /* InputParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74DA3ED8165A159400A4CC13 /* InputParser.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -287,6 +288,8 @@
 		74C5768015C1EC780033691A /* Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collect.h; sourceTree = "<group>"; };
 		74D863AC15D9E0010029D3F1 /* ClientWidgets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClientWidgets.cpp; sourceTree = "<group>"; };
 		74D863AE15D9E0100029D3F1 /* ClientWidgets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientWidgets.h; sourceTree = "<group>"; };
+		74DA3ED8165A159400A4CC13 /* InputParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputParser.cpp; sourceTree = "<group>"; };
+		74DA3EDB165A159E00A4CC13 /* InputParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputParser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -476,6 +479,7 @@
 				74627EC115E6A69F00B66CAB /* WorldMap.h */,
 				74502C141654D78000528839 /* Scene.h */,
 				74502C171654D79900528839 /* MapHandler.h */,
+				74DA3EDB165A159E00A4CC13 /* InputParser.h */,
 			);
 			name = include;
 			path = ../include;
@@ -640,6 +644,7 @@
 				74627EBE15E6A69300B66CAB /* WorldMap.cpp */,
 				74502C111654D77500528839 /* Scene.cpp */,
 				74502C151654D78A00528839 /* MapHandler.cpp */,
+				74DA3ED8165A159400A4CC13 /* InputParser.cpp */,
 			);
 			name = src;
 			path = ../src;
@@ -814,6 +819,7 @@
 				74502C181654D83600528839 /* MapHandler.cpp in Sources */,
 				74502C121654D77500528839 /* Scene.cpp in Sources */,
 				74502C00165482CA00528839 /* Main_Server.cpp in Sources */,
+				74DA3ED9165A159400A4CC13 /* InputParser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

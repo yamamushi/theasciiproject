@@ -38,12 +38,22 @@
  */
 
 
+#include "BoostLibs.h"
 #include "constants.h"
 #include "Tiles.h"
 
 
 class TileMap {
 private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & wid;
+        ar & hig;
+        ar & virtMap;
+    }
+    
     int x, y, z, i;
     int wid, hig;
     
@@ -56,7 +66,7 @@ public:
     
     Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];
     
-    
+    TileMap(){};
     TileMap(int, int);
     void initMap(int, int);
     
