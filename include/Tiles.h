@@ -1,4 +1,6 @@
-#pragma once
+#ifndef TILES_H_
+#define TILES_H_
+
 /*
  * =====================================================================================
  *
@@ -41,13 +43,15 @@
 #include "BoostLibs.h"
 
 
+
+
 class Tile {
 private:
     friend class boost::serialization::access;
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)
     {
-        ar & symbol;
+        ar & wSymbol;
         ar & posX;
         ar & posY;
         ar & blocked;
@@ -67,6 +71,7 @@ public:
     int posX, posY;
     float H, S, V, HD, SD, VD;
     int R, G, B, RD, GD, BD;
+    std::wstring wSymbol;
     wchar_t *symbol;
     
     bool blocked;
@@ -78,7 +83,7 @@ public:
     bool isLit;
     
     // this mess of an initializer ... sigh..
-    Tile(wchar_t *symbol_, int posX_, int posY_, bool blocked_, bool visible_, float H_, float S_, float V_, float HD_, float SD_, float VD_ ) : symbol(symbol_), posX(posX_), posY(posY_), blocked(blocked_), visible(visible_), H(H_), S(S_), V(V_), HD(HD_), SD(SD_), VD(VD_){};
+    Tile(std::wstring symbol_, int posX_, int posY_, bool blocked_, bool block_sight_, bool visible_, float H_, float S_, float V_, float HD_, float SD_, float VD_ ) : posX(posX_), posY(posY_), blocked(blocked_), block_sight(block_sight_), visible(visible_), H(H_), S(S_), V(V_), HD(HD_), SD(SD_), VD(VD_){ symbol = (wchar_t *)wSymbol.c_str();};
     Tile(bool blked=true);
     void init_Tile(bool);
     virtual ~Tile() {}
@@ -107,10 +112,20 @@ public:
 };
 
 
+
+
+
 class Wall : public Tile {
     
 private:
     wchar_t *orient[16];
+    
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & boost::serialization::base_object<Tile>(*this);
+    }
     
     
 public:
@@ -123,9 +138,16 @@ public:
 
 
 
+
 class solidEarth : public Tile {
     
 private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & boost::serialization::base_object<Tile>(*this);
+    }
        
     
 public:
@@ -138,6 +160,12 @@ public:
 
 class Floor : public Tile {
 private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & boost::serialization::base_object<Tile>(*this);
+    }
     
 public:
     Floor(bool blked=false);
@@ -150,6 +178,12 @@ public:
 class Slope : public Tile {
     
 private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & boost::serialization::base_object<Tile>(*this);
+    }
     
 public:
     Slope(bool blked=false);
@@ -159,9 +193,13 @@ public:
 
 class Air : public Tile
 {
-    
-    
 private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & boost::serialization::base_object<Tile>(*this);
+    }
     
 public:
     
@@ -210,8 +248,16 @@ public:
 };
 
 
+// sigh, someone shoot me
 
 
+#include <boost/serialization/export.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
+
+BOOST_CLASS_EXPORT_KEY(Tile);
+BOOST_CLASS_EXPORT_KEY(Floor);
 
 
+#endif
 

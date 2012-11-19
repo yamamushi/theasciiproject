@@ -47,6 +47,7 @@
 #include "ServerSocket.h"
 #include "WorldMap.h"
 #include "Collect.h"
+#include "TileMap.h"
 
 using std::vector;
 using std::string;
@@ -541,7 +542,16 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             
             boost::asio::async_write(socket_, boost::asio::buffer(string(outboundMessage + "\r\n")), boost::bind(&client_connection::handleChatInput, shared_from_this(), boost::asio::placeholders::error ));
         }
-        
+        else if(command == "dumpMap" || command == "dumpmap")
+        {
+            std::ofstream ofs("data/maps/test.dat");
+            boost::archive::binary_oarchive outarchive(ofs);
+            outarchive << player->world;
+            ofs.close();
+            
+            boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            
+        }
         else if( command == "quit")
         {
             

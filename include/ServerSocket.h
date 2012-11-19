@@ -1,3 +1,4 @@
+#pragma once
 /*
  * =====================================================================================
  *
@@ -38,6 +39,8 @@
 
 #include "BoostLibs.h"
 #include "Entities.h"
+
+
 
 
 class ClientMapPacker;

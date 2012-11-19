@@ -46,18 +46,30 @@
 class TileMap {
 private:
     friend class boost::serialization::access;
+    //Tile * vMap[MAP_WIDTH][MAP_HEIGHT];
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)
     {
         ar & wid;
         ar & hig;
-        ar & virtMap;
+        //ar & rooms;
+        //ar & numRooms;
+        //ar & halls;
+        //ar & numHalls;
+        int p, q;
+        for(p = 0; p < MAP_WIDTH; p++){
+            for(q = 0; q < MAP_HEIGHT; q++){
+                ar & virtMap[p][q];
+            }
+            
+        }
     }
     
     int x, y, z, i;
-    int wid, hig;
+    
     
 public:
+    int wid, hig;
     
     Room *rooms[MAX_ROOMS];
     int numRooms;
@@ -66,9 +78,13 @@ public:
     
     Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];
     
+    //TileMap(int Wid, int Hig) : wid(Wid), hig(Hig) { initMap(i, z);};
+    //TileMap(int i, int z) : i(MAP_WIDTH), z(MAP_HEIGHT) { initMap(i, z);};
     TileMap(){};
-    TileMap(int, int);
-    void initMap(int, int);
+    TileMap(int i, int z);
+    void initMap(int i, int z);
+    
+    virtual ~TileMap(){};
     
     void clearMap();
     void refreshMap();

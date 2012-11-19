@@ -41,13 +41,12 @@
 #include "BoostLibs.h"
 
 #include "constants.h"
+#include "EntityMap.h"
 
-
+class Tile;
 class ClientMap;
-class EntityMap;
 class FovLib;
 class RenderMap;
-class TileMap;
 class WorldMap;
 
 
@@ -82,7 +81,7 @@ private:
     bool initialized, clientActive;
     
     
-    TileMap *world;
+    
     FovLib *FOV;
     
     RenderMap *rMap;
@@ -90,6 +89,7 @@ private:
     
 public:
     
+    TileMap *world;
     EntityMap *entMap;
     ClientMap *cMap;
     
@@ -110,7 +110,7 @@ public:
         }
     }
     
-    Entity(std::string entName_, std::wstring wsymbol_, int x, int y, int h, int s, int v) : entName(entName_), wSymbol(wsymbol_), X(x), Y(y), H(h), S(s), V(v) { cMap = nullptr; symbol = (wchar_t *)wSymbol.c_str();}
+    Entity(std::string entName_, std::wstring wsymbol_, int x, int y, int h, int s, int v) : entName(entName_), wSymbol(wsymbol_), X(x), Y(y), H(h), S(s), V(v) { world = nullptr; cMap = nullptr; symbol = (wchar_t *)wSymbol.c_str();}
     Entity(wchar_t *sym){ cMap = nullptr; init_entity(sym);};
     
     

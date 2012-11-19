@@ -39,8 +39,15 @@
 
 #include <algorithm>
 
-#include "Tiles.h"
 #include "constants.h"
+
+#include <boost/serialization/export.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
+#include "Tiles.h"
+
+BOOST_CLASS_EXPORT_IMPLEMENT(Tile);
+BOOST_CLASS_EXPORT_IMPLEMENT(Floor);
 
 using std::min;
 using std::max;
@@ -60,6 +67,7 @@ void Tile::init_Tile(bool blked){
     
     
     symbol = (wchar_t *)L"\uFFF0";
+    wSymbol = symbol;
     
     TypeID = 0;
     SubTypeID = 0;

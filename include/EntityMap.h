@@ -44,11 +44,11 @@
 #include "constants.h"
 
 
+class TileMap;
 class FovLib;
 class WorldMap;
 class Entity;
 class RenderMap;
-class TileMap;
 
 
 class EntityMap {
@@ -86,6 +86,7 @@ public:
     
     EntityMap(int x, int y, TileMap *map);
     void initEntityMap(int x, int y, TileMap *map);
+    virtual ~EntityMap(){};
     
     
     void initWorldMap(WorldMap *WMap, int x, int y, int z);
