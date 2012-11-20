@@ -37,9 +37,6 @@
  * =====================================================================================
  */
 
-
-
-
 #define DEBUG_MODE true
 
 // the constant TCP_BUFSIZE_READ is the maximum size of the standard input
@@ -139,10 +136,7 @@ struct render_t {
     bool isLit;
     bool distantVisible;
     bool sendMe;
-    
     int ASCII;
-    
-    
     bool drawn;
 };
 
@@ -154,8 +148,6 @@ struct s_render_t {
     double S;
     double V;
     int drawMe;
-    
-    
 };
 
 

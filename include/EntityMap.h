@@ -41,6 +41,7 @@
 
 #include <vector>
 
+#include "BoostLibs.h"
 #include "constants.h"
 
 
@@ -54,6 +55,18 @@ class RenderMap;
 class EntityMap {
     
 private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & width;
+        ar & height;
+        ar & wX;
+        ar & wY;
+        ar & wZ;
+        ar & contextMap;
+    }
+    
     
     int width, height;
     
@@ -84,12 +97,20 @@ public:
     
     std::vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
     
+    EntityMap(TileMap *map) : contextMap(map){
+        deleting = false;
+        unpackEntMap();
+        refreshLightMap();
+        refreshRenderMap();
+    };
+    
     EntityMap(int x, int y, TileMap *map);
     void initEntityMap(int x, int y, TileMap *map);
     virtual ~EntityMap(){};
     
     
     void initWorldMap(WorldMap *WMap, int x, int y, int z);
+    void unpackEntMap();
     
     void refreshGraphicsMap();
     

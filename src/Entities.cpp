@@ -1841,9 +1841,6 @@ void Entity::init_in_world(FovLib *fovLib)
     initialized = true;
     world = fovLib->getTileMap();
     
-    
-    
-    
 }
 
 wchar_t *Entity::getSymbol()

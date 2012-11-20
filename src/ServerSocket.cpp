@@ -546,7 +546,7 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         {
             std::ofstream ofs("data/maps/test.dat");
             boost::archive::binary_oarchive outarchive(ofs);
-            outarchive << player->world;
+            outarchive << player->entMap;
             ofs.close();
             
             boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));

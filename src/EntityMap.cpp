@@ -91,14 +91,12 @@ void EntityMap::initEntityMap(int x, int y, TileMap *map){
 
     contextMap = map;
 
-    fovLib = new FovLib(map);
-
+    fovLib = new FovLib(contextMap);
 
     rMap = new RenderMap(contextMap);
     rMap->initEntMap(this);
 
     deleting = false;
-
 
 }
 
@@ -120,11 +118,18 @@ void EntityMap::initWorldMap(WorldMap *WMap, int x, int y, int z)
     
     contextMap->indexMap(x, y, z);
 
-
     refreshLightMap();
     refreshRenderMap();
 }
 
+
+void EntityMap::unpackEntMap(){
+    
+    fovLib = new FovLib(contextMap);
+    rMap = new RenderMap(contextMap);
+    rMap->initEntMap(this);
+
+}
 
 
 
