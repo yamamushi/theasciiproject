@@ -60,6 +60,17 @@ void TileMap::initMap(int i, int z){
     
 }
 
+
+void TileMap::indexMap(int x, int y, int z){
+    
+    posX = x;
+    posY = y;
+    posZ = z;
+    
+}
+
+
+
 void TileMap::clearMap(){
     
 	for (x = 0; x < MAP_WIDTH; x++){

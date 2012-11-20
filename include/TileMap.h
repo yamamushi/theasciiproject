@@ -52,10 +52,14 @@ private:
     {
         ar & wid;
         ar & hig;
-        //ar & rooms;
-        //ar & numRooms;
-        //ar & halls;
-        //ar & numHalls;
+        ar & posX;
+        ar & posY;
+        ar & posZ;
+        ar & rooms;
+        ar & numRooms;
+        ar & halls;
+        ar & numHalls;
+        
         int p, q;
         for(p = 0; p < MAP_WIDTH; p++){
             for(q = 0; q < MAP_HEIGHT; q++){
@@ -63,6 +67,7 @@ private:
             }
             
         }
+        
     }
     
     int x, y, z, i;
@@ -70,6 +75,7 @@ private:
     
 public:
     int wid, hig;
+    int posX, posY, posZ;
     
     Room *rooms[MAX_ROOMS];
     int numRooms;
@@ -77,14 +83,15 @@ public:
     int numHalls;
     
     Tile * virtMap[MAP_WIDTH][MAP_HEIGHT];
+
     
-    //TileMap(int Wid, int Hig) : wid(Wid), hig(Hig) { initMap(i, z);};
-    //TileMap(int i, int z) : i(MAP_WIDTH), z(MAP_HEIGHT) { initMap(i, z);};
     TileMap(){};
     TileMap(int i, int z);
     void initMap(int i, int z);
     
     virtual ~TileMap(){};
+    
+    void indexMap(int x, int y, int z);
     
     void clearMap();
     void refreshMap();

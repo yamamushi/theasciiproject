@@ -222,10 +222,22 @@ public:
 
 class Room {
 private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & cX;
+        ar & cY;
+        ar & x1;
+        ar & x2;
+        ar & y1;
+        ar & y2;
+    }
     
 public:
     int cX, cY;
     int x1, x2, y1, y2;
+    Room(){};
     Room(int, int, int, int);
     void initRoom(int, int, int, int);
     bool doesBorder(Room *other);
@@ -239,6 +251,15 @@ public:
 
 class Hall {
 private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & x1;
+        ar & x2;
+        ar & y;
+        ar & dir;
+    }
     
 public:
     int x1, x2, y, dir;
@@ -249,6 +270,8 @@ public:
 
 
 // sigh, someone shoot me
+// I hate having to put these exports down here
+// But this is how they say it has to be... :(
 
 
 #include <boost/serialization/export.hpp>

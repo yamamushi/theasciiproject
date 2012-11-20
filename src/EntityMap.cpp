@@ -111,6 +111,14 @@ void EntityMap::initWorldMap(WorldMap *WMap, int x, int y, int z)
     wX = x;
     wY = y;
     wZ = z;
+    
+    /* 
+     Let's hurry up and index our context map (TileMap) now
+     This is the soonest we can do this, as the TileMap index
+     is entirely dependent on the EntMap index. 
+    */
+    
+    contextMap->indexMap(x, y, z);
 
 
     refreshLightMap();

@@ -60,7 +60,7 @@ void WorldMap::initWorldMap()
         {
             for(int z = 0; z < wZ; z++)
             {
-                
+                // This is where worldgen magic happens :-)
                 eMap->at(x).at(y).at(z) = new EntityMap(MAP_WIDTH, MAP_HEIGHT, new TileMap(MAP_WIDTH, MAP_HEIGHT) );
                 eMap->at(x).at(y).at(z)->initWorldMap(this, x, y, z);
                 if(z > cZ)
