@@ -37,6 +37,8 @@
  */
 
 #include <string>
+#include <iostream>
+#include <fstream>
 
 
 #include "Entities.h"
@@ -55,6 +57,48 @@ InputParser::InputParser(Entity *Player){
 
 
 
+std::string InputParser::parse(std::string command){
+    
+   
+    if( command == "getPos" || command == "getpos")
+    {
+        std::string playerPos(player->posX() + " " + player->posY());
+        
+        return playerPos;
+        
+    }
+    else if(command == "dumpMap" || command == "dumpmap")
+    {
+        
+        std::ofstream ofs("data/maps/World.dat");
+        boost::archive::binary_oarchive outarchive(ofs);
+        outarchive << player->entMap->wMap;
+        ofs.close();
+
+        std::string success("Map Written To Disk");
+        return success;
+    }
+    else if( command == "time")
+    {
+        time_t rawtime;
+        
+        struct tm * timeinfo;
+        time( &rawtime );
+        timeinfo = localtime(&rawtime);
+        
+        std::string time = asctime(timeinfo);
+        
+
+        return time;
+    }
+    else
+    {
+        std::string tmp("");
+        return tmp;
+    }
+ 
+    
+}
 
 
 

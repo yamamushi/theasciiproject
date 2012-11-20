@@ -525,14 +525,6 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             
             
         }
-        else if( command == "getPos" || command == "getpos")
-        {
-            std::string playerPos(player->posX() + " " + player->posY());
-            
-            boost::asio::async_write(socket_, boost::asio::buffer(string(playerPos + "\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-            
-            
-        }
         else if(command == "chat" || command == "Chat")
         {
             //boost::asio::async_read_until(socket_, *chat_message_, "\r\n", boost::bind(&client_connection::handleChatInput, shared_from_this(), boost::asio::placeholders::error ));
@@ -544,34 +536,12 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             
             boost::asio::async_write(socket_, boost::asio::buffer(string(outboundMessage + "\r\n")), boost::bind(&client_connection::handleChatInput, shared_from_this(), boost::asio::placeholders::error ));
         }
-        else if(command == "dumpMap" || command == "dumpmap")
-        {
-            
-            std::ofstream ofs("data/maps/World.dat");
-            boost::archive::binary_oarchive outarchive(ofs);
-            outarchive << player->entMap->wMap;
-            ofs.close();
-            
-            boost::asio::async_write(socket_, boost::asio::buffer(string("Map Dump Completed\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-            
-        }
+        
         else if( command == "quit")
         {
             
             disconnect();
             
-        }
-        else if( command == "time")
-        {
-            time_t rawtime;
-            
-            struct tm * timeinfo;
-            time( &rawtime );
-            timeinfo = localtime(&rawtime);
-            
-            string time = asctime(timeinfo);
-            
-            boost::asio::async_write(socket_, boost::asio::buffer(string(time + "\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         else if( command == "" )
         {
@@ -579,7 +549,11 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         }
         else
         {
-            boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            std::string parsedOutput;
+            parsedOutput = parser->parse(command);
+            
+            boost::asio::async_write(socket_, boost::asio::buffer(string(parsedOutput + "\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            
         }
         
     }
