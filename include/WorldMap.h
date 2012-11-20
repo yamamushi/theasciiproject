@@ -41,15 +41,32 @@
 #include <iostream>
 #include <vector>
 
+#include "BoostLibs.h"
+
 using std::cout;
 using std::endl;
 
 class EntityMap;
 class Entity;
 
+
+
+
 class WorldMap {
     
 private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & wX;
+        ar & wY;
+        ar & wZ;
+        ar & cX;
+        ar & cY;
+        ar & cZ;
+        ar & eMap;
+    }
     
     
 public:
@@ -63,6 +80,8 @@ public:
     std::vector<std::vector<std::vector<EntityMap*> > > *eMap;
     
 
+    WorldMap(){};
+    
     WorldMap(int x=10, int y=10, int z=10) : wX(x), wY(y), wZ(z), cX(x/2), cY(y/2), cZ(z/2)
     {
         
@@ -95,3 +114,11 @@ public:
     EntityMap *getEntityZ(EntityMap *tgt, int z);
     
 };
+
+/*
+#include <boost/serialization/export.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
+
+BOOST_CLASS_EXPORT_KEY(WorldMap);
+*/

@@ -544,12 +544,13 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         }
         else if(command == "dumpMap" || command == "dumpmap")
         {
-            std::ofstream ofs("data/maps/test.dat");
+            
+            std::ofstream ofs("data/maps/World.dat");
             boost::archive::binary_oarchive outarchive(ofs);
-            outarchive << player->entMap;
+            outarchive << player->entMap->wMap;
             ofs.close();
             
-            boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            boost::asio::async_write(socket_, boost::asio::buffer(string("Map Dump Completed\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
             
         }
         else if( command == "quit")

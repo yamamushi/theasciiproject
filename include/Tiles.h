@@ -263,6 +263,7 @@ private:
     
 public:
     int x1, x2, y, dir;
+    Hall(){};
     Hall(int, int, int, int);
     void initHall(int, int, int, int);
     
@@ -280,6 +281,13 @@ public:
 
 BOOST_CLASS_EXPORT_KEY(Tile);
 BOOST_CLASS_EXPORT_KEY(Floor);
+BOOST_CLASS_EXPORT_KEY(Wall);
+BOOST_CLASS_EXPORT_KEY(solidEarth);
+BOOST_CLASS_EXPORT_KEY(Air);
+BOOST_CLASS_EXPORT_KEY(Slope);
+BOOST_CLASS_EXPORT_KEY(Room);
+BOOST_CLASS_EXPORT_KEY(Hall);
+
 
 
 #endif

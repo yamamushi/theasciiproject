@@ -149,8 +149,9 @@ int main(int ac, char* av[]){
     
     dbEngine = new DBConnector(db_hostname, db_port, db_username, db_pass, db_name);
     
-    
-    worldMap = new WorldMap();
+    // Our updated config files are going to need to be the source for
+    // WorldMap's initialization variables (10,10,10)...
+    worldMap = new WorldMap(10,10,10);
     worldMap->initWorldMap();
     
     

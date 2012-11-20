@@ -55,10 +55,6 @@ private:
         ar & posX;
         ar & posY;
         ar & posZ;
-        ar & rooms;
-        ar & numRooms;
-        ar & halls;
-        ar & numHalls;
         
         int p, q;
         for(p = 0; p < MAP_WIDTH; p++){
@@ -77,6 +73,9 @@ public:
     int wid, hig;
     int posX, posY, posZ;
     
+    // We won't serialize these for now, as we're not using them at the moment.
+    // They were needed for the dungeon generator, but that's going to be re-written
+    // and these will likely not be needed anymore.
     Room *rooms[MAX_ROOMS];
     int numRooms;
     Hall *halls[MAX_HALLS];

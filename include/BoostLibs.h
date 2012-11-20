@@ -55,6 +55,7 @@
 #include <boost/serialization/utility.hpp>
 #include <boost/serialization/list.hpp>
 #include <boost/serialization/assume_abstract.hpp>
+#include <boost/serialization/vector.hpp>
 
 
 #include <boost/thread/thread.hpp>
