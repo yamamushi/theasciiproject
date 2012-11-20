@@ -471,17 +471,9 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         
               
         
-        if(isInteger(command))
+        if( command == "" )
         {
-          //  if(dbEngine->isValidToken( user, token))
-            {
-                parser->handleAPI(atoi(command.c_str()));
-                boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-            }
-          //  else
-          //  {
-           //     disconnect();
-           // }
+            boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
         else if(command == "mapReset")
         {
@@ -543,9 +535,17 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             disconnect();
             
         }
-        else if( command == "" )
+        else if(isInteger(command))
         {
-            boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            //  if(dbEngine->isValidToken( user, token))
+            {
+                parser->handleAPI(atoi(command.c_str()));
+                boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            }
+            //  else
+            //  {
+            //     disconnect();
+            // }
         }
         else
         {
