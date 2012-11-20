@@ -48,6 +48,7 @@
 #include "WorldMap.h"
 #include "Collect.h"
 #include "TileMap.h"
+#include "InputParser.h"
 
 using std::vector;
 using std::string;
@@ -312,6 +313,7 @@ void client_connection::login(const boost::system::error_code& error)
                 player->setSymbol((wchar_t *)player->wSymbol.c_str());
                 
                 worldMap->addEntToCenter(player);
+                parser = new InputParser(player);
                 
                 //updatePlayerMap();
                 
@@ -473,7 +475,7 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         {
           //  if(dbEngine->isValidToken( user, token))
             {
-                handleAPI(atoi(command.c_str()));
+                parser->handleAPI(atoi(command.c_str()));
                 boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
             }
           //  else

@@ -39,7 +39,7 @@
 
 #include "BoostLibs.h"
 #include "Entities.h"
-
+#include "InputParser.h"
 
 
 
@@ -110,6 +110,7 @@ private:
     std::vector<char *> *mapBuf;
     
     Entity tmpEntity;
+    InputParser *parser;
     
     tcp::socket socket_;
     client_pool& client_pool_;

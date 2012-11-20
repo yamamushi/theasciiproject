@@ -1,3 +1,4 @@
+#pragma once
 /*
  * =====================================================================================
  *
@@ -35,3 +36,35 @@
  *
  * =====================================================================================
  */
+
+
+class Entity;
+class EntityMap;
+class WorldMap;
+class TileMap;
+
+
+
+
+class InputParser {
+    
+private:
+    
+    Entity *player;
+    
+    
+public:
+    
+    InputParser(Entity *Player);
+    virtual ~InputParser(){};
+
+
+    std::string parse(std::string command);
+    void handleAPI(int api);
+
+
+};
+
+
+
+
