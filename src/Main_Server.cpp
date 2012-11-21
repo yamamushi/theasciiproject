@@ -55,10 +55,15 @@ WorldMap *worldMap;
 
 int main(int ac, char* av[]){
     
+    std::cout << "The ASCII Project Server - 0.0.1" << std::endl;
+    std::cout << "--------------------------------" << std::endl;
+    std::cout << std::endl;
+
+    
     ConfigParser *cfgParse = new ConfigParser(ac, av);
     cfgParse->parse();
     
-    dbEngine = new DBConnector(cfgParse->db_hostname, cfgParse->db_port, cfgParse->db_username, cfgParse->db_pass, cfgParse->db_name);
+    dbEngine = new DBConnector(cfgParse->db_hostname, cfgParse->db_port, cfgParse->db_username, cfgParse->db_pass, cfgParse->db_name);    
     
     worldMap = new WorldMap(cfgParse->worldX, cfgParse->worldY, cfgParse->worldZ);
     worldMap->initWorldMap();
@@ -66,6 +71,14 @@ int main(int ac, char* av[]){
 
     try
     {
+        std::cout << "Preparing to start listening on port " << cfgParse->serverPort;
+        sleep(1);
+        std::cout << ".";
+        sleep(1);
+        std::cout << ".";
+        sleep(1);
+        std::cout << "." << std::endl;
+        
         boost::asio::io_service io_service;
         tcp::endpoint endpoint(tcp::v4(), cfgParse->serverPort);
         boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);

@@ -96,8 +96,8 @@ void ConfigParser::parse(){
         po::options_description hidden("Hidden options");
         hidden.add_options()
         ("server_port", po::value<int>(&serverPort)->default_value(5250), "Server Listening Port")
-        ("world_length", po::value<int>(&worldX)->default_value(10), "World Length")
-        ("world_depth", po::value<int>(&worldY)->default_value(10), "World Depth")
+        ("world_latitude", po::value<int>(&worldX)->default_value(10), "World Latitude")
+        ("world_longitude", po::value<int>(&worldY)->default_value(10), "World Longitude")
         ("world_height", po::value<int>(&worldZ)->default_value(10), "World Height")
         ;
          
@@ -133,8 +133,6 @@ void ConfigParser::parse(){
             store(parse_config_file(ifs, config_file_options), vm);
             notify(vm);
         }
-        
-        std::cout << "DB Host is: " << db_hostname << std::endl << std::endl;
         
         
     }

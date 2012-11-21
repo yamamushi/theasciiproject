@@ -540,7 +540,6 @@ bool Entity::placeWall(int dx, int dy)
     }
     else if(dx+X >= 0 && dx+X < MAP_WIDTH && dy+Y <= 0 && dy+Y < MAP_HEIGHT)
     {
-        cout << "checking north" << endl;
         if (initialized) {
             if ((wMap->getNextEntMap(this, 8)->contextMap->virtMap[X][(MAP_HEIGHT-1)]->blocked) || wMap->getNextEntMap(this, 8)->checkOccupied(dx+X, MAP_HEIGHT-1)){
                 wMap->getNextEntMap(this, 8)->refreshEntityMap();

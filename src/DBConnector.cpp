@@ -47,9 +47,6 @@
 #include "DBConnector.h"
 #include "Entities.h"
 
-using std::string;
-using std::cout;
-using std::endl;
 
 
 
@@ -57,8 +54,6 @@ DBConnector::DBConnector(std::string host, int port, std::string user, std::stri
 {
     
     db_host = host;
-    
-    
     
     std::stringstream tmpstream;
     tmpstream << port;
@@ -69,6 +64,14 @@ DBConnector::DBConnector(std::string host, int port, std::string user, std::stri
     db_user = user;
     db_pass = pass;
     db_name = db;
+    
+    std::cout << "Database Connection Settings" << std::endl;
+    std::cout << "----------------------------" << std::endl;
+    std::cout << "DB Host: " << db_host << std::endl;
+    std::cout << "DB Port: " << db_port << std::endl;
+    std::cout << "DB User: " << db_user << std::endl;
+    std::cout << std::endl;
+    
     
     ValidateSchema();
     
@@ -95,7 +98,7 @@ void DBConnector::ValidateSchema()
         if (rootCheck.size() != 1)
         {
             
-            std::cerr << "root account does not exist" << endl;
+            std::cerr << "root account does not exist" << std::endl;
             
             
             time_t rawtime;
@@ -103,7 +106,7 @@ void DBConnector::ValidateSchema()
             struct tm * timeinfo;
             time( &rawtime );
             timeinfo = localtime(&rawtime);
-            string loctime = asctime(timeinfo);
+            std::string loctime = asctime(timeinfo);
             
             srand((unsigned int)time(NULL));
             
@@ -154,7 +157,7 @@ bool DBConnector::AddAccount(const std::string user, const std::string pass)
         struct tm * timeinfo;
         time( &rawtime );
         timeinfo = localtime(&rawtime);
-        string loctime = asctime(timeinfo);
+        std::string loctime = asctime(timeinfo);
         
         srand((unsigned int)time(NULL));
         
@@ -254,7 +257,7 @@ std::string DBConnector::GenerateToken(const std::string user, const std::string
         struct tm * timeinfo;
         time( &rawtime );
         timeinfo = localtime(&rawtime);
-        string loctime = asctime(timeinfo);
+        std::string loctime = asctime(timeinfo);
         
         srand((unsigned int)time(&rawtime));
         
@@ -280,7 +283,7 @@ std::string DBConnector::GenerateToken(const std::string user, const std::string
     }
     else
     {
-        return string("invalid Credentials");
+        return std::string("invalid Credentials");
     }
 }
 
@@ -316,12 +319,12 @@ bool DBConnector::isValidToken(const std::string user, const std::string token)
         
         if ( realToken.compare(token) != 0)
         {
-            cout << "invalid token" << endl;
+            std::cout << "invalid token" << std::endl;
             return false;
         }
         else
         {
-            cout << "valid token" << endl;
+            std::cout << "valid token" << std::endl;
             return true;
         }
         
@@ -364,6 +367,6 @@ std::string DBConnector::getDatFilename(const std::string user, const std::strin
 void DBConnector::testShared()
 {
     
-    cout << "Working" << endl;
+    std::cout << "Working" << std::endl;
     
 }

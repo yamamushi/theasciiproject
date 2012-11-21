@@ -45,11 +45,16 @@
 
 #include <boost/asio.hpp>
 #include <boost/asio/signal_set.hpp>
+
+using boost::asio::ip::tcp;
+
+
 #include <boost/bind.hpp>
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/program_options.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/timer.hpp>
 
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/utility.hpp>
@@ -62,4 +67,6 @@
 
 #include <boost/regex.hpp>
 
-using boost::asio::ip::tcp;
+#include <boost/progress.hpp>
+
+

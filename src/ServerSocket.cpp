@@ -835,6 +835,9 @@ void game_server::start_accept()
 {
     client_connection_ptr new_session(new client_connection(io_service_, client_pool_));
     
+    std::cout << "Server startup complete, have fun!" << std::endl;
+    std::cout << std::endl;
+    
     acceptor_.async_accept(new_session->socket(), boost::bind(&game_server::handle_accept, this, new_session, boost::asio::placeholders::error));
 }
 

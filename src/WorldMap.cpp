@@ -37,7 +37,7 @@
  * =====================================================================================
  */
 
-
+#include "BoostLibs.h"
 
 #include "WorldMap.h"
 
@@ -45,6 +45,8 @@
 #include "EntityMap.h"
 #include "ClientMap.h"
 #include "TileMap.h"
+
+
 /*
 #include <boost/serialization/export.hpp>
 #include <boost/archive/binary_oarchive.hpp>
@@ -60,6 +62,21 @@
 
 void WorldMap::initWorldMap()
 {
+    std::cout << std::endl;
+    std::cout << "***************************************************" << std::endl;
+    std::cout << "**                                               **" << std::endl;
+    std::cout << "**             Generating New World              **" << std::endl;
+    std::cout << "**                                               **" << std::endl;
+    std::cout << "**  Please be patient, as this may take a LONG   **" << std::endl;
+    std::cout << "**  Time depending on your server configuration  **" << std::endl;
+    std::cout << "**                                               **" << std::endl;
+    std::cout << "***************************************************" << std::endl;
+    std::cout << std::endl;
+    
+    
+    boost::progress_display show_progress( wX*wY*wZ );
+    sleep(3);
+ 
     
     for(int x = 0; x < wX; x++)
     {
@@ -85,11 +102,17 @@ void WorldMap::initWorldMap()
                     eMap->at(x).at(y).at(z)->refreshRenderMap();
                     eMap->at(x).at(y).at(z)->refreshLightMap();
                 }
-                
+                ++show_progress;
             }
         }
-    }
         
+    }
+    
+    std::cout << std::endl << std::endl;
+    std::cout << "World Generation Complete!" << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+    
 }
 
 
