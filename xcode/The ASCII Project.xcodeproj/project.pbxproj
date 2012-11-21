@@ -54,6 +54,7 @@
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
 		74D863AD15D9E0010029D3F1 /* ClientWidgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D863AC15D9E0010029D3F1 /* ClientWidgets.cpp */; };
 		74DA3ED9165A159400A4CC13 /* InputParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74DA3ED8165A159400A4CC13 /* InputParser.cpp */; };
+		74DFD8FF165CB8A000772A3E /* ConfigParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74DFD8FE165CB8A000772A3E /* ConfigParser.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -289,6 +290,8 @@
 		74DFD8F9165C006E00772A3E /* MenuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBackground.png; sourceTree = "<group>"; };
 		74DFD8FC165C006E00772A3E /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		74DFD8FD165C006E00772A3E /* sample_full_unicode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_full_unicode.png; sourceTree = "<group>"; };
+		74DFD8FE165CB8A000772A3E /* ConfigParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConfigParser.cpp; sourceTree = "<group>"; };
+		74DFD900165CB92800772A3E /* ConfigParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigParser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,6 +445,7 @@
 				7444880815BF04EF006595CE /* ClientSocket.h */,
 				74D863AE15D9E0100029D3F1 /* ClientWidgets.h */,
 				74C5768015C1EC780033691A /* Collect.h */,
+				74DFD900165CB92800772A3E /* ConfigParser.h */,
 				7444880915BF04EF006595CE /* constants.h */,
 				742F3FA515D0921500372A7A /* DBConnector.h */,
 				7444880A15BF04EF006595CE /* Dungeon.h */,
@@ -610,6 +614,7 @@
 				7444888115BF04EF006595CE /* ClientSocket.cpp */,
 				74D863AC15D9E0010029D3F1 /* ClientWidgets.cpp */,
 				74C5767E15C1EC6D0033691A /* Collect.cpp */,
+				74DFD8FE165CB8A000772A3E /* ConfigParser.cpp */,
 				742F3FA215D0920200372A7A /* DBConnector.cpp */,
 				7444888215BF04EF006595CE /* Dungeon.cpp */,
 				7444888315BF04EF006595CE /* Entities.cpp */,
@@ -848,6 +853,7 @@
 				74502C121654D77500528839 /* Scene.cpp in Sources */,
 				74DA3ED9165A159400A4CC13 /* InputParser.cpp in Sources */,
 				74502C00165482CA00528839 /* Main_Server.cpp in Sources */,
+				74DFD8FF165CB8A000772A3E /* ConfigParser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,6 +41,7 @@
 #include <exception>
 #include "BoostLibs.h"
 
+#include "ConfigParser.h"
 #include "ServerSocket.h"
 #include "DBConnector.h"
 #include "WorldMap.h"
@@ -59,95 +60,10 @@ WorldMap *worldMap;
 
 int main(int ac, char* av[]){
     
-    boost::filesystem::path dataDir("data");
-    boost::filesystem::path mapDir("data/maps");
-    boost::filesystem::path entDir("data/ents");
+    ConfigParser *cfgParse = new ConfigParser(ac, av);
+    cfgParse->parse();
     
-    if(!boost::filesystem::exists(dataDir))
-        boost::filesystem::create_directory(dataDir);
-    
-    if(!boost::filesystem::exists(mapDir))
-        boost::filesystem::create_directory(mapDir);
-    
-    if(!boost::filesystem::exists(entDir))
-        boost::filesystem::create_directory(entDir);
-    
-    
-    
-    
-    
-    int db_port;
-    std::string db_hostname;
-    std::string db_username;
-    std::string db_pass;
-    std::string db_name;
-    std::string config_file;
-    
-    try {
-        
-        po::options_description desc("Allowed options");
-        desc.add_options()
-        ("config,c", po::value<std::string>(&config_file)->default_value("server.conf"),"Configuration file, default server.conf")
-        ("help,h", "display this help text")
-        ("version,v", "display version number")
-        ;
-        
-        po::options_description config("Config File Options");
-        config.add_options()
-        ("host", po::value<std::string>(&db_hostname)->default_value("localhost"),"Database Hostname")
-        ("port", po::value<int>(&db_port)->default_value(5432), "Database Port")
-        ("username", po::value<std::string>(&db_username), "Database Username")
-        ("dbpass", po::value<std::string>(&db_pass), "Database Password")
-        ("dbname", po::value<std::string>(&db_name)->default_value(db_username), "Database Name")
-        ;
-        
-        po::options_description config_file_options;
-        config_file_options.add(config);
-        
-        po::variables_map vm;
-        po::store(po::parse_command_line(ac, av, desc), vm);
-        po::notify(vm);
-        
-        if (vm.count("help")) {
-            cout << desc << endl;
-            cout << config << endl;
-            exit(0);
-        }
-        if (vm.count("version")) {
-            cout << "The ASCII Project - Server - Version 0.0.0j" << endl;
-            exit(0);
-        }
-        
-        
-        std::ifstream ifs(config_file.c_str());
-        if(!ifs)
-        {
-            cout << "could not open config file: " << config_file << endl;
-            cout << "Usage:" << endl;
-            cout << desc << endl;
-            cout << config << endl;
-            exit(0);
-        }
-        else
-        {
-            store(parse_config_file(ifs, config_file_options), vm);
-            notify(vm);
-        }
-        
-        cout << "Host is: " << db_hostname << endl;
-        
-
-    }
-    catch(std::exception& e) {
-        cerr << "error: " << e.what() << "\n";
-        return 1;
-    }
-    catch(...) {
-        cerr << "Exception of unknown type!\n";
-    }
-    
-    
-    dbEngine = new DBConnector(db_hostname, db_port, db_username, db_pass, db_name);
+    dbEngine = new DBConnector(cfgParse->db_hostname, cfgParse->db_port, cfgParse->db_username, cfgParse->db_pass, cfgParse->db_name);
     
     // Our updated config files are going to need to be the source for
     // WorldMap's initialization variables (10,10,10)...

@@ -185,7 +185,6 @@ public:
     void disconnect();
     
     void updatePlayerMap();
-    void handleAPI(int api);
     
 };
 
