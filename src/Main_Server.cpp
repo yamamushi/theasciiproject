@@ -37,7 +37,6 @@
  */
 
 #include <iostream>
-#include <fstream>
 #include <exception>
 #include "BoostLibs.h"
 
@@ -47,12 +46,8 @@
 #include "WorldMap.h"
 
 namespace po = boost::program_options;
-using std::cout;
-using std::cerr;
-using std::endl;
 
 DBConnector *dbEngine;
-EntityMap *entMap;
 WorldMap *worldMap;
 
 
@@ -65,17 +60,14 @@ int main(int ac, char* av[]){
     
     dbEngine = new DBConnector(cfgParse->db_hostname, cfgParse->db_port, cfgParse->db_username, cfgParse->db_pass, cfgParse->db_name);
     
-    // Our updated config files are going to need to be the source for
-    // WorldMap's initialization variables (10,10,10)...
-    worldMap = new WorldMap(10,10,10);
+    worldMap = new WorldMap(cfgParse->worldX, cfgParse->worldY, cfgParse->worldZ);
     worldMap->initWorldMap();
-    
     
 
     try
     {
         boost::asio::io_service io_service;
-        tcp::endpoint endpoint(tcp::v4(), 5250);
+        tcp::endpoint endpoint(tcp::v4(), cfgParse->serverPort);
         boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);
         signals.async_wait(boost::bind(&boost::asio::io_service::stop, &io_service));
         game_server server(io_service, endpoint);
@@ -85,9 +77,6 @@ int main(int ac, char* av[]){
     {
         std::cerr << e.what() << std::endl;
     }
-    
-    
-    
     
     return 0;
 }

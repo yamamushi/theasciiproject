@@ -62,6 +62,11 @@ public:
     std::string db_pass;
     std::string db_name;
     
+    int serverPort;
+    int worldX;
+    int worldY;
+    int worldZ;
+    
     void parse();
     
     

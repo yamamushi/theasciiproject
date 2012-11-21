@@ -86,15 +86,23 @@ void ConfigParser::parse(){
         
         po::options_description config("Config File Options");
         config.add_options()
-        ("host", po::value<std::string>(&db_hostname)->default_value("localhost"),"Database Hostname")
-        ("port", po::value<int>(&db_port)->default_value(5432), "Database Port")
-        ("username", po::value<std::string>(&db_username), "Database Username")
+        ("dbhost", po::value<std::string>(&db_hostname)->default_value("localhost"),"Database Hostname")
+        ("dbport", po::value<int>(&db_port)->default_value(5432), "Database Port")
+        ("dbuser", po::value<std::string>(&db_username), "Database Username")
         ("dbpass", po::value<std::string>(&db_pass), "Database Password")
         ("dbname", po::value<std::string>(&db_name)->default_value(db_username), "Database Name")
         ;
         
+        po::options_description hidden("Hidden options");
+        hidden.add_options()
+        ("server_port", po::value<int>(&serverPort)->default_value(5250), "Server Listening Port")
+        ("world_length", po::value<int>(&worldX)->default_value(10), "World Length")
+        ("world_depth", po::value<int>(&worldY)->default_value(10), "World Depth")
+        ("world_height", po::value<int>(&worldZ)->default_value(10), "World Height")
+        ;
+         
         po::options_description config_file_options;
-        config_file_options.add(config);
+        config_file_options.add(config).add(hidden);
         
         po::variables_map vm;
         po::store(po::parse_command_line(ac, av, desc), vm);
@@ -126,7 +134,7 @@ void ConfigParser::parse(){
             notify(vm);
         }
         
-        std::cout << "Host is: " << db_hostname << std::endl;
+        std::cout << "DB Host is: " << db_hostname << std::endl << std::endl;
         
         
     }
