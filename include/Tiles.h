@@ -84,7 +84,7 @@ public:
     
     // this mess of an initializer ... sigh..
     Tile(std::wstring symbol_, int posX_, int posY_, bool blocked_, bool block_sight_, bool visible_, float H_, float S_, float V_, float HD_, float SD_, float VD_ ) : posX(posX_), posY(posY_), blocked(blocked_), block_sight(block_sight_), visible(visible_), H(H_), S(S_), V(V_), HD(HD_), SD(SD_), VD(VD_){ symbol = (wchar_t *)wSymbol.c_str();};
-    Tile(bool blked=true);
+    Tile(bool blked=false);
     void init_Tile(bool);
     virtual ~Tile() {}
     
@@ -168,7 +168,7 @@ private:
     }
     
 public:
-    Floor(bool blked=false);
+    Floor(bool blked=true);
     virtual void setOrientation(int i);
     
     
@@ -274,10 +274,17 @@ public:
 // I hate having to put these exports down here
 // But this is how they say it has to be... :(
 
+BOOST_CLASS_TRACKING(Tile, boost::serialization::track_always);
+BOOST_CLASS_TRACKING(Floor, boost::serialization::track_selectively);
+BOOST_CLASS_TRACKING(Wall, boost::serialization::track_never);
+BOOST_CLASS_TRACKING(solidEarth, boost::serialization::track_never);
+BOOST_CLASS_TRACKING(Air, boost::serialization::track_never);
+BOOST_CLASS_TRACKING(Slope, boost::serialization::track_never);
 
-#include <boost/serialization/export.hpp>
+
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
+#include <boost/serialization/export.hpp>
 
 BOOST_CLASS_EXPORT_KEY(Tile);
 BOOST_CLASS_EXPORT_KEY(Floor);

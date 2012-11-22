@@ -102,9 +102,10 @@ void WorldMap::initWorldMap()
                 }
                 else if (z == cZ)
                 {
+
                     eMap->at(x).at(y).at(z)->refreshRenderMap();
                     eMap->at(x).at(y).at(z)->refreshLightMap();
-                }
+                } 
                 ++show_progress;
             }
         }
@@ -145,7 +146,7 @@ void WorldMap::backupToDisk(){
             for(int z = 0; z < wZ; z++)
             {
                 
-                std::string fileName("data/maps/entMap" + boost::lexical_cast<std::string>(x) + "_" + boost::lexical_cast<std::string>(y) + "_" + boost::lexical_cast<std::string>(z) + ".emp");
+                std::string fileName("data/maps/entMap-" + boost::lexical_cast<std::string>(x) + "_" + boost::lexical_cast<std::string>(y) + "_" + boost::lexical_cast<std::string>(z) + ".emp");
                 std::ofstream ofs(fileName);
                 boost::archive::binary_oarchive outarchive(ofs);
                 outarchive << eMap->at(x).at(y).at(z);
@@ -155,6 +156,8 @@ void WorldMap::backupToDisk(){
             }
         }
     }
+    
+    std::cout << std::endl;
 }
 
 
@@ -184,22 +187,24 @@ void WorldMap::loadFromDisk(){
         {
             for(int z = 0; z < wZ; z++)
             {
+                //eMap->at(x).at(y).at(z) = new EntityMap(MAP_WIDTH, MAP_HEIGHT, new TileMap(MAP_WIDTH, MAP_HEIGHT) );
+                //eMap->at(x).at(y).at(z)->initWorldMap(this, x, y, z);
                 
-                EntityMap tmpEntMap;
-                std::string fileName("data/maps/entMap" + boost::lexical_cast<std::string>(x) + "_" + boost::lexical_cast<std::string>(y) + "_" + boost::lexical_cast<std::string>(z) + ".emp");
+                std::string fileName("data/maps/entMap-" + boost::lexical_cast<std::string>(x) + "_" + boost::lexical_cast<std::string>(y) + "_" + boost::lexical_cast<std::string>(z) + ".emp");
                 std::ifstream ifs(fileName);
                 boost::archive::binary_iarchive inarchive(ifs);
                 
-                inarchive >> tmpEntMap;
-                
-                eMap->at(x).at(y).at(z) = &tmpEntMap;
-                ifs.close();
-                
+                inarchive >> eMap->at(x).at(y).at(z);
+                eMap->at(x).at(y).at(z)->initEntityMap(eMap->at(x).at(y).at(z)->width, eMap->at(x).at(y).at(z)->height, eMap->at(x).at(y).at(z)->contextMap);
+                eMap->at(x).at(y).at(z)->initWorldMap(this, x, y, z);
+                //std::cout << fileName << std::endl;
                 ++show_progress;
+                
             }
         }
     }
     
+    std::cout << std::endl;
 }
 
 

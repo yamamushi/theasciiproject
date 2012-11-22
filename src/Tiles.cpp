@@ -41,10 +41,11 @@
 
 #include "constants.h"
 
+#include "Tiles.h"
+
 #include <boost/serialization/export.hpp>
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
-#include "Tiles.h"
 
 BOOST_CLASS_EXPORT_IMPLEMENT(Tile);
 BOOST_CLASS_EXPORT_IMPLEMENT(Floor);
@@ -314,16 +315,11 @@ void Wall::setOrientation(int i){
 
 
 
-
-
-
-
-
-
 Floor::Floor(bool blked){
     
 	block_sight = blked;
 	blocked = blked;
+    needsOrientation = false;
     setTypeID(2);
     
     

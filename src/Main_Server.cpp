@@ -69,7 +69,7 @@ int main(int ac, char* av[]){
     
     dbEngine = new DBConnector(cfgParse->db_hostname, cfgParse->db_port, cfgParse->db_username, cfgParse->db_pass, cfgParse->db_name);    
     
-   // if(!fileExists("data/maps/World.idx")){
+    if(!fileExists("data/maps/World.idx")){
         worldMap = new WorldMap(cfgParse->worldX, cfgParse->worldY, cfgParse->worldZ);
         worldMap->initWorldMap();
         worldMap->backupToDisk();
@@ -78,8 +78,8 @@ int main(int ac, char* av[]){
         boost::archive::binary_oarchive indexOut(indexOutStream);
         indexOut << worldMap;
         indexOutStream.close();
-  //  }
-  /*  else{
+    }
+    else{
         
         std::ifstream indexStream("data/maps/World.idx");
         boost::archive::binary_iarchive indexLoad(indexStream);
@@ -87,7 +87,7 @@ int main(int ac, char* av[]){
         
         worldMap->loadFromDisk();
         
-    } */
+    }
     
 
     try

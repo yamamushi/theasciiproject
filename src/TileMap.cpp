@@ -73,8 +73,8 @@ void TileMap::indexMap(int x, int y, int z){
 
 void TileMap::clearMap(){
     
-	for (x = 0; x < MAP_WIDTH; x++){
-		for ( y = 0; y < MAP_HEIGHT; y++){
+	for (x = 0; x < wid; x++){
+		for ( y = 0; y < hig; y++){
 			delete virtMap[x][y];
 			virtMap[x][y] = new Floor();
 		}
@@ -120,7 +120,7 @@ void TileMap::airMap(){
 
 bool TileMap::checkBounds(int posX, int posY){
     
-	if (virtMap[posX][posY]->isBlocked() || posX <= 0 || posX >= MAP_WIDTH || posY < 0 || posY >= MAP_HEIGHT)
+	if (virtMap[posX][posY]->isBlocked() || posX <= 0 || posX >= wid || posY < 0 || posY >= hig)
 		return false;
 	else
 		return true;
@@ -189,8 +189,8 @@ void TileMap::orientWalls()
     
     int x, y;
     
-    for(x=1; x < (MAP_WIDTH - 1) ; x++){
-        for(y=1; y < (MAP_HEIGHT - 1); y++){
+    for(x=1; x < (wid - 1) ; x++){
+        for(y=1; y < (hig - 1); y++){
             orientWall(x, y);
         }
     }
@@ -618,8 +618,8 @@ void TileMap::copyVirtMap(TileMap *source){
     
     TileMap *tmp = source;
     
-    for( x = 0; x < MAP_WIDTH; x++){
-        for( y = 0; y < MAP_HEIGHT; y++){
+    for( x = 0; x < wid; x++){
+        for( y = 0; y < hig; y++){
             virtMap[x][y] = tmp->virtMap[x][y];
         }
     }

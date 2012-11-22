@@ -203,3 +203,7 @@ public:
     Goblin();
     
 };
+
+
+BOOST_CLASS_TRACKING(Entity, boost::serialization::track_always);
+

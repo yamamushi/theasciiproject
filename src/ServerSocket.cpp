@@ -309,8 +309,8 @@ void client_connection::login(const boost::system::error_code& error)
                 
                 std::ifstream ifs("data/ents/" + user + ".dat");
                 boost::archive::binary_iarchive ia(ifs);
-                ia >> player;
-                //player = &tmpEntity;
+                ia >> tmpEntity;
+                player = &tmpEntity;
                 player->setSymbol((wchar_t *)player->wSymbol.c_str());
                 
                 extern WorldMap *worldMap;

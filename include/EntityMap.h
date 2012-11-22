@@ -68,7 +68,7 @@ private:
     }
     
     
-    int width, height;
+    
     
     bool deleting;
     bool rendering;
@@ -95,11 +95,11 @@ public:
     int wY;
     int wZ;
     
+    int width, height;
+    
     std::vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
     
-    EntityMap(){
-        contextMap = nullptr;
-    };
+    EntityMap(){};
     EntityMap(TileMap *map) : contextMap(map){
         deleting = false;
         unpackEntMap();
