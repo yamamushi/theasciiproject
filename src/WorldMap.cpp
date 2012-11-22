@@ -128,6 +128,28 @@ void WorldMap::addEntToCenter(Entity *tgt)
 }
 
 
+bool WorldMap::placeEnt(Entity *tgt)
+{
+    tgt->setGlobal(this);
+    
+    int wx = tgt->wX;
+    int wy = tgt->wY;
+    int wz = tgt->wZ;
+
+    int px = tgt->posX();
+    int py = tgt->posY();
+    
+    if(!eMap->at(wx).at(wy).at(wz)->contextMap->virtMap[px][py]->blocked){
+        
+        eMap->at(wx).at(wy).at(wz)->addToMapAt(tgt, px, py);
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+
 void WorldMap::removeEnt(Entity *tgt)
 {
     int tX, tY, tZ;

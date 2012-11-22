@@ -1,13 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Collect.h
+ *       Filename:  FunctionUtils.cpp
  *
- *    Description:  This object defines the behavior of our "Entities", ie
- *                  The necessary functions for an entity to exist on the "Map"
+ *    Description:  Various freeform functions for working with non-object data
  *
  *        Version:  1.0
- *        Created:  07/03/2012 03:41:29 AM
+ *        Created:  11/22/2012 02:21:00 AM
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -37,9 +36,82 @@
  * =====================================================================================
  */
 
-
-
+#include <sys/stat.h>
+#include <string>
 #include <vector>
 
 
-int renderForPlayer(Entity *target, std::vector<char *> *outbuf, ClientMap *savedMap);
+
+std::string make_daytime_string()
+{
+    time_t now = time(0);
+    return ctime(&now);
+};
+
+
+
+
+bool pointInSquare( int x, int y, int n)
+{
+    
+    
+    return (y <= n - x &&
+            y >= x - n &&
+            y <= x + n &&
+            y>= -(x + n));
+    
+}
+
+
+bool isInteger(const std::string & s)
+{
+    if(s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+'))) return false ;
+    
+    char * p ;
+    strtol(s.c_str(), &p, 10) ;
+    
+    return (*p == 0) ;
+}
+
+
+
+// Function: fileExists
+/**
+ Check if a file exists
+ @param[in] filename - the name of the file to check
+ 
+ @return    true if the file exists, else false
+ 
+ */
+bool fileExists(const std::string& filename)
+{
+    struct stat buf;
+    if (stat(filename.c_str(), &buf) != -1)
+    {
+        return true;
+    }
+    return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

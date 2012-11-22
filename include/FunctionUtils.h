@@ -1,13 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Collect.h
+ *       Filename:  FunctionUtils.h
  *
- *    Description:  This object defines the behavior of our "Entities", ie
- *                  The necessary functions for an entity to exist on the "Map"
+ *    Description:  Header for our Function Utilities
  *
  *        Version:  1.0
- *        Created:  07/03/2012 03:41:29 AM
+ *        Created:  11/22/2012 02:21:00 AM
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -39,7 +38,10 @@
 
 
 
-#include <vector>
+std::string make_daytime_string();
+bool pointInSquare( int x, int y, int n);
+bool isInteger(const std::string & s);
+bool fileExists(const std::string& filename);
 
 
-int renderForPlayer(Entity *target, std::vector<char *> *outbuf, ClientMap *savedMap);
+

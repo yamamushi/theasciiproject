@@ -60,6 +60,9 @@ private:
         ar & wSymbol;
         ar & X;
         ar & Y;
+        ar & wX;
+        ar & wY;
+        ar & wZ;
         ar & H;
         ar & S;
         ar & V;
@@ -101,6 +104,7 @@ public:
     
     Entity()
     {
+        world = nullptr;
         cMap = nullptr;
         int x, y;
         for (x = 0; x < MAP_WIDTH; x++) {
@@ -108,9 +112,9 @@ public:
                 fov[x][y] = false;
             }
         }
-    }
+    };
     
-    Entity(std::string entName_, std::wstring wsymbol_, int x, int y, int h, int s, int v) : entName(entName_), wSymbol(wsymbol_), X(x), Y(y), H(h), S(s), V(v) { world = nullptr; cMap = nullptr; symbol = (wchar_t *)wSymbol.c_str();}
+    Entity(std::string entName_, std::wstring wsymbol_, int x, int y, int wx, int wy, int wz, int h, int s, int v) : entName(entName_), wSymbol(wsymbol_), X(x), Y(y), wX(wx), wY(wy), wZ(wz), H(h), S(s), V(v) { world = nullptr; cMap = nullptr; symbol = (wchar_t *)wSymbol.c_str();};
     Entity(wchar_t *sym){ cMap = nullptr; init_entity(sym);};
     
     

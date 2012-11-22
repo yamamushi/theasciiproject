@@ -44,6 +44,7 @@
 #include <string>
 #include "BoostLibs.h"
 
+#include "FunctionUtils.h"
 #include "DBConnector.h"
 #include "Entities.h"
 
@@ -167,12 +168,16 @@ bool DBConnector::AddAccount(const std::string user, const std::string pass)
         addAccount.exec("INSERT INTO accounting (username, timestamp, hash, filename) VALUES ('" + cleanUser + "', '" + loctime + "', MD5('"  + cleanPass + "'), '" + cleanUser + ".dat');" );
         addAccount.commit();
         
-        Entity rawEntity(cleanUser, L"\u263A", 0, 0, 0.0, 0.0, 1.0);
+        Entity rawEntity(cleanUser, L"\u263A", 0, 0, 0, 0, 0, 0.0, 0.0, 1.0);
         
-        std::ofstream ofs("data/ents/" + cleanUser + ".dat");
-        boost::archive::binary_oarchive oa(ofs);
-        oa << rawEntity;
-        ofs.close();
+        std::string filePath("data/ents/" + cleanUser + ".dat");
+        
+        if(!fileExists(filePath)){
+            std::ofstream ofs(filePath);
+            boost::archive::binary_oarchive oa(ofs);
+            oa << rawEntity;
+            ofs.close();
+        }
         
         return true;
     }
@@ -196,7 +201,7 @@ bool DBConnector::isValidHash(const std::string user, const std::string pass)
     boost::regex e("[\\']");
     std::string cleanUser = boost::regex_replace(User, e, "");
     std::string cleanPass = boost::regex_replace(Pass, e, "");
-        
+    
     pqxx::asyncconnection conn("host=" + db_host + " port=" + db_port + " user=" + db_user + " password=" + db_pass + " dbname=" + db_name);
     pqxx::work validatePass(conn);
     
@@ -207,11 +212,11 @@ bool DBConnector::isValidHash(const std::string user, const std::string pass)
         
         validatePass.commit();
         return false;
-                
+        
     }
     else
     {
-
+        
         pqxx::result md5hash = validatePass.exec("SELECT hash FROM accounting WHERE username='" + cleanUser + "';");
         pqxx::result tmphash = validatePass.exec("SELECT MD5('" + cleanPass + "');");
         
@@ -222,12 +227,12 @@ bool DBConnector::isValidHash(const std::string user, const std::string pass)
         
         if ( md5pass.compare(tmpHash) != 0)
         {
-           // cout << "invalid pass" << endl;
+            // cout << "invalid pass" << endl;
             return false;
         }
         else
         {
-           // cout << "valid pass" << endl;
+            // cout << "valid pass" << endl;
             return true;
         }
         
@@ -315,7 +320,7 @@ bool DBConnector::isValidToken(const std::string user, const std::string token)
         validateToken.commit();
         
         std::string realToken = RealToken[0][0].as<std::string>();
-
+        
         
         if ( realToken.compare(token) != 0)
         {
@@ -330,7 +335,7 @@ bool DBConnector::isValidToken(const std::string user, const std::string token)
         
         
     }
-
+    
     
     
 }
@@ -360,7 +365,7 @@ std::string DBConnector::getDatFilename(const std::string user, const std::strin
         return "ERROR";
     }
     
-       
+    
 }
 
 

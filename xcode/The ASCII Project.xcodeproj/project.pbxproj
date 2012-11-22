@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7420BB04165E17D100D3D2D0 /* FunctionUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7420BB03165E17D100D3D2D0 /* FunctionUtils.cpp */; };
+		7420BB05165E17D100D3D2D0 /* FunctionUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7420BB03165E17D100D3D2D0 /* FunctionUtils.cpp */; };
 		74254F8115D7257700FDE75B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 74254F7F15D7257700FDE75B /* Credits.rtf */; };
 		74254F8215D7257700FDE75B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74254F8015D7257700FDE75B /* InfoPlist.strings */; };
 		742F3FA315D0920200372A7A /* DBConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 742F3FA215D0920200372A7A /* DBConnector.cpp */; };
@@ -112,6 +114,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7420BB03165E17D100D3D2D0 /* FunctionUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FunctionUtils.cpp; sourceTree = "<group>"; };
+		7420BB07165E17DC00D3D2D0 /* FunctionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionUtils.h; sourceTree = "<group>"; };
 		74254F7F15D7257700FDE75B /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = Client/Credits.rtf; sourceTree = SOURCE_ROOT; };
 		74254F8015D7257700FDE75B /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = Client/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		742F3FA215D0920200372A7A /* DBConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DBConnector.cpp; sourceTree = "<group>"; };
@@ -452,6 +456,7 @@
 				7444880B15BF04EF006595CE /* Entities.h */,
 				7444880C15BF04EF006595CE /* EntityMap.h */,
 				7444880D15BF04EF006595CE /* FovLib.h */,
+				7420BB07165E17DC00D3D2D0 /* FunctionUtils.h */,
 				7444880E15BF04EF006595CE /* Graphics.h */,
 				7444881015BF04EF006595CE /* Headers.h */,
 				74DA3EDB165A159E00A4CC13 /* InputParser.h */,
@@ -620,6 +625,7 @@
 				7444888315BF04EF006595CE /* Entities.cpp */,
 				7444888415BF04EF006595CE /* EntityMap.cpp */,
 				7444888515BF04EF006595CE /* FovLib.cpp */,
+				7420BB03165E17D100D3D2D0 /* FunctionUtils.cpp */,
 				7444888615BF04EF006595CE /* Graphics.cpp */,
 				74DA3ED8165A159400A4CC13 /* InputParser.cpp */,
 				7444888715BF04EF006595CE /* Keyboard.cpp */,
@@ -827,6 +833,7 @@
 				7445A26A15DAAD8F00EBBF9B /* ui_input.cpp in Sources */,
 				743612FD15BFA82D00CC2BCA /* Main_Client.cpp in Sources */,
 				74502C131654D77500528839 /* Scene.cpp in Sources */,
+				7420BB05165E17D100D3D2D0 /* FunctionUtils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,6 +861,7 @@
 				74DA3ED9165A159400A4CC13 /* InputParser.cpp in Sources */,
 				74502C00165482CA00528839 /* Main_Server.cpp in Sources */,
 				74DFD8FF165CB8A000772A3E /* ConfigParser.cpp in Sources */,
+				7420BB04165E17D100D3D2D0 /* FunctionUtils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

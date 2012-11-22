@@ -49,6 +49,8 @@
 #include "Collect.h"
 #include "TileMap.h"
 #include "InputParser.h"
+#include "FunctionUtils.h"
+
 
 using std::vector;
 using std::string;
@@ -298,21 +300,32 @@ void client_connection::login(const boost::system::error_code& error)
                 boost::regex e("[\\']");
                 std::string cleanUser = boost::regex_replace(user, e, "");
                 
-                std::ifstream ifs("data/ents/" + dbEngine->getDatFilename(user, sessionToken));
+                std::string fileName("data/ents/" + user + ".dat");
+                if(!fileExists(fileName)){
+                    boost::asio::async_write(socket_, boost::asio::buffer(string("Error - Player File Not Found \r\n\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
+                }
+                
+                //Entity *tmpEntity = new Entity();
+                
+                std::ifstream ifs("data/ents/" + user + ".dat");
                 boost::archive::binary_iarchive ia(ifs);
-                
-                ia >> tmpEntity;
-                
-                player = &tmpEntity;
-
-                
-                extern WorldMap *worldMap;
-                               
-                
-                
+                ia >> player;
+                //player = &tmpEntity;
                 player->setSymbol((wchar_t *)player->wSymbol.c_str());
                 
-                worldMap->addEntToCenter(player);
+                extern WorldMap *worldMap;
+                
+                if(player->posX() == 0 && player->posY() == 0 && player->wX == 0 && player->wY == 0 && player->wZ == 0){
+                    worldMap->addEntToCenter(player);
+                }
+                else{
+                    if(!worldMap->placeEnt(player))
+                        worldMap->addEntToCenter(player);
+                }
+                
+                
+                
+                
                 parser = new InputParser(player);
                 
                 //updatePlayerMap();
@@ -799,8 +812,20 @@ void client_connection::disconnect()
         //extern EntityMap *entMap;
         //entMap->removeFromEntMap(player);
         //delete player;
+        
+        std::string filePath("data/ents/" + user + ".dat");
+        
+        
+        std::ofstream ofs(filePath);
+        boost::archive::binary_oarchive oa(ofs);
+        oa << player;
+        ofs.close();
+        
+        
         extern WorldMap *worldMap;
         worldMap->removeEnt(player);
+        
+        
         //delete player;
         
     }
@@ -834,9 +859,6 @@ game_server::game_server(boost::asio::io_service& io_service, const tcp::endpoin
 void game_server::start_accept()
 {
     client_connection_ptr new_session(new client_connection(io_service_, client_pool_));
-    
-    std::cout << "Server startup complete, have fun!" << std::endl;
-    std::cout << std::endl;
     
     acceptor_.async_accept(new_session->socket(), boost::bind(&game_server::handle_accept, this, new_session, boost::asio::placeholders::error));
 }

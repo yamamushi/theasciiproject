@@ -62,6 +62,9 @@ private:
     TCODText *inputText;
     float H, S, V, HD, SD, VD;
     float TH, TS, TV, THD, TSD, TVD;
+    
+    int map_window_width;
+    int map_window_height;
 
     
     VBox *menuPopup;

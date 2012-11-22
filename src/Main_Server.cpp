@@ -84,6 +84,10 @@ int main(int ac, char* av[]){
         boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);
         signals.async_wait(boost::bind(&boost::asio::io_service::stop, &io_service));
         game_server server(io_service, endpoint);
+        
+        std::cout << "Server startup complete, have fun!" << std::endl;
+        std::cout << std::endl;
+        
         io_service.run();
     }
     catch (std::exception& e)

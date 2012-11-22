@@ -45,17 +45,10 @@
 #include "ClientMap.h"
 #include "Serialization.h"
 
-using std::vector;
 
 
-std::string make_daytime_string()
-{
-    time_t now = time(0);
-    return ctime(&now);
-};
 
-
-int renderForPlayer(Entity *target, vector<char *> *outbuf, ClientMap *savedMap)
+int renderForPlayer(Entity *target, std::vector<char *> *outbuf, ClientMap *savedMap)
 {
     
     int x, y;
@@ -67,19 +60,19 @@ int renderForPlayer(Entity *target, vector<char *> *outbuf, ClientMap *savedMap)
     
     
     
-    posx = MAP_WIDTH/2;//tgt.posX();
-    posy = MAP_HEIGHT/2;//tgt.posY();
+    posx = tgt.posX();
+    posy = tgt.posY();
     
     
     
     
    // offset = 12;
     
-    for (x = 0; x < MAP_WIDTH; x++) {
-        for (y = 0; y < MAP_HEIGHT; y++) {
-           // if((x > 0) && (x < MAP_WIDTH) && (y > 0) && (y < MAP_HEIGHT))
+    for (x = posx-6; x < posx+6; x++) {
+        for (y = posy-6; y < posy+6; y++) {
+            if((x > 0) && (x < MAP_WIDTH) && (y > 0) && (y < MAP_HEIGHT))
            // {
-                if(tgt.returnCMap()->cMap[x][y]->sendMe)
+                //if(tgt.returnCMap()->cMap[x][y]->sendMe)
              //   {
                //     if(savedMap->cMap[x][y]->x != tgt.returnCMap()->cMap[x][y]->x || savedMap->cMap[x][y]->y != tgt.returnCMap()->cMap[x][y]->y)
                //     {
@@ -88,7 +81,7 @@ int renderForPlayer(Entity *target, vector<char *> *outbuf, ClientMap *savedMap)
                        // tgt.returnCMap()->cMap[x][y]->x = savedMap->cMap[x][y]->x;
                        // tgt.returnCMap()->cMap[x][y]->y = savedMap->cMap[x][y]->y;
                         
-                        tgt.returnCMap()->cMap[x][y]->sendMe = false;
+                        //tgt.returnCMap()->cMap[x][y]->sendMe = false;
                         
                         
                         ClientMapPacker *packer = new ClientMapPacker();
@@ -128,33 +121,4 @@ int renderForPlayer(Entity *target, vector<char *> *outbuf, ClientMap *savedMap)
     
     return size;
 }
-
-
-
-
-
-bool pointInSquare( int x, int y, int n)
-{
-    
-    
-    return (y <= n - x &&
-            y >= x - n &&
-            y <= x + n &&
-            y>= -(x + n));
-    
-}
-
-
-bool isInteger(const std::string & s)
-{
-    if(s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+'))) return false ;
-    
-    char * p ;
-    strtol(s.c_str(), &p, 10) ;
-    
-    return (*p == 0) ;
-}
-
-
-
 

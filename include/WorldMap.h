@@ -93,10 +93,11 @@ public:
     };
     
     void initWorldMap();
-
+    
     
     
     void addEntToCenter(Entity *tgt);
+    bool placeEnt(Entity *tgt);
     void removeEnt(Entity *tgt);
     
     void moveEnt(Entity *tgt, int x, int y);

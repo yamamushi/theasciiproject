@@ -349,7 +349,7 @@ void ClientSession::read_map(int dataSize)
     }
     
     
-    //    free(buf);
+    free(buf);
     
     
     

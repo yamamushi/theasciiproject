@@ -48,9 +48,11 @@
 #define MAIN_WIDTH 80
 #define MAIN_HEIGHT 45
 
+
+// These two pairs HAVE to be the same, or else the client does unhappy things
+// I still need to figure out how to redefine them without screwing up too much
 #define MAP_WIDTH 80
 #define MAP_HEIGHT 30
-
 
 #define MAP_WINDOW_WIDTH 80
 #define MAP_WINDOW_HEIGHT 30
