@@ -97,6 +97,9 @@ public:
     
     std::vector<Entity *> pos[MAP_WIDTH][MAP_HEIGHT];
     
+    EntityMap(){
+        contextMap = nullptr;
+    };
     EntityMap(TileMap *map) : contextMap(map){
         deleting = false;
         unpackEntMap();
@@ -135,3 +138,6 @@ public:
     
     
 };
+
+
+

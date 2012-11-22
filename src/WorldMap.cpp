@@ -37,6 +37,8 @@
  * =====================================================================================
  */
 
+#include <fstream>
+
 #include "BoostLibs.h"
 
 #include "WorldMap.h"
@@ -45,15 +47,16 @@
 #include "EntityMap.h"
 #include "ClientMap.h"
 #include "TileMap.h"
+#include "FunctionUtils.h"
 
 
-/*
+
 #include <boost/serialization/export.hpp>
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
 
-//BOOST_CLASS_EXPORT_IMPLEMENT(WorldMap);
-*/
+BOOST_CLASS_EXPORT_IMPLEMENT(WorldMap);
+
 
 
 
@@ -76,7 +79,7 @@ void WorldMap::initWorldMap()
     
     boost::progress_display show_progress( wX*wY*wZ );
     sleep(3);
- 
+    
     
     for(int x = 0; x < wX; x++)
     {
@@ -115,6 +118,89 @@ void WorldMap::initWorldMap()
     
 }
 
+
+
+void WorldMap::backupToDisk(){
+    
+    std::cout << std::endl;
+    std::cout << "***************************************************" << std::endl;
+    std::cout << "**                                               **" << std::endl;
+    std::cout << "**             Saving World To Disk              **" << std::endl;
+    std::cout << "**                                               **" << std::endl;
+    std::cout << "**  Please be patient, as this may take a LONG   **" << std::endl;
+    std::cout << "**  Time depending on your server configuration  **" << std::endl;
+    std::cout << "**                                               **" << std::endl;
+    std::cout << "***************************************************" << std::endl;
+    std::cout << std::endl;
+    
+    boost::progress_display show_progress( wX*wY*wZ );
+    sleep(0.5);
+    
+    //EntityMap *tmpMap = player->entMap;
+    
+    for(int x = 0; x < wX; x++)
+    {
+        for(int y = 0; y < wY; y++)
+        {
+            for(int z = 0; z < wZ; z++)
+            {
+                
+                std::string fileName("data/maps/entMap" + boost::lexical_cast<std::string>(x) + "_" + boost::lexical_cast<std::string>(y) + "_" + boost::lexical_cast<std::string>(z) + ".emp");
+                std::ofstream ofs(fileName);
+                boost::archive::binary_oarchive outarchive(ofs);
+                outarchive << eMap->at(x).at(y).at(z);
+                ofs.close();
+                
+                ++show_progress;
+            }
+        }
+    }
+}
+
+
+
+// WARNING : This function will crash the program if you haven't loaded a World.idx properly
+void WorldMap::loadFromDisk(){
+    
+    std::cout << std::endl;
+    std::cout << "***************************************************" << std::endl;
+    std::cout << "**                                               **" << std::endl;
+    std::cout << "**           Loading World From Disk             **" << std::endl;
+    std::cout << "**                                               **" << std::endl;
+    std::cout << "**  Please be patient, as this may take a LONG   **" << std::endl;
+    std::cout << "**  Time depending on your server configuration  **" << std::endl;
+    std::cout << "**                                               **" << std::endl;
+    std::cout << "***************************************************" << std::endl;
+    std::cout << std::endl;
+    
+    boost::progress_display show_progress( wX*wY*wZ );
+    sleep(0.5);
+    
+    eMap = new std::vector<std::vector<std::vector<EntityMap*> > >(wX, std::vector<std::vector<EntityMap*> >(wY, std::vector<EntityMap*>(wZ, nullptr) ) );
+    
+    for(int x = 0; x < wX; x++)
+    {
+        for(int y = 0; y < wY; y++)
+        {
+            for(int z = 0; z < wZ; z++)
+            {
+                
+                EntityMap tmpEntMap;
+                std::string fileName("data/maps/entMap" + boost::lexical_cast<std::string>(x) + "_" + boost::lexical_cast<std::string>(y) + "_" + boost::lexical_cast<std::string>(z) + ".emp");
+                std::ifstream ifs(fileName);
+                boost::archive::binary_iarchive inarchive(ifs);
+                
+                inarchive >> tmpEntMap;
+                
+                eMap->at(x).at(y).at(z) = &tmpEntMap;
+                ifs.close();
+                
+                ++show_progress;
+            }
+        }
+    }
+    
+}
 
 
 void WorldMap::addEntToCenter(Entity *tgt)

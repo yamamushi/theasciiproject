@@ -69,10 +69,12 @@ std::string InputParser::parse(std::string command){
     }
     else if(command == "dumpMap" || command == "dumpmap")
     {
+        EntityMap *tmpMap = player->entMap;
         
-        std::ofstream ofs("data/maps/World.dat");
+        std::string fileName("data/maps/world1_" + boost::lexical_cast<std::string>(tmpMap->wX) + "_" + boost::lexical_cast<std::string>(tmpMap->wY) + "_" + boost::lexical_cast<std::string>(tmpMap->wZ) + ".dat");
+        std::ofstream ofs(fileName);
         boost::archive::binary_oarchive outarchive(ofs);
-        outarchive << player->entMap->wMap;
+        outarchive << tmpMap;
         ofs.close();
 
         std::string success("Map Written To Disk");
@@ -83,7 +85,7 @@ std::string InputParser::parse(std::string command){
         time_t rawtime;
         
         struct tm * timeinfo;
-        time( &rawtime );
+        time( &rawtime ); 
         timeinfo = localtime(&rawtime);
         
         std::string time = asctime(timeinfo);

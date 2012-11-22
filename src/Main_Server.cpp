@@ -37,13 +37,16 @@
  */
 
 #include <iostream>
+#include <fstream>
 #include <exception>
 #include "BoostLibs.h"
 
+#include "FunctionUtils.h"
 #include "ConfigParser.h"
 #include "ServerSocket.h"
 #include "DBConnector.h"
 #include "WorldMap.h"
+#include "TileMap.h"
 
 namespace po = boost::program_options;
 
@@ -55,6 +58,7 @@ WorldMap *worldMap;
 
 int main(int ac, char* av[]){
     
+    // Yeah, I know this isn't the best way to do this, but YAY STREAMS
     std::cout << "The ASCII Project Server - 0.0.1" << std::endl;
     std::cout << "--------------------------------" << std::endl;
     std::cout << std::endl;
@@ -65,18 +69,35 @@ int main(int ac, char* av[]){
     
     dbEngine = new DBConnector(cfgParse->db_hostname, cfgParse->db_port, cfgParse->db_username, cfgParse->db_pass, cfgParse->db_name);    
     
-    worldMap = new WorldMap(cfgParse->worldX, cfgParse->worldY, cfgParse->worldZ);
-    worldMap->initWorldMap();
+   // if(!fileExists("data/maps/World.idx")){
+        worldMap = new WorldMap(cfgParse->worldX, cfgParse->worldY, cfgParse->worldZ);
+        worldMap->initWorldMap();
+        worldMap->backupToDisk();
+        
+        std::ofstream indexOutStream("data/maps/World.idx");
+        boost::archive::binary_oarchive indexOut(indexOutStream);
+        indexOut << worldMap;
+        indexOutStream.close();
+  //  }
+  /*  else{
+        
+        std::ifstream indexStream("data/maps/World.idx");
+        boost::archive::binary_iarchive indexLoad(indexStream);
+        indexLoad >> worldMap;
+        
+        worldMap->loadFromDisk();
+        
+    } */
     
 
     try
     {
         std::cout << "Preparing to start listening on port " << cfgParse->serverPort;
-        sleep(1);
+        sleep(0.5);
         std::cout << ".";
-        sleep(1);
+        sleep(0.5);
         std::cout << ".";
-        sleep(1);
+        sleep(0.5);
         std::cout << "." << std::endl;
         
         boost::asio::io_service io_service;

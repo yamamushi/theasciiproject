@@ -61,10 +61,6 @@ private:
         ar & wX;
         ar & wY;
         ar & wZ;
-        ar & cX;
-        ar & cY;
-        ar & cZ;
-        ar & eMap;
     }
     
     
@@ -76,10 +72,10 @@ public:
        
     std::vector<std::vector<std::vector<EntityMap*> > > *eMap;
     
-
     WorldMap(){};
     
-    WorldMap(int x=10, int y=10, int z=10) : wX(x), wY(y), wZ(z), cX(x/2), cY(y/2), cZ(z/2)
+    WorldMap(int wx, int wy, int wz, int cx, int cy, int cz) : wX(wx), wY(wy), wZ(wz), cX(cx), cY(cy), cZ(cz){};
+    WorldMap(int x, int y, int z) : wX(x), wY(y), wZ(z)
     {
         std::cout << "World Generation Settings" << std::endl;
         std::cout << "-------------------------" << std::endl;
@@ -88,12 +84,18 @@ public:
         std::cout << "World Height = " << wZ << std::endl;
         std::cout << std::endl;
         
+        
+        cX = wX/2;
+        cY = wY/2;
+        cZ = wZ/2;
+        
         eMap = new std::vector<std::vector<std::vector<EntityMap*> > >(wX, std::vector<std::vector<EntityMap*> >(wY, std::vector<EntityMap*>(wZ, nullptr) ) );
 
     };
     
     void initWorldMap();
-    
+    void backupToDisk();
+    void loadFromDisk();
     
     
     void addEntToCenter(Entity *tgt);
@@ -113,10 +115,11 @@ public:
     
 };
 
-/*
+
+
 #include <boost/serialization/export.hpp>
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
 
 BOOST_CLASS_EXPORT_KEY(WorldMap);
-*/
+

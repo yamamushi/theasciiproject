@@ -39,6 +39,8 @@
 
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
 
 #include <boost/array.hpp>
 #include <boost/multi_array.hpp>
@@ -61,6 +63,8 @@ using boost::asio::ip::tcp;
 #include <boost/serialization/list.hpp>
 #include <boost/serialization/assume_abstract.hpp>
 #include <boost/serialization/vector.hpp>
+#include <boost/serialization/level.hpp>
+#include <boost/serialization/tracking.hpp>
 
 
 #include <boost/thread/thread.hpp>

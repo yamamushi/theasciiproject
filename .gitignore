@@ -17,6 +17,8 @@
 
 # Our local dat files
 *.dat
+*.idx
+*.emp
 
 # Netbeans stuff 
 /nbproject/private/
