@@ -168,7 +168,7 @@ bool DBConnector::AddAccount(const std::string user, const std::string pass)
         addAccount.exec("INSERT INTO accounting (username, timestamp, hash, filename) VALUES ('" + cleanUser + "', '" + loctime + "', MD5('"  + cleanPass + "'), '" + cleanUser + ".dat');" );
         addAccount.commit();
         
-        Entity rawEntity(cleanUser, L"\u263A", 0, 0, 0, 0, 0, 0.0, 0.0, 1.0);
+        Entity *rawEntity = new Entity(cleanUser, L"\u263A", 0, 0, 0, 0, 0, 0.0, 0.0, 1.0);
         
         std::string filePath("data/ents/" + cleanUser + ".dat");
         
@@ -178,7 +178,7 @@ bool DBConnector::AddAccount(const std::string user, const std::string pass)
             oa << rawEntity;
             ofs.close();
         }
-        
+        delete rawEntity;
         return true;
     }
     else
