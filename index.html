@@ -1,38 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-
     <title>Theasciiproject by yamamushi</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
-
   <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/yamamushi/theasciiproject">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/yamamushi/theasciiproject/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/yamamushi/theasciiproject/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
 
-    <header>
-      <div class="container">
-        <h1>Theasciiproject</h1>
-        <h2>A Unicode-driven Roguelike MMORPG</h2>
+    <div class="wrapper">
 
-        <section id="downloads">
-          <a href="https://github.com/yamamushi/theasciiproject/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/yamamushi/theasciiproject/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/yamamushi/theasciiproject" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
+      <section>
+        <div id="title">
+          <h1>Theasciiproject</h1>
+          <p>A Unicode-driven Roguelike MMORPG</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/yamamushi">yamamushi</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
 
-    <div class="container">
-      <section id="main_content">
         <h1>The ASCII Project - 0.0.1e</h1>
 
-<p><a href="http://www.theasciiproject.com">http://www.theasciiproject.com</a>
-IRC = freenode.net ##asciimmo
-Yamamushi - <a href="mailto:yamamushi@gmail.com">yamamushi@gmail.com</a></p>
+<p><a href="http://www.theasciiproject.com">http://www.theasciiproject.com</a></p>
+
+<p>IRC = freenode.net ##asciimmo</p>
+
+<p>Yamamushi - <a href="mailto:yamamushi@gmail.com">yamamushi@gmail.com</a></p>
 
 <p>The overall aim of "The ASCII Project" is to develop a Unicode graphics based "Roguelike" MMORPG engine which operates a persistent world driven by a player-run economy.</p>
 
@@ -40,37 +52,23 @@ Yamamushi - <a href="mailto:yamamushi@gmail.com">yamamushi@gmail.com</a></p>
 
 <p>11/22/12</p>
 
-<pre><code>   Almost finished with saving and loading maps to disk, which is necessary for some of the world "sculpting" things I am going to try.
-</code></pre>
+<ul>
+<li>Almost finished with saving and loading maps to disk, which is necessary for some of the world "sculpting" things I am going to try.</li>
+</ul><p>11/12/12 </p>
 
-<p>11/12/12 </p>
+<ul>
+<li>We've moved on up to 0.0.1, as I'm now about to pull in major revisions from bits of code I've been experimenting with lately. This code does compile, but I intend on getting back into a code frenzy, so don't tie yourself to anything yet.</li>
+</ul><h1>GOALS</h1>
 
-<pre><code>We've moved on up to 0.0.1, as I'm now about to pull in major revisions from bits of code I've been experimenting with 
-</code></pre>
-
-<p>lately. This code does compile, but I intend on getting back into a code frenzy, so don't tie yourself to anything yet.</p>
-
-<h1>GOALS</h1>
-
-<pre><code>* Players can "destroy" and place blocks and items to create persistent structures, in much the same way that Minecraft allows players to work together to build constructions.
-
-* The game world will run and operate independent of player-input. NPC's will continue to develop and operate when nobody is logged into the server.
-
-* The game world will operate in a 3-Dimensional space, allowing for an "advanced" physics engine and opening the door to new possibilities.
-
-* NPC's will operate independent of eachother, in that each has the ability to make their own decisions based on their relationships with players and other NPC's.
-
-* The above mentioned relationships will continue to develop amongst NPC's without any player input.
-
-    * All C++ source code will remain 100% C++11 compliant, including 3rd party libraries. If changes are necessary to 
-</code></pre>
-
-<p>those libraries to remain standards compliant, they will be made where possible. Otherwise we will defer to another library or write our own if necessary.</p>
-
-<pre><code>* TBA - I would rather be coding that writing up this readme file, please refer to the homepage at http://www.theasciiproject.com and the wiki at http://www.theasciiproject.com/wk/ for more information.
-</code></pre>
-
-<h1>NOTES</h1>
+<ul>
+<li><p>Players can "destroy" and place blocks and items to create persistent structures, in much the same way that Minecraft allows players to work together to build constructions.</p></li>
+<li><p>The game world will run and operate independent of player-input. NPC's will continue to develop and operate when nobody is logged into the server.</p></li>
+<li><p>The game world will operate in a 3-Dimensional space, allowing for an "advanced" physics engine and opening the door to new possibilities.</p></li>
+<li><p>NPC's will operate independent of eachother, in that each has the ability to make their own decisions based on their relationships with players and other NPC's.</p></li>
+<li><p>The above mentioned relationships will continue to develop amongst NPC's without any player input.</p></li>
+<li><p>All C++ source code will remain 100% C++11 compliant, including 3rd party libraries. If changes are necessary to those libraries to remain standards compliant, they will be made where possible. Otherwise we will defer to another library or write our own if necessary.</p></li>
+<li><p>TBA - I would rather be coding that writing up this readme file, please refer to the homepage at <a href="http://www.theasciiproject.com">http://www.theasciiproject.com</a> and the wiki at <a href="http://www.theasciiproject.com/wk/">http://www.theasciiproject.com/wk/</a> for more information.</p></li>
+</ul><h1>NOTES</h1>
 
 <ul>
 <li><p>Various documents of interest are located in docs/, and licenses where necessary have been included in licenses/. If you are new to this project and are just trying to figure out what this is all about, please refer to docs/ABOUT.txt</p></li>
@@ -84,8 +82,9 @@ Source code is available from:</p>
 <li><a href="https://github.com/yamamushi/theasciiproject">https://github.com/yamamushi/theasciiproject</a></li>
 </ul>
       </section>
-    </div>
 
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
 </html>
