@@ -307,9 +307,9 @@ void client_connection::login(const boost::system::error_code& error)
                 
                 //Entity *tmpEntity = new Entity();
                 
-                std::ifstream ifs("data/ents/" + user + ".dat");
-                boost::archive::binary_iarchive ia(ifs);
-                ia >> tmpEntity;
+                std::ifstream entifs("data/ents/" + user + ".dat");
+                boost::archive::binary_iarchive entia(entifs);
+                entia >> tmpEntity;
                 player = &tmpEntity;
                 player->setSymbol((wchar_t *)player->wSymbol.c_str());
                 

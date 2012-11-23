@@ -187,7 +187,7 @@ void WorldMap::loadFromDisk(){
         {
             for(int z = 0; z < wZ; z++)
             {
-                //eMap->at(x).at(y).at(z) = new EntityMap(MAP_WIDTH, MAP_HEIGHT, new TileMap(MAP_WIDTH, MAP_HEIGHT) );
+                //eMap->at(x).at(y).at(z) = new EntityMap();
                 //eMap->at(x).at(y).at(z)->initWorldMap(this, x, y, z);
                 
                 std::string fileName("data/maps/entMap-" + boost::lexical_cast<std::string>(x) + "_" + boost::lexical_cast<std::string>(y) + "_" + boost::lexical_cast<std::string>(z) + ".emp");
@@ -212,8 +212,8 @@ void WorldMap::addEntToCenter(Entity *tgt)
 {
     
     tgt->setGlobal(this);
-    tgt->setWorldPosition(cX, cY, cZ);
-    eMap->at(cX).at(cY).at(cZ)->addToMap(tgt);
+    tgt->setWorldPosition(wX/2, wY/2, wZ/2);
+    eMap->at(wX/2).at(wY/2).at(wZ/2)->addToMapAt(tgt, eMap->at(wX/2).at(wY/2).at(wZ/2)->width/2, eMap->at(wX/2).at(wY/2).at(wZ/2)->height/2);
     
     
 }
