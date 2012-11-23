@@ -1,4 +1,4 @@
-The ASCII Project - 0.0.1a
+The ASCII Project - 0.0.1e
 ===============================
 http://www.theasciiproject.com
 IRC = freenode.net ##asciimmo
@@ -10,6 +10,11 @@ The overall aim of "The ASCII Project" is to develop a Unicode graphics based "R
 
 News
 =====
+
+11/23/12
+
+	Almost finished with saving and loading maps to disk, which is necessary for some of the world "sculpting" things I am going to try.
+
 
 11/12/12 
 	
