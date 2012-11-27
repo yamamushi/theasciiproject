@@ -1,0 +1,1 @@
+ boost 1.51 or higher, libsdl libpq and libpqxx (you can get them with a postgresql-dev install), libtcod (there are prebuild binaries in the git repo for linux and osx)
