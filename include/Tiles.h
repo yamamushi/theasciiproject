@@ -275,8 +275,8 @@ public:
 // But this is how they say it has to be... :(
 
 BOOST_CLASS_TRACKING(Tile, boost::serialization::track_always);
-BOOST_CLASS_TRACKING(Floor, boost::serialization::track_selectively);
-BOOST_CLASS_TRACKING(Wall, boost::serialization::track_never);
+BOOST_CLASS_TRACKING(Floor, boost::serialization::track_always);
+BOOST_CLASS_TRACKING(Wall, boost::serialization::track_always);
 BOOST_CLASS_TRACKING(solidEarth, boost::serialization::track_never);
 BOOST_CLASS_TRACKING(Air, boost::serialization::track_never);
 BOOST_CLASS_TRACKING(Slope, boost::serialization::track_never);
