@@ -59,7 +59,7 @@ WorldMap *worldMap;
 int main(int ac, char* av[]){
     
     // Yeah, I know this isn't the best way to do this, but YAY STREAMS
-    std::cout << "The ASCII Project Server - 0.0.1" << std::endl;
+    std::cout << "The ASCII Project Server - 0.0.1f" << std::endl;
     std::cout << "--------------------------------" << std::endl;
     std::cout << std::endl;
 
