@@ -68,6 +68,7 @@ void ClientMap::clearMap(){
             cMap[x][y] = new render_t;
             
             cMap[x][y]->symbol = (wchar_t *)L"\uFFFF";
+            cMap[x][y]->ASCII = (int)*cMap[x][y]->symbol;
             cMap[x][y]->x = x;
             cMap[x][y]->y = y;
             cMap[x][y]->H = 0.0;

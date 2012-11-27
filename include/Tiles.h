@@ -168,7 +168,7 @@ private:
     }
     
 public:
-    Floor(bool blked=true);
+    Floor(bool blked=false);
     virtual void setOrientation(int i);
     
     

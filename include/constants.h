@@ -140,6 +140,26 @@ struct render_t {
     bool sendMe;
     int ASCII;
     bool drawn;
+    
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & ASCII;
+        ar & x;
+        ar & y;
+        ar & H;
+        ar & S;
+        ar & V;
+        ar & HD;
+        ar & SD;
+        ar & VD;
+        ar & explored;
+        ar & occupied;
+        ar & visible;
+        ar & blockSight;
+        ar & blocked;
+        ar & isLit;
+    }
 };
 
 struct s_render_t {

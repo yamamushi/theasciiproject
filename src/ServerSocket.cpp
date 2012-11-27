@@ -484,7 +484,19 @@ void client_connection::handle_request_line(const boost::system::error_code& err
         
               
         
-        if( command == "" )
+        if(isInteger(command))
+        {
+            //  if(dbEngine->isValidToken( user, token))
+            {
+                parser->handleAPI(atoi(command.c_str()));
+                boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
+            }
+            //  else
+            //  {
+            //     disconnect();
+            // }
+        }
+        else if( command == "" )
         {
             boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
         }
@@ -547,18 +559,6 @@ void client_connection::handle_request_line(const boost::system::error_code& err
             
             disconnect();
             
-        }
-        else if(isInteger(command))
-        {
-            //  if(dbEngine->isValidToken( user, token))
-            {
-                parser->handleAPI(atoi(command.c_str()));
-                boost::asio::async_write(socket_, boost::asio::buffer(string("\r\n\r\n")), boost::bind(&client_connection::receive_command, shared_from_this(), boost::asio::placeholders::error ));
-            }
-            //  else
-            //  {
-            //     disconnect();
-            // }
         }
         else
         {

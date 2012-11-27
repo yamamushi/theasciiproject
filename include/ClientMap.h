@@ -41,11 +41,18 @@
 
 #include <list>
 
+#include "BoostLibs.h"
 #include "constants.h"
 
 class ClientMap {
     
 private:
+    friend class boost::serialization::access;
+    template<class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+        ar & cMap;
+    }
     
     render_t *cTemp;
     std::list< std::pair<int,int> > ignoreList;

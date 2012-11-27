@@ -40,7 +40,10 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
+#include <fstream>
 
+#include "BoostLibs.h"
 #include "Entities.h"
 #include "ClientMap.h"
 #include "Serialization.h"
@@ -64,12 +67,18 @@ int renderForPlayer(Entity *target, std::vector<char *> *outbuf, ClientMap *save
     posy = tgt.posY();
     
     
+   /* std::ofstream cofs("data/testClient.dat");
+    boost::archive::binary_oarchive cia(cofs);
+    cia & target->cMap;
+    cofs.close(); */
+    
+    
     
     
    // offset = 12;
     
-    for (x = posx-6; x < posx+6; x++) {
-        for (y = posy-6; y < posy+6; y++) {
+    for (x = posx-10; x < posx+10; x++) {
+        for (y = posy-10; y < posy+10; y++) {
             if((x > 0) && (x < MAP_WIDTH) && (y > 0) && (y < MAP_HEIGHT))
            // {
                 //if(tgt.returnCMap()->cMap[x][y]->sendMe)
