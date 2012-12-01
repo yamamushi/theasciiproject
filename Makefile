@@ -34,8 +34,8 @@ CLIENT_OBJS_FILES=tpl.o ClientWidgets.o ClientSocket.o ClientMap.o Graphics.o \
     Keyboard.o Serialization.o NetworkLib.o Platform.o ui_input.o Main_Client.o
 
 SERVER_OBJS_FILES=NetworkLib.o Tiles.o TileMap.o Entities.o EntityMap.o \
-        FovLib.o Dungeon.o RenderMap.o tpl.o \
-        ServerSocket.o ClientMap.o \
+        FovLib.o Dungeon.o RenderMap.o tpl.o InputParser.o FunctionUtils.o \
+        ServerSocket.o ClientMap.o ConfigParser.o MapHandler.o Scene.o \
         DBConnector.o WorldMap.o Collect.o Serialization.o Main_Server.o
 
 CLIENT_OBJS=$(addprefix $(BUILDDIR)/, $(CLIENT_OBJS_FILES))
