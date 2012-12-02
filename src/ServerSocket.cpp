@@ -83,11 +83,6 @@ void client_pool::deliver(std::string message)
 
 
 
-
-
-
-
-
 tcp::socket& client_connection::socket()
 {
     return socket_;
@@ -314,6 +309,7 @@ void client_connection::login(const boost::system::error_code& error)
                 player->setSymbol((wchar_t *)player->wSymbol.c_str());
                 
                 extern WorldMap *worldMap;
+
                 
                 if(player->posX() == 0 && player->posY() == 0 && player->wX == 0 && player->wY == 0 && player->wZ == 0){
                     worldMap->addEntToCenter(player);
@@ -693,8 +689,6 @@ void client_connection::sendMap(const boost::system::error_code& error)
     
     
 }
-
-
 
 
 
