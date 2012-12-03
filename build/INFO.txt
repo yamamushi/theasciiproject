@@ -1,9 +1,0 @@
-This directory "should" be empty when you download this project
-(aside from this file of course).
-
-If that is not the case, and you see object files in here - please let me know
-so that I can clean up the .gitignore config.
-
-
--Yamamushi (Jon Rumion)
-yamamushi@gmail.com
