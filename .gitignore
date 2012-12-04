@@ -20,8 +20,5 @@
 *.idx
 *.emp
 
-# Netbeans stuff 
-/nbproject/private/
-
 # Emacs Stuff
 *#
