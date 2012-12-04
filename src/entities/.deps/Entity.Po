@@ -1,3 +1,0 @@
-src/entities/Entity.o: src/entities/Entity.cc src/entities/Entity.h
-
-src/entities/Entity.h:
