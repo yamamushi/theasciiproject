@@ -9,4 +9,5 @@ make -k
 
 mv tap_server bin/
 
-make distclean
+## Uncomment to get a clean build process
+# make distclean
