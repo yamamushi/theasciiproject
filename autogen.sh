@@ -7,7 +7,8 @@ test -n "$NOCONFIGURE" || "$srcdir/configure" "$@"
 
 make -k
 
-mv tap_server bin/
+## Leaving this out to allow for "make install" to work properly
+# mv tap_server bin/
 
 ## Uncomment to get a clean build process
 # make distclean
