@@ -1,9 +1,10 @@
 AUTOMAKE_OPTIONS = subdir-objects
 
 aclocaldir = $(datadir)/aclocal
-ACLOCAL_AMFLAGS = -I. ${ACLOCAL_FLAGS}
+ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS} -I m4
 AM_CPPFLAGS = $(BOOST_CPPFLAGS) $(DEPS_CFLAGS) -std=c++11 -I.
 AM_LDFLAGS = $(BOOST_THREADS_LDFLAGS)
+AM_COLOR_TESTS=always
 LIBS = $(BOOST_THREAD_LIBS)
 
 aclocal_DATA = boost.m4

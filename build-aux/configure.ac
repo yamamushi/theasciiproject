@@ -1,7 +1,9 @@
+AC_CONFIG_MACRO_DIR([m4])
+
 AC_INIT([The ASCII Project], [0.1], [yamamushi@gmail.com], [TheASCIIProject], [http://www.theasciiproject.com/])
 AC_PREREQ([2.59])
 
-AM_INIT_AUTOMAKE([1.10 -Wall no-define foreign])
+AM_INIT_AUTOMAKE([1.10 -Wall no-define foreign color-tests])
 
 AC_CONFIG_HEADERS([config.h])
 
