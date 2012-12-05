@@ -10,8 +10,8 @@ LIBS = $(BOOST_THREAD_LIBS)
 aclocal_DATA = boost.m4
 
 bin_PROGRAMS = tap_server
-tap_server_SOURCES = ../src/MainServer.cc ../src/entities/Entity.cc ../src/entities/Entity.h \ 
-	../src/mapping/EntityMap.cc ../src/mapping/EntityMap.h
+tap_server_SOURCES = ../src/MainServer.cpp ../src/entities/Entity.cpp ../src/entities/Entity.h \ 
+	../src/mapping/EntityMap.cpp ../src/mapping/EntityMap.h
 tap_server_LDADD = $(DEPS_LIBS)
 
 dist_noinst_SCRIPTS = ../autogen.sh
