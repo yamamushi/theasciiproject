@@ -23,7 +23,7 @@ int main(int argc, char* argv[]){
 
   SDL_Init(SDL_INIT_EVERYTHING);
 
-  screen = SDL_SetVideoMode( 640, 480, 32, SDL_SWSURFACE);
+  screen = SDL_SetVideoMode( 1024, 748, 32, SDL_SWSURFACE);
 
   hello = IMG_Load( "hello.bmp" );
 
