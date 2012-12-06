@@ -9,6 +9,6 @@ make -k
 
 ## Leave this out to allow for "make install" to work properly
 mv tap_server bin/
-
+mv tap_client bin/
 ## Uncomment to get a clean build process
-make distclean
+./clean.sh

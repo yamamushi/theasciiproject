@@ -9,18 +9,16 @@
 
  */
 
-#include "entities/Entity.h"
-#include "mapping/EntityMap.h"
+#include <boost/lambda/lambda.hpp>
 #include <iostream>
+#include <iterator>
+#include <algorithm>
 
+int main()
+{
+    using namespace boost::lambda;
+    typedef std::istream_iterator<int> in;
 
-
-int main(int argc, char *argv[]){
-
-  std::cout << "Testing Server" << std::endl;
-  std::cout << "Testing Cedet" << std::endl;
-
-  
-  return 0;
-
+    std::for_each(
+        in(std::cin), in(), std::cout << (_1 * 3) << " " );
 }
