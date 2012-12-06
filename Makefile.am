@@ -2,10 +2,14 @@ AUTOMAKE_OPTIONS = subdir-objects
 
 aclocaldir = $(datadir)/aclocal
 ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS} -Im4
-AM_CPPFLAGS = $(BOOST_CPPFLAGS) $(DEPS_CFLAGS) -std=c++11 -I.
-AM_LDFLAGS = $(BOOST_THREADS_LDFLAGS)
+
+# We put boost_cppflags here as they apply across all targets
+# Things are easier this way...
+AM_CPPFLAGS = $(BOOST_CPPFLAGS) $(DEPS_CFLAGS) -I.
+# AM_LDFLAGS = $(BOOST_THREADS_LDFLAGS) $(BOOST_SIGNALS_LIBS)
+AM_LDFLAGS = -Wl,-rpath,. 
 AM_COLOR_TESTS=always
-DEPS_LIBS = $(BOOST_THREAD_LIBS)
+# DEPS_LIBS = $(BOOST_THREAD_LIBS)
 
 aclocal_DATA = m4/boost.m4
 
@@ -13,14 +17,14 @@ bin_PROGRAMS = tap_server tap_client
 
 tap_server_SOURCES = src/MainServer.cpp src/entities/Entity.cpp src/entities/Entity.h \
 	src/mapping/EntityMap.cpp src/mapping/EntityMap.h
-tap_server_CPPFLAGS = $(BOOST_CPPFLAGS)
-tap_server_LDFLAGS = $(SQLITE_CFLAGS) $(BOOST_THREAD_LDFLAGS)
-tap_server_LIBS = $(BOOST_THREAD_LIBS)
+tap_server_CPPFLAGS = -std=c++11 $(SQLITE_CFLAGS)
+tap_server_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SQLITE_LIBS)
+# tap_server_LIBS = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS)
 
 tap_client_SOURCES = src/MainClient.cpp
-tap_client_CPPFLAGS = $(BOOST_CPPFLAGS) $(SDL_CFLAGS) $(PNG_CFLAGS) $(SDL_TTF_CFLAGS)
-tap_client_LDFLAGS = $(BOOST_THREAD_LDFLAGS) $(SDL_LDFLAGS) $(SDL_TTF_LDFLAGS)
-tap_client_LIBS = $(BOOST_THREAD_LIBS) $(SDL_LIBS) $(SDL_TTF_LIBS)
+tap_client_CPPFLAGS = -std=c++11 $(SDL_CFLAGS) $(PNG_CFLAGS) $(SDL_TTF_CFLAGS)
+tap_client_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SDL_LIBS) $(SDL_TTF_LIBS)
+# tap_client_LIBS = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS)
 
 
 dist_noinst_SCRIPTS = autogen.sh

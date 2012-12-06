@@ -11,21 +11,40 @@
 
  */
 
-
-#include <iostream>
+#include "boost/filesystem.hpp"
 #include "SDL/SDL.h"
-#include "SDL/SDL_ttf.h"
+
+#include <string>
 
 
-// Ignore this stuff, it's only here to test automake
-// ie, to make sure automake is linking sdl_* stuff properly.
-TTF_Font *font = NULL;
-SDL_Color textcolor = {255, 255, 255};
+int main(int argc, char* argv[]){
 
+  SDL_Surface *screen = nullptr;
+  SDL_Surface *hello = nullptr;
 
-int main(int argc, char *argv[]){
+  SDL_Init(SDL_INIT_EVERYTHING);
 
-  std::cout << "Testing Client" << std::endl;
+  screen = SDL_SetVideoMode( 640, 480, 32, SDL_SWSURFACE);
+
+  hello = SDL_LoadBMP( "hello.bmp" );
+
+  SDL_WM_SetCaption( "The ASCII Project - Client - 0.0.1f", NULL );
+  SDL_BlitSurface( hello, nullptr, screen, nullptr);
+
+  SDL_Flip( screen );
+
+  bool quit = false;
+  SDL_Event event;
+  while( quit == false){
+    while(SDL_PollEvent( &event )){
+      if( event.type == SDL_QUIT){
+        quit = true;
+      }
+    }
+  }
+   
+  SDL_FreeSurface( hello );
+  SDL_Quit();
 
   return 0;
 

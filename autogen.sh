@@ -11,4 +11,4 @@ make -k
 mv tap_server bin/
 mv tap_client bin/
 ## Uncomment to get a clean build process
-./clean.sh
+# ./clean.sh

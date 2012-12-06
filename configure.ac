@@ -15,16 +15,23 @@ AC_PROG_GREP
 AC_PROG_EGREP
 AC_PROG_CXX
 
+
+# pkg-config checks
 PKG_CHECK_MODULES([SDL], [sdl >= 1.2])
 PKG_CHECK_MODULES([PNG], [libpng >= 1.2])
 PKG_CHECK_MODULES([SQLITE], [sqlite3 >= 3.7.14])
+
+# Boost Checks
 BOOST_REQUIRE([1.52.0])
+BOOST_THREADS
 BOOST_ASIO
+BOOST_FILESYSTEM
 BOOST_SERIALIZATION
 
 # Look for SDL_net
 AC_CHECK_HEADER(SDL/SDL_ttf.h, , AC_MSG_ERROR([SDL_ttf header not found.]))
 AC_CHECK_LIB(SDL_ttf, TTF_OpenFont, AC_SUBST([SDL_TTF_LIBS], [-lSDL_ttf]), AC_MSG_ERROR([Cannot find SDL_tff library.]), [${SDL_LIBS}])
+
 
 
 AC_CONFIG_FILES([Makefile])
