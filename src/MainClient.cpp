@@ -11,9 +11,8 @@
 
  */
 
-#include "boost/filesystem.hpp"
 #include "SDL/SDL.h"
-
+#include "SDL/SDL_image.h"
 #include <string>
 
 
@@ -26,7 +25,7 @@ int main(int argc, char* argv[]){
 
   screen = SDL_SetVideoMode( 640, 480, 32, SDL_SWSURFACE);
 
-  hello = SDL_LoadBMP( "hello.bmp" );
+  hello = IMG_Load( "hello.bmp" );
 
   SDL_WM_SetCaption( "The ASCII Project - Client - 0.0.1f", NULL );
   SDL_BlitSurface( hello, nullptr, screen, nullptr);
