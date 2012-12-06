@@ -3,6 +3,7 @@ AC_PREREQ([2.59])
 
 AC_CONFIG_AUX_DIR([m4])
 AC_CONFIG_MACRO_DIR([m4])
+
 AM_INIT_AUTOMAKE([1.10 -Wall no-define color-tests])
 
 AC_CONFIG_HEADERS([config.h])
@@ -14,7 +15,9 @@ AC_PROG_GREP
 AC_PROG_EGREP
 AC_PROG_CXX
 
-
+PKG_CHECK_MODULES([SDL], [sdl >= 1.2])
+PKG_CHECK_MODULES([PNG], [libpng >= 1.2])
+PKG_CHECK_MODULES([SQLITE], [sqlite3 >= 3.7.14])
 BOOST_REQUIRE([1.52.0])
 
 
