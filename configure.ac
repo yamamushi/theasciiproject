@@ -21,5 +21,10 @@ PKG_CHECK_MODULES([SQLITE], [sqlite3 >= 3.7.14])
 BOOST_REQUIRE([1.52.0])
 
 
+# Look for SDL_net
+AC_CHECK_HEADER(SDL/SDL_ttf.h, , AC_MSG_ERROR([SDL_ttf header not found.]))
+AC_CHECK_LIB(SDL_ttf, TTF_OpenFont, AC_SUBST([SDL_TTF_LIBS], [-lSDL_ttf]), AC_MSG_ERROR([Cannot find SDL_tff library.]), [${SDL_LIBS}])
+
+
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
