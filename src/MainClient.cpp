@@ -25,7 +25,7 @@ int main(int argc, char* argv[]){
 
   screen = SDL_SetVideoMode( 1024, 748, 32, SDL_SWSURFACE);
 
-  hello = IMG_Load( "hello.bmp" );
+  hello = IMG_Load( "data/hello.bmp" );
 
   SDL_WM_SetCaption( "The ASCII Project - Client - 0.0.1f", NULL );
   SDL_BlitSurface( hello, nullptr, screen, nullptr);
