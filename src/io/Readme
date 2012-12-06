@@ -1,0 +1,6 @@
+IO -
+
+   This directory holds files related to disk i/o.
+
+   Saving a map to disk, saving entities to disk, etc. All of these actions filter through
+   The functions defined in here eventually.

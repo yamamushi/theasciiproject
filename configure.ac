@@ -19,7 +19,8 @@ PKG_CHECK_MODULES([SDL], [sdl >= 1.2])
 PKG_CHECK_MODULES([PNG], [libpng >= 1.2])
 PKG_CHECK_MODULES([SQLITE], [sqlite3 >= 3.7.14])
 BOOST_REQUIRE([1.52.0])
-
+BOOST_ASIO
+BOOST_SERIALIZATION
 
 # Look for SDL_net
 AC_CHECK_HEADER(SDL/SDL_ttf.h, , AC_MSG_ERROR([SDL_ttf header not found.]))
