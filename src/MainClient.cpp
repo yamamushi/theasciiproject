@@ -14,18 +14,14 @@
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 #include "graphics/ClientWindow.h"
-#include <string>
 
 
 int main(int argc, char* argv[]){
 
-  SDL_Surface *screen = nullptr;
-  SDL_Surface *hello = nullptr;
 
   ClientWindow *clientWindow = new ClientWindow();
-
-  screen = SDL_SetVideoMode( 1024, 748, 32, SDL_SWSURFACE);
-  hello = IMG_Load( "data/hello.bmp" );
+  SDL_Surface *screen = SDL_SetVideoMode( 1024, 640, 32, SDL_SWSURFACE);
+  SDL_Surface *hello = IMG_Load( "data/font.png" );
 
   clientWindow->ClientWindowUpdate(hello, screen);
 
