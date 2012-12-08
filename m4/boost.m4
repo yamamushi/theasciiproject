@@ -580,6 +580,12 @@ BOOST_DEFUN([Function],
 [BOOST_FIND_HEADER([boost/function.hpp])])
 
 
+# BOOST_GEOMETRY()
+# ----------------
+BOOST_DEFUN([Geometry],
+[BOOST_FIND_HEADER([boost/geometry.hpp])])
+
+
 # BOOST_GRAPH([PREFERRED-RT-OPT])
 # -------------------------------
 # Look for Boost.Graphs.  For the documentation of PREFERRED-RT-OPT, see the

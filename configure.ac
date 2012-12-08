@@ -23,10 +23,16 @@ PKG_CHECK_MODULES([SQLITE], [sqlite3 >= 3.7.14])
 
 # Boost Checks
 BOOST_REQUIRE([1.52.0])
-BOOST_THREADS
+
+# Boost Header-Only Checks
 BOOST_ASIO
+BOOST_GEOMETRY
+
+# Boost libraries that require linking.
 BOOST_FILESYSTEM
 BOOST_SERIALIZATION
+BOOST_THREADS
+
 
 # Look for SDL_net
 AC_CHECK_HEADER(SDL/SDL_ttf.h, , AC_MSG_ERROR([SDL_ttf header not found.]))
