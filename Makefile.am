@@ -18,13 +18,13 @@ bin_PROGRAMS = tap_server tap_client
 tap_server_SOURCES = src/MainServer.cpp src/entities/Entity.cpp src/entities/Entity.h \
 	src/mapping/EntityMap.cpp src/mapping/EntityMap.h
 tap_server_CPPFLAGS = -std=c++11 $(SQLITE_CFLAGS)
-tap_server_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SQLITE_LIBS)
+tap_server_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_PROGRAM_OPTIONS_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SQLITE_LIBS)
 # tap_server_LIBS = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS)
 
-tap_client_SOURCES = src/MainClient.cpp src/io/SelfPath.cpp
+tap_client_SOURCES = src/MainClient.cpp src/io/SelfPath.cpp src/graphics/ClientWindow.cpp
 tap_client_CPPFLAGS = -std=c++11 $(SDL_CFLAGS) $(PNG_CFLAGS) $(SDL_TTF_CFLAGS)
 tap_client_LDFLAGS = -Wl,-rpath,. 
-tap_client_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SDL_LIBS) $(SDL_TTF_LIBS) $(SDL_IMAGE_LIBS)
+tap_client_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_PROGRAM_OPTIONS_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SDL_LIBS) $(SDL_TTF_LIBS) $(SDL_IMAGE_LIBS)
 # tap_client_LIBS = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS)
 
 
