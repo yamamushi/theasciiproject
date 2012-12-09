@@ -1,6 +1,0 @@
-src/mapping/tap_server-EntityMap.o: src/mapping/EntityMap.cpp \
- src/mapping/../entities/Entity.h src/mapping/EntityMap.h
-
-src/mapping/../entities/Entity.h:
-
-src/mapping/EntityMap.h:
