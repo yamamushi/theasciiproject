@@ -13,7 +13,7 @@
 #include "SDL/SDL_image.h"
 
 #include <string>
-#include <iostream>
+
 
 
 
@@ -58,8 +58,8 @@ void BitmapFont::Build_Font( SDL_Surface *surface){
      int currentChar = 0;
 
      // Start by cell rows
-     for( int rows = 0; rows < 32; rows++){
-       for( int cols = 0; cols < 2048; cols++){
+     for( int rows = 0; rows < 2048; rows++){
+       for( int cols = 0; cols < 32; cols++){
 
          chars[currentChar] = new SDL_Rect;
 
@@ -70,7 +70,7 @@ void BitmapFont::Build_Font( SDL_Surface *surface){
          // Set character dimensions
          chars[currentChar]->w = cellW;
          chars[currentChar]->h = cellH;
-         /*
+         
          // Now we set the individual box dimensions
          // Starting with the left side...
          for( int pCol = 0; pCol < cellW; pCol++){
@@ -161,7 +161,7 @@ void BitmapFont::Build_Font( SDL_Surface *surface){
                }
              }
           }
-          } */
+          } 
            // Go to next character
            currentChar++;    
 
@@ -194,7 +194,6 @@ void BitmapFont::Show_Text( int x, int y, std::string source, SDL_Surface *surfa
   if( bitmap != NULL )
     {
       //Go through the text
-      std::cout << "Printing..." << std::endl;
       for( int show = 0; show < source.length(); show++ )
         {
           //If the current character is a space
@@ -212,21 +211,20 @@ void BitmapFont::Show_Text( int x, int y, std::string source, SDL_Surface *surfa
               //Move back
               X = x;
             }
-          else
-            {
-              //Get the ASCII value of the character
-              int ascii = (unsigned char)source[ show ];
-              
-              //Show the character
-              Apply_Surface( X, Y, bitmap, surface, chars[ ascii ] );
-              std::cout << chars[ascii]->x << std::endl;
-              
-              //Move over the width of the character with one pixel of padding
-              X += chars[ ascii ]->w + 1;
-            }
+          
+          //Get the ASCII value of the character
+          int ascii = (unsigned char)source[ show ];
+          
+          //Show the character
+          Apply_Surface( X, Y, bitmap, surface, chars[ 9786 ] );
+          
+          //Move over the width of the character with one pixel of padding
+          X += chars[ ascii ]->w + 1;
         }
-    } 
-}
+    }
+} 
+
+
 
 void BitmapFont::Apply_Surface( int x, int y, SDL_Surface *source, SDL_Surface *destination, SDL_Rect *clip){
 

@@ -15,7 +15,7 @@
  */
 
 #include <string>
-
+#include "SDL/SDL.h"
 
 #if defined __UINT32_MAX__ or UINT32_MAX
 #include <inttypes.h>
@@ -27,9 +27,6 @@ typedef unsigned long long uint64_t;
 #endif
 
 
-
-class SDL_Surface;
-class SDL_Rect;
 
 
 class BitmapFont {
