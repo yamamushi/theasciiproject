@@ -216,7 +216,7 @@ void BitmapFont::Show_Text( int x, int y, std::string source, SDL_Surface *surfa
           int ascii = (unsigned char)source[ show ];
           
           //Show the character
-          Apply_Surface( X, Y, bitmap, surface, chars[ 9786 ] );
+          Apply_Surface( X, Y, bitmap, surface, chars[ ascii ] );
           
           //Move over the width of the character with one pixel of padding
           X += chars[ ascii ]->w + 1;
