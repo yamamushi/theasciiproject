@@ -43,5 +43,6 @@ AC_CHECK_HEADER(SDL/SDL_image.h, , AC_MSG_ERROR([SDL_image header not found.]))
 AC_CHECK_LIB(SDL_image, main, AC_SUBST([SDL_IMAGE_LIBS], [-lSDL_image]), AC_MSG_ERROR([Cannot find SDL_image library.]), [${SDL_LIBS}])
 
 
+
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

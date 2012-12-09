@@ -6,8 +6,12 @@
  */
 
 #include "ClientWindow.h"
+#include "BitmapFont.h"
+
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
+#include "SDL/SDL_ttf.h"
+
 
 
 ClientWindow::ClientWindow(){
@@ -15,6 +19,9 @@ ClientWindow::ClientWindow(){
   SDL_Init(SDL_INIT_EVERYTHING);
   SDL_WM_SetCaption( "The ASCII Project - Client - 0.0.1f", NULL);
 
+  // I guess now is a good time to start loading our massive font
+  // Delegated to our BitmapFont class.
+  
 
 }
 

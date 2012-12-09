@@ -1,0 +1,4 @@
+src/entities/tap_server-Entity.o: src/entities/Entity.cpp \
+ src/entities/Entity.h
+
+src/entities/Entity.h:
