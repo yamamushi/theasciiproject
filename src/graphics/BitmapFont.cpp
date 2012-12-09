@@ -56,8 +56,63 @@ void BitmapFont::Build_Font( SDL_Surface *surface){
      // Start by cell rows
      for( int rows = 0; rows < 32; rows++){
        for( int cols = 0; cols < 2048; cols++){
+
          // Start by setting our Character offsets
          chars[currentChar]->x = cellW * cols;
+         chars[currentChar]->y = cellH * rows;
+
+         // Set character dimensions
+         chars[currentChar]->w = cellW;
+         chars[currentChar]->h = cellH;
+         
+         // Now we set the individual box dimensions
+         // Starting with the left side...
+         for( int pCol = 0; pCol < cellW; pCol++){
+           for( int pRow = 0; pRow < cellH; pRow++){
+             
+             // Now our pixel offsets
+             int pX = (cellW * cols) + pCol;
+             int pY = (cellH * rows) + pRow;
+
+             // If a non color-key pixel is found
+             if( Get_Pixel32( pX, pY, bitmap ) != bgColor ){
+
+               // Set the X offset
+               chars[currentChar]->x = pX;
+               
+               // Do this to break our for-loops
+               pCol = cellW;
+               pRow = cellH;
+               
+             }
+           }
+         }
+         
+         // And now the right side, which we do from right to left
+         for( int pCol_w = cellW - 1; pCol_w >= 0; pCol_w--){
+           for( int pRow_w = 0; pRow_w < cellH; pRow_w++){
+             
+             // Get the pixel offsets
+             int pX = ( cellW * cols ) + pCol_w;
+             int pY = ( cellH * rows ) + pRow_w;
+
+             // Once again, if a non color-key pixel is found
+             if( Get_Pixel32( pX, pY, bitmap ) != bgColor ){
+               
+               // Set the width
+               chars[currentChar]->w = ( pX - chars[currentChar]->x) + 1;
+               
+               // Break the loop
+               pCol_w = -1;
+               pRow_w = cellH;
+               
+             }
+           }
+         }
+
+         // Now we get the top by pixel rows
+         
+
 
        }
      }

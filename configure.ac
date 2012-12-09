@@ -22,7 +22,7 @@ PKG_CHECK_MODULES([PNG], [libpng >= 1.2])
 PKG_CHECK_MODULES([SQLITE], [sqlite3 >= 3.7.14])
 
 # Boost Checks
-BOOST_REQUIRE([1.52.0])
+BOOST_REQUIRE([1.50.0])
 
 # Boost Header-Only Checks
 BOOST_ASIO
