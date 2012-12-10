@@ -97,7 +97,7 @@ void Window::Handle_Events(SDL_Event event){
     }
 
  //If enter was pressed
-    else if( ( event.type == SDL_KEYDOWN ) && ( event.key.keysym.sym == SDLK_RETURN ) )
+    else if( ( event.type == SDL_KEYDOWN ) && ( event.key.keysym.sym == SDLK_RETURN ) && ( event.key.keysym.mod & KMOD_ALT ))
     {
         //Turn fullscreen on/off
         Toggle_Fullscreen();
