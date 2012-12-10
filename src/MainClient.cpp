@@ -13,38 +13,54 @@
 
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
-#include "graphics/ClientWindow.h"
 #include "graphics/BitmapFont.h"
+#include "graphics/ClientWindow.h"
+#include "graphics/Window.h"
+
+#include <string>
+
 
 int main(int argc, char* argv[]){
 
-
   ClientWindow *clientWindow = new ClientWindow();
-  SDL_Surface *screen = SDL_SetVideoMode( 1024, 640, 32, SDL_SWSURFACE);
-  SDL_Surface *bitmapFont = IMG_Load( "data/font.png" );
-  //SDL_SetColorKey( bitmapFont, SDL_SRCCOLORKEY, SDL_MapRGB( bitmapFont->format, 0, 0xFF, 0xFF));
 
-  BitmapFont font( bitmapFont );
-  //SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ));
-  font.Show_Text( 100, 100, L"Bitmap Font Test \u263a", screen );
-
-  if( SDL_Flip( screen ) == -1){
+  if( SDL_Flip( clientWindow->mainScreen ) == -1){
     return 1;
   }
-
+  // This is only here for my memory, ignore it!
   //  clientWindow->ClientWindowUpdate(hello, screen);
 
   bool quit = false;
   SDL_Event event;
   while( quit == false){
     while(SDL_PollEvent( &event )){
+      
+      clientWindow->mainWindow->Handle_Events( event );
+
+      if( (event.type == SDL_KEYDOWN ) && ( event.key.keysym.sym == SDLK_ESCAPE ) ){
+        quit = true;
+      }
+
       if( event.type == SDL_QUIT){
         quit = true;
       }
     }
+
+    if( clientWindow->mainWindow->Error() == true ){
+      return 1;
+    }
+
+    std::wstring fontTestString = L"Bitmap Font Test \n\u263a \u2190 Should be a Smiley Face";
+
+    clientWindow->fontHandler->Show_Text( ( clientWindow->mainScreen->w / 2 ) - (fontTestString.length()), clientWindow->mainScreen->h / 2, fontTestString, clientWindow->mainScreen);
+
+
+
+    if( SDL_Flip( clientWindow->mainScreen ) == -1 ){
+      return 1;
+    }
+
   }
-   
-  //  SDL_FreeSurface( hello );
 
   delete clientWindow;
 

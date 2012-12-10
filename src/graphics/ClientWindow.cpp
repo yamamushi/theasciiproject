@@ -5,8 +5,9 @@
 
  */
 
-#include "ClientWindow.h"
 #include "BitmapFont.h"
+#include "ClientWindow.h"
+#include "Window.h"
 
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
@@ -16,12 +17,35 @@
 
 ClientWindow::ClientWindow(){
 
-  SDL_Init(SDL_INIT_EVERYTHING);
-  SDL_WM_SetCaption( "The ASCII Project - Client - 0.0.1f", NULL);
+  Init();
+    
+}
 
-  // I guess now is a good time to start loading our massive font
-  // Delegated to our BitmapFont class.
+
+
+void ClientWindow::Init(){
+
+  // Start SDL Engine
+  InitSDL();
+
+  // Create our "global" resizable window
+  mainWindow = new Window();
+  mainScreen = mainWindow->screen;
+
+  // Load up our font file and the Handler
+  fontFile = IMG_Load( "data/font.png" );
+  fontHandler = new BitmapFont( fontFile );
+
+}
+
+
+bool ClientWindow::InitSDL(){
+
+  if(SDL_Init( SDL_INIT_EVERYTHING ) == -1 ){
+    return false;
+  }
   
+  return true;
 
 }
 
