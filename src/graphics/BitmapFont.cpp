@@ -44,7 +44,9 @@ void BitmapFont::Build_Font( SDL_Surface *surface){
 
      // Load our bitmap font
      bitmap = surface;
-     uint32_t bgColor = SDL_MapRGB( bitmap->format, 0x00, 0x00, 0x00 );
+     uint32_t bgColor = SDL_MapRGB( bitmap->format, 0x00, 0x00, 0x00);
+     backColor = Get_Pixel32( 0, 0, bitmap);
+     foreColor = 0xFFFFFF;
 
      SDL_SetColorKey( bitmap, SDL_SRCCOLORKEY, SDL_MapRGB( bitmap->format, 0, 0, 0) );
 
@@ -72,116 +74,16 @@ void BitmapFont::Build_Font( SDL_Surface *surface){
          // Set character dimensions
          chars[currentChar]->w = cellW;
          chars[currentChar]->h = cellH;
+
+         // Go to next character
+         currentChar++;    
          
-         // Now we set the individual box dimensions
-         // Starting with the left side...
-         for( int pCol = 0; pCol < cellW; pCol++){
-           for( int pRow = 0; pRow < cellH; pRow++){
-             
-             // Now our pixel offsets
-             int pX = (cellW * cols) + pCol;
-             int pY = (cellH * rows) + pRow;
-
-             // If a non color-key pixel is found
-             if( Get_Pixel32( pX, pY, bitmap ) != bgColor ){
-
-               // Set the X offset
-               chars[currentChar]->x = pX;
-               
-               // Do this to break our for-loops
-               pCol = cellW;
-               pRow = cellH;
-               
-             }
-           }
-         }
-         
-         // And now the right side, which we do from right to left
-         for( int pCol_w = cellW - 1; pCol_w >= 0; pCol_w--){
-           for( int pRow_w = 0; pRow_w < cellH; pRow_w++){
-             
-             // Get the pixel offsets
-             int pX = ( cellW * cols ) + pCol_w;
-             int pY = ( cellH * rows ) + pRow_w;
-
-             // Once again, if a non color-key pixel is found
-             if( Get_Pixel32( pX, pY, bitmap ) != bgColor ){
-               
-               // Set the width
-               chars[currentChar]->w = ( pX - chars[currentChar]->x) + 1;
-               
-               // Break the loop
-               pCol_w = -1;
-               pRow_w = cellH;
-               
-             }
-           }
-         }
-
-         // Now we get the top by pixel rows
-         for( int pRow = 0; pRow < cellH; pRow++ ){
-           for( int pCol = 0; pCol < cellW; pCol++ ){
-
-             // Pixel offsets
-             int pX = ( cellW * cols ) + pCol;
-             int pY = ( cellH * rows ) + pRow;
-             
-             // Check color-key
-             if( Get_Pixel32( pX, pY, bitmap) != bgColor ){
-
-               // If new top is found
-               if( pRow < top ){
-                 top = pRow;
-               }
-
-               // Break the loop
-               pCol = cellW;
-               pRow = cellH;
-
-             }
-           }
-         }
-
-         // Find bottom of A
-         if( currentChar == 'A' ){
-           for( int pRow = cellH - 1; pRow >= 0; pRow--){
-             for( int pCol = 0; pCol < cellW; pCol++){
-               
-               // Get the pixel offsets
-               int pX = ( cellW * cols ) + pCol;
-               int pY = ( cellH * rows ) + pRow;
-
-               // If a non color-key pixel is found...
-               if( Get_Pixel32( pX, pY, bitmap) != bgColor ){
-                 
-                 // Bottom of 'a' is found
-                 baseA = pRow;
-                 
-                 // Break loops
-                 pCol = cellW;
-                 pRow = -1;
-               }
-             }
-          }
-          } 
-           // Go to next character
-           currentChar++;    
-
-         }
        }
-
-      
-       // Calculate space
-       space = cellW / 2;
-       
-       // Calculate newline
-       newLine = baseA - top;
-       
-       // Lop off excess top pixels
-       for( int t = 0; t < 65536; t++ ){
-         chars[t]->y += top;
-         chars[t]->h -= top;
-       }
+     }
+     
+     // Calculate space
+     space = cellW;
+     newLine = cellH;
 
 }
 
@@ -199,47 +101,62 @@ void BitmapFont::Show_Text( int x, int y, std::wstring source, SDL_Surface *surf
       for( int show = 0; show < source.length(); show++ )
         {
           //If the current character is a space
-          if( source[ show ] == ' ' )
+          /*  if( source[ show ] == ' ' )
             {
               //Move over
               X += space;
-            }
+            } */
           //If the current character is a newline
-          else if( source[ show ] == '\n' )
+          if( source[ show ] == '\n' )
             {
               //Move down
               Y += newLine;
               
               //Move back
-              X = x;
+              X = x - chars[0]->w;
             }
-          
+          else{
           //Get the ASCII value of the character
           int ascii = (wchar_t)source[ show ];
           
           //Show the character
           Apply_Surface( X, Y, bitmap, surface, chars[ ascii ] );
-          
+          }
+    
           //Move over the width of the character with one pixel of padding
-          X += chars[ ascii ]->w + 1;
+          X += chars[ 0 ]->w;
+          
         }
     }
 } 
 
 
 
-void BitmapFont::Set_Character_Color(SDL_Color color){
+void BitmapFont::Set_Character_Color(SDL_Color color, bool fore){
 
   uint32_t *pixels = (uint32_t *)bitmap->pixels;
 
   SDL_LockSurface( bitmap );
-  for(int i = 0; i < bitmap->w * bitmap->h; i++){
-    //if(pixels[i] == SDL_MapRGB( bitmap->format, 0xFF, 0xFF, 0xFF )){
-    if( pixels[i] !=  Get_Pixel32( 0, 0, bitmap ) ){
 
-      pixels[i] = SDL_MapRGB( bitmap->format, color.r, color.g, color.b);
-
-    }    
+  if(fore){
+    for(int i = 0; i < bitmap->w * bitmap->h; i++){
+      if( pixels[i] !=  backColor ){
+        
+        pixels[i] = SDL_MapRGB( bitmap->format, color.r, color.g, color.b);
+        foreColor = SDL_MapRGB( bitmap->format, color.r, color.g, color.b);        
+        
+      }    
+    }
+  }
+  else{
+    for(int i = 0; i < bitmap->w * bitmap->h; i++){
+      if( pixels[i] != foreColor ){
+        
+        pixels[i] = SDL_MapRGB( bitmap->format, color.r, color.g, color.b);
+        backColor = SDL_MapRGB( bitmap->format, color.r, color.g, color.b);
+        
+      }
+    }
   }
 
     SDL_UnlockSurface( bitmap );

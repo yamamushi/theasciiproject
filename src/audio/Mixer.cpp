@@ -26,6 +26,8 @@ Mixer::Mixer(){
 
 
 Mixer::~Mixer(){
+  
+  // Stop_Music();
 
   if( music != nullptr )
     Mix_FreeMusic( music );
@@ -170,3 +172,4 @@ void Mixer::Effect_Volume( int volume, int channel){
   
 
 }
+
