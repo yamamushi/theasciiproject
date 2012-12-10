@@ -42,6 +42,8 @@ AC_CHECK_LIB(SDL_ttf, TTF_OpenFont, AC_SUBST([SDL_TTF_LIBS], [-lSDL_ttf]), AC_MS
 AC_CHECK_HEADER(SDL/SDL_image.h, , AC_MSG_ERROR([SDL_image header not found.]))
 AC_CHECK_LIB(SDL_image, main, AC_SUBST([SDL_IMAGE_LIBS], [-lSDL_image]), AC_MSG_ERROR([Cannot find SDL_image library.]), [${SDL_LIBS}])
 
+AC_CHECK_HEADER(SDL/SDL_mixer.h, , AC_MSG_ERROR([SDL_mixer header not found.]))
+AC_CHECK_LIB(SDL_mixer, Mix_OpenAudio, AC_SUBST([SDL_MIXER_LIBS], [-lSDL_mixer]), AC_MSG_ERROR([Cannot find SDL_mixer library.]), [${SDL_LIBS}])
 
 
 AC_CONFIG_FILES([Makefile])
