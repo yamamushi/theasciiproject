@@ -22,7 +22,9 @@
 
 # Emacs Stuff
 *#
-.#
+.#*
+*.#
+
 # automake stuff I don't want to export
 config.h
 config.log
