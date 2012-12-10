@@ -185,7 +185,7 @@ void BitmapFont::Build_Font( SDL_Surface *surface){
 
 
 
-void BitmapFont::Show_Text( int x, int y, std::string source, SDL_Surface *surface){
+void BitmapFont::Show_Text( int x, int y, std::wstring source, SDL_Surface *surface){
 
     //Temp offsets
   int X = x, Y = y;
@@ -213,7 +213,7 @@ void BitmapFont::Show_Text( int x, int y, std::string source, SDL_Surface *surfa
             }
           
           //Get the ASCII value of the character
-          int ascii = (unsigned char)source[ show ];
+          int ascii = (wchar_t)source[ show ];
           
           //Show the character
           Apply_Surface( X, Y, bitmap, surface, chars[ ascii ] );

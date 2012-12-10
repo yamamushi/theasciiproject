@@ -26,7 +26,7 @@ int main(int argc, char* argv[]){
 
   BitmapFont font( bitmapFont );
   //SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ));
-  font.Show_Text( 100, 100, "Bitmap Font Test \u263A ", screen );
+  font.Show_Text( 100, 100, L"Bitmap Font Test \u263a", screen );
 
   if( SDL_Flip( screen ) == -1){
     return 1;
