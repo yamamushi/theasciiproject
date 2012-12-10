@@ -39,8 +39,7 @@ int main(int argc, char* argv[]){
   loadingMusic.Fade_In_Music( 25000 );
   // We know music playing works
   // loadingMusic.Play_Music();
-  
-  
+    
 
   bool quit = false;
   SDL_Event event;
