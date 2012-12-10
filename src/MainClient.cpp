@@ -13,6 +13,9 @@
 
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
+
+#include "audio/Mixer.h"
+
 #include "graphics/BitmapFont.h"
 #include "graphics/ClientWindow.h"
 #include "graphics/Window.h"
@@ -29,6 +32,15 @@ int main(int argc, char* argv[]){
   }
   // This is only here for my memory, ignore it!
   //  clientWindow->ClientWindowUpdate(hello, screen);
+
+  Mixer loadingMusic;
+  loadingMusic.Load_Music( (char *)"data/audio/Loading.mp3" );
+  loadingMusic.Music_Volume( MIX_MAX_VOLUME );
+  loadingMusic.Fade_In_Music( 25000 );
+  // We know music playing works
+  // loadingMusic.Play_Music();
+  
+  
 
   bool quit = false;
   SDL_Event event;

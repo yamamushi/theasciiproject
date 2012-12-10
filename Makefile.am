@@ -22,7 +22,7 @@ tap_server_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_PROG
 # tap_server_LIBS = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS)
 
 tap_client_SOURCES = src/MainClient.cpp src/io/SelfPath.cpp src/graphics/ClientWindow.cpp \
-	src/graphics/BitmapFont.cpp src/graphics/Window.cpp
+	src/graphics/BitmapFont.cpp src/graphics/Window.cpp src/audio/Mixer.cpp
 tap_client_CPPFLAGS = -std=c++11 $(SDL_CFLAGS) $(PNG_CFLAGS) $(SDL_TTF_CFLAGS) $(BOOST_CPPFLAGS) 
 tap_client_LDFLAGS = -Wl,-rpath,. 
 tap_client_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_PROGRAM_OPTIONS_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SDL_LIBS) $(SDL_TTF_LIBS) $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS)
