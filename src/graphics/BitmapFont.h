@@ -40,6 +40,8 @@ class BitmapFont {
   
   int newLine, space;
 
+  SDL_Color foreColor, backColor;
+
 
  public:
 
@@ -48,6 +50,8 @@ class BitmapFont {
 
   void Build_Font( SDL_Surface *surface);
   void Show_Text( int x, int y, std::wstring source, SDL_Surface *surface);
+  
+  void Set_Character_Color(SDL_Color color);
 
   void Apply_Surface( int x, int y, SDL_Surface *source, SDL_Surface *destination, SDL_Rect *clip = NULL );
   uint32_t Get_Pixel32( int x, int y, SDL_Surface *surface);

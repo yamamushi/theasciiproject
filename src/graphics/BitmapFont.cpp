@@ -44,7 +44,9 @@ void BitmapFont::Build_Font( SDL_Surface *surface){
 
      // Load our bitmap font
      bitmap = surface;
-     uint32_t bgColor = SDL_MapRGB( bitmap->format, 0, 0xFF, 0xFF );
+     uint32_t bgColor = SDL_MapRGB( bitmap->format, 0x00, 0x00, 0x00 );
+
+     SDL_SetColorKey( bitmap, SDL_SRCCOLORKEY, SDL_MapRGB( bitmap->format, 0, 0, 0) );
 
      // Character Cell dimensions
      int cellW = bitmap->w / 32;
@@ -226,6 +228,27 @@ void BitmapFont::Show_Text( int x, int y, std::wstring source, SDL_Surface *surf
 
 
 
+void BitmapFont::Set_Character_Color(SDL_Color color){
+
+  uint32_t *pixels = (uint32_t *)bitmap->pixels;
+
+  SDL_LockSurface( bitmap );
+  for(int i = 0; i < bitmap->w * bitmap->h; i++){
+    //if(pixels[i] == SDL_MapRGB( bitmap->format, 0xFF, 0xFF, 0xFF )){
+    if( pixels[i] !=  Get_Pixel32( 0, 0, bitmap ) ){
+
+      pixels[i] = SDL_MapRGB( bitmap->format, color.r, color.g, color.b);
+
+    }    
+  }
+
+    SDL_UnlockSurface( bitmap );
+}
+
+
+
+
+
 void BitmapFont::Apply_Surface( int x, int y, SDL_Surface *source, SDL_Surface *destination, SDL_Rect *clip){
 
   SDL_Rect offset;
@@ -247,3 +270,5 @@ uint32_t BitmapFont::Get_Pixel32( int x, int y, SDL_Surface *surface){
   return pixels[ ( y * surface->w ) + x ];
 
 }
+
+

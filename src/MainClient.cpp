@@ -63,8 +63,21 @@ int main(int argc, char* argv[]){
 
     std::wstring fontTestString = L"Bitmap Font Test \n\u263a \u2190 Should be a Smiley Face";
 
-    clientWindow->fontHandler->Show_Text( ( clientWindow->mainScreen->w / 2 ) - (fontTestString.length()), clientWindow->mainScreen->h / 2, fontTestString, clientWindow->mainScreen);
+    SDL_Color testColor;
+    testColor.r = 50;
+    testColor.g = 205;
+    testColor.b = 50;
 
+    clientWindow->fontHandler->Set_Character_Color( testColor );
+
+    clientWindow->fontHandler->Show_Text( ( clientWindow->mainScreen->w / 2 ) - (fontTestString.length()), clientWindow->mainScreen->h / 2, fontTestString, clientWindow->mainScreen);
+    
+    testColor.r = 100;
+    testColor.g = 50;
+    testColor.b = 100;
+
+    clientWindow->fontHandler->Set_Character_Color( testColor );
+    clientWindow->fontHandler->Show_Text( ( clientWindow->mainScreen->w / 2 ) - (fontTestString.length()),(clientWindow->mainScreen->h / 2)+4, L"New Color Test", clientWindow->mainScreen);
 
 
     if( SDL_Flip( clientWindow->mainScreen ) == -1 ){
