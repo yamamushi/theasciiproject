@@ -17,7 +17,8 @@
 Frame::Frame(){
 
   sdlScreen = nullptr;
-
+  drawThisFrame = false;
+  removeThisFrame = false;
 
 }
 

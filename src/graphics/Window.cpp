@@ -9,6 +9,8 @@
 
 #include "SDL/SDL.h"
 
+#include <vector>
+
 const int SCREEN_WIDTH = 1024;
 const int SCREEN_HEIGHT = 748;
 const int SCREEN_BPP = 32;
@@ -162,6 +164,35 @@ void Window::Handle_Events(SDL_Event event){
         }
     }
 }
+
+
+void Window::Add_To_FrameList(Frame *src){
+
+  frameList.push_back(src);
+
+}
+
+
+void Window::Draw_Frames(){
+
+  for( int i = 0; i < frameList.size(); i++){
+    if( frameList.at(i)->drawThisFrame ){
+      SDL_Rect destination;
+      destination.x = frameList.at(i)->posX;
+      destination.y = frameList.at(i)->posY;
+
+      SDL_BlitSurface( frameList.at(i)->sdlScreen, nullptr, screen, &destination);      
+
+    }
+
+    if( frameList.at(i)->removeThisFrame ){
+      frameList.erase(frameList.begin()+i);
+    }
+
+  }
+
+}
+
 
 
 bool Window::Error()

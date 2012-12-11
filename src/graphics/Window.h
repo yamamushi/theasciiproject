@@ -24,7 +24,7 @@ class Window {
   bool windowed;
   // Window status
   bool windowOK;
-  // [Window [FRAME [Widget] ] ]
+  // [Window [FRnAME [Widget] ] ]
   std::vector<Frame *> frameList;
 
  public:
@@ -34,9 +34,13 @@ class Window {
 
   // Our SDL Window for this Object
   SDL_Surface *screen;
-  
+
+  // Only for Window-Drawing events!
   void Handle_Events(SDL_Event event);
   void Toggle_Fullscreen();
+
+  void Add_To_FrameList(Frame *src);
+  void Draw_Frames();  
 
   // Our generic Error Handling Function
   bool Error();

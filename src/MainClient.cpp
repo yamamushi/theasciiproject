@@ -17,6 +17,8 @@
 #include "graphics/BitmapFont.h"
 #include "graphics/ClientWindow.h"
 #include "io/ClientKeyboard.h"
+#include "graphics/Frame.h"
+#include "graphics/widget/Widget.h"
 #include "audio/Mixer.h"
 #include "graphics/Window.h"
 
@@ -26,33 +28,60 @@
 int main(int argc, char* argv[]){
 
   ClientWindow *clientWindow = new ClientWindow();
-
   if( SDL_Flip( clientWindow->mainScreen ) == -1){
     return 1;
   }
 
-
   Mixer *loadingMusic = new Mixer();
   loadingMusic->Load_Music( (char *)"data/audio/Loading.mp3" );
   loadingMusic->Music_Volume( MIX_MAX_VOLUME / 2);
-  loadingMusic->Fade_In_Music( 45000 );
-  // We know music playing works
-  // loadingMusic.Play_Music();
+  loadingMusic->Fade_In_Music( 20000 );
+
+  // One event object to track input from here out
+  SDL_Event event;
+
+  // Our Loading Screen Animation Will Go Here
+  bool finishedLoading = false;
+  while( !finishedLoading ){
+    while(SDL_PollEvent( &event )){
+      clientWindow->mainWindow->Handle_Events( event );
+      
+      if(( event.type == SDL_KEYDOWN ) && ( event.key.keysym.sym == SDLK_ESCAPE )){
+        finishedLoading = true;
+      }
+  
+      if( event.type == SDL_QUIT ){
+        finishedLoading = true;
+      }
+    }
+  
+    if( clientWindow->mainWindow->Error() == true ){
+      return 1;
+    }
+
+    // Our Animation Goes Here
+    clientWindow->mainWindow->Draw_Frames();
+
+    if( SDL_Flip( clientWindow->mainScreen ) == -1 ){
+      return 1;
+    }
+
+  }
+  
     
 
-  bool quit = false;
-  SDL_Event event;
-  while( quit == false){
+  bool quitMain = false;
+  while( !quitMain ){
     while(SDL_PollEvent( &event )){
       
       clientWindow->mainWindow->Handle_Events( event );
 
       if( (event.type == SDL_KEYDOWN ) && ( event.key.keysym.sym == SDLK_ESCAPE ) ){
-        quit = true;
+        quitMain = true;
       }
 
       if( event.type == SDL_QUIT){
-        quit = true;
+        quitMain = true;
       }
     }
 

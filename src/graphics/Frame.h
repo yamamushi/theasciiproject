@@ -22,14 +22,21 @@ class Frame {
 
  private:
 
-  SDL_Surface *sdlScreen;
-
   std::vector<Widget *> widgetList;
 
  public:
 
   Frame();
-  virtual ~Frame(){};
+  virtual ~Frame(){ if(sdlScreen){ delete sdlScreen;} };
 
+  bool drawThisFrame;
+  bool removeThisFrame;
+
+  int posX, posY;
+
+  SDL_Surface *sdlScreen;
+
+  void Render_Widgets();
 
 };
+
