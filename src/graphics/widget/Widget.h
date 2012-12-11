@@ -9,6 +9,11 @@
 
  */
 
+#include "../Frame.h"
+#include "SDL/SDL.h"
+
+
+
 
 class Widget {
 
@@ -17,8 +22,10 @@ class Widget {
 
  public:
 
-  Widget(){};
+  Widget(Frame *tgt){ frameSurface = tgt->sdlScreen; };
   virtual ~Widget(){};
 
+  SDL_Surface *frameSurface;
 
 };
+

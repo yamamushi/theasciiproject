@@ -23,3 +23,15 @@ Frame::Frame(){
 }
 
 
+void Frame::Render_Widgets(){
+
+  for( int i = 0; i < widgetList.size(); i++){
+    
+
+  }
+
+}
+
+
+
+

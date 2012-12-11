@@ -177,6 +177,9 @@ void Window::Draw_Frames(){
 
   for( int i = 0; i < frameList.size(); i++){
     if( frameList.at(i)->drawThisFrame ){
+
+      frameList.at(i)->Render_Widgets();
+
       SDL_Rect destination;
       destination.x = frameList.at(i)->posX;
       destination.y = frameList.at(i)->posY;
