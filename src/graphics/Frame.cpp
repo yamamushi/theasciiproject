@@ -14,9 +14,14 @@
 #include "SDL/SDL.h"
 
 
-Frame::Frame(){
+Frame::Frame( int Width, int Height, int PosX, int PosY){
 
-  sdlScreen = nullptr;
+  width = Width;
+  height = Height;
+  posX = PosX;
+  posY = PosY;
+
+  sdlScreen = SDL_CreateRGBSurface( 0, width, height, 32, 0, 0, 0, 0);
   drawThisFrame = false;
   removeThisFrame = false;
 

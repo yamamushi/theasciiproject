@@ -13,18 +13,23 @@
 #include "SDL/SDL.h"
 
 class Frame;
+class Timer;
 
 
 class FadeAnimation : public Widget {
 
 private:
 
-  float timespan;
+  int timespan;
+  float alphaPerSecond;
+  int currentAlpha;
   float elapsed;
-  int alphaPerSecond;
+  float ticks;
 
   SDL_Surface *initialSurface;
   SDL_Surface *endSurface;
+
+  Timer *clock;
 
 
 public:
@@ -33,5 +38,8 @@ public:
 
   virtual ~FadeAnimation(){};
 
+
+  void Update();
+  bool IsComplete();
 
 };

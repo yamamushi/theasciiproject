@@ -19,6 +19,7 @@
 #include "io/ClientKeyboard.h"
 #include "graphics/Frame.h"
 #include "graphics/widget/Widget.h"
+#include "graphics/widget/FadeAnimation.h"
 #include "audio/Mixer.h"
 #include "graphics/Window.h"
 
@@ -40,6 +41,10 @@ int main(int argc, char* argv[]){
   // One event object to track input from here out
   SDL_Event event;
 
+  SDL_Surface *testImage = IMG_Load("data/loading.png");
+  Frame *testFrame = new Frame( testImage->w, testImage->h);
+  FadeAnimation *testAnimate = new FadeAnimation( testFrame, testFrame->sdlScreen, testImage, 1000);
+
   // Our Loading Screen Animation Will Go Here
   bool finishedLoading = false;
   while( !finishedLoading ){
@@ -60,7 +65,13 @@ int main(int argc, char* argv[]){
     }
 
     // Our Animation Goes Here
-    clientWindow->mainWindow->Draw_Frames();
+    //clientWindow->mainWindow->Draw_Frames();
+    testAnimate->Update();
+    SDL_BlitSurface( testFrame->sdlScreen, NULL, clientWindow->mainScreen, NULL);
+
+    if(testAnimate->IsComplete()){
+      finishedLoading = true;
+    }
 
     if( SDL_Flip( clientWindow->mainScreen ) == -1 ){
       return 1;

@@ -27,12 +27,13 @@ class Frame {
 
  public:
 
-  Frame();
+  Frame( int Width, int Height, int PosX=0, int PosY=0);
   virtual ~Frame(){ if(sdlScreen){ delete sdlScreen;} };
 
   bool drawThisFrame;
   bool removeThisFrame;
 
+  int width, height;
   int posX, posY;
 
   SDL_Surface *sdlScreen;
