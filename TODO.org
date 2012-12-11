@@ -1,0 +1,7 @@
+#+TODO: TODO IN-PROGRESS WAITING DONE
+
+* 12 - 10 - 12 :: Tasks
+
+** Image Fade In/Out
+** Frame Collecting in Window Class
+
