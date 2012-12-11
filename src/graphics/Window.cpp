@@ -4,6 +4,7 @@
 
  */
 
+#include "Frame.h"
 #include "Window.h"
 
 #include "SDL/SDL.h"

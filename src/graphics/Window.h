@@ -9,6 +9,9 @@
  */
 
 #include "SDL/SDL.h"
+#include <vector>
+
+class Frame;
 
 
 class Window {
@@ -21,6 +24,8 @@ class Window {
   // Window status
   bool windowOK;
 
+  // [Window [FRAME [Widget] ] ]
+  std::vector<Frame *> frameList;
 
  public:
   
@@ -29,6 +34,7 @@ class Window {
 
   // Our SDL Window for this Object
   SDL_Surface *screen;
+  
 
   
   void Handle_Events(SDL_Event event);

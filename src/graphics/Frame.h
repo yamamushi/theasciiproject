@@ -12,6 +12,10 @@
 
 #include "SDL/SDL.h"
 
+#include <vector>
+
+class Widget;
+
 
 
 class Frame {
@@ -19,6 +23,8 @@ class Frame {
  private:
 
   SDL_Surface *sdlScreen;
+
+  std::vector<Widget *> widgetList;
 
  public:
 

@@ -10,6 +10,7 @@
 */
 
 #include "Frame.h"
+#include "widget/Widget.h"
 #include "SDL/SDL.h"
 
 
