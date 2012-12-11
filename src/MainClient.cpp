@@ -22,11 +22,20 @@
 #include "graphics/widget/FadeAnimation.h"
 #include "audio/Mixer.h"
 #include "graphics/Window.h"
+#include "utils/Timer.h"
 
 #include <string>
 
 
+//The frames per second
+const int FRAMES_PER_SECOND = 20;
+
+
+
+
 int main(int argc, char* argv[]){
+
+  Timer fps;
 
   ClientWindow *clientWindow = new ClientWindow();
   if( SDL_Flip( clientWindow->mainScreen ) == -1){
@@ -37,17 +46,18 @@ int main(int argc, char* argv[]){
   loadingMusic->Load_Music( (char *)"data/audio/Loading.mp3" );
   loadingMusic->Music_Volume( MIX_MAX_VOLUME / 2);
   loadingMusic->Fade_In_Music( 20000 );
-
+  
   // One event object to track input from here out
   SDL_Event event;
 
   SDL_Surface *testImage = IMG_Load("data/loading.png");
   Frame *testFrame = new Frame( testImage->w, testImage->h);
-  FadeAnimation *testAnimate = new FadeAnimation( testFrame, testFrame->sdlScreen, testImage, 1000);
+  FadeAnimation *testAnimate = new FadeAnimation( testFrame, testFrame->sdlScreen, testImage, 4000);
 
   // Our Loading Screen Animation Will Go Here
   bool finishedLoading = false;
   while( !finishedLoading ){
+    fps.start();
     while(SDL_PollEvent( &event )){
       clientWindow->mainWindow->Handle_Events( event );
       
@@ -67,7 +77,11 @@ int main(int argc, char* argv[]){
     // Our Animation Goes Here
     //clientWindow->mainWindow->Draw_Frames();
     testAnimate->Update();
-    SDL_BlitSurface( testFrame->sdlScreen, NULL, clientWindow->mainScreen, NULL);
+
+    SDL_Rect tmpRect;
+    tmpRect.x = (clientWindow->mainScreen->w - testFrame->sdlScreen->w) / 2;
+    tmpRect.y = (clientWindow->mainScreen->h - testFrame->sdlScreen->h) / 2;
+    SDL_BlitSurface( testFrame->sdlScreen, NULL, clientWindow->mainScreen, &tmpRect);
 
     if(testAnimate->IsComplete()){
       finishedLoading = true;
@@ -77,12 +91,17 @@ int main(int argc, char* argv[]){
       return 1;
     }
 
+    if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND ){
+      SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
+    }
+
   }
   
     
 
   bool quitMain = false;
   while( !quitMain ){
+    fps.start();
     while(SDL_PollEvent( &event )){
       
       clientWindow->mainWindow->Handle_Events( event );
@@ -100,7 +119,7 @@ int main(int argc, char* argv[]){
       return 1;
     }
 
-    std::wstring fontTestString = L"Bitmap Font Test \n\u263a \u2190 Should be a Smiley Face";
+    std::wstring fontTestString = L"Bitmap Font Test \u263a";
 
     SDL_Color greenColor;
     greenColor.r = 50;
@@ -121,15 +140,19 @@ int main(int argc, char* argv[]){
     clientWindow->fontHandler->Set_Character_Color( blackColor, false );
     
 
-    clientWindow->fontHandler->Show_Text( ( clientWindow->mainScreen->w / 2 ) - (fontTestString.length()), clientWindow->mainScreen->h / 2, fontTestString, clientWindow->mainScreen);
+    clientWindow->fontHandler->Show_Text( 80, 120, fontTestString, clientWindow->mainScreen);
     
     
     clientWindow->fontHandler->Set_Character_Color( purpleColor , false);
-    clientWindow->fontHandler->Show_Text( 50, 50, L"\u256C\u256C\u256C\n\u256C\u256C\u256C", clientWindow->mainScreen);
+    clientWindow->fontHandler->Show_Text( 50, 50, L"\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 The ASCII Project \u2551\n\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D", clientWindow->mainScreen);
 
 
     if( SDL_Flip( clientWindow->mainScreen ) == -1 ){
       return 1;
+    }
+    
+    if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND ){
+      SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
     }
 
   }

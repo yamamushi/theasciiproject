@@ -20,7 +20,7 @@ class FadeAnimation : public Widget {
 
 private:
 
-  int timespan;
+  float timespan;
   float alphaPerSecond;
   int currentAlpha;
   float elapsed;

@@ -35,14 +35,15 @@ void FadeAnimation::Update(){
 
   ticks = clock->get_ticks();
   
-  elapsed += ticks/1000.f;
+  elapsed += ticks / 1000.0f;
 
-  currentAlpha = alphaPerSecond * elapsed;
+  currentAlpha += alphaPerSecond * elapsed;
   
   if(currentAlpha > 255)
     currentAlpha = 255;
   
   SDL_SetAlpha( endSurface, SDL_SRCALPHA, currentAlpha);
+  SDL_FillRect( initialSurface, NULL, 0x000000);
   SDL_BlitSurface( endSurface, NULL, initialSurface, NULL);
   
   clock->start();
@@ -51,7 +52,7 @@ void FadeAnimation::Update(){
 
 bool FadeAnimation::IsComplete(){
 
-  if( currentAlpha == 255)
+  if( currentAlpha >= 255)
     return true;
   else
     return false;
