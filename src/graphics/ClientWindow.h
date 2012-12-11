@@ -34,7 +34,4 @@ class ClientWindow {
 
   void ClientWindowUpdate(SDL_Surface *source, SDL_Surface *destination);
   
-
-
-
 };

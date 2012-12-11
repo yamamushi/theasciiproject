@@ -1,8 +1,8 @@
 IO -
 
-   This directory holds files related to disk i/o.
+   This directory holds files related to disk i/o, as well as our keyboard input handler.
 
    Saving a map to disk, saving entities to disk, etc. All of these actions filter through
    The functions defined in here eventually.
 
-   In addition, this directory also holds config file parsers, as they are directly related to disk i/o. 
+

@@ -14,10 +14,10 @@
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
-#include "audio/Mixer.h"
-
 #include "graphics/BitmapFont.h"
 #include "graphics/ClientWindow.h"
+#include "io/ClientKeyboard.h"
+#include "audio/Mixer.h"
 #include "graphics/Window.h"
 
 #include <string>
@@ -30,8 +30,7 @@ int main(int argc, char* argv[]){
   if( SDL_Flip( clientWindow->mainScreen ) == -1){
     return 1;
   }
-  // This is only here for my memory, ignore it!
-  //  clientWindow->ClientWindowUpdate(hello, screen);
+
 
   Mixer *loadingMusic = new Mixer();
   loadingMusic->Load_Music( (char *)"data/audio/Loading.mp3" );
