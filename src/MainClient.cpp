@@ -97,7 +97,17 @@ int main(int argc, char* argv[]){
 
   }
   
-    
+  // Some quick font fixing stuff
+  SDL_Color blackColor;
+  blackColor.r = 0;
+  blackColor.g = 0;
+  blackColor.b = 0;
+
+  SDL_Color greenColor;
+  greenColor.r = 50;
+  greenColor.g = 205;
+  greenColor.b = 50;
+
 
   bool quitMain = false;
   while( !quitMain ){
@@ -119,32 +129,15 @@ int main(int argc, char* argv[]){
       return 1;
     }
 
-  //    std::wstring fontTestString = L"Bitmap Font Test \u263a";
     wchar_t tmpChar = L'\u263A';
-  
-    SDL_Color greenColor;
-    greenColor.r = 50;
-    greenColor.g = 205;
-    greenColor.b = 50;
 
-    SDL_Color blackColor;
-    blackColor.r = 0;
-    blackColor.g = 0;
-    blackColor.b = 0;
+    // We use this as opposed to "Show_Text" as it enables us to print
+    // colored strings
+    clientWindow->fontHandler->Show_Colored_Text( 50, 50, greenColor, blackColor, L"\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 The ASCII Project \u2551\n\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D", clientWindow->mainScreen);
 
-    SDL_Color purpleColor;
-    purpleColor.r = 100;
-    purpleColor.g = 50;
-    purpleColor.b = 100;
-
-    
-    //clientWindow->fontHandler->Set_Font_Color( greenColor );     
-    //clientWindow->fontHandler->Set_Font_Color( purpleColor , false);
-
-
-    clientWindow->fontHandler->Show_Text( 50, 50, L"\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 The ASCII Project \u2551\n\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D", clientWindow->mainScreen);
-
-   clientWindow->fontHandler->Print_Colored_Character( tmpChar, greenColor, 120, 120, clientWindow->mainScreen);
+    // Remember that calls to Print_Colored_Character REQUIRE fore and
+    // back color arguments
+    clientWindow->fontHandler->Print_Colored_Character( tmpChar, greenColor, blackColor, 120, 120, clientWindow->mainScreen);
 
     if( SDL_Flip( clientWindow->mainScreen ) == -1 ){
       return 1;

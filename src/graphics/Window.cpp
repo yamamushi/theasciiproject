@@ -106,7 +106,7 @@ void Window::Handle_Events(SDL_Event event){
         Toggle_Fullscreen();
     }
 
-
+    /*
  //If the window focus changed
     else if( event.type == SDL_ACTIVEEVENT )
     {
@@ -151,7 +151,7 @@ void Window::Handle_Events(SDL_Event event){
                 SDL_WM_SetCaption( "Window Event Test", NULL );
             }
         }
-    }
+        } */
 //If the window's screen has been altered
     else if( event.type == SDL_VIDEOEXPOSE )
     {

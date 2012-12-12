@@ -47,7 +47,7 @@ void BitmapFont::Build_Font( SDL_Surface *surface){
      // Load our bitmap font
      bitmap = surface;
      uint32_t bgColor = SDL_MapRGB( bitmap->format, 0x00, 0x00, 0x00);
-backColor = ::Get_Pixel32( 0, 0, bitmap);
+     backColor = pixels::Get_Pixel32( 0, 0, bitmap);
      foreColor = 0xFFFFFF;
 
      SDL_SetColorKey( bitmap, SDL_SRCCOLORKEY, SDL_MapRGB( bitmap->format, 0, 0, 0) );
@@ -131,9 +131,43 @@ void BitmapFont::Show_Text( int x, int y, std::wstring source, SDL_Surface *surf
         }
     }
 } 
+              
+              
+              
+void BitmapFont::Show_Colored_Text( int x, int y, SDL_Color ForeColor, SDL_Color BackColor, std::wstring source, SDL_Surface *destination){
+
+    //Temp offsets
+  int X = x, Y = y;
+
+  //If the font has been built
+  if( bitmap != NULL )
+    {
+      //Go through the text
+      for( int show = 0; show < source.length(); show++ )
+        {
+          //If the current character is a newline
+          if( source[ show ] == '\n' )
+            {
+              //Move down
+              Y += newLine;
+              
+              //Move back
+              X = x - chars[0]->w;
+            }
+          else{
+            //Show the character
+            Print_Colored_Character( (wchar_t)source[ show ], ForeColor, BackColor, X, Y, destination);
+          }
+    
+          //Move over the width of the character with one pixel of padding
+          X += chars[ 0 ]->w;
+          
+        }
+    }
+} 
 
 
-
+/*
 void BitmapFont::Set_Font_Color(SDL_Color color, bool fore){
 
   uint32_t *pixels = (uint32_t *)bitmap->pixels;
@@ -163,16 +197,17 @@ void BitmapFont::Set_Font_Color(SDL_Color color, bool fore){
 
     SDL_UnlockSurface( bitmap );
 }
+*/
 
 
-
-void BitmapFont::Print_Colored_Character( wchar_t character, SDL_Color color, int X, int Y, SDL_Surface *destination, bool fore){
+ void BitmapFont::Print_Colored_Character( wchar_t character, SDL_Color ForeColor, SDL_Color BackColor, int X, int Y, SDL_Surface *destination){
 
   int index = character;
 
 
   SDL_Surface *tmpSurface = SDL_CreateRGBSurface( SDL_SWSURFACE, chars[index]->w, chars[index]->h, bitmap->format->BitsPerPixel, bitmap->format->Rmask, bitmap->format->Gmask, bitmap->format->Bmask, 0);
 
+  SDL_LockSurface( bitmap );
   SDL_LockSurface( tmpSurface );
 
   int changey = 0;
@@ -184,8 +219,8 @@ void BitmapFont::Print_Colored_Character( wchar_t character, SDL_Color color, in
       for ( int x = chars[index]->x; x < (chars[index]->w + chars[index]->x); ++x) 
         {
           
-          uint32_t copyPixel = ::Get_Pixel32( x, y, bitmap);
-          ::Put_Pixel32( changex, changey, copyPixel, tmpSurface);
+          uint32_t copyPixel = pixels::Get_Pixel32( x, y, bitmap);
+          pixels::Put_Pixel32( changex, changey, copyPixel, tmpSurface);
           changex++;
         }
       changex = 0;
@@ -198,25 +233,23 @@ void BitmapFont::Print_Colored_Character( wchar_t character, SDL_Color color, in
 
   uint32_t *pixels = (uint32_t *)tmpSurface->pixels;
 
-  if(fore){
-    for(int i = 0; i < tmpSurface->w * tmpSurface->h; i++){
-      if( pixels[i] !=  backColor ){
-        
-        pixels[i] = SDL_MapRGB( tmpSurface->format, color.r, color.g, color.b);
-        
-      }    
+
+  for(int i = 0; i < tmpSurface->w * tmpSurface->h; i++){
+    if( pixels[i] !=  backColor ){
+      
+      pixels[i] = SDL_MapRGB( tmpSurface->format, ForeColor.r, ForeColor.g, ForeColor.b);
     }
-  }
-  else{
-    for(int i = 0; i < tmpSurface->w * tmpSurface->h; i++){
-      if( pixels[i] != foreColor ){
-        
-        pixels[i] = SDL_MapRGB( tmpSurface->format, color.r, color.g, color.b);
-        
-      }
+    
+    uint32_t newColor = SDL_MapRGB( tmpSurface->format, ForeColor.r, ForeColor.g, ForeColor.b);
+    
+    if( pixels[i] != newColor ){
+      
+      pixels[i] = SDL_MapRGB( tmpSurface->format, BackColor.r, BackColor.g, BackColor.b);
+      
     }
   }
 
+  SDL_UnlockSurface( bitmap );
   SDL_UnlockSurface( tmpSurface );
 
   SDL_Rect offset;
@@ -224,7 +257,8 @@ void BitmapFont::Print_Colored_Character( wchar_t character, SDL_Color color, in
   offset.y = Y;
 
   Apply_Surface( X, Y, tmpSurface, destination);
-  
+  SDL_FreeSurface( tmpSurface );
+
 }
 
 

@@ -23,6 +23,7 @@ typedef unsigned long uint32_t;
 typedef unsigned long long uint64_t;
 #endif
 
-
-uint32_t Get_Pixel32( int x, int y, SDL_Surface *surface);
-void Put_Pixel32( int x, int y, uint32_t pixel, SDL_Surface *surface);
+namespace pixels {
+  uint32_t Get_Pixel32( int x, int y, SDL_Surface *surface);
+  void Put_Pixel32( int x, int y, uint32_t pixel, SDL_Surface *surface);
+}
