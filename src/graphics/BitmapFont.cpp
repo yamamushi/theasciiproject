@@ -7,13 +7,15 @@
 
  */
 
+#include "Pixels.h"
 #include "BitmapFont.h"
+
 
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
 #include <string>
-
+#include <iostream>
 
 
 
@@ -45,7 +47,7 @@ void BitmapFont::Build_Font( SDL_Surface *surface){
      // Load our bitmap font
      bitmap = surface;
      uint32_t bgColor = SDL_MapRGB( bitmap->format, 0x00, 0x00, 0x00);
-     backColor = Get_Pixel32( 0, 0, bitmap);
+backColor = ::Get_Pixel32( 0, 0, bitmap);
      foreColor = 0xFFFFFF;
 
      SDL_SetColorKey( bitmap, SDL_SRCCOLORKEY, SDL_MapRGB( bitmap->format, 0, 0, 0) );
@@ -132,7 +134,7 @@ void BitmapFont::Show_Text( int x, int y, std::wstring source, SDL_Surface *surf
 
 
 
-void BitmapFont::Set_Character_Color(SDL_Color color, bool fore){
+void BitmapFont::Set_Font_Color(SDL_Color color, bool fore){
 
   uint32_t *pixels = (uint32_t *)bitmap->pixels;
 
@@ -143,25 +145,87 @@ void BitmapFont::Set_Character_Color(SDL_Color color, bool fore){
       if( pixels[i] !=  backColor ){
         
         pixels[i] = SDL_MapRGB( bitmap->format, color.r, color.g, color.b);
-        foreColor = SDL_MapRGB( bitmap->format, color.r, color.g, color.b);        
         
       }    
     }
+    foreColor = SDL_MapRGB( bitmap->format, color.r, color.g, color.b);        
   }
   else{
     for(int i = 0; i < bitmap->w * bitmap->h; i++){
       if( pixels[i] != foreColor ){
         
         pixels[i] = SDL_MapRGB( bitmap->format, color.r, color.g, color.b);
-        backColor = SDL_MapRGB( bitmap->format, color.r, color.g, color.b);
         
       }
     }
+    backColor = SDL_MapRGB( bitmap->format, color.r, color.g, color.b);
   }
 
     SDL_UnlockSurface( bitmap );
 }
 
+
+
+void BitmapFont::Print_Colored_Character( wchar_t character, SDL_Color color, int X, int Y, SDL_Surface *destination, bool fore){
+
+  int index = character;
+
+
+  SDL_Surface *tmpSurface = SDL_CreateRGBSurface( SDL_SWSURFACE, chars[index]->w, chars[index]->h, bitmap->format->BitsPerPixel, bitmap->format->Rmask, bitmap->format->Gmask, bitmap->format->Bmask, 0);
+
+  SDL_LockSurface( tmpSurface );
+
+  int changey = 0;
+  int changex = 0;
+
+  for ( int y = chars[index]->y; y < (chars[index]->h + chars[index]->y); ++y) 
+    {
+
+      for ( int x = chars[index]->x; x < (chars[index]->w + chars[index]->x); ++x) 
+        {
+          
+          uint32_t copyPixel = ::Get_Pixel32( x, y, bitmap);
+          ::Put_Pixel32( changex, changey, copyPixel, tmpSurface);
+          changex++;
+        }
+      changex = 0;
+      changey++;
+    }
+
+
+  // Afterwards, we color tmpSurface and apply it
+  // To the screen at the requested x, y offsets
+
+  uint32_t *pixels = (uint32_t *)tmpSurface->pixels;
+
+  if(fore){
+    for(int i = 0; i < tmpSurface->w * tmpSurface->h; i++){
+      if( pixels[i] !=  backColor ){
+        
+        pixels[i] = SDL_MapRGB( tmpSurface->format, color.r, color.g, color.b);
+        
+      }    
+    }
+  }
+  else{
+    for(int i = 0; i < tmpSurface->w * tmpSurface->h; i++){
+      if( pixels[i] != foreColor ){
+        
+        pixels[i] = SDL_MapRGB( tmpSurface->format, color.r, color.g, color.b);
+        
+      }
+    }
+  }
+
+  SDL_UnlockSurface( tmpSurface );
+
+  SDL_Rect offset;
+  offset.x = X;
+  offset.y = Y;
+
+  Apply_Surface( X, Y, tmpSurface, destination);
+  
+}
 
 
 
@@ -172,20 +236,12 @@ void BitmapFont::Apply_Surface( int x, int y, SDL_Surface *source, SDL_Surface *
   offset.x = x;
   offset.y = y;
   
-  SDL_BlitSurface( source, clip, destination, &offset);
+  if( SDL_BlitSurface( source, clip, destination, &offset) < 0 ){
+    std::cout << "Apply Surface: Blit Error" << std::endl;
+  }
 
 }
 
 
-
-uint32_t BitmapFont::Get_Pixel32( int x, int y, SDL_Surface *surface){
-
-//Convert the pixels to 32 bit
-  uint32_t *pixels = (uint32_t *)surface->pixels;
-
-//Get the pixel requested
-  return pixels[ ( y * surface->w ) + x ];
-
-}
 
 
