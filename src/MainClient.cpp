@@ -66,14 +66,72 @@ int main(int argc, char* argv[]){
     return 1;
   }
 
+  /*
+
+    Mixer is a very simple container for playing sound, of course it
+    can be improved rather easily, which I may or may not get around
+    to doing before 2013.
+
+   */
+
   Mixer *loadingMusic = new Mixer();
   loadingMusic->Load_Music( (char *)"data/audio/Loading.mp3" );
   loadingMusic->Music_Volume( MIX_MAX_VOLUME / 2);
   loadingMusic->Fade_In_Music( 20000 );
   
   
+
+
+
+
+  /*
+    
+    We load an image into an SDL_Surface (screen) , which 
+    automatically scales to the size of the image being loaded.
+
+   */
+
   SDL_Surface *testImage = IMG_Load("data/loading.png");
-  Frame *testFrame = new Frame( testImage->w, testImage->h);
+
+
+
+  /*
+
+    We then pass our "testImage" screen properties, which contains the image
+    located at 'data/loading.png', as arguments to the Frame class to
+    create a new frame.
+
+    Each frame is a container for various bits of information, such as
+    an SDL_Surface * . 
+
+    Note that we don't initialize the frame with a screen, but rather
+    we use width and height values as parameters to let the Frame know
+    how much space it occupies on the mainScreen.
+
+    Now, 
+
+    +-------------------mainScreen-----------------+
+    +                                              + 
+    +  +-----Frame----------+  +--Frame--+ +-Frm+  + 
+    +  +                    +  +         + +    +  + 
+    +  +                    +  +         + +    +  + 
+    +  +                    +  +         + +    +  + 
+    +  +                    +  +         + +    +  + 
+    +  +                    +  +         + +    +  + 
+    +  +--------------------+  +---------+ +----+  + 
+    +                                              + 
+    +  +-----------------Frame------------------+  + 
+    +  +                                        +  + 
+    +  +                                        +  + 
+    +  +                                        +  + 
+    +  +----------------------------------------+  + 
+    +                                              + 
+    +----------------------------------------------+
+
+
+   */
+
+  Frame *testFrame = new Frame( clientWindow->mainScreen->w, clientWindow->mainScreen->h);
   FadeAnimation *testAnimate = new FadeAnimation( testFrame, testFrame->sdlScreen, testImage, 4000);
 
   // One event object to track input from here out
