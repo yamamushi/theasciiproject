@@ -35,8 +35,32 @@ const int FRAMES_PER_SECOND = 20;
 
 int main(int argc, char* argv[]){
 
-  Timer fps;
 
+  /* 
+     We first create our ClientWindow under the easy-to-remember
+     name, 'clientWindow'. 
+
+     ClientWindow is a container, consider it the glue between
+     Our Keyboard Input, Character Drawing, Resizable Windows
+     and screens.
+
+     +----------Client Window--------+
+     |                               |<--------> Keyboard
+     | +-----------Window----------+ |      Handles Keyboard input
+     | +                           + |
+     | +  +------mainScreen------+ + |<--------> BitmapFont
+     | +  |                      | + |      Handles our Font Rendering
+     | +  |                      | + |
+     | +  |                      | + |<--------> Window
+     | +  +----------------------+ + |      Used for Window Size
+     | +                           + |      Management.
+     | +---------------------------+ |
+     |                               |<--------> mainScreen
+     +-------------------------------+      The Main Screen upon which
+                                            The screens from Frames
+                                            are drawn.
+
+   */
   ClientWindow *clientWindow = new ClientWindow();
   if( SDL_Flip( clientWindow->mainScreen ) == -1){
     return 1;
@@ -47,25 +71,30 @@ int main(int argc, char* argv[]){
   loadingMusic->Music_Volume( MIX_MAX_VOLUME / 2);
   loadingMusic->Fade_In_Music( 20000 );
   
-  // One event object to track input from here out
-  SDL_Event event;
-
+  
   SDL_Surface *testImage = IMG_Load("data/loading.png");
   Frame *testFrame = new Frame( testImage->w, testImage->h);
   FadeAnimation *testAnimate = new FadeAnimation( testFrame, testFrame->sdlScreen, testImage, 4000);
 
-  // Our Loading Screen Animation Will Go Here
+  // One event object to track input from here out
+  // One event object to rule them all
+  SDL_Event event;
+
+  // A simple timer object for restricting FPS, the framerate is
+  // regulated by const int's at the top of this file
+  Timer fps;
+  
+  // Our Loading Screen Animation
   bool finishedLoading = false;
   while( !finishedLoading ){
     fps.start();
-    while(SDL_PollEvent( &event )){
-      clientWindow->mainWindow->Handle_Events( event );
+    if(SDL_PollEvent( &event )){
+      //clientWindow->mainWindow->Handle_Events( event );
       
       if(( event.type == SDL_KEYDOWN ) && ( event.key.keysym.sym == SDLK_ESCAPE )){
         finishedLoading = true;
       }
-  
-      if( event.type == SDL_QUIT ){
+      else if( event.type == SDL_QUIT ){
         finishedLoading = true;
       }
     }
@@ -151,7 +180,6 @@ int main(int argc, char* argv[]){
 
   delete loadingMusic; 
   delete clientWindow;
-
   
   return 0;
 
