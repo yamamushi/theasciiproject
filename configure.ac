@@ -45,6 +45,9 @@ AC_CHECK_LIB(SDL_image, main, AC_SUBST([SDL_IMAGE_LIBS], [-lSDL_image]), AC_MSG_
 AC_CHECK_HEADER(SDL/SDL_mixer.h, , AC_MSG_ERROR([SDL_mixer header not found.]))
 AC_CHECK_LIB(SDL_mixer, Mix_OpenAudio, AC_SUBST([SDL_MIXER_LIBS], [-lSDL_mixer]), AC_MSG_ERROR([Cannot find SDL_mixer library.]), [${SDL_LIBS}])
 
+AC_CHECK_HEADER(SDL/SDL_gfxPrimitives.h, , AC_MSG_ERROR([SDL_gfx header not found.]))
+AC_CHECK_LIB(SDL_gfx, zoomSurface, AC_SUBST([SDL_GFX_LIBS], [-lSDL_gfx]), AC_MSG_ERROR([Cannot find SDL_gfx library.]), [${SDL_LIBS}])
+
 
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

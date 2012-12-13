@@ -10,8 +10,11 @@
 */
 
 #include "Frame.h"
+#include "Pixels.h"
 #include "widget/Widget.h"
 #include "SDL/SDL.h"
+#include "SDL/SDL_gfxPrimitives.h"
+#include "SDL/SDL_rotozoom.h"
 
 
 Frame::Frame( int Width, int Height, int PosX, int PosY){
@@ -66,12 +69,16 @@ void Frame::SetPos( int x, int y){
 
 void Frame::Resize( int w, int h){
 
-  width = w;
-  height = h;
+  if(width != w || height != h ){
+    width = w;
+    height = h;
 
-  sdlScreen->w = w;
-  sdlScreen->h = h;
-
+    //sdlScreen = pixels::SDL_ScaleSurface( sdlScreen, w, h);
+    sdlScreen->w = w;
+    sdlScreen->h = h;
+    sdlScreen = zoomSurface( sdlScreen, 2, 2, SMOOTHING_ON);
+  
+  }
 }
 
 

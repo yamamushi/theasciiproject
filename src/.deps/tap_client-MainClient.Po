@@ -34,6 +34,11 @@ src/tap_client-MainClient.o: src/MainClient.cpp /usr/include/SDL/SDL.h \
  /usr/include/SDL/SDL_quit.h /usr/include/SDL/SDL_loadso.h \
  /usr/include/SDL/SDL_timer.h /usr/include/SDL/SDL_version.h \
  /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h \
+ /usr/include/SDL/SDL_gfxPrimitives.h /usr/include/math.h \
+ /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h \
+ /usr/include/bits/huge_vall.h /usr/include/bits/inf.h \
+ /usr/include/bits/nan.h /usr/include/bits/mathdef.h \
+ /usr/include/bits/mathcalls.h /usr/include/bits/mathinline.h \
  src/io/ClientKeyboard.h src/io/Mouse.h src/graphics/BitmapFont.h \
  src/graphics/Pixels.h \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/string \
@@ -269,6 +274,26 @@ src/tap_client-MainClient.o: src/MainClient.cpp /usr/include/SDL/SDL.h \
 /usr/include/SDL/SDL_image.h:
 
 /usr/include/SDL/SDL.h:
+
+/usr/include/SDL/SDL_gfxPrimitives.h:
+
+/usr/include/math.h:
+
+/usr/include/bits/huge_val.h:
+
+/usr/include/bits/huge_valf.h:
+
+/usr/include/bits/huge_vall.h:
+
+/usr/include/bits/inf.h:
+
+/usr/include/bits/nan.h:
+
+/usr/include/bits/mathdef.h:
+
+/usr/include/bits/mathcalls.h:
+
+/usr/include/bits/mathinline.h:
 
 src/io/ClientKeyboard.h:
 

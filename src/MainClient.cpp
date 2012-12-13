@@ -13,6 +13,7 @@
 
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
+#include "SDL/SDL_gfxPrimitives.h"
 
 #include "io/ClientKeyboard.h"
 #include "io/Mouse.h"
@@ -246,11 +247,14 @@ int main(int argc, char* argv[]){
     if( clientWindow->mainWindow->Error() == true ){
       return 1;
     }
-
+    
+    // Obviously we want to resize the frame before we expect to set
+    // it's position based on it's size :-)
+    testFrame->Resize( clientWindow->mainScreen->w, clientWindow->mainScreen->h);
 
     testFrame->SetPos( ((clientWindow->mainScreen->w - testFrame->sdlScreen->w) / 2), ((clientWindow->mainScreen->h - testFrame->sdlScreen->h) / 2) );
-    clientWindow->mainWindow->Clear_Screen();
 
+    clientWindow->mainWindow->Clear_Screen();
     clientWindow->mainWindow->Draw_Frames();
 
     wchar_t tmpChar = L'\u263A';

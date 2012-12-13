@@ -45,8 +45,8 @@ class Frame {
   void Add_Widget(Widget *newWidget);
   void Render_Widgets();
 
-  void SetPos( int x, int y);
   void Resize( int w, int h);
+  void SetPos( int x, int y);
 
   void Handle_Event(SDL_Event event);
   void Set_FrameList_Index( int i );

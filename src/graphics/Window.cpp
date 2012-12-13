@@ -179,6 +179,7 @@ void Window::Handle_Events(SDL_Event event){
 void Window::Add_To_FrameList(Frame *src){
 
   frameList.push_back(src);
+  frameList.back()->Set_FrameList_Index(frameList.size()-1);  
 
 }
 
@@ -196,6 +197,8 @@ void Window::Draw_Frames(){
     }
     frameList.at(i)->Render_Widgets();
     
+
+    // If the frame wants us to draw it, we happily do so.
     if( frameList.at(i)->drawThisFrame ){
 
       SDL_Rect destination;
@@ -210,30 +213,57 @@ void Window::Draw_Frames(){
 
     }
 
+    // If the removal flag has been set, then we
+    // go ahead and delete the frame and break from the
+    // Function here.
     if( frameList.at(i)->removeThisFrame ){
       frameList.erase(frameList.begin()+i);
       return;
     }
     
+    // We force a fix on the FrameList index before moving the frame
+    // around in the FrameList queue.
     if( frameList.at(i)->Get_FrameList_Index() != i ){
       frameList.at(i)->Set_FrameList_Index( i );
     }
       
     // We check if we need to drop this frame, if not then we validate
     // the index and if this frame is at the top of the 
-    
     if( (frameList.at(i)->Get_FrameList_Index() == (frameList.size() - 1)) && ( !frameList.at(i)->Check_Focus() ) ){
+
       // We move the frame to the end of the frameList vector and set
-      // Focus to 'true' so that the frame in question has 
+      // Focus to 'true' so that the frame in question gains Focus
       frameList.at(i)->Set_Focus( true );
       frameList.push_back(frameList.at(i));
       frameList.erase(frameList.begin()+i);
     }
+    else if( (frameList.at(i)->Get_FrameList_Index() != (frameList.size() - 1)) && ( frameList.at(i)->Check_Focus() ) ){
+
+      // We also disable focus this time around
+      // During the next cycle, this will be reset to true if
+      // this frame remains at the end of the queue
+      // This follows a LIFO (last in - first out) methodology.
+      frameList.at(i)->Set_Focus(false); 
+
+      // First we move the Frame to the beginning of the Queue
+      // Remember this is "backwards" because of LIFO
+      frameList.push_back(frameList.at(i));
+      frameList.erase(frameList.begin()+i);
+    }
       else if( frameList.at(i)->Get_FrameList_Index() != (frameList.size() -1) ){
+        // This is a global reset of anything that should not be
+        // In Focus 
       frameList.at(i)->Set_Focus( false );
     }
     
   }
+
+}
+
+
+void Focus_Frame( Frame *focus){
+
+  
 
 }
 
