@@ -25,7 +25,7 @@
 #include "utils/Timer.h"
 
 #include <string>
-
+#include <iostream>
 
 //The frames per second
 const int FRAMES_PER_SECOND = 20;
@@ -66,6 +66,11 @@ int main(int argc, char* argv[]){
     return 1;
   }
 
+  // We'll also go ahead and create our Keyboard input handler now
+  ClientKeyboard keyboard(clientWindow);
+
+
+
   /*
 
     Mixer is a very simple container for playing sound, of course it
@@ -80,8 +85,6 @@ int main(int argc, char* argv[]){
   loadingMusic->Fade_In_Music( 20000 );
   
   
-
-
 
 
   /*
@@ -102,13 +105,12 @@ int main(int argc, char* argv[]){
     create a new frame.
 
     Each frame is a container for various bits of information, such as
-    an SDL_Surface * . 
+    an SDL_Surface * , and also widgets which are specialized objects
+    for performing magic on the screen. (More on this below)
 
     Note that we don't initialize the frame with a screen, but rather
     we use width and height values as parameters to let the Frame know
     how much space it occupies on the mainScreen.
-
-    Now, 
 
     +-------------------mainScreen-----------------+
     +                                              + 
@@ -132,11 +134,23 @@ int main(int argc, char* argv[]){
    */
 
   Frame *testFrame = new Frame( clientWindow->mainScreen->w, clientWindow->mainScreen->h);
+
+
+
+  /*
+
+    Now we create our FadeAnimation widget, which We'll probably move
+    under a namespace ..
+
+   */
+
   FadeAnimation *testAnimate = new FadeAnimation( testFrame, testFrame->sdlScreen, testImage, 4000);
+
 
   // One event object to track input from here out
   // One event object to rule them all
   SDL_Event event;
+
 
   // A simple timer object for restricting FPS, the framerate is
   // regulated by const int's at the top of this file
@@ -146,13 +160,14 @@ int main(int argc, char* argv[]){
   bool finishedLoading = false;
   while( !finishedLoading ){
     fps.start();
-    if(SDL_PollEvent( &event )){
-      //clientWindow->mainWindow->Handle_Events( event );
+    while(SDL_PollEvent( &event )){
+      clientWindow->mainWindow->Handle_Events( event );
       
       if(( event.type == SDL_KEYDOWN ) && ( event.key.keysym.sym == SDLK_ESCAPE )){
         finishedLoading = true;
       }
-      else if( event.type == SDL_QUIT ){
+      
+      if( event.type == SDL_QUIT ){
         finishedLoading = true;
       }
     }
@@ -162,7 +177,7 @@ int main(int argc, char* argv[]){
     }
 
     // Our Animation Goes Here
-    //clientWindow->mainWindow->Draw_Frames();
+    clientWindow->mainWindow->Draw_Frames();
     testAnimate->Update();
 
     SDL_Rect tmpRect;
@@ -178,9 +193,9 @@ int main(int argc, char* argv[]){
       return 1;
     }
 
-    if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND ){
-      SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
-    }
+    //if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND ){
+    //      SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
+    //    }
 
   }
   
@@ -198,20 +213,25 @@ int main(int argc, char* argv[]){
 
   bool quitMain = false;
   while( !quitMain ){
+    // Kick off / Reset FPS Timer
     fps.start();
     while(SDL_PollEvent( &event )){
-      
-      clientWindow->mainWindow->Handle_Events( event );
-
-      if( (event.type == SDL_KEYDOWN ) && ( event.key.keysym.sym == SDLK_ESCAPE ) ){
-        quitMain = true;
-      }
-
       if( event.type == SDL_QUIT){
         quitMain = true;
       }
+      if( (event.type == SDL_KEYDOWN ) && ( event.key.keysym.sym == SDLK_ESCAPE ) ){
+        quitMain = true;
+      }
+      // Now we do some real Keyboard Input Checking
+      else if( ( event.type == SDL_KEYDOWN ) || ( event.type == SDL_KEYUP ) ){
+        keyboard.Handle_Keys( event );
+      }
+      // Keyboard input takes priority over Window events
+      // Eventually a Mouse input function will also take
+      // precedence over Window events.
+      clientWindow->mainWindow->Handle_Events( event );
     }
-
+    
     if( clientWindow->mainWindow->Error() == true ){
       return 1;
     }
@@ -230,9 +250,9 @@ int main(int argc, char* argv[]){
       return 1;
     }
     
-    if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND ){
-      SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
-    }
+    //    if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND ){
+    //      SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
+    //    }
 
   }
 

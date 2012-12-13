@@ -28,6 +28,6 @@ class ClientKeyboard {
   ClientKeyboard(ClientWindow *host);
   virtual ~ClientKeyboard(){};
 
-  void Handle_Events(SDL_Event event);
+  void Handle_Keys(SDL_Event event);
 
 };

@@ -27,6 +27,8 @@ class Widget {
   virtual ~Widget(){};
 
   SDL_Surface *frameSurface;
-
+  virtual void Run() =0;
+  virtual void Update() =0;
+    
 };
 

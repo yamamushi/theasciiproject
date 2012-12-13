@@ -38,8 +38,9 @@ public:
 
   virtual ~FadeAnimation(){};
 
+  virtual void Run(){};
+  virtual void Update();
 
-  void Update();
   bool IsComplete();
 
 };
