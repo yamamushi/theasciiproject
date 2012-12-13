@@ -72,12 +72,20 @@ void Frame::Resize( int w, int h){
   if(width != w || height != h ){
     width = w;
     height = h;
+    
+    double zoomx = w / (float)sdlScreen->w;
+    double zoomy = h / (float)sdlScreen->h;
 
-    //sdlScreen = pixels::SDL_ScaleSurface( sdlScreen, w, h);
-    sdlScreen->w = w;
-    sdlScreen->h = h;
-    sdlScreen = zoomSurface( sdlScreen, 2, 2, SMOOTHING_ON);
-  
+    SDL_Surface* sized = zoomSurface( sdlScreen, zoomx, zoomy, SMOOTHING_ON );
+    //    matchColorKeys( sdlScreen, sized);
+    if( sdlScreen->flags & SDL_SRCCOLORKEY )
+      {
+        Uint32 colorkey = sdlScreen->format->colorkey;
+        SDL_SetColorKey( sized, SDL_SRCCOLORKEY, colorkey );
+      }
+
+    sdlScreen = sized;
+
   }
 }
 

@@ -29,6 +29,8 @@ class Frame {
   int frameListIndex;
   bool hasFocus;
 
+  SDL_Surface *backupScreen;
+
  public:
 
   Frame( int Width, int Height, int PosX=0, int PosY=0);
