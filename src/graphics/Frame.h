@@ -38,6 +38,7 @@ class Frame {
 
   SDL_Surface *sdlScreen;
 
+  void Add_Widget(Widget *newWidget);
   void Render_Widgets();
 
 };

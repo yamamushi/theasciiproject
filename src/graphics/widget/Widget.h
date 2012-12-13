@@ -20,7 +20,6 @@ class Widget {
 
  private:
 
-
  public:
 
   Widget(Frame *tgt){ frameSurface = tgt->sdlScreen; };

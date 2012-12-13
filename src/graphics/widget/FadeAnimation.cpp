@@ -43,7 +43,8 @@ void FadeAnimation::Update(){
     currentAlpha = 255;
   
   SDL_SetAlpha( endSurface, SDL_SRCALPHA, currentAlpha);
-  SDL_FillRect( initialSurface, NULL, 0x000000);
+  uint32_t black = SDL_MapRGB( endSurface->format, 0, 0, 0);
+  SDL_FillRect( initialSurface, NULL, black);
   SDL_BlitSurface( endSurface, NULL, initialSurface, NULL);
   
   clock->start();

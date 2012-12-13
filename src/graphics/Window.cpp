@@ -76,6 +76,15 @@ void Window::Toggle_Fullscreen(){
 }
 
 
+void Window::Clear_Screen(){
+
+  uint32_t black = SDL_MapRGB( screen->format, 0, 0, 0);
+  SDL_FillRect( screen, NULL, black);
+
+}
+
+
+
 
 void Window::Handle_Events(SDL_Event event){
 
@@ -176,15 +185,20 @@ void Window::Add_To_FrameList(Frame *src){
 void Window::Draw_Frames(){
 
   for( int i = 0; i < frameList.size(); i++){
+
+    frameList.at(i)->Render_Widgets();
+
     if( frameList.at(i)->drawThisFrame ){
 
-      frameList.at(i)->Render_Widgets();
-
       SDL_Rect destination;
+
       destination.x = frameList.at(i)->posX;
       destination.y = frameList.at(i)->posY;
 
-      SDL_BlitSurface( frameList.at(i)->sdlScreen, nullptr, screen, &destination);      
+      destination.w = frameList.at(i)->width;
+      destination.h = frameList.at(i)->height;
+
+      SDL_BlitSurface( frameList.at(i)->sdlScreen, NULL, screen, &destination);      
 
     }
 

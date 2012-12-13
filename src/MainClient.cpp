@@ -136,7 +136,7 @@ int main(int argc, char* argv[]){
    */
 
   Frame *testFrame = new Frame( clientWindow->mainScreen->w, clientWindow->mainScreen->h);
-
+  clientWindow->mainWindow->Add_To_FrameList( testFrame );
 
 
   /*
@@ -147,6 +147,8 @@ int main(int argc, char* argv[]){
    */
 
   FadeAnimation *testAnimate = new FadeAnimation( testFrame, testFrame->sdlScreen, testImage, 4000);
+  testFrame->Add_Widget( testAnimate );
+
 
 
   // One event object to track input from here out
@@ -180,7 +182,6 @@ int main(int argc, char* argv[]){
 
     // Our Animation Goes Here
     clientWindow->mainWindow->Draw_Frames();
-    testAnimate->Update();
 
     SDL_Rect tmpRect;
     tmpRect.x = (clientWindow->mainScreen->w - testFrame->sdlScreen->w) / 2;
@@ -200,6 +201,8 @@ int main(int argc, char* argv[]){
     //    }
 
   }
+
+  testFrame->drawThisFrame = true;
   
   // Some quick font fixing stuff
   SDL_Color blackColor;
@@ -237,6 +240,13 @@ int main(int argc, char* argv[]){
     if( clientWindow->mainWindow->Error() == true ){
       return 1;
     }
+
+
+    testFrame->posX = (clientWindow->mainScreen->w - testFrame->sdlScreen->w) / 2;
+    testFrame->posY = (clientWindow->mainScreen->h - testFrame->sdlScreen->h) / 2;
+    clientWindow->mainWindow->Clear_Screen();
+
+    clientWindow->mainWindow->Draw_Frames();
 
     wchar_t tmpChar = L'\u263A';
 

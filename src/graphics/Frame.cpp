@@ -28,12 +28,25 @@ Frame::Frame( int Width, int Height, int PosX, int PosY){
 }
 
 
+void Frame::Add_Widget(Widget *newWidget){
+
+  widgetList.push_back(newWidget);
+
+}
+
+
 void Frame::Render_Widgets(){
 
   for( int i = 0; i < widgetList.size(); i++){
-    
+  
+    if( widgetList.at(i) != nullptr ){
+
+      widgetList.at(i)->Update();
+
+    }
 
   }
+
 
 }
 
