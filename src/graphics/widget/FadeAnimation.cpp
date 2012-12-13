@@ -23,7 +23,7 @@ FadeAnimation::FadeAnimation( Frame *owner, SDL_Surface *from, SDL_Surface *to, 
   keyUpWait = false;
 
   ticks = 0.0;
-  alphaPerSecond = 255.0 / timespan;
+  alphaPerSecond = (255.0 / timespan);
   currentAlpha = 0;
 
   clock = new Timer();
@@ -38,7 +38,8 @@ FadeAnimation::FadeAnimation( Frame *owner, SDL_Surface *from, SDL_Surface *to, 
 void FadeAnimation::Update(){
 
   ticks = clock->get_ticks();
-  
+  clock->start();
+
   elapsed += ticks / 1000.0f;
 
   currentAlpha += alphaPerSecond * elapsed;
@@ -50,8 +51,8 @@ void FadeAnimation::Update(){
   uint32_t black = SDL_MapRGB( endSurface->format, 0, 0, 0);
   SDL_FillRect( initialSurface, NULL, black);
   SDL_BlitSurface( endSurface, NULL, initialSurface, NULL);
+
   
-  clock->start();
 }
 
 
