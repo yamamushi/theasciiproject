@@ -36,13 +36,10 @@ BitmapFont::BitmapFont( SDL_Surface *surface){
 
 
 void BitmapFont::Build_Font( SDL_Surface *surface){
-  
 
      if( surface == nullptr){
           return;
      }
-
-     
 
      // Load our bitmap font
      bitmap = surface;
@@ -93,7 +90,6 @@ void BitmapFont::Build_Font( SDL_Surface *surface){
 
 void BitmapFont::Show_Text( int x, int y, std::wstring source, SDL_Surface *surface){
 
-    //Temp offsets
   int X = x, Y = y;
 
   //If the font has been built
@@ -102,12 +98,6 @@ void BitmapFont::Show_Text( int x, int y, std::wstring source, SDL_Surface *surf
       //Go through the text
       for( int show = 0; show < source.length(); show++ )
         {
-          //If the current character is a space
-          /*  if( source[ show ] == ' ' )
-            {
-              //Move over
-              X += space;
-            } */
           //If the current character is a newline
           if( source[ show ] == '\n' )
             {
@@ -118,6 +108,7 @@ void BitmapFont::Show_Text( int x, int y, std::wstring source, SDL_Surface *surf
               X = x - chars[0]->w;
             }
           else{
+
           //Get the ASCII value of the character
           int ascii = (wchar_t)source[ show ];
           
@@ -136,7 +127,6 @@ void BitmapFont::Show_Text( int x, int y, std::wstring source, SDL_Surface *surf
               
 void BitmapFont::Show_Colored_Text( int x, int y, SDL_Color ForeColor, SDL_Color BackColor, std::wstring source, SDL_Surface *destination){
 
-    //Temp offsets
   int X = x, Y = y;
 
   //If the font has been built
@@ -167,7 +157,18 @@ void BitmapFont::Show_Colored_Text( int x, int y, SDL_Color ForeColor, SDL_Color
 } 
 
 
+
 /*
+
+I made the decision to remove this function, as it was inherently
+broken and extremely memory inefficient, it doesn't make sense to
+re-color the font, when the colors being used change so frequently due
+to tiling.
+
+Instead we color per-character as they are used, quick simple and most
+assuredly not the nightmare this function would certainly cause.
+
+
 void BitmapFont::Set_Font_Color(SDL_Color color, bool fore){
 
   uint32_t *pixels = (uint32_t *)bitmap->pixels;

@@ -31,7 +31,7 @@
 #include <iostream>
 
 //The frames per second
-const int FRAMES_PER_SECOND = 20;
+const int FRAMES_PER_SECOND = 15;
 
 
 
@@ -147,7 +147,7 @@ int main(int argc, char* argv[]){
 
    */
 
-  FadeAnimation *testAnimate = new FadeAnimation( testFrame, testFrame->sdlScreen, testImage, 2000);
+  FadeAnimation *testAnimate = new FadeAnimation( testFrame, testFrame->sdlScreen, testImage, 1000);
   testFrame->Add_Widget( testAnimate );
 
 
@@ -160,6 +160,7 @@ int main(int argc, char* argv[]){
   // A simple timer object for restricting FPS, the framerate is
   // regulated by const int's at the top of this file
   Timer fps;
+
   
   // Our Loading Screen Animation
   bool finishedLoading = false;
@@ -197,9 +198,9 @@ int main(int argc, char* argv[]){
       return 1;
     }
 
-    //if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND ){
-    //      SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
-    //    }
+    if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND ){
+          SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
+        }
 
   }
 
@@ -220,9 +221,10 @@ int main(int argc, char* argv[]){
 
   bool quitMain = false;
   while( !quitMain ){
+
     // Kick off / Reset FPS Timer
     fps.start();
-    //SDL_PumpEvents();
+
     while(SDL_PollEvent( &event )){
       if( event.type == SDL_QUIT){
         quitMain = true;
@@ -230,19 +232,18 @@ int main(int argc, char* argv[]){
       if( (event.type == SDL_KEYDOWN ) && ( event.key.keysym.sym == SDLK_ESCAPE ) ){
         quitMain = true;
       }
+
       // Now we do some real Keyboard Input Checking
       else if( ( event.type == SDL_KEYDOWN ) || ( event.type == SDL_KEYUP ) ){
         keyboard.Handle_Keys( event );
       }
+
       // Keyboard input takes priority over Window events
       // Eventually a Mouse input function will also take
       // precedence over Window events.
       clientWindow->mainWindow->Handle_Events( event );
-      //SDL_EventState( SDL_KEYDOWN, SDL_IGNORE);
-      //      SDL_EventState( SDL_KEYUP, SDL_IGNORE);
+
     }
-    // SDL_EventState( SDL_KEYDOWN, SDL_ENABLE);
-    // SDL_EventState( SDL_KEYUP, SDL_ENABLE);    
 
     if( clientWindow->mainWindow->Error() == true ){
       return 1;
@@ -271,9 +272,10 @@ int main(int argc, char* argv[]){
       return 1;
     }
     
-    //    if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND ){
-    //      SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
-    //    }
+    
+    if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND ){
+      SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
+    }
 
   }
 
