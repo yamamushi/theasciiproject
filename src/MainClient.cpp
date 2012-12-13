@@ -14,9 +14,11 @@
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 
+#include "io/ClientKeyboard.h"
+#include "io/Mouse.h"
+
 #include "graphics/BitmapFont.h"
 #include "graphics/ClientWindow.h"
-#include "io/ClientKeyboard.h"
 #include "graphics/Frame.h"
 #include "graphics/widget/Widget.h"
 #include "graphics/widget/FadeAnimation.h"

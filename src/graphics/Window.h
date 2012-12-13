@@ -40,7 +40,12 @@ class Window {
   void Toggle_Fullscreen();
 
   void Add_To_FrameList(Frame *src);
-  void Draw_Frames();  
+  void Draw_Frames();
+  void Draw_Single_Frame(Frame *frame);
+  void Remove_Frame(Frame *remove);
+  void Focus_Frame(Frame *focus);
+  void Focus_Next_Frame();
+  void Focus_Previous_Frame();
 
   // Our generic Error Handling Function
   bool Error();
