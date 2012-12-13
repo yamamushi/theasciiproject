@@ -147,7 +147,7 @@ int main(int argc, char* argv[]){
 
    */
 
-  FadeAnimation *testAnimate = new FadeAnimation( testFrame, testFrame->sdlScreen, testImage, 4000);
+  FadeAnimation *testAnimate = new FadeAnimation( testFrame, testFrame->sdlScreen, testImage, 2000);
   testFrame->Add_Widget( testAnimate );
 
 

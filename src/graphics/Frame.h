@@ -29,7 +29,9 @@ class Frame {
   int frameListIndex;
   bool hasFocus;
 
-  SDL_Surface *backupScreen;
+  // This is probably really dumb, but I'm lazy.
+  SDL_Surface *startingScreen;
+  bool resized;
 
  public:
 

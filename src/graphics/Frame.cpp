@@ -27,6 +27,7 @@ Frame::Frame( int Width, int Height, int PosX, int PosY){
   sdlScreen = SDL_CreateRGBSurface( 0, width, height, 32, 0, 0, 0, 0);
   drawThisFrame = false;
   removeThisFrame = false;
+  resized = false;
   //  queuedEvent = nullptr;
 
 }
@@ -70,21 +71,33 @@ void Frame::SetPos( int x, int y){
 void Frame::Resize( int w, int h){
 
   if(width != w || height != h ){
+
     width = w;
     height = h;
-    
-    double zoomx = w / (float)sdlScreen->w;
-    double zoomy = h / (float)sdlScreen->h;
 
-    SDL_Surface* sized = zoomSurface( sdlScreen, zoomx, zoomy, SMOOTHING_ON );
-    //    matchColorKeys( sdlScreen, sized);
-    if( sdlScreen->flags & SDL_SRCCOLORKEY )
-      {
-        Uint32 colorkey = sdlScreen->format->colorkey;
-        SDL_SetColorKey( sized, SDL_SRCCOLORKEY, colorkey );
-      }
+    double zoomx;
+    double zoomy;
 
-    sdlScreen = sized;
+    if(!resized){
+
+      startingScreen = sdlScreen;
+      resized = true;
+
+      zoomx = w / (float)sdlScreen->w;
+      zoomy = h / (float)sdlScreen->h;
+
+    }
+    else{
+
+      SDL_FreeSurface( sdlScreen );
+      SDL_Surface *sdlScreen;
+            
+      zoomx = w / (float)startingScreen->w;
+      zoomy = h / (float)startingScreen->h;
+
+    }
+        
+    sdlScreen = zoomSurface( startingScreen, zoomx, zoomy, SMOOTHING_ON );
 
   }
 }
