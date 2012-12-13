@@ -215,11 +215,13 @@ int main(int argc, char* argv[]){
   greenColor.g = 205;
   greenColor.b = 50;
 
+  SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 
   bool quitMain = false;
   while( !quitMain ){
     // Kick off / Reset FPS Timer
     fps.start();
+    //SDL_PumpEvents();
     while(SDL_PollEvent( &event )){
       if( event.type == SDL_QUIT){
         quitMain = true;
@@ -235,15 +237,18 @@ int main(int argc, char* argv[]){
       // Eventually a Mouse input function will also take
       // precedence over Window events.
       clientWindow->mainWindow->Handle_Events( event );
+      //SDL_EventState( SDL_KEYDOWN, SDL_IGNORE);
+      //      SDL_EventState( SDL_KEYUP, SDL_IGNORE);
     }
-    
+    // SDL_EventState( SDL_KEYDOWN, SDL_ENABLE);
+    // SDL_EventState( SDL_KEYUP, SDL_ENABLE);    
+
     if( clientWindow->mainWindow->Error() == true ){
       return 1;
     }
 
 
-    testFrame->posX = (clientWindow->mainScreen->w - testFrame->sdlScreen->w) / 2;
-    testFrame->posY = (clientWindow->mainScreen->h - testFrame->sdlScreen->h) / 2;
+    testFrame->SetPos( ((clientWindow->mainScreen->w - testFrame->sdlScreen->w) / 2), ((clientWindow->mainScreen->h - testFrame->sdlScreen->h) / 2) );
     clientWindow->mainWindow->Clear_Screen();
 
     clientWindow->mainWindow->Draw_Frames();

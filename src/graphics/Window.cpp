@@ -35,6 +35,7 @@ Window::Window(){
   SDL_WM_SetCaption( "The ASCII Project - Client - 0.0.1f", NULL);
 
   windowed = true;
+  //  eventQueue = nullptr;
   
 }
 
@@ -186,8 +187,15 @@ void Window::Draw_Frames(){
 
   for( int i = 0; i < frameList.size(); i++){
 
+    // This doesn't actually make the Frame process the event
+    // It only tells the Frame that it now has an Event to process
+    if( frameList.at(i)->Check_Focus() ){
+      //SDL_Event tmpEvent = *eventQueue;
+      frameList.at(i)->Handle_Event( eventQueue );
+      //      delete eventQueue;
+    }
     frameList.at(i)->Render_Widgets();
-
+    
     if( frameList.at(i)->drawThisFrame ){
 
       SDL_Rect destination;
@@ -204,8 +212,27 @@ void Window::Draw_Frames(){
 
     if( frameList.at(i)->removeThisFrame ){
       frameList.erase(frameList.begin()+i);
+      return;
     }
-
+    
+    if( frameList.at(i)->Get_FrameList_Index() != i ){
+      frameList.at(i)->Set_FrameList_Index( i );
+    }
+      
+    // We check if we need to drop this frame, if not then we validate
+    // the index and if this frame is at the top of the 
+    
+    if( (frameList.at(i)->Get_FrameList_Index() == (frameList.size() - 1)) && ( !frameList.at(i)->Check_Focus() ) ){
+      // We move the frame to the end of the frameList vector and set
+      // Focus to 'true' so that the frame in question has 
+      frameList.at(i)->Set_Focus( true );
+      frameList.push_back(frameList.at(i));
+      frameList.erase(frameList.begin()+i);
+    }
+      else if( frameList.at(i)->Get_FrameList_Index() != (frameList.size() -1) ){
+      frameList.at(i)->Set_Focus( false );
+    }
+    
   }
 
 }
@@ -215,4 +242,12 @@ void Window::Draw_Frames(){
 bool Window::Error()
 {
     return !windowOK;
+}
+
+
+
+void Window::Add_To_Event_Queue( SDL_Event event ){
+
+  eventQueue = event;
+
 }

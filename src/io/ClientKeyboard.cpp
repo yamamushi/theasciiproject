@@ -9,6 +9,7 @@
 
 #include "ClientKeyboard.h"
 #include "../graphics/ClientWindow.h"
+#include "../graphics/Window.h"
 #include <iostream>
 
 
@@ -22,6 +23,6 @@ ClientKeyboard::ClientKeyboard(ClientWindow *host){
 
 void ClientKeyboard::Handle_Keys(SDL_Event event){
 
-  std::cout << "Keyboard Input" << std::endl;
+  clientWindow->mainWindow->Add_To_Event_Queue( event );
 
 };

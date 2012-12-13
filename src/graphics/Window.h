@@ -26,6 +26,8 @@ class Window {
   bool windowOK;
   // [Window [FRAME [Widget] ] ]
   std::vector<Frame *> frameList;
+  // SDL_Event Queue
+  SDL_Event eventQueue;
 
  public:
   
@@ -47,6 +49,8 @@ class Window {
   void Focus_Frame(Frame *focus);
   void Focus_Next_Frame();
   void Focus_Previous_Frame();
+
+  void Add_To_Event_Queue( SDL_Event event );
 
   // Our generic Error Handling Function
   bool Error();

@@ -25,6 +25,10 @@ class Frame {
 
   std::vector<Widget *> widgetList;
 
+  SDL_Event queuedEvent;
+  int frameListIndex;
+  bool hasFocus;
+
  public:
 
   Frame( int Width, int Height, int PosX=0, int PosY=0);
@@ -40,6 +44,16 @@ class Frame {
 
   void Add_Widget(Widget *newWidget);
   void Render_Widgets();
+
+  void SetPos( int x, int y);
+  void Resize( int w, int h);
+
+  void Handle_Event(SDL_Event event);
+  void Set_FrameList_Index( int i );
+  int Get_FrameList_Index();
+
+  void Set_Focus( bool toggle );
+  bool Check_Focus();
 
 };
 

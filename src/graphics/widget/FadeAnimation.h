@@ -31,6 +31,8 @@ private:
 
   Timer *clock;
 
+  bool keyDownWait;
+  bool keyUpWait;
 
 public:
 
@@ -40,6 +42,7 @@ public:
 
   virtual void Run(){};
   virtual void Update();
+  virtual void Handle_Event( SDL_Event event );
 
   bool IsComplete();
 

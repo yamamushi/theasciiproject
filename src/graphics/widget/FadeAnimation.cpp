@@ -11,12 +11,16 @@
 #include "FadeAnimation.h"
 #include "SDL/SDL.h"
 
+#include <iostream>
 
 FadeAnimation::FadeAnimation( Frame *owner, SDL_Surface *from, SDL_Surface *to, float length) : Widget(owner) {
 
   timespan = length;
   initialSurface = from;
   endSurface = to;
+
+  keyDownWait = false;
+  keyUpWait = false;
 
   ticks = 0.0;
   alphaPerSecond = 255.0 / timespan;
@@ -60,3 +64,16 @@ bool FadeAnimation::IsComplete(){
 
 }
 
+
+void FadeAnimation::Handle_Event( SDL_Event event ){
+
+  if( (event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_UP) ){
+      keyUpWait = true;
+  }
+  if( (event.type == SDL_KEYUP) && (event.key.keysym.sym == SDLK_UP) ){
+    if(keyUpWait){
+      std::cout << "Up Key Event Detected by FadeAnimation" << std::endl;
+      keyUpWait = false;
+    }
+  }
+}
