@@ -1,43 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
     <title>Theasciiproject by yamamushi</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/yamamushi/theasciiproject">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/yamamushi/theasciiproject/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/yamamushi/theasciiproject/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
 
-    <div class="wrapper">
+    <header>
+      <div class="container">
+        <h1>Theasciiproject</h1>
+        <h2>A Unicode-driven Roguelike MMORPG</h2>
 
-      <section>
-        <div id="title">
-          <h1>Theasciiproject</h1>
-          <p>A Unicode-driven Roguelike MMORPG</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/yamamushi">yamamushi</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
-        </div>
+        <section id="downloads">
+          <a href="https://github.com/yamamushi/theasciiproject/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/yamamushi/theasciiproject/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/yamamushi/theasciiproject" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
 
+    <div class="container">
+      <section id="main_content">
         <h1>The ASCII Project - 0.0.1e</h1>
 
 <p><a href="http://www.theasciiproject.com">http://www.theasciiproject.com</a></p>
@@ -48,17 +38,28 @@
 
 <p>The overall aim of "The ASCII Project" is to develop a Unicode graphics based "Roguelike" MMORPG engine which operates a persistent world driven by a player-run economy.</p>
 
+<h1>Build</h1>
+
+<p>1.) run ./autogen.sh
+2.) run ./build.sh {client|server} depending on which one you want to build
+3.) run ./launch.sh {client|server} depending on which one you want to run</p>
+
+<p>Optional) Run ./clean.sh to clean the build and return back to step 1
+          Otherwise you can just re-run the build script if you're making
+          Source code changes.</p>
+
 <h1>News</h1>
 
-<p>11/22/12</p>
+<p>11/23/12</p>
 
-<ul>
-<li>Almost finished with saving and loading maps to disk, which is necessary for some of the world "sculpting" things I am going to try.</li>
-</ul><p>11/12/12 </p>
+<p>Almost finished with saving and loading maps to disk, which is necessary for some of the world "sculpting" things I am going to try.</p>
 
-<ul>
-<li>We've moved on up to 0.0.1, as I'm now about to pull in major revisions from bits of code I've been experimenting with lately. This code does compile, but I intend on getting back into a code frenzy, so don't tie yourself to anything yet.</li>
-</ul><h1>GOALS</h1>
+<p>11/12/12 </p>
+
+<p>We've moved on up to 0.0.1, as I'm now about to pull in major revisions from bits of code I've been experimenting with 
+lately. This code does compile, but I intend on getting back into a code frenzy, so don't tie yourself to anything yet.</p>
+
+<h1>GOALS</h1>
 
 <ul>
 <li><p>Players can "destroy" and place blocks and items to create persistent structures, in much the same way that Minecraft allows players to work together to build constructions.</p></li>
@@ -66,7 +67,8 @@
 <li><p>The game world will operate in a 3-Dimensional space, allowing for an "advanced" physics engine and opening the door to new possibilities.</p></li>
 <li><p>NPC's will operate independent of eachother, in that each has the ability to make their own decisions based on their relationships with players and other NPC's.</p></li>
 <li><p>The above mentioned relationships will continue to develop amongst NPC's without any player input.</p></li>
-<li><p>All C++ source code will remain 100% C++11 compliant, including 3rd party libraries. If changes are necessary to those libraries to remain standards compliant, they will be made where possible. Otherwise we will defer to another library or write our own if necessary.</p></li>
+<li><p>All C++ source code will remain 100% C++11 compliant, including 3rd party libraries. If changes are necessary to 
+those libraries to remain standards compliant, they will be made where possible. Otherwise we will defer to another library or write our own if necessary.</p></li>
 <li><p>TBA - I would rather be coding that writing up this readme file, please refer to the homepage at <a href="http://www.theasciiproject.com">http://www.theasciiproject.com</a> and the wiki at <a href="http://www.theasciiproject.com/wk/">http://www.theasciiproject.com/wk/</a> for more information.</p></li>
 </ul><h1>NOTES</h1>
 
@@ -82,9 +84,8 @@ Source code is available from:</p>
 <li><a href="https://github.com/yamamushi/theasciiproject">https://github.com/yamamushi/theasciiproject</a></li>
 </ul>
       </section>
-
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
     
   </body>
 </html>
