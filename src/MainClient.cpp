@@ -254,7 +254,10 @@ int main(int argc, char* argv[]){
     // it's position based on it's size :-)
     testFrame->Resize( clientWindow->mainScreen->w, clientWindow->mainScreen->h);
 
-    testFrame->SetPos( ((clientWindow->mainScreen->w - testFrame->sdlScreen->w) / 2), ((clientWindow->mainScreen->h - testFrame->sdlScreen->h) / 2) );
+    //testFrame->SetPos( ((clientWindow->mainScreen->w -
+    //testFrame->sdlScreen->w) / 2), ((clientWindow->mainScreen->h -
+    //testFrame->sdlScreen->h) / 2) );
+    testFrame->SetPos( 0, 0 );
 
     clientWindow->mainWindow->Clear_Screen();
     clientWindow->mainWindow->Draw_Frames();
