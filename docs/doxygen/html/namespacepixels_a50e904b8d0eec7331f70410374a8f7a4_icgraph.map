@@ -1,0 +1,8 @@
+<map id="pixels::Get_Pixel32" name="pixels::Get_Pixel32">
+<area shape="rect" id="node3" href="$class_bitmap_font.html#adec22cad446ff9fb508d2659ad6b27e6" title="BitmapFont::Build_Font" alt="" coords="198,5,357,32"/>
+<area shape="rect" id="node7" href="$class_bitmap_font.html#a9f120caf082908ad79e593f480ff2201" title="BitmapFont::Print_Colored\l_Character" alt="" coords="189,57,365,98"/>
+<area shape="rect" id="node14" href="$namespacepixels.html#acc705ff6500b6511ac11dbd65294eab2" title="pixels::SDL_ScaleSurface" alt="" coords="190,123,365,149"/>
+<area shape="rect" id="node5" href="$class_bitmap_font.html#a8f8d70a008e2a2fa31a816fb3a150340" title="BitmapFont::BitmapFont" alt="" coords="439,5,603,32"/>
+<area shape="rect" id="node9" href="$_main_client_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="677,85,728,112"/>
+<area shape="rect" id="node11" href="$class_bitmap_font.html#acc82685f39eed4d4c458bb28e49a6797" title="BitmapFont::Show_Colored_Text" alt="" coords="414,111,629,137"/>
+</map>

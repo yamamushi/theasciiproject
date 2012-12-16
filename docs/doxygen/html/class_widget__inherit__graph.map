@@ -1,0 +1,3 @@
+<map id="Widget" name="Widget">
+<area shape="rect" id="node3" href="$class_fade_animation.html" title="{FadeAnimation\n|&#45; timespan\l&#45; alphaPerSecond\l&#45; currentAlpha\l&#45; elapsed\l&#45; ticks\l&#45; initialSurface\l&#45; endSurface\l&#45; clock\l&#45; keyDownWait\l&#45; keyUpWait\l|+ FadeAnimation()\l+ ~FadeAnimation()\l+ Run()\l+ Update()\l+ Handle_Event()\l+ IsComplete()\l}" alt="" coords="5,189,141,472"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Window" name="Window">
+<area shape="rect" id="node4" href="$class_frame.html" title="{Frame\n|+ drawThisFrame\l+ removeThisFrame\l+ width\l+ height\l+ posX\l+ posY\l+ sdlScreen\l&#45; queuedEvent\l&#45; frameListIndex\l&#45; hasFocus\l&#45; startingScreen\l&#45; resized\l|+ Frame()\l+ ~Frame()\l+ Add_Widget()\l+ Render_Widgets()\l+ Resize()\l+ SetPos()\l+ Handle_Event()\l+ Set_FrameList_Index()\l+ Get_FrameList_Index()\l+ Set_Focus()\l+ Check_Focus()\l}" alt="" coords="49,489,215,874"/>
+<area shape="rect" id="node8" href="$class_widget.html" title="{Widget\n|+ frameSurface\l|+ Widget()\l+ ~Widget()\l+ Run()\l+ Update()\l+ Handle_Event()\l}" alt="" coords="5,147,128,283"/>
+<area shape="rect" id="node10" title="STL class." alt="" coords="174,176,289,253"/>
+</map>

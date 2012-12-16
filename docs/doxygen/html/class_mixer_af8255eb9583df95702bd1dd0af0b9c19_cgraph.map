@@ -1,0 +1,4 @@
+<map id="Mixer::Load_Music" name="Mixer::Load_Music">
+<area shape="rect" id="node3" href="$class_mixer.html#a039034a5335d554e66e1739e96501403" title="Mixer::Unload_Music" alt="" coords="187,5,333,32"/>
+<area shape="rect" id="node5" href="$class_mixer.html#ab5f94c575f63721b5cac137b625ac795" title="Mixer::Stop_Music" alt="" coords="381,5,512,32"/>
+</map>
