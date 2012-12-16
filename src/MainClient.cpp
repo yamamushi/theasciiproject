@@ -37,8 +37,6 @@ const int FRAMES_PER_SECOND = 15;
 
 
 int main(int argc, char* argv[]){
-
-
   /* 
      We first create our ClientWindow under the easy-to-remember
      name, 'clientWindow'. 
@@ -72,8 +70,6 @@ int main(int argc, char* argv[]){
   // We'll also go ahead and create our Keyboard input handler now
   ClientKeyboard keyboard(clientWindow);
 
-
-
   /*
 
     Mixer is a very simple container for playing sound, of course it
@@ -86,8 +82,6 @@ int main(int argc, char* argv[]){
   loadingMusic->Load_Music( (char *)"data/audio/Loading.mp3" );
   loadingMusic->Music_Volume( MIX_MAX_VOLUME / 2);
   loadingMusic->Fade_In_Music( 20000 );
-  
-  
 
 
   /*
@@ -96,10 +90,7 @@ int main(int argc, char* argv[]){
     automatically scales to the size of the image being loaded.
 
    */
-
   SDL_Surface *testImage = IMG_Load("data/loading.png");
-
-
 
   /*
 
@@ -135,10 +126,8 @@ int main(int argc, char* argv[]){
 
 
    */
-
   Frame *testFrame = new Frame( clientWindow->mainScreen->w, clientWindow->mainScreen->h);
   clientWindow->mainWindow->Add_To_FrameList( testFrame );
-
 
   /*
 
@@ -146,21 +135,16 @@ int main(int argc, char* argv[]){
     under a namespace ..
 
    */
-
   FadeAnimation *testAnimate = new FadeAnimation( testFrame, testFrame->sdlScreen, testImage, 1200.0);
   testFrame->Add_Widget( testAnimate );
-
-
 
   // One event object to track input from here out
   // One event object to rule them all
   SDL_Event event;
 
-
   // A simple timer object for restricting FPS, the framerate is
   // regulated by const int's at the top of this file
   Timer fps;
-
   
   // Our Loading Screen Animation
   bool finishedLoading = false;
@@ -170,38 +154,32 @@ int main(int argc, char* argv[]){
       clientWindow->mainWindow->Handle_Events( event );
       
       if(( event.type == SDL_KEYDOWN ) && ( event.key.keysym.sym == SDLK_ESCAPE )){
-        finishedLoading = true;
+        //finishedLoading = true;
       }
       
       if( event.type == SDL_QUIT ){
-        finishedLoading = true;
+        //finishedLoading = true;
       }
     }
-  
     if( clientWindow->mainWindow->Error() == true ){
       return 1;
     }
 
     // Our Animation Goes Here
+    clientWindow->mainWindow->Clear_Screen();
     clientWindow->mainWindow->Draw_Frames();
 
-    SDL_Rect tmpRect;
-    tmpRect.x = (clientWindow->mainScreen->w - testFrame->sdlScreen->w) / 2;
-    tmpRect.y = (clientWindow->mainScreen->h - testFrame->sdlScreen->h) / 2;
-    SDL_BlitSurface( testFrame->sdlScreen, NULL, clientWindow->mainScreen, &tmpRect);
+    SDL_BlitSurface( testFrame->sdlScreen, NULL, clientWindow->mainScreen, NULL);
 
     if(testAnimate->IsComplete()){
       finishedLoading = true;
     }
-
     if( SDL_Flip( clientWindow->mainScreen ) == -1 ){
       return 1;
     }
-
     if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND ){
           SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
         }
-
   }
 
   testFrame->drawThisFrame = true;
@@ -250,27 +228,18 @@ int main(int argc, char* argv[]){
       return 1;
     }
     
-    // Obviously we want to resize the frame before we expect to set
-    // it's position based on it's size :-)
-    testFrame->Resize( clientWindow->mainScreen->w, clientWindow->mainScreen->h);
 
-    //testFrame->SetPos( ((clientWindow->mainScreen->w -
-    //testFrame->sdlScreen->w) / 2), ((clientWindow->mainScreen->h -
-    //testFrame->sdlScreen->h) / 2) );
     testFrame->SetPos( 0, 0 );
 
     clientWindow->mainWindow->Clear_Screen();
     clientWindow->mainWindow->Draw_Frames();
 
-    wchar_t tmpChar = L'\u263A';
+    testFrame->Resize( clientWindow->mainWindow->screen->w, clientWindow->mainWindow->screen->h+30); // don't ask..
+    SDL_BlitSurface( testFrame->sdlScreen, NULL, clientWindow->mainScreen, NULL);
 
     // We use this as opposed to "Show_Text" as it enables us to print
     // colored strings
     clientWindow->fontHandler->Show_Colored_Text( 50, 50, greenColor, blackColor, L"\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 The ASCII Project \u2551\n\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D", clientWindow->mainScreen);
-
-    // Remember that calls to Print_Colored_Character REQUIRE fore and
-    // back color arguments
-    clientWindow->fontHandler->Print_Colored_Character( tmpChar, greenColor, blackColor, 120, 120, clientWindow->mainScreen);
 
     if( SDL_Flip( clientWindow->mainScreen ) == -1 ){
       return 1;

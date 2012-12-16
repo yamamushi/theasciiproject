@@ -10,3 +10,6 @@
 
 * 12 - 12 - 12 :: Tasks
 
+* 12 - 16 - 12 :: Tasks
+
+** Move Resizing ;)

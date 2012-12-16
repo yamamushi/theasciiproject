@@ -50,7 +50,7 @@ void Frame::Render_Widgets(){
         widgetList.at(i)->Handle_Event( queuedEvent );
       }
 
-      widgetList.at(i)->Update();
+      widgetList.at(i)->Update(this);
 
     }
   }

@@ -27,7 +27,7 @@ class Widget {
 
   SDL_Surface *frameSurface;
   virtual void Run() =0;
-  virtual void Update() =0;
+  virtual void Update(Frame *caller) =0;
   virtual void Handle_Event( SDL_Event event ) =0;
     
 };

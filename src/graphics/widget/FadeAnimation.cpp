@@ -35,7 +35,7 @@ FadeAnimation::FadeAnimation( Frame *owner, SDL_Surface *from, SDL_Surface *to, 
 };
 
 
-void FadeAnimation::Update(){
+void FadeAnimation::Update(Frame *caller){
 
   ticks = clock->get_ticks();
   clock->start();
@@ -51,7 +51,6 @@ void FadeAnimation::Update(){
   uint32_t black = SDL_MapRGB( endSurface->format, 0, 0, 0);
   SDL_FillRect( initialSurface, NULL, black);
   SDL_BlitSurface( endSurface, NULL, initialSurface, NULL);
-
   
 }
 

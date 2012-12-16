@@ -191,9 +191,7 @@ void Window::Draw_Frames(){
     // This doesn't actually make the Frame process the event
     // It only tells the Frame that it now has an Event to process
     if( frameList.at(i)->Check_Focus() ){
-      //SDL_Event tmpEvent = *eventQueue;
       frameList.at(i)->Handle_Event( eventQueue );
-      //      delete eventQueue;
     }
     frameList.at(i)->Render_Widgets();
     
@@ -209,7 +207,7 @@ void Window::Draw_Frames(){
       destination.w = frameList.at(i)->width;
       destination.h = frameList.at(i)->height;
 
-      SDL_BlitSurface( frameList.at(i)->sdlScreen, NULL, screen, &destination);      
+      SDL_BlitSurface( frameList.at(i)->sdlScreen, &destination, screen, &destination);      
 
     }
 
@@ -243,7 +241,7 @@ void Window::Draw_Frames(){
       // During the next cycle, this will be reset to true if
       // this frame remains at the end of the queue
       // This follows a LIFO (last in - first out) methodology.
-      frameList.at(i)->Set_Focus(false); 
+      //      frameList.at(i)->Set_Focus(false); 
 
       // First we move the Frame to the beginning of the Queue
       // Remember this is "backwards" because of LIFO
