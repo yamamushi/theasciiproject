@@ -13,7 +13,7 @@ Build
 
 1.) run ./autogen.sh
 2.) run ./build.sh {client|server} depending on which one you want to build
-3.) run ./launch.sh {client|server} depending no which one you want to run
+3.) run ./launch.sh {client|server} depending on which one you want to run
 
 Optional) Run ./clean.sh to clean the build and return back to step 1
           Otherwise you can just re-run the build script if you're making
