@@ -220,18 +220,11 @@ int main(int argc, char* argv[]){
   SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 
   bool quitMain = false;
-<<<<<<< Updated upstream
-=======
-  int loop = 0;
-  SDL_Event event;
->>>>>>> Stashed changes
+
   while( !quitMain ){
 
-<<<<<<< Updated upstream
     // Kick off / Reset FPS Timer
     fps.start();
-=======
->>>>>>> Stashed changes
 
     while(SDL_PollEvent( &event )){
       if( event.type == SDL_QUIT){
@@ -279,20 +272,7 @@ int main(int argc, char* argv[]){
     if( SDL_Flip( clientWindow->mainScreen ) == -1 ){
       return 1;
     }
-<<<<<<< Updated upstream
-    
-    
-    if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND ){
-      SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
-=======
 
-    SDL_Delay( 100 );
-    // I don't know why this is here, so sue me
-    loop++;
-    if(loop > 10000){
-      loop = 1;
->>>>>>> Stashed changes
-    }
 
   }
 

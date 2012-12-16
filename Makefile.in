@@ -90,7 +90,8 @@ am_tap_client_OBJECTS = src/tap_client-MainClient.$(OBJEXT) \
 	src/graphics/widget/tap_client-FadeAnimation.$(OBJEXT) \
 	src/utils/tap_client-Timer.$(OBJEXT) \
 	src/graphics/tap_client-Pixels.$(OBJEXT) \
-	src/io/tap_client-Mouse.$(OBJEXT)
+	src/io/tap_client-Mouse.$(OBJEXT) \
+	src/graphics/tap_client-SDL_Resize.$(OBJEXT)
 tap_client_OBJECTS = $(am_tap_client_OBJECTS)
 am__DEPENDENCIES_1 =
 tap_client_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
@@ -362,7 +363,7 @@ tap_client_SOURCES = src/MainClient.cpp src/io/SelfPath.cpp src/graphics/ClientW
 	src/graphics/BitmapFont.cpp src/graphics/Window.cpp src/audio/Mixer.cpp \
 	src/graphics/Frame.cpp src/graphics/widget/Widget.cpp src/io/ClientKeyboard.cpp \
 	src/graphics/widget/FadeAnimation.cpp src/utils/Timer.cpp src/graphics/Pixels.cpp \
-	src/io/Mouse.cpp
+	src/io/Mouse.cpp src/graphics/SDL_Resize.cpp
 
 tap_client_CPPFLAGS = -std=c++11 $(SDL_CFLAGS) $(PNG_CFLAGS) $(SDL_TTF_CFLAGS) $(BOOST_CPPFLAGS) 
 tap_client_LDFLAGS = -Wl,-rpath,. 
@@ -537,6 +538,9 @@ src/graphics/tap_client-Pixels.$(OBJEXT):  \
 	src/graphics/$(DEPDIR)/$(am__dirstamp)
 src/io/tap_client-Mouse.$(OBJEXT): src/io/$(am__dirstamp) \
 	src/io/$(DEPDIR)/$(am__dirstamp)
+src/graphics/tap_client-SDL_Resize.$(OBJEXT):  \
+	src/graphics/$(am__dirstamp) \
+	src/graphics/$(DEPDIR)/$(am__dirstamp)
 tap_client$(EXEEXT): $(tap_client_OBJECTS) $(tap_client_DEPENDENCIES) $(EXTRA_tap_client_DEPENDENCIES) 
 	@rm -f tap_client$(EXEEXT)
 	$(tap_client_LINK) $(tap_client_OBJECTS) $(tap_client_LDADD) $(LIBS)
@@ -586,6 +590,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/graphics/$(DEPDIR)/tap_client-ClientWindow.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/graphics/$(DEPDIR)/tap_client-Frame.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/graphics/$(DEPDIR)/tap_client-Pixels.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/graphics/$(DEPDIR)/tap_client-SDL_Resize.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/graphics/$(DEPDIR)/tap_client-Window.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/graphics/widget/$(DEPDIR)/tap_client-FadeAnimation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/graphics/widget/$(DEPDIR)/tap_client-Widget.Po@am__quote@
@@ -800,6 +805,20 @@ src/io/tap_client-Mouse.obj: src/io/Mouse.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/io/Mouse.cpp' object='src/io/tap_client-Mouse.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/io/tap_client-Mouse.obj `if test -f 'src/io/Mouse.cpp'; then $(CYGPATH_W) 'src/io/Mouse.cpp'; else $(CYGPATH_W) '$(srcdir)/src/io/Mouse.cpp'; fi`
+
+src/graphics/tap_client-SDL_Resize.o: src/graphics/SDL_Resize.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/graphics/tap_client-SDL_Resize.o -MD -MP -MF src/graphics/$(DEPDIR)/tap_client-SDL_Resize.Tpo -c -o src/graphics/tap_client-SDL_Resize.o `test -f 'src/graphics/SDL_Resize.cpp' || echo '$(srcdir)/'`src/graphics/SDL_Resize.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) src/graphics/$(DEPDIR)/tap_client-SDL_Resize.Tpo src/graphics/$(DEPDIR)/tap_client-SDL_Resize.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/graphics/SDL_Resize.cpp' object='src/graphics/tap_client-SDL_Resize.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/graphics/tap_client-SDL_Resize.o `test -f 'src/graphics/SDL_Resize.cpp' || echo '$(srcdir)/'`src/graphics/SDL_Resize.cpp
+
+src/graphics/tap_client-SDL_Resize.obj: src/graphics/SDL_Resize.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/graphics/tap_client-SDL_Resize.obj -MD -MP -MF src/graphics/$(DEPDIR)/tap_client-SDL_Resize.Tpo -c -o src/graphics/tap_client-SDL_Resize.obj `if test -f 'src/graphics/SDL_Resize.cpp'; then $(CYGPATH_W) 'src/graphics/SDL_Resize.cpp'; else $(CYGPATH_W) '$(srcdir)/src/graphics/SDL_Resize.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) src/graphics/$(DEPDIR)/tap_client-SDL_Resize.Tpo src/graphics/$(DEPDIR)/tap_client-SDL_Resize.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='src/graphics/SDL_Resize.cpp' object='src/graphics/tap_client-SDL_Resize.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_client_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/graphics/tap_client-SDL_Resize.obj `if test -f 'src/graphics/SDL_Resize.cpp'; then $(CYGPATH_W) 'src/graphics/SDL_Resize.cpp'; else $(CYGPATH_W) '$(srcdir)/src/graphics/SDL_Resize.cpp'; fi`
 
 src/tap_server-MainServer.o: src/MainServer.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/tap_server-MainServer.o -MD -MP -MF src/$(DEPDIR)/tap_server-MainServer.Tpo -c -o src/tap_server-MainServer.o `test -f 'src/MainServer.cpp' || echo '$(srcdir)/'`src/MainServer.cpp

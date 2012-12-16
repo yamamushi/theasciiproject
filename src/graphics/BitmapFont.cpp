@@ -146,10 +146,7 @@ void BitmapFont::Show_Colored_Text( int x, int y, SDL_Color ForeColor, SDL_Color
             }
           else{
             //Show the character
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
             Print_Colored_Character( (wchar_t)source[ show ], ForeColor, BackColor, X, Y, destination);
           }
     
@@ -210,13 +207,9 @@ void BitmapFont::Set_Font_Color(SDL_Color color, bool fore){
   int index = character;
 
 
-<<<<<<< Updated upstream
   SDL_Surface *tmpSurface = SDL_CreateRGBSurface( SDL_SWSURFACE, chars[index]->w, chars[index]->h, bitmap->format->BitsPerPixel, bitmap->format->Rmask, bitmap->format->Gmask, bitmap->format->Bmask, 0);
 
-=======
-  SDL_Surface *tmpSurface = SDL_CreateRGBSurface( SDL_HWSURFACE, chars[index]->w, chars[index]->h, bitmap->format->BitsPerPixel, 0, 0, 0, 0);
-  
->>>>>>> Stashed changes
+
   SDL_LockSurface( bitmap );
   SDL_LockSurface( tmpSurface );
 
@@ -266,13 +259,8 @@ void BitmapFont::Set_Font_Color(SDL_Color color, bool fore){
   offset.x = X;
   offset.y = Y;
 
-<<<<<<< Updated upstream
-  Apply_Surface( X, Y, tmpSurface, destination);
-=======
-
   Apply_Surface( X, Y, tmpSurface, destination);
 
->>>>>>> Stashed changes
   SDL_FreeSurface( tmpSurface );
 
 }
