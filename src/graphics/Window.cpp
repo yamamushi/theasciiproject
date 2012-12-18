@@ -9,6 +9,7 @@
 
 #include "SDL/SDL.h"
 
+#include <iostream>
 #include <vector>
 
 const int SCREEN_WIDTH = 1024;
@@ -116,6 +117,12 @@ void Window::Handle_Events(SDL_Event event){
         Toggle_Fullscreen();
     }
 
+    else if( ( event.type == SDL_KEYDOWN ) && ( event.key.keysym.sym == SDLK_TAB ) ){
+
+      Focus_Next_Frame();
+
+    }
+
     /*
  //If the window focus changed
     else if( event.type == SDL_ACTIVEEVENT )
@@ -180,6 +187,11 @@ void Window::Add_To_FrameList(Frame *src){
 
   frameList.push_back(src);
   frameList.back()->Set_FrameList_Index(frameList.size()-1);  
+  // Disable all other focus then fix this guy
+  for(int i=0; i < frameList.size(); i++){
+    frameList.at(i)->Set_Focus(false);
+  }
+  src->Set_Focus( true );
 
 }
 
@@ -227,33 +239,14 @@ void Window::Draw_Frames(){
       
     // We check if we need to drop this frame, if not then we validate
     // the index and if this frame is at the top of the 
-    if( (frameList.at(i)->Get_FrameList_Index() == (frameList.size() - 1)) && ( !frameList.at(i)->Check_Focus() ) ){
-
-      // We move the frame to the end of the frameList vector and set
-      // Focus to 'true' so that the frame in question gains Focus
-      frameList.at(i)->Set_Focus( true );
-      frameList.push_back(frameList.at(i));
-      frameList.erase(frameList.begin()+i);
-    }
-    else if( (frameList.at(i)->Get_FrameList_Index() != (frameList.size() - 1)) && ( frameList.at(i)->Check_Focus() ) ){
-
-      // We also disable focus this time around
-      // During the next cycle, this will be reset to true if
-      // this frame remains at the end of the queue
-      // This follows a LIFO (last in - first out) methodology.
-      //      frameList.at(i)->Set_Focus(false); 
+    if( ( frameList.at(i)->Check_Focus() ) ){
 
       // First we move the Frame to the beginning of the Queue
       // Remember this is "backwards" because of LIFO
       frameList.push_back(frameList.at(i));
       frameList.erase(frameList.begin()+i);
     }
-      else if( frameList.at(i)->Get_FrameList_Index() != (frameList.size() -1) ){
-        // This is a global reset of anything that should not be
-        // In Focus 
-      frameList.at(i)->Set_Focus( false );
-    }
-    
+        
   }
 
 }
@@ -278,4 +271,17 @@ void Window::Add_To_Event_Queue( SDL_Event event ){
 
   eventQueue = event;
 
+}
+
+void Window::Focus_Next_Frame(){
+
+  std::cout << "Frame Focus Changed" << std::endl;
+
+  frameList.at(0)->Set_Focus(true);
+  for(int i=1; i < frameList.size(); i++){
+
+    frameList.at(i)->Set_Focus(false);
+    
+  }
+  
 }

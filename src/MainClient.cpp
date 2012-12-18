@@ -23,6 +23,7 @@
 #include "graphics/Frame.h"
 #include "graphics/widget/Widget.h"
 #include "graphics/widget/FadeAnimation.h"
+#include "graphics/widget/Button.h"
 #include "audio/Mixer.h"
 #include "graphics/Window.h"
 #include "utils/Timer.h"
@@ -129,6 +130,9 @@ int main(int argc, char* argv[]){
   Frame *testFrame = new Frame( clientWindow->mainScreen->w, clientWindow->mainScreen->h);
   clientWindow->mainWindow->Add_To_FrameList( testFrame );
 
+  Frame *buttonFrame = new Frame( clientWindow->mainScreen->w/2, clientWindow->mainScreen->h/2);
+  clientWindow->mainWindow->Add_To_FrameList( buttonFrame );
+
   /*
 
     Now we create our FadeAnimation widget, which We'll probably move
@@ -178,8 +182,8 @@ int main(int argc, char* argv[]){
       return 1;
     }
     if( fps.get_ticks() < 1000 / FRAMES_PER_SECOND ){
-          SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
-        }
+      SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
+    }
   }
 
   testFrame->drawThisFrame = true;
