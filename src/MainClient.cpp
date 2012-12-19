@@ -243,7 +243,8 @@ int main(int argc, char* argv[]){
 
     // We use this as opposed to "Show_Text" as it enables us to print
     // colored strings
-    clientWindow->fontHandler->Show_Colored_Text( 50, 50, greenColor, blackColor, L"\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 The ASCII Project \u2551\n\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D", clientWindow->mainScreen);
+    clientWindow->fontHandler->Show_Colored_Text( 50, 50, greenColor, blackColor,
+    L"\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 The ASCII Project \u2551\n\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D", clientWindow->mainScreen);
 
     if( SDL_Flip( clientWindow->mainScreen ) == -1 ){
       return 1;
