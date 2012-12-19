@@ -89,8 +89,8 @@ int main(int argc, char* argv[]){
     
     We load an image into an SDL_Surface (screen) , which 
     automatically scales to the size of the image being loaded.
-
-   */
+    
+  */
   SDL_Surface *testImage = IMG_Load("data/loading.png");
 
   /*
@@ -126,10 +126,10 @@ int main(int argc, char* argv[]){
     +----------------------------------------------+
 
 
-   */
+  */
   Frame *testFrame = new Frame( clientWindow->mainScreen->w, clientWindow->mainScreen->h);
   clientWindow->mainWindow->Add_To_FrameList( testFrame );
-
+  
   Frame *buttonFrame = new Frame( clientWindow->mainScreen->w/2, clientWindow->mainScreen->h/2);
   clientWindow->mainWindow->Add_To_FrameList( buttonFrame );
 
@@ -141,7 +141,7 @@ int main(int argc, char* argv[]){
    */
   FadeAnimation *testAnimate = new FadeAnimation( testFrame, testFrame->sdlScreen, testImage, 1200.0);
   testFrame->Add_Widget( testAnimate );
-
+  
   // One event object to track input from here out
   // One event object to rule them all
   SDL_Event event;

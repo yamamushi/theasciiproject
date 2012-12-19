@@ -199,7 +199,7 @@ void Window::Add_To_FrameList(Frame *src){
 void Window::Draw_Frames(){
 
   for( int i = 0; i < frameList.size(); i++){
-
+    
     // This doesn't actually make the Frame process the event
     // It only tells the Frame that it now has an Event to process
     if( frameList.at(i)->Check_Focus() ){
@@ -207,15 +207,15 @@ void Window::Draw_Frames(){
     }
     frameList.at(i)->Render_Widgets();
     
-
+    
     // If the frame wants us to draw it, we happily do so.
     if( frameList.at(i)->drawThisFrame ){
-
+      
       SDL_Rect destination;
-
+      
       destination.x = frameList.at(i)->posX;
       destination.y = frameList.at(i)->posY;
-
+      
       destination.w = frameList.at(i)->width;
       destination.h = frameList.at(i)->height;
 
