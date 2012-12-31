@@ -9,12 +9,12 @@
 
  */
 
-#include <iostream>
+#include "utils/ConsoleLog.h"
 
 
 int main(int argc, char *argv[]){
 
-  std::cout << "The ASCII Project Server" << std::endl;
+  ConsoleLog::Print("The ASCII Project");
 
   return 0;
 
