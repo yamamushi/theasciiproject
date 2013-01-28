@@ -10,11 +10,15 @@
  */
 
 #include "utils/ConsoleLog.h"
-
+#include "parsers/ServerConfig.h"
 
 int main(int argc, char *argv[]){
 
   ConsoleLog::Print("The ASCII Project");
+  ConsoleLog::Print("Reading configuration file...");
+
+  
+  
 
   return 0;
 

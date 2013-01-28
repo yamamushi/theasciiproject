@@ -10,15 +10,35 @@
 
 */
 
+#include "../serialization/Boost_Serialization.h"
+
 
 class EntityMap {
 
- private:
+private:
 
+  // Our serialization ALWAYS goes first
+  friend class boost::serialization::access;
+  template<class Archive>
+      void serialize(Archive & ar, const unsigned int version)
+  {
+    ar & width;
+    ar & height;
+    ar & pX;
+    ar & pY;
+    ar & pZ;
+  }
+
+// Map width and position in the global database
+  
+  int width, height;
+  int pX, pY, pZ;
 
  public:
 
   EntityMap(){};
+EntityMap(int Width, int Height, int posX, int posY, int posZ) : width(Width), height(Height), pX(posX), pY(posY), pZ(posZ){};
+  
   virtual ~EntityMap(){};
 
 };
