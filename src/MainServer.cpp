@@ -14,11 +14,14 @@
 
 int main(int argc, char *argv[]){
 
-  ConsoleLog::Print("The ASCII Project");
-  ConsoleLog::Print("Reading configuration file...");
+  // We can forego these console messages, as our config parser will
+  // do that for us.
 
-  
-  
+  // ConsoleLog::Print("The ASCII Project");
+  // ConsoleLog::Print("Reading configuration file...");
+
+  ServerConfigParser *serverConfig = new ServerConfigParser( argc, argv);
+  serverConfig->Parse();
 
   return 0;
 
