@@ -9,8 +9,8 @@
 
  */
 
-#include "utils/ConsoleLog.h"
-#include "parsers/ServerConfig.h"
+#include "server/ServerInit.h"
+
 
 int main(int argc, char *argv[]){
 
@@ -20,9 +20,8 @@ int main(int argc, char *argv[]){
   // ConsoleLog::Print("The ASCII Project");
   // ConsoleLog::Print("Reading configuration file...");
 
-  ServerConfigParser *serverConfig = new ServerConfigParser( argc, argv);
-  serverConfig->Parse();
-
+  ServerInit(argc, argv);
+  
   return 0;
 
 }

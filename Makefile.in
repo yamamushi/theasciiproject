@@ -112,7 +112,9 @@ am_tap_server_OBJECTS = src/tap_server-MainServer.$(OBJEXT) \
 	src/entities/tap_server-Entity.$(OBJEXT) \
 	src/mapping/tap_server-EntityMap.$(OBJEXT) \
 	src/utils/tap_server-ConsoleLog.$(OBJEXT) \
-	src/parsers/tap_server-ServerConfig.$(OBJEXT)
+	src/parsers/tap_server-ServerConfig.$(OBJEXT) \
+	src/utils/tap_server-Filesystem.$(OBJEXT) \
+	src/server/tap_server-ServerInit.$(OBJEXT)
 tap_server_OBJECTS = $(am_tap_server_OBJECTS)
 tap_server_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
@@ -393,7 +395,8 @@ AM_LDFLAGS = $(BOOST_THREADS_LDFLAGS) $(BOOST_SIGNALS_LIBS)
 # DEPS_LIBS = $(BOOST_THREAD_LIBS)
 aclocal_DATA = m4/boost.m4
 tap_server_SOURCES = src/MainServer.cpp src/entities/Entity.cpp \
-	src/mapping/EntityMap.cpp src/utils/ConsoleLog.cpp src/parsers/ServerConfig.cpp
+	src/mapping/EntityMap.cpp src/utils/ConsoleLog.cpp src/parsers/ServerConfig.cpp \
+	src/utils/Filesystem.cpp src/server/ServerInit.cpp
 
 tap_server_CPPFLAGS = -std=c++11 $(SQLITE_CFLAGS)
 tap_server_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_PROGRAM_OPTIONS_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SQLITE_LIBS)
@@ -620,6 +623,17 @@ src/parsers/$(DEPDIR)/$(am__dirstamp):
 src/parsers/tap_server-ServerConfig.$(OBJEXT):  \
 	src/parsers/$(am__dirstamp) \
 	src/parsers/$(DEPDIR)/$(am__dirstamp)
+src/utils/tap_server-Filesystem.$(OBJEXT): src/utils/$(am__dirstamp) \
+	src/utils/$(DEPDIR)/$(am__dirstamp)
+src/server/$(am__dirstamp):
+	@$(MKDIR_P) src/server
+	@: > src/server/$(am__dirstamp)
+src/server/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/server/$(DEPDIR)
+	@: > src/server/$(DEPDIR)/$(am__dirstamp)
+src/server/tap_server-ServerInit.$(OBJEXT):  \
+	src/server/$(am__dirstamp) \
+	src/server/$(DEPDIR)/$(am__dirstamp)
 tap_server$(EXEEXT): $(tap_server_OBJECTS) $(tap_server_DEPENDENCIES) $(EXTRA_tap_server_DEPENDENCIES) 
 	@rm -f tap_server$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(tap_server_OBJECTS) $(tap_server_LDADD) $(LIBS)
@@ -634,6 +648,7 @@ mostlyclean-compile:
 	-rm -f src/io/*.$(OBJEXT)
 	-rm -f src/mapping/*.$(OBJEXT)
 	-rm -f src/parsers/*.$(OBJEXT)
+	-rm -f src/server/*.$(OBJEXT)
 	-rm -f src/utils/*.$(OBJEXT)
 
 distclean-compile:
@@ -657,8 +672,10 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/io/$(DEPDIR)/tap_client-SelfPath.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mapping/$(DEPDIR)/tap_server-EntityMap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/parsers/$(DEPDIR)/tap_server-ServerConfig.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/server/$(DEPDIR)/tap_server-ServerInit.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/utils/$(DEPDIR)/tap_client-Timer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/utils/$(DEPDIR)/tap_server-ConsoleLog.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/utils/$(DEPDIR)/tap_server-Filesystem.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -964,6 +981,34 @@ src/parsers/tap_server-ServerConfig.obj: src/parsers/ServerConfig.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/parsers/tap_server-ServerConfig.obj `if test -f 'src/parsers/ServerConfig.cpp'; then $(CYGPATH_W) 'src/parsers/ServerConfig.cpp'; else $(CYGPATH_W) '$(srcdir)/src/parsers/ServerConfig.cpp'; fi`
 
+src/utils/tap_server-Filesystem.o: src/utils/Filesystem.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/utils/tap_server-Filesystem.o -MD -MP -MF src/utils/$(DEPDIR)/tap_server-Filesystem.Tpo -c -o src/utils/tap_server-Filesystem.o `test -f 'src/utils/Filesystem.cpp' || echo '$(srcdir)/'`src/utils/Filesystem.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/utils/$(DEPDIR)/tap_server-Filesystem.Tpo src/utils/$(DEPDIR)/tap_server-Filesystem.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/utils/Filesystem.cpp' object='src/utils/tap_server-Filesystem.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/utils/tap_server-Filesystem.o `test -f 'src/utils/Filesystem.cpp' || echo '$(srcdir)/'`src/utils/Filesystem.cpp
+
+src/utils/tap_server-Filesystem.obj: src/utils/Filesystem.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/utils/tap_server-Filesystem.obj -MD -MP -MF src/utils/$(DEPDIR)/tap_server-Filesystem.Tpo -c -o src/utils/tap_server-Filesystem.obj `if test -f 'src/utils/Filesystem.cpp'; then $(CYGPATH_W) 'src/utils/Filesystem.cpp'; else $(CYGPATH_W) '$(srcdir)/src/utils/Filesystem.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/utils/$(DEPDIR)/tap_server-Filesystem.Tpo src/utils/$(DEPDIR)/tap_server-Filesystem.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/utils/Filesystem.cpp' object='src/utils/tap_server-Filesystem.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/utils/tap_server-Filesystem.obj `if test -f 'src/utils/Filesystem.cpp'; then $(CYGPATH_W) 'src/utils/Filesystem.cpp'; else $(CYGPATH_W) '$(srcdir)/src/utils/Filesystem.cpp'; fi`
+
+src/server/tap_server-ServerInit.o: src/server/ServerInit.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/server/tap_server-ServerInit.o -MD -MP -MF src/server/$(DEPDIR)/tap_server-ServerInit.Tpo -c -o src/server/tap_server-ServerInit.o `test -f 'src/server/ServerInit.cpp' || echo '$(srcdir)/'`src/server/ServerInit.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/server/$(DEPDIR)/tap_server-ServerInit.Tpo src/server/$(DEPDIR)/tap_server-ServerInit.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/server/ServerInit.cpp' object='src/server/tap_server-ServerInit.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/server/tap_server-ServerInit.o `test -f 'src/server/ServerInit.cpp' || echo '$(srcdir)/'`src/server/ServerInit.cpp
+
+src/server/tap_server-ServerInit.obj: src/server/ServerInit.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/server/tap_server-ServerInit.obj -MD -MP -MF src/server/$(DEPDIR)/tap_server-ServerInit.Tpo -c -o src/server/tap_server-ServerInit.obj `if test -f 'src/server/ServerInit.cpp'; then $(CYGPATH_W) 'src/server/ServerInit.cpp'; else $(CYGPATH_W) '$(srcdir)/src/server/ServerInit.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/server/$(DEPDIR)/tap_server-ServerInit.Tpo src/server/$(DEPDIR)/tap_server-ServerInit.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/server/ServerInit.cpp' object='src/server/tap_server-ServerInit.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/server/tap_server-ServerInit.obj `if test -f 'src/server/ServerInit.cpp'; then $(CYGPATH_W) 'src/server/ServerInit.cpp'; else $(CYGPATH_W) '$(srcdir)/src/server/ServerInit.cpp'; fi`
+
 mostlyclean-libtool:
 	-rm -f *.lo
 
@@ -1258,6 +1303,8 @@ distclean-generic:
 	-rm -f src/mapping/$(am__dirstamp)
 	-rm -f src/parsers/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/parsers/$(am__dirstamp)
+	-rm -f src/server/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/server/$(am__dirstamp)
 	-rm -f src/utils/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/utils/$(am__dirstamp)
 
@@ -1270,7 +1317,7 @@ clean-am: clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
 
 distclean: distclean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
-	-rm -rf src/$(DEPDIR) src/audio/$(DEPDIR) src/entities/$(DEPDIR) src/graphics/$(DEPDIR) src/graphics/widget/$(DEPDIR) src/io/$(DEPDIR) src/mapping/$(DEPDIR) src/parsers/$(DEPDIR) src/utils/$(DEPDIR)
+	-rm -rf src/$(DEPDIR) src/audio/$(DEPDIR) src/entities/$(DEPDIR) src/graphics/$(DEPDIR) src/graphics/widget/$(DEPDIR) src/io/$(DEPDIR) src/mapping/$(DEPDIR) src/parsers/$(DEPDIR) src/server/$(DEPDIR) src/utils/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-libtool distclean-tags
@@ -1318,7 +1365,7 @@ installcheck-am:
 maintainer-clean: maintainer-clean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -rf $(top_srcdir)/autom4te.cache
-	-rm -rf src/$(DEPDIR) src/audio/$(DEPDIR) src/entities/$(DEPDIR) src/graphics/$(DEPDIR) src/graphics/widget/$(DEPDIR) src/io/$(DEPDIR) src/mapping/$(DEPDIR) src/parsers/$(DEPDIR) src/utils/$(DEPDIR)
+	-rm -rf src/$(DEPDIR) src/audio/$(DEPDIR) src/entities/$(DEPDIR) src/graphics/$(DEPDIR) src/graphics/widget/$(DEPDIR) src/io/$(DEPDIR) src/mapping/$(DEPDIR) src/parsers/$(DEPDIR) src/server/$(DEPDIR) src/utils/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
