@@ -24,6 +24,19 @@ PKG_CHECK_MODULES([PNG], [libpng >= 1.2])
 PKG_CHECK_MODULES([SQLITE], [sqlite3 >= 3.7.14])
 
 
+AC_PATH_PROG([mysql_config], [mysql_config])
+if test "x$mysql_config" != "x";then
+      AC_CHECK_HEADERS([mysql/mysql.h mysql.h])
+      MYSQL_CFLAGS="$($mysql_config --cflags)"
+      MYSQL_LIBS="$($mysql_config --libs_r)"
+else
+      AC_ERROR([could not find mysql_config, please make sure that you 
+have a working mysql installation.])
+fi
+AC_SUBST(MYSQL_CFLAGS)
+AC_SUBST(MYSQL_LIBS)
+
+
 # Boost Checks
 BOOST_REQUIRE([1.52.0])
 
@@ -36,7 +49,6 @@ BOOST_FILESYSTEM
 BOOST_PROGRAM_OPTIONS
 BOOST_SERIALIZATION
 BOOST_THREADS
-
 
 
 # Look for SDL_net

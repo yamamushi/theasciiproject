@@ -11,6 +11,7 @@
 #include "Filesystem.h"
 #include <boost/filesystem.hpp>
 #include <exception>
+#include <iostream>
 
 FileSystem::FileSystem(){
 
@@ -21,9 +22,9 @@ void FileSystem::MkDir(std::string path){
 
   boost::filesystem::path newDir(path);
 
-  if(boost::filesystem::exists(newDir)){
+  if(CheckExists(path)){
     ConsoleLog::Print("Failed to create directory: " +
-                      path + " - Directory AlreadyExists");
+                      path + " - Directory Already Exists");
   }
   else {
     try {
@@ -41,4 +42,17 @@ void FileSystem::MkDir(std::string path){
 
   return;  
 
+}
+
+
+bool FileSystem::CheckExists(std::string path){
+
+  boost::filesystem::path checkFile(path);
+  
+  if(boost::filesystem::exists(checkFile)){
+    return true;
+  }
+  else
+    return false;
+  
 }

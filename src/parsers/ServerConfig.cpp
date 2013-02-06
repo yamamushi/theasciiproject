@@ -38,8 +38,11 @@ void ServerConfigParser::Parse(){
 
     po::options_description config("Config File Options");
     config.add_options()
-        ("db_filename", po::value<std::string>(&db_filename)->default_value("users.db"),"Database Filename")
-        ("db_name", po::value<std::string>(&db_name)->default_value("users"),"Database Name")
+        ("db_hostname", po::value<std::string>(&db_hostname)->default_value(""),"MySQL Server Hostname")
+        ("db_port", po::value<int>(&db_port)->default_value(3306),"MySQL Server Port")
+        ("db_username", po::value<std::string>(&db_username)->default_value(""),"MySQL Username")
+        ("db_pass", po::value<std::string>(&db_pass)->default_value(""),"MySQL User Password")
+        ("db_name", po::value<std::string>(&db_name)->default_value(""),"MySQL Database Name")
         ;
 
     po::options_description hidden("Hidden Options");
@@ -61,6 +64,7 @@ void ServerConfigParser::Parse(){
 
     if(vm.count("help")){
       std::cout << desc << std::endl;
+      std::cout << config << std::endl;
       exit(0);
     }
     if(vm.count("version")){

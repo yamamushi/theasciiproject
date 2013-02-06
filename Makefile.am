@@ -19,8 +19,8 @@ tap_server_SOURCES = src/MainServer.cpp src/entities/Entity.cpp \
 	src/mapping/EntityMap.cpp src/utils/ConsoleLog.cpp src/parsers/ServerConfig.cpp \
 	src/utils/Filesystem.cpp src/server/ServerInit.cpp
 
-tap_server_CPPFLAGS = -std=c++11 $(SQLITE_CFLAGS)
-tap_server_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_PROGRAM_OPTIONS_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SQLITE_LIBS)
+tap_server_CPPFLAGS = -std=c++11 $(SQLITE_CFLAGS) $(MYSQL_CFLAGS)
+tap_server_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_PROGRAM_OPTIONS_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SQLITE_LIBS) $(MYSQL_LIBS)
 # tap_server_LIBS = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS)
 
 tap_client_SOURCES = src/MainClient.cpp src/io/SelfPath.cpp src/graphics/ClientWindow.cpp \

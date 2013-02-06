@@ -118,7 +118,7 @@ am_tap_server_OBJECTS = src/tap_server-MainServer.$(OBJEXT) \
 tap_server_OBJECTS = $(am_tap_server_OBJECTS)
 tap_server_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 SCRIPTS = $(dist_noinst_SCRIPTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -296,6 +296,8 @@ LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
 MANIFEST_TOOL = @MANIFEST_TOOL@
 MKDIR_P = @MKDIR_P@
+MYSQL_CFLAGS = @MYSQL_CFLAGS@
+MYSQL_LIBS = @MYSQL_LIBS@
 NM = @NM@
 NMEDIT = @NMEDIT@
 OBJDUMP = @OBJDUMP@
@@ -369,6 +371,7 @@ localedir = @localedir@
 localstatedir = @localstatedir@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
+mysql_config = @mysql_config@
 oldincludedir = @oldincludedir@
 pdfdir = @pdfdir@
 prefix = @prefix@
@@ -398,8 +401,8 @@ tap_server_SOURCES = src/MainServer.cpp src/entities/Entity.cpp \
 	src/mapping/EntityMap.cpp src/utils/ConsoleLog.cpp src/parsers/ServerConfig.cpp \
 	src/utils/Filesystem.cpp src/server/ServerInit.cpp
 
-tap_server_CPPFLAGS = -std=c++11 $(SQLITE_CFLAGS)
-tap_server_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_PROGRAM_OPTIONS_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SQLITE_LIBS)
+tap_server_CPPFLAGS = -std=c++11 $(SQLITE_CFLAGS) $(MYSQL_CFLAGS)
+tap_server_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_PROGRAM_OPTIONS_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SQLITE_LIBS) $(MYSQL_LIBS)
 # tap_server_LIBS = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS)
 tap_client_SOURCES = src/MainClient.cpp src/io/SelfPath.cpp src/graphics/ClientWindow.cpp \
 	src/graphics/BitmapFont.cpp src/graphics/Window.cpp src/audio/Mixer.cpp \

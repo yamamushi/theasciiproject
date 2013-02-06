@@ -36,7 +36,10 @@ public:
   std::string data_dir;
 
   // DB Options
-  std::string db_filename;
+  std::string db_hostname;
+  int db_port;
+  std::string db_username;
+  std::string db_pass;
   std::string db_name;
 
   // Server Bind Options

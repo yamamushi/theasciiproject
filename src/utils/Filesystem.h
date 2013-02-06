@@ -23,5 +23,6 @@ public:
   // We can keep these functions similar to unix commands, for my own
   // sanity.
   static void MkDir(std::string path);
+  static bool CheckExists(std::string path);
 
 };

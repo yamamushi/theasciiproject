@@ -661,6 +661,9 @@ BOOST_SYSTEM_LDFLAGS
 BOOST_CPPFLAGS
 DISTCHECK_CONFIGURE_FLAGS
 BOOST_ROOT
+MYSQL_LIBS
+MYSQL_CFLAGS
+mysql_config
 SQLITE_LIBS
 SQLITE_CFLAGS
 PNG_LIBS
@@ -16028,8 +16031,72 @@ $as_echo "yes" >&6; }
 fi
 
 
-# Boost Checks
+# Extract the first word of "mysql_config", so it can be a program name with args.
+set dummy mysql_config; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if ${ac_cv_path_mysql_config+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  case $mysql_config in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_mysql_config="$mysql_config" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_mysql_config="$as_dir/$ac_word$ac_exec_ext"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
 
+  ;;
+esac
+fi
+mysql_config=$ac_cv_path_mysql_config
+if test -n "$mysql_config"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $mysql_config" >&5
+$as_echo "$mysql_config" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
+
+if test "x$mysql_config" != "x";then
+
+for ac_header in mysql/mysql.h mysql.h
+do :
+  as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
+ac_fn_cxx_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"
+if eval test \"x\$"$as_ac_Header"\" = x"yes"; then :
+  cat >>confdefs.h <<_ACEOF
+#define `$as_echo "HAVE_$ac_header" | $as_tr_cpp` 1
+_ACEOF
+
+fi
+
+done
+
+      MYSQL_CFLAGS="$($mysql_config --cflags)"
+      MYSQL_LIBS="$($mysql_config --libs_r)"
+else
+      as_fn_error $? "could not find mysql_config, please make sure that you
+have a working mysql installation." "$LINENO" 5
+fi
+
+
+
+
+# Boost Checks
 echo "$as_me: this is boost.m4 serial 16" >&5
 boost_save_IFS=$IFS
 boost_version_req=1.52.0
@@ -18278,7 +18345,6 @@ BOOST_CPPFLAGS="$BOOST_CPPFLAGS $boost_cv_pthread_flag"
 LIBS=$boost_threads_save_LIBS
 LDFLAGS=$boost_threads_save_LDFLAGS
 CPPFLAGS=$boost_threads_save_CPPFLAGS
-
 
 
 
