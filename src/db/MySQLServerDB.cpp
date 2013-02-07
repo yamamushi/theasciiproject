@@ -73,6 +73,7 @@ void MySQLServerDB::CloseConnection(){
 void MySQLServerDB::PrintVersion(){
   
   std::cout << "MySQL Client Version: " << mysql_get_client_info() << std::endl;
+  std::cout << "MySQL Server Version: " << mysql_get_server_info(connection) << std::endl;
   return;
   
 }

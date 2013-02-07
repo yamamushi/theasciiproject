@@ -115,7 +115,8 @@ am_tap_server_OBJECTS = src/tap_server-MainServer.$(OBJEXT) \
 	src/parsers/tap_server-ServerConfig.$(OBJEXT) \
 	src/utils/tap_server-Filesystem.$(OBJEXT) \
 	src/server/tap_server-ServerInit.$(OBJEXT) \
-	src/db/tap_server-MySQLServerDB.$(OBJEXT)
+	src/db/tap_server-MySQLServerDB.$(OBJEXT) \
+	src/utils/tap_server-FileLogger.$(OBJEXT)
 tap_server_OBJECTS = $(am_tap_server_OBJECTS)
 tap_server_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
@@ -400,7 +401,8 @@ AM_LDFLAGS = $(BOOST_THREADS_LDFLAGS) $(BOOST_SIGNALS_LIBS)
 aclocal_DATA = m4/boost.m4
 tap_server_SOURCES = src/MainServer.cpp src/entities/Entity.cpp \
 	src/mapping/EntityMap.cpp src/utils/ConsoleLog.cpp src/parsers/ServerConfig.cpp \
-	src/utils/Filesystem.cpp src/server/ServerInit.cpp src/db/MySQLServerDB.cpp
+	src/utils/Filesystem.cpp src/server/ServerInit.cpp src/db/MySQLServerDB.cpp \
+	src/utils/FileLogger.cpp
 
 tap_server_CPPFLAGS = -std=c++11 $(SQLITE_CFLAGS) $(MYSQL_CFLAGS)
 tap_server_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_PROGRAM_OPTIONS_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SQLITE_LIBS) $(MYSQL_LIBS)
@@ -646,6 +648,8 @@ src/db/$(DEPDIR)/$(am__dirstamp):
 	@: > src/db/$(DEPDIR)/$(am__dirstamp)
 src/db/tap_server-MySQLServerDB.$(OBJEXT): src/db/$(am__dirstamp) \
 	src/db/$(DEPDIR)/$(am__dirstamp)
+src/utils/tap_server-FileLogger.$(OBJEXT): src/utils/$(am__dirstamp) \
+	src/utils/$(DEPDIR)/$(am__dirstamp)
 tap_server$(EXEEXT): $(tap_server_OBJECTS) $(tap_server_DEPENDENCIES) $(EXTRA_tap_server_DEPENDENCIES) 
 	@rm -f tap_server$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(tap_server_OBJECTS) $(tap_server_LDADD) $(LIBS)
@@ -689,6 +693,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/server/$(DEPDIR)/tap_server-ServerInit.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/utils/$(DEPDIR)/tap_client-Timer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/utils/$(DEPDIR)/tap_server-ConsoleLog.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/utils/$(DEPDIR)/tap_server-FileLogger.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/utils/$(DEPDIR)/tap_server-Filesystem.Po@am__quote@
 
 .cpp.o:
@@ -1036,6 +1041,20 @@ src/db/tap_server-MySQLServerDB.obj: src/db/MySQLServerDB.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/db/MySQLServerDB.cpp' object='src/db/tap_server-MySQLServerDB.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/db/tap_server-MySQLServerDB.obj `if test -f 'src/db/MySQLServerDB.cpp'; then $(CYGPATH_W) 'src/db/MySQLServerDB.cpp'; else $(CYGPATH_W) '$(srcdir)/src/db/MySQLServerDB.cpp'; fi`
+
+src/utils/tap_server-FileLogger.o: src/utils/FileLogger.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/utils/tap_server-FileLogger.o -MD -MP -MF src/utils/$(DEPDIR)/tap_server-FileLogger.Tpo -c -o src/utils/tap_server-FileLogger.o `test -f 'src/utils/FileLogger.cpp' || echo '$(srcdir)/'`src/utils/FileLogger.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/utils/$(DEPDIR)/tap_server-FileLogger.Tpo src/utils/$(DEPDIR)/tap_server-FileLogger.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/utils/FileLogger.cpp' object='src/utils/tap_server-FileLogger.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/utils/tap_server-FileLogger.o `test -f 'src/utils/FileLogger.cpp' || echo '$(srcdir)/'`src/utils/FileLogger.cpp
+
+src/utils/tap_server-FileLogger.obj: src/utils/FileLogger.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/utils/tap_server-FileLogger.obj -MD -MP -MF src/utils/$(DEPDIR)/tap_server-FileLogger.Tpo -c -o src/utils/tap_server-FileLogger.obj `if test -f 'src/utils/FileLogger.cpp'; then $(CYGPATH_W) 'src/utils/FileLogger.cpp'; else $(CYGPATH_W) '$(srcdir)/src/utils/FileLogger.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/utils/$(DEPDIR)/tap_server-FileLogger.Tpo src/utils/$(DEPDIR)/tap_server-FileLogger.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/utils/FileLogger.cpp' object='src/utils/tap_server-FileLogger.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/utils/tap_server-FileLogger.obj `if test -f 'src/utils/FileLogger.cpp'; then $(CYGPATH_W) 'src/utils/FileLogger.cpp'; else $(CYGPATH_W) '$(srcdir)/src/utils/FileLogger.cpp'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

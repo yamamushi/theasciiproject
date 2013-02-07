@@ -14,8 +14,12 @@
 #include "ServerInit.h"
 #include "../db/MySQLServerDB.h"
 #include "../utils/ConsoleLog.h"
+#include "../utils/FileLogger.h"
 #include "../utils/Filesystem.h"
 #include "../parsers/ServerConfig.h"
+
+
+FileLogger *fileLogger;
 
 
 
@@ -25,8 +29,11 @@ void ServerInit(int argc, char *argv[]){
   serverConfig->Parse();
 
   DirectoryInit(serverConfig->data_dir);
-  MySQLDBInit(serverConfig->db_hostname, serverConfig->db_port, serverConfig->db_username, serverConfig->db_pass, serverConfig->db_name);
+  
+  fileLogger = new FileLogger(serverConfig->data_dir);
+  fileLogger->ErrorLog("Server Configuration Read");
 
+  MySQLDBInit(serverConfig->db_hostname, serverConfig->db_port, serverConfig->db_username, serverConfig->db_pass, serverConfig->db_name);
   
   return;
 
@@ -61,15 +68,21 @@ void DirectoryInit(std::string rootFSPath){
 
 void MySQLDBInit(std::string hostname, int port, std::string username, std::string pass, std::string database) {
 
+  fileLogger->ErrorLog("MySQL Database Initializing");
   MySQLServerDB dbConnector(hostname, port, username, pass, database);
 
   dbConnector.PrintVersion();
+
+  // We create our Users table, it doesn't matter if it exists or not
+  // Because we're not going to magically overwrite any existing data.
+
   dbConnector.Query("CREATE TABLE users(ID int NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), username VARCHAR(255), pass BINARY(32), email VARCHAR(255), registered DATETIME)");
 
-  int results = dbConnector.RowCount("SELECT * from users");
-
-  std::cout << results << std::endl;
+  //  int results = dbConnector.RowCount("SELECT * from users");
+  // std::cout << results << std::endl;
   
+  fileLogger->ErrorLog("MySQL Database Initialized");
+
   return;
 
 }

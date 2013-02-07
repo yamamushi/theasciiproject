@@ -17,7 +17,8 @@ bin_PROGRAMS = tap_server tap_client
 
 tap_server_SOURCES = src/MainServer.cpp src/entities/Entity.cpp \
 	src/mapping/EntityMap.cpp src/utils/ConsoleLog.cpp src/parsers/ServerConfig.cpp \
-	src/utils/Filesystem.cpp src/server/ServerInit.cpp src/db/MySQLServerDB.cpp
+	src/utils/Filesystem.cpp src/server/ServerInit.cpp src/db/MySQLServerDB.cpp \ 
+	src/utils/FileLogger.cpp
 
 tap_server_CPPFLAGS = -std=c++11 $(SQLITE_CFLAGS) $(MYSQL_CFLAGS)
 tap_server_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_PROGRAM_OPTIONS_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SQLITE_LIBS) $(MYSQL_LIBS)

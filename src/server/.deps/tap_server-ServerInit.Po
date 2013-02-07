@@ -109,7 +109,8 @@ src/server/tap_server-ServerInit.o: src/server/ServerInit.cpp \
  /usr/include/mysql/mysql_com.h /usr/include/mysql/mysql_time.h \
  /usr/include/mysql/my_list.h /usr/include/mysql/typelib.h \
  /usr/include/mysql/my_alloc.h src/server/../utils/ConsoleLog.h \
- src/server/../utils/Filesystem.h src/server/../parsers/ServerConfig.h \
+ src/server/../utils/FileLogger.h src/server/../utils/Filesystem.h \
+ src/server/../parsers/ServerConfig.h \
  /usr/local/include/boost/program_options.hpp \
  /usr/local/include/boost/program_options/options_description.hpp \
  /usr/local/include/boost/program_options/config.hpp \
@@ -1023,6 +1024,8 @@ src/server/../db/MySQLServerDB.h:
 /usr/include/mysql/my_alloc.h:
 
 src/server/../utils/ConsoleLog.h:
+
+src/server/../utils/FileLogger.h:
 
 src/server/../utils/Filesystem.h:
 
