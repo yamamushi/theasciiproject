@@ -114,7 +114,8 @@ am_tap_server_OBJECTS = src/tap_server-MainServer.$(OBJEXT) \
 	src/utils/tap_server-ConsoleLog.$(OBJEXT) \
 	src/parsers/tap_server-ServerConfig.$(OBJEXT) \
 	src/utils/tap_server-Filesystem.$(OBJEXT) \
-	src/server/tap_server-ServerInit.$(OBJEXT)
+	src/server/tap_server-ServerInit.$(OBJEXT) \
+	src/db/tap_server-MySQLServerDB.$(OBJEXT)
 tap_server_OBJECTS = $(am_tap_server_OBJECTS)
 tap_server_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
@@ -399,7 +400,7 @@ AM_LDFLAGS = $(BOOST_THREADS_LDFLAGS) $(BOOST_SIGNALS_LIBS)
 aclocal_DATA = m4/boost.m4
 tap_server_SOURCES = src/MainServer.cpp src/entities/Entity.cpp \
 	src/mapping/EntityMap.cpp src/utils/ConsoleLog.cpp src/parsers/ServerConfig.cpp \
-	src/utils/Filesystem.cpp src/server/ServerInit.cpp
+	src/utils/Filesystem.cpp src/server/ServerInit.cpp src/db/MySQLServerDB.cpp
 
 tap_server_CPPFLAGS = -std=c++11 $(SQLITE_CFLAGS) $(MYSQL_CFLAGS)
 tap_server_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_PROGRAM_OPTIONS_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SQLITE_LIBS) $(MYSQL_LIBS)
@@ -637,6 +638,14 @@ src/server/$(DEPDIR)/$(am__dirstamp):
 src/server/tap_server-ServerInit.$(OBJEXT):  \
 	src/server/$(am__dirstamp) \
 	src/server/$(DEPDIR)/$(am__dirstamp)
+src/db/$(am__dirstamp):
+	@$(MKDIR_P) src/db
+	@: > src/db/$(am__dirstamp)
+src/db/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/db/$(DEPDIR)
+	@: > src/db/$(DEPDIR)/$(am__dirstamp)
+src/db/tap_server-MySQLServerDB.$(OBJEXT): src/db/$(am__dirstamp) \
+	src/db/$(DEPDIR)/$(am__dirstamp)
 tap_server$(EXEEXT): $(tap_server_OBJECTS) $(tap_server_DEPENDENCIES) $(EXTRA_tap_server_DEPENDENCIES) 
 	@rm -f tap_server$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(tap_server_OBJECTS) $(tap_server_LDADD) $(LIBS)
@@ -645,6 +654,7 @@ mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 	-rm -f src/*.$(OBJEXT)
 	-rm -f src/audio/*.$(OBJEXT)
+	-rm -f src/db/*.$(OBJEXT)
 	-rm -f src/entities/*.$(OBJEXT)
 	-rm -f src/graphics/*.$(OBJEXT)
 	-rm -f src/graphics/widget/*.$(OBJEXT)
@@ -660,6 +670,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/tap_client-MainClient.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/tap_server-MainServer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/audio/$(DEPDIR)/tap_client-Mixer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/db/$(DEPDIR)/tap_server-MySQLServerDB.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/entities/$(DEPDIR)/tap_server-Entity.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/graphics/$(DEPDIR)/tap_client-BitmapFont.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/graphics/$(DEPDIR)/tap_client-ClientWindow.Po@am__quote@
@@ -1012,6 +1023,20 @@ src/server/tap_server-ServerInit.obj: src/server/ServerInit.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/server/tap_server-ServerInit.obj `if test -f 'src/server/ServerInit.cpp'; then $(CYGPATH_W) 'src/server/ServerInit.cpp'; else $(CYGPATH_W) '$(srcdir)/src/server/ServerInit.cpp'; fi`
 
+src/db/tap_server-MySQLServerDB.o: src/db/MySQLServerDB.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/db/tap_server-MySQLServerDB.o -MD -MP -MF src/db/$(DEPDIR)/tap_server-MySQLServerDB.Tpo -c -o src/db/tap_server-MySQLServerDB.o `test -f 'src/db/MySQLServerDB.cpp' || echo '$(srcdir)/'`src/db/MySQLServerDB.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/db/$(DEPDIR)/tap_server-MySQLServerDB.Tpo src/db/$(DEPDIR)/tap_server-MySQLServerDB.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/db/MySQLServerDB.cpp' object='src/db/tap_server-MySQLServerDB.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/db/tap_server-MySQLServerDB.o `test -f 'src/db/MySQLServerDB.cpp' || echo '$(srcdir)/'`src/db/MySQLServerDB.cpp
+
+src/db/tap_server-MySQLServerDB.obj: src/db/MySQLServerDB.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/db/tap_server-MySQLServerDB.obj -MD -MP -MF src/db/$(DEPDIR)/tap_server-MySQLServerDB.Tpo -c -o src/db/tap_server-MySQLServerDB.obj `if test -f 'src/db/MySQLServerDB.cpp'; then $(CYGPATH_W) 'src/db/MySQLServerDB.cpp'; else $(CYGPATH_W) '$(srcdir)/src/db/MySQLServerDB.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/db/$(DEPDIR)/tap_server-MySQLServerDB.Tpo src/db/$(DEPDIR)/tap_server-MySQLServerDB.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/db/MySQLServerDB.cpp' object='src/db/tap_server-MySQLServerDB.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/db/tap_server-MySQLServerDB.obj `if test -f 'src/db/MySQLServerDB.cpp'; then $(CYGPATH_W) 'src/db/MySQLServerDB.cpp'; else $(CYGPATH_W) '$(srcdir)/src/db/MySQLServerDB.cpp'; fi`
+
 mostlyclean-libtool:
 	-rm -f *.lo
 
@@ -1294,6 +1319,8 @@ distclean-generic:
 	-rm -f src/$(am__dirstamp)
 	-rm -f src/audio/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/audio/$(am__dirstamp)
+	-rm -f src/db/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/db/$(am__dirstamp)
 	-rm -f src/entities/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/entities/$(am__dirstamp)
 	-rm -f src/graphics/$(DEPDIR)/$(am__dirstamp)
@@ -1320,7 +1347,7 @@ clean-am: clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
 
 distclean: distclean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
-	-rm -rf src/$(DEPDIR) src/audio/$(DEPDIR) src/entities/$(DEPDIR) src/graphics/$(DEPDIR) src/graphics/widget/$(DEPDIR) src/io/$(DEPDIR) src/mapping/$(DEPDIR) src/parsers/$(DEPDIR) src/server/$(DEPDIR) src/utils/$(DEPDIR)
+	-rm -rf src/$(DEPDIR) src/audio/$(DEPDIR) src/db/$(DEPDIR) src/entities/$(DEPDIR) src/graphics/$(DEPDIR) src/graphics/widget/$(DEPDIR) src/io/$(DEPDIR) src/mapping/$(DEPDIR) src/parsers/$(DEPDIR) src/server/$(DEPDIR) src/utils/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-libtool distclean-tags
@@ -1368,7 +1395,7 @@ installcheck-am:
 maintainer-clean: maintainer-clean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -rf $(top_srcdir)/autom4te.cache
-	-rm -rf src/$(DEPDIR) src/audio/$(DEPDIR) src/entities/$(DEPDIR) src/graphics/$(DEPDIR) src/graphics/widget/$(DEPDIR) src/io/$(DEPDIR) src/mapping/$(DEPDIR) src/parsers/$(DEPDIR) src/server/$(DEPDIR) src/utils/$(DEPDIR)
+	-rm -rf src/$(DEPDIR) src/audio/$(DEPDIR) src/db/$(DEPDIR) src/entities/$(DEPDIR) src/graphics/$(DEPDIR) src/graphics/widget/$(DEPDIR) src/io/$(DEPDIR) src/mapping/$(DEPDIR) src/parsers/$(DEPDIR) src/server/$(DEPDIR) src/utils/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

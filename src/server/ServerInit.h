@@ -13,5 +13,9 @@
 
  */
 
+#include <string>
 
 void ServerInit(int argc, char *argv[]);
+void DirectoryInit(std::string rootFSPath);
+void MySQLDBInit(std::string hostname, int port, std::string username, std::string pass, std::string database);
+
