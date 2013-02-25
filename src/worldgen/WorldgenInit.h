@@ -30,7 +30,7 @@ private:
 
 public:
 
-WorldGen(ServerConfigParser *config) : serverConfig(config){};
+WorldGen(ServerConfigParser *config) : serverConfig(config), mapX(config->mapX), mapY(config->mapY), worldX(config->worldX), worldY(config->worldY), worldZ(config->worldZ){};
 
   void init();
   

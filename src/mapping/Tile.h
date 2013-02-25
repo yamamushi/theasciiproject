@@ -36,6 +36,10 @@ public:
 
   Tile(){};
   Tile(int PosX, int PosY, std::wstring Symbol) : posX(PosX), posY(PosY), symbol(Symbol){};
+
+  int getX(){return posX;};
+  int getY(){return posY;};
+  
   virtual ~Tile(){};
 
 };

@@ -1,16 +1,14 @@
 src/worldgen/tap_server-WorldgenInit.o: src/worldgen/WorldgenInit.cpp \
- src/worldgen/WorldgenInit.h src/worldgen/../mapping/Tile.h \
- src/worldgen/../mapping/../serialization/Boost_Serialization.h \
- /usr/local/include/boost/archive/text_oarchive.hpp \
- /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/ostream \
- /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/ios \
- /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/iosfwd \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/iostream \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/x86_64-unknown-linux-gnu/bits/c++config.h \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/x86_64-unknown-linux-gnu/bits/os_defines.h \
  /usr/include/features.h /usr/include/stdc-predef.h \
  /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
  /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/x86_64-unknown-linux-gnu/bits/cpu_defines.h \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/ostream \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/ios \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/iosfwd \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/stringfwd.h \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/postypes.h \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/cwchar \
@@ -104,6 +102,16 @@ src/worldgen/tap_server-WorldgenInit.o: src/worldgen/WorldgenInit.cpp \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/locale_facets.tcc \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/basic_ios.tcc \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/ostream.tcc \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/istream \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/istream.tcc \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/fstream \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/codecvt.h \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/x86_64-unknown-linux-gnu/bits/basic_file.h \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/x86_64-unknown-linux-gnu/bits/c++io.h \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/fstream.tcc \
+ src/worldgen/WorldgenInit.h src/worldgen/../mapping/Tile.h \
+ src/worldgen/../mapping/../serialization/Boost_Serialization.h \
+ /usr/local/include/boost/archive/text_oarchive.hpp \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/cstddef \
  /usr/local/include/boost/config.hpp \
  /usr/local/include/boost/config/user.hpp \
@@ -133,7 +141,6 @@ src/worldgen/tap_server-WorldgenInit.o: src/worldgen/WorldgenInit.cpp \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/x86_64-unknown-linux-gnu/bits/time_members.h \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/x86_64-unknown-linux-gnu/bits/messages_members.h \
  /usr/include/libintl.h \
- /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/codecvt.h \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/locale_facets_nonio.tcc \
  /usr/local/include/boost/config/no_tr1/cmath.hpp \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/cmath \
@@ -386,8 +393,6 @@ src/worldgen/tap_server-WorldgenInit.o: src/worldgen/WorldgenInit.cpp \
  /usr/local/include/boost/operators.hpp \
  /usr/local/include/boost/iterator.hpp \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/iterator \
- /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/istream \
- /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/istream.tcc \
  /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/stream_iterator.h \
  /usr/local/include/boost/serialization/version.hpp \
  /usr/local/include/boost/mpl/assert.hpp \
@@ -413,7 +418,6 @@ src/worldgen/tap_server-WorldgenInit.o: src/worldgen/WorldgenInit.cpp \
  /usr/local/include/boost/type_traits/is_virtual_base_of.hpp \
  /usr/local/include/boost/type_traits/is_base_of.hpp \
  /usr/local/include/boost/serialization/array.hpp \
- /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/iostream \
  /usr/local/include/boost/mpl/always.hpp \
  /usr/local/include/boost/mpl/aux_/arity_spec.hpp \
  /usr/local/include/boost/mpl/apply.hpp \
@@ -536,6 +540,7 @@ src/worldgen/tap_server-WorldgenInit.o: src/worldgen/WorldgenInit.cpp \
  /usr/local/include/boost/archive/basic_binary_oprimitive.hpp \
  /usr/local/include/boost/archive/basic_binary_oarchive.hpp \
  /usr/local/include/boost/serialization/shared_ptr.hpp \
+ /usr/local/include/boost/serialization/export.hpp \
  src/worldgen/../mapping/EntityMap.h \
  src/worldgen/../parsers/ServerConfig.h \
  /usr/local/include/boost/program_options.hpp \
@@ -846,21 +851,10 @@ src/worldgen/tap_server-WorldgenInit.o: src/worldgen/WorldgenInit.cpp \
  /usr/local/include/boost/program_options/detail/parsers.hpp \
  /usr/local/include/boost/program_options/detail/convert.hpp \
  /usr/local/include/boost/program_options/variables_map.hpp \
- /usr/local/include/boost/program_options/version.hpp
+ /usr/local/include/boost/program_options/version.hpp \
+ src/worldgen/../serialization/Boost_Serialization.h
 
-src/worldgen/WorldgenInit.h:
-
-src/worldgen/../mapping/Tile.h:
-
-src/worldgen/../mapping/../serialization/Boost_Serialization.h:
-
-/usr/local/include/boost/archive/text_oarchive.hpp:
-
-/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/ostream:
-
-/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/ios:
-
-/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/iosfwd:
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/iostream:
 
 /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/x86_64-unknown-linux-gnu/bits/c++config.h:
 
@@ -879,6 +873,12 @@ src/worldgen/../mapping/../serialization/Boost_Serialization.h:
 /usr/include/gnu/stubs-64.h:
 
 /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/x86_64-unknown-linux-gnu/bits/cpu_defines.h:
+
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/ostream:
+
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/ios:
+
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/iosfwd:
 
 /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/stringfwd.h:
 
@@ -1110,6 +1110,28 @@ src/worldgen/../mapping/../serialization/Boost_Serialization.h:
 
 /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/ostream.tcc:
 
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/istream:
+
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/istream.tcc:
+
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/fstream:
+
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/codecvt.h:
+
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/x86_64-unknown-linux-gnu/bits/basic_file.h:
+
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/x86_64-unknown-linux-gnu/bits/c++io.h:
+
+/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/fstream.tcc:
+
+src/worldgen/WorldgenInit.h:
+
+src/worldgen/../mapping/Tile.h:
+
+src/worldgen/../mapping/../serialization/Boost_Serialization.h:
+
+/usr/local/include/boost/archive/text_oarchive.hpp:
+
 /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/cstddef:
 
 /usr/local/include/boost/config.hpp:
@@ -1173,8 +1195,6 @@ src/worldgen/../mapping/../serialization/Boost_Serialization.h:
 /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/x86_64-unknown-linux-gnu/bits/messages_members.h:
 
 /usr/include/libintl.h:
-
-/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/codecvt.h:
 
 /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/locale_facets_nonio.tcc:
 
@@ -1698,10 +1718,6 @@ src/worldgen/../mapping/../serialization/Boost_Serialization.h:
 
 /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/iterator:
 
-/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/istream:
-
-/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/istream.tcc:
-
 /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/bits/stream_iterator.h:
 
 /usr/local/include/boost/serialization/version.hpp:
@@ -1751,8 +1767,6 @@ src/worldgen/../mapping/../serialization/Boost_Serialization.h:
 /usr/local/include/boost/type_traits/is_base_of.hpp:
 
 /usr/local/include/boost/serialization/array.hpp:
-
-/usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/iostream:
 
 /usr/local/include/boost/mpl/always.hpp:
 
@@ -1999,6 +2013,8 @@ src/worldgen/../mapping/../serialization/Boost_Serialization.h:
 /usr/local/include/boost/archive/basic_binary_oarchive.hpp:
 
 /usr/local/include/boost/serialization/shared_ptr.hpp:
+
+/usr/local/include/boost/serialization/export.hpp:
 
 src/worldgen/../mapping/EntityMap.h:
 
@@ -2623,3 +2639,5 @@ src/worldgen/../parsers/ServerConfig.h:
 /usr/local/include/boost/program_options/variables_map.hpp:
 
 /usr/local/include/boost/program_options/version.hpp:
+
+src/worldgen/../serialization/Boost_Serialization.h:

@@ -855,6 +855,7 @@ src/server/tap_server-ServerInit.o: src/server/ServerInit.cpp \
  /usr/local/include/boost/archive/basic_binary_oprimitive.hpp \
  /usr/local/include/boost/archive/basic_binary_oarchive.hpp \
  /usr/local/include/boost/serialization/shared_ptr.hpp \
+ /usr/local/include/boost/serialization/export.hpp \
  src/server/../worldgen/../mapping/EntityMap.h
 
 /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../include/c++/4.7.2/string:
@@ -2660,5 +2661,7 @@ src/server/../worldgen/../mapping/../serialization/Boost_Serialization.h:
 /usr/local/include/boost/archive/basic_binary_oarchive.hpp:
 
 /usr/local/include/boost/serialization/shared_ptr.hpp:
+
+/usr/local/include/boost/serialization/export.hpp:
 
 src/server/../worldgen/../mapping/EntityMap.h:
