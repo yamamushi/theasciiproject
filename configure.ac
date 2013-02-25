@@ -15,7 +15,8 @@ AC_PROG_LIBTOOL
 
 AC_PROG_GREP
 AC_PROG_EGREP
-AC_PROG_CXX
+AC_PROG_CXX(clang++)
+AC_PROG_CC(clang)
 
 
 # pkg-config checks
