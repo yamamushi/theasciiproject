@@ -78,7 +78,7 @@ void MySQLDBInit(std::string hostname, int port, std::string username, std::stri
 
   dbConnector.Query("CREATE TABLE users(ID int NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), username VARCHAR(255), pass BINARY(32), email VARCHAR(255), registered DATETIME)");
 
-  //  int results = dbConnector.RowCount("SELECT * from users");
+  //  Int Results = Dbconnector.RowCount("SELECT * from users");
   // std::cout << results << std::endl;
   
   fileLogger->ErrorLog("MySQL Database Initialized");

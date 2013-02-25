@@ -29,15 +29,18 @@ private:
     ar & pZ;
   }
 
-// Map width and position in the global database
+// Map dimensions and position in the global database
   
   int width, height;
   int pX, pY, pZ;
+  int mapID;
 
  public:
 
   EntityMap(){};
-EntityMap(int Width, int Height, int posX, int posY, int posZ) : width(Width), height(Height), pX(posX), pY(posY), pZ(posZ){};
+EntityMap(int Width, int Height, int posX, int posY, int posZ, int MapID) : width(Width), height(Height), pX(posX), pY(posY), pZ(posZ), mapID(MapID){};
+
+  int getID(){return mapID;};
   
   virtual ~EntityMap(){};
 
