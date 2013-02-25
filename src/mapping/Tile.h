@@ -35,10 +35,13 @@ private:
 public:
 
   Tile(){};
-  Tile(int PosX, int PosY, std::wstring Symbol) : posX(PosX), posY(PosY), symbol(Symbol){};
+Tile(int PosX, int PosY, std::wstring Symbol=L"\u2550") : posX(PosX), posY(PosY), symbol(Symbol){};
 
   int getX(){return posX;};
   int getY(){return posY;};
+  void setX(int x){posX = x;};
+  void setY(int y){posY = y;};
+  void setSymbol(std::wstring sym){symbol = sym;};
   
   virtual ~Tile(){};
 

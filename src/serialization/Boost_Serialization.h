@@ -6,3 +6,4 @@
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/serialization/shared_ptr.hpp>
 #include <boost/serialization/export.hpp>
+#include <boost/serialization/vector.hpp>

@@ -111,6 +111,7 @@ tap_client_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 am_tap_server_OBJECTS = src/tap_server-MainServer.$(OBJEXT) \
 	src/entities/tap_server-Entity.$(OBJEXT) \
 	src/mapping/tap_server-Tile.$(OBJEXT) \
+	src/mapping/tap_server-TileMap.$(OBJEXT) \
 	src/mapping/tap_server-EntityMap.$(OBJEXT) \
 	src/utils/tap_server-ConsoleLog.$(OBJEXT) \
 	src/parsers/tap_server-ServerConfig.$(OBJEXT) \
@@ -402,9 +403,9 @@ AM_LDFLAGS = $(BOOST_THREADS_LDFLAGS) $(BOOST_SIGNALS_LIBS)
 # DEPS_LIBS = $(BOOST_THREAD_LIBS)
 aclocal_DATA = m4/boost.m4
 tap_server_SOURCES = src/MainServer.cpp src/entities/Entity.cpp src/mapping/Tile.cpp \
-	src/mapping/EntityMap.cpp src/utils/ConsoleLog.cpp src/parsers/ServerConfig.cpp \
-	src/utils/Filesystem.cpp src/server/ServerInit.cpp src/db/MySQLServerDB.cpp \
-	src/utils/FileLogger.cpp src/worldgen/WorldgenInit.cpp
+	src/mapping/TileMap.cpp src/mapping/EntityMap.cpp src/utils/ConsoleLog.cpp \
+	src/parsers/ServerConfig.cpp src/utils/Filesystem.cpp src/server/ServerInit.cpp \
+	src/db/MySQLServerDB.cpp src/utils/FileLogger.cpp src/worldgen/WorldgenInit.cpp
 
 tap_server_CPPFLAGS = -std=c++11 $(SQLITE_CFLAGS) $(MYSQL_CFLAGS)
 tap_server_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_PROGRAM_OPTIONS_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SQLITE_LIBS) $(MYSQL_LIBS)
@@ -619,6 +620,8 @@ src/mapping/$(DEPDIR)/$(am__dirstamp):
 	@: > src/mapping/$(DEPDIR)/$(am__dirstamp)
 src/mapping/tap_server-Tile.$(OBJEXT): src/mapping/$(am__dirstamp) \
 	src/mapping/$(DEPDIR)/$(am__dirstamp)
+src/mapping/tap_server-TileMap.$(OBJEXT): src/mapping/$(am__dirstamp) \
+	src/mapping/$(DEPDIR)/$(am__dirstamp)
 src/mapping/tap_server-EntityMap.$(OBJEXT):  \
 	src/mapping/$(am__dirstamp) \
 	src/mapping/$(DEPDIR)/$(am__dirstamp)
@@ -704,6 +707,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/io/$(DEPDIR)/tap_client-SelfPath.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mapping/$(DEPDIR)/tap_server-EntityMap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/mapping/$(DEPDIR)/tap_server-Tile.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/mapping/$(DEPDIR)/tap_server-TileMap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/parsers/$(DEPDIR)/tap_server-ServerConfig.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/server/$(DEPDIR)/tap_server-ServerInit.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/utils/$(DEPDIR)/tap_client-Timer.Po@am__quote@
@@ -987,6 +991,20 @@ src/mapping/tap_server-Tile.obj: src/mapping/Tile.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mapping/Tile.cpp' object='src/mapping/tap_server-Tile.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/mapping/tap_server-Tile.obj `if test -f 'src/mapping/Tile.cpp'; then $(CYGPATH_W) 'src/mapping/Tile.cpp'; else $(CYGPATH_W) '$(srcdir)/src/mapping/Tile.cpp'; fi`
+
+src/mapping/tap_server-TileMap.o: src/mapping/TileMap.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/mapping/tap_server-TileMap.o -MD -MP -MF src/mapping/$(DEPDIR)/tap_server-TileMap.Tpo -c -o src/mapping/tap_server-TileMap.o `test -f 'src/mapping/TileMap.cpp' || echo '$(srcdir)/'`src/mapping/TileMap.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/mapping/$(DEPDIR)/tap_server-TileMap.Tpo src/mapping/$(DEPDIR)/tap_server-TileMap.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mapping/TileMap.cpp' object='src/mapping/tap_server-TileMap.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/mapping/tap_server-TileMap.o `test -f 'src/mapping/TileMap.cpp' || echo '$(srcdir)/'`src/mapping/TileMap.cpp
+
+src/mapping/tap_server-TileMap.obj: src/mapping/TileMap.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/mapping/tap_server-TileMap.obj -MD -MP -MF src/mapping/$(DEPDIR)/tap_server-TileMap.Tpo -c -o src/mapping/tap_server-TileMap.obj `if test -f 'src/mapping/TileMap.cpp'; then $(CYGPATH_W) 'src/mapping/TileMap.cpp'; else $(CYGPATH_W) '$(srcdir)/src/mapping/TileMap.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/mapping/$(DEPDIR)/tap_server-TileMap.Tpo src/mapping/$(DEPDIR)/tap_server-TileMap.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/mapping/TileMap.cpp' object='src/mapping/tap_server-TileMap.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/mapping/tap_server-TileMap.obj `if test -f 'src/mapping/TileMap.cpp'; then $(CYGPATH_W) 'src/mapping/TileMap.cpp'; else $(CYGPATH_W) '$(srcdir)/src/mapping/TileMap.cpp'; fi`
 
 src/mapping/tap_server-EntityMap.o: src/mapping/EntityMap.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/mapping/tap_server-EntityMap.o -MD -MP -MF src/mapping/$(DEPDIR)/tap_server-EntityMap.Tpo -c -o src/mapping/tap_server-EntityMap.o `test -f 'src/mapping/EntityMap.cpp' || echo '$(srcdir)/'`src/mapping/EntityMap.cpp
