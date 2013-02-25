@@ -1,3 +1,4 @@
+#pragma once
 /*
 
   Server Configuration parser
@@ -46,6 +47,8 @@ public:
   int server_port;
 
   // WorldGen Parameters <- this will be changed later.
+  int mapX;
+  int mapY;
   int worldX;
   int worldY;
   int worldZ;

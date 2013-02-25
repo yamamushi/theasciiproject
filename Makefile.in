@@ -117,7 +117,8 @@ am_tap_server_OBJECTS = src/tap_server-MainServer.$(OBJEXT) \
 	src/utils/tap_server-Filesystem.$(OBJEXT) \
 	src/server/tap_server-ServerInit.$(OBJEXT) \
 	src/db/tap_server-MySQLServerDB.$(OBJEXT) \
-	src/utils/tap_server-FileLogger.$(OBJEXT)
+	src/utils/tap_server-FileLogger.$(OBJEXT) \
+	src/worldgen/tap_server-WorldgenInit.$(OBJEXT)
 tap_server_OBJECTS = $(am_tap_server_OBJECTS)
 tap_server_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
@@ -403,7 +404,7 @@ aclocal_DATA = m4/boost.m4
 tap_server_SOURCES = src/MainServer.cpp src/entities/Entity.cpp src/mapping/Tile.cpp \
 	src/mapping/EntityMap.cpp src/utils/ConsoleLog.cpp src/parsers/ServerConfig.cpp \
 	src/utils/Filesystem.cpp src/server/ServerInit.cpp src/db/MySQLServerDB.cpp \
-	src/utils/FileLogger.cpp 
+	src/utils/FileLogger.cpp src/worldgen/WorldgenInit.cpp
 
 tap_server_CPPFLAGS = -std=c++11 $(SQLITE_CFLAGS) $(MYSQL_CFLAGS)
 tap_server_LDADD = $(BOOST_THREAD_LIBS) $(BOOST_SERIALIZATION_LIBS) $(BOOST_PROGRAM_OPTIONS_LIBS) $(BOOST_FILESYSTEM_LIBS) $(SQLITE_LIBS) $(MYSQL_LIBS)
@@ -653,6 +654,15 @@ src/db/tap_server-MySQLServerDB.$(OBJEXT): src/db/$(am__dirstamp) \
 	src/db/$(DEPDIR)/$(am__dirstamp)
 src/utils/tap_server-FileLogger.$(OBJEXT): src/utils/$(am__dirstamp) \
 	src/utils/$(DEPDIR)/$(am__dirstamp)
+src/worldgen/$(am__dirstamp):
+	@$(MKDIR_P) src/worldgen
+	@: > src/worldgen/$(am__dirstamp)
+src/worldgen/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/worldgen/$(DEPDIR)
+	@: > src/worldgen/$(DEPDIR)/$(am__dirstamp)
+src/worldgen/tap_server-WorldgenInit.$(OBJEXT):  \
+	src/worldgen/$(am__dirstamp) \
+	src/worldgen/$(DEPDIR)/$(am__dirstamp)
 tap_server$(EXEEXT): $(tap_server_OBJECTS) $(tap_server_DEPENDENCIES) $(EXTRA_tap_server_DEPENDENCIES) 
 	@rm -f tap_server$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(tap_server_OBJECTS) $(tap_server_LDADD) $(LIBS)
@@ -670,6 +680,7 @@ mostlyclean-compile:
 	-rm -f src/parsers/*.$(OBJEXT)
 	-rm -f src/server/*.$(OBJEXT)
 	-rm -f src/utils/*.$(OBJEXT)
+	-rm -f src/worldgen/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -699,6 +710,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/utils/$(DEPDIR)/tap_server-ConsoleLog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/utils/$(DEPDIR)/tap_server-FileLogger.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/utils/$(DEPDIR)/tap_server-Filesystem.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/worldgen/$(DEPDIR)/tap_server-WorldgenInit.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -1074,6 +1086,20 @@ src/utils/tap_server-FileLogger.obj: src/utils/FileLogger.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/utils/tap_server-FileLogger.obj `if test -f 'src/utils/FileLogger.cpp'; then $(CYGPATH_W) 'src/utils/FileLogger.cpp'; else $(CYGPATH_W) '$(srcdir)/src/utils/FileLogger.cpp'; fi`
 
+src/worldgen/tap_server-WorldgenInit.o: src/worldgen/WorldgenInit.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/worldgen/tap_server-WorldgenInit.o -MD -MP -MF src/worldgen/$(DEPDIR)/tap_server-WorldgenInit.Tpo -c -o src/worldgen/tap_server-WorldgenInit.o `test -f 'src/worldgen/WorldgenInit.cpp' || echo '$(srcdir)/'`src/worldgen/WorldgenInit.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/worldgen/$(DEPDIR)/tap_server-WorldgenInit.Tpo src/worldgen/$(DEPDIR)/tap_server-WorldgenInit.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/worldgen/WorldgenInit.cpp' object='src/worldgen/tap_server-WorldgenInit.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/worldgen/tap_server-WorldgenInit.o `test -f 'src/worldgen/WorldgenInit.cpp' || echo '$(srcdir)/'`src/worldgen/WorldgenInit.cpp
+
+src/worldgen/tap_server-WorldgenInit.obj: src/worldgen/WorldgenInit.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/worldgen/tap_server-WorldgenInit.obj -MD -MP -MF src/worldgen/$(DEPDIR)/tap_server-WorldgenInit.Tpo -c -o src/worldgen/tap_server-WorldgenInit.obj `if test -f 'src/worldgen/WorldgenInit.cpp'; then $(CYGPATH_W) 'src/worldgen/WorldgenInit.cpp'; else $(CYGPATH_W) '$(srcdir)/src/worldgen/WorldgenInit.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/worldgen/$(DEPDIR)/tap_server-WorldgenInit.Tpo src/worldgen/$(DEPDIR)/tap_server-WorldgenInit.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/worldgen/WorldgenInit.cpp' object='src/worldgen/tap_server-WorldgenInit.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(tap_server_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/worldgen/tap_server-WorldgenInit.obj `if test -f 'src/worldgen/WorldgenInit.cpp'; then $(CYGPATH_W) 'src/worldgen/WorldgenInit.cpp'; else $(CYGPATH_W) '$(srcdir)/src/worldgen/WorldgenInit.cpp'; fi`
+
 mostlyclean-libtool:
 	-rm -f *.lo
 
@@ -1374,6 +1400,8 @@ distclean-generic:
 	-rm -f src/server/$(am__dirstamp)
 	-rm -f src/utils/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/utils/$(am__dirstamp)
+	-rm -f src/worldgen/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/worldgen/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -1384,7 +1412,7 @@ clean-am: clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
 
 distclean: distclean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
-	-rm -rf src/$(DEPDIR) src/audio/$(DEPDIR) src/db/$(DEPDIR) src/entities/$(DEPDIR) src/graphics/$(DEPDIR) src/graphics/widget/$(DEPDIR) src/io/$(DEPDIR) src/mapping/$(DEPDIR) src/parsers/$(DEPDIR) src/server/$(DEPDIR) src/utils/$(DEPDIR)
+	-rm -rf src/$(DEPDIR) src/audio/$(DEPDIR) src/db/$(DEPDIR) src/entities/$(DEPDIR) src/graphics/$(DEPDIR) src/graphics/widget/$(DEPDIR) src/io/$(DEPDIR) src/mapping/$(DEPDIR) src/parsers/$(DEPDIR) src/server/$(DEPDIR) src/utils/$(DEPDIR) src/worldgen/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-libtool distclean-tags
@@ -1432,7 +1460,7 @@ installcheck-am:
 maintainer-clean: maintainer-clean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -rf $(top_srcdir)/autom4te.cache
-	-rm -rf src/$(DEPDIR) src/audio/$(DEPDIR) src/db/$(DEPDIR) src/entities/$(DEPDIR) src/graphics/$(DEPDIR) src/graphics/widget/$(DEPDIR) src/io/$(DEPDIR) src/mapping/$(DEPDIR) src/parsers/$(DEPDIR) src/server/$(DEPDIR) src/utils/$(DEPDIR)
+	-rm -rf src/$(DEPDIR) src/audio/$(DEPDIR) src/db/$(DEPDIR) src/entities/$(DEPDIR) src/graphics/$(DEPDIR) src/graphics/widget/$(DEPDIR) src/io/$(DEPDIR) src/mapping/$(DEPDIR) src/parsers/$(DEPDIR) src/server/$(DEPDIR) src/utils/$(DEPDIR) src/worldgen/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

@@ -10,6 +10,7 @@
 
 #include <string>
 #include <iostream>
+#include <thread>
 
 #include "ServerInit.h"
 #include "../db/MySQLServerDB.h"
@@ -17,6 +18,7 @@
 #include "../utils/FileLogger.h"
 #include "../utils/Filesystem.h"
 #include "../parsers/ServerConfig.h"
+#include "../worldgen/WorldgenInit.h"
 
 
 FileLogger *fileLogger;
@@ -33,8 +35,16 @@ void ServerInit(int argc, char *argv[]){
   fileLogger = new FileLogger(serverConfig->data_dir);
   fileLogger->ErrorLog("Server Configuration Read");
 
-  MySQLDBInit(serverConfig->db_hostname, serverConfig->db_port, serverConfig->db_username, serverConfig->db_pass, serverConfig->db_name);
-  
+  std::thread mysql( MySQLDBInit, serverConfig->db_hostname, serverConfig->db_port, serverConfig->db_username, serverConfig->db_pass, serverConfig->db_name );
+
+  WorldGen *worldGen = new WorldGen(serverConfig);
+
+  std::thread worldgen(&WorldGen::init, worldGen);
+
+
+  mysql.join();
+  worldgen.join();
+ 
   return;
 
 }
