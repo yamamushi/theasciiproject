@@ -1,0 +1,10 @@
+We first create our solid block of tiles adhering to the dimensions laid out in our server configuration file.
+
+This solid block is then immediately serialized to disk, after which we begin etching out pieces of the world.
+
+Typically the first "zones" will be created first, after which the rest of the map is generated (if necessary) or "etched", and saved as worldgen progresses.
+
+We want to launch logs of these worldgen events, and we want to set a global flag indicating that worldgen is complete.
+
+If a player logs in while a zone hasn't been unloaded or generated yet, priority is given to that zone and the player is not allowed to zone-in until that map is ready for them to join.
+
