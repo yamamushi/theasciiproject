@@ -8,3 +8,9 @@ We want to launch logs of these worldgen events, and we want to set a global fla
 
 If a player logs in while a zone hasn't been unloaded or generated yet, priority is given to that zone and the player is not allowed to zone-in until that map is ready for them to join.
 
+NOTES -
+
+* We DO NOT destroy Tiles, we modify the existing objects. 
+* Do NOT pass around Tile addresses, pass references to the objects.
+* Modifications to a Tile are done through the Tilemap Interface
+* We never talk to a Tile directly, we always use the Tilemap Interface.

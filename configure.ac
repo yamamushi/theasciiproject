@@ -12,11 +12,14 @@ AC_CONFIG_HEADERS([config.h])
 AC_LANG_CPLUSPLUS
 AC_PROG_LIBTOOL
 
+CC=clang
+CXX=clang++
+CXXFLAGS=-std=c++11
 
 AC_PROG_GREP
 AC_PROG_EGREP
-AC_PROG_CXX(clang++)
-AC_PROG_CC(clang)
+AC_PROG_CXX
+AC_PROG_CC
 
 
 # pkg-config checks
@@ -31,8 +34,7 @@ if test "x$mysql_config" != "x";then
       MYSQL_CFLAGS="$($mysql_config --cflags)"
       MYSQL_LIBS="$($mysql_config --libs_r)"
 else
-      AC_ERROR([could not find mysql_config, please make sure that you 
-have a working mysql installation.])
+      AC_ERROR([could not find mysql_config, please make sure that you have a working mysql installation.])
 fi
 AC_SUBST(MYSQL_CFLAGS)
 AC_SUBST(MYSQL_LIBS)
