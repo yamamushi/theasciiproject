@@ -1,13 +1,13 @@
 #pragma once
 /*
-
-  ConsoleLog
-
-  A set of logging functions so that we don't have to include <iostream> in every other file.
-  
-  - Yamamushi (Jon Rumion)
-  2012 - 12 - 30 
-
+ 
+ ConsoleLog
+ 
+ A set of logging functions so that we don't have to include <iostream> in every other file.
+ 
+ - Yamamushi (Jon Rumion)
+ 2012 - 12 - 30
+ 
  */
 
 
@@ -16,15 +16,15 @@
 
 
 class ConsoleLog {
-
+    
 private:
-
-
+    
+    
 public:
-
-  ConsoleLog(){};
-  virtual ~ConsoleLog(){};
-
-  static void Print( std::string );
-
+    
+    ConsoleLog(){};
+    virtual ~ConsoleLog(){};
+    
+    static void Print( std::string );
+    
 };

@@ -1,9 +1,9 @@
 /*
-
-  Mouse
-  
-  Our Mouse Class Functions
-
+ 
+ Mouse
+ 
+ Our Mouse Class Functions
+ 
  */
 
 #include "Mouse.h"
@@ -12,7 +12,7 @@
 
 
 void Mouse::Handle_Mouse_Input( SDL_Event event ){
-
-
-
+    
+    
+    
 }

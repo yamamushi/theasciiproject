@@ -1,10 +1,10 @@
 /*
-
-  ClientKeyboard
-
-  This file holds our ClientKeyboard functions
-
-*/
+ 
+ ClientKeyboard
+ 
+ This file holds our ClientKeyboard functions
+ 
+ */
 
 
 #include "ClientKeyboard.h"
@@ -14,15 +14,15 @@
 
 
 ClientKeyboard::ClientKeyboard(ClientWindow *host){
-
-  clientWindow = host;
-
+    
+    clientWindow = host;
+    
 }
 
 
 
 void ClientKeyboard::Handle_Keys(SDL_Event event){
-
-  clientWindow->mainWindow->Add_To_Event_Queue( event );
-
+    
+    clientWindow->mainWindow->Add_To_Event_Queue( event );
+    
 };

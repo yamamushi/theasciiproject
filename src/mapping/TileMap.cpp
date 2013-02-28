@@ -1,12 +1,12 @@
 /*
-
-  TileMap.cpp
-  -Jon Rumion (yamamushi@gmail.com)
-  2-25-2013
-
-  TileMap Class functions
-
-*/
+ 
+ TileMap.cpp
+ -Jon Rumion (yamamushi@gmail.com)
+ 2-25-2013
+ 
+ TileMap Class functions
+ 
+ */
 
 
 #include <memory>
@@ -18,25 +18,25 @@
 
 
 void TileMap::init(){
-
-  for(int x=0; x<length; x++){
-    for(int y=0; y<width; y++){
-
-      std::shared_ptr<Tile> newTile(new Tile(x, y));
-      virtualMap[x].push_back(newTile);
-      
+    
+    for(int x=0; x<length; x++){
+        for(int y=0; y<width; y++){
+            
+            std::shared_ptr<Tile> newTile(new Tile(x, y));
+            virtualMap[x].push_back(newTile);
+            
+        }
     }
-  }
-
+    
 }
 
 
 void TileMap::fillSolid(){
-
-  for(int x=0; x<length; x++){
-    for( int y=0; y<width; y++){
-
-    }
-  } 
-
+    
+    for(int x=0; x<length; x++){
+        for( int y=0; y<width; y++){
+            
+        }
+    } 
+    
 };

@@ -1,13 +1,13 @@
 Mapping -
 
-        This directory holds files related to various levels of maps.
+This directory holds files related to various levels of maps.
 
-        EntityMap, TileMap, WorldMap, etc.
+EntityMap, TileMap, WorldMap, etc.
 
-        These files don't allow entities to modify the attributes of Maps
-        The functions that allow entities to modify Tiles are in the
-        "interaction" directory.
+These files don't allow entities to modify the attributes of Maps
+The functions that allow entities to modify Tiles are in the
+"interaction" directory.
 
-        You may also want to look at the "worldgen" directory for files
-        related to how our maps are built before being added into the
-        GlobalMapIndex.
+You may also want to look at the "worldgen" directory for files
+related to how our maps are built before being added into the
+GlobalMapIndex.
