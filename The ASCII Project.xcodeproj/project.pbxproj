@@ -19,6 +19,8 @@
 		743CAD4816DFA9CE00C56DB2 /* FileLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD2716DFA9CE00C56DB2 /* FileLogger.cpp */; };
 		743CAD4916DFA9CE00C56DB2 /* Filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD2916DFA9CE00C56DB2 /* Filesystem.cpp */; };
 		743CAD4B16DFA9CE00C56DB2 /* WorldgenInit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD2F16DFA9CE00C56DB2 /* WorldgenInit.cpp */; };
+		7452363816DFD05900842D07 /* RenderMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7452363616DFD05900842D07 /* RenderMap.cpp */; };
+		7452363B16DFD0E900842D07 /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7452363916DFD0E900842D07 /* WorldMap.cpp */; };
 		746B312316DF99EC00CDBBC9 /* TAP_Server.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 746B312216DF99EC00CDBBC9 /* TAP_Server.1 */; };
 /* End PBXBuildFile section */
 
@@ -192,12 +194,17 @@
 		743CAD6316DFC4DF00C56DB2 /* NOTES */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTES; sourceTree = "<group>"; };
 		743CAD6416DFC4DF00C56DB2 /* Readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
 		743CAD6516DFC4DF00C56DB2 /* tiling */ = {isa = PBXFileReference; lastKnownFileType = text; path = tiling; sourceTree = "<group>"; };
+		7452363416DFCFC600842D07 /* TAP_Server */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = TAP_Server; sourceTree = "<group>"; };
+		7452363616DFD05900842D07 /* RenderMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderMap.cpp; sourceTree = "<group>"; };
+		7452363716DFD05900842D07 /* RenderMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderMap.h; sourceTree = "<group>"; };
+		7452363916DFD0E900842D07 /* WorldMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldMap.cpp; sourceTree = "<group>"; };
+		7452363A16DFD0E900842D07 /* WorldMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldMap.h; sourceTree = "<group>"; };
 		746B30F216DF949F00CDBBC9 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		746B30F516DF949F00CDBBC9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		746B30F616DF949F00CDBBC9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		746B30F716DF949F00CDBBC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		746B310F16DF958100CDBBC9 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = /Library/Frameworks/SDL.framework; sourceTree = "<absolute>"; };
-		746B311E16DF99EC00CDBBC9 /* TAP_Server */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = TAP_Server; sourceTree = BUILT_PRODUCTS_DIR; };
+		746B311E16DF99EC00CDBBC9 /* TAP_Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = TAP_Server; path = "/Users/yamamushi/Programming/projects/The ASCII Project/build/TAP_Server"; sourceTree = "<absolute>"; };
 		746B312216DF99EC00CDBBC9 /* TAP_Server.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TAP_Server.1; sourceTree = "<group>"; };
 		74F3BC2816DFC7BB000FC9C4 /* AUTHORS */ = {isa = PBXFileReference; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
 		74F3BC2916DFC7BB000FC9C4 /* ChangeLog */ = {isa = PBXFileReference; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
@@ -507,6 +514,10 @@
 				743CAD0E16DFA9CE00C56DB2 /* Tile.h */,
 				743CAD0F16DFA9CE00C56DB2 /* TileMap.cpp */,
 				743CAD1016DFA9CE00C56DB2 /* TileMap.h */,
+				7452363616DFD05900842D07 /* RenderMap.cpp */,
+				7452363716DFD05900842D07 /* RenderMap.h */,
+				7452363916DFD0E900842D07 /* WorldMap.cpp */,
+				7452363A16DFD0E900842D07 /* WorldMap.h */,
 			);
 			path = mapping;
 			sourceTree = "<group>";
@@ -600,6 +611,7 @@
 		743CAD4C16DFC03000C56DB2 /* bin */ = {
 			isa = PBXGroup;
 			children = (
+				7452363416DFCFC600842D07 /* TAP_Server */,
 				743CAD4D16DFC03000C56DB2 /* data */,
 				743CAD5216DFC03000C56DB2 /* server.conf */,
 			);
@@ -649,7 +661,7 @@
 			path = notes;
 			sourceTree = "<group>";
 		};
-		746B30E616DF949F00CDBBC9 = {
+		7452363516DFCFEB00842D07 /* paperwork */ = {
 			isa = PBXGroup;
 			children = (
 				74F3BC2816DFC7BB000FC9C4 /* AUTHORS */,
@@ -658,22 +670,21 @@
 				74F3BC2B16DFC7BB000FC9C4 /* Dependencies */,
 				74F3BC2C16DFC7BB000FC9C4 /* NEWS */,
 				74F3BC2D16DFC7BB000FC9C4 /* README */,
+			);
+			name = paperwork;
+			sourceTree = "<group>";
+		};
+		746B30E616DF949F00CDBBC9 = {
+			isa = PBXGroup;
+			children = (
 				743CAD5516DFC4DF00C56DB2 /* docs */,
 				743CAD4C16DFC03000C56DB2 /* bin */,
 				743CAC1F16DF9D5600C56DB2 /* deps */,
 				743CABFF16DF9BDD00C56DB2 /* src */,
 				746B311F16DF99EC00CDBBC9 /* TAP_Server */,
 				746B30F116DF949F00CDBBC9 /* Frameworks */,
-				746B30F016DF949F00CDBBC9 /* Products */,
+				7452363516DFCFEB00842D07 /* paperwork */,
 			);
-			sourceTree = "<group>";
-		};
-		746B30F016DF949F00CDBBC9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				746B311E16DF99EC00CDBBC9 /* TAP_Server */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		746B30F116DF949F00CDBBC9 /* Frameworks */ = {
@@ -742,7 +753,7 @@
 				en,
 			);
 			mainGroup = 746B30E616DF949F00CDBBC9;
-			productRefGroup = 746B30F016DF949F00CDBBC9 /* Products */;
+			productRefGroup = 746B30E616DF949F00CDBBC9;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -768,6 +779,8 @@
 				743CAD4816DFA9CE00C56DB2 /* FileLogger.cpp in Sources */,
 				743CAD4916DFA9CE00C56DB2 /* Filesystem.cpp in Sources */,
 				743CAD4B16DFA9CE00C56DB2 /* WorldgenInit.cpp in Sources */,
+				7452363816DFD05900842D07 /* RenderMap.cpp in Sources */,
+				7452363B16DFD0E900842D07 /* WorldMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,8 +819,8 @@
 					"\"/usr/local/mysql/include/\"",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"\"/usr/local/lib/\"",
 					"\"/usr/lib/\"",
+					"\"/usr/local/lib/\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
@@ -848,8 +861,8 @@
 					"\"/usr/local/mysql/include/\"",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"\"/usr/local/lib/\"",
 					"\"/usr/lib/\"",
+					"\"/usr/local/lib/\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
@@ -868,10 +881,18 @@
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/";
 				GCC_C_LANGUAGE_STANDARD = c11;
+				HEADER_SEARCH_PATHS = (
+					"\"/usr/local/include/\"",
+					"\"/usr/local/mysql/include/\"",
+				);
 				LIBRARY_SEARCH_PATHS = (
-					"\"/usr/local/lib/\"",
 					"\"/usr/lib/\"",
 					"\"/usr/local/mysql/lib/\"",
+					"\"/usr/local/lib/\"",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-isystem/usr/local/include/",
 				);
 				OTHER_LDFLAGS = (
 					"-lboost_system",
@@ -889,10 +910,18 @@
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/";
 				GCC_C_LANGUAGE_STANDARD = c11;
+				HEADER_SEARCH_PATHS = (
+					"\"/usr/local/include/\"",
+					"\"/usr/local/mysql/include/\"",
+				);
 				LIBRARY_SEARCH_PATHS = (
-					"\"/usr/local/lib/\"",
 					"\"/usr/lib/\"",
 					"\"/usr/local/mysql/lib/\"",
+					"\"/usr/local/lib/\"",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-isystem/usr/local/include/",
 				);
 				OTHER_LDFLAGS = (
 					"-lboost_system",
