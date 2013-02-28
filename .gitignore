@@ -1,0 +1,34 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+# *.so
+
+# Compiled Static libraries
+*.lai
+*.la
+
+# Other local junk
+*.swp
+*.swo
+*.local
+
+# Our local dat files
+*.dat
+*.idx
+*.emp
+
+# Emacs Stuff
+*#
+.#*
+*.#
+
+# automake stuff I don't want to export
+config.h
+config.log
+config.status
+libtool
+Makefile
+stamp-h1
