@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>TAP_Client.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>TAP_Server.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>The ASCII Project.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>test.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>743CAC0616DF9C6000C56DB2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>746B30EE16DF949F00CDBBC9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>746B311D16DF99EC00CDBBC9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>746B312A16DF9A5000CDBBC9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

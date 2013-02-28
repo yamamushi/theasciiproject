@@ -1,0 +1,4 @@
+Entities -
+
+         This directory holds files related to Entities. Attributes are handled through the files
+         stored in the "attributes" directory.

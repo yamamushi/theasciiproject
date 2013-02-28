@@ -1,0 +1,857 @@
+TTAP_Server
+v5
+r1
+cCheck dependencies
+cCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MySQLServerDB.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Entity.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/entities/Entity.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MainServer.o" "/Users/yamamushi/Programming/projects/The ASCII Project/TAP_Server/../src/MainServer.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/EntityMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Tile.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TileMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/TileMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/ServerConfig.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ConsoleLog.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/ConsoleLog.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Filesystem.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/Filesystem.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldgenInit.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cLd "/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/TAP_Server" normal x86_64
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk
+c00000000503F1B7700000000000000AA
+t1346313079
+s170
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/alloca.h
+c00000000512E76F50000000000000588
+t1361999605
+s1416
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/assert.h
+c00000000512E76F50000000000000F6E
+t1361999605
+s3950
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/dlfcn.h
+c00000000512E76F60000000000000B1C
+t1361999606
+s2844
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/errno.h
+c00000000512E76F600000000000003EB
+t1361999606
+s1003
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/fcntl.h
+c00000000512E76F600000000000003EA
+t1361999606
+s1002
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/fenv.h
+c00000000512E76F60000000000003FAC
+t1361999606
+s16300
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/math.h
+c00000000512E76F600000000000066C2
+t1361999606
+s26306
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/pthread.h
+c00000000512E76F70000000000003CF0
+t1361999607
+s15600
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/signal.h
+c00000000512E76F700000000000014F0
+t1361999607
+s5360
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/standards.h
+c00000000512E76F700000000000004D2
+t1361999607
+s1234
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/stdio.h
+c00000000512E76F70000000000004523
+t1361999607
+s17699
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/stdlib.h
+c00000000512E76F70000000000003089
+t1361999607
+s12425
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/sys/socket.h
+c00000000512E76F70000000000005B3C
+t1361999607
+s23356
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/sys/time.h
+c00000000512E76F70000000000001E64
+t1361999607
+s7780
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/sys/timeb.h
+c00000000512E76F700000000000010C2
+t1361999607
+s4290
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/sys/types.h
+c00000000512E76F70000000000002795
+t1361999607
+s10133
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/time.h
+c00000000512E76F7000000000000178E
+t1361999607
+s6030
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/include/unistd.h
+c00000000512E76F70000000000006762
+t1361999607
+s26466
+
+N/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/4.2/include/float.h
+c00000000512E76F70000000000000F35
+t1361999607
+s3893
+
+N/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/4.2/include/limits.h
+c00000000512E76F70000000000000E51
+t1361999607
+s3665
+
+N/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/4.2/include/stdarg.h
+c00000000512E76F70000000000000810
+t1361999607
+s2064
+
+N/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/4.2/include/stddef.h
+c00000000512E76F7000000000000092B
+t1361999607
+s2347
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/TAP_Server/../src/MainServer.cpp
+c00000000512F727E0000000000000102
+t1362063998
+s258
+i"server/ServerInit.h"
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/TAP_Server
+t2
+s0
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ConsoleLog.o
+t2
+s0
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Entity.o
+t2
+s0
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/EntityMap.o
+t2
+s0
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o
+t2
+s0
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Filesystem.o
+t2
+s0
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MainServer.o
+t2
+s0
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MySQLServerDB.o
+t2
+s0
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.o
+t2
+s0
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o
+t2
+s0
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TAP_Server.LinkFileList
+c00000000512F89A800000000000006B9
+t1362069928
+s1721
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Tile.o
+t2
+s0
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TileMap.o
+t2
+s0
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldgenInit.o
+t2
+s0
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.cpp
+c00000000512E984A00000000000007FD
+t1362008138
+s2045
+i"MySQLServerDB.h"
+i<exception>
+i<iostream>
+i<string>
+i<my_global.h>
+i<mysql.h>
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.h
+c00000000512E984A0000000000000359
+t1362008138
+s857
+i<string>
+i<mysql.h>
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/entities/Entity.cpp
+c00000000512E984A00000000000000B3
+t1362008138
+s179
+i"Entity.h"
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/entities/Entity.h
+c00000000512E984A00000000000000ED
+t1362008138
+s237
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp
+c00000000512E984A0000000000000038
+t1362008138
+s56
+i"../entities/Entity.h"
+i"EntityMap.h"
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.h
+c00000000512E984A00000000000003BD
+t1362008138
+s957
+i"../serialization/Boost_Serialization.h"
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.cpp
+c00000000512E984A0000000000000014
+t1362008138
+s20
+i"Tile.h"
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.h
+c00000000512E984A0000000000000313
+t1362008138
+s787
+i"../serialization/Boost_Serialization.h"
+i<string>
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/TileMap.cpp
+c00000000512E984A0000000000000219
+t1362008138
+s537
+i<memory>
+i<vector>
+i"../serialization/Boost_Serialization.h"
+i"TileMap.h"
+i"Tile.h"
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/TileMap.h
+c00000000512E984A00000000000002DE
+t1362008138
+s734
+i<memory>
+i<vector>
+i<string>
+i"../serialization/Boost_Serialization.h"
+i"Tile.h"
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/ServerConfig.cpp
+c00000000512E984A0000000000000BBB
+t1362008138
+s3003
+i<iostream>
+i<fstream>
+i<exception>
+i<boost/program_options.hpp>
+i"ServerConfig.h"
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/ServerConfig.h
+c00000000512E984A000000000000039C
+t1362008138
+s924
+i<boost/program_options.hpp>
+i<string>
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/serialization/Boost_Serialization.h
+c00000000512E984A0000000000000186
+t1362008138
+s390
+i<boost/archive/text_oarchive.hpp>
+i<boost/archive/text_iarchive.hpp>
+i<boost/archive/xml_oarchive.hpp>
+i<boost/archive/xml_iarchive.hpp>
+i<boost/archive/binary_iarchive.hpp>
+i<boost/archive/binary_oarchive.hpp>
+i<boost/serialization/shared_ptr.hpp>
+i<boost/serialization/export.hpp>
+i<boost/serialization/vector.hpp>
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp
+c00000000512E984A0000000000000982
+t1362008138
+s2434
+i<string>
+i<iostream>
+i<thread>
+i"ServerInit.h"
+i"../db/MySQLServerDB.h"
+i"../utils/ConsoleLog.h"
+i"../utils/FileLogger.h"
+i"../utils/Filesystem.h"
+i"../parsers/ServerConfig.h"
+i"../worldgen/WorldgenInit.h"
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.h
+c00000000512E984A000000000000022B
+t1362008138
+s555
+i<string>
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/ConsoleLog.cpp
+c00000000512E984A00000000000000D6
+t1362008138
+s214
+i"ConsoleLog.h"
+i<string>
+i<iostream>
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/ConsoleLog.h
+c00000000512E984A0000000000000147
+t1362008138
+s327
+i<string>
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cpp
+c00000000512E984A0000000000000221
+t1362008138
+s545
+i"FileLogger.h"
+i<iostream>
+i<fstream>
+i<time.h>
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.h
+c00000000512E984A0000000000000162
+t1362008138
+s354
+i<string>
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/Filesystem.cpp
+c00000000512E984A00000000000003B8
+t1362008138
+s952
+i"../utils/ConsoleLog.h"
+i"Filesystem.h"
+i<boost/filesystem.hpp>
+i<exception>
+i<iostream>
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/Filesystem.h
+c00000000512E984A0000000000000191
+t1362008138
+s401
+i<string>
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cpp
+c00000000512E984A00000000000002CE
+t1362008138
+s718
+i<iostream>
+i<fstream>
+i<string>
+i"WorldgenInit.h"
+i"../mapping/Tile.h"
+i"../mapping/EntityMap.h"
+i"../serialization/Boost_Serialization.h"
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.h
+c00000000512E984A00000000000002D8
+t1362008138
+s728
+i"../mapping/Tile.h"
+i"../mapping/EntityMap.h"
+i"../parsers/ServerConfig.h"
+
+N/usr/local/include/boost/archive/binary_iarchive.hpp
+c00000000512F82ED0000000000000D5B
+t1362068205
+s3419
+
+N/usr/local/include/boost/archive/binary_oarchive.hpp
+c00000000512F82ED0000000000000825
+t1362068205
+s2085
+
+N/usr/local/include/boost/archive/text_iarchive.hpp
+c00000000512F82ED00000000000012AC
+t1362068205
+s4780
+
+N/usr/local/include/boost/archive/text_oarchive.hpp
+c00000000512F82ED0000000000000E1C
+t1362068205
+s3612
+
+N/usr/local/include/boost/archive/xml_iarchive.hpp
+c00000000512F82ED0000000000001275
+t1362068205
+s4725
+
+N/usr/local/include/boost/archive/xml_oarchive.hpp
+c00000000512F82ED0000000000000F1B
+t1362068205
+s3867
+
+N/usr/local/include/boost/filesystem.hpp
+c00000000512F82EB00000000000002C0
+t1362068203
+s704
+
+N/usr/local/include/boost/program_options.hpp
+c00000000512F82EC000000000000034C
+t1362068204
+s844
+
+N/usr/local/include/boost/serialization/export.hpp
+c00000000512F82F50000000000002244
+t1362068213
+s8772
+
+N/usr/local/include/boost/serialization/shared_ptr.hpp
+c00000000512F82F60000000000001998
+t1362068214
+s6552
+
+N/usr/local/include/boost/serialization/vector.hpp
+c00000000512F82F600000000000019C2
+t1362068214
+s6594
+
+N/usr/local/mysql/include/big_endian.h
+c0000000050FEC459000000000000119B
+t1358873689
+s4507
+
+N/usr/local/mysql/include/byte_order_generic.h
+c0000000050FEC459000000000000144C
+t1358873689
+s5196
+
+N/usr/local/mysql/include/byte_order_generic_x86.h
+c0000000050FEC45900000000000011B8
+t1358873689
+s4536
+
+N/usr/local/mysql/include/byte_order_generic_x86_64.h
+c0000000050FEC4590000000000000FB0
+t1358873689
+s4016
+
+N/usr/local/mysql/include/little_endian.h
+c0000000050FEC4590000000000000D53
+t1358873689
+s3411
+
+N/usr/local/mysql/include/my_alloc.h
+c0000000050FEC4590000000000000784
+t1358873689
+s1924
+
+N/usr/local/mysql/include/my_attribute.h
+c0000000050FEC4590000000000000835
+t1358873689
+s2101
+
+N/usr/local/mysql/include/my_byteorder.h
+c0000000050FEC45900000000000007BB
+t1358873689
+s1979
+i"byte_order_generic_x86.h"
+i"byte_order_generic_x86_64.h"
+i"byte_order_generic.h"
+i"big_endian.h"
+i"little_endian.h"
+
+N/usr/local/mysql/include/my_compiler.h
+c0000000050FEC459000000000000108C
+t1358873689
+s4236
+i<my_global.h>
+i<my_attribute.h>
+
+N/usr/local/mysql/include/my_config.h
+c0000000050FEC73B00000000000041C1
+t1358874427
+s16833
+
+N/usr/local/mysql/include/my_dbug.h
+c0000000050FEC4590000000000001F2D
+t1358873689
+s7981
+i<sys/types.h>
+i<unistd.h>
+i<signal.h>
+i<crtdbg.h>
+
+N/usr/local/mysql/include/my_global.h
+c0000000050FEC4590000000000008250
+t1358873689
+s33360
+i<my_config.h>
+i<winsock2.h>
+i<ws2tcpip.h>
+i<io.h>
+i<process.h>
+i<sys/types.h>
+i<pthread.h>
+i<pthread.h>
+i<stdio.h>
+i<stdarg.h>
+i<stdlib.h>
+i<stddef.h>
+i<math.h>
+i<limits.h>
+i<float.h>
+i<fenv.h>
+i<sys/types.h>
+i<fcntl.h>
+i<sys/timeb.h>
+i<sys/time.h>
+i<time.h>
+i<sys/time.h>
+i<time.h>
+i<unistd.h>
+i<alloca.h>
+i<errno.h>
+i<crypt.h>
+i<assert.h>
+i<sys/stream.h>
+i<my_compiler.h>
+i<sys/socket.h>
+i<math.h>
+i<my_dbug.h>
+i<my_byteorder.h>
+i<dlfcn.h>
+i<new>
+
+N/usr/local/mysql/include/my_list.h
+c0000000050FEC45900000000000005E2
+t1358873689
+s1506
+
+N/usr/local/mysql/include/mysql.h
+c0000000050FEC4590000000000007182
+t1358873689
+s29058
+i<standards.h>
+i<sys/types.h>
+i<winsock2.h>
+i"mysql_version.h"
+i"mysql_com.h"
+i"mysql_time.h"
+i"my_list.h"
+i"typelib.h"
+i"my_alloc.h"
+
+N/usr/local/mysql/include/mysql_com.h
+c0000000050FEC4590000000000005C35
+t1358873689
+s23605
+
+N/usr/local/mysql/include/mysql_time.h
+c0000000050FEC4590000000000000878
+t1358873689
+s2168
+
+N/usr/local/mysql/include/mysql_version.h
+c0000000050FEC73B0000000000000334
+t1358874427
+s820
+i<custom_conf.h>
+
+N/usr/local/mysql/include/typelib.h
+c0000000050FEC45900000000000008E6
+t1358873689
+s2278
+i"my_alloc.h"
+
+CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/TAP_Server/../src/MainServer.cpp"
+r0
+
+CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.cpp"
+r0
+
+CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/src/entities/Entity.cpp"
+r0
+
+CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp"
+r0
+
+CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.cpp"
+r0
+
+CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/TileMap.cpp"
+r0
+
+CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/ServerConfig.cpp"
+r0
+
+CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp"
+r0
+
+CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/ConsoleLog.cpp"
+r0
+
+CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cpp"
+r0
+
+CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/Filesystem.cpp"
+r0
+
+CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cpp"
+r0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies72de4f28c1dfb641^77bd6428c1dfb641^---0#1#0#--18"Check dependencies36"D463B30A-813B-4759-8BDD-F413CC94301B-
+
+CCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ConsoleLog.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/ConsoleLog.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383762729.993218
+e383762730.635320
+r1
+xCompileC
+xbuild/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ConsoleLog.o
+x/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/ConsoleLog.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/utils/ConsoleLog.cpp7367fe29c1dfb641^38a3a22ac1dfb641^---0#0#0#-19%DVTDocumentLocation2@100"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/utils/ConsoleLog.cpp0000000000000000^2281"CompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ConsoleLog.o" src/utils/ConsoleLog.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug" -F/Library/Frameworks --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ConsoleLog.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/ConsoleLog.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ConsoleLog.o"36"B5C8799D-644F-48EE-99BC-75B9B3B44C6E-
+
+CCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Entity.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/entities/Entity.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383762728.400434
+e383762728.444059
+r1
+xCompileC
+xbuild/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Entity.o
+x/Users/yamamushi/Programming/projects/The ASCII Project/src/entities/Entity.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection87"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/entities/Entity.cpp42b36728c1dfb641^7d587328c1dfb641^---0#0#0#-19%DVTDocumentLocation2@99"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/entities/Entity.cpp0000000000000000^2267"CompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Entity.o" src/entities/Entity.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug" -F/Library/Frameworks --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Entity.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/entities/Entity.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Entity.o"36"51F04321-4404-4604-9497-B9ACC1C09B73-
+
+CCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/EntityMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383762728.403345
+e383762729.940038
+r1
+xCompileC
+xbuild/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/EntityMap.o
+x/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp:2:
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.h:14:
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/../serialization/Boost_Serialization.h:1:
+oIn file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:
+oIn file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:
+oIn file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:
+oIn file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:
+o/usr/local/include/boost/archive/basic_archive.hpp:154:57: warning: implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int') [-Wshorten-64-to-32]
+o    explicit object_id_type(const std::size_t & t_) : t(t_){
+o                                                       ~^~
+o1 warning generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp58c96728c1dfb641^1aa4f029c1dfb641^-1035"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp:2:In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.h:14:In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/../serialization/Boost_Serialization.h:1:In file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:In file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:In file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:In file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:/usr/local/include/boost/archive/basic_archive.hpp:154:57: warning: implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int') [-Wshorten-64-to-32]    explicit object_id_type(const std::size_t & t_) : t(t_){                                                       ~^~1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@128"Implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int')-383762729#18446744073709551615#0#7(2@106"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp:2:-383762729#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@101"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/mapping/EntityMap.cpp0000000000000000^1#9#1#9#41#0#21"Clang LLVM 1.0 Notice--2@105"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.h:14:-383762729#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@99"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/mapping/EntityMap.h0000000000000000^13#9#13#9#268#0#21"Clang LLVM 1.0 Notice--2@131"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/../serialization/Boost_Serialization.h:1:-383762729#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@115"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/serialization/Boost_Serialization.h0000000000000000^0#9#0#9#9#0#21"Clang LLVM 1.0 Notice--2@76"In file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:-383762729#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@66"file://localhost/usr/local/include/boost/archive/text_oarchive.hpp0000000000000000^30#9#30#9#953#0#21"Clang LLVM 1.0 Notice--2@82"In file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:-383762729#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@72"file://localhost/usr/local/include/boost/archive/basic_text_oarchive.hpp0000000000000000^31#9#31#9#1218#0#21"Clang LLVM 1.0 Notice--2@85"In file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:-383762729#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@75"file://localhost/usr/local/include/boost/archive/detail/common_oarchive.hpp0000000000000000^20#9#20#9#704#0#21"Clang LLVM 1.0 Notice--2@84"In file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:-383762729#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@74"file://localhost/usr/local/include/boost/archive/detail/basic_oarchive.hpp0000000000000000^27#9#27#9#916#0#21"Clang LLVM 1.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#56#153#56#4503#0#14"Semantic Issue2(3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#56#153#58#4503#0#3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#55#153#56#4502#0#-0#0#0#-19%DVTDocumentLocation4@101"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/mapping/EntityMap.cpp0000000000000000^2280"CompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/EntityMap.o" src/mapping/EntityMap.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug" -F/Library/Frameworks --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/EntityMap.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/EntityMap.o"36"7309FCD9-B9DE-41DE-8CBF-E9BAD037FD24-
+
+CCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383762730.452092
+e383762731.213606
+r1
+xCompileC
+xbuild/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o
+x/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cppebe1732ac1dfb641^a3ad362bc1dfb641^---0#0#0#-19%DVTDocumentLocation2@100"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/utils/FileLogger.cpp0000000000000000^2281"CompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o" src/utils/FileLogger.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug" -F/Library/Frameworks --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o"36"3E631C92-91E6-45B9-B8B0-FDBB7BE4BAA0-
+
+CCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Filesystem.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/Filesystem.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383762730.636682
+e383762731.809085
+r1
+xCompileC
+xbuild/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Filesystem.o
+x/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/Filesystem.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/utils/Filesystem.cpp2523a32ac1dfb641^b01ecf2bc1dfb641^---0#0#0#-19%DVTDocumentLocation2@100"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/utils/Filesystem.cpp0000000000000000^2281"CompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Filesystem.o" src/utils/Filesystem.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug" -F/Library/Frameworks --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Filesystem.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/Filesystem.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Filesystem.o"36"C2164F4F-3518-46AA-B190-C309735EA0B5-
+
+CCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MainServer.o" "/Users/yamamushi/Programming/projects/The ASCII Project/TAP_Server/../src/MainServer.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383762728.402830
+e383762728.770012
+r1
+xCompileC
+xbuild/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MainServer.o
+x/Users/yamamushi/Programming/projects/The ASCII Project/TAP_Server/../src/MainServer.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection96"Compile /Users/yamamushi/Programming/projects/The ASCII Project/TAP_Server/../src/MainServer.cppf0fb6728c1dfb641^ef1dc528c1dfb641^---0#0#0#-19%DVTDocumentLocation2@108"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/TAP_Server/../src/MainServer.cpp0000000000000000^2297"CompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MainServer.o" TAP_Server/../src/MainServer.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug" -F/Library/Frameworks --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MainServer.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/TAP_Server/../src/MainServer.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MainServer.o"36"684794AB-1BE6-4E90-8B86-0B9E4D320D91-
+
+CCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MySQLServerDB.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383762728.400284
+e383762729.141910
+r1
+xCompileC
+xbuild/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MySQLServerDB.o
+x/Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+o/Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.cpp:49:16: warning: implicit conversion loses integer precision: 'my_ulonglong' (aka 'unsigned long long') to 'int' [-Wshorten-64-to-32]
+o    num_rows = mysql_num_rows(result);
+o             ~ ^~~~~~~~~~~~~~~~~~~~~~
+o1 warning generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.cpp36236728c1dfb641^3b532429c1dfb641^-312"/Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.cpp:49:16: warning: implicit conversion loses integer precision: 'my_ulonglong' (aka 'unsigned long long') to 'int' [-Wshorten-64-to-32]    num_rows = mysql_num_rows(result);             ~ ^~~~~~~~~~~~~~~~~~~~~~1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@95"Implicit conversion loses integer precision: 'my_ulonglong' (aka 'unsigned long long') to 'int'-383762729#18446744073709551615#0#-1#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@100"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/db/MySQLServerDB.cpp0000000000000000^48#15#48#15#1088#0#14"Semantic Issue2(3@100"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/db/MySQLServerDB.cpp0000000000000000^48#15#48#37#1088#21#3@100"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/db/MySQLServerDB.cpp0000000000000000^48#13#48#14#1086#0#-0#0#0#-19%DVTDocumentLocation4@100"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/db/MySQLServerDB.cpp0000000000000000^2290"CompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MySQLServerDB.o" src/db/MySQLServerDB.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug" -F/Library/Frameworks --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MySQLServerDB.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MySQLServerDB.o"36"8D10CE83-A697-407E-AE61-7B5AFDD1D43B-
+
+CCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/ServerConfig.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383762729.143280
+e383762732.240142
+r1
+xCompileC
+xbuild/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.o
+x/Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/ServerConfig.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection92"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/ServerConfig.cppaed32429c1dfb641^e6783d2cc1dfb641^---0#0#0#-19%DVTDocumentLocation2@104"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/parsers/ServerConfig.cpp0000000000000000^2295"CompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.o" src/parsers/ServerConfig.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug" -F/Library/Frameworks --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/ServerConfig.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.o"36"3C798800-BB91-4024-9393-1DD69E7F3B12-
+
+CCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383762729.941424
+e383762732.444430
+r1
+xCompileC
+xbuild/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o
+x/Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp:21:
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/server/../worldgen/WorldgenInit.h:14:
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/server/../worldgen/../mapping/Tile.h:14:
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/server/../worldgen/../mapping/../serialization/Boost_Serialization.h:1:
+oIn file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:
+oIn file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:
+oIn file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:
+oIn file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:
+o/usr/local/include/boost/archive/basic_archive.hpp:154:57: warning: implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int') [-Wshorten-64-to-32]
+o    explicit object_id_type(const std::size_t & t_) : t(t_){
+o                                                       ~^~
+o1 warning generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp1c27f129c1dfb641^2ec5712cc1dfb641^-1195"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp:21:In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/server/../worldgen/WorldgenInit.h:14:In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/server/../worldgen/../mapping/Tile.h:14:In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/server/../worldgen/../mapping/../serialization/Boost_Serialization.h:1:In file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:In file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:In file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:In file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:/usr/local/include/boost/archive/basic_archive.hpp:154:57: warning: implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int') [-Wshorten-64-to-32]    explicit object_id_type(const std::size_t & t_) : t(t_){                                                       ~^~1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@128"Implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int')-383762732#18446744073709551615#0#8(2@107"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp:21:-383762732#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@101"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/server/ServerInit.cpp0000000000000000^20#9#20#9#329#0#21"Clang LLVM 1.0 Notice--2@119"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/server/../worldgen/WorldgenInit.h:14:-383762732#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@103"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/worldgen/WorldgenInit.h0000000000000000^13#9#13#9#276#0#21"Clang LLVM 1.0 Notice--2@122"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/server/../worldgen/../mapping/Tile.h:14:-383762732#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@94"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/mapping/Tile.h0000000000000000^13#9#13#9#148#0#21"Clang LLVM 1.0 Notice--2@153"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/server/../worldgen/../mapping/../serialization/Boost_Serialization.h:1:-383762732#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@115"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/serialization/Boost_Serialization.h0000000000000000^0#9#0#9#9#0#21"Clang LLVM 1.0 Notice--2@76"In file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:-383762732#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@66"file://localhost/usr/local/include/boost/archive/text_oarchive.hpp0000000000000000^30#9#30#9#953#0#21"Clang LLVM 1.0 Notice--2@82"In file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:-383762732#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@72"file://localhost/usr/local/include/boost/archive/basic_text_oarchive.hpp0000000000000000^31#9#31#9#1218#0#21"Clang LLVM 1.0 Notice--2@85"In file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:-383762732#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@75"file://localhost/usr/local/include/boost/archive/detail/common_oarchive.hpp0000000000000000^20#9#20#9#704#0#21"Clang LLVM 1.0 Notice--2@84"In file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:-383762732#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@74"file://localhost/usr/local/include/boost/archive/detail/basic_oarchive.hpp0000000000000000^27#9#27#9#916#0#21"Clang LLVM 1.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#56#153#56#4503#0#14"Semantic Issue2(3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#56#153#58#4503#0#3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#55#153#56#4502#0#-0#0#0#-19%DVTDocumentLocation4@101"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/server/ServerInit.cpp0000000000000000^2283"CompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o" src/server/ServerInit.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug" -F/Library/Frameworks --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o"36"89242648-05CF-44EC-978E-62BBC70321A4-
+
+CCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Tile.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383762728.451418
+e383762729.991881
+r1
+xCompileC
+xbuild/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Tile.o
+x/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.cpp:1:
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.h:14:
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/../serialization/Boost_Serialization.h:1:
+oIn file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:
+oIn file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:
+oIn file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:
+oIn file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:
+o/usr/local/include/boost/archive/basic_archive.hpp:154:57: warning: implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int') [-Wshorten-64-to-32]
+o    explicit object_id_type(const std::size_t & t_) : t(t_){
+o                                                       ~^~
+o1 warning generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection84"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.cpp34ba7328c1dfb641^de01fe29c1dfb641^-1025"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.cpp:1:In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.h:14:In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/../serialization/Boost_Serialization.h:1:In file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:In file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:In file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:In file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:/usr/local/include/boost/archive/basic_archive.hpp:154:57: warning: implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int') [-Wshorten-64-to-32]    explicit object_id_type(const std::size_t & t_) : t(t_){                                                       ~^~1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@128"Implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int')-383762729#18446744073709551615#0#7(2@101"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.cpp:1:-383762729#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@96"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/mapping/Tile.cpp0000000000000000^0#9#0#9#9#0#21"Clang LLVM 1.0 Notice--2@100"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.h:14:-383762729#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@94"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/mapping/Tile.h0000000000000000^13#9#13#9#148#0#21"Clang LLVM 1.0 Notice--2@131"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/../serialization/Boost_Serialization.h:1:-383762729#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@115"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/serialization/Boost_Serialization.h0000000000000000^0#9#0#9#9#0#21"Clang LLVM 1.0 Notice--2@76"In file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:-383762729#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@66"file://localhost/usr/local/include/boost/archive/text_oarchive.hpp0000000000000000^30#9#30#9#953#0#21"Clang LLVM 1.0 Notice--2@82"In file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:-383762729#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@72"file://localhost/usr/local/include/boost/archive/basic_text_oarchive.hpp0000000000000000^31#9#31#9#1218#0#21"Clang LLVM 1.0 Notice--2@85"In file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:-383762729#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@75"file://localhost/usr/local/include/boost/archive/detail/common_oarchive.hpp0000000000000000^20#9#20#9#704#0#21"Clang LLVM 1.0 Notice--2@84"In file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:-383762729#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@74"file://localhost/usr/local/include/boost/archive/detail/basic_oarchive.hpp0000000000000000^27#9#27#9#916#0#21"Clang LLVM 1.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#56#153#56#4503#0#14"Semantic Issue2(3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#56#153#58#4503#0#3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#55#153#56#4502#0#-0#0#0#-19%DVTDocumentLocation4@96"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/mapping/Tile.cpp0000000000000000^2255"CompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Tile.o" src/mapping/Tile.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug" -F/Library/Frameworks --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Tile.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Tile.o"36"3ED97B92-1E1D-4F26-B3AC-25D2A6A3D4A3-
+
+CCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TileMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/TileMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383762728.771413
+e383762730.450694
+r1
+xCompileC
+xbuild/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TileMap.o
+x/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/TileMap.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/TileMap.cpp:15:
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/../serialization/Boost_Serialization.h:1:
+oIn file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:
+oIn file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:
+oIn file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:
+oIn file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:
+o/usr/local/include/boost/archive/basic_archive.hpp:154:57: warning: implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int') [-Wshorten-64-to-32]
+o    explicit object_id_type(const std::size_t & t_) : t(t_){
+o                                                       ~^~
+o1 warning generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection87"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/TileMap.cpp1aa3c528c1dfb641^936e732ac1dfb641^-928"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/TileMap.cpp:15:In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/../serialization/Boost_Serialization.h:1:In file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:In file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:In file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:In file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:/usr/local/include/boost/archive/basic_archive.hpp:154:57: warning: implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int') [-Wshorten-64-to-32]    explicit object_id_type(const std::size_t & t_) : t(t_){                                                       ~^~1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@128"Implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int')-383762730#18446744073709551615#0#6(2@105"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/TileMap.cpp:15:-383762730#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@99"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/mapping/TileMap.cpp0000000000000000^14#9#14#9#145#0#21"Clang LLVM 1.0 Notice--2@131"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/../serialization/Boost_Serialization.h:1:-383762730#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@115"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/serialization/Boost_Serialization.h0000000000000000^0#9#0#9#9#0#21"Clang LLVM 1.0 Notice--2@76"In file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:-383762730#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@66"file://localhost/usr/local/include/boost/archive/text_oarchive.hpp0000000000000000^30#9#30#9#953#0#21"Clang LLVM 1.0 Notice--2@82"In file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:-383762730#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@72"file://localhost/usr/local/include/boost/archive/basic_text_oarchive.hpp0000000000000000^31#9#31#9#1218#0#21"Clang LLVM 1.0 Notice--2@85"In file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:-383762730#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@75"file://localhost/usr/local/include/boost/archive/detail/common_oarchive.hpp0000000000000000^20#9#20#9#704#0#21"Clang LLVM 1.0 Notice--2@84"In file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:-383762730#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@74"file://localhost/usr/local/include/boost/archive/detail/basic_oarchive.hpp0000000000000000^27#9#27#9#916#0#21"Clang LLVM 1.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#56#153#56#4503#0#14"Semantic Issue2(3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#56#153#58#4503#0#3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#55#153#56#4502#0#-0#0#0#-19%DVTDocumentLocation4@99"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/mapping/TileMap.cpp0000000000000000^2270"CompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TileMap.o" src/mapping/TileMap.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug" -F/Library/Frameworks --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TileMap.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/TileMap.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TileMap.o"36"099E751D-4110-4E94-B9F4-80A6724ED60E-
+
+CCompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldgenInit.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383762731.214974
+e383762733.208182
+r1
+xCompileC
+xbuild/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldgenInit.o
+x/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cpp:15:
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.h:14:
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/../mapping/Tile.h:14:
+oIn file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/../mapping/../serialization/Boost_Serialization.h:1:
+oIn file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:
+oIn file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:
+oIn file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:
+oIn file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:
+o/usr/local/include/boost/archive/basic_archive.hpp:154:57: warning: implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int') [-Wshorten-64-to-32]
+o    explicit object_id_type(const std::size_t & t_) : t(t_){
+o                                                       ~^~
+o1 warning generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection93"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cppa12d372bc1dfb641^f949352dc1dfb641^-1169"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cpp:15:In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.h:14:In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/../mapping/Tile.h:14:In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/../mapping/../serialization/Boost_Serialization.h:1:In file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:In file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:In file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:In file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:/usr/local/include/boost/archive/basic_archive.hpp:154:57: warning: implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int') [-Wshorten-64-to-32]    explicit object_id_type(const std::size_t & t_) : t(t_){                                                       ~^~1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@128"Implicit conversion loses integer precision: 'const std::size_t' (aka 'const unsigned long') to 'base_type' (aka 'unsigned int')-383762733#18446744073709551615#0#8(2@111"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cpp:15:-383762733#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@105"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/worldgen/WorldgenInit.cpp0000000000000000^14#9#14#9#179#0#21"Clang LLVM 1.0 Notice--2@109"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.h:14:-383762733#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@103"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/worldgen/WorldgenInit.h0000000000000000^13#9#13#9#276#0#21"Clang LLVM 1.0 Notice--2@112"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/../mapping/Tile.h:14:-383762733#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@94"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/mapping/Tile.h0000000000000000^13#9#13#9#148#0#21"Clang LLVM 1.0 Notice--2@143"In file included from /Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/../mapping/../serialization/Boost_Serialization.h:1:-383762733#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@115"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/serialization/Boost_Serialization.h0000000000000000^0#9#0#9#9#0#21"Clang LLVM 1.0 Notice--2@76"In file included from /usr/local/include/boost/archive/text_oarchive.hpp:31:-383762733#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@66"file://localhost/usr/local/include/boost/archive/text_oarchive.hpp0000000000000000^30#9#30#9#953#0#21"Clang LLVM 1.0 Notice--2@82"In file included from /usr/local/include/boost/archive/basic_text_oarchive.hpp:32:-383762733#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@72"file://localhost/usr/local/include/boost/archive/basic_text_oarchive.hpp0000000000000000^31#9#31#9#1218#0#21"Clang LLVM 1.0 Notice--2@85"In file included from /usr/local/include/boost/archive/detail/common_oarchive.hpp:21:-383762733#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@75"file://localhost/usr/local/include/boost/archive/detail/common_oarchive.hpp0000000000000000^20#9#20#9#704#0#21"Clang LLVM 1.0 Notice--2@84"In file included from /usr/local/include/boost/archive/detail/basic_oarchive.hpp:28:-383762733#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@74"file://localhost/usr/local/include/boost/archive/detail/basic_oarchive.hpp0000000000000000^27#9#27#9#916#0#21"Clang LLVM 1.0 Notice--1#27"com.apple.dt.IDE.diagnostic3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#56#153#56#4503#0#14"Semantic Issue2(3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#56#153#58#4503#0#3@66"file://localhost/usr/local/include/boost/archive/basic_archive.hpp0000000000000000^153#55#153#56#4502#0#-0#0#0#-19%DVTDocumentLocation4@105"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/worldgen/WorldgenInit.cpp0000000000000000^2297"CompileC "build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldgenInit.o" src/worldgen/WorldgenInit.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug" -F/Library/Frameworks --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldgenInit.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldgenInit.o"36"159F2D67-EE6B-48D4-8D08-A88E86205721-
+
+CLd "/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/TAP_Server" normal x86_64
+s383762733.215448
+e383762733.250970
+r1
+xLd
+x/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/TAP_Server
+xnormal
+xx86_64
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection83"Link /Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/TAP_Server0f43372dc1dfb641^d140402dc1dfb641^---0#0#0#--1068"Ld build/Debug/TAP_Server normal x86_64    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv MACOSX_DEPLOYMENT_TARGET 10.8    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk "-L/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug" -L/usr/local/lib -L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib -L/usr/local/mysql/lib "-F/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug" -F/Library/Frameworks -filelist "/Users/yamamushi/Programming/projects/The ASCII Project/build/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TAP_Server.LinkFileList" -mmacosx-version-min=10.8 -lboost_system -lboost_filesystem -lboost_program_options -lboost_serialization -lmysqlclient -stdlib=libc++ -o "/Users/yamamushi/Programming/projects/The ASCII Project/build/Debug/TAP_Server"36"B73C58CF-FC9E-4E66-B48C-5D4D22F280D2-
+

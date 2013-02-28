@@ -1,0 +1,7 @@
+This folder contains definitions for a variety of Widgets being used in the client.
+
+Widgets are stored in Frames, remember:
+
+[Window [Frame [Widget] ] ]
+
+

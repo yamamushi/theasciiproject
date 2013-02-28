@@ -1,0 +1,4 @@
+Interaction -
+
+            These files control Entity <-> Map interaction, specifically related to entities
+            editing the tiles on the map. 
