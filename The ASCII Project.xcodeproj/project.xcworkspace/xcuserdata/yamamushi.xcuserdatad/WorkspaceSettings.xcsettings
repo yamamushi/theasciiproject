@@ -10,10 +10,8 @@
 	<string>RelativeToWorkspace</string>
 	<key>CustomBuildProductsPath</key>
 	<string>bin</string>
-	<key>DerivedDataCustomLocation</key>
-	<string>/Users/yamamushi/Programming/projects/The ASCII Project/DerivedData</string>
 	<key>DerivedDataLocationStyle</key>
-	<string>AbsolutePath</string>
+	<string>Default</string>
 	<key>IssueFilterStyle</key>
 	<string>ShowActiveSchemeOnly</string>
 	<key>LiveSourceIssuesEnabled</key>

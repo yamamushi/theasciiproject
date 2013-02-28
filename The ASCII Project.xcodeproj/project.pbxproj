@@ -192,21 +192,15 @@
 		743CAD5016DFC03000C56DB2 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		743CAD5116DFC03000C56DB2 /* unifont-5.1.20080907.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "unifont-5.1.20080907.ttf"; sourceTree = "<group>"; };
 		743CAD5216DFC03000C56DB2 /* server.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = server.conf; sourceTree = "<group>"; };
-		743CAD5616DFC4DF00C56DB2 /* AUTHORS */ = {isa = PBXFileReference; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
-		743CAD5716DFC4DF00C56DB2 /* ChangeLog */ = {isa = PBXFileReference; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
-		743CAD5816DFC4DF00C56DB2 /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
-		743CAD5916DFC4DF00C56DB2 /* Dependencies */ = {isa = PBXFileReference; lastKnownFileType = text; path = Dependencies; sourceTree = "<group>"; };
 		743CAD5B16DFC4DF00C56DB2 /* BOOST-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "BOOST-LICENSE.txt"; sourceTree = "<group>"; };
 		743CAD5C16DFC4DF00C56DB2 /* GPL-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GPL-LICENSE.txt"; sourceTree = "<group>"; };
 		743CAD5D16DFC4DF00C56DB2 /* LICENSE_1_0_BOOST.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE_1_0_BOOST.txt; sourceTree = "<group>"; };
 		743CAD5E16DFC4DF00C56DB2 /* README-SDL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "README-SDL.txt"; sourceTree = "<group>"; };
-		743CAD5F16DFC4DF00C56DB2 /* NEWS */ = {isa = PBXFileReference; lastKnownFileType = text; path = NEWS; sourceTree = "<group>"; };
 		743CAD6116DFC4DF00C56DB2 /* 12-30-2012.Medium.ServerConsoleLogging.Yamamushi.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "12-30-2012.Medium.ServerConsoleLogging.Yamamushi.txt"; sourceTree = "<group>"; };
 		743CAD6216DFC4DF00C56DB2 /* 12-30-2012.None.PersonalBlog.Yamamushi.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "12-30-2012.None.PersonalBlog.Yamamushi.txt"; sourceTree = "<group>"; };
 		743CAD6316DFC4DF00C56DB2 /* NOTES */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTES; sourceTree = "<group>"; };
 		743CAD6416DFC4DF00C56DB2 /* Readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
 		743CAD6516DFC4DF00C56DB2 /* tiling */ = {isa = PBXFileReference; lastKnownFileType = text; path = tiling; sourceTree = "<group>"; };
-		743CAD6616DFC4DF00C56DB2 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		746B30F216DF949F00CDBBC9 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		746B30F516DF949F00CDBBC9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		746B30F616DF949F00CDBBC9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -214,6 +208,12 @@
 		746B310F16DF958100CDBBC9 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = /Library/Frameworks/SDL.framework; sourceTree = "<absolute>"; };
 		746B311E16DF99EC00CDBBC9 /* TAP_Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TAP_Server; sourceTree = BUILT_PRODUCTS_DIR; };
 		746B312216DF99EC00CDBBC9 /* TAP_Server.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TAP_Server.1; sourceTree = "<group>"; };
+		74F3BC2816DFC7BB000FC9C4 /* AUTHORS */ = {isa = PBXFileReference; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
+		74F3BC2916DFC7BB000FC9C4 /* ChangeLog */ = {isa = PBXFileReference; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
+		74F3BC2A16DFC7BB000FC9C4 /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		74F3BC2B16DFC7BB000FC9C4 /* Dependencies */ = {isa = PBXFileReference; lastKnownFileType = text; path = Dependencies; sourceTree = "<group>"; };
+		74F3BC2C16DFC7BB000FC9C4 /* NEWS */ = {isa = PBXFileReference; lastKnownFileType = text; path = NEWS; sourceTree = "<group>"; };
+		74F3BC2D16DFC7BB000FC9C4 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -629,14 +629,8 @@
 		743CAD5516DFC4DF00C56DB2 /* docs */ = {
 			isa = PBXGroup;
 			children = (
-				743CAD5616DFC4DF00C56DB2 /* AUTHORS */,
-				743CAD5716DFC4DF00C56DB2 /* ChangeLog */,
-				743CAD5816DFC4DF00C56DB2 /* COPYING */,
-				743CAD5916DFC4DF00C56DB2 /* Dependencies */,
 				743CAD5A16DFC4DF00C56DB2 /* Licenses */,
-				743CAD5F16DFC4DF00C56DB2 /* NEWS */,
 				743CAD6016DFC4DF00C56DB2 /* notes */,
-				743CAD6616DFC4DF00C56DB2 /* README */,
 			);
 			path = docs;
 			sourceTree = "<group>";
@@ -667,6 +661,12 @@
 		746B30E616DF949F00CDBBC9 = {
 			isa = PBXGroup;
 			children = (
+				74F3BC2816DFC7BB000FC9C4 /* AUTHORS */,
+				74F3BC2916DFC7BB000FC9C4 /* ChangeLog */,
+				74F3BC2A16DFC7BB000FC9C4 /* COPYING */,
+				74F3BC2B16DFC7BB000FC9C4 /* Dependencies */,
+				74F3BC2C16DFC7BB000FC9C4 /* NEWS */,
+				74F3BC2D16DFC7BB000FC9C4 /* README */,
 				743CAD5516DFC4DF00C56DB2 /* docs */,
 				743CAD4C16DFC03000C56DB2 /* bin */,
 				743CAC1F16DF9D5600C56DB2 /* deps */,
