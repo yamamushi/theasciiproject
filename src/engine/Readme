@@ -1,6 +1,0 @@
-Engine -
-
-       This directory holds files related to timers, events, threading, etc.
-
-       The engine runs a timer that is evaluated in realtime, in which events are
-       dropped into a queue to be processed as the timer cycles.

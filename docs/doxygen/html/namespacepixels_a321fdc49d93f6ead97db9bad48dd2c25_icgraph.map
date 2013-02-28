@@ -1,6 +1,0 @@
-<map id="pixels::Put_Pixel32" name="pixels::Put_Pixel32">
-<area shape="rect" id="node3" href="$class_bitmap_font.html#a9f120caf082908ad79e593f480ff2201" title="BitmapFont::Print_Colored\l_Character" alt="" coords="189,5,365,46"/>
-<area shape="rect" id="node10" href="$namespacepixels.html#acc705ff6500b6511ac11dbd65294eab2" title="pixels::SDL_ScaleSurface" alt="" coords="190,71,365,97"/>
-<area shape="rect" id="node5" href="$_main_client_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="677,12,728,39"/>
-<area shape="rect" id="node7" href="$class_bitmap_font.html#acc82685f39eed4d4c458bb28e49a6797" title="BitmapFont::Show_Colored_Text" alt="" coords="414,37,629,64"/>
-</map>

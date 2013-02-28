@@ -1,4 +1,0 @@
-12 - 30 - 2012 . Medium . ServerConsoleLogging . Yamamushi
-
-Going to work on a quick and easy console logging system for the
-server, should be filed under "src/utils".

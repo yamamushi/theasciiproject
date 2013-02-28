@@ -1,8 +1,0 @@
-API -
-
-    This directory holds files related to API calls that the server handles.
-
-    Notice that there are several levels of "API" calls, those that are meant for
-    Players/Admins, those that are meant for the "web" API interface for keeping our
-    "Server Status" page working properly, and those that are meant for use on the
-    Server console itself.

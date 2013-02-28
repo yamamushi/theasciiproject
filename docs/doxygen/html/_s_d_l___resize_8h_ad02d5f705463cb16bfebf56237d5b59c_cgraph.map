@@ -1,6 +1,0 @@
-<map id="SDL_Resize" name="SDL_Resize">
-<area shape="rect" id="node3" href="$_s_d_l___resize_8cpp.html#ae9de79225ce366d8a503e5278a606a99" title="has_alpha" alt="" coords="150,5,231,32"/>
-<area shape="rect" id="node7" href="$_s_d_l___resize_8cpp.html#a098aead2630cd65ca86193ee84317767" title="Resample" alt="" coords="150,56,231,83"/>
-<area shape="rect" id="node5" href="$_s_d_l___resize_8cpp.html#add0d503bf0548a4b2cead4eb11311f13" title="get_pixel" alt="" coords="280,5,355,32"/>
-<area shape="rect" id="node9" href="$_s_d_l___resize_8cpp.html#a0316a10df8815c41447a204db1d35c3f" title="Lanczos" alt="" coords="282,56,353,83"/>
-</map>

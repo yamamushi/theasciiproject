@@ -1,5 +1,0 @@
-Graphics -
-
-         This directory holds files related to the Client UI, and also holds files
-         necessary for translating map information into the "RenderMap" object used
-         for drawing the client-side screen.

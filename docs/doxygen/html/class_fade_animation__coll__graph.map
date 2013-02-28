@@ -1,4 +1,0 @@
-<map id="FadeAnimation" name="FadeAnimation">
-<area shape="rect" id="node2" href="$class_widget.html" title="{Widget\n|+ frameSurface\l|+ Widget()\l+ ~Widget()\l+ Run()\l+ Update()\l+ Handle_Event()\l}" alt="" coords="5,49,128,185"/>
-<area shape="rect" id="node4" href="$class_timer.html" title="{Timer\n|&#45; startTicks\l&#45; pausedTicks\l&#45; paused\l&#45; started\l|+ Timer()\l+ start()\l+ stop()\l+ pause()\l+ unpause()\l+ get_ticks()\l+ is_started()\l+ is_paused()\l}" alt="" coords="153,5,257,229"/>
-</map>

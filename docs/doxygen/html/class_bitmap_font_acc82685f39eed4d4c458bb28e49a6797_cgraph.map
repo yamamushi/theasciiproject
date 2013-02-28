@@ -1,6 +1,0 @@
-<map id="BitmapFont::Show_Colored_Text" name="BitmapFont::Show_Colored_Text">
-<area shape="rect" id="node3" href="$class_bitmap_font.html#a9f120caf082908ad79e593f480ff2201" title="BitmapFont::Print_Colored\l_Character" alt="" coords="269,49,445,90"/>
-<area shape="rect" id="node5" href="$class_bitmap_font.html#ac2de93a7b347e96aee6f2ddee75e970b" title="BitmapFont::Apply_Surface" alt="" coords="494,5,677,32"/>
-<area shape="rect" id="node7" href="$namespacepixels.html#a50e904b8d0eec7331f70410374a8f7a4" title="pixels::Get_Pixel32" alt="" coords="518,56,653,83"/>
-<area shape="rect" id="node9" href="$namespacepixels.html#a321fdc49d93f6ead97db9bad48dd2c25" title="pixels::Put_Pixel32" alt="" coords="518,107,653,133"/>
-</map>
