@@ -45,3 +45,6 @@ public:
     virtual ~Tile(){};
     
 };
+
+BOOST_SERIALIZATION_SHARED_PTR(Tile)
+

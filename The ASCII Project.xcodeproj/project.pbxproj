@@ -22,6 +22,9 @@
 		7452363816DFD05900842D07 /* RenderMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7452363616DFD05900842D07 /* RenderMap.cpp */; };
 		7452363B16DFD0E900842D07 /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7452363916DFD0E900842D07 /* WorldMap.cpp */; };
 		746B312316DF99EC00CDBBC9 /* TAP_Server.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 746B312216DF99EC00CDBBC9 /* TAP_Server.1 */; };
+		74E38FE816E1793D00ABD5DE /* TCP_Handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E38FE616E1793D00ABD5DE /* TCP_Handler.cpp */; };
+		74E38FEC16E17DCF00ABD5DE /* TCP_Session.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E38FEA16E17DCF00ABD5DE /* TCP_Session.cpp */; };
+		74E38FEF16E17E2100ABD5DE /* TCP_Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E38FED16E17E2000ABD5DE /* TCP_Pool.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -204,8 +207,16 @@
 		746B30F616DF949F00CDBBC9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		746B30F716DF949F00CDBBC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		746B310F16DF958100CDBBC9 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = /Library/Frameworks/SDL.framework; sourceTree = "<absolute>"; };
-		746B311E16DF99EC00CDBBC9 /* TAP_Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = TAP_Server; path = "/Users/yamamushi/Programming/projects/The ASCII Project/build/TAP_Server"; sourceTree = "<absolute>"; };
 		746B312216DF99EC00CDBBC9 /* TAP_Server.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TAP_Server.1; sourceTree = "<group>"; };
+		74E38FDF16E1367E00ABD5DE /* TAP_Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TAP_Server; sourceTree = BUILT_PRODUCTS_DIR; };
+		74E38FE516E174C900ABD5DE /* Boost_Net_Asio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boost_Net_Asio.h; sourceTree = "<group>"; };
+		74E38FE616E1793D00ABD5DE /* TCP_Handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCP_Handler.cpp; sourceTree = "<group>"; };
+		74E38FE716E1793D00ABD5DE /* TCP_Handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCP_Handler.h; sourceTree = "<group>"; };
+		74E38FE916E17BC600ABD5DE /* TCP_Netlib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCP_Netlib.h; sourceTree = "<group>"; };
+		74E38FEA16E17DCF00ABD5DE /* TCP_Session.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCP_Session.cpp; sourceTree = "<group>"; };
+		74E38FEB16E17DCF00ABD5DE /* TCP_Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCP_Session.h; sourceTree = "<group>"; };
+		74E38FED16E17E2000ABD5DE /* TCP_Pool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCP_Pool.cpp; sourceTree = "<group>"; };
+		74E38FEE16E17E2000ABD5DE /* TCP_Pool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCP_Pool.h; sourceTree = "<group>"; };
 		74F3BC2816DFC7BB000FC9C4 /* AUTHORS */ = {isa = PBXFileReference; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
 		74F3BC2916DFC7BB000FC9C4 /* ChangeLog */ = {isa = PBXFileReference; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
 		74F3BC2A16DFC7BB000FC9C4 /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
@@ -534,6 +545,14 @@
 			isa = PBXGroup;
 			children = (
 				743CAD1416DFA9CE00C56DB2 /* Readme */,
+				74E38FE516E174C900ABD5DE /* Boost_Net_Asio.h */,
+				74E38FE616E1793D00ABD5DE /* TCP_Handler.cpp */,
+				74E38FE716E1793D00ABD5DE /* TCP_Handler.h */,
+				74E38FE916E17BC600ABD5DE /* TCP_Netlib.h */,
+				74E38FEA16E17DCF00ABD5DE /* TCP_Session.cpp */,
+				74E38FEB16E17DCF00ABD5DE /* TCP_Session.h */,
+				74E38FED16E17E2000ABD5DE /* TCP_Pool.cpp */,
+				74E38FEE16E17E2000ABD5DE /* TCP_Pool.h */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -684,6 +703,7 @@
 				746B311F16DF99EC00CDBBC9 /* TAP_Server */,
 				746B30F116DF949F00CDBBC9 /* Frameworks */,
 				7452363516DFCFEB00842D07 /* paperwork */,
+				74E38FDF16E1367E00ABD5DE /* TAP_Server */,
 			);
 			sourceTree = "<group>";
 		};
@@ -733,7 +753,7 @@
 			);
 			name = TAP_Server;
 			productName = TAP_Server;
-			productReference = 746B311E16DF99EC00CDBBC9 /* TAP_Server */;
+			productReference = 74E38FDF16E1367E00ABD5DE /* TAP_Server */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -781,6 +801,9 @@
 				743CAD4B16DFA9CE00C56DB2 /* WorldgenInit.cpp in Sources */,
 				7452363816DFD05900842D07 /* RenderMap.cpp in Sources */,
 				7452363B16DFD0E900842D07 /* WorldMap.cpp in Sources */,
+				74E38FE816E1793D00ABD5DE /* TCP_Handler.cpp in Sources */,
+				74E38FEC16E17DCF00ABD5DE /* TCP_Session.cpp in Sources */,
+				74E38FEF16E17E2100ABD5DE /* TCP_Pool.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

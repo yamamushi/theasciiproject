@@ -24,3 +24,4 @@ void MySQLDBInit(std::string hostname, int port, std::string username, std::stri
   Now we need to spin up and serialize-to-disk our map.
 */
 
+void NetInit(int port);

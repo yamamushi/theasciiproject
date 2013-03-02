@@ -22,8 +22,10 @@ void TileMap::init(){
     for(int x=0; x<length; x++){
         for(int y=0; y<width; y++){
             
-            std::shared_ptr<Tile> newTile(new Tile(x, y));
-            virtualMap[x].push_back(newTile);
+            std::vector<Tile *> row(length);
+            Tile *newTile = new Tile(x, y);
+            row.push_back(newTile);
+            virtualMap.push_back(row);
             
         }
     }
