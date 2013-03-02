@@ -1,3 +1,4 @@
+#pragma once
 /*
  
  FileLogger.h
@@ -27,6 +28,7 @@ public:
     virtual ~FileLogger(){};
     
     void ErrorLog(std::string message);
+    void APILog(std::string message);
     
     
 };

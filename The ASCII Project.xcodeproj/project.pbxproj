@@ -26,6 +26,8 @@
 		74E38FEC16E17DCF00ABD5DE /* TCP_Session.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E38FEA16E17DCF00ABD5DE /* TCP_Session.cpp */; };
 		74E38FEF16E17E2100ABD5DE /* TCP_Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E38FED16E17E2000ABD5DE /* TCP_Pool.cpp */; };
 		74E38FF216E1949000ABD5DE /* TCP_Participant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E38FF016E1948F00ABD5DE /* TCP_Participant.cpp */; };
+		74E38FF516E1BE4A00ABD5DE /* ServerAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E38FF316E1BE4A00ABD5DE /* ServerAPI.cpp */; };
+		74E38FF816E1BEC000ABD5DE /* Packets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E38FF616E1BEC000ABD5DE /* Packets.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -220,6 +222,10 @@
 		74E38FEE16E17E2000ABD5DE /* TCP_Pool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCP_Pool.h; sourceTree = "<group>"; };
 		74E38FF016E1948F00ABD5DE /* TCP_Participant.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCP_Participant.cpp; sourceTree = "<group>"; };
 		74E38FF116E1949000ABD5DE /* TCP_Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCP_Participant.h; sourceTree = "<group>"; };
+		74E38FF316E1BE4A00ABD5DE /* ServerAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerAPI.cpp; sourceTree = "<group>"; };
+		74E38FF416E1BE4A00ABD5DE /* ServerAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerAPI.h; sourceTree = "<group>"; };
+		74E38FF616E1BEC000ABD5DE /* Packets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Packets.cpp; sourceTree = "<group>"; };
+		74E38FF716E1BEC000ABD5DE /* Packets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packets.h; sourceTree = "<group>"; };
 		74F3BC2816DFC7BB000FC9C4 /* AUTHORS */ = {isa = PBXFileReference; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
 		74F3BC2916DFC7BB000FC9C4 /* ChangeLog */ = {isa = PBXFileReference; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
 		74F3BC2A16DFC7BB000FC9C4 /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
@@ -396,6 +402,8 @@
 			isa = PBXGroup;
 			children = (
 				743CACD316DFA9CE00C56DB2 /* Readme */,
+				74E38FF316E1BE4A00ABD5DE /* ServerAPI.cpp */,
+				74E38FF416E1BE4A00ABD5DE /* ServerAPI.h */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -558,6 +566,8 @@
 				74E38FEE16E17E2000ABD5DE /* TCP_Pool.h */,
 				74E38FF016E1948F00ABD5DE /* TCP_Participant.cpp */,
 				74E38FF116E1949000ABD5DE /* TCP_Participant.h */,
+				74E38FF616E1BEC000ABD5DE /* Packets.cpp */,
+				74E38FF716E1BEC000ABD5DE /* Packets.h */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -810,6 +820,8 @@
 				74E38FEC16E17DCF00ABD5DE /* TCP_Session.cpp in Sources */,
 				74E38FEF16E17E2100ABD5DE /* TCP_Pool.cpp in Sources */,
 				74E38FF216E1949000ABD5DE /* TCP_Participant.cpp in Sources */,
+				74E38FF516E1BE4A00ABD5DE /* ServerAPI.cpp in Sources */,
+				74E38FF816E1BEC000ABD5DE /* Packets.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,4 +10,28 @@
 //
 //
 
+#include "../serialization/Boost_Serialization.h"
+#include <string>
+#include <vector>
 
+class RenderMap {
+    
+private:
+    
+    template <typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+        
+        
+    }
+    
+    
+    
+    
+public:
+    
+    RenderMap(){};
+    
+    
+    
+};

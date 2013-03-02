@@ -14,6 +14,7 @@
 #include <exception>
 
 #include "ServerInit.h"
+#include "../api/ServerAPI.h"
 #include "../db/MySQLServerDB.h"
 #include "../networking/Boost_Net_Asio.h"
 #include "../networking/TCP_Handler.h"
@@ -25,6 +26,7 @@
 
 
 FileLogger *fileLogger;
+ServerAPI *serverAPI;
 
 
 void ServerInit(int argc, char *argv[]){
