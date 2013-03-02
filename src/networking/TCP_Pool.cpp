@@ -7,9 +7,17 @@
 //
 
 #include "TCP_Pool.h"
+#include "TCP_Participant.h"
+#include <set>
 
-void TCP_Pool::join(){
+void TCP_Pool::join(tcp_participant_ptr tcp_participant){
     
+    tcp_participants.insert(tcp_participant);
     
+}
+
+void TCP_Pool::leave(tcp_participant_ptr tcp_participant){
+    
+    tcp_participants.erase(tcp_participant);
     
 }

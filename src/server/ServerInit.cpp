@@ -108,6 +108,7 @@ void NetInit(int port){
     try {
         
         boost::asio::io_service io_service;
+        boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);
         tcp_handler_ptr tcp_server(new TCP_Handler(io_service, port));
         io_service.run();
         

@@ -6,11 +6,16 @@
 //  Created by Jonathan Rumion on 3/1/13.
 //  Copyright (c) 2013 TAP. All rights reserved.
 //
+#include "TCP_Participant.h"
+#include <memory>
+#include <set>
 
 
 class TCP_Pool {
     
 private:
+    
+    std::set<tcp_participant_ptr> tcp_participants;
     
     
 public:
@@ -19,7 +24,10 @@ public:
     virtual ~TCP_Pool(){};
     
     
-    void join();
+    void join(tcp_participant_ptr tcp_participant);
+    void leave(tcp_participant_ptr tcp_participant);
     
     
 };
+
+typedef std::shared_ptr<TCP_Pool> tcp_pool_ptr;

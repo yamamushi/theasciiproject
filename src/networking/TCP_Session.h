@@ -9,9 +9,10 @@
 
 #include "TCP_Pool.h"
 #include "Boost_Net_Asio.h"
+#include "TCP_Participant.h"
 #include <memory>
 
-class TCP_Session : public std::enable_shared_from_this<TCP_Session> {
+class TCP_Session : public TCP_Participant, public std::enable_shared_from_this<TCP_Session> {
     
 private:
     
@@ -27,6 +28,7 @@ public:
     boost::asio::ip::tcp::socket& socket(){return tcp_socket;}
     
     void start();
+    void end();
     
 };
 
