@@ -8,6 +8,7 @@
 
 #include "TCP_Session.h"
 #include "TCP_Participant.h"
+#include "../api/ServerAPI.h"
 #include <boost/bind.hpp>
 #include <memory>
 #include <iostream>

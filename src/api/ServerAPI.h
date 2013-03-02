@@ -11,10 +11,12 @@
 #include "../server/ServerInit.h"
 #include "../utils/FileLogger.h"
 
+#include <memory>
+
 extern FileLogger *fileLogger;
 
 
-class ServerAPI {
+class ServerAPI : public std::enable_shared_from_this<ServerAPI>{
     
 private:
     
@@ -24,5 +26,8 @@ public:
     
     ServerAPI(){};
     ~ServerAPI(){};
+    
+    // I don't believe all of the commands need to be static, but it would still be nice..
+    // static <return type> functionname(params);
     
 };

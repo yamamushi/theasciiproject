@@ -11,6 +11,7 @@
 #include <string>
 #include <iostream>
 #include <thread>
+#include <memory>
 #include <exception>
 
 #include "ServerInit.h"
@@ -26,7 +27,7 @@
 
 
 FileLogger *fileLogger;
-ServerAPI *serverAPI;
+std::shared_ptr<ServerAPI> serverAPI;
 
 
 void ServerInit(int argc, char *argv[]){

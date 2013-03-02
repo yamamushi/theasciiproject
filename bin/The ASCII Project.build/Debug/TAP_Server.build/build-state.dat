@@ -3,25 +3,26 @@ v5
 r1
 cCheck dependencies
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MySQLServerDB.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Entity.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/entities/Entity.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MainServer.o" "/Users/yamamushi/Programming/projects/The ASCII Project/TAP_Server/../src/MainServer.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Entity.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/entities/Entity.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/EntityMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Tile.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/ServerConfig.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TileMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/TileMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/ServerConfig.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ConsoleLog.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/ConsoleLog.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldgenInit.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Filesystem.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/Filesystem.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldgenInit.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/RenderMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/RenderMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Handler.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Handler.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/WorldMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Session.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Session.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Handler.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Handler.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Pool.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Pool.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Participant.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Participant.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerAPI.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/api/ServerAPI.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Pool.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Pool.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Packets.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/Packets.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerAPI.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/api/ServerAPI.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/nOStradamus.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/ai/nOStradamus.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cLd "/Users/yamamushi/Programming/projects/The ASCII Project/bin/TAP_Server" normal x86_64
 
 N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk
@@ -146,8 +147,8 @@ s271
 i"server/ServerInit.h"
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/TAP_Server
-t1362202105
-s1164128
+t1362202827
+s1164820
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ConsoleLog.o
 t1362189801
@@ -162,8 +163,8 @@ t1362189800
 s1940
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o
-t1362189802
-s153164
+t1362202536
+s153276
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Filesystem.o
 t1362189803
@@ -177,6 +178,10 @@ N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.b
 t1362202197
 s95392
 
+N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Nostradamus.o
+t2
+s0
+
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Packets.o
 t1362202105
 s1940
@@ -186,7 +191,7 @@ t1362202105
 s1940
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerAPI.o
-t1362202196
+t1362202536
 s1932
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.o
@@ -194,13 +199,13 @@ t1362189803
 s1323688
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o
-t2
-s0
+t1362202539
+s792828
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TAP_Server.LinkFileList
-c0000000051318BC70000000000000B0F
-t1362201543
-s2831
+c00000000513190CB0000000000000B9E
+t1362202827
+s2974
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Handler.o
 t1362190309
@@ -215,7 +220,7 @@ t1362190307
 s113924
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Session.o
-t1362190309
+t1362202586
 s268216
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Tile.o
@@ -234,6 +239,33 @@ N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.b
 t1362189806
 s771616
 
+N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/nOStradamus.o
+t1362202827
+s1932
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/ai/Nostradamus.cpp
+c000000005131907900000000000000A8
+t1362202745
+s168
+i"Nostradamus.h"
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/ai/Nostradamus.h
+c00000000513190790000000000000132
+t1362202745
+s306
+i<iostream>
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/ai/nOStradamus.cpp
+c00000000513190C900000000000000CB
+t1362202825
+s203
+i"nOStradamus.h"
+
+N/Users/yamamushi/Programming/projects/The ASCII Project/src/ai/nOStradamus.h
+c00000000513190B3000000000000010A
+t1362202803
+s266
+
 N/Users/yamamushi/Programming/projects/The ASCII Project/src/api/ServerAPI.cpp
 c00000000513186C900000000000000A4
 t1362200265
@@ -241,10 +273,13 @@ s164
 i"ServerAPI.h"
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/src/api/ServerAPI.h
-c0000000051318DF30000000000000192
-t1362202099
-s402
+c0000000051318F88000000000000025D
+t1362202504
+s605
 i"../db/MySQLServerDB.h"
+i"../server/ServerInit.h"
+i"../utils/FileLogger.h"
+i<memory>
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.cpp
 c00000000512FA87F00000000000008B1
@@ -299,6 +334,8 @@ c0000000051318CD70000000000000203
 t1362201815
 s515
 i"../serialization/Boost_Serialization.h"
+i<string>
+i<vector>
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.cpp
 c00000000512FA7E60000000000000014
@@ -364,7 +401,10 @@ N/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/Packets.
 c0000000051318D590000000000000343
 t1362201945
 s835
-i<iostream>
+i"Packets.h"
+i"../serialization/Boost_Serialization.h"
+i<vector>
+i<string>
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Handler.cpp
 c000000005131554F0000000000000356
@@ -414,11 +454,12 @@ i<memory>
 i<set>
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Session.cpp
-c0000000051315FE0000000000000020E
-t1362190304
-s526
+c0000000051318FD8000000000000022C
+t1362202584
+s556
 i"TCP_Session.h"
 i"TCP_Participant.h"
+i"../api/ServerAPI.h"
 i<boost/bind.hpp>
 i<memory>
 i<iostream>
@@ -464,14 +505,16 @@ i<boost/serialization/export.hpp>
 i<boost/serialization/vector.hpp>
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp
-c0000000051318E410000000000000CD6
-t1362202177
-s3286
+c0000000051318FA70000000000000CF8
+t1362202535
+s3320
 i<string>
 i<iostream>
 i<thread>
+i<memory>
 i<exception>
 i"ServerInit.h"
+i"../api/ServerAPI.h"
 i"../db/MySQLServerDB.h"
 i"../networking/Boost_Net_Asio.h"
 i"../networking/TCP_Handler.h"
@@ -511,9 +554,9 @@ i<fstream>
 i<time.h>
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.h
-c0000000051318E5E0000000000000194
-t1362202206
-s404
+c0000000051318E7800000000000001BA
+t1362202232
+s442
 i<string>
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/Filesystem.cpp
@@ -769,6 +812,12 @@ i"my_alloc.h"
 CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/TAP_Server/../src/MainServer.cpp"
 r0
 
+CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/src/ai/Nostradamus.cpp"
+r0
+
+CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/src/ai/nOStradamus.cpp"
+r0
+
 CBuild AST from "/Users/yamamushi/Programming/projects/The ASCII Project/src/api/ServerAPI.cpp"
 r0
 
@@ -828,7 +877,7 @@ r0
 
 CCheck dependencies
 r0
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciesfc1847dec5e1b641^5ab848dec5e1b641^---0#1#0#--18"Check dependencies36"7F93A4FA-0951-4D1C-957E-05869A22EAC2-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies8999694dc8e1b641^dfde694dc8e1b641^---0#1#0#--18"Check dependencies36"E2D90F48-F540-4FA4-B116-557A1E748860-
 
 CCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ConsoleLog.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/ConsoleLog.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 s383882600.730768
@@ -870,8 +919,8 @@ xcom.apple.compilers.llvm.clang.1_0.compiler
 lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp6ede8c6695e1b641^f81aae6895e1b641^---0#0#0#-19%DVTDocumentLocation2@101"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/mapping/EntityMap.cpp0000000000000000^2280"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/EntityMap.o" src/mapping/EntityMap.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/EntityMap.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/EntityMap.o"36"3042D65F-A023-44B2-A7B6-02CE9D7F6EBA-
 
 CCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s383895006.302004
-e383895007.244004
+s383895335.955472
+e383895336.865493
 r1
 xCompileC
 xbin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o
@@ -880,7 +929,7 @@ xnormal
 xx86_64
 xc++
 xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cpp51f74ddec5e1b641^35983edfc5e1b641^---0#0#0#-19%DVTDocumentLocation2@100"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/utils/FileLogger.cpp0000000000000000^2281"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o" src/utils/FileLogger.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o"36"A2EB84AE-0198-4105-9A3C-A8F31CC5003D-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cpp79ccf427c7e1b641^828fdd28c7e1b641^---0#0#0#-19%DVTDocumentLocation2@100"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/utils/FileLogger.cpp0000000000000000^2281"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o" src/utils/FileLogger.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o"36"3FE09B9D-1F8C-4444-9926-C6CFCEC9B72E-
 
 CCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Filesystem.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/Filesystem.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 s383882601.513805
@@ -921,6 +970,9 @@ xc++
 xcom.apple.compilers.llvm.clang.1_0.compiler
 lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.cpp0cce3cd4c5e1b641^8fa65ad5c5e1b641^---0#0#0#-19%DVTDocumentLocation2@100"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/db/MySQLServerDB.cpp0000000000000000^2290"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MySQLServerDB.o" src/db/MySQLServerDB.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MySQLServerDB.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MySQLServerDB.o"36"D4F8B40B-FF8A-4B13-8386-2CE14F040462-
 
+CCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Nostradamus.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/ai/Nostradamus.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
 CCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Packets.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/Packets.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 s383894904.709227
 e383894905.938317
@@ -948,8 +1000,8 @@ xcom.apple.compilers.llvm.clang.1_0.compiler
 lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/RenderMap.cpp7407b578c5e1b641^b134f079c5e1b641^---0#0#0#-19%DVTDocumentLocation2@101"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/mapping/RenderMap.cpp0000000000000000^2280"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/RenderMap.o" src/mapping/RenderMap.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/RenderMap.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/RenderMap.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/RenderMap.o"36"CDBDD465-3C03-4271-87CC-4DF41BD00AA4-
 
 CCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerAPI.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/api/ServerAPI.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s383894996.284969
-e383894996.832352
+s383895335.961112
+e383895336.434470
 r1
 xCompileC
 xbin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerAPI.o
@@ -958,7 +1010,7 @@ xnormal
 xx86_64
 xc++
 xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/api/ServerAPI.cpp871a49d4c5e1b641^e04ad6d4c5e1b641^---0#0#0#-19%DVTDocumentLocation2@97"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/api/ServerAPI.cpp0000000000000000^2272"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerAPI.o" src/api/ServerAPI.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerAPI.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/api/ServerAPI.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerAPI.o"36"8A561B62-2F8C-4722-911C-3CD1D98E881C-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/api/ServerAPI.cpp5a2bf627c7e1b641^22526f28c7e1b641^---0#0#0#-19%DVTDocumentLocation2@97"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/api/ServerAPI.cpp0000000000000000^2272"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerAPI.o" src/api/ServerAPI.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerAPI.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/api/ServerAPI.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerAPI.o"36"18A17E61-E90E-43E6-A807-1C2509CEFEBA-
 
 CCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/ServerConfig.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 s383882599.700423
@@ -974,8 +1026,8 @@ xcom.apple.compilers.llvm.clang.1_0.compiler
 lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection92"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/ServerConfig.cpp3290b36795e1b641^ea5dc86b95e1b641^---0#0#0#-19%DVTDocumentLocation2@104"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/parsers/ServerConfig.cpp0000000000000000^2295"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.o" src/parsers/ServerConfig.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/ServerConfig.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.o"36"DD7930DD-71A6-438A-B038-839D0E8D6961-
 
 CCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s383895006.300875
-e383895010.432073
+s383895335.953407
+e383895339.751924
 r1
 xCompileC
 xbin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o
@@ -984,7 +1036,7 @@ xnormal
 xx86_64
 xc++
 xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp202a4ddec5e1b641^289b6ee2c5e1b641^---0#0#0#-19%DVTDocumentLocation2@101"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/server/ServerInit.cpp0000000000000000^2283"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o" src/server/ServerInit.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o"36"3E2EA0AE-13D4-4F9B-8F8C-1557108B4127-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp0439f427c7e1b641^b77cc02bc7e1b641^---0#0#0#-19%DVTDocumentLocation2@101"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/server/ServerInit.cpp0000000000000000^2283"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o" src/server/ServerInit.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o"36"AC120C0C-F2A0-4D5B-940A-85709994AAE6-
 
 CCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Handler.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Handler.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 s383883107.140192
@@ -1026,8 +1078,8 @@ xcom.apple.compilers.llvm.clang.1_0.compiler
 lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection91"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Pool.cpp770f246397e1b641^e108c66397e1b641^---0#0#0#-19%DVTDocumentLocation2@103"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/networking/TCP_Pool.cpp0000000000000000^2281"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Pool.o" src/networking/TCP_Pool.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Pool.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Pool.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Pool.o"36"1DF34196-69DA-4893-A115-270E93502F29-
 
 CCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Session.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Session.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s383883107.140191
-e383883109.351982
+s383895384.977610
+e383895386.594152
 r1
 xCompileC
 xbin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Session.o
@@ -1036,7 +1088,7 @@ xnormal
 xx86_64
 xc++
 xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection94"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Session.cppa704246397e1b641^fc195a6597e1b641^---0#0#0#-19%DVTDocumentLocation2@106"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/networking/TCP_Session.cpp0000000000000000^2296"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Session.o" src/networking/TCP_Session.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Session.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Session.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Session.o"36"BCF978A9-40B3-49A3-BF96-A6B6668B2B02-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection94"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Session.cppc460fa58c7e1b641^0919985ac7e1b641^---0#0#0#-19%DVTDocumentLocation2@106"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/networking/TCP_Session.cpp0000000000000000^2296"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Session.o" src/networking/TCP_Session.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Session.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Session.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Session.o"36"F6B7B3BD-7FC9-41FE-92D8-1908D10C2C23-
 
 CCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Tile.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 s383882598.588287
@@ -1090,13 +1142,26 @@ xc++
 xcom.apple.compilers.llvm.clang.1_0.compiler
 lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection93"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cpp9da15c6a95e1b641^a704446e95e1b641^---0#0#0#-19%DVTDocumentLocation2@105"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/worldgen/WorldgenInit.cpp0000000000000000^2297"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldgenInit.o" src/worldgen/WorldgenInit.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldgenInit.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldgenInit.o"36"CCC0F5F0-21AF-4FB4-B6AD-F969D79D3828-
 
+CCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/nOStradamus.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/ai/nOStradamus.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s383895627.383281
+e383895627.599003
+r1
+xCompileC
+xbin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/nOStradamus.o
+x/Users/yamamushi/Programming/projects/The ASCII Project/src/ai/nOStradamus.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection86"Compile /Users/yamamushi/Programming/projects/The ASCII Project/src/ai/nOStradamus.cpp7444624bc8e1b641^1058994bc8e1b641^---0#0#0#-19%DVTDocumentLocation2@98"file://localhost/Users/yamamushi/Programming/projects/The%20ASCII%20Project/src/ai/nOStradamus.cpp0000000000000000^2280"CompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/nOStradamus.o" src/ai/nOStradamus.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/TAP_Server.hmap" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/include" -I/usr/local/include -I/usr/local/mysql/include "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources/x86_64" "-I/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/DerivedSources" "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -isystem/usr/local/include/ --serialize-diagnostics "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/nOStradamus.dia" -c "/Users/yamamushi/Programming/projects/The ASCII Project/src/ai/nOStradamus.cpp" -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/nOStradamus.o"36"E6214168-3796-40F3-99C8-C3FFE59CAB4F-
+
 CLd "/Users/yamamushi/Programming/projects/The ASCII Project/bin/TAP_Server" normal x86_64
-s383895010.438959
-e383895010.493789
+s383895627.605924
+e383895627.661211
 r1
 xLd
 x/Users/yamamushi/Programming/projects/The ASCII Project/bin/TAP_Server
 xnormal
 xx86_64
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection75"Link /Users/yamamushi/Programming/projects/The ASCII Project/bin/TAP_Server637c70e2c5e1b641^126a7ee2c5e1b641^---0#0#0#--1034"Ld bin/TAP_Server normal x86_64    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv MACOSX_DEPLOYMENT_TARGET 10.8    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk "-L/Users/yamamushi/Programming/projects/The ASCII Project/bin" -L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib -L/usr/local/mysql/lib -L/usr/local/lib "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -filelist "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TAP_Server.LinkFileList" -mmacosx-version-min=10.8 -lboost_system -lboost_filesystem -lboost_program_options -lboost_serialization -lmysqlclient -stdlib=libc++ -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/TAP_Server"36"9E613ECB-D569-47C3-A024-9A7F4929FD5F-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection75"Link /Users/yamamushi/Programming/projects/The ASCII Project/bin/TAP_Server533f9b4bc8e1b641^aa44a94bc8e1b641^---0#0#0#--1034"Ld bin/TAP_Server normal x86_64    cd "/Users/yamamushi/Programming/projects/The ASCII Project"    setenv MACOSX_DEPLOYMENT_TARGET 10.8    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk "-L/Users/yamamushi/Programming/projects/The ASCII Project/bin" -L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib -L/usr/local/mysql/lib -L/usr/local/lib "-F/Users/yamamushi/Programming/projects/The ASCII Project/bin" -F/Library/Frameworks -filelist "/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TAP_Server.LinkFileList" -mmacosx-version-min=10.8 -lboost_system -lboost_filesystem -lboost_program_options -lboost_serialization -lmysqlclient -stdlib=libc++ -o "/Users/yamamushi/Programming/projects/The ASCII Project/bin/TAP_Server"36"C2DDC9FC-F2D9-4840-9DEC-F82461D69417-
 
