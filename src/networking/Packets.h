@@ -71,4 +71,4 @@ typedef struct {
 
 
 /// The size of a fixed length header.
-enum { header_length = 8 };
+enum { HEADER_SIZE = 8 };

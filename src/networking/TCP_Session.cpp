@@ -17,6 +17,13 @@
 #include <iostream>
 #include <vector>
 
+
+// REMOVE THIS
+#include "../mapping/WorldMap.h"
+// REMOVE THIS
+
+
+
 extern FileLogger *fileLogger;
 
 void TCP_Session::start(){
@@ -94,7 +101,7 @@ void TCP_Session::initMode(const boost::system::error_code& error)
         
         inputStream >> modeRequest;
         
-        fileLogger->ErrorLog("Client " + clientIP + ": " + modeRequest);
+        fileLogger->ErrorLog("Client " + clientIP + ": INIT - " + modeRequest);
         
         if(modeRequest == "term")
         {
@@ -103,7 +110,7 @@ void TCP_Session::initMode(const boost::system::error_code& error)
         if(modeRequest == "raw")
         {
             
-            
+            /*
             HeaderPacket header;
             header.HeaderSize = (int)sizeof(HeaderPacket);
             
@@ -114,10 +121,12 @@ void TCP_Session::initMode(const boost::system::error_code& error)
             std::string outbound_header = header_ofs.str();
             
             std::vector<boost::asio::const_buffer> buffers;
-            buffers.push_back(boost::asio::buffer(outbound_header));
+            buffers.push_back(boost::asio::buffer(outbound_header)); */
             
             // Later on we'll pass this to a handler function that will accept an API request from a client
-            boost::asio::async_write( tcp_socket, buffers, boost::bind(&TCP_Session::end, shared_from_this() ) );
+            //boost::asio::async_write( tcp_socket, boost::asio::buffer(""), boost::bind(&TCP_Session::end, shared_from_this() ) );
+            startRaw();
+            
         }
         else
         {
@@ -161,3 +170,12 @@ void TCP_Session::sendHeader(const boost::system::error_code& error)
 }
 
 
+
+void TCP_Session::startRaw(){
+    
+    std::shared_ptr<TileMap> rawTest_sharedptr(new TileMap(10, 10));
+    TileMap *rawTest = rawTest_sharedptr.get();
+    
+    async_data_write(rawTest, boost::bind(&TCP_Session::end, shared_from_this()));
+    
+}

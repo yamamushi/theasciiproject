@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74339E8816E3EC3100B20B1F /* TCP_Data_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74339E8616E3EC3100B20B1F /* TCP_Data_Functions.cpp */; };
 		743CAD3216DFA9CE00C56DB2 /* MySQLServerDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CACDE16DFA9CE00C56DB2 /* MySQLServerDB.cpp */; };
 		743CAD3316DFA9CE00C56DB2 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CACE416DFA9CE00C56DB2 /* Entity.cpp */; };
 		743CAD4116DFA9CE00C56DB2 /* MainServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD0816DFA9CE00C56DB2 /* MainServer.cpp */; };
@@ -77,6 +78,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		74339E8616E3EC3100B20B1F /* TCP_Data_Functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCP_Data_Functions.cpp; sourceTree = "<group>"; };
+		74339E8716E3EC3100B20B1F /* TCP_Data_Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCP_Data_Functions.h; sourceTree = "<group>"; };
 		743CAC2216DF9D5600C56DB2 /* bresenham.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bresenham.h; sourceTree = "<group>"; };
 		743CAC2316DF9D5600C56DB2 /* bresenham.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bresenham.hpp; sourceTree = "<group>"; };
 		743CAC2416DF9D5600C56DB2 /* bsp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bsp.h; sourceTree = "<group>"; };
@@ -643,6 +646,8 @@
 				74E38FF116E1949000ABD5DE /* TCP_Participant.h */,
 				74E38FF616E1BEC000ABD5DE /* Packets.cpp */,
 				74E38FF716E1BEC000ABD5DE /* Packets.h */,
+				74339E8616E3EC3100B20B1F /* TCP_Data_Functions.cpp */,
+				74339E8716E3EC3100B20B1F /* TCP_Data_Functions.h */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -977,6 +982,7 @@
 				74E38FF816E1BEC000ABD5DE /* Packets.cpp in Sources */,
 				74E38FFE16E1C80D00ABD5DE /* nOStradamus.cpp in Sources */,
 				743DF61816E317BB00E64AC3 /* WorldEngine.cpp in Sources */,
+				74339E8816E3EC3100B20B1F /* TCP_Data_Functions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

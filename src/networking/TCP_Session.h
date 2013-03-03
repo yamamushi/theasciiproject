@@ -10,10 +10,14 @@
 #include "TCP_Pool.h"
 #include "Boost_Net_Asio.h"
 #include "TCP_Participant.h"
+#include "TCP_Data_Functions.h"
 #include "Packets.h"
 #include "../serialization/Boost_Serialization.h"
+#include "../utils/FileLogger.h"
 #include <memory>
 #include <boost/bind.hpp>
+
+extern FileLogger *fileLogger;
 
 class TCP_Session : public TCP_Participant, public std::enable_shared_from_this<TCP_Session> {
     
@@ -47,6 +51,9 @@ public:
     
     void sendHeader(const boost::system::error_code& error);
     
+    // TEST DATA SEND
+    void startRaw();
+    
     /// Asynchronously write a data structure to the socket.
     
     // I have to fix this, this doesn't mix well with our
@@ -62,9 +69,8 @@ public:
         
         // Format the header.
         std::ostringstream header_stream;
-        header_stream << std::setw(header_length)
-        << std::hex << outbound_data_.size();
-        if (!header_stream || header_stream.str().size() != header_length)
+        header_stream << std::setw(HEADER_SIZE) << std::hex << outbound_data_.size();
+        if (!header_stream || header_stream.str().size() != HEADER_SIZE)
         {
             // Something went wrong, inform the caller.
             boost::system::error_code error(boost::asio::error::invalid_argument);
