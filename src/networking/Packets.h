@@ -13,6 +13,9 @@
 #include <vector>
 #include <string>
 
+// This packet type can be used to send specific Tile ID's to clients
+// Probably shouldn't use this when sending large amounts of data
+// However single tile updates would benefit from this.
 
 typedef struct {
     
@@ -26,6 +29,10 @@ typedef struct {
     
 } TilePacket;
 
+
+// We can use the MapPacket to send an entire chunk of map updates at once
+// Unfortunately we're left with a larger packet that we need due to the
+// Serialization overhead
 
 typedef struct {
     
@@ -43,6 +50,10 @@ typedef struct {
     
 } MapPacket;
 
+
+// Header Packet
+// Tells us the size of the next incoming packet of data,
+// And the type of data we are receiving from the server.
 
 typedef struct {
     

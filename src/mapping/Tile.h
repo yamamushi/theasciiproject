@@ -29,22 +29,24 @@ private:
     }
     
     int posX, posY;
-    std::wstring symbol;
+    std::string symbol;
     
     
 public:
     Tile(){};
-    Tile(int PosX, int PosY, std::wstring Symbol=L"\u2550") : posX(PosX), posY(PosY), symbol(Symbol){};
+    Tile(int PosX, int PosY, const char *Symbol) : posX(PosX), posY(PosY), symbol(Symbol){};
+
     
     int getX(){return posX;};
     int getY(){return posY;};
     void setX(int x){posX = x;};
     void setY(int y){posY = y;};
-    void setSymbol(std::wstring sym){symbol = sym;};
+    void setSymbol(std::string sym){symbol = sym;};
+    std::string getSymbol(){return symbol;}
     
     virtual ~Tile(){};
     
 };
 
-BOOST_SERIALIZATION_SHARED_PTR(Tile)
+//BOOST_SERIALIZATION_SHARED_PTR(Tile)
 

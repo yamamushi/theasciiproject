@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>TMapDump.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>The ASCII Project.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -33,6 +38,11 @@
 			<true/>
 		</dict>
 		<key>746B312A16DF9A5000CDBBC9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>74E3900216E28E4500ABD5DE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -21,14 +21,15 @@
 void WorldGen::init(){
         
     TileMap *test = new TileMap(serverConfig->mapX, serverConfig->mapY);
+    TileMap outputMap = *test;
     
     //std::string fileName(serverConfig->data_dir + "/maps/" + boost::lexical_cast<std::string>(test->getX()) + "_" + boost::lexical_cast<std::string>(test->getY()) + ".tle");
     
-    std::string fileName(serverConfig->data_dir + "/maps/test.glb");
+    std::string fileName(serverConfig->data_dir + "/maps/test.tlm");
     std::ofstream ofs(fileName);
-    boost::archive::binary_oarchive oarchive(ofs);
+    boost::archive::text_oarchive oarchive(ofs);
     
-    oarchive << test;
+    oarchive << outputMap;
     ofs.close();
     
     return;

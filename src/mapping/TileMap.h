@@ -30,7 +30,7 @@ private:
     }
     
     int length, width;
-    std::vector< std::vector<Tile *> > virtualMap;
+
     
     void init();
     void fillSolid();
@@ -40,8 +40,13 @@ public:
     TileMap(){};
     TileMap(int l, int w) : length(l), width(w){init();};
     
+    std::vector< std::vector<Tile *> > virtualMap;
+    
     void backupToDisk(std::string path);
     
     ~TileMap(){};
+    
+    int getLength(){return length;}
+    int getWidth(){return width;}
     
 };

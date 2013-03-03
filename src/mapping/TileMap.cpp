@@ -11,6 +11,7 @@
 
 #include <memory>
 #include <vector>
+#include <iostream>
 
 #include "../serialization/Boost_Serialization.h"
 #include "TileMap.h"
@@ -19,17 +20,17 @@
 
 void TileMap::init(){
     
-    for(int x=0; x<length; x++){
-        for(int y=0; y<width; y++){
-            
-            std::vector<Tile *> row(length);
-            Tile *newTile = new Tile(x, y);
-            row.push_back(newTile);
-            virtualMap.push_back(row);
-            
-        }
-    }
+    std::cout << length << std::endl;
+    std::cout << width << std::endl;
     
+    for(int x=0; x<length; x++){        
+        std::vector<Tile *> row;
+        for(int y=0; y<width; y++){            
+            Tile *newTile = new Tile(x, y, u8"\u2550");
+            row.push_back(newTile);
+        }
+        virtualMap.push_back(row);
+    }
 }
 
 
@@ -39,6 +40,6 @@ void TileMap::fillSolid(){
         for( int y=0; y<width; y++){
             
         }
-    } 
+    }
     
 };
