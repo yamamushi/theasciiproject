@@ -16,6 +16,7 @@
 #include "../mapping/Tile.h"
 #include "../mapping/TileMap.h"
 #include "../mapping/EntityMap.h"
+#include "../mapping/WorldMap.h"
 #include "../serialization/Boost_Serialization.h"
 
 void WorldGen::init(){
@@ -31,6 +32,15 @@ void WorldGen::init(){
     
     oarchive << outputMap;
     ofs.close();
+    
+    WorldMap *worldMap = new WorldMap(serverConfig->worldX, serverConfig->worldY, serverConfig->worldZ, serverConfig->mapX, serverConfig->mapY);
+    
+    std::string worldFileName(serverConfig->data_dir + "/maps/worldmap.glb");
+    std::ofstream world_ofs(worldFileName);
+    boost::archive::text_oarchive world_oarchive(world_ofs);
+    
+    world_oarchive << worldMap;
+    world_ofs.close();
     
     return;
     

@@ -33,6 +33,13 @@
 		74E3900816E28E4600ABD5DE /* TMapDump.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74E3900716E28E4600ABD5DE /* TMapDump.1 */; };
 		74E3900C16E28EBE00ABD5DE /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD0D16DFA9CE00C56DB2 /* Tile.cpp */; };
 		74E3901016E290A400ABD5DE /* TileMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD0F16DFA9CE00C56DB2 /* TileMap.cpp */; };
+		74E3901916E2FAD100ABD5DE /* WMapDumpMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E3901816E2FAD100ABD5DE /* WMapDumpMain.cpp */; };
+		74E3901B16E2FAD100ABD5DE /* WMapDump.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74E3901A16E2FAD100ABD5DE /* WMapDump.1 */; };
+		74E3901F16E2FB2500ABD5DE /* EntityMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD0A16DFA9CE00C56DB2 /* EntityMap.cpp */; };
+		74E3902016E2FB2500ABD5DE /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD0D16DFA9CE00C56DB2 /* Tile.cpp */; };
+		74E3902116E2FB2500ABD5DE /* TileMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD0F16DFA9CE00C56DB2 /* TileMap.cpp */; };
+		74E3902216E2FB2500ABD5DE /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7452363916DFD0E900842D07 /* WorldMap.cpp */; };
+		74E3902316E2FB3200ABD5DE /* RenderMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7452363616DFD05900842D07 /* RenderMap.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +60,16 @@
 			dstSubfolderSpec = 0;
 			files = (
 				74E3900816E28E4600ABD5DE /* TMapDump.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		74E3901416E2FAD000ABD5DE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				74E3901B16E2FAD100ABD5DE /* WMapDump.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -245,7 +262,10 @@
 		74E38FFD16E1C80D00ABD5DE /* nOStradamus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nOStradamus.h; sourceTree = "<group>"; };
 		74E3900516E28E4600ABD5DE /* TMapDumpMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TMapDumpMain.cpp; sourceTree = "<group>"; };
 		74E3900716E28E4600ABD5DE /* TMapDump.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TMapDump.1; sourceTree = "<group>"; };
-		74E3901116E297A400ABD5DE /* TMapDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TMapDump; sourceTree = BUILT_PRODUCTS_DIR; };
+		74E3901116E297A400ABD5DE /* TMapDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = TMapDump; path = "/Users/yamamushi/Programming/projects/The ASCII Project/build/TMapDump"; sourceTree = "<absolute>"; };
+		74E3901616E2FAD000ABD5DE /* WMapDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WMapDump; sourceTree = BUILT_PRODUCTS_DIR; };
+		74E3901816E2FAD100ABD5DE /* WMapDumpMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WMapDumpMain.cpp; sourceTree = "<group>"; };
+		74E3901A16E2FAD100ABD5DE /* WMapDump.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = WMapDump.1; sourceTree = "<group>"; };
 		74F3BC2816DFC7BB000FC9C4 /* AUTHORS */ = {isa = PBXFileReference; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
 		74F3BC2916DFC7BB000FC9C4 /* ChangeLog */ = {isa = PBXFileReference; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
 		74F3BC2A16DFC7BB000FC9C4 /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
@@ -263,6 +283,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		74E3900016E28E4500ABD5DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74E3901316E2FAD000ABD5DE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -746,9 +773,10 @@
 				743CABFF16DF9BDD00C56DB2 /* src */,
 				746B311F16DF99EC00CDBBC9 /* TAP_Server */,
 				74E3900416E28E4500ABD5DE /* TMapDump */,
+				74E3901716E2FAD000ABD5DE /* WMapDump */,
 				746B30F116DF949F00CDBBC9 /* Frameworks */,
 				7452363516DFCFEB00842D07 /* paperwork */,
-				74E3901116E297A400ABD5DE /* TMapDump */,
+				74E3901616E2FAD000ABD5DE /* WMapDump */,
 			);
 			sourceTree = "<group>";
 		};
@@ -790,6 +818,15 @@
 			path = TMapDump;
 			sourceTree = "<group>";
 		};
+		74E3901716E2FAD000ABD5DE /* WMapDump */ = {
+			isa = PBXGroup;
+			children = (
+				74E3901816E2FAD100ABD5DE /* WMapDumpMain.cpp */,
+				74E3901A16E2FAD100ABD5DE /* WMapDump.1 */,
+			);
+			path = WMapDump;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -827,6 +864,23 @@
 			productReference = 74E3901116E297A400ABD5DE /* TMapDump */;
 			productType = "com.apple.product-type.tool";
 		};
+		74E3901516E2FAD000ABD5DE /* WMapDump */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74E3901C16E2FAD100ABD5DE /* Build configuration list for PBXNativeTarget "WMapDump" */;
+			buildPhases = (
+				74E3901216E2FAD000ABD5DE /* Sources */,
+				74E3901316E2FAD000ABD5DE /* Frameworks */,
+				74E3901416E2FAD000ABD5DE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WMapDump;
+			productName = WMapDump;
+			productReference = 74E3901616E2FAD000ABD5DE /* WMapDump */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -850,6 +904,7 @@
 			targets = (
 				746B311D16DF99EC00CDBBC9 /* TAP_Server */,
 				74E3900216E28E4500ABD5DE /* TMapDump */,
+				74E3901516E2FAD000ABD5DE /* WMapDump */,
 			);
 		};
 /* End PBXProject section */
@@ -890,6 +945,19 @@
 				74E3900C16E28EBE00ABD5DE /* Tile.cpp in Sources */,
 				74E3901016E290A400ABD5DE /* TileMap.cpp in Sources */,
 				74E3900616E28E4600ABD5DE /* TMapDumpMain.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74E3901216E2FAD000ABD5DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74E3902316E2FB3200ABD5DE /* RenderMap.cpp in Sources */,
+				74E3901F16E2FB2500ABD5DE /* EntityMap.cpp in Sources */,
+				74E3902016E2FB2500ABD5DE /* Tile.cpp in Sources */,
+				74E3902116E2FB2500ABD5DE /* TileMap.cpp in Sources */,
+				74E3902216E2FB2500ABD5DE /* WorldMap.cpp in Sources */,
+				74E3901916E2FAD100ABD5DE /* WMapDumpMain.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1073,6 +1141,28 @@
 			};
 			name = Release;
 		};
+		74E3901D16E2FAD100ABD5DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		74E3901E16E2FAD100ABD5DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1099,6 +1189,14 @@
 			buildConfigurations = (
 				74E3900A16E28E4600ABD5DE /* Debug */,
 				74E3900B16E28E4600ABD5DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		74E3901C16E2FAD100ABD5DE /* Build configuration list for PBXNativeTarget "WMapDump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74E3901D16E2FAD100ABD5DE /* Debug */,
+				74E3901E16E2FAD100ABD5DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

@@ -11,6 +11,7 @@
 #include "TileMap.h"
 #include "Tile.h"
 #include "EntityMap.h"
+#include <vector>
 
 
 
@@ -25,24 +26,40 @@ private:
         ar & X;
         ar & Y;
         ar & Z;
+        ar & mapX;
+        ar & mapY;
         ar & globalTileMap;
-        ar & globalEntityMap;
+        //ar & globalEntityMap;
     }
     
     // Global Map Dimensions
     int X,Y,Z;
     
+    // TileMap Dimensions
+    int mapX, mapY;
+    
     // Storage Container for TileMaps
-    std::vector< std::vector< std::vector< std::unique_ptr<TileMap> > > > globalTileMap;
+    std::vector< std::vector< std::vector<TileMap *> > > globalTileMap;
     
     // Storage Container for EntityMaps
-    std::vector< std::vector< std::vector< std::unique_ptr<EntityMap> > > > globalEntityMap;
+    //std::vector< std::vector< std::vector< std::shared_ptr<EntityMap> > > > globalEntityMap;
+    
+    void init();
+    void initGlobalTileMap();
+    void initGlobalEntityMap();
     
     
 public:
     
-    WorldMap( int x, int y, int z) : X(x), Y(y), Z(z){};
+    WorldMap(){};
+    WorldMap( int x, int y, int z, int tX, int tY) : X(x), Y(y), Z(z), mapX(tX), mapY(tY){init();};
     
     ~WorldMap(){};
+    
+    int getX(){return X;};
+    int getY(){return Y;};
+    int getZ(){return Z;};
+    
+    TileMap* getTileMap(int x, int y, int z){return globalTileMap.at(x).at(y).at(z);};
     
 };

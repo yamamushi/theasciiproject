@@ -19,6 +19,8 @@
 *.dat
 *.idx
 *.emp
+*.glb
+*.tlm
 
 # Emacs Stuff
 *#

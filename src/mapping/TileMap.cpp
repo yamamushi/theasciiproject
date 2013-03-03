@@ -20,13 +20,10 @@
 
 void TileMap::init(){
     
-    std::cout << length << std::endl;
-    std::cout << width << std::endl;
-    
     for(int x=0; x<length; x++){        
         std::vector<Tile *> row;
         for(int y=0; y<width; y++){            
-            Tile *newTile = new Tile(x, y, u8"\u2550");
+            Tile *newTile = new Tile(x, y, u8"\u2327");
             row.push_back(newTile);
         }
         virtualMap.push_back(row);

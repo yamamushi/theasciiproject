@@ -9,14 +9,15 @@
  
  */
 
+#include "../serialization/Boost_Serialization.h"
 #include <memory>
 #include <vector>
 #include <string>
 
-#include "../serialization/Boost_Serialization.h"
+
 #include "Tile.h"
 
-class TileMap {
+class TileMap : public std::enable_shared_from_this<TileMap>{
     
 private:
     
@@ -50,3 +51,6 @@ public:
     int getWidth(){return width;}
     
 };
+
+//BOOST_SERIALIZATION_SHARED_PTR(TileMap)
+//BOOST_CLASS_EXPORT(TileMap)
