@@ -19,6 +19,7 @@
 		743CAD4816DFA9CE00C56DB2 /* FileLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD2716DFA9CE00C56DB2 /* FileLogger.cpp */; };
 		743CAD4916DFA9CE00C56DB2 /* Filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD2916DFA9CE00C56DB2 /* Filesystem.cpp */; };
 		743CAD4B16DFA9CE00C56DB2 /* WorldgenInit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD2F16DFA9CE00C56DB2 /* WorldgenInit.cpp */; };
+		743DF61816E317BB00E64AC3 /* WorldEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743DF61616E317BB00E64AC3 /* WorldEngine.cpp */; };
 		7452363816DFD05900842D07 /* RenderMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7452363616DFD05900842D07 /* RenderMap.cpp */; };
 		7452363B16DFD0E900842D07 /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7452363916DFD0E900842D07 /* WorldMap.cpp */; };
 		746B312316DF99EC00CDBBC9 /* TAP_Server.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 746B312216DF99EC00CDBBC9 /* TAP_Server.1 */; };
@@ -232,6 +233,23 @@
 		743CAD6316DFC4DF00C56DB2 /* NOTES */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTES; sourceTree = "<group>"; };
 		743CAD6416DFC4DF00C56DB2 /* Readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
 		743CAD6516DFC4DF00C56DB2 /* tiling */ = {isa = PBXFileReference; lastKnownFileType = text; path = tiling; sourceTree = "<group>"; };
+		743DF60716E3125200E64AC3 /* TAP_Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TAP_Server; sourceTree = BUILT_PRODUCTS_DIR; };
+		743DF60816E3125200E64AC3 /* TMapDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TMapDump; sourceTree = BUILT_PRODUCTS_DIR; };
+		743DF60A16E3127900E64AC3 /* checklogin.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = checklogin.php; sourceTree = "<group>"; };
+		743DF60B16E3127900E64AC3 /* config.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = config.php; sourceTree = "<group>"; };
+		743DF60C16E3127900E64AC3 /* confirmation.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = confirmation.php; sourceTree = "<group>"; };
+		743DF60D16E3127900E64AC3 /* create_ascii_db.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = create_ascii_db.sql; sourceTree = "<group>"; };
+		743DF60E16E3127900E64AC3 /* create_temp_user_db.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = create_temp_user_db.sql; sourceTree = "<group>"; };
+		743DF60F16E3127900E64AC3 /* enc_key.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = enc_key.php; sourceTree = "<group>"; };
+		743DF61016E3127900E64AC3 /* login_success.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = login_success.php; sourceTree = "<group>"; };
+		743DF61116E3127900E64AC3 /* logout.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = logout.php; sourceTree = "<group>"; };
+		743DF61216E3127900E64AC3 /* main_login.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = main_login.php; sourceTree = "<group>"; };
+		743DF61316E3127900E64AC3 /* signup.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = signup.php; sourceTree = "<group>"; };
+		743DF61416E3127900E64AC3 /* signup_ac.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = signup_ac.php; sourceTree = "<group>"; };
+		743DF61516E3127900E64AC3 /* users_create.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = users_create.sql; sourceTree = "<group>"; };
+		743DF61616E317BB00E64AC3 /* WorldEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldEngine.cpp; sourceTree = "<group>"; };
+		743DF61716E317BB00E64AC3 /* WorldEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldEngine.h; sourceTree = "<group>"; };
+		743DF61916E3189300E64AC3 /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
 		7452363416DFCFC600842D07 /* TAP_Server */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = TAP_Server; sourceTree = "<group>"; };
 		7452363616DFD05900842D07 /* RenderMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderMap.cpp; sourceTree = "<group>"; };
 		7452363716DFD05900842D07 /* RenderMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderMap.h; sourceTree = "<group>"; };
@@ -243,7 +261,6 @@
 		746B30F716DF949F00CDBBC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		746B310F16DF958100CDBBC9 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = /Library/Frameworks/SDL.framework; sourceTree = "<absolute>"; };
 		746B312216DF99EC00CDBBC9 /* TAP_Server.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TAP_Server.1; sourceTree = "<group>"; };
-		74E38FDF16E1367E00ABD5DE /* TAP_Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = TAP_Server; path = "/Users/yamamushi/Programming/projects/The ASCII Project/build/TAP_Server"; sourceTree = "<absolute>"; };
 		74E38FE516E174C900ABD5DE /* Boost_Net_Asio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boost_Net_Asio.h; sourceTree = "<group>"; };
 		74E38FE616E1793D00ABD5DE /* TCP_Handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCP_Handler.cpp; sourceTree = "<group>"; };
 		74E38FE716E1793D00ABD5DE /* TCP_Handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCP_Handler.h; sourceTree = "<group>"; };
@@ -262,7 +279,6 @@
 		74E38FFD16E1C80D00ABD5DE /* nOStradamus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nOStradamus.h; sourceTree = "<group>"; };
 		74E3900516E28E4600ABD5DE /* TMapDumpMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TMapDumpMain.cpp; sourceTree = "<group>"; };
 		74E3900716E28E4600ABD5DE /* TMapDump.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TMapDump.1; sourceTree = "<group>"; };
-		74E3901116E297A400ABD5DE /* TMapDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = TMapDump; path = "/Users/yamamushi/Programming/projects/The ASCII Project/build/TMapDump"; sourceTree = "<absolute>"; };
 		74E3901616E2FAD000ABD5DE /* WMapDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WMapDump; sourceTree = BUILT_PRODUCTS_DIR; };
 		74E3901816E2FAD100ABD5DE /* WMapDumpMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WMapDumpMain.cpp; sourceTree = "<group>"; };
 		74E3901A16E2FAD100ABD5DE /* WMapDump.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = WMapDump.1; sourceTree = "<group>"; };
@@ -324,6 +340,7 @@
 				743CAD1D16DFA9CE00C56DB2 /* serialization */,
 				743CAD2016DFA9CE00C56DB2 /* server */,
 				743CAD2416DFA9CE00C56DB2 /* utils */,
+				743DF60916E3127900E64AC3 /* web-scripts */,
 				743CAD2D16DFA9CE00C56DB2 /* worldgen */,
 			);
 			path = src;
@@ -511,6 +528,8 @@
 			isa = PBXGroup;
 			children = (
 				743CACE216DFA9CE00C56DB2 /* Readme */,
+				743DF61616E317BB00E64AC3 /* WorldEngine.cpp */,
+				743DF61716E317BB00E64AC3 /* WorldEngine.h */,
 			);
 			path = engine;
 			sourceTree = "<group>";
@@ -694,6 +713,7 @@
 				743CAD2E16DFA9CE00C56DB2 /* Readme */,
 				743CAD2F16DFA9CE00C56DB2 /* WorldgenInit.cpp */,
 				743CAD3016DFA9CE00C56DB2 /* WorldgenInit.h */,
+				743DF61916E3189300E64AC3 /* Notes */,
 			);
 			path = worldgen;
 			sourceTree = "<group>";
@@ -751,6 +771,25 @@
 			path = notes;
 			sourceTree = "<group>";
 		};
+		743DF60916E3127900E64AC3 /* web-scripts */ = {
+			isa = PBXGroup;
+			children = (
+				743DF60A16E3127900E64AC3 /* checklogin.php */,
+				743DF60B16E3127900E64AC3 /* config.php */,
+				743DF60C16E3127900E64AC3 /* confirmation.php */,
+				743DF60D16E3127900E64AC3 /* create_ascii_db.sql */,
+				743DF60E16E3127900E64AC3 /* create_temp_user_db.sql */,
+				743DF60F16E3127900E64AC3 /* enc_key.php */,
+				743DF61016E3127900E64AC3 /* login_success.php */,
+				743DF61116E3127900E64AC3 /* logout.php */,
+				743DF61216E3127900E64AC3 /* main_login.php */,
+				743DF61316E3127900E64AC3 /* signup.php */,
+				743DF61416E3127900E64AC3 /* signup_ac.php */,
+				743DF61516E3127900E64AC3 /* users_create.sql */,
+			);
+			path = "web-scripts";
+			sourceTree = "<group>";
+		};
 		7452363516DFCFEB00842D07 /* paperwork */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,6 +816,8 @@
 				746B30F116DF949F00CDBBC9 /* Frameworks */,
 				7452363516DFCFEB00842D07 /* paperwork */,
 				74E3901616E2FAD000ABD5DE /* WMapDump */,
+				743DF60716E3125200E64AC3 /* TAP_Server */,
+				743DF60816E3125200E64AC3 /* TMapDump */,
 			);
 			sourceTree = "<group>";
 		};
@@ -844,7 +885,7 @@
 			);
 			name = TAP_Server;
 			productName = TAP_Server;
-			productReference = 74E38FDF16E1367E00ABD5DE /* TAP_Server */;
+			productReference = 743DF60716E3125200E64AC3 /* TAP_Server */;
 			productType = "com.apple.product-type.tool";
 		};
 		74E3900216E28E4500ABD5DE /* TMapDump */ = {
@@ -861,7 +902,7 @@
 			);
 			name = TMapDump;
 			productName = TMapDump;
-			productReference = 74E3901116E297A400ABD5DE /* TMapDump */;
+			productReference = 743DF60816E3125200E64AC3 /* TMapDump */;
 			productType = "com.apple.product-type.tool";
 		};
 		74E3901516E2FAD000ABD5DE /* WMapDump */ = {
@@ -935,6 +976,7 @@
 				74E38FF516E1BE4A00ABD5DE /* ServerAPI.cpp in Sources */,
 				74E38FF816E1BEC000ABD5DE /* Packets.cpp in Sources */,
 				74E38FFE16E1C80D00ABD5DE /* nOStradamus.cpp in Sources */,
+				743DF61816E317BB00E64AC3 /* WorldEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1191,6 +1233,7 @@
 				74E3900B16E28E4600ABD5DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		74E3901C16E2FAD100ABD5DE /* Build configuration list for PBXNativeTarget "WMapDump" */ = {
 			isa = XCConfigurationList;
@@ -1199,6 +1242,7 @@
 				74E3901E16E2FAD100ABD5DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

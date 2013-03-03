@@ -8,40 +8,41 @@
  
  */
 
+#include "../serialization/Boost_Serialization.h"
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <memory>
 
 #include "WorldgenInit.h"
 #include "../mapping/Tile.h"
 #include "../mapping/TileMap.h"
 #include "../mapping/EntityMap.h"
 #include "../mapping/WorldMap.h"
-#include "../serialization/Boost_Serialization.h"
+#include "../utils/FileLogger.h"
+
+extern FileLogger *fileLogger;
 
 void WorldGen::init(){
-        
-    TileMap *test = new TileMap(serverConfig->mapX, serverConfig->mapY);
-    TileMap outputMap = *test;
     
-    //std::string fileName(serverConfig->data_dir + "/maps/" + boost::lexical_cast<std::string>(test->getX()) + "_" + boost::lexical_cast<std::string>(test->getY()) + ".tle");
+    fileLogger->ErrorLog("WorldGen Started");
     
-    std::string fileName(serverConfig->data_dir + "/maps/test.tlm");
-    std::ofstream ofs(fileName);
-    boost::archive::text_oarchive oarchive(ofs);
+    fileLogger->ErrorLog("Creating World Structure");
+    std::shared_ptr<WorldMap> worldMap(new WorldMap(serverConfig->worldX, serverConfig->worldY, serverConfig->worldZ, serverConfig->mapX, serverConfig->mapY));
+    fileLogger->ErrorLog("World Structure Generated");
     
-    oarchive << outputMap;
-    ofs.close();
-    
-    WorldMap *worldMap = new WorldMap(serverConfig->worldX, serverConfig->worldY, serverConfig->worldZ, serverConfig->mapX, serverConfig->mapY);
-    
+    fileLogger->ErrorLog("Saving World to Disk");
     std::string worldFileName(serverConfig->data_dir + "/maps/worldmap.glb");
     std::ofstream world_ofs(worldFileName);
     boost::archive::text_oarchive world_oarchive(world_ofs);
     
-    world_oarchive << worldMap;
+    WorldMap *worldMapOut = worldMap.get();
+    world_oarchive << worldMapOut;
     world_ofs.close();
+    fileLogger->ErrorLog("World Saved to Disk at " + worldFileName);
     
     return;
     
 }
+
+

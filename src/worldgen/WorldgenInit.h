@@ -1,3 +1,4 @@
+#pragma once
 /*
  
  WorldgenInit.h
@@ -14,6 +15,7 @@
 #include "../mapping/Tile.h"
 #include "../mapping/EntityMap.h"
 #include "../parsers/ServerConfig.h"
+#include "../mapping/WorldMap.h"
 
 
 class WorldGen {
@@ -27,6 +29,7 @@ private:
     int mapX, mapY;
     
     ServerConfigParser *serverConfig;
+    std::shared_ptr<WorldMap> worldMap;
     
 public:
     
@@ -35,5 +38,12 @@ public:
     void init();
     
     virtual ~WorldGen(){};
+    std::shared_ptr<WorldMap> getWorldMap(){return worldMap;};
     
+    void runSimpleErosion();
+    void runSimpleNormalization();
+    void runRivers();
+    void runTemperature();
+    void runMineralDistribution();
+        
 };

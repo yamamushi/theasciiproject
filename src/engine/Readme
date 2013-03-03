@@ -1,6 +1,9 @@
 Engine -
 
-       This directory holds files related to timers, events, threading, etc.
-
-       The engine runs a timer that is evaluated in realtime, in which events are
-       dropped into a queue to be processed as the timer cycles.
+       This directory holds files related to engines. World Engine, AI, Physics, etc.
+       
+       All of these pieces talk to objects and containers, and eachother. But they are
+       special because they need to run as their own threads. 
+       
+       Don't think of these things as just normal objects, they are independent and important
+       each within their own right.

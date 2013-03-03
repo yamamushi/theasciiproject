@@ -8,6 +8,7 @@
  */
 
 #include "MySQLServerDB.h"
+#include "../utils/FileLogger.h"
 
 #include <exception>
 #include <iostream>
@@ -16,7 +17,7 @@
 #include <my_global.h>
 #include <mysql.h>
 
-
+extern FileLogger *fileLogger;
 
 
 MySQLServerDB::MySQLServerDB(std::string Hostname, int Port, std::string Username, std::string Pass, std::string Database) : hostname(Hostname), port(Port), username(Username), pass(Pass), database(Database) {
@@ -79,6 +80,8 @@ void MySQLServerDB::PrintVersion(){
 }
 
 void MySQLServerDB::Query(std::string query){
+    
+    fileLogger->ErrorLog("MySQL Query: " + query);
     
     if(!ConnectionOpen){
         std::cout << "Error: Not Connected" << std::endl;

@@ -12,10 +12,11 @@
 #include "Tile.h"
 #include "EntityMap.h"
 #include <vector>
+#include <memory>
 
 
 
-class WorldMap {
+class WorldMap : public std::enable_shared_from_this<WorldMap>{
     
 private:
     

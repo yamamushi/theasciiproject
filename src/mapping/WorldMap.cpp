@@ -6,12 +6,13 @@
 //  Copyright (c) 2013 TAP. All rights reserved.
 //
 
+#include "../serialization/Boost_Serialization.h"
 #include "WorldMap.h"
 #include <memory>
 #include <vector>
 #include "../mapping/TileMap.h"
 #include "../mapping/EntityMap.h"
-#include "../serialization/Boost_Serialization.h"
+
 
 
 void WorldMap::init(){

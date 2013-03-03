@@ -1,0 +1,15 @@
+   
+   
+   This code will generate a tile pointer, serialize it to disk and close the output stream.
+    /*
+    TileMap *test = new TileMap(serverConfig->mapX, serverConfig->mapY);
+    TileMap outputMap = *test;
+    
+    //std::string fileName(serverConfig->data_dir + "/maps/" + boost::lexical_cast<std::string>(test->getX()) + "_" + boost::lexical_cast<std::string>(test->getY()) + ".tle");
+    
+    std::string fileName(serverConfig->data_dir + "/maps/test.tlm");
+    std::ofstream ofs(fileName);
+    boost::archive::text_oarchive oarchive(ofs);
+    
+    oarchive << outputMap;
+    ofs.close(); */

@@ -83,7 +83,7 @@ int main(int argc, const char * argv[])
     }
     catch(...){
         std::cerr << "Exception of unknown type!" << std::endl;
-    }
+    }    
     
     std::cout << "Now reading WorldMap " << worldmap_path << std::endl;
     
@@ -102,16 +102,25 @@ int main(int argc, const char * argv[])
     std::cout << "Map Height: " << outputMap->getZ() << " Maps" << std::endl;
     std::cout << std::endl;
     
-    if(posX > outputMap->getX()){
-        std::cout << "X out of Bounds" << std::endl;
-        exit(0);
+    bool xOut, yOut, zOut;
+    if(posX >= outputMap->getX()){
+        xOut = true;
+    } else{
+        xOut = false;
     }
-    if(posY > outputMap->getY()){
-        std::cout << "Y out of Bounds" << std::endl;
-        exit(0);
+    if(posY >= outputMap->getY()){
+        yOut = true;
+    } else{
+        yOut = false;
     }
-    if(posZ > outputMap->getZ()){
-        std::cout << "Z out of Bounds" << std::endl;
+    if(posZ >= outputMap->getZ()){
+        zOut = true;
+    } else{
+        zOut = false;
+    }
+    
+    if(xOut || yOut || zOut){
+        std::cout << "Error: Request Out of Bounds" << std::endl;
         exit(0);
     }
     
@@ -126,7 +135,7 @@ int main(int argc, const char * argv[])
     std::cout << std::endl;
     
     std::cout << "Map at X:" << posX << " Y:" << posY << " Z:" << posZ << std::endl;
-        
+    
     for(int x=0; x<outputTileMap.getLength(); x++){
         for(int y=0; y<outputTileMap.getWidth(); y++){
             
