@@ -17,8 +17,7 @@
 
 class ConsoleLog {
     
-private:
-    
+private:    
     
 public:
     

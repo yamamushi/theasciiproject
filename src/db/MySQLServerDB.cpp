@@ -9,6 +9,7 @@
 
 #include "MySQLServerDB.h"
 #include "../utils/FileLogger.h"
+#include "../utils/ConsoleLog.h"
 
 #include <exception>
 #include <iostream>
@@ -26,10 +27,11 @@ MySQLServerDB::MySQLServerDB(std::string Hostname, int Port, std::string Usernam
     
     if(mysql_real_connect(connection, hostname.c_str(), username.c_str(), pass.c_str(), database.c_str(), port, NULL, 0)){
         ConnectionOpen = true;
-        std::cout << "Established MySQL Connection" << std::endl;
+        ConsoleLog::Print("Established MySQL Connection");
     } else {
         ConnectionOpen = false;
-        std::cout << "Error: MySQL Connection Failed" << std::endl;
+        fileLogger->ErrorLog("Error: MySQL Connection Failed");
+        ConsoleLog::Print("Error: MySQL Connection Failed");
     }
     
 }
@@ -40,7 +42,7 @@ int MySQLServerDB::RowCount(std::string query){
     int num_rows = 0;
     
     if(!ConnectionOpen){
-        std::cout << "Error: Not Connected" << std::endl;
+        ConsoleLog::Print("Error: MySQL Handler Not Connected");
         return num_rows;
     }
     
@@ -73,8 +75,8 @@ void MySQLServerDB::CloseConnection(){
 
 void MySQLServerDB::PrintVersion(){
     
-    std::cout << "MySQL Client Version: " << mysql_get_client_info() << std::endl;
-    std::cout << "MySQL Server Version: " << mysql_get_server_info(connection) << std::endl;
+    ConsoleLog::Print("MySQL Client Version: " + (std::string)mysql_get_client_info());
+    ConsoleLog::Print("MySQL Server Version: " + (std::string)mysql_get_server_info(connection));
     return;
     
 }
@@ -84,7 +86,7 @@ void MySQLServerDB::Query(std::string query){
     fileLogger->ErrorLog("MySQL Query: " + query);
     
     if(!ConnectionOpen){
-        std::cout << "Error: Not Connected" << std::endl;
+        ConsoleLog::Print("Error: MySQL Handler Not Connected");
         return;
     }
     

@@ -11,9 +11,11 @@
 #include "TCP_Participant.h"
 #include "../api/ServerAPI.h"
 #include "../utils/FileLogger.h"
+#include "../serialization/Boost_Serialization.h"
 #include <boost/bind.hpp>
 #include <memory>
 #include <iostream>
+#include <vector>
 
 extern FileLogger *fileLogger;
 
@@ -46,9 +48,7 @@ void TCP_Session::end(){
 // Executed at TCP_Session::start()
 std::string TCP_Session::getClientIP(){
     
-    boost::asio::ip::tcp::endpoint remote_ep = tcp_socket.remote_endpoint();
-    boost::asio::ip::address remote_ad = remote_ep.address();
-    std::string remoteIP = remote_ad.to_string();
+    std::string remoteIP = tcp_socket.remote_endpoint().address().to_string();
     
     clientIP = remoteIP;
     return remoteIP;
@@ -75,10 +75,89 @@ void TCP_Session::startSession(const boost::system::error_code& error)
 {
     if (!error)
     {
-        boost::asio::async_read_until(tcp_socket, raw_line_command, "\r\n", boost::bind(&TCP_Session::end, shared_from_this() ) );
+        boost::asio::async_read_until(tcp_socket, raw_line_command, "\r\n", boost::bind(&TCP_Session::initMode, shared_from_this(),
+                                                                                        boost::asio::placeholders::error ) );
     }
     else
     {
         end();
     }
 }
+
+
+void TCP_Session::initMode(const boost::system::error_code& error)
+{
+    if(!error)
+    {
+        std::string modeRequest;
+        std::istream inputStream(&raw_line_command);
+        
+        inputStream >> modeRequest;
+        
+        fileLogger->ErrorLog("Client " + clientIP + ": " + modeRequest);
+        
+        if(modeRequest == "term")
+        {
+            end();
+        }
+        if(modeRequest == "raw")
+        {
+            
+            
+            HeaderPacket header;
+            header.HeaderSize = (int)sizeof(HeaderPacket);
+            
+            std::ostringstream header_ofs;
+            boost::archive::text_oarchive outputHeader(header_ofs);
+            
+            outputHeader << header;
+            std::string outbound_header = header_ofs.str();
+            
+            std::vector<boost::asio::const_buffer> buffers;
+            buffers.push_back(boost::asio::buffer(outbound_header));
+            
+            // Later on we'll pass this to a handler function that will accept an API request from a client
+            boost::asio::async_write( tcp_socket, buffers, boost::bind(&TCP_Session::end, shared_from_this() ) );
+        }
+        else
+        {
+            end();
+        }
+        
+    }
+    else
+    {
+        end();
+    }
+}
+
+
+
+
+
+void TCP_Session::sendHeader(const boost::system::error_code& error)
+{
+    if(!error)
+    {
+        HeaderPacket header;
+        header.HeaderSize = (int)sizeof(HeaderPacket);
+        
+        std::ostringstream header_ofs;
+        boost::archive::text_oarchive outputHeader(header_ofs);
+        
+        outputHeader << header;        
+        std::string outbound_header = header_ofs.str();
+        
+        std::vector<boost::asio::const_buffer> buffers;
+        buffers.push_back(boost::asio::buffer(outbound_header));
+        
+        boost::asio::async_write( tcp_socket, buffers, boost::bind(&TCP_Session::end, shared_from_this() ) );
+
+    }
+    else
+    {
+        end();
+    }
+}
+
+

@@ -46,7 +46,7 @@ typedef struct {
     
     int length;
     int width;
-    std::vector< std::vector<std::wstring > > symbolTable;
+    std::vector< std::vector<std::string > > symbolTable;
     
 } MapPacket;
 
@@ -57,7 +57,18 @@ typedef struct {
 
 typedef struct {
     
-    int HeaderSize;
+    template <typename Archive>
+    void serialize(Archive &ar, const unsigned int version)
+    {
+        ar & HeaderSize;
+        ar & API_ID;
+    }
+    
+    unsigned int HeaderSize;
     int API_ID;
     
 } HeaderPacket;
+
+
+/// The size of a fixed length header.
+enum { header_length = 8 };

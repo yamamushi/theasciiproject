@@ -146,7 +146,7 @@ void NetInit(int port){
         signals.async_wait(boost::bind(&boost::asio::io_service::stop, &io_service));
         tcp_handler_ptr tcp_server(new TCP_Handler(io_service, port));
         fileLogger->ErrorLog("Network Module Started and Listening on Port: " + boost::lexical_cast<std::string>(port));
-        std::cout << "Server is now Listening on Port: " << boost::lexical_cast<std::string>(port) << std::endl;
+        ConsoleLog::Print("Server is now Listening on Port: " + boost::lexical_cast<std::string>(port));
         io_service.run();
     }
     catch(std::exception& e){
