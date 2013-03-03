@@ -105,28 +105,11 @@ void TCP_Session::initMode(const boost::system::error_code& error)
         
         if(modeRequest == "term")
         {
-            end();
+            tcp_socket.shutdown(tcp_socket.shutdown_both);
         }
         if(modeRequest == "raw")
         {
-            
-            /*
-            HeaderPacket header;
-            header.HeaderSize = (int)sizeof(HeaderPacket);
-            
-            std::ostringstream header_ofs;
-            boost::archive::text_oarchive outputHeader(header_ofs);
-            
-            outputHeader << header;
-            std::string outbound_header = header_ofs.str();
-            
-            std::vector<boost::asio::const_buffer> buffers;
-            buffers.push_back(boost::asio::buffer(outbound_header)); */
-            
-            // Later on we'll pass this to a handler function that will accept an API request from a client
-            //boost::asio::async_write( tcp_socket, boost::asio::buffer(""), boost::bind(&TCP_Session::end, shared_from_this() ) );
             startRaw();
-            
         }
         else
         {
@@ -141,38 +124,14 @@ void TCP_Session::initMode(const boost::system::error_code& error)
 }
 
 
-
-
-
-void TCP_Session::sendHeader(const boost::system::error_code& error)
-{
-    if(!error)
-    {
-        HeaderPacket header;
-        header.HeaderSize = (int)sizeof(HeaderPacket);
-        
-        std::ostringstream header_ofs;
-        boost::archive::text_oarchive outputHeader(header_ofs);
-        
-        outputHeader << header;        
-        std::string outbound_header = header_ofs.str();
-        
-        std::vector<boost::asio::const_buffer> buffers;
-        buffers.push_back(boost::asio::buffer(outbound_header));
-        
-        boost::asio::async_write( tcp_socket, buffers, boost::bind(&TCP_Session::end, shared_from_this() ) );
-
-    }
-    else
-    {
-        end();
-    }
-}
-
-
-
 void TCP_Session::startRaw(){
     
+    /*
+     
+     For now we're just packing some junk data and sending it over the wire, later on
+     We'll assemble a real handshake starting here.
+     
+     */
     std::shared_ptr<TileMap> rawTest_sharedptr(new TileMap(10, 10));
     TileMap *rawTest = rawTest_sharedptr.get();
     
