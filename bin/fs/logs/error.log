@@ -186,3 +186,138 @@
 2013-03-03 00:53:24 - Server is Now Running, Congratulations!
 2013-03-03 00:53:24 - Attempting to start Network Module on Port: 5250
 2013-03-03 00:53:24 - Network Module Started and Listening on Port: 5250
+2013-03-03 01:13:15 - Server Startup Initiated
+2013-03-03 01:13:15 - Server Configuration Read
+2013-03-03 01:13:15 - Checking Filesystem Paths
+2013-03-03 01:13:15 - Filesystem Paths Verified
+2013-03-03 01:13:15 - MySQL Database Initializing
+2013-03-03 01:13:15 - WorldGen Started
+2013-03-03 01:13:15 - Creating World Structure
+2013-03-03 01:13:15 - MySQL Query: CREATE TABLE users(ID int NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), username VARCHAR(255), pass BINARY(32), email VARCHAR(255), registered DATETIME)
+2013-03-03 01:13:15 - MySQL Database Initialized
+2013-03-03 01:13:16 - World Structure Generated
+2013-03-03 01:13:16 - Saving World to Disk
+2013-03-03 01:13:24 - World Saved to Disk at fs/maps/worldmap.glb
+2013-03-03 01:13:25 - Server Setup Complete
+2013-03-03 01:13:25 - Server is Now Running, Congratulations!
+2013-03-03 01:13:25 - Attempting to Start Network Module on Port: 5250
+2013-03-03 01:13:25 - Network Module Started and Listening on Port: 5250
+2013-03-03 01:17:41 - Server Startup Initiated
+2013-03-03 01:17:41 - Server Configuration Read
+2013-03-03 01:17:41 - Checking Filesystem Paths
+2013-03-03 01:17:41 - Filesystem Paths Verified
+2013-03-03 01:17:41 - MySQL Database Initializing
+2013-03-03 01:17:41 - WorldGen Started
+2013-03-03 01:17:41 - Creating World Structure
+2013-03-03 01:17:41 - MySQL Query: CREATE TABLE users(ID int NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), username VARCHAR(255), pass BINARY(32), email VARCHAR(255), registered DATETIME)
+2013-03-03 01:17:41 - MySQL Database Initialized
+2013-03-03 01:17:42 - World Structure Generated
+2013-03-03 01:17:42 - Saving World to Disk
+2013-03-03 01:17:50 - World Saved to Disk at fs/maps/worldmap.glb
+2013-03-03 01:17:51 - Server Setup Complete
+2013-03-03 01:17:51 - Server is Now Running, Congratulations!
+2013-03-03 01:17:51 - Attempting to Start Network Module on Port: 5250
+2013-03-03 01:17:51 - Network Module Started and Listening on Port: 5250
+2013-03-03 01:19:13 - Server Startup Initiated
+2013-03-03 01:19:13 - Server Configuration Read
+2013-03-03 01:19:13 - Checking Filesystem Paths
+2013-03-03 01:19:13 - Filesystem Paths Verified
+2013-03-03 01:19:13 - MySQL Database Initializing
+2013-03-03 01:19:13 - WorldGen Started
+2013-03-03 01:19:13 - Creating World Structure
+2013-03-03 01:19:13 - MySQL Query: CREATE TABLE users(ID int NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), username VARCHAR(255), pass BINARY(32), email VARCHAR(255), registered DATETIME)
+2013-03-03 01:19:13 - MySQL Database Initialized
+2013-03-03 01:19:14 - World Structure Generated
+2013-03-03 01:19:14 - Saving World to Disk
+2013-03-03 01:19:24 - World Saved to Disk at fs/maps/worldmap.glb
+2013-03-03 01:19:25 - Server Setup Complete
+2013-03-03 01:19:25 - Server is Now Running, Congratulations!
+2013-03-03 01:19:25 - Attempting to Start Network Module on Port: 5250
+2013-03-03 01:19:25 - Network Module Started and Listening on Port: 5250
+2013-03-03 01:19:37 - Client Connected From: 127.0.0.1
+2013-03-03 01:29:25 - Server Startup Initiated
+2013-03-03 01:29:25 - Server Configuration Read
+2013-03-03 01:29:25 - Checking Filesystem Paths
+2013-03-03 01:29:25 - Filesystem Paths Verified
+2013-03-03 01:29:25 - MySQL Database Initializing
+2013-03-03 01:29:25 - WorldGen Started
+2013-03-03 01:29:25 - Creating World Structure
+2013-03-03 01:29:25 - MySQL Query: CREATE TABLE users(ID int NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), username VARCHAR(255), pass BINARY(32), email VARCHAR(255), registered DATETIME)
+2013-03-03 01:29:25 - MySQL Database Initialized
+2013-03-03 01:29:26 - World Structure Generated
+2013-03-03 01:29:26 - Saving World to Disk
+2013-03-03 01:29:35 - World Saved to Disk at fs/maps/worldmap.glb
+2013-03-03 01:29:35 - Server Setup Complete
+2013-03-03 01:29:35 - Server is Now Running, Congratulations!
+2013-03-03 01:29:35 - Attempting to Start Network Module on Port: 5250
+2013-03-03 01:29:35 - Network Module Started and Listening on Port: 5250
+2013-03-03 01:29:37 - Client Connected From: 127.0.0.1
+2013-03-03 01:30:37 - Server Startup Initiated
+2013-03-03 01:30:37 - Server Configuration Read
+2013-03-03 01:30:37 - Checking Filesystem Paths
+2013-03-03 01:30:37 - Filesystem Paths Verified
+2013-03-03 01:30:37 - MySQL Database Initializing
+2013-03-03 01:30:37 - WorldGen Started
+2013-03-03 01:30:37 - Creating World Structure
+2013-03-03 01:30:37 - MySQL Query: CREATE TABLE users(ID int NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), username VARCHAR(255), pass BINARY(32), email VARCHAR(255), registered DATETIME)
+2013-03-03 01:30:37 - MySQL Database Initialized
+2013-03-03 01:30:38 - World Structure Generated
+2013-03-03 01:30:38 - Saving World to Disk
+2013-03-03 01:30:46 - World Saved to Disk at fs/maps/worldmap.glb
+2013-03-03 01:30:47 - Server Setup Complete
+2013-03-03 01:30:47 - Server is Now Running, Congratulations!
+2013-03-03 01:30:47 - Attempting to Start Network Module on Port: 5250
+2013-03-03 01:30:47 - Network Module Started and Listening on Port: 5250
+2013-03-03 01:30:52 - Client Connected From: 127.0.0.1
+2013-03-03 01:32:13 - Server Startup Initiated
+2013-03-03 01:32:13 - Server Configuration Read
+2013-03-03 01:32:13 - Checking Filesystem Paths
+2013-03-03 01:32:13 - Filesystem Paths Verified
+2013-03-03 01:32:13 - MySQL Database Initializing
+2013-03-03 01:32:13 - WorldGen Started
+2013-03-03 01:32:13 - Creating World Structure
+2013-03-03 01:32:13 - MySQL Query: CREATE TABLE users(ID int NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), username VARCHAR(255), pass BINARY(32), email VARCHAR(255), registered DATETIME)
+2013-03-03 01:32:13 - MySQL Database Initialized
+2013-03-03 01:32:14 - World Structure Generated
+2013-03-03 01:32:14 - Saving World to Disk
+2013-03-03 01:32:23 - World Saved to Disk at fs/maps/worldmap.glb
+2013-03-03 01:32:23 - Server Setup Complete
+2013-03-03 01:32:23 - Server is Now Running, Congratulations!
+2013-03-03 01:32:23 - Attempting to Start Network Module on Port: 5250
+2013-03-03 01:32:23 - Network Module Started and Listening on Port: 5250
+2013-03-03 01:32:26 - Client Connected From: 127.0.0.1
+2013-03-03 01:32:28 - Client: 127.0.0.1 Disconnected
+2013-03-03 01:33:17 - Server Startup Initiated
+2013-03-03 01:33:17 - Server Configuration Read
+2013-03-03 01:33:17 - Checking Filesystem Paths
+2013-03-03 01:33:17 - Filesystem Paths Verified
+2013-03-03 01:33:17 - MySQL Database Initializing
+2013-03-03 01:33:17 - WorldGen Started
+2013-03-03 01:33:17 - Creating World Structure
+2013-03-03 01:33:17 - MySQL Query: CREATE TABLE users(ID int NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), username VARCHAR(255), pass BINARY(32), email VARCHAR(255), registered DATETIME)
+2013-03-03 01:33:17 - MySQL Database Initialized
+2013-03-03 01:33:17 - World Structure Generated
+2013-03-03 01:33:17 - Saving World to Disk
+2013-03-03 01:33:26 - World Saved to Disk at fs/maps/worldmap.glb
+2013-03-03 01:33:27 - Server Setup Complete
+2013-03-03 01:33:27 - Server is Now Running, Congratulations!
+2013-03-03 01:33:27 - Attempting to Start Network Module on Port: 5250
+2013-03-03 01:33:27 - Network Module Started and Listening on Port: 5250
+2013-03-03 01:33:36 - Server Startup Initiated
+2013-03-03 01:33:36 - Server Configuration Read
+2013-03-03 01:33:36 - Checking Filesystem Paths
+2013-03-03 01:33:36 - Filesystem Paths Verified
+2013-03-03 01:33:36 - MySQL Database Initializing
+2013-03-03 01:33:36 - WorldGen Started
+2013-03-03 01:33:36 - Creating World Structure
+2013-03-03 01:33:36 - MySQL Query: CREATE TABLE users(ID int NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), username VARCHAR(255), pass BINARY(32), email VARCHAR(255), registered DATETIME)
+2013-03-03 01:33:36 - MySQL Database Initialized
+2013-03-03 01:33:36 - World Structure Generated
+2013-03-03 01:33:36 - Saving World to Disk
+2013-03-03 01:33:36 - World Saved to Disk at fs/maps/worldmap.glb
+2013-03-03 01:33:36 - Server Setup Complete
+2013-03-03 01:33:36 - Server is Now Running, Congratulations!
+2013-03-03 01:33:36 - Attempting to Start Network Module on Port: 5250
+2013-03-03 01:33:36 - Network Module Started and Listening on Port: 5250
+2013-03-03 01:33:40 - Client 127.0.0.1 : Connected
+2013-03-03 01:33:42 - Client 127.0.0.1 : Disconnected

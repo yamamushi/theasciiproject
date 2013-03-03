@@ -16,6 +16,7 @@
 
 void FileLogger::ErrorLog(std::string message){
     
+    errorLogMutex.lock();
     std::ofstream errorFile;
     errorFile.open(fsPath + "/logs/error.log", std::ios_base::app);
     
@@ -28,7 +29,7 @@ void FileLogger::ErrorLog(std::string message){
     
     errorFile << timestamp << message << std::endl;
     errorFile.close();
-    
+    errorLogMutex.unlock();
     return;
     
 }

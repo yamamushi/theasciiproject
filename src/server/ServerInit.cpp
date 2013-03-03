@@ -40,6 +40,7 @@ void ServerInit(int argc, char *argv[]){
     serverConfig->Parse();
     
     fileLogger = new FileLogger(serverConfig->data_dir);
+    fileLogger->ErrorLog("Server Startup Initiated");
     fileLogger->ErrorLog("Server Configuration Read");
         
     DirectoryInit(serverConfig->data_dir);
@@ -139,7 +140,7 @@ void MySQLDBInit(std::string hostname, int port, std::string username, std::stri
 void NetInit(int port){
     
     try {
-        fileLogger->ErrorLog("Attempting to start Network Module on Port: " + boost::lexical_cast<std::string>(port));
+        fileLogger->ErrorLog("Attempting to Start Network Module on Port: " + boost::lexical_cast<std::string>(port));
         boost::asio::io_service io_service;
         boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);
         signals.async_wait(boost::bind(&boost::asio::io_service::stop, &io_service));

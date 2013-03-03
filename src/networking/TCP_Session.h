@@ -18,7 +18,10 @@ private:
     
     boost::asio::ip::tcp::socket tcp_socket;
     TCP_Pool& tcp_pool;
+    std::string clientIP;
     
+    boost::asio::streambuf raw_line_command;
+
     
     
 public:
@@ -30,6 +33,12 @@ public:
     void start();
     void end();
     
+    std::string getClientIP();
+    
+    // Our ASIO Functions
+    void kickStart();
+    void startSession(const boost::system::error_code& error);
+
 };
 
 

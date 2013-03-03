@@ -14,6 +14,7 @@
  */
 
 #include <string>
+#include <mutex>
 
 
 class FileLogger {
@@ -21,6 +22,7 @@ class FileLogger {
 private:
     
     std::string fsPath;
+    std::mutex errorLogMutex;
     
 public:
     
