@@ -13,7 +13,7 @@
 #include <memory>
 #include <vector>
 #include <string>
-
+#include <boost/shared_ptr.hpp>
 
 #include "Tile.h"
 
@@ -41,7 +41,7 @@ public:
     TileMap(){};
     TileMap(int l, int w) : length(l), width(w){init();};
     
-    std::vector< std::vector<Tile *> > virtualMap;
+    std::vector< std::vector<boost::shared_ptr<Tile> > > virtualMap;
     
     void backupToDisk(std::string path);
     
@@ -50,7 +50,9 @@ public:
     int getLength(){return length;}
     int getWidth(){return width;}
     
+    Tile* getTilePtr(int x, int y){return virtualMap.at(x).at(y).get();}
+    
 };
 
-//BOOST_SERIALIZATION_SHARED_PTR(TileMap)
+BOOST_SERIALIZATION_SHARED_PTR(TileMap)
 //BOOST_CLASS_EXPORT(TileMap)

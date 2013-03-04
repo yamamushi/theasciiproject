@@ -140,7 +140,7 @@ int main(int argc, const char * argv[])
         for(int y=0; y<outputTileMap.getWidth(); y++){
             
             try{
-                std::cout << outputTileMap.virtualMap.at(x).at(y)->getSymbol();
+                std::cout << outputTileMap.virtualMap.at(x).at(y)->getSymbol() << " ";
             }
             catch(std::exception& e){
                 std::cerr << "error: " << e.what() << std::endl;

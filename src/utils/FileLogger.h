@@ -23,6 +23,7 @@ private:
     
     std::string fsPath;
     std::mutex errorLogMutex;
+    std::mutex worldLogMutex;
     
 public:
     
@@ -31,6 +32,7 @@ public:
     
     void ErrorLog(std::string message);
     void APILog(std::string message);
+    void WorldLog(std::string message);
     
     
 };

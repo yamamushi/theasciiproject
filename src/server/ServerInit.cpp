@@ -14,6 +14,7 @@
 #include <memory>
 #include <exception>
 #include <functional>
+#include <locale>
 
 #include "ServerInit.h"
 #include "../api/ServerAPI.h"
@@ -35,8 +36,10 @@ std::shared_ptr<ServerAPI> serverAPI;
 
 
 void ServerInit(int argc, char *argv[]){
-    
-    ServerConfigParser *serverConfig = new ServerConfigParser( argc, argv);
+
+    setlocale(LC_ALL,"");
+
+    std::shared_ptr<ServerConfigParser> serverConfig(new ServerConfigParser( argc, argv));
     serverConfig->Parse();
     
     fileLogger = new FileLogger(serverConfig->data_dir);

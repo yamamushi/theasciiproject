@@ -10,6 +10,7 @@
 #include "WorldMap.h"
 #include <memory>
 #include <vector>
+#include <boost/shared_ptr.hpp>
 #include "../mapping/TileMap.h"
 #include "../mapping/EntityMap.h"
 
@@ -27,11 +28,11 @@ void WorldMap::init(){
 void WorldMap::initGlobalTileMap(){
     
     for(int x=0; x<X; x++){
-        std::vector< std::vector<TileMap *> > layer;
+        std::vector< std::vector< boost::shared_ptr<TileMap> > > layer;
         for(int y=0; y<Y; y++){
-            std::vector<TileMap *> row;
+            std::vector< boost::shared_ptr<TileMap> > row;
             for(int z=0; z<Z; z++){
-                TileMap *tileMap = new TileMap(mapX, mapY);
+                boost::shared_ptr<TileMap> tileMap(new TileMap(mapX, mapY));
                 row.push_back(tileMap);
             }
             layer.push_back(row);

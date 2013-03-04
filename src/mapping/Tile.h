@@ -12,7 +12,7 @@
  */
 
 #include "../serialization/Boost_Serialization.h"
-
+#include <boost/shared_ptr.hpp>
 #include <string>
 
 class Tile {
@@ -48,5 +48,5 @@ public:
     
 };
 
-//BOOST_SERIALIZATION_SHARED_PTR(Tile)
+BOOST_SERIALIZATION_SHARED_PTR(Tile)
 

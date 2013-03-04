@@ -41,6 +41,10 @@
 		74E3902116E2FB2500ABD5DE /* TileMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD0F16DFA9CE00C56DB2 /* TileMap.cpp */; };
 		74E3902216E2FB2500ABD5DE /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7452363916DFD0E900842D07 /* WorldMap.cpp */; };
 		74E3902316E2FB3200ABD5DE /* RenderMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7452363616DFD05900842D07 /* RenderMap.cpp */; };
+		74F89EFD16E4461200DBD81B /* WorldErosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74F89EFB16E4461200DBD81B /* WorldErosion.cpp */; };
+		74F89F0016E4499F00DBD81B /* WorldGenConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74F89EFE16E4499F00DBD81B /* WorldGenConfig.cpp */; };
+		74F89F0416E4553900DBD81B /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74F89F0216E4553900DBD81B /* Random.cpp */; };
+		74F89F0716E470FB00DBD81B /* IntToUTF8String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74F89F0516E470FB00DBD81B /* IntToUTF8String.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -288,6 +292,15 @@
 		74F3BC2B16DFC7BB000FC9C4 /* Dependencies */ = {isa = PBXFileReference; lastKnownFileType = text; path = Dependencies; sourceTree = "<group>"; };
 		74F3BC2C16DFC7BB000FC9C4 /* NEWS */ = {isa = PBXFileReference; lastKnownFileType = text; path = NEWS; sourceTree = "<group>"; };
 		74F3BC2D16DFC7BB000FC9C4 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		74F89EFB16E4461200DBD81B /* WorldErosion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldErosion.cpp; sourceTree = "<group>"; };
+		74F89EFC16E4461200DBD81B /* WorldErosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldErosion.h; sourceTree = "<group>"; };
+		74F89EFE16E4499F00DBD81B /* WorldGenConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldGenConfig.cpp; sourceTree = "<group>"; };
+		74F89EFF16E4499F00DBD81B /* WorldGenConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldGenConfig.h; sourceTree = "<group>"; };
+		74F89F0216E4553900DBD81B /* Random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Random.cpp; sourceTree = "<group>"; };
+		74F89F0316E4553900DBD81B /* Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Random.h; sourceTree = "<group>"; };
+		74F89F0516E470FB00DBD81B /* IntToUTF8String.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IntToUTF8String.cpp; sourceTree = "<group>"; };
+		74F89F0616E470FB00DBD81B /* IntToUTF8String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntToUTF8String.h; sourceTree = "<group>"; };
+		74F89F0816E48AB300DBD81B /* UnicodeCodepoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnicodeCodepoints.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -653,6 +666,8 @@
 				743CAD1616DFA9CE00C56DB2 /* Readme */,
 				743CAD1716DFA9CE00C56DB2 /* ServerConfig.cpp */,
 				743CAD1816DFA9CE00C56DB2 /* ServerConfig.h */,
+				74F89EFE16E4499F00DBD81B /* WorldGenConfig.cpp */,
+				74F89EFF16E4499F00DBD81B /* WorldGenConfig.h */,
 			);
 			path = parsers;
 			sourceTree = "<group>";
@@ -703,6 +718,11 @@
 				743CAD2A16DFA9CE00C56DB2 /* Filesystem.h */,
 				743CAD2B16DFA9CE00C56DB2 /* Timer.cpp */,
 				743CAD2C16DFA9CE00C56DB2 /* Timer.h */,
+				74F89F0216E4553900DBD81B /* Random.cpp */,
+				74F89F0316E4553900DBD81B /* Random.h */,
+				74F89F0516E470FB00DBD81B /* IntToUTF8String.cpp */,
+				74F89F0616E470FB00DBD81B /* IntToUTF8String.h */,
+				74F89F0816E48AB300DBD81B /* UnicodeCodepoints.h */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -714,6 +734,8 @@
 				743CAD2F16DFA9CE00C56DB2 /* WorldgenInit.cpp */,
 				743CAD3016DFA9CE00C56DB2 /* WorldgenInit.h */,
 				743DF61916E3189300E64AC3 /* Notes */,
+				74F89EFB16E4461200DBD81B /* WorldErosion.cpp */,
+				74F89EFC16E4461200DBD81B /* WorldErosion.h */,
 			);
 			path = worldgen;
 			sourceTree = "<group>";
@@ -977,6 +999,10 @@
 				74E38FF816E1BEC000ABD5DE /* Packets.cpp in Sources */,
 				74E38FFE16E1C80D00ABD5DE /* nOStradamus.cpp in Sources */,
 				743DF61816E317BB00E64AC3 /* WorldEngine.cpp in Sources */,
+				74F89EFD16E4461200DBD81B /* WorldErosion.cpp in Sources */,
+				74F89F0016E4499F00DBD81B /* WorldGenConfig.cpp in Sources */,
+				74F89F0416E4553900DBD81B /* Random.cpp in Sources */,
+				74F89F0716E470FB00DBD81B /* IntToUTF8String.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1052,6 +1078,7 @@
 					"-lboost_filesystem",
 					"-lboost_program_options",
 					"-lboost_serialization",
+					"-lboost_random",
 				);
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = macosx;
@@ -1097,6 +1124,7 @@
 					"-lboost_filesystem",
 					"-lboost_program_options",
 					"-lboost_serialization",
+					"-lboost_random",
 				);
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = macosx;
@@ -1127,6 +1155,7 @@
 					"-lboost_program_options",
 					"-lboost_serialization",
 					"-lmysqlclient",
+					"-lboost_random",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1156,6 +1185,7 @@
 					"-lboost_program_options",
 					"-lboost_serialization",
 					"-lmysqlclient",
+					"-lboost_random",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

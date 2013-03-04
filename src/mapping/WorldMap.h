@@ -13,6 +13,7 @@
 #include "EntityMap.h"
 #include <vector>
 #include <memory>
+#include <boost/shared_ptr.hpp>
 
 
 
@@ -40,10 +41,10 @@ private:
     int mapX, mapY;
     
     // Storage Container for TileMaps
-    std::vector< std::vector< std::vector<TileMap *> > > globalTileMap;
+    std::vector< std::vector< std::vector< boost::shared_ptr<TileMap> > > > globalTileMap;
     
     // Storage Container for EntityMaps
-    //std::vector< std::vector< std::vector< std::shared_ptr<EntityMap> > > > globalEntityMap;
+    //std::vector< std::vector< std::vector< boost::shared_ptr<EntityMap> > > > globalEntityMap;
     
     void init();
     void initGlobalTileMap();
@@ -61,6 +62,6 @@ public:
     int getY(){return Y;};
     int getZ(){return Z;};
     
-    TileMap* getTileMap(int x, int y, int z){return globalTileMap.at(x).at(y).at(z);};
+    TileMap* getTileMap(int x, int y, int z){return globalTileMap.at(x).at(y).at(z).get();};
     
 };

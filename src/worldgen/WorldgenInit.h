@@ -17,6 +17,7 @@
 #include "../parsers/ServerConfig.h"
 #include "../mapping/WorldMap.h"
 
+#include <memory>
 
 class WorldGen {
     
@@ -28,12 +29,12 @@ private:
     
     int mapX, mapY;
     
-    ServerConfigParser *serverConfig;
+    std::shared_ptr<ServerConfigParser> serverConfig;
     std::shared_ptr<WorldMap> worldMap;
     
 public:
     
-    WorldGen(ServerConfigParser *config) : serverConfig(config), mapX(config->mapX), mapY(config->mapY), worldX(config->worldX), worldY(config->worldY), worldZ(config->worldZ){};
+    WorldGen(std::shared_ptr<ServerConfigParser> config) : serverConfig(config), mapX(config->mapX), mapY(config->mapY), worldX(config->worldX), worldY(config->worldY), worldZ(config->worldZ){};
     
     void init();
     

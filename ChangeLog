@@ -3,6 +3,19 @@ Copyright (c) 2012 Jonathan Rumion
 12/03/2012
 ==================================
 
+03/03/2013
+
+- Network Data passing Handlers
+- World Generation Thread
+- WorldEngine Definition
+- Threaded Server Setup
+- File Logger - $fs/logs/error.log
+- Documentation (Apothecary) Started
+- New developers onboard (fonebook, fall3nsp0rk)
+- Web Scripts for account creation
+
+
+
 0.0.1f
 
 It's been a long time since I deferred to this changelog D: , if you're reading this, anything you compile from here on up has been the result 
