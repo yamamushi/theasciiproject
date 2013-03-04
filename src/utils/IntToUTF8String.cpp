@@ -9,24 +9,13 @@
 #include "IntToUTF8String.h"
 #include <string>
 #include <iostream>
-#include <clocale>
-#include <locale>
-#include <vector>
-#include <codecvt>
-#include <sstream>
-#include <cstdio>
-#include <boost/format.hpp>
 
-
-// This needs to be completed.
 
 std::string IntToUTF8String(int convertMe){
     
     // We only care about plane 1 right now,
     // but know that we have other options (0x10FFFF)
-    
-    // convertMe = 0x263A;
-    
+        
     if(convertMe == 0)
         return " ";
     if( (convertMe <= 0x7F) && (convertMe > 0x00) ){
@@ -46,11 +35,10 @@ std::string IntToUTF8String(int convertMe){
         std::string out("..");
         
         int firstShift = (convertMe >> 0x6) ^ 0xC0;
-        int secondShift = (convertMe ^ 0xFFC0) | 0x80;
+        int secondShift = ((convertMe ^ 0xFFC0) | 0x80) & ~0x40;
         
         std::bitset<8> first(firstShift);
         std::bitset<8> last(secondShift);
-        last.set(6, false);
         
         
         unsigned long l = first.to_ulong();
@@ -69,14 +57,12 @@ std::string IntToUTF8String(int convertMe){
         std::string out("...");
         
         int firstShift = ((convertMe ^ 0xFC0FFF) >> 0xC) | 0xE0;
-        int secondShift = ((convertMe ^ 0xFFF03F) >> 0x6) | 0x80;
-        int thirdShift = (convertMe ^ 0xFFFC0) | 0x80;
+        int secondShift = (((convertMe ^ 0xFFF03F) >> 0x6) | 0x80) & ~0x40;
+        int thirdShift = ((convertMe ^ 0xFFFC0) | 0x80) & ~0x40;
         
         std::bitset<8> first(firstShift);
         std::bitset<8> second(secondShift);
-        second.set(6, false);
         std::bitset<8> third(thirdShift);
-        third.set(6, false);
         
         unsigned long lone = first.to_ulong();
         unsigned char cone = static_cast<unsigned char>(lone);

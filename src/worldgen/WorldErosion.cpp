@@ -26,11 +26,20 @@ void WorldErosion::run(){
     
     //TileMap *testErode = worldMap->getTileMap(randomGen->rand_crypt(serverConfig->worldX)-1, randomGen->rand_crypt(serverConfig->worldY)-1, randomGen->rand_crypt(serverConfig->worldZ)-1);
     
-    TileMap *testErode = worldMap->getTileMap(1, 1, 1);
     
-    fileLogger->WorldLog("TileMapErod Started");
-    TileMapErode(testErode);
-    fileLogger->WorldLog("TileMapErod Completed");
+    fileLogger->WorldLog("WorldMap Erosion Started");
+    for(int x = 0; x < worldMap->getX(); x++){
+        for(int y = 0; y < worldMap->getY(); y++){
+            for(int z = 0; z < worldMap->getZ(); z++){
+                
+                TileMap *testErode = worldMap->getTileMap(x, y, z);
+                TileMapErode(testErode);
+                
+            }
+        }
+    }
+    fileLogger->WorldLog("WorldMap Erosion Completed");
+
 
 }
 
