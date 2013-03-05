@@ -50,7 +50,11 @@ public:
     int getLength(){return length;}
     int getWidth(){return width;}
     
-    Tile* getTilePtr(int x, int y){return virtualMap.at(x).at(y).get();}
+    Tile* getTilePtr(int x, int y){
+        if(x >= length || y >= width) return nullptr;
+        return virtualMap.at(x).at(y).get();
+    }
+    Tile* returnTile(int x, int y){return getTilePtr(x, y);}
     
 };
 

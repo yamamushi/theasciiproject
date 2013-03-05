@@ -33,6 +33,8 @@ void WorldErosion::run(){
             for(int z = 0; z < worldMap->getZ(); z++){
                 
                 TileMap *testErode = worldMap->getTileMap(x, y, z);
+                if(testErode == nullptr)
+                    break;
                 TileMapErode(testErode);
                 
             }
@@ -54,9 +56,13 @@ void WorldErosion::TileMapErode(TileMap *input){
         posX = randomGen->rand_crypt(input->getLength())-1;
         posY = randomGen->rand_crypt(input->getWidth())-1;
         
-        int symInt = randomGen->rand_crypt_range(9472, 9599);
-        
         Tile *tileUpdate = input->getTilePtr(posX, posY);
+        
+        if(tileUpdate == nullptr)
+            break;
+        
+        //int symInt = randomGen->rand_crypt_range(9472, 9599);
+        int symInt = randomGen->rand_crypt_range(32, 0x2B55);
         
         std::string symbol = IntToUTF8String(symInt);
         

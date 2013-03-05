@@ -36,6 +36,7 @@ private:
     
     // Global Map Dimensions
     int X,Y,Z;
+    int worldTileLength, worldTileWidth, worldTileHeight;
     
     // TileMap Dimensions
     int mapX, mapY;
@@ -62,6 +63,11 @@ public:
     int getY(){return Y;};
     int getZ(){return Z;};
     
-    TileMap* getTileMap(int x, int y, int z){return globalTileMap.at(x).at(y).at(z).get();};
+    int returnWorldLength(){return worldTileLength;};
+    int returnWorldWidth(){return worldTileWidth;};
+    int returnWorldHeight(){return worldTileHeight;};
+    
+    TileMap* getTileMap(int posx, int posy, int posz);
+    Tile* getTileAt(int posx, int posy, int posz); // NOTE - This is in the global context, not the TileMap context!
     
 };

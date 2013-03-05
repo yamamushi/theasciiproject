@@ -15,6 +15,8 @@ std::string IntToUTF8String(int convertMe){
     
     // We only care about plane 1 right now,
     // but know that we have other options (0x10FFFF)
+    // Technically UTF-8 is "limited" to 4 bytes, so it's not
+    // Like it matters much anyways these days
         
     if(convertMe == 0)
         return " ";
@@ -34,7 +36,7 @@ std::string IntToUTF8String(int convertMe){
         
         std::string out("..");
         
-        int firstShift = (convertMe >> 0x6) ^ 0xC0;
+        int firstShift = (convertMe >> 0x06) ^ 0xC0;
         int secondShift = ((convertMe ^ 0xFFC0) | 0x80) & ~0x40;
         
         std::bitset<8> first(firstShift);
@@ -56,8 +58,8 @@ std::string IntToUTF8String(int convertMe){
         
         std::string out("...");
         
-        int firstShift = ((convertMe ^ 0xFC0FFF) >> 0xC) | 0xE0;
-        int secondShift = (((convertMe ^ 0xFFF03F) >> 0x6) | 0x80) & ~0x40;
+        int firstShift = ((convertMe ^ 0xFC0FFF) >> 0x0C) | 0xE0;
+        int secondShift = (((convertMe ^ 0xFFF03F) >> 0x06) | 0x80) & ~0x40;
         int thirdShift = ((convertMe ^ 0xFFFC0) | 0x80) & ~0x40;
         
         std::bitset<8> first(firstShift);
