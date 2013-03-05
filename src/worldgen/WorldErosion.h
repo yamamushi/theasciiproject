@@ -7,9 +7,11 @@
 //  Copyright (c) 2013 TAP. All rights reserved.
 //
 
+#include "WorldDrawing.h"
 #include "../mapping/WorldMap.h"
 #include "../mapping/TileMap.h"
 #include "../mapping/Tile.h"
+#include "../mapping/GeometryFunctions.h"
 #include "../parsers/ServerConfig.h"
 #include "../utils/FileLogger.h"
 #include "../utils/Random.h"
@@ -31,6 +33,7 @@ private:
 public:
     
     WorldErosion(std::shared_ptr<WorldMap> world, std::shared_ptr<ServerConfigParser> config) : worldMap(world), serverConfig(config){run();};
+    
     
     
     

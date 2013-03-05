@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7416F49B16E5955000C1CEE0 /* GeometryFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7416F49916E5955000C1CEE0 /* GeometryFunctions.cpp */; };
+		7416F49E16E5A2A800C1CEE0 /* WorldDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7416F49C16E5A2A700C1CEE0 /* WorldDrawing.cpp */; };
 		743CAD3216DFA9CE00C56DB2 /* MySQLServerDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CACDE16DFA9CE00C56DB2 /* MySQLServerDB.cpp */; };
 		743CAD3316DFA9CE00C56DB2 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CACE416DFA9CE00C56DB2 /* Entity.cpp */; };
 		743CAD4116DFA9CE00C56DB2 /* MainServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD0816DFA9CE00C56DB2 /* MainServer.cpp */; };
@@ -81,6 +83,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7416F49916E5955000C1CEE0 /* GeometryFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeometryFunctions.cpp; sourceTree = "<group>"; };
+		7416F49A16E5955000C1CEE0 /* GeometryFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeometryFunctions.h; sourceTree = "<group>"; };
+		7416F49C16E5A2A700C1CEE0 /* WorldDrawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldDrawing.cpp; sourceTree = "<group>"; };
+		7416F49D16E5A2A700C1CEE0 /* WorldDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldDrawing.h; sourceTree = "<group>"; };
 		743CACCF16DFA9CE00C56DB2 /* Readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
 		743CACD116DFA9CE00C56DB2 /* Readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
 		743CACD316DFA9CE00C56DB2 /* Readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
@@ -460,6 +466,8 @@
 				7452363716DFD05900842D07 /* RenderMap.h */,
 				7452363916DFD0E900842D07 /* WorldMap.cpp */,
 				7452363A16DFD0E900842D07 /* WorldMap.h */,
+				7416F49916E5955000C1CEE0 /* GeometryFunctions.cpp */,
+				7416F49A16E5955000C1CEE0 /* GeometryFunctions.h */,
 			);
 			path = mapping;
 			sourceTree = "<group>";
@@ -568,6 +576,8 @@
 				743DF61916E3189300E64AC3 /* Notes */,
 				74F89EFB16E4461200DBD81B /* WorldErosion.cpp */,
 				74F89EFC16E4461200DBD81B /* WorldErosion.h */,
+				7416F49C16E5A2A700C1CEE0 /* WorldDrawing.cpp */,
+				7416F49D16E5A2A700C1CEE0 /* WorldDrawing.h */,
 			);
 			path = worldgen;
 			sourceTree = "<group>";
@@ -835,6 +845,8 @@
 				74F89F0016E4499F00DBD81B /* WorldGenConfig.cpp in Sources */,
 				74F89F0416E4553900DBD81B /* Random.cpp in Sources */,
 				74F89F0716E470FB00DBD81B /* IntToUTF8String.cpp in Sources */,
+				7416F49B16E5955000C1CEE0 /* GeometryFunctions.cpp in Sources */,
+				7416F49E16E5A2A800C1CEE0 /* WorldDrawing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

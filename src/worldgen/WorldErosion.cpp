@@ -6,7 +6,9 @@
 //  Copyright (c) 2013 TAP. All rights reserved.
 //
 
+#include "WorldDrawing.h"
 #include "WorldErosion.h"
+#include "../mapping/GeometryFunctions.h"
 #include "../utils/Random.h"
 #include "../utils/FileLogger.h"
 #include "../utils/IntToUTF8String.h"
@@ -27,7 +29,7 @@ void WorldErosion::run(){
     //TileMap *testErode = worldMap->getTileMap(randomGen->rand_crypt(serverConfig->worldX)-1, randomGen->rand_crypt(serverConfig->worldY)-1, randomGen->rand_crypt(serverConfig->worldZ)-1);
     
     
-    fileLogger->WorldLog("WorldMap Erosion Started");
+  /*  fileLogger->WorldLog("WorldMap Erosion Started");
     for(int x = 0; x < worldMap->getX(); x++){
         for(int y = 0; y < worldMap->getY(); y++){
             for(int z = 0; z < worldMap->getZ(); z++){
@@ -40,7 +42,9 @@ void WorldErosion::run(){
             }
         }
     }
-    fileLogger->WorldLog("WorldMap Erosion Completed");
+    fileLogger->WorldLog("WorldMap Erosion Completed"); */
+    
+    drawLineOnTileMap(0, 0, 8, 8, worldMap->getTileMap(1, 1, 1), " ");
 
 
 }
