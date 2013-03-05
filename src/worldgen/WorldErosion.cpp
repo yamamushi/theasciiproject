@@ -44,7 +44,10 @@ void WorldErosion::run(){
     }
     fileLogger->WorldLog("WorldMap Erosion Completed"); */
     
-    drawLineOnTileMap(0, 0, 8, 8, worldMap->getTileMap(1, 1, 1), " ");
+    //drawLineOnTileMap(0, 0, 8, 8, worldMap->getTileMap(1, 1, 1), " ");
+    //drawLineOnWorldMap(5, 5, 0, 5, 5, 8, worldMap.get(), " ");
+    //Bresenham2D(0, 0, 8, 8, worldMap->getTileMap(0, 0, 0), " ");
+    Bresenham3D(0, 0, 0, 25, 25, 5, worldMap.get(), " ");
 
 
 }

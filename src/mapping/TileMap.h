@@ -54,7 +54,13 @@ public:
         if(x >= length || y >= width) return nullptr;
         return virtualMap.at(x).at(y).get();
     }
+    
     Tile* returnTile(int x, int y){return getTilePtr(x, y);}
+    
+    void setTileSymbol(int x, int y, std::string symbol){
+        Tile *tmp = returnTile(x, y);
+        if(tmp != nullptr)
+            tmp->setSymbol(symbol);};
     
 };
 
