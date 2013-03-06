@@ -22,6 +22,9 @@
 *.glb
 *.tlm
 
+# We don't want to keep uploading logs
+*.log
+
 # Emacs Stuff
 *#
 .#*
