@@ -25,6 +25,8 @@
 		7452363816DFD05900842D07 /* RenderMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7452363616DFD05900842D07 /* RenderMap.cpp */; };
 		7452363B16DFD0E900842D07 /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7452363916DFD0E900842D07 /* WorldMap.cpp */; };
 		746B312316DF99EC00CDBBC9 /* TAP_Server.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 746B312216DF99EC00CDBBC9 /* TAP_Server.1 */; };
+		7491DA1E16E74D650035C35A /* PerlinNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7491DA1C16E74D650035C35A /* PerlinNoise.cpp */; };
+		7491DA2116E7FEAC0035C35A /* SimplexNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7491DA1F16E7FEAC0035C35A /* SimplexNoise.cpp */; };
 		74E38FE816E1793D00ABD5DE /* TCP_Handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E38FE616E1793D00ABD5DE /* TCP_Handler.cpp */; };
 		74E38FEC16E17DCF00ABD5DE /* TCP_Session.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E38FEA16E17DCF00ABD5DE /* TCP_Session.cpp */; };
 		74E38FEF16E17E2100ABD5DE /* TCP_Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E38FED16E17E2000ABD5DE /* TCP_Pool.cpp */; };
@@ -203,6 +205,10 @@
 		746B30F716DF949F00CDBBC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		746B310F16DF958100CDBBC9 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = /Library/Frameworks/SDL.framework; sourceTree = "<absolute>"; };
 		746B312216DF99EC00CDBBC9 /* TAP_Server.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TAP_Server.1; sourceTree = "<group>"; };
+		7491DA1C16E74D650035C35A /* PerlinNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PerlinNoise.cpp; sourceTree = "<group>"; };
+		7491DA1D16E74D650035C35A /* PerlinNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerlinNoise.h; sourceTree = "<group>"; };
+		7491DA1F16E7FEAC0035C35A /* SimplexNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimplexNoise.cpp; sourceTree = "<group>"; };
+		7491DA2016E7FEAC0035C35A /* SimplexNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplexNoise.h; sourceTree = "<group>"; };
 		74E38FE516E174C900ABD5DE /* Boost_Net_Asio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boost_Net_Asio.h; sourceTree = "<group>"; };
 		74E38FE616E1793D00ABD5DE /* TCP_Handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCP_Handler.cpp; sourceTree = "<group>"; };
 		74E38FE716E1793D00ABD5DE /* TCP_Handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCP_Handler.h; sourceTree = "<group>"; };
@@ -578,6 +584,10 @@
 				74F89EFC16E4461200DBD81B /* WorldErosion.h */,
 				7416F49C16E5A2A700C1CEE0 /* WorldDrawing.cpp */,
 				7416F49D16E5A2A700C1CEE0 /* WorldDrawing.h */,
+				7491DA1C16E74D650035C35A /* PerlinNoise.cpp */,
+				7491DA1D16E74D650035C35A /* PerlinNoise.h */,
+				7491DA1F16E7FEAC0035C35A /* SimplexNoise.cpp */,
+				7491DA2016E7FEAC0035C35A /* SimplexNoise.h */,
 			);
 			path = worldgen;
 			sourceTree = "<group>";
@@ -847,6 +857,8 @@
 				74F89F0716E470FB00DBD81B /* IntToUTF8String.cpp in Sources */,
 				7416F49B16E5955000C1CEE0 /* GeometryFunctions.cpp in Sources */,
 				7416F49E16E5A2A800C1CEE0 /* WorldDrawing.cpp in Sources */,
+				7491DA1E16E74D650035C35A /* PerlinNoise.cpp in Sources */,
+				7491DA2116E7FEAC0035C35A /* SimplexNoise.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

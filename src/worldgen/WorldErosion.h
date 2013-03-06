@@ -28,7 +28,7 @@ private:
     std::shared_ptr<Random> randomGen;
     
     void run();
-    void TileMapErode(TileMap *input);
+    void TileMapErode(TileMap *input, int heightRange);
     
 public:
     
