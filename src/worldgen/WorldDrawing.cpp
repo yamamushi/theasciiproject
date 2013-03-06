@@ -19,81 +19,20 @@
 
 
 void drawLineOnTileMap(int x1, int y1, int x2, int y2, TileMap *output, std::string symbol){
-    
-    int minX, minY;
-    int maxX, maxY;
-    
-    minX = std::min(x1, x2);
-    minY = std::min(y1, y2);
-    maxX = std::max(x1, x2);
-    maxY = std::max(x1, x2);
-    
-    for(int curX = minX; curX < maxX; curX++){
-        for( int curY = minY; curY < maxY; curY++){
-            
-            if(IsPointOnLine(x1, y1, x2, y2, curX, curY)){
-                
-                Tile *updateTile = output->getTilePtr(curX, curY);
-                updateTile->setSymbol(symbol);
-                
-            }
-        }
-    }
+    Bresenham2D(x1, y1, x2, y2, output, symbol);
 }
 
 
 
 void drawLineOnWorldMap(int x1, int y1, int z1, int x2, int y2, int z2, WorldMap *output, std::string symbol){
-    
-    int minX, minY;
-    int maxX, maxY;
-    int maxZ, minZ;
-    
-    minX = std::min(x1, x2);
-    minY = std::min(y1, y2);
-    minZ = std::min(z1, z2);
-    maxX = std::max(x1, x2);
-    maxY = std::max(x1, x2);
-    maxZ = std::max(z1, z2);
-    
-    
-    int curZ = minZ;
-    int distXY = distanceXY(x1, y1, x2, y2);
-    int distZ = maxZ - minZ;
-    int distToEnd;
-    
-    int resolution = 2;
-    
-    if(distXY > distZ){
-        for(int curX = minX; curX < maxX; curX++){
-            for( int curY = minY; curY < maxY; curY++){
-                if(IsPointOnLine(x1, y1, x2, y2, curX, curY)){
-                    
-                    Tile *updateTile = output->getTileAt(curX, curY, curZ);
-                    if(updateTile != nullptr)
-                        updateTile->setSymbol(symbol);
-                }
-                distToEnd = distanceXY(curX, curY, maxX, maxY);
-            }
-            if((distXY - distToEnd) < (distXY / distZ)){
-                continue;
-            }
-            else if( ((distXY - distToEnd) > ((distXY / distZ)-resolution)) && ((distXY - distToEnd) < ((distXY / distZ)+resolution)) ){
-                continue;
-            }
-            else if( ((distXY - distToEnd) > (((distXY / distZ) * curZ)-resolution)) && ((distXY - distToEnd) < ((distXY / distZ) * curZ)+resolution) ){
-                continue;
-            }
-            else{
-                if(curZ < output->getZ())
-                    curZ++;
-            }
-            
-        }
-    }
+    Bresenham3D(x1, y1, z1, x2, y2, z2, output, symbol);
 }
 
 
+
+// Original Author Unknown
+// A slightly modified version of the code found at
+// http://roguebasin.roguelikedevelopment.org/index.php?title=Bresenham%27s_Line_Algorithm
 
 void Bresenham2D(int x1, int y1, int const x2, int const y2, TileMap *output, std::string symbol){
     int delta_x(x2 - x1);
@@ -154,10 +93,23 @@ void Bresenham2D(int x1, int y1, int const x2, int const y2, TileMap *output, st
 }
 
 
+
+// Original Author Unknown
+// A slightly modified version of the source found at
+// http://www.ict.griffith.edu.au/anthony/info/graphics/bresenham.procs
+// Provided by Anthony Thyssen, though he does not take credit for the original implementation
+//
+// We can confirm that it does work, however at the time he didn't see a purpose for its use.
+//
+// "3d Bresenham Line Drawing  (Why I don't know)
+// Note I have NOT tested this, just include it from a news groups."
+// 
+
+
 void Bresenham3D(int x1, int y1, int z1, const int x2, const int y2, const int z2, WorldMap *output, std::string symbol){
     
-    if( (std::max(x1,x2) > output->getX()) || (std::max(y1,y2) > output->getY()) || std::max(z1,z2) > output->getZ() )
-        return;
+   // if( (std::max(x1,x2) > output->getX()) || (std::max(y1,y2) > output->getY()) || std::max(z1,z2) > output->getZ() )
+   //     return;
     
     int i, dx, dy, dz, l, m, n, x_inc, y_inc, z_inc, err_1, err_2, dx2, dy2, dz2;
     int point[3];
