@@ -93,17 +93,26 @@ void Bresenham2D(int x1, int y1, int const x2, int const y2, TileMap *output, st
 }
 
 
-
-// Original Author Unknown
+// Bresenham3D 
+//
 // A slightly modified version of the source found at
 // http://www.ict.griffith.edu.au/anthony/info/graphics/bresenham.procs
 // Provided by Anthony Thyssen, though he does not take credit for the original implementation
 //
-// We can confirm that it does work, however at the time he didn't see a purpose for its use.
+// It is highly likely that the original Author was Bob Pendelton, as referenced here
 //
-// "3d Bresenham Line Drawing  (Why I don't know)
-// Note I have NOT tested this, just include it from a news groups."
-// 
+// ftp://ftp.isc.org/pub/usenet/comp.sources.unix/volume26/line3d
+//
+// line3d was dervied from DigitalLine.c published as "Digital Line Drawing"
+// by Paul Heckbert from "Graphics Gems", Academic Press, 1990
+//
+// 3D modifications by Bob Pendleton. The original source code was in the public
+// domain, the author of the 3D version places his modifications in the
+// public domain as well.
+//
+// line3d uses Bresenham's algorithm to generate the 3 dimensional points on a
+// line from (x1, y1, z1) to (x2, y2, z2)
+//
 
 
 void Bresenham3D(int x1, int y1, int z1, const int x2, const int y2, const int z2, WorldMap *output, std::string symbol){
