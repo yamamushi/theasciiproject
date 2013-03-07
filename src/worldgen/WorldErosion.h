@@ -29,10 +29,12 @@ private:
     
     void run();
     void TileMapErode(TileMap *input, int heightRange);
+    void WorldMapErode(WorldMap *input, int heightRange);
     
 public:
     
     WorldErosion(std::shared_ptr<WorldMap> world, std::shared_ptr<ServerConfigParser> config) : worldMap(world), serverConfig(config){run();};
+    
     
     
 };

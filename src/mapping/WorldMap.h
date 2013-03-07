@@ -69,5 +69,6 @@ public:
     
     TileMap* getTileMap(int posx, int posy, int posz);
     Tile* getTileAt(int posx, int posy, int posz); // NOTE - This is in the global context, not the TileMap context!
-    
+    Tile* AltGetTileAt(int posx, int posy, int posz);
+
 };

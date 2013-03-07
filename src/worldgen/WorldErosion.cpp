@@ -49,8 +49,9 @@ void WorldErosion::run(){
     
     // Bresenham3D(5, 5, 0, 5, 5, 5, worldMap.get(), " ");
     
-    TileNoiseHeightmap(worldMap->getTileMap(0, 0, 0), 16, 0.50, 64, 2);
+    //TileNoiseHeightmap(worldMap->getTileMap(0, 0, 0), 16, 0.50, 256, 2);
     //TileMapErode(worldMap->getTileMap(0, 0, 0), 30);
+    WorldMapHeightMap(worldMap.get(), 32, 0.50, 128, 2);
     
     
 }
@@ -65,7 +66,7 @@ void WorldErosion::TileMapErode(TileMap *input, int heightRange){
     for( int x=0; x < mapWidth; x++){
         for( int y=0; y < mapHeight; y++){
             
-            
+            // Useless function at the moment, a placeholder I suppose
             
         }
     }

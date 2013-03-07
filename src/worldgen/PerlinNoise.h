@@ -16,3 +16,4 @@ inline double FindPerlinNoise(double x,double y);
 inline double InterpolatePerlin(double a,double b,double x);
 
 void TileNoiseHeightmap(TileMap *tileMap, double zoom, double persistence, double range, int octaves=2);
+void WorldMapHeightMap(WorldMap *worldMap, double zoom, double persistence, double range, int octaves=2);

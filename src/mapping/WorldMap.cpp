@@ -82,3 +82,25 @@ Tile* WorldMap::getTileAt(int posx, int posy, int posz){
     return realTile;
     
 }
+
+
+Tile* WorldMap::AltGetTileAt(int posx, int posy, int posz){
+    
+    if( posx >= worldTileLength || posy >= worldTileLength || posz >= worldTileHeight )
+        return nullptr;
+    
+    int realTileMapX = (posx / mapX);
+    int realTileMapY = (posy / mapY);
+    
+    int realTileX = (posx % mapX);
+    int realTileY = (posy % mapY);
+    
+    // I have no idea why the heightmap generator switches the X and Y positions
+    // But this is the fix =shrug=
+    TileMap *realTileMap = getTileMap(realTileMapY, realTileMapX, posz);
+    
+    Tile *realTile = realTileMap->getTilePtr(realTileX, realTileY);
+    
+    return realTile;
+    
+}

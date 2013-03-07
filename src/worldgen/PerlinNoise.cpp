@@ -83,7 +83,7 @@ void TileNoiseHeightmap(TileMap *tileMap, double zoom, double persistence, doubl
         octaves=2;
     
     boost::shared_ptr<HeightMap> hMap(new HeightMap(w, h));
-    double normalize = sqrt(w*h);
+    //double normalize = sqrt(w*h);
 
     // We run through this series of functions twice to "normalize" our heightmap.
     
@@ -148,5 +148,83 @@ void TileNoiseHeightmap(TileMap *tileMap, double zoom, double persistence, doubl
         }
     }
     
+}
+
+
+
+void WorldMapHeightMap(WorldMap *worldMap, double zoom, double persistence, double range, int octaves){
+    
+    int w = worldMap->returnWorldWidth();
+    int h = worldMap->returnWorldLength();
+    
+    if(octaves < 2)
+        octaves=2;
+    
+    boost::shared_ptr<HeightMap> hMap(new HeightMap(w, h));
+    //double normalize = sqrt(w*h);
+    
+    // We run through this series of functions twice to "normalize" our heightmap.
+    
+    for(int y=0;y<h;y++){
+        for(int x=0;x<w;x++){
+            
+            double getnoise = 0;
+            for(int a=0;a<octaves-1;a++){ //This loops trough the octaves.
+                
+                double frequency = pow(2,a); //This increases the frequency with every loop of the octave.
+                double amplitude = pow(persistence,a); //This decreases the amplitude with every loop of the octave.
+                
+                
+                //getnoise += noise(((double)x)*frequency/zoom,((double)y)/zoom*frequency)*amplitude;//This uses our perlin noise functions. It calculates all our zoom and frequency and amplitude
+                
+                getnoise += (noise( ((double)(x)*frequency)/zoom, ((double)(y)/zoom*frequency)*amplitude) * (w-x) * (h-y));
+                getnoise += (noise( ((double)(x-w)*frequency)/zoom, ((double)(y)/zoom*frequency)*amplitude) * (x) * (h-y));
+                getnoise += (noise( ((double)(x-w)*frequency)/zoom, ((double)(y-h)/zoom*frequency)*amplitude) * (x) * (y));
+                getnoise += (noise( ((double)(x)*frequency)/zoom, ((double)(y-h)/zoom*frequency)*amplitude) * (w-x) * (y));
+                getnoise = getnoise / (w*h);
+                
+            }
+            
+            //int mod = (int)(getnoise*(range/2))+(range/2);
+            hMap->AddHeightAt(x, y, getnoise);
+            
+        }
+    }
+    
+    for(int y=0;y<h;y++){
+        for(int x=0;x<w;x++){
+            /*
+             double getnoise = 0;
+             for(int a=0;a<octaves-1;a++){ //This loops trough the octaves.
+             
+             double frequency = pow(2,a); //This increases the frequency with every loop of the octave.
+             double amplitude = pow(persistence,a); //This decreases the amplitude with every loop of the octave.
+             
+             getnoise += (noise( ((double)(x)*frequency)/normalize, ((double)(y)/normalize*frequency)*amplitude) * (w-x) * (h-y));
+             getnoise += (noise( ((double)(x-w)*frequency)/normalize, ((double)(y)/normalize*frequency)*amplitude) * (x) * (h-y));
+             getnoise += (noise( ((double)(x-w)*frequency)/normalize, ((double)(y-h)/normalize*frequency)*amplitude) * (x) * (y));
+             getnoise += (noise( ((double)(x)*frequency)/normalize, ((double)(y-h)/normalize*frequency)*amplitude) * (w-x) * (y));
+             getnoise = getnoise / (w*h);
+             
+             }
+             if(distanceXY(x, y, w/2, h/2) < w/4){
+             //int mod = (int)(getnoise*(range/2))+(range/2);
+             hMap->AddHeightAt(x, y, getnoise);
+             } */
+            
+            int finalHeight = (int)(hMap->GetHeightAt(x, y)*(range/2))+(range/2);
+            
+            if(finalHeight>(range))
+                finalHeight = range;
+            if(finalHeight<0)
+                finalHeight = 0;
+            
+            finalHeight = finalHeight + 0x2581;
+            //2581 - 2589
+            //tileMap->getTilePtr(x, y)->setSymbol(std::to_string(heightMap));
+            worldMap->AltGetTileAt(x, y, 0)->setSymbol(IntToUTF8String(finalHeight));
+        }
+    }
+    worldMap->getTileAt(13, 17, 0)->setSymbol("F");
 }
 
