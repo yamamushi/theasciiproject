@@ -7,6 +7,8 @@
 //
 
 #include "PerlinNoise.h"
+#include "Perlin.h"
+#include "SimplexNoise.h"
 #include "../mapping/Tile.h"
 #include "../mapping/TileMap.h"
 #include "../mapping/WorldMap.h"
@@ -47,9 +49,9 @@ inline double InterpolatePerlin(double a,double b,double x){
 
 double noise(double x,double y){
     
-    double floorx=(double)((int)x); 
+    double floorx=(double)((int)x);
     double floory=(double)((int)y);
-    double s,t,u,v; 
+    double s,t,u,v;
     
     s=FindPerlinNoise(floorx,floory);
     t=FindPerlinNoise(floorx+1,floory);
@@ -74,32 +76,43 @@ void TileNoiseHeightmap(TileMap *tileMap, double zoom, double persistence, doubl
         octaves=2;
     
     //int center = tileMap->getWidth()/tileMap->getLength();
-            
+    
+    
     for(int y=0;y<h;y++){
         for(int x=0;x<w;x++){
             double getnoise = 0;
+            
             
             for(int a=0;a<octaves-1;a++){ //This loops trough the octaves.
                 
                 double frequency = pow(2,a);//This increases the frequency with every loop of the octave.
                 double amplitude = pow(persistence,a);//This decreases the amplitude with every loop of the octave.
                 
-                getnoise += noise(((double)x)*frequency/zoom,((double)y)/zoom*frequency)*amplitude;//This uses our perlin noise functions. It calculates all our zoom and frequency and amplitude
-
-            }
-            int heightMap = (int)((getnoise*(range/2))+(range/2));//Convert to 0-256 values.
-            
-            if((distanceXY(x,y, w/2, h/2) > (w/3)) && (distanceXY(x,y, w/2, h/2) > (h/3))){
-                int diffx = (w/5)-((w/2)- distanceXY(x,y, w/2, h/2));
-                int diffy = (h/5)-((h/2)- distanceXY(x,y, w/2, h/2));
                 
-                int mod = std::min(diffx, diffy);
+                /*
+                 F_tile(x, y, w, h) = (
+                 F(x, y) * (w - x) * (h - y) +
+                 F(x - w, y) * (x) * (h - y) +
+                 F(x - w, y - h) * (x) * (y) +
+                 F(x, y - h) * (w - x) * (y)
+                 ) / (w * h)
+                 */
+                
+                //getnoise += noise(((double)x)*frequency/zoom,((double)y)/zoom*frequency)*amplitude;//This uses our perlin noise functions. It calculates all our zoom and frequency and amplitude
+                getnoise += (noise( ((double)(x)*frequency)/zoom, ((double)(y)/zoom*frequency)*amplitude) * (w-x) * (h-y));
+                getnoise += (noise( ((double)(x-w)*frequency)/zoom, ((double)(y)/zoom*frequency)*amplitude) * (x) * (h-y));
+                getnoise += (noise( ((double)(x-w)*frequency)/zoom, ((double)(y-h)/zoom*frequency)*amplitude) * (x) * (y));
+                getnoise += (noise( ((double)(x)*frequency)/zoom, ((double)(y-h)/zoom*frequency)*amplitude) * (w-x) * (y));
+                getnoise = getnoise / (w*h);
+                
+            }
 
-                heightMap = heightMap - (mod*2);
+            std::cout << getnoise << std::endl;
             
-            } 
+            int heightMap = (int)((getnoise*(range/2))+(range/2)); //Convert to 0-range values
             
-            if(heightMap>range)
+            
+            if(heightMap>(range))
                 heightMap = range;
             if(heightMap<0)
                 heightMap = 0;

@@ -35,6 +35,4 @@ public:
     WorldErosion(std::shared_ptr<WorldMap> world, std::shared_ptr<ServerConfigParser> config) : worldMap(world), serverConfig(config){run();};
     
     
-    
-    
 };

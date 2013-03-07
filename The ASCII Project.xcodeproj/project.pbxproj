@@ -576,18 +576,18 @@
 		743CAD2D16DFA9CE00C56DB2 /* worldgen */ = {
 			isa = PBXGroup;
 			children = (
-				743CAD2E16DFA9CE00C56DB2 /* Readme */,
-				743CAD2F16DFA9CE00C56DB2 /* WorldgenInit.cpp */,
-				743CAD3016DFA9CE00C56DB2 /* WorldgenInit.h */,
 				743DF61916E3189300E64AC3 /* Notes */,
-				74F89EFB16E4461200DBD81B /* WorldErosion.cpp */,
-				74F89EFC16E4461200DBD81B /* WorldErosion.h */,
-				7416F49C16E5A2A700C1CEE0 /* WorldDrawing.cpp */,
-				7416F49D16E5A2A700C1CEE0 /* WorldDrawing.h */,
 				7491DA1C16E74D650035C35A /* PerlinNoise.cpp */,
 				7491DA1D16E74D650035C35A /* PerlinNoise.h */,
+				743CAD2E16DFA9CE00C56DB2 /* Readme */,
 				7491DA1F16E7FEAC0035C35A /* SimplexNoise.cpp */,
 				7491DA2016E7FEAC0035C35A /* SimplexNoise.h */,
+				7416F49C16E5A2A700C1CEE0 /* WorldDrawing.cpp */,
+				7416F49D16E5A2A700C1CEE0 /* WorldDrawing.h */,
+				74F89EFB16E4461200DBD81B /* WorldErosion.cpp */,
+				74F89EFC16E4461200DBD81B /* WorldErosion.h */,
+				743CAD2F16DFA9CE00C56DB2 /* WorldgenInit.cpp */,
+				743CAD3016DFA9CE00C56DB2 /* WorldgenInit.h */,
 			);
 			path = worldgen;
 			sourceTree = "<group>";
