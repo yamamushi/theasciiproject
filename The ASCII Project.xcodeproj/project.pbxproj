@@ -27,6 +27,8 @@
 		746B312316DF99EC00CDBBC9 /* TAP_Server.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 746B312216DF99EC00CDBBC9 /* TAP_Server.1 */; };
 		7491DA1E16E74D650035C35A /* PerlinNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7491DA1C16E74D650035C35A /* PerlinNoise.cpp */; };
 		7491DA2116E7FEAC0035C35A /* SimplexNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7491DA1F16E7FEAC0035C35A /* SimplexNoise.cpp */; };
+		74DF51E916E8F69200BACBB3 /* Bresenham.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74DF51E716E8F69200BACBB3 /* Bresenham.cpp */; };
+		74DF51EF16E8F7F900BACBB3 /* HeightMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74DF51ED16E8F7F900BACBB3 /* HeightMap.cpp */; };
 		74E38FE816E1793D00ABD5DE /* TCP_Handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E38FE616E1793D00ABD5DE /* TCP_Handler.cpp */; };
 		74E38FEC16E17DCF00ABD5DE /* TCP_Session.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E38FEA16E17DCF00ABD5DE /* TCP_Session.cpp */; };
 		74E38FEF16E17E2100ABD5DE /* TCP_Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74E38FED16E17E2000ABD5DE /* TCP_Pool.cpp */; };
@@ -209,6 +211,10 @@
 		7491DA1D16E74D650035C35A /* PerlinNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerlinNoise.h; sourceTree = "<group>"; };
 		7491DA1F16E7FEAC0035C35A /* SimplexNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimplexNoise.cpp; sourceTree = "<group>"; };
 		7491DA2016E7FEAC0035C35A /* SimplexNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplexNoise.h; sourceTree = "<group>"; };
+		74DF51E716E8F69200BACBB3 /* Bresenham.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bresenham.cpp; sourceTree = "<group>"; };
+		74DF51E816E8F69200BACBB3 /* Bresenham.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bresenham.h; sourceTree = "<group>"; };
+		74DF51ED16E8F7F900BACBB3 /* HeightMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeightMap.cpp; sourceTree = "<group>"; };
+		74DF51EE16E8F7F900BACBB3 /* HeightMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeightMap.h; sourceTree = "<group>"; };
 		74E38FE516E174C900ABD5DE /* Boost_Net_Asio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boost_Net_Asio.h; sourceTree = "<group>"; };
 		74E38FE616E1793D00ABD5DE /* TCP_Handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCP_Handler.cpp; sourceTree = "<group>"; };
 		74E38FE716E1793D00ABD5DE /* TCP_Handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCP_Handler.h; sourceTree = "<group>"; };
@@ -463,17 +469,19 @@
 			children = (
 				743CAD0A16DFA9CE00C56DB2 /* EntityMap.cpp */,
 				743CAD0B16DFA9CE00C56DB2 /* EntityMap.h */,
+				7416F49916E5955000C1CEE0 /* GeometryFunctions.cpp */,
+				7416F49A16E5955000C1CEE0 /* GeometryFunctions.h */,
+				74DF51ED16E8F7F900BACBB3 /* HeightMap.cpp */,
+				74DF51EE16E8F7F900BACBB3 /* HeightMap.h */,
 				743CAD0C16DFA9CE00C56DB2 /* Readme */,
+				7452363616DFD05900842D07 /* RenderMap.cpp */,
+				7452363716DFD05900842D07 /* RenderMap.h */,
 				743CAD0D16DFA9CE00C56DB2 /* Tile.cpp */,
 				743CAD0E16DFA9CE00C56DB2 /* Tile.h */,
 				743CAD0F16DFA9CE00C56DB2 /* TileMap.cpp */,
 				743CAD1016DFA9CE00C56DB2 /* TileMap.h */,
-				7452363616DFD05900842D07 /* RenderMap.cpp */,
-				7452363716DFD05900842D07 /* RenderMap.h */,
 				7452363916DFD0E900842D07 /* WorldMap.cpp */,
 				7452363A16DFD0E900842D07 /* WorldMap.h */,
-				7416F49916E5955000C1CEE0 /* GeometryFunctions.cpp */,
-				7416F49A16E5955000C1CEE0 /* GeometryFunctions.h */,
 			);
 			path = mapping;
 			sourceTree = "<group>";
@@ -489,19 +497,19 @@
 		743CAD1316DFA9CE00C56DB2 /* networking */ = {
 			isa = PBXGroup;
 			children = (
-				743CAD1416DFA9CE00C56DB2 /* Readme */,
 				74E38FE516E174C900ABD5DE /* Boost_Net_Asio.h */,
+				74E38FF616E1BEC000ABD5DE /* Packets.cpp */,
+				74E38FF716E1BEC000ABD5DE /* Packets.h */,
+				743CAD1416DFA9CE00C56DB2 /* Readme */,
 				74E38FE616E1793D00ABD5DE /* TCP_Handler.cpp */,
 				74E38FE716E1793D00ABD5DE /* TCP_Handler.h */,
 				74E38FE916E17BC600ABD5DE /* TCP_Netlib.h */,
-				74E38FEA16E17DCF00ABD5DE /* TCP_Session.cpp */,
-				74E38FEB16E17DCF00ABD5DE /* TCP_Session.h */,
-				74E38FED16E17E2000ABD5DE /* TCP_Pool.cpp */,
-				74E38FEE16E17E2000ABD5DE /* TCP_Pool.h */,
 				74E38FF016E1948F00ABD5DE /* TCP_Participant.cpp */,
 				74E38FF116E1949000ABD5DE /* TCP_Participant.h */,
-				74E38FF616E1BEC000ABD5DE /* Packets.cpp */,
-				74E38FF716E1BEC000ABD5DE /* Packets.h */,
+				74E38FED16E17E2000ABD5DE /* TCP_Pool.cpp */,
+				74E38FEE16E17E2000ABD5DE /* TCP_Pool.h */,
+				74E38FEA16E17DCF00ABD5DE /* TCP_Session.cpp */,
+				74E38FEB16E17DCF00ABD5DE /* TCP_Session.h */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -562,12 +570,12 @@
 				743CAD2816DFA9CE00C56DB2 /* FileLogger.h */,
 				743CAD2916DFA9CE00C56DB2 /* Filesystem.cpp */,
 				743CAD2A16DFA9CE00C56DB2 /* Filesystem.h */,
-				743CAD2B16DFA9CE00C56DB2 /* Timer.cpp */,
-				743CAD2C16DFA9CE00C56DB2 /* Timer.h */,
-				74F89F0216E4553900DBD81B /* Random.cpp */,
-				74F89F0316E4553900DBD81B /* Random.h */,
 				74F89F0516E470FB00DBD81B /* IntToUTF8String.cpp */,
 				74F89F0616E470FB00DBD81B /* IntToUTF8String.h */,
+				74F89F0216E4553900DBD81B /* Random.cpp */,
+				74F89F0316E4553900DBD81B /* Random.h */,
+				743CAD2B16DFA9CE00C56DB2 /* Timer.cpp */,
+				743CAD2C16DFA9CE00C56DB2 /* Timer.h */,
 				74F89F0816E48AB300DBD81B /* UnicodeCodepoints.h */,
 			);
 			path = utils;
@@ -588,6 +596,8 @@
 				74F89EFC16E4461200DBD81B /* WorldErosion.h */,
 				743CAD2F16DFA9CE00C56DB2 /* WorldgenInit.cpp */,
 				743CAD3016DFA9CE00C56DB2 /* WorldgenInit.h */,
+				74DF51E716E8F69200BACBB3 /* Bresenham.cpp */,
+				74DF51E816E8F69200BACBB3 /* Bresenham.h */,
 			);
 			path = worldgen;
 			sourceTree = "<group>";
@@ -859,6 +869,8 @@
 				7416F49E16E5A2A800C1CEE0 /* WorldDrawing.cpp in Sources */,
 				7491DA1E16E74D650035C35A /* PerlinNoise.cpp in Sources */,
 				7491DA2116E7FEAC0035C35A /* SimplexNoise.cpp in Sources */,
+				74DF51E916E8F69200BACBB3 /* Bresenham.cpp in Sources */,
+				74DF51EF16E8F7F900BACBB3 /* HeightMap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

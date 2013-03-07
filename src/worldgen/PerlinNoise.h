@@ -16,4 +16,3 @@ inline double FindPerlinNoise(double x,double y);
 inline double InterpolatePerlin(double a,double b,double x);
 
 void TileNoiseHeightmap(TileMap *tileMap, double zoom, double persistence, double range, int octaves=2);
-std::vector< std::vector<int > > wrappable_perlin_octave(std::vector< std::vector<int > > grid);
