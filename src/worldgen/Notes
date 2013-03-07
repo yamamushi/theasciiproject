@@ -1,15 +1,117 @@
-   
-   
-   This code will generate a tile pointer, serialize it to disk and close the output stream.
-    /*
-    TileMap *test = new TileMap(serverConfig->mapX, serverConfig->mapY);
-    TileMap outputMap = *test;
+
+
+We're going to do some Perlin Noise stacking to generate our world without it looking like random garbage :-)
+
+This requires a few things.
+
+- The Map dimensions must be equal, and they must be powers of 2 (2^n), ie: 8, 16, 32, 64, 128, 256, 512
+- The WorldMap dimensions must be in powers of 2 as well. This includes the Z levels.
+- If you did this properly, you'll have an x/y/z map with a total number of tiles that is a power of 2.
+
+ie: 16x16 - tile map
+    16x16x16 - world map
+    ========
+    1048576
     
-    //std::string fileName(serverConfig->data_dir + "/maps/" + boost::lexical_cast<std::string>(test->getX()) + "_" + boost::lexical_cast<std::string>(test->getY()) + ".tle");
-    
-    std::string fileName(serverConfig->data_dir + "/maps/test.tlm");
-    std::ofstream ofs(fileName);
-    boost::archive::text_oarchive oarchive(ofs);
-    
-    oarchive << outputMap;
-    ofs.close(); */
+    sqrt(1048576) == 1024.
+
+
+1.) Generate Perlin Map for WorldMap X/Y dimensions (Z will be a parameter modifier later, lets get this working first).
+2.) Generate a Perlin Map with the zoom equal to the X or Y dimensions (They are the same, if you're doing this right).
+3.) The above will have generated a "circle" or "ring" type of map:
+
+▒ ▒ ░ ░ ▐ ▏ ▏ ▏ ▏ ▏ ▏ ▏ ▐ ░ ░ ▒
+▒ ░ ░ ▐ ▏ ▏ ▎ ▎ ▎ ▎ ▎ ▏ ▏ ▐ ░ ░
+░ ░ ▐ ▏ ▏ ▎ ▎ ▎ ▎ ▎ ▎ ▎ ▏ ▏ ▐ ░
+▐ ▐ ▏ ▏ ▎ ▎ ▍ ▍ ▍ ▍ ▍ ▎ ▎ ▏ ▏ ▐
+▐ ▏ ▏ ▎ ▍ ▍ ▍ ▌ ▌ ▌ ▍ ▍ ▍ ▎ ▏ ▏
+▏ ▎ ▎ ▍ ▍ ▌ ▌ ▌ ▌ ▌ ▌ ▌ ▍ ▍ ▎ ▎
+▎ ▎ ▍ ▍ ▌ ▌ ▌ ▋ ▋ ▋ ▌ ▌ ▌ ▍ ▍ ▎
+▎ ▎ ▍ ▍ ▌ ▌ ▋ ▋ ▋ ▋ ▋ ▌ ▌ ▍ ▍ ▎
+▎ ▎ ▍ ▍ ▌ ▌ ▋ ▋ ▋ ▋ ▋ ▌ ▌ ▍ ▍ ▎
+▎ ▎ ▍ ▍ ▌ ▌ ▋ ▋ ▋ ▋ ▋ ▌ ▌ ▍ ▍ ▎
+▎ ▎ ▍ ▍ ▌ ▌ ▌ ▋ ▋ ▋ ▌ ▌ ▌ ▍ ▍ ▎
+▏ ▎ ▎ ▍ ▍ ▌ ▌ ▌ ▌ ▌ ▌ ▌ ▍ ▍ ▎ ▎
+▐ ▏ ▏ ▎ ▍ ▍ ▍ ▌ ▌ ▌ ▍ ▍ ▍ ▎ ▏ ▏
+▐ ▐ ▏ ▏ ▎ ▎ ▍ ▍ ▍ ▍ ▍ ▎ ▎ ▏ ▏ ▐
+░ ░ ▐ ▏ ▏ ▎ ▎ ▎ ▎ ▎ ▎ ▎ ▏ ▏ ▐ ░
+▒ ░ ░ ▐ ▏ ▏ ▎ ▎ ▎ ▎ ▎ ▏ ▏ ▐ ░ ░
+
+
+4.) We can pass the world Z height value as the range parameter to squeeze this down into something useful:
+
+
+
+Map at X:0 Y:0 Z:0
+▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃
+▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃
+▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃
+▃ ▃ ▃ ▃ ▃ ▃ ▃ ▂ ▂ ▂ ▃ ▃ ▃ ▃ ▃ ▃
+▃ ▃ ▃ ▃ ▃ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▃ ▃ ▃ ▃
+▃ ▃ ▃ ▃ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▃ ▃ ▃
+▃ ▃ ▃ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▃ ▃
+▃ ▃ ▃ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▃ ▃
+▃ ▃ ▃ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▃ ▃
+▃ ▃ ▃ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▃ ▃
+▃ ▃ ▃ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▃ ▃
+▃ ▃ ▃ ▃ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▃ ▃ ▃
+▃ ▃ ▃ ▃ ▃ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▃ ▃ ▃ ▃
+▃ ▃ ▃ ▃ ▃ ▃ ▃ ▂ ▂ ▂ ▃ ▃ ▃ ▃ ▃ ▃
+▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃
+▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃ ▃
+
+It's hard to see, but there is a ring in there.
+
+
+What's important here is that the concentration of heavier values be scattered equally around the edges of the map.
+
+
+5.) We then take this "weighted map", and use it to balance our generated maps so that the world edges are closer to sea-level.
+
+6.) We should be left with the ability to scale our worldmap with more interesting properties.
+
+
+Note:) The reason we're doing this instead of just generating a "tileable" perlin noise map is because our "tileable" maps aren't at a proper scale. We're using integer values rather than floating point precision, and we're left with weirdness as follows:
+
+
+Map at X:0 Y:0 Z:0
+▏ ▏ ▎ ▍ ▍ ▍ ▍ ▍ ▎ ▎ ▎ ▍ ▍ ▌ ▋ ▋ ▋ ▍ ▎ ▐ ▒ ▕ ▗ ▘ ▙ ▌ ▌ ▌ ▌ ▍ ▎ ▏
+▎ ▎ ▎ ▍ ▍ ▌ ▍ ▍ ▎ ▎ ▎ ▎ ▍ ▍ ▌ ▌ ▌ ▍ ▎ ▐ ▓ ▕ ▗ ▙ ▙ ▌ ▋ ▌ ▌ ▍ ▍ ▎
+▍ ▍ ▍ ▌ ▌ ▌ ▌ ▌ ▍ ▎ ▎ ▎ ▏ ▎ ▎ ▎ ▎ ▎ ▏ ░ ▓ ▖ ▘ ▙ ▚ ▋ ▋ ▋ ▌ ▌ ▍ ▍
+▍ ▍ ▌ ▌ ▋ ▋ ▋ ▋ ▌ ▎ ▎ ▏ ▐ ▐ ▐ ▐ ▐ ▏ ▐ ▒ ▔ ▖ ▘ ▙ ▚ ▋ ▋ ▋ ▋ ▌ ▌ ▍
+▌ ▌ ▌ ▋ ▋ ▋ ▊ ▋ ▋ ▎ ▏ ▐ ░ ▒ ▒ ▒ ▒ ░ ▒ ▓ ▕ ▗ ▘ ▚ ▚ ▌ ▋ ▋ ▋ ▌ ▌ ▌
+▌ ▌ ▌ ▌ ▋ ▋ ▊ ▊ ▊ ▎ ▐ ░ ▒ ▓ ▔ ▔ ▔ ▒ ▓ ▔ ▕ ▗ ▘ ▚ ▚ ▌ ▌ ▌ ▌ ▌ ▌ ▌
+▍ ▍ ▌ ▌ ▋ ▋ ▊ ▊ ▊ ▏ ▐ ▒ ▓ ▔ ▕ ▕ ▕ ▔ ▔ ▕ ▖ ▗ ▙ ▚ ▚ ▍ ▍ ▍ ▍ ▍ ▍ ▍
+▍ ▍ ▍ ▍ ▌ ▌ ▋ ▋ ▊ ▐ ░ ▓ ▔ ▕ ▖ ▖ ▖ ▔ ▕ ▕ ▖ ▗ ▙ ▚ ▚ ▎ ▎ ▎ ▎ ▎ ▎ ▎
+▎ ▎ ▎ ▎ ▍ ▌ ▌ ▋ ▋ ░ ▒ ▓ ▔ ▕ ▖ ▖ ▖ ▕ ▕ ▕ ▖ ▘ ▙ ▙ ▚ ▏ ▏ ▏ ▏ ▎ ▎ ▎
+▍ ▍ ▍ ▍ ▌ ▌ ▌ ▌ ▌ ░ ▒ ▓ ▕ ▕ ▖ ▖ ▕ ▕ ▕ ▖ ▗ ▘ ▙ ▚ ▛ ▏ ▎ ▎ ▎ ▎ ▎ ▍
+▎ ▎ ▎ ▎ ▎ ▎ ▎ ▎ ▎ ▒ ▓ ▕ ▕ ▖ ▖ ▖ ▖ ▕ ▕ ▖ ▗ ▘ ▙ ▚ ▛ ▐ ▐ ▐ ▏ ▏ ▏ ▎
+▏ ▏ ▏ ▏ ▐ ▐ ░ ░ ░ ▔ ▕ ▖ ▗ ▗ ▗ ▗ ▖ ▖ ▖ ▖ ▗ ▘ ▚ ▚ ▛ ▒ ▒ ▒ ░ ▐ ▐ ▏
+▏ ▏ ▐ ▐ ░ ▒ ▓ ▓ ▓ ▖ ▗ ▘ ▘ ▙ ▘ ▘ ▘ ▗ ▗ ▗ ▘ ▙ ▚ ▛ ▛ ▔ ▔ ▓ ▒ ░ ▐ ▏
+▏ ▏ ▐ ░ ▒ ▔ ▕ ▕ ▕ ▘ ▙ ▙ ▚ ▚ ▚ ▚ ▙ ▗ ▗ ▗ ▘ ▙ ▚ ▛ ▛ ▖ ▕ ▔ ▓ ▒ ▐ ▏
+▎ ▏ ▐ ░ ▓ ▔ ▖ ▖ ▗ ▙ ▚ ▚ ▛ ▛ ▛ ▛ ▛ ▗ ▗ ▗ ▘ ▙ ▚ ▛ ▜ ▖ ▖ ▔ ▓ ▒ ▐ ▏
+▍ ▎ ▏ ░ ▓ ▔ ▖ ▗ ▗ ▙ ▚ ▛ ▜ ▜ ▜ ▜ ▜ ▘ ▗ ▘ ▘ ▙ ▚ ▛ ▜ ▖ ▕ ▔ ▓ ░ ▏ ▎
+▍ ▍ ▏ ▐ ▒ ▔ ▕ ▖ ▖ ▙ ▚ ▛ ▜ ▝ ▝ ▝ ▝ ▗ ▗ ▗ ▘ ▙ ▛ ▜ ▜ ▖ ▕ ▔ ▒ ▐ ▏ ▎
+▓ ▓ ▓ ▓ ▔ ▕ ▖ ▗ ▗ ▗ ▖ ▕ ▔ ▓ ░ ▐ ▐ ▓ ▔ ▔ ▕ ▖ ▗ ▘ ▘ ▕ ▕ ▕ ▔ ▔ ▓ ▓
+▔ ▔ ▔ ▔ ▔ ▕ ▕ ▖ ▖ ▖ ▖ ▕ ▔ ▓ ▒ ░ ▐ ▔ ▔ ▕ ▖ ▖ ▗ ▘ ▘ ▕ ▕ ▕ ▕ ▔ ▔ ▔
+▖ ▖ ▕ ▕ ▕ ▕ ▕ ▕ ▕ ▖ ▕ ▕ ▔ ▓ ▒ ▒ ░ ▕ ▕ ▖ ▖ ▗ ▗ ▘ ▘ ▕ ▕ ▕ ▕ ▖ ▖ ▖
+▘ ▘ ▗ ▗ ▖ ▖ ▕ ▕ ▕ ▖ ▕ ▕ ▔ ▔ ▓ ▓ ▓ ▖ ▖ ▗ ▗ ▗ ▗ ▘ ▘ ▕ ▖ ▖ ▗ ▗ ▘ ▘
+▚ ▚ ▙ ▘ ▗ ▖ ▕ ▕ ▕ ▖ ▖ ▖ ▕ ▕ ▕ ▔ ▔ ▗ ▘ ▘ ▘ ▘ ▘ ▘ ▘ ▖ ▗ ▘ ▘ ▙ ▚ ▚
+▜ ▜ ▛ ▚ ▙ ▗ ▖ ▕ ▕ ▗ ▗ ▖ ▖ ▖ ▕ ▕ ▕ ▘ ▙ ▙ ▙ ▘ ▘ ▘ ▘ ▘ ▘ ▙ ▚ ▛ ▜ ▜
+▝ ▝ ▜ ▛ ▚ ▘ ▗ ▖ ▖ ▘ ▗ ▗ ▗ ▖ ▖ ▖ ▖ ▙ ▙ ▙ ▙ ▙ ▙ ▘ ▘ ▙ ▙ ▚ ▛ ▜ ▝ ▝
+▝ ▝ ▜ ▛ ▚ ▙ ▘ ▗ ▖ ▘ ▘ ▗ ▗ ▖ ▖ ▖ ▖ ▙ ▙ ▙ ▙ ▙ ▙ ▙ ▘ ▚ ▚ ▛ ▜ ▜ ▝ ▝
+▏ ▎ ▎ ▌ ▊ █ ▇ ▆ ▆ ▋ ▎ ▐ ▓ ▖ ▗ ▘ ▘ ▗ ▖ ▖ ▖ ▗ ▗ ▘ ▘ ▉ ▊ ▊ ▋ ▍ ▎ ▏
+▎ ▎ ▍ ▌ ▊ ▉ █ ▇ ▇ ▌ ▎ ▐ ▓ ▕ ▖ ▗ ▗ ▖ ▖ ▖ ▖ ▗ ▘ ▘ ▙ ▊ ▊ ▊ ▋ ▍ ▎ ▎
+▏ ▎ ▍ ▌ ▋ ▊ ▉ █ █ ▌ ▎ ▐ ▒ ▓ ▔ ▕ ▔ ▔ ▔ ▕ ▖ ▗ ▘ ▘ ▙ ▊ ▊ ▋ ▌ ▍ ▎ ▎
+▏ ▏ ▎ ▍ ▌ ▋ ▊ ▊ ▊ ▍ ▎ ▐ ░ ▒ ▒ ▒ ▒ ▓ ▓ ▔ ▕ ▖ ▘ ▙ ▙ ▋ ▋ ▋ ▌ ▍ ▎ ▏
+▏ ▏ ▎ ▍ ▌ ▌ ▋ ▋ ▋ ▍ ▎ ▏ ▐ ▐ ▐ ▐ ▐ ░ ▒ ▓ ▔ ▖ ▗ ▙ ▙ ▋ ▋ ▌ ▍ ▍ ▎ ▏
+▏ ▏ ▎ ▎ ▍ ▌ ▌ ▌ ▍ ▎ ▎ ▎ ▎ ▎ ▎ ▍ ▍ ▏ ▐ ▒ ▔ ▖ ▗ ▘ ▙ ▌ ▌ ▌ ▍ ▎ ▎ ▏
+▏ ▏ ▎ ▎ ▍ ▍ ▍ ▍ ▎ ▎ ▎ ▎ ▍ ▍ ▌ ▌ ▌ ▎ ▏ ░ ▓ ▕ ▗ ▘ ▙ ▌ ▌ ▌ ▍ ▎ ▎ ▏
+
+
+
+You can see that although the edges of our map tile properly to eachother, allowing for a smooth transition from one edge of the map onto the opposite side, the heightmap distribution is skewed.
+
+More research needs to be done however, as it may still yet be possible to squeeze a well-distributed map out of the tileable perlin noise.
+
+

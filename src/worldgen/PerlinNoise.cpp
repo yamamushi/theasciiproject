@@ -7,7 +7,6 @@
 //
 
 #include "PerlinNoise.h"
-#include "Perlin.h"
 #include "SimplexNoise.h"
 #include "../mapping/Tile.h"
 #include "../mapping/TileMap.h"
