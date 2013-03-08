@@ -128,11 +128,7 @@ int main(int argc, const char * argv[])
     TileMap outputTileMap;
     
     outputTileMap = *outputMap->getTileMap(posX, posY, posZ);
-    
-    if(outputTileMap == nullptr){
-        std::cout << "Error: Request Out of Bounds" << std::endl;
-        exit(0);
-    }
+
     
     std::cout << std::endl;
     std::cout << "TileMap Length: " << outputTileMap.getLength() << std::endl;

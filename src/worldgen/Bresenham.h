@@ -18,6 +18,6 @@
 
 
 
-void Bresenham2D(int x1, int y1, int const x2, int const y2, TileMap *output, std::string symbol);
-void Bresenham3D(int x1, int y1, int z1, const int x2, const int y2, const int z2, WorldMap *output, std::string symbol);
+void Bresenham2D(int x1, int y1, int const x2, int const y2, TileMap *output, int symbol);
+void Bresenham3D(int x1, int y1, int z1, const int x2, const int y2, const int z2, WorldMap *output, int symbol);
 

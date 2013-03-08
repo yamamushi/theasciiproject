@@ -24,7 +24,7 @@
 // A slightly modified version of the code found at
 // http://roguebasin.roguelikedevelopment.org/index.php?title=Bresenham%27s_Line_Algorithm
 
-void Bresenham2D(int x1, int y1, int const x2, int const y2, TileMap *output, std::string symbol){
+void Bresenham2D(int x1, int y1, int const x2, int const y2, TileMap *output, int symbol){
     int delta_x(x2 - x1);
     // if x1 == x2, then it does not matter what we set here
     signed char const ix((delta_x > 0) - (delta_x < 0));
@@ -105,7 +105,7 @@ void Bresenham2D(int x1, int y1, int const x2, int const y2, TileMap *output, st
 //
 
 
-void Bresenham3D(int x1, int y1, int z1, const int x2, const int y2, const int z2, WorldMap *output, std::string symbol){
+void Bresenham3D(int x1, int y1, int z1, const int x2, const int y2, const int z2, WorldMap *output, int symbol){
     
     // if( (std::max(x1,x2) > output->getX()) || (std::max(y1,y2) > output->getY()) || std::max(z1,z2) > output->getZ() )
     //     return;

@@ -15,5 +15,5 @@
 
 #include <string>
 
-void drawLineOnTileMap(int x1, int y1, int x2, int y2, TileMap *output, std::string symbol);
-void drawLineOnWorldMap(int x1, int y1, int z1, int x2, int y2, int z2, WorldMap *output, std::string symbol);
+void drawLineOnTileMap(int x1, int y1, int x2, int y2, TileMap *output, int symbol);
+void drawLineOnWorldMap(int x1, int y1, int z1, int x2, int y2, int z2, WorldMap *output, int symbol);

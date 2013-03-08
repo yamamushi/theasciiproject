@@ -17,13 +17,13 @@
 
 
 
-void drawLineOnTileMap(int x1, int y1, int x2, int y2, TileMap *output, std::string symbol){
+void drawLineOnTileMap(int x1, int y1, int x2, int y2, TileMap *output, int symbol){
     Bresenham2D(x1, y1, x2, y2, output, symbol);
 }
 
 
 
-void drawLineOnWorldMap(int x1, int y1, int z1, int x2, int y2, int z2, WorldMap *output, std::string symbol){
+void drawLineOnWorldMap(int x1, int y1, int z1, int x2, int y2, int z2, WorldMap *output, int symbol){
     Bresenham3D(x1, y1, z1, x2, y2, z2, output, symbol);
 }
 

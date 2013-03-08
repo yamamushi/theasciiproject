@@ -57,7 +57,7 @@ public:
     
     Tile* returnTile(int x, int y){return getTilePtr(x, y);}
     
-    void setTileSymbol(int x, int y, std::string symbol){
+    void setTileSymbol(int x, int y, int symbol){
         Tile *tmp = returnTile(x, y);
         if(tmp != nullptr)
             tmp->setSymbol(symbol);};

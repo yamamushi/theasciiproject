@@ -144,7 +144,7 @@ void TileNoiseHeightmap(TileMap *tileMap, double zoom, double persistence, doubl
             finalHeight = finalHeight + 0x2581;
             //2581 - 2589
             //tileMap->getTilePtr(x, y)->setSymbol(std::to_string(heightMap));
-            tileMap->getTilePtr(x, y)->setSymbol(IntToUTF8String(finalHeight));
+            tileMap->getTilePtr(x, y)->setSymbol(finalHeight);
         }
     }
     
@@ -216,15 +216,20 @@ void WorldMapHeightMap(WorldMap *worldMap, double zoom, double persistence, doub
             
             if(finalHeight>(range))
                 finalHeight = range;
-            if(finalHeight<0)
-                finalHeight = 0;
+            else if(finalHeight < 64)
+                finalHeight = -0x2503;
+            else if(finalHeight > 64 && finalHeight < 68)
+                finalHeight = -0x2553;
+            else if(finalHeight == 68)
+                finalHeight = 0x31;
+            
             
             finalHeight = finalHeight + 0x2581;
             //2581 - 2589
             //tileMap->getTilePtr(x, y)->setSymbol(std::to_string(heightMap));
-            worldMap->AltGetTileAt(x, y, 0)->setSymbol(IntToUTF8String(finalHeight));
+            worldMap->AltGetTileAt(x, y, 0)->setSymbol(finalHeight);
         }
     }
-    worldMap->getTileAt(13, 17, 0)->setSymbol("F");
+    worldMap->getTileAt(13, 17, 0)->setSymbol(0x46);
 }
 

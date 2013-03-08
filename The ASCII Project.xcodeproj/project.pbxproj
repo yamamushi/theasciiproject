@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7416F49B16E5955000C1CEE0 /* GeometryFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7416F49916E5955000C1CEE0 /* GeometryFunctions.cpp */; };
 		7416F49E16E5A2A800C1CEE0 /* WorldDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7416F49C16E5A2A700C1CEE0 /* WorldDrawing.cpp */; };
+		742B66A916EA782800DA4C4F /* IntToUTF8String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74F89F0516E470FB00DBD81B /* IntToUTF8String.cpp */; };
 		743CAD3216DFA9CE00C56DB2 /* MySQLServerDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CACDE16DFA9CE00C56DB2 /* MySQLServerDB.cpp */; };
 		743CAD3316DFA9CE00C56DB2 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CACE416DFA9CE00C56DB2 /* Entity.cpp */; };
 		743CAD4116DFA9CE00C56DB2 /* MainServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CAD0816DFA9CE00C56DB2 /* MainServer.cpp */; };
@@ -888,6 +889,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				742B66A916EA782800DA4C4F /* IntToUTF8String.cpp in Sources */,
 				74E3902316E2FB3200ABD5DE /* RenderMap.cpp in Sources */,
 				74E3901F16E2FB2500ABD5DE /* EntityMap.cpp in Sources */,
 				74E3902016E2FB2500ABD5DE /* Tile.cpp in Sources */,
