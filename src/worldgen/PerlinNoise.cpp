@@ -24,7 +24,6 @@
 
 
 
-
 inline double FindPerlinNoise(int x){
     
     x = (x<<13) ^ x;
@@ -83,9 +82,6 @@ void TileNoiseHeightmap(TileMap *tileMap, double zoom, double persistence, doubl
         octaves=2;
     
     boost::shared_ptr<HeightMap> hMap(new HeightMap(w, h));
-    //double normalize = sqrt(w*h);
-
-    // We run through this series of functions twice to "normalize" our heightmap.
     
     for(int y=0;y<h;y++){
         for(int x=0;x<w;x++){
@@ -95,7 +91,6 @@ void TileNoiseHeightmap(TileMap *tileMap, double zoom, double persistence, doubl
                 
                 double frequency = pow(2,a); //This increases the frequency with every loop of the octave.
                 double amplitude = pow(persistence,a); //This decreases the amplitude with every loop of the octave.
-                
                 
                 //getnoise += noise(((double)x)*frequency/zoom,((double)y)/zoom*frequency)*amplitude;//This uses our perlin noise functions. It calculates all our zoom and frequency and amplitude
                 
@@ -107,32 +102,7 @@ void TileNoiseHeightmap(TileMap *tileMap, double zoom, double persistence, doubl
                 
             }
             
-            //int mod = (int)(getnoise*(range/2))+(range/2);
             hMap->AddHeightAt(x, y, getnoise);
-            
-        }
-    }
-    
-    for(int y=0;y<h;y++){
-        for(int x=0;x<w;x++){
-            /*
-            double getnoise = 0;
-            for(int a=0;a<octaves-1;a++){ //This loops trough the octaves.
-                
-                double frequency = pow(2,a); //This increases the frequency with every loop of the octave.
-                double amplitude = pow(persistence,a); //This decreases the amplitude with every loop of the octave.
-
-                getnoise += (noise( ((double)(x)*frequency)/normalize, ((double)(y)/normalize*frequency)*amplitude) * (w-x) * (h-y));
-                getnoise += (noise( ((double)(x-w)*frequency)/normalize, ((double)(y)/normalize*frequency)*amplitude) * (x) * (h-y));
-                getnoise += (noise( ((double)(x-w)*frequency)/normalize, ((double)(y-h)/normalize*frequency)*amplitude) * (x) * (y));
-                getnoise += (noise( ((double)(x)*frequency)/normalize, ((double)(y-h)/normalize*frequency)*amplitude) * (w-x) * (y));
-                getnoise = getnoise / (w*h);
-                
-            }
-            if(distanceXY(x, y, w/2, h/2) < w/4){
-                //int mod = (int)(getnoise*(range/2))+(range/2);
-                hMap->AddHeightAt(x, y, getnoise);
-            } */
             
             int finalHeight = (int)(hMap->GetHeightAt(x, y)*(range/2))+(range/2);
             
@@ -145,9 +115,9 @@ void TileNoiseHeightmap(TileMap *tileMap, double zoom, double persistence, doubl
             //2581 - 2589
             //tileMap->getTilePtr(x, y)->setSymbol(std::to_string(heightMap));
             tileMap->getTilePtr(x, y)->setSymbol(finalHeight);
+            
         }
     }
-    
 }
 
 
@@ -161,10 +131,7 @@ void WorldMapHeightMap(WorldMap *worldMap, double zoom, double persistence, doub
         octaves=2;
     
     boost::shared_ptr<HeightMap> hMap(new HeightMap(w, h));
-    //double normalize = sqrt(w*h);
-    
-    // We run through this series of functions twice to "normalize" our heightmap.
-    
+        
     for(int y=0;y<h;y++){
         for(int x=0;x<w;x++){
             
@@ -173,7 +140,6 @@ void WorldMapHeightMap(WorldMap *worldMap, double zoom, double persistence, doub
                 
                 double frequency = pow(2,a); //This increases the frequency with every loop of the octave.
                 double amplitude = pow(persistence,a); //This decreases the amplitude with every loop of the octave.
-                
                 
                 //getnoise += noise(((double)x)*frequency/zoom,((double)y)/zoom*frequency)*amplitude;//This uses our perlin noise functions. It calculates all our zoom and frequency and amplitude
                 
@@ -185,42 +151,17 @@ void WorldMapHeightMap(WorldMap *worldMap, double zoom, double persistence, doub
                 
             }
             
-            //int mod = (int)(getnoise*(range/2))+(range/2);
             hMap->AddHeightAt(x, y, getnoise);
-            
-        }
-    }
-    
-    for(int y=0;y<h;y++){
-        for(int x=0;x<w;x++){
-            /*
-             double getnoise = 0;
-             for(int a=0;a<octaves-1;a++){ //This loops trough the octaves.
-             
-             double frequency = pow(2,a); //This increases the frequency with every loop of the octave.
-             double amplitude = pow(persistence,a); //This decreases the amplitude with every loop of the octave.
-             
-             getnoise += (noise( ((double)(x)*frequency)/normalize, ((double)(y)/normalize*frequency)*amplitude) * (w-x) * (h-y));
-             getnoise += (noise( ((double)(x-w)*frequency)/normalize, ((double)(y)/normalize*frequency)*amplitude) * (x) * (h-y));
-             getnoise += (noise( ((double)(x-w)*frequency)/normalize, ((double)(y-h)/normalize*frequency)*amplitude) * (x) * (y));
-             getnoise += (noise( ((double)(x)*frequency)/normalize, ((double)(y-h)/normalize*frequency)*amplitude) * (w-x) * (y));
-             getnoise = getnoise / (w*h);
-             
-             }
-             if(distanceXY(x, y, w/2, h/2) < w/4){
-             //int mod = (int)(getnoise*(range/2))+(range/2);
-             hMap->AddHeightAt(x, y, getnoise);
-             } */
             
             int finalHeight = (int)(hMap->GetHeightAt(x, y)*(range/2))+(range/2);
             
             if(finalHeight>(range))
                 finalHeight = range;
-            else if(finalHeight < 64)
+            else if(finalHeight < 60)
                 finalHeight = -0x2503;
-            else if(finalHeight > 64 && finalHeight < 68)
+            else if(finalHeight >= 60 && finalHeight < 65)
                 finalHeight = -0x2553;
-            else if(finalHeight == 68)
+            else if(finalHeight == 65)
                 finalHeight = 0x31;
             
             
@@ -228,8 +169,9 @@ void WorldMapHeightMap(WorldMap *worldMap, double zoom, double persistence, doub
             //2581 - 2589
             //tileMap->getTilePtr(x, y)->setSymbol(std::to_string(heightMap));
             worldMap->AltGetTileAt(x, y, 0)->setSymbol(finalHeight);
+            
         }
     }
-    worldMap->getTileAt(13, 17, 0)->setSymbol(0x46);
+    //worldMap->getTileAt(13, 17, 0)->setSymbol(0x46);
 }
 
