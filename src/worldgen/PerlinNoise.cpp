@@ -158,7 +158,7 @@ void WorldMapHeightMap(WorldMap *worldMap, double zoom, double persistence, doub
             if(finalHeight>(range))
                 finalHeight = range;
             else if(finalHeight < 60)
-                finalHeight = -0x2503;
+                finalHeight = -0x339;
             else if(finalHeight >= 60 && finalHeight < 65)
                 finalHeight = -0x2553;
             else if(finalHeight == 65)
