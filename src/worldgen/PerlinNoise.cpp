@@ -112,7 +112,6 @@ void TileNoiseHeightmap(TileMap *tileMap, double zoom, double persistence, doubl
                 finalHeight = 0;
             
             finalHeight = finalHeight + 0x2581;
-            //2581 - 2589
             //tileMap->getTilePtr(x, y)->setSymbol(std::to_string(heightMap));
             tileMap->getTilePtr(x, y)->setSymbol(finalHeight);
             
@@ -166,7 +165,6 @@ void WorldMapHeightMap(WorldMap *worldMap, double zoom, double persistence, doub
             
             
             finalHeight = finalHeight + 0x2581;
-            //2581 - 2589
             //tileMap->getTilePtr(x, y)->setSymbol(std::to_string(heightMap));
             worldMap->AltGetTileAt(x, y, 0)->setSymbol(finalHeight);
             

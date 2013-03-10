@@ -1,0 +1,27 @@
+Contents of /Users/yamamushi/Programming/projects/The ASCII Project/TAP_Client/TAP_Client-Prefix.pch
+
+x86_64-apple-darwin12.2.1
+-x
+objective-c
+-arch
+x86_64
+-fmessage-length=0
+-std=gnu99
+-fpascal-strings
+-O0
+-DDEBUG=1
+-isysroot
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk
+-fasm-blocks
+-fstrict-aliasing
+-mmacosx-version-min=10.8
+-g
+-iquote
+-iquote
+-iquote../deps/libtcod/include
+-I/Users/yamamushi/Programming/projects/The ASCII Project/build/include
+-I/usr/local/include
+-I/usr/local/mysql/include
+-F/Users/yamamushi/Programming/projects/The ASCII Project/build
+-F/Library/Frameworks
+SDK_PRODUCT_BUILD_VERSION=12C37
