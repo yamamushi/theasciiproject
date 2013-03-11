@@ -200,8 +200,6 @@
 		743CAD6316DFC4DF00C56DB2 /* NOTES */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTES; sourceTree = "<group>"; };
 		743CAD6416DFC4DF00C56DB2 /* Readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
 		743CAD6516DFC4DF00C56DB2 /* tiling */ = {isa = PBXFileReference; lastKnownFileType = text; path = tiling; sourceTree = "<group>"; };
-		743DF60716E3125200E64AC3 /* TAP_Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = TAP_Server; path = "/Users/yamamushi/Programming/projects/The ASCII Project/build/TAP_Server"; sourceTree = "<absolute>"; };
-		743DF60816E3125200E64AC3 /* TMapDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = TMapDump; path = "/Users/yamamushi/Programming/projects/The ASCII Project/build/TMapDump"; sourceTree = "<absolute>"; };
 		743DF60A16E3127900E64AC3 /* checklogin.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = checklogin.php; sourceTree = "<group>"; };
 		743DF60B16E3127900E64AC3 /* config.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = config.php; sourceTree = "<group>"; };
 		743DF60C16E3127900E64AC3 /* confirmation.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = confirmation.php; sourceTree = "<group>"; };
@@ -217,6 +215,9 @@
 		743DF61616E317BB00E64AC3 /* WorldEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldEngine.cpp; sourceTree = "<group>"; };
 		743DF61716E317BB00E64AC3 /* WorldEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldEngine.h; sourceTree = "<group>"; };
 		743DF61916E3189300E64AC3 /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
+		74456E6116ED9D0500287288 /* TAP_Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TAP_Server; sourceTree = BUILT_PRODUCTS_DIR; };
+		74456E6216ED9D0500287288 /* TMapDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TMapDump; sourceTree = BUILT_PRODUCTS_DIR; };
+		74456E6316ED9D0500287288 /* WMapDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WMapDump; sourceTree = BUILT_PRODUCTS_DIR; };
 		744BD8D316ED1B1E00F1718F /* TAP_Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TAP_Client.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		744BD8D716ED1B1E00F1718F /* TAP_Client-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TAP_Client-Info.plist"; sourceTree = "<group>"; };
 		744BD8D916ED1B1E00F1718F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -373,7 +374,6 @@
 		74E38FFD16E1C80D00ABD5DE /* nOStradamus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nOStradamus.h; sourceTree = "<group>"; };
 		74E3900516E28E4600ABD5DE /* TMapDumpMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TMapDumpMain.cpp; sourceTree = "<group>"; };
 		74E3900716E28E4600ABD5DE /* TMapDump.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TMapDump.1; sourceTree = "<group>"; };
-		74E3901616E2FAD000ABD5DE /* WMapDump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = WMapDump; path = "/Users/yamamushi/Programming/projects/The ASCII Project/build/WMapDump"; sourceTree = "<absolute>"; };
 		74E3901816E2FAD100ABD5DE /* WMapDumpMain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WMapDumpMain.cpp; sourceTree = "<group>"; };
 		74E3901A16E2FAD100ABD5DE /* WMapDump.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = WMapDump.1; sourceTree = "<group>"; };
 		74F3BC2816DFC7BB000FC9C4 /* AUTHORS */ = {isa = PBXFileReference; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
@@ -757,6 +757,7 @@
 		743CAD4C16DFC03000C56DB2 /* bin */ = {
 			isa = PBXGroup;
 			children = (
+				744BD8D316ED1B1E00F1718F /* TAP_Client.app */,
 				7452363416DFCFC600842D07 /* TAP_Server */,
 				743CAD4D16DFC03000C56DB2 /* data */,
 				743CAD5216DFC03000C56DB2 /* server.conf */,
@@ -1013,7 +1014,9 @@
 				744BD8D516ED1B1E00F1718F /* TAP_Client */,
 				746B30F116DF949F00CDBBC9 /* Frameworks */,
 				7452363516DFCFEB00842D07 /* paperwork */,
-				744BD8D316ED1B1E00F1718F /* TAP_Client.app */,
+				74456E6116ED9D0500287288 /* TAP_Server */,
+				74456E6216ED9D0500287288 /* TMapDump */,
+				74456E6316ED9D0500287288 /* WMapDump */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1099,7 +1102,7 @@
 			);
 			name = TAP_Server;
 			productName = TAP_Server;
-			productReference = 743DF60716E3125200E64AC3 /* TAP_Server */;
+			productReference = 74456E6116ED9D0500287288 /* TAP_Server */;
 			productType = "com.apple.product-type.tool";
 		};
 		74E3900216E28E4500ABD5DE /* TMapDump */ = {
@@ -1116,7 +1119,7 @@
 			);
 			name = TMapDump;
 			productName = TMapDump;
-			productReference = 743DF60816E3125200E64AC3 /* TMapDump */;
+			productReference = 74456E6216ED9D0500287288 /* TMapDump */;
 			productType = "com.apple.product-type.tool";
 		};
 		74E3901516E2FAD000ABD5DE /* WMapDump */ = {
@@ -1133,7 +1136,7 @@
 			);
 			name = WMapDump;
 			productName = WMapDump;
-			productReference = 74E3901616E2FAD000ABD5DE /* WMapDump */;
+			productReference = 74456E6316ED9D0500287288 /* WMapDump */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -1541,6 +1544,7 @@
 				744BD8E816ED1B1E00F1718F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		746B30EA16DF949F00CDBBC9 /* Build configuration list for PBXProject "The ASCII Project" */ = {
 			isa = XCConfigurationList;

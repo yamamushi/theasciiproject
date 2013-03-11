@@ -14,6 +14,7 @@
 #include <vector>
 #include <memory>
 #include <boost/shared_ptr.hpp>
+#include <string>
 
 
 
@@ -41,6 +42,9 @@ private:
     // TileMap Dimensions
     int mapX, mapY;
     
+    // Config Setting for Exports/Imports
+    std::string rootFS;
+    
     // Storage Container for TileMaps
     std::vector< std::vector< std::vector< boost::shared_ptr<TileMap> > > > globalTileMap;
     
@@ -51,11 +55,14 @@ private:
     void initGlobalTileMap();
     void initGlobalEntityMap();
     
+    void exportTileMap(int x, int y, int z, boost::shared_ptr<TileMap> exportMap);
+    boost::shared_ptr<TileMap> importTileMap(int x, int y, int z);
+    
     
 public:
     
     WorldMap(){};
-    WorldMap( int x, int y, int z, int tX, int tY) : X(x), Y(y), Z(z), mapX(tX), mapY(tY){init();};
+    WorldMap( int x, int y, int z, int tX, int tY, std::string rootFS) : X(x), Y(y), Z(z), mapX(tX), mapY(tY), rootFS(rootFS){init();};
     
     ~WorldMap(){};
     

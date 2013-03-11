@@ -30,7 +30,7 @@ void WorldGen::init(){
     fileLogger->WorldLog("WorldGen Started");
     
     fileLogger->WorldLog("Creating World Structure");
-    std::shared_ptr<WorldMap> worldMap(new WorldMap(serverConfig->worldX, serverConfig->worldY, serverConfig->worldZ, serverConfig->mapX, serverConfig->mapY));
+    std::shared_ptr<WorldMap> worldMap(new WorldMap(serverConfig->worldX, serverConfig->worldY, serverConfig->worldZ, serverConfig->mapX, serverConfig->mapY, serverConfig->data_dir));
     fileLogger->WorldLog("World Structure Generated");
 
     

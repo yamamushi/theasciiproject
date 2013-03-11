@@ -104,6 +104,9 @@ void DirectoryInit(std::string rootFSPath){
     if(!FileSystem::CheckExists(rootFSPath + "/maps")){
         FileSystem::MkDir(rootFSPath + "/maps");
     }
+    if(!FileSystem::CheckExists(rootFSPath + "/maps/tilemaps")){
+        FileSystem::MkDir(rootFSPath + "/maps/tilemaps");
+    }
     if(!FileSystem::CheckExists(rootFSPath + "/players")){
         FileSystem::MkDir(rootFSPath + "/players");
     }

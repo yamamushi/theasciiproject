@@ -10,7 +10,11 @@
 #include "WorldMap.h"
 #include <memory>
 #include <vector>
+#include <string>
+#include <iostream>
+#include <fstream>
 #include <boost/shared_ptr.hpp>
+#include <boost/lexical_cast.hpp>
 #include "../mapping/Tile.h"
 #include "../mapping/TileMap.h"
 #include "../mapping/EntityMap.h"
@@ -39,6 +43,8 @@ void WorldMap::initGlobalTileMap(){
             for(int z=0; z<Z; z++){
                 boost::shared_ptr<TileMap> tileMap(new TileMap(mapX, mapY));
                 row.push_back(tileMap);
+                
+                exportTileMap(x, y, z, tileMap);
             }
             layer.push_back(row);
         }
@@ -53,6 +59,38 @@ void WorldMap::initGlobalEntityMap(){
     
     
 }
+
+void WorldMap::exportTileMap(int x, int y, int z, boost::shared_ptr<TileMap> exportMap){
+    
+    std::string fileName(rootFS + "/maps/tilemaps/" + boost::lexical_cast<std::string>(x) + "_" +
+                         boost::lexical_cast<std::string>(y) + "_" + boost::lexical_cast<std::string>(z) + ".emp");
+    std::ofstream outputMap(fileName);
+    boost::archive::text_oarchive world_oarchive(outputMap);
+    
+    TileMap *tileMapOut = exportMap.get();
+    outputMap << tileMapOut;
+    outputMap.close();
+    
+}
+
+boost::shared_ptr<TileMap> WorldMap::importTileMap(int x, int y, int z){
+    
+    TileMap *importMap;
+    std::string fileName( rootFS + "/maps/tilemaps/" + boost::lexical_cast<std::string>(x) + "_" +
+                         boost::lexical_cast<std::string>(y) + "_" + boost::lexical_cast<std::string>(z) + ".emp");
+    
+    std::ifstream inputMap(fileName);
+    boost::archive::text_iarchive inputTextArchive(inputMap);
+    
+    inputTextArchive & importMap;
+    inputMap.close();
+    
+    boost::shared_ptr<TileMap> returnMap(importMap);
+    
+    return returnMap;
+    
+}
+
 
 
 TileMap* WorldMap::getTileMap(int posx, int posy, int posz){
