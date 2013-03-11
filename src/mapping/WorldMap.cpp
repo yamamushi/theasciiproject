@@ -63,7 +63,7 @@ void WorldMap::initGlobalEntityMap(){
 void WorldMap::exportTileMap(int x, int y, int z, boost::shared_ptr<TileMap> exportMap){
     
     std::string fileName(rootFS + "/maps/tilemaps/" + boost::lexical_cast<std::string>(x) + "_" +
-                         boost::lexical_cast<std::string>(y) + "_" + boost::lexical_cast<std::string>(z) + ".emp");
+                         boost::lexical_cast<std::string>(y) + "_" + boost::lexical_cast<std::string>(z) + ".tlm");
     std::ofstream outputMap(fileName);
     boost::archive::text_oarchive world_oarchive(outputMap);
     
@@ -77,7 +77,7 @@ boost::shared_ptr<TileMap> WorldMap::importTileMap(int x, int y, int z){
     
     TileMap *importMap;
     std::string fileName( rootFS + "/maps/tilemaps/" + boost::lexical_cast<std::string>(x) + "_" +
-                         boost::lexical_cast<std::string>(y) + "_" + boost::lexical_cast<std::string>(z) + ".emp");
+                         boost::lexical_cast<std::string>(y) + "_" + boost::lexical_cast<std::string>(z) + ".tlm");
     
     std::ifstream inputMap(fileName);
     boost::archive::text_iarchive inputTextArchive(inputMap);
