@@ -31,6 +31,7 @@ private:
         ar & Z;
         ar & mapX;
         ar & mapY;
+        ar & rootFS;
         ar & globalTileMap;
         //ar & globalEntityMap;
     }

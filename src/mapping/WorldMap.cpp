@@ -41,7 +41,7 @@ void WorldMap::initGlobalTileMap(){
         for(int y=0; y<Y; y++){
             std::vector< boost::shared_ptr<TileMap> > row;
             for(int z=0; z<Z; z++){
-                boost::shared_ptr<TileMap> tileMap(new TileMap(mapX, mapY));
+                boost::shared_ptr<TileMap> tileMap(new TileMap(mapX, mapY, x, y, z));
                 row.push_back(tileMap);
                 
                 exportTileMap(x, y, z, tileMap);
@@ -68,7 +68,7 @@ void WorldMap::exportTileMap(int x, int y, int z, boost::shared_ptr<TileMap> exp
     boost::archive::text_oarchive world_oarchive(outputMap);
     
     TileMap *tileMapOut = exportMap.get();
-    outputMap << tileMapOut;
+    world_oarchive << tileMapOut;
     outputMap.close();
     
 }
@@ -92,11 +92,12 @@ boost::shared_ptr<TileMap> WorldMap::importTileMap(int x, int y, int z){
 }
 
 
-
 TileMap* WorldMap::getTileMap(int posx, int posy, int posz){
     
     if(posx >= X || posy >= Y || posz >= Z)
         return nullptr;
+    
+    //importTileMap(posx, posy, posz);
     
     return globalTileMap.at(posx).at(posy).at(posz).get();
 }

@@ -132,7 +132,7 @@ void TCP_Session::startRaw(){
      We'll assemble a real handshake starting here.
      
      */
-    std::shared_ptr<TileMap> rawTest_sharedptr(new TileMap(10, 10));
+    std::shared_ptr<TileMap> rawTest_sharedptr(new TileMap(10, 10, 0, 0, 0));
     TileMap *rawTest = rawTest_sharedptr.get();
     
     async_data_write(rawTest, boost::bind(&TCP_Session::end, shared_from_this()));

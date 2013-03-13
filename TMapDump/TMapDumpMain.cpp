@@ -83,20 +83,20 @@ int main(int argc, const char * argv[])
     
     // Read Map from File
     std::ifstream inputMap(tilemap_path);
-    boost::archive::text_iarchive inputBinaryArchive(inputMap);
+    boost::archive::text_iarchive inputTextArchive(inputMap);
     
-    TileMap outputMap;
+    TileMap *outputMap;
     
-    inputBinaryArchive & outputMap;
+    inputTextArchive & outputMap;
     
-    std::cout << "Map Length: " << outputMap.getLength() << " Tiles" << std::endl;
-    std::cout << "Map Width: " << outputMap.getWidth() << " Tiles" << std::endl;
+    std::cout << "Map Length: " << outputMap->getLength() << " Tiles" << std::endl;
+    std::cout << "Map Width: " << outputMap->getWidth() << " Tiles" << std::endl;
     
-    for(int x=0; x<outputMap.getLength(); x++){
-        for(int y=0; y<outputMap.getWidth(); y++){
+    for(int x=0; x<outputMap->getLength(); x++){
+        for(int y=0; y<outputMap->getWidth(); y++){
             
             try{
-                std::cout << outputMap.virtualMap.at(x).at(y)->getSymbol();
+                std::cout << outputMap->virtualMap.at(x).at(y)->getSymbol();
             }
             catch(std::exception& e){
                 std::cerr << "error: " << e.what() << std::endl;

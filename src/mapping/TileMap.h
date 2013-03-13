@@ -28,9 +28,13 @@ private:
         ar & length;
         ar & width;
         ar & virtualMap;
+        ar & posX;
+        ar & posY;
+        ar & posZ;
     }
     
     int length, width;
+    int posX, posY, posZ;
 
     
     void init();
@@ -39,7 +43,7 @@ private:
 public:
     
     TileMap(){};
-    TileMap(int l, int w) : length(l), width(w){init();};
+    TileMap(int l, int w, int posX, int posY, int posZ) : length(l), width(w), posX(posX), posY(posY), posZ(posZ){init();};
     
     std::vector< std::vector<boost::shared_ptr<Tile> > > virtualMap;
     

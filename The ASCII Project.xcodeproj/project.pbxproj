@@ -35,6 +35,7 @@
 		744BD99116ED207300F1718F /* terminal8x8_gs_ro.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744BD96116ED202700F1718F /* terminal8x8_gs_ro.png */; };
 		7452363816DFD05900842D07 /* RenderMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7452363616DFD05900842D07 /* RenderMap.cpp */; };
 		7452363B16DFD0E900842D07 /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7452363916DFD0E900842D07 /* WorldMap.cpp */; };
+		745E06F716F06F8D008AB9EB /* IntToUTF8String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74F89F0516E470FB00DBD81B /* IntToUTF8String.cpp */; };
 		746B312316DF99EC00CDBBC9 /* TAP_Server.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 746B312216DF99EC00CDBBC9 /* TAP_Server.1 */; };
 		7491DA1E16E74D650035C35A /* PerlinNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7491DA1C16E74D650035C35A /* PerlinNoise.cpp */; };
 		7491DA2116E7FEAC0035C35A /* SimplexNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7491DA1F16E7FEAC0035C35A /* SimplexNoise.cpp */; };
@@ -1237,6 +1238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				745E06F716F06F8D008AB9EB /* IntToUTF8String.cpp in Sources */,
 				74E3900C16E28EBE00ABD5DE /* Tile.cpp in Sources */,
 				74E3901016E290A400ABD5DE /* TileMap.cpp in Sources */,
 				74E3900616E28E4600ABD5DE /* TMapDumpMain.cpp in Sources */,
