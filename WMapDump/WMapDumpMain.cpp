@@ -125,23 +125,23 @@ int main(int argc, const char * argv[])
     }
     
 
-    TileMap outputTileMap;
+    TileMap *outputTileMap;
     
-    outputTileMap = *outputMap->getTileMap(posX, posY, posZ);
+    outputTileMap = outputMap->getTileMap(posX, posY, posZ);
 
     
     std::cout << std::endl;
-    std::cout << "TileMap Length: " << outputTileMap.getLength() << std::endl;
-    std::cout << "TileMap Width: " << outputTileMap.getWidth() << std::endl;
+    std::cout << "TileMap Length: " << outputTileMap->getLength() << std::endl;
+    std::cout << "TileMap Width: " << outputTileMap->getWidth() << std::endl;
     std::cout << std::endl;
     
     std::cout << "Map at X:" << posX << " Y:" << posY << " Z:" << posZ << std::endl;
     
-    for(int x=0; x<outputTileMap.getLength(); x++){
-        for(int y=0; y<outputTileMap.getWidth(); y++){
+    for(int x=0; x<outputTileMap->getLength(); x++){
+        for(int y=0; y<outputTileMap->getWidth(); y++){
             
             try{
-                std::cout << outputTileMap.virtualMap.at(x).at(y)->getSymbol() << " ";
+                std::cout << outputTileMap->virtualMap.at(x).at(y)->getSymbol() << " ";
             }
             catch(std::exception& e){
                 std::cerr << "error: " << e.what() << std::endl;
@@ -154,7 +154,8 @@ int main(int argc, const char * argv[])
         
         std::cout << std::endl;
     } 
-    
+
+    delete outputMap;
     
     // Dump Map to Console
     return 0;

@@ -13,9 +13,10 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <mutex>
 #include <boost/shared_ptr.hpp>
-
 #include "Tile.h"
+
 
 class TileMap : public std::enable_shared_from_this<TileMap>{
     
@@ -35,7 +36,10 @@ private:
     
     int length, width;
     int posX, posY, posZ;
+    
+    int OwnerWorldID;
 
+    std::mutex m_lock;
     
     void init();
     void fillSolid();
@@ -53,6 +57,14 @@ public:
     
     int getLength(){return length;}
     int getWidth(){return width;}
+    
+    void setOwnerWorldID(int ID){OwnerWorldID = ID;}
+    
+    // Mutex Functions
+    bool attemptMLock(){return m_lock.try_lock();}
+    void waitMLock(){m_lock.lock();} // This is called "waitMLock, because if our mutex is locked the call will block until its released.
+    void releaseMLock(){m_lock.unlock();}
+    
     
     Tile* getTilePtr(int x, int y){
         if(x >= length || y >= width) return nullptr;

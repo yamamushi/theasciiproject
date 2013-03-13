@@ -14,8 +14,8 @@
 #include <vector>
 #include <memory>
 #include <boost/shared_ptr.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
 #include <string>
-
 
 
 class WorldMap : public std::enable_shared_from_this<WorldMap>{
@@ -32,6 +32,7 @@ private:
         ar & mapX;
         ar & mapY;
         ar & rootFS;
+        ar & WorldID;
         ar & globalTileMap;
         //ar & globalEntityMap;
     }
@@ -43,11 +44,15 @@ private:
     // TileMap Dimensions
     int mapX, mapY;
     
+    int WorldID;
+    
     // Config Setting for Exports/Imports
     std::string rootFS;
     
     // Storage Container for TileMaps
     std::vector< std::vector< std::vector< boost::shared_ptr<TileMap> > > > globalTileMap;
+    std::vector< std::vector< std::vector<bool> > > TileMapLoadedTable;
+    
     
     // Storage Container for EntityMaps
     //std::vector< std::vector< std::vector< boost::shared_ptr<EntityMap> > > > globalEntityMap;

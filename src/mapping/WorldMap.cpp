@@ -18,7 +18,7 @@
 #include "../mapping/Tile.h"
 #include "../mapping/TileMap.h"
 #include "../mapping/EntityMap.h"
-
+#include "../utils/Random.h"
 
 
 void WorldMap::init(){
@@ -26,6 +26,9 @@ void WorldMap::init(){
     worldTileLength = X * mapX;
     worldTileWidth = Y * mapY;
     worldTileHeight = Z;
+    
+    Random rand;
+    WorldID = rand.rand_crypt();
     
     initGlobalTileMap();
     //initGlobalEntityMap();
@@ -36,19 +39,38 @@ void WorldMap::init(){
 
 void WorldMap::initGlobalTileMap(){
     
+   // TileMapMutexTable.resize(X*Y*Z);
+   // TileMapLoadedTable.resize(X*Y*Z);
+    
     for(int x=0; x<X; x++){
-        std::vector< std::vector< boost::shared_ptr<TileMap> > > layer;
+        
+        std::vector< std::vector< boost::shared_ptr<TileMap> > > globalTileMap_layer;
+        std::vector< std::vector< bool> > tileMapLoadedTable_layer;
+        
         for(int y=0; y<Y; y++){
-            std::vector< boost::shared_ptr<TileMap> > row;
+        
+            std::vector< boost::shared_ptr<TileMap> > globalTileMap_row;
+            std::vector< bool> tileMapLoadedTable_row;
+            
             for(int z=0; z<Z; z++){
-                boost::shared_ptr<TileMap> tileMap(new TileMap(mapX, mapY, x, y, z));
-                row.push_back(tileMap);
                 
+                boost::shared_ptr<TileMap> tileMap(new TileMap(mapX, mapY, x, y, z));
+                tileMap->setOwnerWorldID(WorldID);
+                globalTileMap_row.push_back(tileMap);
                 exportTileMap(x, y, z, tileMap);
+                
+                tileMapLoadedTable_row.push_back(false);
+
             }
-            layer.push_back(row);
+            
+            globalTileMap_layer.push_back(globalTileMap_row);
+            tileMapLoadedTable_layer.push_back(tileMapLoadedTable_row);
+            
         }
-        globalTileMap.push_back(layer);
+        
+        globalTileMap.push_back(globalTileMap_layer);
+        TileMapLoadedTable.push_back(tileMapLoadedTable_layer);
+        
     }
     
 }
