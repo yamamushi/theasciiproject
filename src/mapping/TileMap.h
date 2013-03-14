@@ -55,9 +55,6 @@ public:
     
     ~TileMap(){};
     
-    int getLength(){return length;}
-    int getWidth(){return width;}
-    
     void setOwnerWorldID(int ID){OwnerWorldID = ID;}
     
     // Mutex Functions
@@ -65,7 +62,11 @@ public:
     void waitMLock(){m_lock.lock();} // This is called "waitMLock, because if our mutex is locked the call will block until its released.
     void releaseMLock(){m_lock.unlock();}
     
+    // Dimension Functions
+    int getLength(){return length;}
+    int getWidth(){return width;}
     
+    // Tile Functions
     Tile* getTilePtr(int x, int y){
         if(x >= length || y >= width) return nullptr;
         return virtualMap.at(x).at(y).get();
