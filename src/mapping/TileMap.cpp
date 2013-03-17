@@ -13,7 +13,6 @@
 #include <vector>
 #include <iostream>
 #include <boost/shared_ptr.hpp>
-
 #include "../serialization/Boost_Serialization.h"
 #include "TileMap.h"
 #include "Tile.h"
