@@ -4,36 +4,36 @@ r1
 cCheck dependencies
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MySQLServerDB.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/db/MySQLServerDB.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Entity.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/entities/Entity.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TileMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/TileMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/MainServer.o" "/Users/yamamushi/Programming/projects/The ASCII Project/TAP_Server/../src/MainServer.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/EntityMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Tile.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/Tile.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/EntityMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/EntityMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TileMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/TileMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerConfig.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/ServerConfig.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerInit.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/server/ServerInit.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ConsoleLog.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/ConsoleLog.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/FileLogger.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/FileLogger.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ConsoleLog.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/ConsoleLog.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Filesystem.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/Filesystem.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/RenderMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/RenderMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/WorldMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldgenInit.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldgenInit.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Handler.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Handler.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Pool.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Pool.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Session.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Session.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Handler.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Handler.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Packets.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/Packets.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerAPI.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/api/ServerAPI.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TCP_Participant.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/TCP_Participant.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/nOStradamus.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/ai/nOStradamus.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldErosion.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldErosion.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/ServerAPI.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/api/ServerAPI.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldEngine.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/engine/WorldEngine.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Random.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/Random.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Packets.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/networking/Packets.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldGenConfig.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/parsers/WorldGenConfig.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Random.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/Random.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/IntToUTF8String.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/utils/IntToUTF8String.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldErosion.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldErosion.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldDrawing.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/WorldDrawing.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/GeometryFunctions.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/GeometryFunctions.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/PerlinNoise.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/PerlinNoise.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/SimplexNoise.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/SimplexNoise.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Bresenham.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/Bresenham.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/PerlinNoise.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/PerlinNoise.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/HeightMap.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/mapping/HeightMap.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Bresenham.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/Bresenham.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cLd "/Users/yamamushi/Programming/projects/The ASCII Project/bin/TAP_Server" normal x86_64
 
 N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk
@@ -158,7 +158,7 @@ s271
 i"server/ServerInit.h"
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/TAP_Server
-t1363169976
+t1363545559
 s2565316
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Bresenham.o
@@ -271,7 +271,7 @@ t1362771873
 s1928
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/TileMap.o
-t1363169967
+t1363545558
 s201792
 
 N/Users/yamamushi/Programming/projects/The ASCII Project/bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/WorldDrawing.o
@@ -1294,7 +1294,7 @@ r0
 
 CCheck dependencies
 r0
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies3e5eb85445f6b641^624d255545f6b641^---0#1#0#--18"Check dependencies36"B74782D0-E819-4C88-BF42-19427CD3A8B1-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies8aad103362f7b641^c9e4103362f7b641^---0#1#0#--18"Check dependencies36"DA2380AF-B26A-4985-8533-328CAF94D4BE-
 
 CCompileC "bin/The ASCII Project.build/Debug/TAP_Server.build/Objects-normal/x86_64/Bresenham.o" "/Users/yamamushi/Programming/projects/The ASCII Project/src/worldgen/Bresenham.cpp" normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 s384862774.227800
