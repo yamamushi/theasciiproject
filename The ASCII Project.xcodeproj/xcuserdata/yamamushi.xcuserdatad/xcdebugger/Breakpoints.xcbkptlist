@@ -29,5 +29,16 @@
          landmarkName = "WorldMap::importTileMap(int x, int y, int z)"
          landmarkType = "5">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "src/networking/TCP_Session.h"
+         timestampString = "385438288.072275"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "118"
+         endingLineNumber = "118">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

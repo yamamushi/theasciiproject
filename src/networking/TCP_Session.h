@@ -97,13 +97,13 @@ public:
         std::vector<boost::asio::const_buffer> buffers;
         buffers.push_back(boost::asio::buffer(outbound_header_));
         buffers.push_back(boost::asio::buffer(outbound_data_));
-        boost::asio::async_write(tcp_socket, buffers, handler);
+        boost::asio::async_write(this->tcp_socket, buffers, handler);
     }
     
     
     /// Asynchronously read a data structure from the socket.
     template <typename T, typename Handler>
-    void async_read(T& t, Handler handler)
+    void async_read(const T& t, Handler handler)
     {
         // Issue a read operation to read exactly the number of bytes in a header.
         void (TCP_Session::*f)(const boost::system::error_code&, T&, boost::tuple<Handler>) = &TCP_Session::handle_read_header<T, Handler>;

@@ -66,7 +66,7 @@ std::string TCP_Session::getClientIP(){
 // Start the async cycle
 void TCP_Session::kickStart(){
     
-    boost::asio::async_write(tcp_socket, boost::asio::buffer(std::string("Welcome to The ASCII Project\n\n"
+    boost::asio::async_write(this->tcp_socket, boost::asio::buffer(std::string("Welcome to The ASCII Project\n\n"
                                                                          "Commands Available: \n"
                                                                          "------------------- \n\n"
                                                                          "term \n"
