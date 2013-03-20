@@ -37,7 +37,7 @@ private:
     std::string clientIP;
     
     boost::asio::streambuf raw_line_command;
-
+    
     /// Holds an outbound header.
     std::string outbound_header_;
     
@@ -54,7 +54,7 @@ private:
 public:
     
     TCP_Session(boost::asio::io_service& io_service, TCP_Pool& pool) : tcp_socket(io_service), tcp_pool(pool){};
-
+    
     boost::asio::ip::tcp::socket& socket(){return tcp_socket;}
     
     void start();
@@ -66,7 +66,7 @@ public:
     void kickStart();
     void startSession(const boost::system::error_code& error);
     void initMode(const boost::system::error_code& error);
-
+    
     void startRaw();
     
     /// Asynchronously write a data structure to the socket.
@@ -108,9 +108,9 @@ public:
         // Issue a read operation to read exactly the number of bytes in a header.
         void (TCP_Session::*f)(const boost::system::error_code&, T&, boost::tuple<Handler>) = &TCP_Session::handle_read_header<T, Handler>;
         boost::asio::async_read(tcp_socket, boost::asio::buffer(inbound_header_), boost::bind(f, this, boost::asio::placeholders::error, boost::ref(t),
-                                                                                           boost::make_tuple(handler)));
+                                                                                              boost::make_tuple(handler)));
     }
-
+    
     // Handle a completed read of a message header. The handler is passed using
     // a tuple since boost::bind seems to have trouble binding a function object
     // created using boost::bind as a parameter.
@@ -141,7 +141,7 @@ public:
         }
     }
     
-
+    
     // Handle a completed read of message data.
     template <typename T, typename Handler>
     void handle_read_data(const boost::system::error_code& e, T& t, boost::tuple<Handler> handler)
@@ -172,7 +172,7 @@ public:
             boost::get<0>(handler)(e);
         }
     }
-
+    
 };
 
 

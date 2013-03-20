@@ -67,11 +67,11 @@ std::string TCP_Session::getClientIP(){
 void TCP_Session::kickStart(){
     
     boost::asio::async_write(this->tcp_socket, boost::asio::buffer(std::string("Welcome to The ASCII Project\n\n"
-                                                                         "Commands Available: \n"
-                                                                         "------------------- \n\n"
-                                                                         "term \n"
-                                                                         "raw \n"
-                                                                         "quit \r\n\r\n")),
+                                                                               "Commands Available: \n"
+                                                                               "------------------- \n\n"
+                                                                               "term \n"
+                                                                               "raw \n"
+                                                                               "quit \r\n\r\n")),
                              boost::bind(&TCP_Session::startSession, shared_from_this(), boost::asio::placeholders::error ));
     
 }
