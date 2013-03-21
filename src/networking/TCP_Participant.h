@@ -8,6 +8,7 @@
 //
 
 #include <memory>
+#include <boost/shared_ptr.hpp>
 
 class TCP_Participant {
     
@@ -20,4 +21,4 @@ public:
 };
 
 
-typedef std::shared_ptr<TCP_Participant> tcp_participant_ptr;
+typedef boost::shared_ptr<TCP_Participant> tcp_participant_ptr;

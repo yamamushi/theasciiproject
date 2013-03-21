@@ -13,6 +13,7 @@
 #include "../utils/FileLogger.h"
 #include "../serialization/Boost_Serialization.h"
 #include <boost/bind.hpp>
+#include <boost/enable_shared_from_this.hpp>
 #include <memory>
 #include <iostream>
 #include <vector>

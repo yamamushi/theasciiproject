@@ -7,6 +7,7 @@
 //  Copyright (c) 2013 TAP. All rights reserved.
 //
 #include "TCP_Participant.h"
+#include <boost/shared_ptr.hpp>
 #include <memory>
 #include <set>
 
@@ -30,4 +31,4 @@ public:
     
 };
 
-typedef std::shared_ptr<TCP_Pool> tcp_pool_ptr;
+typedef boost::shared_ptr<TCP_Pool> tcp_pool_ptr;

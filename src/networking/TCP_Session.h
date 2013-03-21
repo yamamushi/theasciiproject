@@ -16,6 +16,8 @@
 #include <memory>
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/enable_shared_from_this.hpp>
+
 #include <boost/tuple/tuple.hpp>
 #include <iomanip>
 #include <string>
@@ -27,7 +29,7 @@ extern FileLogger *fileLogger;
 
 
 
-class TCP_Session : public TCP_Participant, public std::enable_shared_from_this<TCP_Session> {
+class TCP_Session : public TCP_Participant, public boost::enable_shared_from_this<TCP_Session> {
     
 private:
     
