@@ -12,6 +12,7 @@
 
 #include "Boost_Net_Asio.h"
 #include <memory>
+#include <boost/shared_ptr.hpp>
 
 
 class TCP_Handler {
@@ -37,4 +38,4 @@ public:
     
 };
 
-typedef std::shared_ptr<TCP_Handler> tcp_handler_ptr;
+typedef boost::shared_ptr<TCP_Handler> tcp_handler_ptr;

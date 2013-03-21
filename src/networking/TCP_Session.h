@@ -178,4 +178,4 @@ public:
 };
 
 
-typedef std::shared_ptr<TCP_Session> tcp_session_ptr;
+typedef boost::shared_ptr<TCP_Session> tcp_session_ptr;

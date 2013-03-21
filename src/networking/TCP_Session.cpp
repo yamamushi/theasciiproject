@@ -33,8 +33,9 @@ void TCP_Session::start(){
     // Disable Nagles Algorithm - http://en.wikipedia.org/wiki/Nagle's_algorithm
     tcp_socket.set_option(boost::asio::ip::tcp::no_delay(true));
     // Join our tcp client pool
-    tcp_pool.join(shared_from_this());
     
+    tcp_pool.join(shared_from_this());
+
     kickStart();
 }
 
