@@ -354,6 +354,7 @@
 		7491DA1D16E74D650035C35A /* PerlinNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerlinNoise.h; sourceTree = "<group>"; };
 		7491DA1F16E7FEAC0035C35A /* SimplexNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimplexNoise.cpp; sourceTree = "<group>"; };
 		7491DA2016E7FEAC0035C35A /* SimplexNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplexNoise.h; sourceTree = "<group>"; };
+		74D88733172EE85200D0A4C0 /* linux-makefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = "linux-makefile"; sourceTree = "<group>"; };
 		74DF51E716E8F69200BACBB3 /* Bresenham.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bresenham.cpp; sourceTree = "<group>"; };
 		74DF51E816E8F69200BACBB3 /* Bresenham.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bresenham.h; sourceTree = "<group>"; };
 		74DF51ED16E8F7F900BACBB3 /* HeightMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeightMap.cpp; sourceTree = "<group>"; };
@@ -1016,6 +1017,7 @@
 				744BD8D516ED1B1E00F1718F /* TAP_Client */,
 				746B30F116DF949F00CDBBC9 /* Frameworks */,
 				7452363516DFCFEB00842D07 /* paperwork */,
+				74D88732172EE85200D0A4C0 /* makefiles */,
 				74456E6116ED9D0500287288 /* TAP_Server */,
 				74456E6216ED9D0500287288 /* TMapDump */,
 				74456E6316ED9D0500287288 /* WMapDump */,
@@ -1049,6 +1051,14 @@
 				746B312216DF99EC00CDBBC9 /* TAP_Server.1 */,
 			);
 			path = TAP_Server;
+			sourceTree = "<group>";
+		};
+		74D88732172EE85200D0A4C0 /* makefiles */ = {
+			isa = PBXGroup;
+			children = (
+				74D88733172EE85200D0A4C0 /* linux-makefile */,
+			);
+			path = makefiles;
 			sourceTree = "<group>";
 		};
 		74E3900416E28E4500ABD5DE /* TMapDump */ = {
