@@ -1,3 +1,58 @@
+4-29-2013
+Skip map generation for now
+Consider re-write of map generation
+We need to take into account the MUD gaming model, and the fact that we should be moving away from a client dependency.
+
+The following would be an example of laying a section of pipe leading from north to south to connection a few existing 
+sections of pipes and a pump taking water from a nearby river.
+
+# lay pipe ns
+You lay a section of pipe pointing from north to south
+# map
+
+.....X..~~~~
+.....|..~~~~
+..X--+--0~~~
+.....|..~~~~
+.X---/..~~~~
+.......~~~~~
+......~~~~~~
+.....~~~~~~~
+....~~~~~~~~
+
+
+You could also view a local map, which would be a "zoomed-in" view of the "map" command
+In this example we see a local map with three humans, the logged-in player, a few items
+and three goblins coming in for an attack.
+
+# lmap
+_______________
+|           * |
+| H H H     * |
+|        @    |
+|             |
+| g   g g   p |
+|_____________|
+
+
+Or a similar map zoomed-in on the pipes we saw above
+
+# lmap
+________________
+|      ||      |
+|      ||      |
+|   H  ||      |
+|  H H ||      |
+|      ||@     |
+|______||______|
+
+
+
+
+
+
+
+
 2-24-2013
 
 Create tiles

@@ -1,1 +1,40 @@
-all: TAP_Server
+# linux-makefile
+#
+# This is a work-in-progress makefile for *nix based build systems.
+# With a bit of work, this should also work on Windows using mingw build environments.
+# - Yamamushi
+
+# Our Compiler settings and flags
+CC=gcc
+CXX=g++
+
+CFLAGS=-c -Wall
+CXFLAGS=-c -std=c++11 -stdlib=libc++
+
+
+# The following is used in Xcode for including user libraries with clang
+# OSXUSRINC=-isystem/usr/local/include/
+
+
+# Our Library Flags
+# BOOSTFLAGS=-lboost_system -lboost_filesystem -lboost_program_options -lboost_serialization -lboost_random
+
+
+# Our Build definitions
+
+all: TAP_Server TMapDump WMapDump
+
+TAP_Server: main.o factorial.o hello.o
+	g++ main.o factorial.o hello.o -o bin/TAP_Server
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+factorial.o: factorial.cpp
+	g++ -c factorial.cpp
+
+hello.o: hello.cpp
+	g++ -c hello.cpp
+
+clean:
+	rm -rf *o hello
