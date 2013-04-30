@@ -114,6 +114,7 @@
 		7416F49A16E5955000C1CEE0 /* GeometryFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeometryFunctions.h; sourceTree = "<group>"; };
 		7416F49C16E5A2A700C1CEE0 /* WorldDrawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldDrawing.cpp; sourceTree = "<group>"; };
 		7416F49D16E5A2A700C1CEE0 /* WorldDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldDrawing.h; sourceTree = "<group>"; };
+		7436E54217304CAF0020310A /* ANSI_Escape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSI_Escape.h; sourceTree = "<group>"; };
 		743CACCF16DFA9CE00C56DB2 /* Readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
 		743CACD116DFA9CE00C56DB2 /* Readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
 		743CACD316DFA9CE00C56DB2 /* Readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
@@ -429,6 +430,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7436E54117304C890020310A /* terminal */ = {
+			isa = PBXGroup;
+			children = (
+				7436E54217304CAF0020310A /* ANSI_Escape.h */,
+			);
+			path = terminal;
+			sourceTree = "<group>";
+		};
 		743CABFF16DF9BDD00C56DB2 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +462,7 @@
 				743CAD1B16DFA9CE00C56DB2 /* scripting */,
 				743CAD1D16DFA9CE00C56DB2 /* serialization */,
 				743CAD2016DFA9CE00C56DB2 /* server */,
+				7436E54117304C890020310A /* terminal */,
 				743CAD2416DFA9CE00C56DB2 /* utils */,
 				743DF60916E3127900E64AC3 /* web-scripts */,
 				743CAD2D16DFA9CE00C56DB2 /* worldgen */,
