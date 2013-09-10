@@ -16,7 +16,7 @@
 #include "../mapping/GeometryFunctions.h"
 
 #include <string>
-#include <algorithm>
+#include <cmath>
 
 
 

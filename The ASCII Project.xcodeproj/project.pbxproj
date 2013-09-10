@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7416F49B16E5955000C1CEE0 /* GeometryFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7416F49916E5955000C1CEE0 /* GeometryFunctions.cpp */; };
 		7416F49E16E5A2A800C1CEE0 /* WorldDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7416F49C16E5A2A700C1CEE0 /* WorldDrawing.cpp */; };
+		7422B66D17DF3F3C005D6768 /* libmysqlclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7422B64817DF3F05005D6768 /* libmysqlclient.a */; };
+		74255F571765FC84005EBC85 /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = 74255F561765FC84005EBC85 /* Notes */; };
 		742B66A916EA782800DA4C4F /* IntToUTF8String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74F89F0516E470FB00DBD81B /* IntToUTF8String.cpp */; };
 		743CAD3216DFA9CE00C56DB2 /* MySQLServerDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CACDE16DFA9CE00C56DB2 /* MySQLServerDB.cpp */; };
 		743CAD3316DFA9CE00C56DB2 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743CACE416DFA9CE00C56DB2 /* Entity.cpp */; };
@@ -114,6 +116,43 @@
 		7416F49A16E5955000C1CEE0 /* GeometryFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeometryFunctions.h; sourceTree = "<group>"; };
 		7416F49C16E5A2A700C1CEE0 /* WorldDrawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldDrawing.cpp; sourceTree = "<group>"; };
 		7416F49D16E5A2A700C1CEE0 /* WorldDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldDrawing.h; sourceTree = "<group>"; };
+		7422B64717DF3F05005D6768 /* libmysqlclient.18.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmysqlclient.18.dylib; sourceTree = "<group>"; };
+		7422B64817DF3F05005D6768 /* libmysqlclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmysqlclient.a; sourceTree = "<group>"; };
+		7422B64917DF3F05005D6768 /* libmysqlclient.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmysqlclient.dylib; sourceTree = "<group>"; };
+		7422B64A17DF3F05005D6768 /* libmysqlclient_r.18.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmysqlclient_r.18.dylib; sourceTree = "<group>"; };
+		7422B64B17DF3F05005D6768 /* libmysqlclient_r.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmysqlclient_r.a; sourceTree = "<group>"; };
+		7422B64C17DF3F05005D6768 /* libmysqlclient_r.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmysqlclient_r.dylib; sourceTree = "<group>"; };
+		7422B64D17DF3F05005D6768 /* libmysqld-debug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libmysqld-debug.a"; sourceTree = "<group>"; };
+		7422B64E17DF3F05005D6768 /* libmysqld.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmysqld.a; sourceTree = "<group>"; };
+		7422B64F17DF3F05005D6768 /* libmysqlservices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmysqlservices.a; sourceTree = "<group>"; };
+		7422B65117DF3F05005D6768 /* adt_null.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = adt_null.so; sourceTree = "<group>"; };
+		7422B65217DF3F05005D6768 /* auth.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = auth.so; sourceTree = "<group>"; };
+		7422B65317DF3F05005D6768 /* auth_test_plugin.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = auth_test_plugin.so; sourceTree = "<group>"; };
+		7422B65417DF3F05005D6768 /* daemon_example.ini */ = {isa = PBXFileReference; lastKnownFileType = text; path = daemon_example.ini; sourceTree = "<group>"; };
+		7422B65617DF3F05005D6768 /* adt_null.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = adt_null.so; sourceTree = "<group>"; };
+		7422B65717DF3F05005D6768 /* auth.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = auth.so; sourceTree = "<group>"; };
+		7422B65817DF3F05005D6768 /* auth_test_plugin.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = auth_test_plugin.so; sourceTree = "<group>"; };
+		7422B65917DF3F05005D6768 /* innodb_engine.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = innodb_engine.so; sourceTree = "<group>"; };
+		7422B65A17DF3F05005D6768 /* libdaemon_example.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = libdaemon_example.so; sourceTree = "<group>"; };
+		7422B65B17DF3F05005D6768 /* libmemcached.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = libmemcached.so; sourceTree = "<group>"; };
+		7422B65C17DF3F05005D6768 /* mypluglib.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = mypluglib.so; sourceTree = "<group>"; };
+		7422B65D17DF3F05005D6768 /* qa_auth_client.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = qa_auth_client.so; sourceTree = "<group>"; };
+		7422B65E17DF3F05005D6768 /* qa_auth_interface.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = qa_auth_interface.so; sourceTree = "<group>"; };
+		7422B65F17DF3F05005D6768 /* qa_auth_server.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = qa_auth_server.so; sourceTree = "<group>"; };
+		7422B66017DF3F05005D6768 /* semisync_master.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = semisync_master.so; sourceTree = "<group>"; };
+		7422B66117DF3F05005D6768 /* semisync_slave.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = semisync_slave.so; sourceTree = "<group>"; };
+		7422B66217DF3F05005D6768 /* validate_password.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = validate_password.so; sourceTree = "<group>"; };
+		7422B66317DF3F05005D6768 /* innodb_engine.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = innodb_engine.so; sourceTree = "<group>"; };
+		7422B66417DF3F05005D6768 /* libdaemon_example.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = libdaemon_example.so; sourceTree = "<group>"; };
+		7422B66517DF3F05005D6768 /* libmemcached.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = libmemcached.so; sourceTree = "<group>"; };
+		7422B66617DF3F05005D6768 /* mypluglib.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = mypluglib.so; sourceTree = "<group>"; };
+		7422B66717DF3F05005D6768 /* qa_auth_client.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = qa_auth_client.so; sourceTree = "<group>"; };
+		7422B66817DF3F05005D6768 /* qa_auth_interface.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = qa_auth_interface.so; sourceTree = "<group>"; };
+		7422B66917DF3F05005D6768 /* qa_auth_server.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = qa_auth_server.so; sourceTree = "<group>"; };
+		7422B66A17DF3F05005D6768 /* semisync_master.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = semisync_master.so; sourceTree = "<group>"; };
+		7422B66B17DF3F05005D6768 /* semisync_slave.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = semisync_slave.so; sourceTree = "<group>"; };
+		7422B66C17DF3F05005D6768 /* validate_password.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = validate_password.so; sourceTree = "<group>"; };
+		74255F561765FC84005EBC85 /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
 		7436E54217304CAF0020310A /* ANSI_Escape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSI_Escape.h; sourceTree = "<group>"; };
 		743CACCF16DFA9CE00C56DB2 /* Readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
 		743CACD116DFA9CE00C56DB2 /* Readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme; sourceTree = "<group>"; };
@@ -410,6 +449,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7422B66D17DF3F3C005D6768 /* libmysqlclient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +470,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7422B64617DF3F05005D6768 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				7422B64717DF3F05005D6768 /* libmysqlclient.18.dylib */,
+				7422B64817DF3F05005D6768 /* libmysqlclient.a */,
+				7422B64917DF3F05005D6768 /* libmysqlclient.dylib */,
+				7422B64A17DF3F05005D6768 /* libmysqlclient_r.18.dylib */,
+				7422B64B17DF3F05005D6768 /* libmysqlclient_r.a */,
+				7422B64C17DF3F05005D6768 /* libmysqlclient_r.dylib */,
+				7422B64D17DF3F05005D6768 /* libmysqld-debug.a */,
+				7422B64E17DF3F05005D6768 /* libmysqld.a */,
+				7422B64F17DF3F05005D6768 /* libmysqlservices.a */,
+				7422B65017DF3F05005D6768 /* plugin */,
+			);
+			name = lib;
+			path = "../../../../../usr/local/mysql-5.6.13-osx10.7-x86_64/lib";
+			sourceTree = "<group>";
+		};
+		7422B65017DF3F05005D6768 /* plugin */ = {
+			isa = PBXGroup;
+			children = (
+				7422B65117DF3F05005D6768 /* adt_null.so */,
+				7422B65217DF3F05005D6768 /* auth.so */,
+				7422B65317DF3F05005D6768 /* auth_test_plugin.so */,
+				7422B65417DF3F05005D6768 /* daemon_example.ini */,
+				7422B65517DF3F05005D6768 /* debug */,
+				7422B66317DF3F05005D6768 /* innodb_engine.so */,
+				7422B66417DF3F05005D6768 /* libdaemon_example.so */,
+				7422B66517DF3F05005D6768 /* libmemcached.so */,
+				7422B66617DF3F05005D6768 /* mypluglib.so */,
+				7422B66717DF3F05005D6768 /* qa_auth_client.so */,
+				7422B66817DF3F05005D6768 /* qa_auth_interface.so */,
+				7422B66917DF3F05005D6768 /* qa_auth_server.so */,
+				7422B66A17DF3F05005D6768 /* semisync_master.so */,
+				7422B66B17DF3F05005D6768 /* semisync_slave.so */,
+				7422B66C17DF3F05005D6768 /* validate_password.so */,
+			);
+			path = plugin;
+			sourceTree = "<group>";
+		};
+		7422B65517DF3F05005D6768 /* debug */ = {
+			isa = PBXGroup;
+			children = (
+				7422B65617DF3F05005D6768 /* adt_null.so */,
+				7422B65717DF3F05005D6768 /* auth.so */,
+				7422B65817DF3F05005D6768 /* auth_test_plugin.so */,
+				7422B65917DF3F05005D6768 /* innodb_engine.so */,
+				7422B65A17DF3F05005D6768 /* libdaemon_example.so */,
+				7422B65B17DF3F05005D6768 /* libmemcached.so */,
+				7422B65C17DF3F05005D6768 /* mypluglib.so */,
+				7422B65D17DF3F05005D6768 /* qa_auth_client.so */,
+				7422B65E17DF3F05005D6768 /* qa_auth_interface.so */,
+				7422B65F17DF3F05005D6768 /* qa_auth_server.so */,
+				7422B66017DF3F05005D6768 /* semisync_master.so */,
+				7422B66117DF3F05005D6768 /* semisync_slave.so */,
+				7422B66217DF3F05005D6768 /* validate_password.so */,
+			);
+			path = debug;
+			sourceTree = "<group>";
+		};
 		7436E54117304C890020310A /* terminal */ = {
 			isa = PBXGroup;
 			children = (
@@ -845,6 +945,7 @@
 			isa = PBXGroup;
 			children = (
 				744BD8D616ED1B1E00F1718F /* Supporting Files */,
+				74255F561765FC84005EBC85 /* Notes */,
 			);
 			path = TAP_Client;
 			sourceTree = "<group>";
@@ -1017,6 +1118,7 @@
 		746B30E616DF949F00CDBBC9 = {
 			isa = PBXGroup;
 			children = (
+				7422B64617DF3F05005D6768 /* lib */,
 				743CAD5516DFC4DF00C56DB2 /* docs */,
 				743CAD4C16DFC03000C56DB2 /* bin */,
 				743CAC1F16DF9D5600C56DB2 /* deps */,
@@ -1201,6 +1303,7 @@
 				744BD93316ED1D0900F1718F /* LIBTCOD-CREDITS.txt in Resources */,
 				744BD93416ED1D0900F1718F /* LIBTCOD-LICENSE.txt in Resources */,
 				744BD97F16ED202700F1718F /* README.txt in Resources */,
+				74255F571765FC84005EBC85 /* Notes in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1389,6 +1492,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"\"/usr/lib/\"",
 					"\"/usr/local/lib/\"",
+					"\"/usr/local/mysql/lib/\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1436,6 +1540,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"\"/usr/lib/\"",
 					"\"/usr/local/lib/\"",
+					"\"/usr/local/mysql/lib/\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1467,6 +1572,7 @@
 					"\"/usr/lib/\"",
 					"\"/usr/local/mysql/lib/\"",
 					"\"/usr/local/lib/\"",
+					"\"/usr/local/mysql-5.6.13-osx10.7-x86_64/lib\"",
 				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -1477,7 +1583,6 @@
 					"-lboost_filesystem",
 					"-lboost_program_options",
 					"-lboost_serialization",
-					"-lmysqlclient",
 					"-lboost_random",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1497,6 +1602,7 @@
 					"\"/usr/lib/\"",
 					"\"/usr/local/mysql/lib/\"",
 					"\"/usr/local/lib/\"",
+					"\"/usr/local/mysql-5.6.13-osx10.7-x86_64/lib\"",
 				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -1507,7 +1613,6 @@
 					"-lboost_filesystem",
 					"-lboost_program_options",
 					"-lboost_serialization",
-					"-lmysqlclient",
 					"-lboost_random",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";

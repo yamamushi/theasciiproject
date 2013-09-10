@@ -88,7 +88,7 @@ public:
         {
             // Something went wrong, inform the caller.
             boost::system::error_code error(boost::asio::error::invalid_argument);
-            //socket().post(boost::bind(handler, error));
+            //tcp_socket.post(boost::bind(handler, error));
             end();
             return;
         }

@@ -1,0 +1,4 @@
+Need a network handler thread
+
+Graphics thread runs, if network hasn't finish unpacking, skip over updates and keep rendering
+
