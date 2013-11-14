@@ -26,3 +26,6 @@
 # Emacs Stuff
 *#
 #*
+*.build
+*.app
+*.framework
