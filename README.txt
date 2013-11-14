@@ -1,7 +1,7 @@
-The ASCII Project - 0.0.1e
+The ASCII Project - 0.0.1e - Re Master
 ===============================
 http://www.theasciiproject.com
-IRC = freenode.net ##asciimmo
+IRC = Temporarily Disabled
 Yamamushi - yamamushi@gmail.com
 
 
@@ -10,6 +10,11 @@ The overall aim of "The ASCII Project" is to develop a Unicode graphics based "R
 
 News
 =====
+
+11/14/13
+
+	A year behind on this branch, but we're going to start off by fixing the network serialization issues from the ground up. Then we will rework the Map Class hierarchy.
+	These changes should culminate in a smoother network latency, at which point we can focus on rewriting the client to handle threaded data without crashes.
 
 11/23/12
 
