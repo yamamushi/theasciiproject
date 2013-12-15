@@ -115,7 +115,7 @@ void DBConnector::ValidateSchema()
             tmpstream << rand();
             
             
-            schemaCheck.exec("INSERT INTO accounting (username, timestamp, hash) VALUES ('root', '" + loctime + "', MD5('"  + tmpstream.str() + "'));" );
+            schemaCheck.exec("INSERT INTO accounting (username, timestamp, hash) VALUES ('root', '" + loctime + "', crypt('"  + tmpstream.str() + "', gen_salt('bf')));" );
             
             hasRootAccount = true;
         }
@@ -165,7 +165,7 @@ bool DBConnector::AddAccount(const std::string user, const std::string pass)
         std::stringstream tmpstream;
         tmpstream << rand();
         
-        addAccount.exec("INSERT INTO accounting (username, timestamp, hash, filename) VALUES ('" + cleanUser + "', '" + loctime + "', MD5('"  + cleanPass + "'), '" + cleanUser + ".dat');" );
+        addAccount.exec("INSERT INTO accounting (username, timestamp, hash, filename) VALUES ('" + cleanUser + "', '" + loctime + "', crypt('"  + cleanPass + "', gen_salt('bf')), '" + cleanUser + ".dat');" );
         addAccount.commit();
         
         Entity *rawEntity = new Entity(cleanUser, L"\u263A", 0, 0, 0, 0, 0, 0.0, 0.0, 1.0);
@@ -217,15 +217,15 @@ bool DBConnector::isValidHash(const std::string user, const std::string pass)
     else
     {
         
-        pqxx::result md5hash = validatePass.exec("SELECT hash FROM accounting WHERE username='" + cleanUser + "';");
-        pqxx::result tmphash = validatePass.exec("SELECT MD5('" + cleanPass + "');");
-        
+        pqxx::result md5hash = validatePass.exec("SELECT hash = crypt('" + cleanPass + "', hash) FROM accounting WHERE username='" + cleanUser + "';");
+        //pqxx::result tmphash = validatePass.exec("SELECT MD5('" + cleanPass + "');");
+
         validatePass.commit();
         
         std::string md5pass = md5hash[0][0].as<std::string>();
-        std::string tmpHash = tmphash[0][0].as<std::string>();
+        //std::string tmpHash = tmphash[0][0].as<std::string>();
         
-        if ( md5pass.compare(tmpHash) != 0)
+        if ( md5pass.compare("t") != 0)
         {
             // cout << "invalid pass" << endl;
             return false;
