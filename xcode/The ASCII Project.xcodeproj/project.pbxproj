@@ -13,18 +13,12 @@
 		74254F8215D7257700FDE75B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74254F8015D7257700FDE75B /* InfoPlist.strings */; };
 		742F3FA315D0920200372A7A /* DBConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 742F3FA215D0920200372A7A /* DBConnector.cpp */; };
 		743612DD15BFA75800CC2BCA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743612AC15BFA55A00CC2BCA /* Cocoa.framework */; };
-		743612F315BFA7DC00CC2BCA /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
-		743612F515BFA7E900CC2BCA /* libtcod-gui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887B15BF04EF006595CE /* libtcod-gui.dylib */; };
-		743612F615BFA7EC00CC2BCA /* libtcod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887C15BF04EF006595CE /* libtcod.dylib */; };
 		743612F715BFA82D00CC2BCA /* ClientMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888015BF04EF006595CE /* ClientMap.cpp */; };
 		743612FB15BFA82D00CC2BCA /* Serialization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888C15BF04EF006595CE /* Serialization.cpp */; };
 		743612FC15BFA82D00CC2BCA /* tpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 7444889015BF04EF006595CE /* tpl.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
 		743612FD15BFA82D00CC2BCA /* Main_Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888815BF04EF006595CE /* Main_Client.cpp */; };
-		7436130015BFA84900CC2BCA /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		7436130615BFAC0D00CC2BCA /* Platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7436130515BFAC0D00CC2BCA /* Platform.cpp */; };
-		744487DA15BF047E006595CE /* server.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487D915BF047E006595CE /* server.1 */; };
-		744488B315BF04EF006595CE /* libtcod-gui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887B15BF04EF006595CE /* libtcod-gui.dylib */; };
-		744488B415BF04EF006595CE /* libtcod.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7444887C15BF04EF006595CE /* libtcod.dylib */; };
+		744487DA15BF047E006595CE /* Server.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744487D915BF047E006595CE /* Server.1 */; };
 		744488B515BF04EF006595CE /* ClientMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888015BF04EF006595CE /* ClientMap.cpp */; };
 		744488B715BF04EF006595CE /* Dungeon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888215BF04EF006595CE /* Dungeon.cpp */; };
 		744488B815BF04EF006595CE /* Entities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888315BF04EF006595CE /* Entities.cpp */; };
@@ -37,8 +31,9 @@
 		744488C415BF04EF006595CE /* Tiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888F15BF04EF006595CE /* Tiles.cpp */; };
 		744488C515BF04EF006595CE /* tpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 7444889015BF04EF006595CE /* tpl.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
 		744488CC15BF0B84006595CE /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
-		744488CD15BF0C23006595CE /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744488CB15BF0B84006595CE /* SDL.framework */; };
 		7445A26A15DAAD8F00EBBF9B /* ui_input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7445A26915DAAD8F00EBBF9B /* ui_input.cpp */; };
+		744F956C1868F768001C47F6 /* font.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744F956B1868F768001C47F6 /* font.png */; };
+		744F956E1868F778001C47F6 /* MenuBackground.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 744F956D1868F778001C47F6 /* MenuBackground.png */; };
 		74502C00165482CA00528839 /* Main_Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74502BFF165482CA00528839 /* Main_Server.cpp */; };
 		74502C121654D77500528839 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74502C111654D77500528839 /* Scene.cpp */; };
 		74502C131654D77500528839 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74502C111654D77500528839 /* Scene.cpp */; };
@@ -50,9 +45,6 @@
 		7466BEF615DDB84300584BE9 /* NetworkLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888A15BF04EF006595CE /* NetworkLib.cpp */; };
 		74943A2D15E7F6860049537B /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888615BF04EF006595CE /* Graphics.cpp */; };
 		74C0D66115E898A60069B8DA /* at.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74C0D66015E898A60069B8DA /* at.jpg */; };
-		74C0D66715E8A9450069B8DA /* libtcod-gui.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74C0D66515E8A9450069B8DA /* libtcod-gui.dylib */; };
-		74C0D66815E8A9450069B8DA /* libtcod.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74C0D66615E8A9450069B8DA /* libtcod.dylib */; };
-		74C0D66A15E973180069B8DA /* libpng.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74C0D66915E973180069B8DA /* libpng.framework */; };
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
 		74D863AD15D9E0010029D3F1 /* ClientWidgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D863AC15D9E0010029D3F1 /* ClientWidgets.cpp */; };
 		74DA3ED9165A159400A4CC13 /* InputParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74DA3ED8165A159400A4CC13 /* InputParser.cpp */; };
@@ -66,10 +58,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				74C0D66A15E973180069B8DA /* libpng.framework in CopyFiles */,
-				74C0D66715E8A9450069B8DA /* libtcod-gui.dylib in CopyFiles */,
-				74C0D66815E8A9450069B8DA /* libtcod.dylib in CopyFiles */,
-				7436130015BFA84900CC2BCA /* SDL.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +67,7 @@
 			dstPath = data/images;
 			dstSubfolderSpec = 7;
 			files = (
+				744F956E1868F778001C47F6 /* MenuBackground.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +77,7 @@
 			dstPath = data;
 			dstSubfolderSpec = 7;
 			files = (
+				744F956C1868F768001C47F6 /* font.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +87,7 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				744487DA15BF047E006595CE /* server.1 in CopyFiles */,
+				744487DA15BF047E006595CE /* Server.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -130,7 +120,7 @@
 		7436130515BFAC0D00CC2BCA /* Platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Platform.cpp; sourceTree = "<group>"; };
 		7436130715BFAC2400CC2BCA /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
 		744487D315BF047E006595CE /* server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = server; sourceTree = BUILT_PRODUCTS_DIR; };
-		744487D915BF047E006595CE /* server.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = server.1; sourceTree = "<group>"; };
+		744487D915BF047E006595CE /* Server.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; name = Server.1; path = Server/Server.1; sourceTree = "<group>"; };
 		744487E115BF04EF006595CE /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7444880715BF04EF006595CE /* ClientMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientMap.h; sourceTree = "<group>"; };
 		7444880815BF04EF006595CE /* ClientSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientSocket.h; sourceTree = "<group>"; };
@@ -253,7 +243,10 @@
 		744488CB15BF0B84006595CE /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL.framework; sourceTree = "<group>"; };
 		7445A26915DAAD8F00EBBF9B /* ui_input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ui_input.cpp; sourceTree = "<group>"; };
 		7445A26C15DAAD9E00EBBF9B /* ui_input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ui_input.hpp; sourceTree = "<group>"; };
-		74502BFF165482CA00528839 /* Main_Server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Main_Server.cpp; path = ../../src/Main_Server.cpp; sourceTree = "<group>"; };
+		744F95681868F5B5001C47F6 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = font.png; path = data/font.png; sourceTree = "<group>"; };
+		744F956B1868F768001C47F6 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font.png; sourceTree = "<group>"; };
+		744F956D1868F778001C47F6 /* MenuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBackground.png; sourceTree = "<group>"; };
+		74502BFF165482CA00528839 /* Main_Server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Main_Server.cpp; path = ../src/Main_Server.cpp; sourceTree = SOURCE_ROOT; };
 		74502C111654D77500528839 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
 		74502C141654D78000528839 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
 		74502C151654D78A00528839 /* MapHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapHandler.cpp; sourceTree = "<group>"; };
@@ -304,9 +297,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				743612DD15BFA75800CC2BCA /* Cocoa.framework in Frameworks */,
-				743612F315BFA7DC00CC2BCA /* SDL.framework in Frameworks */,
-				743612F515BFA7E900CC2BCA /* libtcod-gui.dylib in Frameworks */,
-				743612F615BFA7EC00CC2BCA /* libtcod.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,9 +304,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				744488CD15BF0C23006595CE /* SDL.framework in Frameworks */,
-				744488B315BF04EF006595CE /* libtcod-gui.dylib in Frameworks */,
-				744488B415BF04EF006595CE /* libtcod.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +346,9 @@
 		744487C615BF0464006595CE = {
 			isa = PBXGroup;
 			children = (
+				744F956D1868F778001C47F6 /* MenuBackground.png */,
+				744F956B1868F768001C47F6 /* font.png */,
+				744F95681868F5B5001C47F6 /* font.png */,
 				74C0D66915E973180069B8DA /* libpng.framework */,
 				7444889515BF04EF006595CE /* xcode */,
 				7444887F15BF04EF006595CE /* src */,
@@ -383,7 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				74502BFF165482CA00528839 /* Main_Server.cpp */,
-				744487D915BF047E006595CE /* server.1 */,
+				744487D915BF047E006595CE /* Server.1 */,
 			);
 			name = server;
 			path = /Users/yamamushi/TheASCIIProject/xcode/Server;
@@ -909,12 +899,13 @@
 					"-lssl",
 					"-lcrypto",
 					"-ltcod",
-					"-ltcod-gui",
+					"-ltcodgui",
 					"-Wl,-rpath,.",
 					"-lpthread",
 					"/usr/local/lib/libboost_system-mt.a",
 					"/usr/local/lib/libboost_thread-mt.a",
 					"/usr/local/lib/libboost_filesystem-mt.a",
+					"-ltcodxx",
 				);
 				PRODUCT_NAME = "The ASCII Project";
 				SDKROOT = macosx;
@@ -957,12 +948,13 @@
 					"-lssl",
 					"-lcrypto",
 					"-ltcod",
-					"-ltcod-gui",
+					"-ltcodgui",
 					"-Wl,-rpath,.",
 					"-lpthread",
 					"/usr/local/lib/libboost_system-mt.a",
 					"/usr/local/lib/libboost_thread-mt.a",
 					"/usr/local/lib/libboost_filesystem-mt.a",
+					"-ltcodxx",
 				);
 				PRODUCT_NAME = "The ASCII Project";
 				SDKROOT = macosx;
@@ -1039,7 +1031,7 @@
 		744487DC15BF047E006595CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				COPY_PHASE_STRIP = NO;
@@ -1080,6 +1072,8 @@
 					"-lboost_filesystem-mt",
 					"-lboost_serialization-mt",
 					"-lboost_regex-mt",
+					"-ltcodxx",
+					"-ltcod",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1089,7 +1083,7 @@
 		744487DD15BF047E006595CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				COPY_PHASE_STRIP = YES;
@@ -1124,6 +1118,8 @@
 					"-lboost_filesystem-mt",
 					"-lboost_serialization-mt",
 					"-lboost_regex-mt",
+					"-ltcodxx",
+					"-ltcod",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
