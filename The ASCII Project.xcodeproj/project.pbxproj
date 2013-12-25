@@ -214,7 +214,6 @@
 		7444886715BF04EF006595CE /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		7444886915BF04EF006595CE /* makefile-linux */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "makefile-linux"; sourceTree = "<group>"; };
 		7444886A15BF04EF006595CE /* makefile-osx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "makefile-osx"; sourceTree = "<group>"; };
-		7444886F15BF04EF006595CE /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		7444887B15BF04EF006595CE /* libtcod-gui.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libtcod-gui.dylib"; sourceTree = "<group>"; };
 		7444887C15BF04EF006595CE /* libtcod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libtcod.dylib; sourceTree = "<group>"; };
 		7444887D15BF04EF006595CE /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
@@ -276,6 +275,7 @@
 		74DFD8FE165CB8A000772A3E /* ConfigParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConfigParser.cpp; sourceTree = "<group>"; };
 		74DFD900165CB92800772A3E /* ConfigParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigParser.h; sourceTree = "<group>"; };
 		74ECC97A186A7C7F0026F2AB /* CleanServerdata.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = CleanServerdata.sh; sourceTree = "<group>"; };
+		74ECC97B186A7D730026F2AB /* example_server.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = example_server.conf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,7 +371,6 @@
 				7444885F15BF04EF006595CE /* linux */,
 				7444886715BF04EF006595CE /* Makefile */,
 				7444886815BF04EF006595CE /* makefiles */,
-				7444886B15BF04EF006595CE /* misc */,
 				7444887A15BF04EF006595CE /* osx */,
 				7444887E15BF04EF006595CE /* README.txt */,
 				7444887F15BF04EF006595CE /* src */,
@@ -564,14 +563,6 @@
 			path = makefiles;
 			sourceTree = "<group>";
 		};
-		7444886B15BF04EF006595CE /* misc */ = {
-			isa = PBXGroup;
-			children = (
-				7444886F15BF04EF006595CE /* README.txt */,
-			);
-			path = misc;
-			sourceTree = "<group>";
-		};
 		7444887A15BF04EF006595CE /* osx */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,6 +643,7 @@
 			children = (
 				74DFD8E8165C006200772A3E /* arial12x12.png */,
 				74DFD8E9165C006200772A3E /* at.jpg */,
+				74ECC97B186A7D730026F2AB /* example_server.conf */,
 				74DFD8EA165C006200772A3E /* font.png */,
 				74DFD8EB165C006200772A3E /* images */,
 				74DFD8ED165C006200772A3E /* readme.txt */,
