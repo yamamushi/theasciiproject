@@ -43,6 +43,7 @@
 		74627EBF15E6A69300B66CAB /* WorldMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74627EBE15E6A69300B66CAB /* WorldMap.cpp */; };
 		7466BEF515DD893D00584BE9 /* NetworkLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888A15BF04EF006595CE /* NetworkLib.cpp */; };
 		7466BEF615DDB84300584BE9 /* NetworkLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888A15BF04EF006595CE /* NetworkLib.cpp */; };
+		7471A36F186A70F70078DE22 /* teros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7471A36E186A70F70078DE22 /* teros.cpp */; };
 		74943A2D15E7F6860049537B /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7444888615BF04EF006595CE /* Graphics.cpp */; };
 		74C0D66115E898A60069B8DA /* at.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74C0D66015E898A60069B8DA /* at.jpg */; };
 		74C5767F15C1EC6D0033691A /* Collect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C5767E15C1EC6D0033691A /* Collect.cpp */; };
@@ -253,7 +254,11 @@
 		74502C171654D79900528839 /* MapHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapHandler.h; sourceTree = "<group>"; };
 		74627EBE15E6A69300B66CAB /* WorldMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldMap.cpp; sourceTree = "<group>"; };
 		74627EC115E6A69F00B66CAB /* WorldMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldMap.h; sourceTree = "<group>"; };
-		747D227915BFB07700CE1AC9 /* ABOUT.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = ABOUT.txt; path = /Users/yamamushi/TheASCIIProject/docs/ABOUT.txt; sourceTree = "<absolute>"; };
+		7471A36E186A70F70078DE22 /* teros.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = teros.cpp; sourceTree = "<group>"; };
+		7471A370186A71000078DE22 /* teros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = teros.h; sourceTree = "<group>"; };
+		7471A371186A71760078DE22 /* TEROS-Engine-LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "TEROS-Engine-LICENSE.txt"; sourceTree = SOURCE_ROOT; };
+		7471A372186A72A20078DE22 /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
+		747D227915BFB07700CE1AC9 /* ABOUT.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = ABOUT.txt; path = ../docs/ABOUT.txt; sourceTree = SOURCE_ROOT; };
 		747D227A15BFB07700CE1AC9 /* CHANGELOG.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHANGELOG.txt; path = /Users/yamamushi/TheASCIIProject/docs/CHANGELOG.txt; sourceTree = "<absolute>"; };
 		747D227B15BFB07700CE1AC9 /* DIRECTORIES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = DIRECTORIES.txt; path = /Users/yamamushi/TheASCIIProject/docs/DIRECTORIES.txt; sourceTree = "<absolute>"; };
 		747D227C15BFB07700CE1AC9 /* INSTALL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = INSTALL.txt; path = /Users/yamamushi/TheASCIIProject/docs/INSTALL.txt; sourceTree = "<absolute>"; };
@@ -265,7 +270,7 @@
 		74C0D66515E8A9450069B8DA /* libtcod-gui.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libtcod-gui.dylib"; path = "../libtcod-gui.dylib"; sourceTree = "<group>"; };
 		74C0D66615E8A9450069B8DA /* libtcod.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtcod.dylib; path = ../libtcod.dylib; sourceTree = "<group>"; };
 		74C0D66915E973180069B8DA /* libpng.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libpng.framework; sourceTree = "<group>"; };
-		74C0D66B15E980BA0069B8DA /* libpng-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "libpng-LICENSE.txt"; path = "/Users/yamamushi/libpng-LICENSE.txt"; sourceTree = "<absolute>"; };
+		74C0D66B15E980BA0069B8DA /* LIBPNG-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "LIBPNG-LICENSE.txt"; path = "../licenses/LIBPNG-LICENSE.txt"; sourceTree = "<group>"; };
 		74C4255115D4BA7100CBFD82 /* server.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = server.conf; sourceTree = "<group>"; };
 		74C5767C15C1D1F20033691A /* BoostLibs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoostLibs.h; sourceTree = "<group>"; };
 		74C5767E15C1EC6D0033691A /* Collect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Collect.cpp; sourceTree = "<group>"; };
@@ -346,6 +351,7 @@
 		744487C615BF0464006595CE = {
 			isa = PBXGroup;
 			children = (
+				7471A372186A72A20078DE22 /* TODO */,
 				744F956D1868F778001C47F6 /* MenuBackground.png */,
 				744F956B1868F768001C47F6 /* font.png */,
 				744F95681868F5B5001C47F6 /* font.png */,
@@ -428,12 +434,13 @@
 				747D227E15BFB07700CE1AC9 /* TODO.txt */,
 			);
 			name = docs;
-			path = /Users/yamamushi/TheASCIIProject/docs;
-			sourceTree = "<absolute>";
+			path = ../docs;
+			sourceTree = SOURCE_ROOT;
 		};
 		7444880615BF04EF006595CE /* include */ = {
 			isa = PBXGroup;
 			children = (
+				7471A370186A71000078DE22 /* teros.h */,
 				74C5767C15C1D1F20033691A /* BoostLibs.h */,
 				7444880715BF04EF006595CE /* ClientMap.h */,
 				7444880815BF04EF006595CE /* ClientSocket.h */,
@@ -549,7 +556,7 @@
 		7444885915BF04EF006595CE /* licenses */ = {
 			isa = PBXGroup;
 			children = (
-				74C0D66B15E980BA0069B8DA /* libpng-LICENSE.txt */,
+				74C0D66B15E980BA0069B8DA /* LIBPNG-LICENSE.txt */,
 				7444885A15BF04EF006595CE /* GPL-LICENSE.txt */,
 				7444885B15BF04EF006595CE /* LIBTCOD-CREDITS.txt */,
 				7444885C15BF04EF006595CE /* LIBTCOD-LICENSE.txt */,
@@ -557,6 +564,7 @@
 				7444885E15BF04EF006595CE /* TPL-LICENSE.txt */,
 				747D228515C0566300CE1AC9 /* LICENSE_1_0_BOOST.txt */,
 				7492895215CF09B800BACA68 /* BOOST-LICENSE.txt */,
+				7471A371186A71760078DE22 /* TEROS-Engine-LICENSE.txt */,
 			);
 			path = licenses;
 			sourceTree = "<group>";
@@ -612,6 +620,7 @@
 				74DFD8FE165CB8A000772A3E /* ConfigParser.cpp */,
 				742F3FA215D0920200372A7A /* DBConnector.cpp */,
 				7444888215BF04EF006595CE /* Dungeon.cpp */,
+				7471A36E186A70F70078DE22 /* teros.cpp */,
 				7444888315BF04EF006595CE /* Entities.cpp */,
 				7444888415BF04EF006595CE /* EntityMap.cpp */,
 				7444888515BF04EF006595CE /* FovLib.cpp */,
@@ -850,6 +859,7 @@
 				74502C121654D77500528839 /* Scene.cpp in Sources */,
 				74DA3ED9165A159400A4CC13 /* InputParser.cpp in Sources */,
 				74502C00165482CA00528839 /* Main_Server.cpp in Sources */,
+				7471A36F186A70F70078DE22 /* teros.cpp in Sources */,
 				74DFD8FF165CB8A000772A3E /* ConfigParser.cpp in Sources */,
 				7420BB04165E17D100D3D2D0 /* FunctionUtils.cpp in Sources */,
 			);

@@ -1,0 +1,11 @@
+Replace loading directory for client with client_data not data, as files are getting cluttered by server data there.
+
+Pack maps properly, and use boost_serialization to pack them and send them over the network or work out a json or other 
+communication method so that they can live in harmony.
+
+After maps comes Networking.
+
+Piece by piece, slowly.
+
+TEROS source files need to be updated with a proper license (BSD x-clause? and with a link to the authors website).
+
