@@ -11,3 +11,8 @@ TEROS source files need to be updated with a proper license (BSD x-clause? and w
 
 * Source code needs to be cleaned up. This also means the Xcode project files, as there are too many duplicates cluttering the git repo. 
 
+
+
+- Update our classes to use CamelCase , worldMap -> WorldMap
+- Document WorldMap->initWorldMap
+

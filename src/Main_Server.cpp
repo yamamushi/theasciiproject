@@ -64,11 +64,18 @@ int main(int ac, char* av[]){
     std::cout << std::endl;
 
     
+    /* Launch a Configuration Parser object using argc and argv.
+     Parse isn't part of the constructor in case we want to do
+     something else with one we create.
+     */
+     
     ConfigParser *cfgParse = new ConfigParser(ac, av);
     cfgParse->parse();
     
+    // Setup our Database Engine
     dbEngine = new DBConnector(cfgParse->db_hostname, cfgParse->db_port, cfgParse->db_username, cfgParse->db_pass, cfgParse->db_name);    
     
+    // Check if World Index exists, if not, we create one.
     if(!fileExists("data/maps/World.idx")){
         worldMap = new WorldMap(cfgParse->worldX, cfgParse->worldY, cfgParse->worldZ);
         worldMap->initWorldMap();

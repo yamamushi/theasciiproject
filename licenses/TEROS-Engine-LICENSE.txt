@@ -1,5 +1,8 @@
-All TEROS engine related files in The ASCII Project are derived directly from the original work done by [insert name] for [insert game/project name]. 
+All TEROS engine related files in The ASCII Project are derived directly from the original work done by  Kyle Miskell for his own game and projects.
 
-All credit for the original TEROS engine should be credited to [insert name], and all changes to the engine as utilized in The ASCII Project come without support or warranty from [insert name].
+All credit for the original TEROS engine should be credited to  Kyle Miskell, and all changes to the engine as utilized in The ASCII Project come without support or warranty from him.
 
-Please visit [insert website] for more information about the TEROS engine, as changes here may not reflect the actual engine as it stands from its original author.
+Please visit http://sighofthesecond.blogspot.com/ for more information about the TEROS engine, as changes here may not reflect the actual engine as it stands from its original author.
+
+You can also visit his github directly at https://github.com/SighoftheSecond/TEROS-ENGINE
+
