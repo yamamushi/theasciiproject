@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>62D163E0-BE4D-4CFD-ABF8-E5BD9A216B16</string>
+	<key>IDESourceControlProjectName</key>
+	<string>The ASCII Project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F6C43A24-292A-4EBD-832C-5C279F0C065B</key>
+		<string>ssh://github.com/yamamushi/theasciiproject.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>xcode/The ASCII Project.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F6C43A24-292A-4EBD-832C-5C279F0C065B</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/yamamushi/theasciiproject.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F6C43A24-292A-4EBD-832C-5C279F0C065B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F6C43A24-292A-4EBD-832C-5C279F0C065B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>theasciiproject</string>
+		</dict>
+	</array>
+</dict>
+</plist>
