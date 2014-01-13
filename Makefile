@@ -4,8 +4,8 @@ SRCDIR=./src
 INCDIR=./include
 INCTCOD=./include/libtcod
 BUILDDIR=./build
-CFLAGS=$(FLAGS) -I$(INCTCOD) -I$(INCDIR) -I$(SRCDIR) -w #-Wall -Wswitch
-CPPFLAGS=$(FLAGS) -I$(INCTCOD) -I$(INCDIR) -I$(SRCDIR) -w -std=c++11 #-Wall -Wswitch -std=c++11
+CFLAGS=$(FLAGS) -I$(INCTCOD) -I$(INCDIR) -I$(SRCDIR) -w -g #-Wall -Wswitch
+CPPFLAGS=$(FLAGS) -I$(INCTCOD) -I$(INCDIR) -I$(SRCDIR) -w -g -std=c++11 #-Wall -Wswitch -std=c++11
 
 LIBWIN=./windows
 

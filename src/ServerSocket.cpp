@@ -137,11 +137,11 @@ void client_connection::kickStart()
 {
     socket_.set_option(tcp::no_delay(true));
 
-    boost::asio::async_write(socket_, boost::asio::buffer(string("Welcome to The ASCII Project\n\n"
-                                                                 "Commands Available: \n"
-                                                                 "------------------- \n\n"
-                                                                 "login\n"
-                                                                 "newaccount\n"
+    boost::asio::async_write(socket_, boost::asio::buffer(string("Welcome to The ASCII Project\r\n\r\n"
+                                                                 "Commands Available: \r\n"
+                                                                 "------------------- \r\n\r\n"
+                                                                 "login\r\n"
+                                                                 "newaccount\r\n"
                                                                  "quit \r\n\r\n")), boost::bind(&client_connection::startSession, shared_from_this(), boost::asio::placeholders::error ));
     
 }
